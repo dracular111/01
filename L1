@@ -1,11 +1,8 @@
---loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/World3Teleport"))()
-
 loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Optimal"))()
 task.wait(5)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Del-CoreGui"))()
 task.wait(10)
 script_key = "kIulhqIINAKjwulnjnkvHaoLiZjxzESA";
-
 _G.GEVENT_FPS  = 5
 _G.GDO_CARD_WORLD_EVENT = true
 _G.GCARD_PACK_TO_BUY = "Fantasy Pack"
