@@ -40,4 +40,4 @@ _G.GMAX_POWER_FOR_PET_MASTERY = "225t"
 _G.GWEBHOOK_USERID = "6789"
 _G.GWEBHOOK_LINK = "https://discord.com/api/webhooks/1318778061742804992/m_I4AUoYpQphYGsercjfOI3fn3Og1BMqzDWjgG250oc5HMcfrGUEc_zHKlZ-KlPhlh8L"
 }
-loadstring(game:HttpGet("https://raw.githubusercontent.com/sxdasfvas/test/main/gscripts.lua"))()
+loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/34915da4ad87a5028e1fd64efbe3543f.lua"))()
