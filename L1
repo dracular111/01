@@ -1,6 +1,6 @@
---loadstring(game:HttpGet("https://raw.githubusercontent.com/Hoith95/Pet-99/main/World3Teleport"))()
+--loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/World3Teleport"))()
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Hoith95/Pet-99/main/CPU-LOW"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Optimal"))()
 task.wait(5)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Del-CoreGui"))()
 
