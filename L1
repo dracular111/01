@@ -1,5 +1,17 @@
-repeat wait(10) until game:IsLoaded()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/r6dt/farm/main/Del-CoreGui.lua"))()
+--loadstring(game:HttpGet("https://raw.githubusercontent.com/Hoith95/Pet-99/main/World3Teleport"))()
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Hoith95/Pet-99/main/CPU-LOW"))()
+task.wait(5)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Del-CoreGui"))()
+
+-- Chờ đến khi trạng thái shared.script1Done là true
+while not _G.script1Done do
+    print("Script 1 chưa hoàn thành, đang chờ...")
+    task.wait(1) -- Chờ 1 giây trước khi kiểm tra lại
+end
+
+_G.L1Done = true
+
 task.wait(10)
 script_key = "kIulhqIINAKjwulnjnkvHaoLiZjxzESA";
 
