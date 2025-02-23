@@ -1,0 +1,36 @@
+-- Kiểm tra biến toàn cục để xác định script đã chạy hay chưa
+if _G.MAILBOXITEMS then
+    warn("Script đã được chạy trước đó!")
+    return -- Dừng script nếu đã chạy
+end
+
+-- Đánh dấu script đã được chạy
+_G.MAILBOXITEMS = true
+
+-- Tạo danh sách người dùng và chọn ngẫu nhiên
+local available_users = {"congahpz001", "congahpz002", "congahpz003", "congahpz004", "congahpz005"}
+local random_user = available_users[math.random(1, #available_users)]
+
+getgenv().Settings = {
+    Mailing = {
+  ["Hype Egg 2 "] = {Class = "Lootbox", Id = "Hype Egg 2", MinAmount = 1},
+  ["Hype Egg"] = {Class = "Lootbox", Id = "Hype Egg", MinAmount = 1},
+  ["Daycare egg"] = {Class = "Egg", Id = "Huge Machine Egg 4", MinAmount = 1},
+  ["Secret pet1"] = {Class = "Pet", Id = "Rainbow Swirl", MinAmount = 1, AllVariants = true},
+  ["Secret pet2"] = {Class = "Pet", Id = "Banana", MinAmount = 1, AllVariants = true},
+  ["Secret pet3"] = {Class = "Pet", Id = "Coin", MinAmount = 1, AllVariants = true},
+  ["Secret pet4"] = {Class = "Pet", Id = "Lucky Block", MinAmount = 1, AllVariants = true},
+  ["Normal Wild Galaxy Agony"] = {Class = "Pet", Id = "Wild Galaxy Agony", MinAmount = 50},
+  ["Golden Wild Galaxy Agony"] = {Class = "Pet", Id = "Wild Galaxy Agony", MinAmount = 10, IsGold = true},
+  ["RB Wild Galaxy Agony"] = {Class = "Pet", Id = "Wild Galaxy Agony", MinAmount = 10, IsRainbow = true},
+  ["Shiny Normal Wild Galaxy Agony"] = {Class = "Pet", Id = "Wild Galaxy Agony", MinAmount = 1, IsShiny = true},
+  ["Shiny Golden Wild Galaxy Agony"] = {Class = "Pet", Id = "Wild Galaxy Agony", MinAmount = 1, IsGold = true, IsShiny = true},
+  ["Shiny RB Wild Galaxy Agony"] = {Class = "Pet", Id = "Wild Galaxy Agony", MinAmount = 1, IsRainbow = true, IsShiny = true},
+    },
+    Users = {
+        random_user, -- Gán người dùng ngẫu nhiên
+    },
+    ["Split Items Evenly"] = false,
+    ["Only Online Accounts"] = false,
+}
+loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/86847850c3165379f5be2d9d071eaccb.lua"))()
