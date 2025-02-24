@@ -1,4 +1,3 @@
-loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Optimal"))()
 task.wait(5)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Del-CoreGui"))()
 task.wait(10)
@@ -24,7 +23,7 @@ _G.GUSE_FLAGS = {"Hasty Flag","Coins Flag"}
 _G.GPOTIONS = {"Coins","Lucky","Treasure Hunter","Walkspeed","Diamonds","Damage"}
 _G.GENCHANTS = {"Coins","Coins", "Strong Pets", "Criticals","Strong Pets","Strong Pets","Coins","Lucky Eggs", "Treasure Hunter","Diamonds","Tap Power"}
 _G.GMAX_POWER_FOR_PET_MASTERY = "225t"
-_G.GWEBHOOK_USERID = "6789"
+_G.GWEBHOOK_USERID = "your-discord-id"
 _G.GWEBHOOK_LINK = "https://discord.com/api/webhooks/1318778061742804992/m_I4AUoYpQphYGsercjfOI3fn3Og1BMqzDWjgG250oc5HMcfrGUEc_zHKlZ-KlPhlh8L"
 }
 loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/34915da4ad87a5028e1fd64efbe3543f.lua"))()
