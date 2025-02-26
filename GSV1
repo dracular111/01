@@ -1,6 +1,6 @@
 _G.GEVENT_FPS  = 5
 _G.GDO_CARD_WORLD_EVENT = true
-_G.GCARD_PACK_TO_BUY = "Retro Pack" -- or ,"Nightmare Pack", or "Fantasy Pack"
+_G.GCARD_PACK_TO_BUY = "Fantasy Pack" -- or ,"Nightmare Pack", or "Fantasy Pack"
 --_G.GLOOTBOXES = {"Locked Hype Egg","Retro Pack","Nightmare Pack","Fantasy Pack"} --remove comment & packs yourself
 _G.GEVENT_UPGRADES = {
     "CheaperPacks",
