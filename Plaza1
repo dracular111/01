@@ -28,9 +28,9 @@ getgenv().hugemode = {
 }
 getgenv().item = {
     ["Hype Egg 2"] = 95,
-    ["Fantasy Pack"] = 75,
-    ["Nightmare Pack"] = 75,
-    ["Retro Pack"] = 75,
+    ["Fantasy Pack"] = 80,
+    ["Nightmare Pack"] = 85,
+    ["Retro Pack"] = 85,
 }
 repeat wait() until game:IsLoaded()
 local VirtualUser = game:service 'VirtualUser'
