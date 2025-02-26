@@ -30,7 +30,7 @@ getgenv().item = {
     ["Hype Egg 2"] = 95,
     ["Fantasy Pack"] = 95,
     ["Nightmare Pack"] = 92,
-    ["Retro Pack"] = 92,
+    ["Retro Pack"] = 95,
 }
 repeat wait() until game:IsLoaded()
 local VirtualUser = game:service 'VirtualUser'
