@@ -28,7 +28,7 @@ getgenv().hugemode = {
 }
 getgenv().item = {
     ["Hype Egg 2"] = 95,
-    ["Fantasy Pack"] = 80,
+    ["Fantasy Pack"] = 85,
     ["Nightmare Pack"] = 85,
     ["Retro Pack"] = 85,
 }
