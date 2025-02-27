@@ -32,7 +32,7 @@ getgenv().hugemode = {
     }
 }
 getgenv().item = {
-    ["Hype Egg 2"] = 0.95,
+    ["Hype Egg 2"] = 0.98,
     ["Fantasy Pack"] = 0.95,
     ["Nightmare Pack"] = 0.95,
     ["Retro Pack"] = 0.92,
