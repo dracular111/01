@@ -2,7 +2,7 @@ getgenv().Config = {
     ["Account Hold Gem"] = { "congahpz001", "congahpz002", "congahpz003"  },
     ["Gem"] = "500m",
     ["Time"] = 2,         -- minutes
-    ["Time Remove"] = 20, -- minutes
+    ["Time Remove"] = 10, -- minutes
     ["Url Webhook"] =
     "https://discord.com/api/webhooks/1344557727950700625/kE5E-6vdNA1BLXqUVKO8KHxFQlIPNPbKW1K5jMAW5FAV7j7kjt7_8GYAv7TVCA9unngF",
     ["Url Webhook Plaza"] =
