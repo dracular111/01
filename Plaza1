@@ -33,8 +33,8 @@ getgenv().hugemode = {
 }
 getgenv().item = {
     ["Hype Egg 2"] = 0.98,
-    ["Fantasy Pack"] = 0.93,
-    ["Nightmare Pack"] = 0.93,
+    ["Fantasy Pack"] = 0.92,
+    ["Nightmare Pack"] = 0.92,
     ["Retro Pack"] = 0.92,
 }
 repeat wait() until game:IsLoaded()
