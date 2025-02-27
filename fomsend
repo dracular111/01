@@ -3,7 +3,7 @@ getgenv().Settings = {
         ["Red Wolf"] = {Class = "Pet", Amount = 15}
     },
     Users = {
-
+"Robloxiani8o0q6p0u",
     },
     ["Split Items Evenly"] = false, --// False -> it will send the Amount per account.
     ["Only Online Accounts"] = false,
