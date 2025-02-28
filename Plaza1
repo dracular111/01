@@ -1,3 +1,5 @@
+script_key="oDXKeDBTuYxhLtoRQNWOkmagCFFCKveO";
+
 getgenv().Config = {
     ["Account Hold Gem"] = { "congahpz001", "congahpz002", "congahpz003"  },
     ["Gem"] = "500m",
