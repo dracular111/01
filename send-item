@@ -35,7 +35,13 @@ getgenv().data = {
         ["Ninja Turtle"]            = 1,
         ["Ninja Raccoon"]            = 10,
         ["Robber Cat"]            = 1,
-        ["Police Cat"]            = 10,
+        ["Stealth Bobcat"]            = 1,
+        ["Hacker Axolotl"]            = 1,
+        ["Hacker Corgi"]            = 1,
+        ["Hacker Bear"]            = 5,
+        ["Stealth Cat"]            = 5,
+        ["Hooded Piggy"]            = 5,
+        ["Hooded Bobcat"]            = 5,
         ["Sapphire Phoenix"]            = 1
     },
     ["UserName"] = {
