@@ -26,6 +26,7 @@ getgenv().data = {
         ["Fishing Bait"] = 20,
         ["Emerald"] = 1,
         ["Diamond"] = 1,
+        ["Master Thief Potion"] = 1,
         ["Exclusive"] = 1,
         ["Exclusive Enchant Safe"] = 1,
         ["Blossom Koi Fish"]            = 1,
