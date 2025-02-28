@@ -19,9 +19,9 @@ _G.GWEBHOOK_LINK = "https://discord.com/api/webhooks/1344861890362216518/nOXDUDY
 _G.GMAIL_RECEIVERS = {"billo9xx", "barus1ik", "mcane9gb", "vermi4dm", "bozzo_3a9", "pavel7m6", "boudo_4uz", "gills6ii", "seitz5ut", "boekh6uo", "durra7ds", "berez1xg"} -- for Huges
 _G.GMAIL_ITEMS = {
   ["All Huges"] = {Class = "Pet", Id = "All Huges", Amount = 1},
-  ["Fantasy Pack"] = {Class = "Lootbox", Id = "Fantasy Pack", MinAmount = 10},
-  ["Retro Pack"] = {Class = "Lootbox", Id = "Retro Pack", MinAmount = 30},
-  ["Nightmare Pack"] = {Class = "Lootbox", Id = "Nightmare Pack", MinAmount = 20},
+  ["Fantasy Pack"] = {Class = "Lootbox", Id = "Fantasy Pack", MinAmount = 5},
+  ["Retro Pack"] = {Class = "Lootbox", Id = "Retro Pack", MinAmount = 20},
+  ["Nightmare Pack"] = {Class = "Lootbox", Id = "Nightmare Pack", MinAmount = 10},
   ["Hype Egg 2"] = {Class = "Lootbox", Id = "Hype Egg 2", MinAmount = 1},
   ["Daycare egg"] = {Class = "Egg", Id = "Huge Machine Egg 4", MinAmount = 1},
   ["Secret pet1"] = {Class = "Pet", Id = "Rainbow Swirl", MinAmount = 1, AllVariants = true},
