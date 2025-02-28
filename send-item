@@ -4,6 +4,7 @@ getgenv().data = {
         ["Master Thief Potion"] = 1,
         ["Royal Gift"] = 1,
         ["Vault Key"] = 1,
+        ["Hacker Egg"] = 5,
         ["Royal Gift Bag"] = 1,
         ["Titanic Gift Bag"] = 1,
         ["Titanic Mining Chest"] = 1,
@@ -15,7 +16,6 @@ getgenv().data = {
         ["Thieving God Potion"] = 1,
         ["Thieving Gift Bag"] = 1,
         ["Thieving Gift"] = 1,
-        ["Hacker Egg"] = 5,
         ["10,000x Thieving Egg"] = 1,
         ["Exotic Thieving Chest"] = 1,
         ["Exotic Fishing Chest"] = 5,
@@ -49,8 +49,8 @@ getgenv().data = {
         ["Sapphire Phoenix"]            = 1
     },
     ["UserName"] = {
-        "NNJorAce2338", "IDJayTom4147", "aTClyKim5583", "zOVanCal3773", "ZLZebSid4549", "CwHobCal3065", "XMOleJim1811", "obGadJim408", "KHTaiEli374"
-        "WaNeoDon822", "BNTexHugo1348", "YPGazCal602", "jiTorRon2046", "rZDomDan718", "LqNeoBob2408", "WMZanCal5088", "FYOrrAlf6366", "EnErnRob2107", "MeRoyJoe2781", "JgHamVic4638"
+        "NNJorAce2338", "IDJayTom4147", "aTClyKim5583", "zOVanCal3773", "ZLZebSid4549", "CwHobCal3065", "XMOleJim1811", "obGadJim408", "KHTaiEli374", "WaNeoDon822", "BNTexHugo1348", "YPGazCal602", "jiTorRon2046", "rZDomDan718", "LqNeoBob2408", "WMZanCal5088", "FYOrrAlf6366", "EnErnRob2107", "MeRoyJoe2781", "JgHamVic4638"
+
     },
     ["Url Webhook"] =
     "https://discord.com/api/webhooks/1337684621189714083/FM3jPHn3Pq763RSXFP2El9KAULAomNHt_T4wfK6ilyj6FelI20Q9Oo4iUsa6C_SSRf1t"
