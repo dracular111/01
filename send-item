@@ -1,0 +1,100 @@
+getgenv().data = {
+    ["Item"] = {
+        ["Valentines Spinny Wheel Ticket"] = 1,
+        ["Titanic Gift Bag"] = 1,
+        ["Titanic Mining Chest"] = 1,
+        ["Pickaxe Huge Hunter"] = 1,
+        ["Corrupted Huge Bait"] = 20,
+        ["Exclusive Enchant Safe"] = 1,
+        ["Celestial Enchant Safe"] = 1,
+        ["Legendary Enchant Safe"] = 1,
+        ["Thieving God Potion"] = 1,
+        ["Thieving Gift Bag"] = 1,
+        ["Thieving Gift"] = 1,
+        -- ["100x Thieving Egg"] = 20,
+        ["10,000x Thieving Egg"] = 1,
+        ["Exotic Thieving Chest"] = 1,
+        ["Exotic Fishing Chest"] = 5,
+        ["Exotic Mining Chest"] = 50,
+        ["Runic Mining Chest"] = 5,
+        ["Abyssal Treasure Chest"] = 5,
+        ["Legendary Thieving Chest"] = 5,
+        ["Legendary Fishing Chest"] = 20,
+        ["Legendary Mining Chest"] = 100,
+        ["Legendary Fishing Bait"] = 5,
+        ["Exotic Fishing Bait"] = 5,
+        ["Fishing Bait"] = 20,
+        ["Emerald"] = 1,
+        ["Diamond"] = 1,
+        ["Exclusive"] = 1,
+        ["Exclusive Enchant Safe"] = 1,
+        ["Blossom Koi Fish"]            = 1,
+        ["Flex Fluffy Cat"]            = 1,
+        ["Detective Terrier"]            = 1,
+        ["Ninja Maskot"]            = 1,
+        ["Ninja Turtle"]            = 1,
+        ["Ninja Raccoon"]            = 10,
+        ["Robber Cat"]            = 1,
+        ["Police Cat"]            = 5,
+        ["Prison Dog"]            = 10,
+        ["Prison Monkey"]            = 10,
+        ["Prison Cow"]            = 10,
+        ["Sapphire Phoenix"]            = 1
+    },
+    ["UserName"] = {
+        "NNJorAce2338", "IDJayTom4147", "aTClyKim5583", "zOVanCal3773", "ZLZebSid4549", "CwHobCal3065", "XMOleJim1811", "obGadJim408", "KHTaiEli374", "WaNeoDon822", "BNTexHugo1348", "YPGazCal602", "jiTorRon2046", "rZDomDan718", "LqNeoBob2408", "WMZanCal5088", "FYOrrAlf6366", "EnErnRob2107", "MeRoyJoe2781", "JgHamVic4638"
+}
+repeat
+    wait()
+until game:IsLoaded() and game:GetService("Players").LocalPlayer:FindFirstChild("PlayerGui") and game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("GUIFX Holder") and
+    game:GetService("Players").LocalPlayer.PlayerGui["GUIFX Holder"].DisplayOrder == 999
+local rs = game:GetService("ReplicatedStorage")
+local save = require(rs.Library.Client.Save)
+local Items = require(game:GetService("ReplicatedStorage").Library.Items.Types)
+local plr = game.Players.LocalPlayer
+local RAP = 0
+local a = require(game:GetService("ReplicatedStorage").Library.Directory.Pets)
+function formatNumber(v)
+    return tostring(v):reverse():gsub("%d%d%d", "%1,"):reverse():gsub("^,", "")
+end
+
+local function log(user, item, amount)
+    local Message = {
+        ['username'] = "Pet GO Log",
+        ["content"] = "@everyone\nUserName: " .. user .. "\nSend Done: " .. item .. "\nAmount: " .. formatNumber(amount)
+
+    }
+    local DataCallBack = request({
+        Url = getgenv().data["Url Webhook"],
+        Method = 'POST',
+        Headers = {
+            ["Content-Type"] = "application/json"
+        },
+        Body = game:GetService("HttpService"):JSONEncode(Message)
+    })
+end
+while wait() do
+    for i, v in save.Get().Inventory do
+        for i1, v1 in next, v do
+            if getgenv().data["Item"][v1.id] then
+                local am = v1._am or 1
+                if am and am >= getgenv().data["Item"][v1.id] then
+                    local username = getgenv().data["UserName"][math.random(1, #getgenv().data["UserName"])]
+                    local args = {
+                        [1] = username,
+                        [2] = "Made by honglamx",
+                        [3] = i,
+                        [4] = i1,
+                        [5] = am
+                    }
+
+                    if game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Mailbox: Send"):InvokeServer(
+                            unpack(args)) then
+                        log(username, v1.id, am)
+                        task.wait(1)
+                    end
+                end
+            end
+        end
+    end
+end
