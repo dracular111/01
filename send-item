@@ -40,8 +40,8 @@ getgenv().data = {
         ["Hacker Corgi"]            = 1,
         ["Hacker Bear"]            = 5,
         ["Stealth Cat"]            = 5,
-        ["Hooded Piggy"]            = 5,
-        ["Hooded Bobcat"]            = 5,
+        ["Hooded Piggy"]            = 20,
+        ["Hooded Bobcat"]            = 20,
         ["Sapphire Phoenix"]            = 1
     },
     ["UserName"] = {
