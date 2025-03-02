@@ -1,74 +1,26 @@
-script_key = "cqbMnbFeswOIlZiZxLroMEIQpVNZLZXK";
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dracula/01/main/Optimal"))()
+task.wait(5)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dracula/01/main/Del-CoreGui"))()
 
-_G.GEVENT_FPS  = 5
-_G.GDO_CARD_WORLD_EVENT = true
-_G.GCARD_PACK_TO_BUY = "Fantasy Pack"
-_G.GCLEAR_FAVORITE_PETS = true
-_G.GCOINS_TO_KEEP_FOR_MERCHANT = "2m"
-_G.GSTAT_PET = {"Wicked Agony","Fairy Moth","Hydra Cat","Lumi Axolotl"}
-_G.GLOOTBOXES = {"Retro Pack","Nightmare Pack","Fantasy Pack"}
-_G.GEVENT_UPGRADES = {
-    "CheaperPacks",
-    "CheaperTradeIns",
-    "BonusCardChance",
-    "PurchaseMorePacks",
-    "CheaperPrestonPackMerchantPrices",
-    "CheaperMysteryPackMerchantPrices",
-    "EasierQuests"
-} -- can remove the ones you don't want to upgrade
-_G.GGFX_MODE = 1
-_G.GZONE_TO = 99
-_G.GHOLD_GIFTS = false
-_G.GHOLD_BUNDLES = true
-_G.GHATCH_SPEED_MS = 0
-_G.GMAX_EGG_SLOTS = 99
-_G.GMAX_EQUIP_SLOTS = 40
-_G.GUSE_ULTIMATES = {"Chest Spell","Ground Pound"}
-_G.GUSE_FLAGS = {"Fortune Flag","Diamonds Flag","Coins Flag"}
-_G.GFRUITS = {"Watermelon","Candycane","Apple","Rainbow","Pineapple","Orange","Banana"}
-_G.GPOTIONS = {"Coins","Lucky","The Cocktail","Huge","Treasure Hunter","Walkspeed","Diamonds","Damage"}
-_G.GPOTIONS_MAX_TIER = 99
---_G.GENCHANTS = {"Lucky Eggs","Lucky Eggs","Huge Hunter","Criticals", "Coins","Tap Power","Treasure Hunter"}
---_G.GENCHANTS = {"Lucky Eggs","Strong Pets","Criticals","Huge Hunter","Lucky Eggs","Treasure Hunter","Tap Power"}
-_G.GENCHANTS = {"Coins","Coins", "Strong Pets", "Criticals","Treasure Hunter","Criticals","Strong Pets","Coins","Lucky Eggs", "Diamonds","Tap Power"}
-_G.GMAIL_RECEIVERS = {"billo9xx", "barus1ik", "mcane9gb", "vermi4dm", "bozzo_3a9", "pavel7m6", "boudo_4uz", "gills6ii", "seitz5ut", "boekh6uo", "durra7ds", "berez1xg"} -- an account to receive hatched Huges etc
+-- Chờ đến khi trạng thái shared.script1Done là true
+while not _G.script1Done do
+    print("Script 1 chưa hoàn thành, đang chờ...")
+    task.wait(1) -- Chờ 1 giây trước khi kiểm tra lại
+end
+
+_G.L1Done = true
+
+--task.wait(9)
+--- GScripts ---
+
+script_key = "cqbMnbFeswOIlZiZxLroMEIQpVNZLZXK";
+_G.GDRY_RUN = false
+_G.DISABLE_OVERLAY = true
+
 _G.GMAIL_ITEMS = {
-  ['All Huges'] = { Class = "Pet", AllVariants = true, Amount = 1 },
-  ['Huge Arcade Dog Card'] = { Class = "Card", AllVariants = true, Amount = 1 },
-  ['Huge Blurred Axolotl Card'] = { Class = "Card", AllVariants = true, Amount = 1 },
-  ['Huge Nightmare Dog Card'] = { Class = "Card", AllVariants = true, Amount = 1 },
-  ['Huge Pog Cat Card'] = { Class = "Card", AllVariants = true, Amount = 1 },
-  ['Huge Storm Axolotl Card'] = { Class = "Card", AllVariants = true, Amount = 1 },
-  ['Huge Ninja Capybara Card'] = { Class = "Card", AllVariants = true, Amount = 1 },
-  ['Huge Arcane Dominus Card'] = { Class = "Card", AllVariants = true, Amount = 1 },
-  ['Titanic Cupcake Pegasus Card'] = { Class = "Card", AllVariants = true, Amount = 1 },
-  ['Titanic Signature BIG Maskot Card'] = { Class = "Card", AllVariants = true, Amount = 1 },
---['Retro Pack'] = { Class = "Lootbox", MinAmount = 30, Amount = "Max" },
---['Nightmare Pack'] = { Class = "Lootbox", MinAmount = 20, Amount = "Max" },
---['Fantasy Pack'] = { Class = "Lootbox", MinAmount = 10, Amount = "Max" },
---['Ninja Pack'] = { Class = "Lootbox", MinAmount = 1, Amount = "Max" },
---['Axolotl Pack'] = { Class = "Lootbox", MinAmount = 1, Amount = "Max" },
---['Pog Pack'] = { Class = "Lootbox", MinAmount = 1, Amount = "Max" },
-  ['BIG Pack'] = { Class = "Lootbox", MinAmount = 5, Amount = "Max" },
-  ['BIG Pack'] = { Class = "Lootbox", MinAmount = 20, Amount = "Max" },
-  ['Hype Egg 2'] = { Class = "Lootbox", Amount = 1 },
-  ['Hype Egg'] = { Class = "Lootbox", Amount = "Max" },
-  ['Huge Machine Egg 4'] = { Class = "Egg", Amount = 1 },
-  ['Hellfire Gift'] = { Class = "Lootbox", MinAmount = 15, Amount = "Max" },
-  ['Love Gift'] = { Class = "Lootbox", MinAmount = 1, Amount = "Max" },
-  ['Doodle Gift'] = { Class = "Lootbox", MinAmount = 1, Amount = "Max" },
-  ['Insta Plant Capsule'] = { Class = "Misc", MinAmount = 20, Amount = "Max" },
-  ['Mini Pinata'] = { Class = "Misc", MinAmount = 50, Amount = "Max" },
-  ['Secret Key'] = { Class = "Misc", MinAmount = 50, Amount = "Max" },
-  ['Void Key'] = { Class = "Misc", MinAmount = 50, Amount = "Max" },
-  ['Tech Key'] = { Class = "Misc", MinAmount = 200, Amount = "Max" },
-  ['Crystal Key'] = { Class = "Misc", MinAmount = 200, Amount = "Max" },
-  ["Egg"] = {Class = "Egg", Id = "Huge Machine Egg 5"", MinAmount = 1},,
-  ["Daycare egg"] = {Class = "Egg", Id = "Huge Machine Egg 4", MinAmount = 1},
-  ["Secret pet1"] = {Class = "Pet", Id = "Rainbow Swirl", MinAmount = 1, AllVariants = true},
-  ["Secret pet2"] = {Class = "Pet", Id = "Banana", MinAmount = 1, AllVariants = true},
-  ["Secret pet3"] = {Class = "Pet", Id = "Coin", MinAmount = 1, AllVariants = true},
-  ["Secret pet4"] = {Class = "Pet", Id = "Lucky Block", MinAmount = 1, AllVariants = true},
-  ["Send all Diamonds"] = {Class = "Currency", Id = "Diamonds", KeepAmount = "2m", MinAmount = "5m"},
+  ["Send all Diamonds"] = {Class = "Currency", Id = "Diamonds", KeepAmount = "2m", MinAmount = "10m"},
 }
-loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/6e75890d2e36b4613270666c4f5ccab3.lua"))()
+_G.GMAIL_RECEIVERS = {"billo9xx", "barus1ik", "mcane9gb", "vermi4dm", "bozzo_3a9", "pavel7m6", "boudo_4uz", "gills6ii", "seitz5ut", "boekh6uo", "durra7ds", "berez1xg"}
+_G.GMAIL_DELAY  = 0
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dracula/01/main/GScripts-Events"))()
+end
