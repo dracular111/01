@@ -22,5 +22,5 @@ _G.GMAIL_ITEMS = {
 }
 _G.GMAIL_RECEIVERS = {"billo9xx", "barus1ik", "mcane9gb", "vermi4dm", "bozzo_3a9", "pavel7m6", "boudo_4uz", "gills6ii", "seitz5ut", "boekh6uo", "durra7ds", "berez1xg"}
 _G.GMAIL_DELAY  = 0
-loadstring(game:HttpGet("https://raw.githubusercontent.com/dracula/01/main/GScripts-Events"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dracula/01/main/GS-Events"))()
 end
