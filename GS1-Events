@@ -9,15 +9,7 @@ _G.GCLEAR_FAVORITE_PETS = true
 _G.GCOINS_TO_KEEP_FOR_MERCHANT = "2m"
 _G.GSTAT_PET = {"Wicked Agony","Fairy Moth","Hydra Cat","Lumi Axolotl"}
 _G.GLOOTBOXES = {"Retro Pack","Nightmare Pack","Fantasy Pack"}
-_G.GEVENT_UPGRADES = {
-    "CheaperPacks",
-    "CheaperTradeIns",
-    "BonusCardChance",
-    "PurchaseMorePacks",
-    "CheaperPrestonPackMerchantPrices",
-    "CheaperMysteryPackMerchantPrices",
-    "EasierQuests"
-} -- can remove the ones you don't want to upgrade
+
 _G.GGFX_MODE = 1
 _G.GZONE_TO = 99
 _G.GHOLD_GIFTS = false
