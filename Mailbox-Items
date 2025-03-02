@@ -1,65 +1,132 @@
 -- Kiểm tra biến toàn cục để xác định script đã chạy hay chưa
-if _G.MAILBOXITEMS then
+if _G.AUTOMAILBOX then
     warn("Script đã được chạy trước đó!")
     return -- Dừng script nếu đã chạy
 end
 
 -- Đánh dấu script đã được chạy
-_G.MAILBOXITEMS = true
+_G.AUTOMAILBOX = true
 
--- Tạo danh sách người dùng và chọn ngẫu nhiên
-local available_users = {"congahpz001", "congahpz002", "congahpz003", "congahpz004", "congahpz005"}
-local random_user = available_users[math.random(1, #available_users)]
+print("Auto MailBox sẽ bắt đầu gửi thư trong 60 giay nữa.")
 
-getgenv().Settings = {
-    Mailing = {
-  ["Love Gift"] = {Class = "Lootbox", Id = "Love Gift", MinAmount = 25},
-  ["Huge Arcade Dog Card"] = {Class = "Card", Id = "Huge Arcade Dog", MinAmount = 1},
-  ["Huge Arcade Dog Card"] = {Class = "Card", Id = "Huge Arcade Dog", IsGold = true, MinAmount = 1},
-  ["Huge Arcade Dog Card"] = {Class = "Card", Id = "Huge Arcade Dog", IsRainbow = true, MinAmount = 1},
-  ["Huge Blurred Axolotl Card"] = {Class = "Card", Id = "Blurred Axolotl", MinAmount = 1},
-  ["Huge Blurred Axolotl Card"] = {Class = "Card", Id = "Blurred Axolotl", IsGold = true, MinAmount = 1},
-  ["Huge Blurred Axolotl Card"] = {Class = "Card", Id = "Blurred Axolotl", IsRainbow = true, MinAmount = 1},
-  ["Huge Blurred Axolotl Card"] = {Class = "Card", Id = "Blurred Axolotl", MinAmount = 1},
-  ["Huge Blurred Axolotl Card"] = {Class = "Card", Id = "Blurred Axolotl", IsGold = true, MinAmount = 1},
-  ["Huge Blurred Axolotl Card"] = {Class = "Card", Id = "Blurred Axolotl", IsRainbow = true, MinAmount = 1},
-  ["Huge Super Spider Card"] = {Class = "Card", Id = "Super Spider", MinAmount = 1},
-  ["Huge Super Spider Card"] = {Class = "Card", Id = "Super Spider", IsGold = true, MinAmount = 1},
-  ["Huge Super Spider Card"] = {Class = "Card", Id = "Super Spider", IsRainbow = true, MinAmount = 1},
-  ["Titanic Super Wolf Card"] = {Class = "Card", Id = "Super Wolf", MinAmount = 1},
-  ["Titanic Super Wolf Card"] = {Class = "Card", Id = "Super Wolf", IsGold = true, MinAmount = 1},
-  ["Titanic Super Wolf Card"] = {Class = "Card", Id = "Super Wolf", IsRainbow = true, MinAmount = 1},
-  ["Titanic Cupcake Pegasus Card"] = {Class = "Card", Id = "Cupcake Pegasus", MinAmount = 1},
-  ["Titanic Cupcake Pegasus Card"] = {Class = "Card", Id = "Cupcake Pegasus", IsGold = true, MinAmount = 1},
-  ["Titanic Cupcake Pegasus Card"] = {Class = "Card", Id = "Cupcake Pegasus", IsRainbow = true, MinAmount = 1},
-  ["Huge Nightmare Dog Card"] = {Class = "Card", Id = "Nightmare Dog", MinAmount = 1},
-  ["Huge Nightmare Dog Card"] = {Class = "Card", Id = "Nightmare Dog", IsGold = true, MinAmount = 1},
-  ["Huge Nightmare Dog Card"] = {Class = "Card", Id = "Nightmare Dog", IsRainbow = true, MinAmount = 1},
-  ["Hype Egg 2"] = {Class = "Lootbox", Id = "Hype Egg 2", MinAmount = 1},
-  ["Hype Egg"] = {Class = "Lootbox", Id = "Hype Egg", MinAmount = 1},
-  ["Daycare egg"] = {Class = "Egg", Id = "Huge Machine Egg 4", MinAmount = 1},
-  ["Secret pet1"] = {Class = "Pet", Id = "Rainbow Swirl", MinAmount = 1, AllVariants = true},
-  ["Secret pet2"] = {Class = "Pet", Id = "Banana", MinAmount = 1, AllVariants = true},
-  ["Secret pet3"] = {Class = "Pet", Id = "Coin", MinAmount = 1, AllVariants = true},
-  ["Secret pet4"] = {Class = "Pet", Id = "Lucky Block", MinAmount = 1, AllVariants = true},
-  ["Hype Egg 2 "] = {Class = "Lootbox", Id = "Hype Egg 2", MinAmount = 1},
-  ["Hype Egg"] = {Class = "Lootbox", Id = "Hype Egg", MinAmount = 1},
-  ["Daycare egg"] = {Class = "Egg", Id = "Huge Machine Egg 4", MinAmount = 1},
-  ["Secret pet1"] = {Class = "Pet", Id = "Rainbow Swirl", MinAmount = 1, AllVariants = true},
-  ["Secret pet2"] = {Class = "Pet", Id = "Banana", MinAmount = 1, AllVariants = true},
-  ["Secret pet3"] = {Class = "Pet", Id = "Coin", MinAmount = 1, AllVariants = true},
-  ["Secret pet4"] = {Class = "Pet", Id = "Lucky Block", MinAmount = 1, AllVariants = true},
-  ["Normal Wild Galaxy Agony"] = {Class = "Pet", Id = "Wild Galaxy Agony", MinAmount = 50},
-  ["Golden Wild Galaxy Agony"] = {Class = "Pet", Id = "Wild Galaxy Agony", MinAmount = 10, IsGold = true},
-  ["RB Wild Galaxy Agony"] = {Class = "Pet", Id = "Wild Galaxy Agony", MinAmount = 10, IsRainbow = true},
-  ["Shiny Normal Wild Galaxy Agony"] = {Class = "Pet", Id = "Wild Galaxy Agony", MinAmount = 1, IsShiny = true},
-  ["Shiny Golden Wild Galaxy Agony"] = {Class = "Pet", Id = "Wild Galaxy Agony", MinAmount = 1, IsGold = true, IsShiny = true},
-  ["Shiny RB Wild Galaxy Agony"] = {Class = "Pet", Id = "Wild Galaxy Agony", MinAmount = 1, IsRainbow = true, IsShiny = true},
+getgenv().AutoMail = {
+    ['Items'] = {
+        ['All Huges'] = { Class = "Pet", AllVariants = true, Amount = 1 },
+        ['Huge Arcade Dog Card'] = { Class = "Card", AllVariants = true, Amount = 1 },
+        ['Huge Blurred Axolotl Card'] = { Class = "Card", AllVariants = true, Amount = 1 },
+        ['Huge Nightmare Dog Card'] = { Class = "Card", AllVariants = true, Amount = 1 },
+        ['Huge Pog Cat Card'] = { Class = "Card", AllVariants = true, Amount = 1 },
+        ['Huge Storm Axolotl Card'] = { Class = "Card", AllVariants = true, Amount = 1 },
+        ['Huge Ninja Capybara Card'] = { Class = "Card", AllVariants = true, Amount = 1 },
+        ['Huge Arcane Dominus Card'] = { Class = "Card", AllVariants = true, Amount = 1 },
+        ['Titanic Cupcake Pegasus Card'] = { Class = "Card", AllVariants = true, Amount = 1 },
+        ['Titanic Signature BIG Maskot Card'] = { Class = "Card", AllVariants = true, Amount = 1 },
+        --['Retro Pack'] = { Class = "Lootbox", MinAmount = 1, Amount = "Max" },
+        --['Nightmare Pack'] = { Class = "Lootbox", MinAmount = 50, Amount = "Max" },
+        --['Fantasy Pack'] = { Class = "Lootbox", MinAmount = 1, Amount = "Max" },
+        --['Ninja Pack'] = { Class = "Lootbox", MinAmount = 50, Amount = "Max" },
+        --['Axolotl Pack'] = { Class = "Lootbox", MinAmount = 50, Amount = "Max" },
+        --['Pog Pack'] = { Class = "Lootbox", MinAmount = 1, Amount = "Max" },
+        ['BIG Pack'] = { Class = "Lootbox", MinAmount = 20, Amount = "Max" },
+        ['Hype Egg 2'] = { Class = "Lootbox", Amount = 1 },
+        ['Hype Egg'] = { Class = "Lootbox", Amount = "Max" },
+        ['Huge Machine Egg 4'] = { Class = "Egg", Amount = 1 },
+        ['Hellfire Gift'] = { Class = "Lootbox", MinAmount = 15, Amount = "Max" },
+        ['Love Gift'] = { Class = "Lootbox", MinAmount = 1, Amount = "Max" },
+        ['Doodle Gift'] = { Class = "Lootbox", MinAmount = 1, Amount = "Max" },
+        ['Insta Plant Capsule'] = { Class = "Misc", MinAmount = 20, Amount = "Max" },
+        ['Mini Pinata'] = { Class = "Misc", MinAmount = 50, Amount = "Max" },
+        ['Secret Key'] = { Class = "Misc", MinAmount = 50, Amount = "Max" },
+        ['Void Key'] = { Class = "Misc", MinAmount = 50, Amount = "Max" },
+        ['Tech Key'] = { Class = "Misc", MinAmount = 200, Amount = "Max" },
+        ['Crystal Key'] = { Class = "Misc", MinAmount = 200, Amount = "Max" },
+        ["Egg"] = {Class = "Egg", Id = "Huge Machine Egg 5"", MinAmount = 1},,
+        ["Daycare egg"] = {Class = "Egg", Id = "Huge Machine Egg 4", MinAmount = 1},
+        ["Secret pet1"] = {Class = "Pet", Id = "Rainbow Swirl", MinAmount = 1, AllVariants = true},
+        ["Secret pet2"] = {Class = "Pet", Id = "Banana", MinAmount = 1, AllVariants = true},
+        ["Secret pet3"] = {Class = "Pet", Id = "Coin", MinAmount = 1, AllVariants = true},
+        ["Secret pet4"] = {Class = "Pet", Id = "Lucky Block", MinAmount = 1, AllVariants = true},
+        ["Send all Diamonds"] = {Class = "Currency", Id = "Diamonds", KeepAmount = "2m", MinAmount = "5m"},
+        --['Love Cow'] = { Class = "Pet", MinAmount = 100, AllVariants = true, Amount = "Max" }, 
     },
-    Users = {
-        random_user, -- Gán người dùng ngẫu nhiên
-    },
-    ["Split Items Evenly"] = false,
-    ["Only Online Accounts"] = false,
+    ['Loop Interval'] = 60,
+    ['Users'] = {"billo9xx", "barus1ik", "mcane9gb", "vermi4dm", "bozzo_3a9", "pavel7m6", "boudo_4uz", "gills6ii", "seitz5ut", "boekh6uo", "durra7ds", "berez1xg"},
 }
-loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/86847850c3165379f5be2d9d071eaccb.lua"))()
+
+repeat task.wait() until game:IsLoaded()
+local LocalPlayer = game:GetService('Players').LocalPlayer
+repeat task.wait() until not LocalPlayer.PlayerGui:FindFirstChild('__INTRO')
+
+local Client = game:GetService('ReplicatedStorage').Library.Client
+local Network = require(Client.Network)
+local SaveModule = require(Client.Save)
+
+while task.wait(AutoMail['Loop Interval'] or 60) do
+    local Queue = {}
+    local AnyItemsSent = false  
+
+    for Class, Items in pairs(SaveModule.Get()['Inventory']) do
+        for uid, v in pairs(Items) do
+            local PetCheck = (Class == "Pet") and string.find(v.id, "Huge")
+            local Config = false
+
+            for Id, Info in pairs(AutoMail['Items']) do
+                local isVariant = Info.AllVariants and string.find(v.id, Id)
+
+                local isValid = true
+                if Info.pt and Info.pt ~= v.pt then isValid = false end
+                if Info.sh and Info.sh ~= v.sh then isValid = false end
+                if Info.tn and Info.tn ~= v.tn then isValid = false end
+
+                local itemAmount = tonumber(v._am) or 1
+
+                if (Id == v.id or isVariant) and Info.Class == Class and isValid then
+                    if Info.MinAmount then
+                        if itemAmount >= Info.MinAmount then
+                            Config = true
+                        end
+                    else
+                        if Info.Amount == "Max" then
+                            if itemAmount > 0 then
+                                Config = true
+                            end
+                        elseif Info.Amount <= itemAmount then
+                            Config = true
+                        end
+                    end
+                end
+            end
+
+            if Class == "Egg" or Config or PetCheck and not Queue[uid] then
+                Queue[uid] = { Class = Class, Info = v }
+            end
+        end
+    end
+
+    for uid, Data in pairs(Queue) do
+        local Unlocked = false
+        local Mailed = false
+        local v = Data.Info
+        local amountToSend = tonumber(v._am) or 1  
+
+        if v._lk then
+            while not Unlocked do
+                Unlocked, err = Network.Invoke("Locking_SetLocked", uid, false) task.wait(0.1)
+            end
+        end
+
+        local User = AutoMail['Users'][math.random(1, #AutoMail['Users'])]
+        while not Mailed do
+            Mailed, err = Network.Invoke("Mailbox: Send", User, "Bless", Data.Class, uid, amountToSend) task.wait(0.1)
+        end
+
+        AnyItemsSent = true
+
+        -- 📝 Giữ nguyên print() cũ
+        print("Đã gửi " .. amountToSend .. " vật phẩm " .. v.id .. " cho người dùng: " .. User)
+    end
+
+    if not AnyItemsSent then
+        --print("Không có vật phẩm nào đủ điều kiện để gửi.")
+    end
+end
