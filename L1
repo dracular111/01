@@ -1,7 +1,3 @@
-loadstring(game:HttpGet("https://raw.githubusercontent.com/dracula/01/main/Optimal"))()
-task.wait(5)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/dracula/01/main/Del-CoreGui"))()
-task.wait(5)
 script_key = "cqbMnbFeswOIlZiZxLroMEIQpVNZLZXK";
 _G.GEVENT_FPS  = 5
 _G.GLOOTBOXES = {"Locked Hype Egg"}
