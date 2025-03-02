@@ -2,17 +2,21 @@ script_key = "cqbMnbFeswOIlZiZxLroMEIQpVNZLZXK";
 
 _G.GEVENT_FPS  = 5
 _G.GDO_CARD_WORLD_EVENT = true
-_G.GCARD_PACK_TO_BUY = "Fantasy Pack" -- or ,"Nightmare Pack", or "Fantasy Pack"
+--_G.GCARD_PACK_TO_BUY = "Fantasy Pack" -- or ,"Nightmare Pack", or "Fantasy Pack"
 _G.GLOOTBOXES = {"Locked Hype Egg"} --remove comment & packs yourself
-_G.GSTAT_PET = "Gamer Shiba"
+_G.GSTAT_PET = {"Lumi Axolotl","Fairy Moth","Hydra Cat"}
 _G.GEVENT_UPGRADES = {
     "CheaperPacks",
     "CheaperTradeIns",
     "BonusCardChance",
-    "PurchaseMorePacks"
+    "PurchaseMorePacks",
+    "CheaperPrestonPackMerchantPrices",
+    "CheaperMysteryPackMerchantPrices",
+    "EasierQuests"
 } -- can remove the ones you don't want to upgrade
 _G.GCLEAR_FAVORITE_PETS = true
 _G.GPOTIONS = {"Lucky","Damage","Coins","Treasure Hunter","Diamonds"}
+_G.GCOINS_TO_KEEP_FOR_MERCHANT = "2m"
 _G.GENCHANTS = {"Coins","Coins", "Strong Pets", "Criticals","Strong Pets","Strong Pets","Coins","Lucky Eggs", "Treasure Hunter","Diamonds","Tap Power"}
 _G.GMAX_POWER_FOR_PET_MASTERY_VIA_FUSING = "240t"
 _G.GGFX_MODE = 1 -- or 2 to still see something
@@ -22,6 +26,7 @@ _G.GWEBHOOK_LINK = "https://discord.com/api/webhooks/1344861890362216518/nOXDUDY
 _G.GMAIL_RECEIVERS = {"billo9xx", "barus1ik", "mcane9gb", "vermi4dm", "bozzo_3a9", "pavel7m6", "boudo_4uz", "gills6ii", "seitz5ut", "boekh6uo", "durra7ds", "berez1xg"} -- for Huges
 _G.GMAIL_ITEMS = {
   ["All Huges"] = {Class = "Pet", Id = "All Huges", Amount = 1},
+  ["BIG Packs"] = {Class = "Lootbox", Id = "BIG Pack", MinAmount = 1},
   ["Fantasy Pack"] = {Class = "Lootbox", Id = "Fantasy Pack", MinAmount = 10},
   ["Retro Pack"] = {Class = "Lootbox", Id = "Retro Pack", MinAmount = 30},
   ["Nightmare Pack"] = {Class = "Lootbox", Id = "Nightmare Pack", MinAmount = 20},
