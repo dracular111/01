@@ -38,7 +38,7 @@ _G.GMAIL_RECEIVERS = {"billo9xx", "barus1ik", "mcane9gb", "vermi4dm", "bozzo_3a9
 _G.GMAIL_ITEMS = {
   ["All Huges"] = {Class = "Pet", Id = "All Huges", Amount = 1},
   ["Love Gift"] = {Class = "Lootbox", Id = "Love Gift", MinAmount = 25},
-  --["Fantasy Pack"] = {Class = "Lootbox", Id = "Fantasy Pack", MinAmount = 10},
+  ["Fantasy Pack"] = {Class = "Lootbox", Id = "Fantasy Pack", MinAmount = 10},
   --["Retro Pack"] = {Class = "Lootbox", Id = "Retro Pack", MinAmount = 30},
   --["Nightmare Pack"] = {Class = "Lootbox", Id = "Nightmare Pack", MinAmount = 20},
   ["Huge Arcade Dog Card"] = {Class = "Card", Id = "Huge Arcade Dog", MinAmount = 1},
