@@ -9,11 +9,8 @@ _G.GSTAT_PET = {"Wicked Agony","Fairy Moth","Hydra Cat","Lumi Axolotl"}
 _G.GLOOTBOXES = {"Retro Pack","Nightmare Pack","Fantasy Pack"}
 _G.GEVENT_UPGRADES = {
     "CheaperPacks",
-    "CheaperTradeIns",
     "BonusCardChance",
     "PurchaseMorePacks",
-    "CheaperPrestonPackMerchantPrices",
-    "CheaperMysteryPackMerchantPrices",
     "EasierQuests"
 }
 _G.GGFX_MODE = 1
