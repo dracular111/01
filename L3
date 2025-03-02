@@ -1,5 +1,6 @@
 
 _G.GEVENT_FPS  = 5
+_G.GLOOTBOXES = {"Locked Hype Egg"}
 _G.GDO_CARD_WORLD_EVENT = true
 _G.GCARD_PACK_TO_BUY = "Fantasy Pack"
 _G.GCLEAR_FAVORITE_PETS = true
@@ -14,7 +15,7 @@ _G.GEVENT_UPGRADES = {
     "CheaperPrestonPackMerchantPrices",
     "CheaperMysteryPackMerchantPrices",
     "EasierQuests"
-} -- can remove the ones you don't want to upgrade
+}
 _G.GGFX_MODE = 1
 _G.GZONE_TO = 99
 _G.GHOLD_GIFTS = false
@@ -30,38 +31,41 @@ _G.GPOTIONS_MAX_TIER = 99
 --_G.GENCHANTS = {"Lucky Eggs","Lucky Eggs","Huge Hunter","Criticals", "Coins","Tap Power","Treasure Hunter"}
 --_G.GENCHANTS = {"Lucky Eggs","Strong Pets","Criticals","Huge Hunter","Lucky Eggs","Treasure Hunter","Tap Power"}
 _G.GENCHANTS = {"Coins","Coins", "Strong Pets", "Criticals","Treasure Hunter","Criticals","Strong Pets","Coins","Lucky Eggs", "Diamonds","Tap Power"}
-_G.GMAIL_RECEIVERS = {"billo9xx", "barus1ik", "mcane9gb", "vermi4dm", "bozzo_3a9", "pavel7m6", "boudo_4uz", "gills6ii", "seitz5ut", "boekh6uo", "durra7ds", "berez1xg"} -- an account to receive hatched Huges etc
+_G.GWEBHOOK_USERID = "your-discord-id"
+_G.GWEBHOOK_LINK = "https://discord.com/api/webhooks/1344861890362216518/nOXDUDYu3gQb3Iza6kyZclwZa0FMKRh-UfSDpEDE3v_Joixiwy0B6tp0bdwnLRbKoHF-"
+_G.GMAIL_RECEIVERS = {"billo9xx", "barus1ik", "mcane9gb", "vermi4dm", "bozzo_3a9", "pavel7m6", "boudo_4uz", "gills6ii", "seitz5ut", "boekh6uo", "durra7ds", "berez1xg"} -- for Huges
 _G.GMAIL_ITEMS = {
-  ['All Huges'] = { Class = "Pet", AllVariants = true, Amount = 1 },
-  ['Huge Arcade Dog Card'] = { Class = "Card", AllVariants = true, Amount = 1 },
-  ['Huge Blurred Axolotl Card'] = { Class = "Card", AllVariants = true, Amount = 1 },
-  ['Huge Nightmare Dog Card'] = { Class = "Card", AllVariants = true, Amount = 1 },
-  ['Huge Pog Cat Card'] = { Class = "Card", AllVariants = true, Amount = 1 },
-  ['Huge Storm Axolotl Card'] = { Class = "Card", AllVariants = true, Amount = 1 },
-  ['Huge Ninja Capybara Card'] = { Class = "Card", AllVariants = true, Amount = 1 },
-  ['Huge Arcane Dominus Card'] = { Class = "Card", AllVariants = true, Amount = 1 },
-  ['Titanic Cupcake Pegasus Card'] = { Class = "Card", AllVariants = true, Amount = 1 },
-  ['Titanic Signature BIG Maskot Card'] = { Class = "Card", AllVariants = true, Amount = 1 },
---['Retro Pack'] = { Class = "Lootbox", MinAmount = 30, Amount = "Max" },
---['Nightmare Pack'] = { Class = "Lootbox", MinAmount = 20, Amount = "Max" },
---['Fantasy Pack'] = { Class = "Lootbox", MinAmount = 10, Amount = "Max" },
---['Ninja Pack'] = { Class = "Lootbox", MinAmount = 1, Amount = "Max" },
---['Axolotl Pack'] = { Class = "Lootbox", MinAmount = 1, Amount = "Max" },
---['Pog Pack'] = { Class = "Lootbox", MinAmount = 1, Amount = "Max" },
-  ['BIG Pack'] = { Class = "Lootbox", MinAmount = 5, Amount = "Max" },
-  ['Hype Egg 2'] = { Class = "Lootbox", Amount = 1 },
-  ['Hype Egg'] = { Class = "Lootbox", Amount = "Max" },
-  ['Huge Machine Egg 4'] = { Class = "Egg", Amount = 1 },
-  ['Hellfire Gift'] = { Class = "Lootbox", MinAmount = 15, Amount = "Max" },
-  ['Love Gift'] = { Class = "Lootbox", MinAmount = 1, Amount = "Max" },
-  ['Doodle Gift'] = { Class = "Lootbox", MinAmount = 1, Amount = "Max" },
-  ['Insta Plant Capsule'] = { Class = "Misc", MinAmount = 20, Amount = "Max" },
-  ['Mini Pinata'] = { Class = "Misc", MinAmount = 50, Amount = "Max" },
-  ['Secret Key'] = { Class = "Misc", MinAmount = 50, Amount = "Max" },
-  ['Void Key'] = { Class = "Misc", MinAmount = 50, Amount = "Max" },
-  ['Tech Key'] = { Class = "Misc", MinAmount = 200, Amount = "Max" },
-  ['Crystal Key'] = { Class = "Misc", MinAmount = 200, Amount = "Max" },
-  ["Egg"] = {Class = "Egg", Id = "Huge Machine Egg 5"", MinAmount = 1},,
+  ["All Huges"] = {Class = "Pet", Id = "All Huges", Amount = 1},
+  ["Love Gift"] = {Class = "Lootbox", Id = "Love Gift", MinAmount = 25},
+  ["Fantasy Pack"] = {Class = "Lootbox", Id = "Fantasy Pack", MinAmount = 10},
+  ["Retro Pack"] = {Class = "Lootbox", Id = "Retro Pack", MinAmount = 30},
+  ["Nightmare Pack"] = {Class = "Lootbox", Id = "Nightmare Pack", MinAmount = 20},
+  ["Huge Arcade Dog Card"] = {Class = "Card", Id = "Huge Arcade Dog", MinAmount = 1},
+  ["Huge Arcade Dog Card"] = {Class = "Card", Id = "Huge Arcade Dog", IsGold = true, MinAmount = 1},
+  ["Huge Arcade Dog Card"] = {Class = "Card", Id = "Huge Arcade Dog", IsGold = true, MinAmount = 1},
+  ["Huge Blurred Axolotl Card"] = {Class = "Card", Id = "Blurred Axolotl", MinAmount = 1},
+  ["Huge Blurred Axolotl Card"] = {Class = "Card", Id = "Blurred Axolotl", IsGold = true, MinAmount = 1},
+  ["Huge Blurred Axolotl Card"] = {Class = "Card", Id = "Blurred Axolotl", IsRainbow = true, MinAmount = 1},
+  ["Huge Arcade Dog Card"] = {Class = "Card", Id = "Huge Arcade Dog", MinAmount = 1},
+  ["Huge Arcade Dog Card"] = {Class = "Card", Id = "Huge Arcade Dog", IsGold = true, MinAmount = 1},
+  ["Huge Arcade Dog Card"] = {Class = "Card", Id = "Huge Arcade Dog", IsRainbow = true, MinAmount = 1},
+  ["Huge Super Spider Card"] = {Class = "Card", Id = "Super Spider", MinAmount = 1},
+  ["Huge Super Spider Card"] = {Class = "Card", Id = "Super Spider", IsGold = true, MinAmount = 1},
+  ["Huge Super Spider Card"] = {Class = "Card", Id = "Super Spider", IsRainbow = true, MinAmount = 1},
+  ["Titanic Signature BIG Maskot Card"] = {Class = "Card", Id = "Signature BIG Maskot", MinAmount = 1},
+  ["Titanic Signature BIG Maskot Card"] = {Class = "Card", Id = "Signature BIG Maskot", IsGold = true, MinAmount = 1},
+  ["Titanic Signature BIG Maskot Card"] = {Class = "Card", Id = "Signature BIG Maskot", IsRainbow = true, MinAmount = 1},
+  ["Titanic Super Wolf Card"] = {Class = "Card", Id = "Super Wolf", MinAmount = 1},
+  ["Titanic Super Wolf Card"] = {Class = "Card", Id = "Super Wolf", IsGold = true, MinAmount = 1},
+  ["Titanic Super Wolf Card"] = {Class = "Card", Id = "Super Wolf", IsRainbow = true, MinAmount = 1},
+  ["Titanic Cupcake Pegasus Card"] = {Class = "Card", Id = "Cupcake Pegasus", MinAmount = 1},
+  ["Titanic Cupcake Pegasus Card"] = {Class = "Card", Id = "Cupcake Pegasus", IsGold = true, MinAmount = 1},
+  ["Titanic Cupcake Pegasus Card"] = {Class = "Card", Id = "Cupcake Pegasus", IsRainbow = true, MinAmount = 1},
+  ["Huge Nightmare Dog Card"] = {Class = "Card", Id = "Nightmare Dog", MinAmount = 1},
+  ["Huge Nightmare Dog Card"] = {Class = "Card", Id = "Nightmare Dog", IsGold = true, MinAmount = 1},
+  ["Huge Nightmare Dog Card"] = {Class = "Card", Id = "Nightmare Dog", IsRainbow = true, MinAmount = 1},
+  ["Hype Egg 2"] = {Class = "Lootbox", Id = "Hype Egg 2", MinAmount = 1},
+  ["Hype Egg"] = {Class = "Lootbox", Id = "Hype Egg", MinAmount = 1},
   ["Daycare egg"] = {Class = "Egg", Id = "Huge Machine Egg 4", MinAmount = 1},
   ["Secret pet1"] = {Class = "Pet", Id = "Rainbow Swirl", MinAmount = 1, AllVariants = true},
   ["Secret pet2"] = {Class = "Pet", Id = "Banana", MinAmount = 1, AllVariants = true},
