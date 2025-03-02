@@ -1,16 +1,7 @@
 loadstring(game:HttpGet("https://raw.githubusercontent.com/dracula/01/main/Optimal"))()
 task.wait(5)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/dracula/01/main/Del-CoreGui"))()
-
--- Chờ đến khi trạng thái shared.script1Done là true
-while not _G.script1Done do
-    print("Script 1 chưa hoàn thành, đang chờ...")
-    task.wait(1) -- Chờ 1 giây trước khi kiểm tra lại
-end
-
-_G.L1Done = true
-
---task.wait(9)
+--task.wait(5)
 --- GScripts ---
 
 script_key = "cqbMnbFeswOIlZiZxLroMEIQpVNZLZXK";
