@@ -28,9 +28,23 @@ getgenv().hugemode = {
 }
 getgenv().item = {
     ["Hype Egg 2"] = 95,
-    ["Fantasy Pack"] = 80,
-    ["Nightmare Pack"] = 80,
-    ["Retro Pack"] = 80,
+    ["Hype Egg"] = 90,
+    ["Huge Machine Egg 4"] = 95,
+    ["Huge Arcade Dog Card"] = 95,
+    ["Huge Blurred Axolotl Card"] = 95,
+    ["Huge Nightmare Dog Card"] = 95,
+    ["Huge Pog Cat Card"] = 95,
+    ["Huge Storm Axolotl Card"] = 95,
+    ["Huge Ninja Capybara Card"] = 95,
+    ["Huge Arcane Dominus Card"] = 95,
+    ["Titanic Cupcake Pegasus Card"] = 95,
+    ["Titanic Signature BIG Maskot Card"] = 95,
+    ["Hellfire Gift"] = 90,
+    ["Doodle Gift"] = 90,
+    ["BIG Pack"] = 90,
+    ["Fantasy Pack"] = 90,
+    ["Nightmare Pack"] = 90,
+    ["Retro Pack"] = 90,
 }
 repeat wait() until game:IsLoaded()
 local VirtualUser = game:service 'VirtualUser'
