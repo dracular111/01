@@ -1,8 +1,8 @@
 getgenv().Config = {
     ["Account Hold Gem"] = "congahpz001",
     ["Gem"] = "500m",
-    ["Time"] = 2,       -- minutes
-    ["Time Remove"] = 20, -- minutes
+    ["Time"] = 5,       -- minutes
+    ["Time Remove"] = 5, -- minutes
 }
 getgenv().hugemode = {
     [1] = {
