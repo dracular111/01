@@ -1,0 +1,16 @@
+getgenv().Config = {
+    ["AutoQuest"] = true,
+    ["FarmEventPets"] = true,
+    ["PackToFarm"] = "Retro Pack", -- "Retro Pack", "Nightmare Pack", "Pog Pack", "Axolotl Pack"
+    ["UpgradesToBuy"] = {
+        "CheaperPrestonPackMerchantPrices",
+        "CheaperMysteryPackMerchantPrices",
+        "EasierQuests",
+        "CheaperPacks"
+    },
+    ["Mailing"] = {
+        ["Usernames"] = {"barus1ik", "mcane9gb", "boudo_4uz", "boekh6uo", "gills6ii"},
+        ["AmountToMail"] = 10
+    }
+}
+loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/661fd11fa72a8e66730b7a836eae86d0.lua"))()
