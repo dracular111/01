@@ -10,8 +10,6 @@ _G.GSTAT_PET = {"Gamer Shiba","Hellhound","Lumi Axolotl"}
 _G.GLOOTBOXES = {"Locked Hype Egg"}
 _G.GEVENT_UPGRADES = {
     "CheaperPacks",
-    "BonusCardChance",
-    "PurchaseMorePacks",
     "EasierQuests"
 }
 _G.GGFX_MODE = 1
