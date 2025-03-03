@@ -1,4 +1,3 @@
-
 getgenv().Config = {
     ["AutoQuest"] = true,
     ["FarmEventPets"] = true,
