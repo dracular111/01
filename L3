@@ -5,7 +5,7 @@ _G.GCARD_PACK_TO_BUY = "Fantasy Pack"
 _G.GPACKS_TO_SKIP_MERCHANT = {"Retro Pack","Nightmare Pack"}
 _G.GCLEAR_FAVORITE_PETS = true
 _G.GCOINS_TO_KEEP_FOR_MERCHANT = "2m"
-_G.GSTAT_PET = {"Wicked Agony","Fairy Moth","Hydra Cat","Lumi Axolotl"}
+_G.GSTAT_PET = {"Gamer Shiba","Hellhound","Lumi Axolotl"}
 _G.GLOOTBOXES = {"Locked Hype Egg"}
 _G.GEVENT_UPGRADES = {
     "CheaperPacks",
