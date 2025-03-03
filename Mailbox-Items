@@ -25,7 +25,7 @@ getgenv().AutoMail = {
         --['Nightmare Pack'] = { Class = "Lootbox", MinAmount = 50, Amount = "Max" },
         --['Fantasy Pack'] = { Class = "Lootbox", MinAmount = 1, Amount = "Max" },
         --['Ninja Pack'] = { Class = "Lootbox", MinAmount = 50, Amount = "Max" },
-        --['Axolotl Pack'] = { Class = "Lootbox", MinAmount = 50, Amount = "Max" },
+        --['Axolotl Pack'] = { Class = "Lootbox", MinAmount = 10, Amount = "Max" },
         --['Pog Pack'] = { Class = "Lootbox", MinAmount = 1, Amount = "Max" },
         ['BIG Pack'] = { Class = "Lootbox", MinAmount = 20, Amount = "Max" },
         ['Hype Egg 2'] = { Class = "Lootbox", Amount = 1 },
