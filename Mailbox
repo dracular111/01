@@ -1,5 +1,5 @@
 --- Gửi Tất Cả Huge ---
-loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Mailbox-Huge"))()
+--loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Mailbox-Huge"))()
 
 --- Gửi Tất Cả Pet Event ---
 --loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Mailbox-Pet-Event"))()
@@ -8,4 +8,4 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/M
 loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Mailbox-Items"))()
 
 --- Gửi Tất Cả Gems ---
-loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Mailbox-Gems"))()
+--loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Mailbox-Gems"))()
