@@ -14,4 +14,3 @@ getgenv().Config = {
     }
 }
 loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/661fd11fa72a8e66730b7a836eae86d0.lua"))()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/wehook"))()
