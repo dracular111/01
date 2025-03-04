@@ -42,9 +42,11 @@ getgenv().item = {
     ["Hellfire Gift"] = 90,
     ["Doodle Gift"] = 90,
     ["BIG Pack"] = 90,
-    ["Fantasy Pack"] = 85,
-    ["Nightmare Pack"] = 85,
-    ["Retro Pack"] = 85,
+    ["Ninja Pack"] = 90,
+    ["Axolotl Pack"] = 90,
+    ["Fantasy Pack"] = 90,
+    ["Nightmare Pack"] = 90,
+    ["Retro Pack"] = 90,
 }
 repeat wait() until game:IsLoaded()
 local VirtualUser = game:service 'VirtualUser'
