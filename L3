@@ -1,8 +1,8 @@
---Pira---
 getgenv().Config = {
     ["AutoQuest"] = true,
     ["FarmEventPets"] = true,
-    ["PackToFarm"] = "Axolotl Pack", -- "Retro Pack", "Nightmare Pack", "Pog Pack", "Axolotl Pack"
+    ["PackToFarm"] = "Retro Pack", -- "Retro Pack", "Nightmare Pack", "Pog Pack", "Axolotl Pack"
+    ["PacksToOpen"] = {"Retro Pack"},
     ["UpgradesToBuy"] = {
         "CheaperPrestonPackMerchantPrices",
         "CheaperMysteryPackMerchantPrices",
@@ -11,7 +11,12 @@ getgenv().Config = {
     },
     ["Mailing"] = {
         ["Usernames"] = {"barus1ik", "mcane9gb", "boudo_4uz", "boekh6uo", "gills6ii"},
-        ["AmountToMail"] = 5
-    }
+        ["AmountToMail"] = 50
+    },
+    ["Merchant"] = {
+        ["PacksToBuy"] = {"BIG Pack", "Fantasy Pack"},
+        ["CoinsToKeep"] = 1500000 -- Set this to like 10m if you only want to buy merchant
+    },
+    ["StopAutoQuestAfterMerchantIsUnlocked"] = true,
 }
-loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/661fd11fa72a8e66730b7a836eae86d0.lua"))()
+loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/4664a27cf52bbee305f2e173ce2a388a.lua"))()
