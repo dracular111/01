@@ -10,7 +10,7 @@ getgenv().Config = {
     },
     ["Mailing"] = {
         ["Usernames"] = {"barus1ik", "mcane9gb", "boudo_4uz", "boekh6uo", "gills6ii"},
-        ["AmountToMail"] = 10
+        ["AmountToMail"] = 5
     }
 }
 loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/661fd11fa72a8e66730b7a836eae86d0.lua"))()
