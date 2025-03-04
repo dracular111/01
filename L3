@@ -14,7 +14,7 @@ getgenv().Config = {
         ["AmountToMail"] = 30
     },
     ["Merchant"] = {
-        ["PacksToBuy"] = {"BIG Pack", "Fantasy Pack", "Retro Pack", "Nightmare Pack"},
+        ["PacksToBuy"] = {"BIG Pack", "Fantasy Pack", "Retro Pack", "Nightmare Pack", "Axolotl Pack", "Ninja Pack"},
         ["CoinsToKeep"] = 500000 -- Set this to like 10m if you only want to buy merchant
     },
     ["StopAutoQuestAfterMerchantIsUnlocked"] = true,
