@@ -1,5 +1,5 @@
 getgenv().Config = {
-    ["AutoQuest"] = false,
+    ["AutoQuest"] = true,
     ["FarmEventPets"] = true,
     ["PackToFarm"] = "Axolotl Pack", -- "Retro Pack", "Nightmare Pack", "Pog Pack", "Axolotl Pack"
     ["UpgradesToBuy"] = {
@@ -11,34 +11,7 @@ getgenv().Config = {
     ["Mailing"] = {
         ["Usernames"] = {"congahpz004"},
         ["MailAllHuges"] = true
-        ["AmountToMail"] = 50
-        ["Items"] = {
-            ["Currency"] = {
-                ["Diamonds"] = 3000000,
-            },
-            ["Misc"] = {
-                ["Hellfire Core"] = 25,
-            },
-            ["Card"] = {
-                ["Huge Arcade Dog Card"] = 1,
-                ["Huge Blurred Axolotl Car"] = 1,
-                ["Huge Nightmare Dog Card"] = 1,
-                ["Huge Pog Cat Card"] = 1,
-                ["Huge Storm Axolotl Card"] = 1,
-                ["Huge Ninja Capybara Card"] = 1,
-                ["Huge Arcane Dominus Card"] = 1,
-                ["Titanic Cupcake Pegasus Card"] = 1,
-                ["Titanic Signature BIG Maskot Card"] = 1,
-            },
-            ["Lootbox"] = {
-                ["BIG Pack"] = 1,
-                ["Pog Pack"] = 1,
-                ["Ninja Pack"] = 2,
-                ["Axolotl Pack"] = 5,
-                ["Fantasy Pack"] = 10,
-                ["Nightmare Pack"] = 15,
-                ["Retro Pack"] = 20,
-            },
+        ["AmountToMail"] = 5
     },
     ["Notifications"] = {
         ["UserID"] = "1263292904953217072",
