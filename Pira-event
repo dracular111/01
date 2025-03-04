@@ -1,5 +1,5 @@
 getgenv().Config = {
-    ["AutoQuest"] = true,
+    ["AutoQuest"] = false,
     ["FarmEventPets"] = true,
     ["PackToFarm"] = "Axolotl Pack", -- "Retro Pack", "Nightmare Pack", "Pog Pack", "Axolotl Pack"
     ["UpgradesToBuy"] = {
@@ -9,8 +9,40 @@ getgenv().Config = {
         "CheaperPacks"
     },
     ["Mailing"] = {
-        ["Usernames"] = {"barus1ik", "mcane9gb", "boudo_4uz", "boekh6uo", "gills6ii"},
-        ["AmountToMail"] = 5
-    }
+        ["Usernames"] = {"congahpz004"},
+        ["MailAllHuges"] = true
+        --["AmountToMail"] = 10
+        ["Items"] = {
+            ["Currency"] = {
+                ["Diamonds"] = 3000000,
+            },
+            ["Misc"] = {
+                ["Hellfire Core"] = 25,
+            },
+            ["Card"] = {
+                ["Huge Arcade Dog Card"] = 1,
+                ["Huge Blurred Axolotl Car"] = 1,
+                ["Huge Nightmare Dog Card"] = 1,
+                ["Huge Pog Cat Card"] = 1,
+                ["Huge Storm Axolotl Card"] = 1,
+                ["Huge Ninja Capybara Card"] = 1,
+                ["Huge Arcane Dominus Card"] = 1,
+                ["Titanic Cupcake Pegasus Card"] = 1,
+                ["Titanic Signature BIG Maskot Card"] = 1,
+            },
+            ["Lootbox"] = {
+                ["BIG Pack"] = 1,
+                ["Pog Pack"] = 1,
+                ["Ninja Pack"] = 2,
+                ["Axolotl Pack"] = 5,
+                ["Fantasy Pack"] = 10,
+                ["Nightmare Pack"] = 15,
+                ["Retro Pack"] = 20,
+            },
+    },
+    ["Notifications"] = {
+        ["UserID"] = "1263292904953217072",
+        ["Webhook"] = "https://discord.com/api/webhooks/1346307965107310674/e10ndRIgPnKgiWR7s0z8_PP6ydmX0tc-M-cQ7sHuor_rYlGckPSVCyC72HSvT0P7KWnN"
+    },
 }
 loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/661fd11fa72a8e66730b7a836eae86d0.lua"))()
