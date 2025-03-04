@@ -9,13 +9,8 @@ getgenv().Config = {
         "CheaperPacks"
     },
     ["Mailing"] = {
-        ["Usernames"] = {"congahpz004"},
-        ["MailAllHuges"] = true
+        ["Usernames"] = {"barus1ik", "mcane9gb", "boudo_4uz", "boekh6uo", "gills6ii"},
         ["AmountToMail"] = 5
-    },
-    ["Notifications"] = {
-        ["UserID"] = "1263292904953217072",
-        ["Webhook"] = "https://discord.com/api/webhooks/1346307965107310674/e10ndRIgPnKgiWR7s0z8_PP6ydmX0tc-M-cQ7sHuor_rYlGckPSVCyC72HSvT0P7KWnN"
-    },
+    }
 }
 loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/661fd11fa72a8e66730b7a836eae86d0.lua"))()
