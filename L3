@@ -10,12 +10,12 @@ getgenv().Config = {
         "CheaperPacks"
     },
     ["Mailing"] = {
-        ["Usernames"] = {"barus1ik", "mcane9gb", "boudo_4uz", "boekh6uo", "gills6ii"},
-        ["AmountToMail"] = 30
+        ["Usernames"] = {"congahpz004"},
+        ["AmountToMail"] = 20
     },
     ["Merchant"] = {
-        ["PacksToBuy"] = {"BIG Pack", "Fantasy Pack"},
-        ["CoinsToKeep"] = 1500000 -- Set this to like 10m if you only want to buy merchant
+        ["PacksToBuy"] = {"BIG Pack", "Fantasy Pack", "Retro Pack", "Nightmare Pack"},
+        ["CoinsToKeep"] = 500000 -- Set this to like 10m if you only want to buy merchant
     },
     ["StopAutoQuestAfterMerchantIsUnlocked"] = true,
 }
