@@ -42,6 +42,7 @@ getgenv().item = {
     ["Hellfire Gift"] = 90,
     ["Doodle Gift"] = 90,
     ["BIG Pack"] = 90,
+    ["Pog Pack"] = 90,
     ["Ninja Pack"] = 90,
     ["Axolotl Pack"] = 90,
     ["Fantasy Pack"] = 90,
