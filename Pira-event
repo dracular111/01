@@ -1,8 +1,8 @@
 getgenv().Config = {
     ["AutoQuest"] = true,
     ["FarmEventPets"] = true,
-    ["PackToFarm"] = "Axolotl Pack", -- "Retro Pack", "Nightmare Pack", "Pog Pack", "Axolotl Pack"
-    ["PacksToOpen"] = {"Axolotl Pack"},
+    ["PackToFarm"] = "Retro Pack", -- "Retro Pack", "Nightmare Pack", "Pog Pack", "Axolotl Pack"
+    ["PacksToOpen"] = {"Retro Pack"},
     ["UpgradesToBuy"] = {
         "CheaperPrestonPackMerchantPrices",
         "CheaperMysteryPackMerchantPrices",
@@ -10,8 +10,8 @@ getgenv().Config = {
         "CheaperPacks"
     },
     ["Mailing"] = {
-        ["Usernames"] = {"congahpz004", "congahpz005"},
-        ["AmountToMail"] = 15
+        ["Usernames"] = {"barus1ik", "mcane9gb", "boudo_4uz", "boekh6uo", "gills6ii"},
+        ["AmountToMail"] = 30
     },
     ["Merchant"] = {
         ["PacksToBuy"] = {"BIG Pack", "Fantasy Pack"},
