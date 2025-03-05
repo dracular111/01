@@ -57,7 +57,7 @@ local function SendWebhook(Class, Id, pt, sh)
                     title = Title,
                     color = 0xFF00FF,
                     timestamp = DateTime.now():ToIsoDate(),
-                    footer = { text = "Heo Notifier" }
+                    footer = { text = "Chicken Notifier" }
                 }
             }
         })
