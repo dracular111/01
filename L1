@@ -11,7 +11,7 @@ getgenv().Config = {
     },
     ["Mailing"] = {
         ["Usernames"] = {"barus1ik", "mcane9gb", "boudo_4uz", "boekh6uo", "gills6ii"},
-        ["AmountToMail"] = 10
+        ["AmountToMail"] = 999
     },
     ["Merchant"] = {
         ["PacksToBuy"] = {"BIG Pack", "Fantasy Pack", "Retro Pack", "Nightmare Pack"},
