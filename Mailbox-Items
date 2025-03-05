@@ -23,7 +23,7 @@ getgenv().AutoMail = {
         ['Titanic Signature BIG Maskot Card'] = { Class = "Card", AllVariants = true, Amount = 1 },
         ['Retro Pack'] = { Class = "Lootbox", MinAmount = 30, Amount = "Max" },
         ['Nightmare Pack'] = { Class = "Lootbox", MinAmount = 20, Amount = "Max" },
-        ['Fantasy Pack'] = { Class = "Lootbox", MinAmount = 10, Amount = "Max" },
+        ['Fantasy Pack'] = { Class = "Lootbox", MinAmount = 5, Amount = "Max" },
         ['Ninja Pack'] = { Class = "Lootbox", MinAmount = 5, Amount = "Max" },
         ['Axolotl Pack'] = { Class = "Lootbox", MinAmount = 20, Amount = "Max" },
         ['Pog Pack'] = { Class = "Lootbox", MinAmount = 10, Amount = "Max" },
