@@ -2,7 +2,7 @@ getgenv().Config = {
     ["AutoQuest"] = true,
     ["FarmEventPets"] = true,
     ["PackToFarm"] = "Fantasy Pack", -- "Retro Pack", "Nightmare Pack", "Pog Pack", "Axolotl Pack"
-    ["PacksToOpen"] = {"Retro Pack", "Fantasy Pack", "Retro Pack", "Nightmare Pack", "Axolotl Pack", "Pog Pack", "BIG Pack", "Ninja Pack"},
+    ["PacksToOpen"] = {"Retro Pack", "Nightmare Pack", "Fantasy Pack", "Axolotl Pack", "Pog Pack", "Ninja Pack"},
     ["UpgradesToBuy"] = {
         "CheaperPrestonPackMerchantPrices",
         "CheaperMysteryPackMerchantPrices",
@@ -14,7 +14,7 @@ getgenv().Config = {
         ["AmountToMail"] = 100
     },
     ["Merchant"] = {
-        ["PacksToBuy"] = {"Retro Pack", "Fantasy Pack", "Retro Pack", "Nightmare Pack", "Axolotl Pack", "Pog Pack", "BIG Pack", "Ninja Pack"},
+        ["PacksToBuy"] = {"BIG Pack", "Retro Pack", "Nightmare Pack", "Fantasy Pack", "Axolotl Pack", "Pog Pack", "Ninja Pack"},
         ["CoinsToKeep"] = 100000 -- Set this to like 10m if you only want to buy merchant
     },
     ["StopAutoQuestAfterMerchantIsUnlocked"] = true,
