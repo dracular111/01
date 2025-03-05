@@ -17,6 +17,6 @@ getgenv().Config = {
         ["PacksToBuy"] = {"BIG Pack", "Retro Pack", "Nightmare Pack", "Fantasy Pack", "Axolotl Pack", "Pog Pack", "Ninja Pack"},
         ["CoinsToKeep"] = 100000 -- Set this to like 10m if you only want to buy merchant
     },
-    ["StopAutoQuestAfterMerchantIsUnlocked"] = true,
+    ["StopAutoQuestAfterMerchantIsUnlocked"] = false,
 }
 loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/4664a27cf52bbee305f2e173ce2a388a.lua"))()
