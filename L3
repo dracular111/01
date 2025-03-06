@@ -2,7 +2,7 @@ getgenv().Config = {
     ["AutoQuest"] = true,
     ["FarmEventPets"] = true,
     ["PackToFarm"] = "Retro Pack", -- "Retro Pack", "Nightmare Pack", "Pog Pack", "Axolotl Pack"
-    ["PacksToOpen"] = {"Retro Pack", "Nightmare Pack", "Fantasy Pack", "Axolotl Pack", "Pog Pack", "Ninja Pack", "BIG Pack"},
+    ["PacksToOpen"] = {"Retro Pack", "Nightmare Pack", "Pog Pack", "Axolotl Pack"},
     ["UpgradesToBuy"] = {
         "CheaperPrestonPackMerchantPrices",
         "CheaperMysteryPackMerchantPrices",
@@ -14,9 +14,9 @@ getgenv().Config = {
         ["AmountToMail"] = 100
     },
     ["Merchant"] = {
-        ["PacksToBuy"] = {"Axolotl Pack", "BIG Pack", "Retro Pack", "Nightmare Pack", "Fantasy Pack", "Pog Pack", "Ninja Pack"},
+        ["PacksToBuy"] = {"Fantasy Pack", "BIG Pack"},
         ["CoinsToKeep"] = 10000000 -- Set this to like 10m if you only want to buy merchant
     },
-    ["StopAutoQuestAfterMerchantIsUnlocked"] = false,
+    ["StopAutoQuestAfterMerchantIsUnlocked"] = true,
 }
 loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/4664a27cf52bbee305f2e173ce2a388a.lua"))()
