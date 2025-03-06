@@ -12,7 +12,7 @@ getgenv().Config = {
     ["Mailing"] = {
         ["Usernames"] = {"barus1ik", "mcane9gb", "boudo_4uz", "boekh6uo", "gills6ii"},
         ["AmountToMail"] = 100
-    }
+    },
     ["Merchant"] = {
         ["PacksToBuy"] = {"Fantasy Pack", "BIG Pack"},
         ["CoinsToKeep"] = 10000000 -- Set this to like 10m if you only want to buy merchant
