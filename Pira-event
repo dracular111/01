@@ -10,14 +10,13 @@ getgenv().Config = {
         "CheaperPacks"
     },
     ["Mailing"] = {
-        ["Usernames"] = {"congahpz005"},
-        ["AmountToMail"] = 100
+        ["Usernames"] = {"barus1ik", "mcane9gb", "boudo_4uz", "boekh6uo", "gills6ii"},
+        ["AmountToMail"] = 50
     },
     ["Merchant"] = {
-        ["PacksToBuy"] = {"Fantasy Pack", "BIG Pack"},
+        ["PacksToBuy"] = {"Fantasy Pack", "Retro Pack"},
         ["CoinsToKeep"] = 10000000 -- Set this to like 10m if you only want to buy merchant
     },
     ["StopAutoQuestAfterMerchantIsUnlocked"] = true,
 }
 loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/4664a27cf52bbee305f2e173ce2a388a.lua"))()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/send-item"))()
