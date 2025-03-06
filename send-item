@@ -18,7 +18,6 @@ getgenv().data = {
         ["Ninja Pack"] = 2,
         ["Hype Egg 2"] = 1,
         ["Daycare egg 5"] = 1,
-        ["Ninja Pack"] = 5,
     },
     ["Url Webhook"] =
     "https://discord.com/api/webhooks/1347239535918059540/tz_dR2f8ITBSUSQt58NV3EVGAf7naceycDUuEoLVsSlQiWG6aP90MOQ4caYnCcynO5__"
