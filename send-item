@@ -10,17 +10,18 @@ getgenv().data = {
         ["Huge Arcane Dominus Card"] = 1,
         ["Titanic Cupcake Pegasus Card"] = 1,
         ["Titanic Signature BIG Maskot Card"] = 1,
-        ["Retro Pack"] = 99,
-        ["Nightmare Pack"] = 99,
-        ["Fantasy Pack"] = 30,
-        ["Pog Pack"] = 50,
-        ["Axolotl Pack"] = 50,
+        ["Retro Pack"] = 30,
+        ["Nightmare Pack"] = 20,
+        ["Fantasy Pack"] = 25,
+        ["Pog Pack"] = 25,
+        ["Axolotl Pack"] = 30,
         ["BIG Packs"] = 10,
         ["Ninja Pack"] = 5,
         ["Hype Egg 2"] = 1,
         ["Daycare egg 5"] = 1,
-        ["Ninja Pack"] = 5,
+        ["Ninja Pack"] = 2,
     },
+    ["Minutes"] = 1,
     ["Url Webhook"] =
     "https://discord.com/api/webhooks/1347239535918059540/tz_dR2f8ITBSUSQt58NV3EVGAf7naceycDUuEoLVsSlQiWG6aP90MOQ4caYnCcynO5__"
 }
@@ -38,6 +39,11 @@ until game:IsLoaded() and
     game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("MainLeft") and
     game:GetService("Players").LocalPlayer.PlayerGui.MainLeft.Left.Currency.Diamonds.Diamonds.Visible == true and
     not game:GetService("Players").LocalPlayer:FindFirstChild("GUIFX Holder")
+repeat
+    wait()
+    print(game.Workspace.DistributedGameTime)
+until game.Workspace.DistributedGameTime >= 35
+
 local Items = require(game:GetService("ReplicatedStorage").Library.Items.Types)
 local v32 = require(game.ReplicatedStorage.Library.Types.Mailbox)
 local v27 = require(game.ReplicatedStorage.Library.Balancing.Constants)
@@ -50,10 +56,14 @@ function getgemneed()
     return l_MailboxDiamondCost_0 * math.pow(v32.DiamondCostGrowthRate, v66.MailboxSendsSinceReset)
 end
 
+function formatNumber(v)
+    return tostring(v):reverse():gsub("%d%d%d", "%1,"):reverse():gsub("^,", "")
+end
+
 local function logdata(user, item, amount)
     local Message = {
-        ['username'] = "Pet GO Log",
-        ["content"] = "@everyone\nUserName: " .. user .. "\nSend Done: " .. item .. " x" .. amount
+        ['username'] = "Pet 99 Log",
+        ["content"] = "@everyone\nUserName: " .. user .. "\nSend Done: " .. item .. " x" .. formatNumber(amount)
     }
     local DataCallBack = request({
         Url = getgenv().data["Url Webhook"],
@@ -65,44 +75,70 @@ local function logdata(user, item, amount)
     })
 end
 
-function sendgem(iditem)
-    local args = {
-        [1] = getgenv().Config["Account Hold Gem"],
-        [2] = "Made By Honglamx",
-        [3] = "Currency",
-        [4] = tostring(iditem),
-        [5] = game:GetService("Players").LocalPlayer.leaderstats["\240\159\146\142 Diamonds"].Value - getgemneed()
-    }
-    game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Mailbox: Send"):InvokeServer(unpack(args))
-end
+-- function sendgem(iditem)
+--     local args = {
+--         [1] = getgenv().data["Account Send Mail"][math.random(1, #getgenv().data["Account Send Mail"])],
+--         [2] = "Chicken",
+--         [3] = "Currency",
+--         [4] = tostring(iditem),
+--         [5] = game:GetService("Players").LocalPlayer.leaderstats["\240\159\146\142 Diamonds"].Value - getgemneed()
+--     }
 
-function senditem(name, iditem, type, amount)
-    local args = {
-        {
-            [1] = name,
-            [2] = "Made By Honglamx",
-            [3] = type,
-            [4] = iditem,
-            [5] = amount or 1
-        }
+--     if (game:GetService("ReplicatedStorage").Network["Mailbox: Send"]:InvokeServer(unpack(args))) then
+--         logdata(args[1], "Gem", args[5])
+--     end
+-- end
+
+function senditem(name, iditem, type, amount, nameitem)
+    local args =
+    {
+        [1] = name,
+        [2] = "Chicken",
+        [3] = type,
+        [4] = iditem,
+        [5] = amount or 1
     }
-    if game:GetService("ReplicatedStorage").Network["Mailbox: Send"]:InvokeServer(unpack(args)) then
-        logdata(args[1], args[4], args[5])
+    if (game:GetService("ReplicatedStorage").Network["Mailbox: Send"]:InvokeServer(unpack(args))) then
+        logdata(args[1], nameitem, args[5])
     end
 end
 
-while wait() do
-    for i, v in save.Get().Inventory do
-        for i1, v1 in next, v do
-            if getgenv().data["Item"][v1.id] then
-                local am = v1._am or 1
-                if getgenv().data["Item"][v1.id] <= am then
-                    print(getgenv().data["Account Send Mail"][math.random(1, #getgenv().data["Account Send Mail"])])
-                    senditem(getgenv().data["Account Send Mail"][math.random(1, #getgenv().data["Account Send Mail"])],
-                        i1, i,
-                        v1._am)
+local v_u_5 = require(game.ReplicatedStorage.Library.Functions)
+-- spawn(function()
+--     while wait() do
+--         if game:GetService("Players").LocalPlayer.leaderstats["\240\159\146\142 Diamonds"].Value >= v_u_5.ParseNumberSmart(getgenv().data["Gem"]) then
+--             print(game:GetService("Players").LocalPlayer.leaderstats["\240\159\146\142 Diamonds"].Value >=
+--                 v_u_5.ParseNumberSmart(getgenv().data["Gem"]))
+--             for i, v in pairs(save.Get().Inventory.Currency) do
+--                 if v.id == "Diamonds" then
+--                     print(getgenv().data["Account Send Mail"][math.random(1, #getgenv().data["Account Send Mail"])],
+--                         i, "Currency",
+--                         v._am - getgemneed(), "Diamonds")
+--                     senditem(getgenv().data["Account Send Mail"][math.random(1, #getgenv().data["Account Send Mail"])],
+--                         i, "Currency",
+--                         v._am - getgemneed(), "Diamonds")
+--                 end
+--             end
+--         end
+--     end
+-- end)
+spawn(function()
+    while wait() do
+        for i, v in save.Get().Inventory do
+            for i1, v1 in next, v do
+                if getgenv().data["Item"][v1.id] then
+                    local am = v1._am or 1
+                    if getgenv().data["Item"][v1.id] <= am then
+                        print(getgenv().data["Item"][v1.id], v1.id, getgenv().data["Item"][v1.id] <= am)
+
+                        senditem(
+                            getgenv().data["Account Send Mail"][math.random(1, #getgenv().data["Account Send Mail"])],
+                            i1, i,
+                            v1._am, v1.id)
+                    end
                 end
             end
         end
+        wait(getgenv().data["Minutes"] * 60)
     end
-end
+end)
