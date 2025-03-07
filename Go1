@@ -1,6 +1,6 @@
-script_key="zwXBxNTaBFdtPiihYVUZTERTVOVAVdST";
+--script_key="zwXBxNTaBFdtPiihYVUZTERTVOVAVdST";
 
-getgenv().petsGoConfig = {
+--getgenv().petsGoConfig = {
     -- true/false
     CONSUME_CORRUPTED_HUGE_BAIT = true,
     CONSUME_ALL_ENCHANT_SAFE = false,
@@ -44,6 +44,6 @@ getgenv().petsGoConfig = {
     USERNAME_TO_MAIL = {"NNJorAce2338", "IDJayTom4147", "aTClyKim5583", "zOVanCal3773", "ZLZebSid4549", "CwHobCal3065", "XMOleJim1811", "obGadJim408", "KHTaiEli374", "WaNeoDon822", "BNTexHugo1348", "YPGazCal602", "jiTorRon2046", "rZDomDan718", "LqNeoBob2408"} -- Mail to username, Example : USERNAME_TO_MAIL = {"username1", "username2"} 
 }
 
-loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/5653ca0a4685e7d4268329988eefdb21.lua"))()
+--loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/5653ca0a4685e7d4268329988eefdb21.lua"))()
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Script-Go1-Reset"))()
+--loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Script-Go1-Reset"))()
