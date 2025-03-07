@@ -1,4 +1,4 @@
-getgenv().Config = {
+--getgenv().Config = {
     ["AutoQuest"] = true,
     ["FarmEventPets"] = true,
     ["PackToFarm"] = "Retro Pack", -- "Retro Pack", "Nightmare Pack", "Pog Pack", "Axolotl Pack"
@@ -19,4 +19,4 @@ getgenv().Config = {
     },
     ["StopAutoQuestAfterMerchantIsUnlocked"] = true,
 }
-loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/4664a27cf52bbee305f2e173ce2a388a.lua"))()
+--loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/4664a27cf52bbee305f2e173ce2a388a.lua"))()
