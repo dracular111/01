@@ -1,22 +1,536 @@
 getgenv().Config = {
-    ["AutoQuest"] = true,
-    ["FarmEventPets"] = true,
-    ["PackToFarm"] = "Retro Pack", -- "Retro Pack", "Nightmare Pack", "Pog Pack", "Axolotl Pack"
-    ["PacksToOpen"] = {"Retro Pack", "Nightmare Pack", "Pog Pack", "Axolotl Pack", "BIG Pack"},
-    ["UpgradesToBuy"] = {
-        "CheaperPrestonPackMerchantPrices",
-        "CheaperMysteryPackMerchantPrices",
-        "EasierQuests",
-        "CheaperPacks"
-    },
-    ["Mailing"] = {
-        ["Usernames"] = {"barus1ik", "mcane9gb", "boudo_4uz", "boekh6uo", "gills6ii"},
-        ["AmountToMail"] = 100
-    },
-    ["Merchant"] = {
-        ["PacksToBuy"] = {"Fantasy Pack", "Retro Pack"},
-        ["CoinsToKeep"] = 10000000 -- Set this to like 10m if you only want to buy merchant
-    },
-    ["StopAutoQuestAfterMerchantIsUnlocked"] = true,
+    ["Boost FPS"] = true,
+    ["FPS"] = 5,
+    ["Black Screen"] = false,
+    ["Account Send"] = { "barus1ik", "mcane9gb", "boudo_4uz", "boekh6uo", "gills6ii" },
+    ["Amount"] = "1",
+    ["Url"] =
+    "https://discord.com/api/webhooks/1346307965107310674/e10ndRIgPnKgiWR7s0z8_PP6ydmX0tc-M-cQ7sHuor_rYlGckPSVCyC72HSvT0P7KWnN"
 }
-loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/4664a27cf52bbee305f2e173ce2a388a.lua"))()
+repeat wait() until game:IsLoaded()
+local VirtualUser = game:service 'VirtualUser'
+game:service('Players').LocalPlayer.Idled:connect(function()
+    VirtualUser:CaptureController()
+    VirtualUser:ClickButton2(Vector2.new())
+end)
+local v_u_5 = require(game.ReplicatedStorage.Library.Functions)
+
+repeat
+    wait()
+until game:IsLoaded() and
+    game:GetService("Players").LocalPlayer:FindFirstChild("PlayerGui") and
+    game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("MainLeft") and
+    game:GetService("Players").LocalPlayer.PlayerGui.MainLeft.Left.Currency.Diamonds.Diamonds.Visible == true and
+    not game:GetService("Players").LocalPlayer:FindFirstChild("GUIFX Holder")
+if game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Starter") and game:GetService("Players").LocalPlayer.PlayerGui.Starter.Enabled then
+    local args = {
+        [1] = "Corgi",
+        [2] = "Axolotl"
+    }
+
+    game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Pick Starter Pets"):InvokeServer(unpack(
+        args))
+end
+repeat wait() until not game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Starter") or not game:GetService("Players").LocalPlayer.PlayerGui.Starter.Enabled
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(178.87374877929688, 19.111133575439453,
+    -140.4659423828125)
+repeat
+    wait()
+until workspace.__THINGS.Instances:FindFirstChild("LuckyEventWorld") and #workspace.__THINGS.Instances.LuckyEventWorld.BREAKABLE_SPAWNS:GetChildren() > 0
+
+local rs = game:GetService("ReplicatedStorage")
+local save = require(rs.Library.Client.Save)
+local Items = require(game:GetService("ReplicatedStorage").Library.Items.Types)
+local plr = game.Players.LocalPlayer
+local RAP = 0
+
+
+function getimage(id)
+    local response = request({
+        Url = "https://thumbnails.roblox.com/v1/assets?assetIds=" .. id ..
+            "&returnPolicy=PlaceHolder&size=420x420&format=webp",
+        Method = 'GET',
+        Headers = {
+            ["Content-Type"] = "application/json",
+        },
+    })
+
+    if response.StatusCode == 200 then
+        local responseData = game:GetService("HttpService"):JSONDecode(response.Body)
+
+        if responseData and responseData.data and #responseData.data > 0 then
+            local imageUrl = responseData.data[1].imageUrl
+            return imageUrl
+        else
+            print("Error: Could not retrieve image data.")
+        end
+    else
+        print("Request failed with status code: " .. response.StatusCode)
+    end
+end
+
+function sendlog(petname, link)
+    local Message = {
+        ['username'] = "Pet Webhook",
+        ["content"] = "@everyone",
+        ["embeds"] = { {
+            ["title"] = "Huge Detected",
+            ["color"] = 15401988,
+            ["fields"] = { {
+                ["name"] = "Name Account:",
+                ["value"] = "```" .. plr.Name .. "```",
+                ["inline"] = true
+            },
+                {
+                    ["name"] = "Huge Name:",
+                    ["value"] = "```\n" .. petname .. "```"
+                }, },
+            ["footer"] = {
+                ["text"] = "honglamx"
+            },
+            ["timestamp"] = os.date("!%Y-%m-%dT%H:%M:%SZ"),
+            ["thumbnail"] = {
+                ["url"] =
+                    link
+            }
+        } }
+    }
+    local DataCallBack = request({
+        Url = getgenv().Config["Url"],
+        Method = 'POST',
+        Headers = {
+            ["Content-Type"] = "application/json"
+        },
+        Body = game:GetService("HttpService"):JSONEncode(Message)
+    })
+end
+
+setfpscap(getgenv().Config["FPS"])
+local function logdata(user, item, amount)
+    local Message = {
+        ['username'] = "Pet 99 Log",
+        ["content"] = "@everyone\nUserName: " .. user .. "\nSend Done: " .. item .. " x" .. formatNumber(amount)
+    }
+    local DataCallBack = request({
+        Url = getgenv().Config["Url"],
+        Method = 'POST',
+        Headers = {
+            ["Content-Type"] = "application/json"
+        },
+        Body = game:GetService("HttpService"):JSONEncode(Message)
+    })
+end
+function senditem(name, iditem, type, amount, nameitem)
+    local args =
+    {
+        [1] = name,
+        [2] = "Made By Honglamx",
+        [3] = type,
+        [4] = iditem,
+        [5] = amount or 1
+    }
+    if (game:GetService("ReplicatedStorage").Network["Mailbox: Send"]:InvokeServer(unpack(args))) then
+        logdata(args[1], nameitem, args[5])
+    end
+end
+
+function formatNumber(v)
+    return tostring(v):reverse():gsub("%d%d%d", "%1,"):reverse():gsub("^,", "")
+end
+
+local v32 = require(game.ReplicatedStorage.Library.Types.Mailbox)
+local v27 = require(game.ReplicatedStorage.Library.Balancing.Constants)
+local v26 = require(game.ReplicatedStorage.Library.Client.Save)
+
+function getgemneed()
+    local l_MailboxDiamondCost_0 = v27.MailboxDiamondCost
+    local v66 = v26.Get()
+    return l_MailboxDiamondCost_0 * math.pow(v32.DiamondCostGrowthRate, v66.MailboxSendsSinceReset)
+end
+
+spawn(function()
+    while wait() do
+        for i, v in save.Get().Inventory.Lootbox do
+            if v.id == "Lucky Gift" and #getgenv().Config["Account Send"] > 0 and game:GetService("Players").LocalPlayer.leaderstats["\240\159\146\142 Diamonds"].Value > getgemneed() then
+                local am = v._am or 1
+                if am >= v_u_5.ParseNumberSmart(getgenv().Config["Amount"]) then
+                    local acc = getgenv().Config["Account Send"][math.random(1, #getgenv().Config["Account Send"])]
+                    senditem(acc, i, "Lootbox", v._am or 1, v.id)
+                end
+            end
+        end
+    end
+end)
+local highest = 0
+local path
+local distance = math.huge
+local path
+local distanceegg = math.huge
+local checkpetload = false
+spawn(function()
+    while wait() do
+        local v0 = require(game.ReplicatedStorage.Library.Client.Network);
+
+        for i, v in workspace.__THINGS.Breakables:GetChildren() do
+            if v:IsA("Model") then
+                v0.UnreliableFire("Breakables_PlayerDealDamage", v.Name)
+            end
+        end
+    end
+end)
+spawn(function()
+    pcall(function()
+        while wait() do
+            pcall(function()
+                if plr:DistanceFromCharacter(Vector3.new(1671.2279052734375, -136.52369689941406, -2416.105224609375)) > 20 then
+                    plr.Character.HumanoidRootPart.CFrame = CFrame.new(1671.2279052734375, -136.52369689941406,
+                        -2416.105224609375)
+                    for i, v in workspace.__THINGS.CustomEggs:GetChildren() do
+                        if v:IsA("Model") and plr:DistanceFromCharacter(v.WorldPivot.Position) < 100 then
+                            path = v
+                        end
+                    end
+                end
+            end)
+        end
+    end)
+end)
+
+spawn(function()
+    while wait() do
+        local a, b = pcall(function()
+            if workspace.Camera:FindFirstChild("Eggs") then
+                game:GetService('VirtualInputManager'):SendMouseButtonEvent(0, 0, 0, true,
+                    game, 1)
+                wait(0.05)
+                game:GetService('VirtualInputManager'):SendMouseButtonEvent(0, 0, 0,
+                    false, game, 1)
+                wait(0.05)
+                if workspace.Camera:FindFirstChild("Eggs") then
+                    local args = {
+                        [1] = {
+                            unpack(workspace.Camera.Eggs:GetChildren())
+                        }
+                    }
+
+                    game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Pets_ClearHidden")
+                        :FireServer(unpack(args))
+                end
+            end
+        end)
+        if b then
+            error(b)
+        end
+    end
+end)
+
+
+workspace.Camera.DescendantAdded:Connect(function(v)
+    if v:IsA("Part") and v.Name ~= "GUIParticles Part" then
+        if string.find(v.Name, "Huge") and v.Name ~= "EggOpenLight" then
+            for i1, v1 in game:GetService("ReplicatedStorage").__DIRECTORY.Pets:GetDescendants() do
+                if v1:IsA("ModuleScript") and v1.Name == v.Name then
+                    local b = require(v1)
+                    local c = b.thumbnail:gsub("rbxassetid://", "")
+                    sendlog(v.Name, getimage(c))
+                end
+            end
+        end
+    end
+end)
+
+task.wait(1)
+spawn(function()
+    while wait() do
+        local a, b = pcall(function()
+            if #workspace.__THINGS.Orbs:GetChildren() then
+                for i, v in workspace.__THINGS.Orbs:GetChildren() do
+                    local args = {
+                        [1] = {
+                            [1] = v.Name
+                        }
+                    }
+
+                    game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Orbs: Collect")
+                        :FireServer(unpack(args))
+                    v:Destroy()
+                end
+            end
+        end)
+    end
+end)
+local v6 = require(game.ReplicatedStorage.Library.Client.Network);
+
+local VirtualUser = game:service "VirtualUser"
+game:service("Players").LocalPlayer.Idled:connect(
+    function()
+        VirtualUser:CaptureController()
+        VirtualUser:ClickButton2(Vector2.new())
+    end
+)
+if getgenv().Config["Boost FPS"] then
+    for i, v in next, workspace:GetDescendants() do
+        pcall(function()
+            v.Transparency = 1
+        end)
+    end
+    a = workspace
+    a.DescendantAdded:Connect(function(v)
+        pcall(function()
+            v.Transparency = 1
+        end)
+    end)
+    workspace.ClientAnimatorThrottling = Enum.ClientAnimatorThrottlingMode.Enabled
+    workspace.InterpolationThrottling = Enum.InterpolationThrottlingMode.Enabled
+    settings():GetService("RenderSettings").EagerBulkExecution = false
+    workspace.LevelOfDetail = Enum.ModelLevelOfDetail.Disabled
+    game:GetService("Lighting").GlobalShadows = false
+
+    settings().Rendering.QualityLevel = "Level01"
+    local g = game
+    local w = g.Workspace
+    local l = g.Lighting
+    local t = w.Terrain
+    t.WaterWaveSize = 0
+    t.WaterWaveSpeed = 0
+    t.WaterReflectance = 0
+    t.WaterTransparency = 0
+    l.GlobalShadows = false
+    l.FogEnd = 9e9
+    l.Brightness = 0
+    for i, v in pairs(g:GetDescendants()) do
+        if v.ClassName == "WedgePart"
+            or v.ClassName == "Terrain"
+            or v.ClassName == "MeshPart" then
+            v.BrickColor = BrickColor.new(155, 155, 155)
+            v.Material = "Plastic"
+            v.Transparency = 1
+        end
+        if v:IsA("Part") or v:IsA("Union") or v:IsA("CornerWedgePart") or v:IsA("TrussPart") then
+            v.Material = "Plastic"
+            v.Reflectance = 0
+        elseif v:IsA("Decal") or v:IsA("Texture") then
+            v.Transparency = 1
+        elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
+            v.Lifetime = NumberRange.new(0)
+        elseif v:IsA("Explosion") then
+            v.BlastPressure = 1
+            v.BlastRadius = 1
+        elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
+            v.Enabled = false
+        elseif v:IsA("MeshPart") then
+            v.Material = "Plastic"
+            v.Reflectance = 0
+            v.TextureID = 10385902758728957
+        end
+    end
+    game.Workspace.ChildAdded:Connect(function(v)
+        if v.ClassName == "WedgePart"
+            or v.ClassName == "Terrain"
+            or v.ClassName == "MeshPart" then
+            v.BrickColor = BrickColor.new(155, 155, 155)
+            v.Material = "Plastic"
+            v.Transparency = 1
+        end
+        if v:IsA("Part") or v:IsA("Union") or v:IsA("CornerWedgePart") or v:IsA("TrussPart") then
+            v.Material = "Plastic"
+            v.Reflectance = 0
+        elseif v:IsA("Decal") or v:IsA("Texture") then
+            v.Transparency = 1
+        elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
+            v.Lifetime = NumberRange.new(0)
+        elseif v:IsA("Explosion") then
+            v.BlastPressure = 1
+            v.BlastRadius = 1
+        elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
+            v.Enabled = false
+        elseif v:IsA("MeshPart") then
+            v.Material = "Plastic"
+            v.Reflectance = 0
+            v.TextureID = 10385902758728957
+        end
+    end)
+    for i, e in pairs(l:GetChildren()) do
+        if e:IsA("BlurEffect") or e:IsA("SunRaysEffect") or e:IsA("ColorCorrectionEffect") or e:IsA("BloomEffect") or e:IsA("DepthOfFieldEffect") then
+            e.Enabled = false
+        end
+    end
+    game.Lighting.ChildAdded:Connect(function(v)
+        if v:IsA("BlurEffect") or v:IsA("SunRaysEffect") or v:IsA("ColorCorrectionEffect") or v:IsA("BloomEffect") or v:IsA("DepthOfFieldEffect") then
+            v.Enabled = false
+        end
+    end)
+end
+local plr = game.Players.LocalPlayer
+
+function islive()
+    return plr.Character and plr.Character:FindFirstChild("HumanoidRootPart") and
+        plr.Character:FindFirstChild("Humanoid") and plr.Character.Humanoid.Health > 0
+end
+
+if getgenv().Config["Black Screen"] then
+    game:GetService("Lighting").ExposureCompensation = -math.huge
+end
+
+local check = false
+
+
+
+local open = false
+local PlaceID = game.PlaceId
+local AllIDs = {}
+local foundAnything = ""
+local actualHour = os.date("!*t").hour
+local Deleted = false
+local File = pcall(function()
+    AllIDs = game:GetService('HttpService'):JSONDecode(readfile("NotSameServers.json"))
+end)
+if not File then
+    table.insert(AllIDs, actualHour)
+    writefile("NotSameServers.json", game:GetService('HttpService'):JSONEncode(AllIDs))
+end
+function TPReturner()
+    local Site;
+    if foundAnything == "" then
+        Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' ..
+            PlaceID .. '/servers/Public?sortOrder=Asc&limit=100'))
+    else
+        Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' ..
+            PlaceID .. '/servers/Public?sortOrder=Asc&limit=100&cursor=' .. foundAnything))
+    end
+    local ID = ""
+    if Site.nextPageCursor and Site.nextPageCursor ~= "null" and Site.nextPageCursor ~= nil then
+        foundAnything = Site.nextPageCursor
+    end
+    local num = 0;
+    for i, v in pairs(Site.data) do
+        local Possible = true
+        ID = tostring(v.id)
+        if tonumber(v.maxPlayers) > tonumber(v.playing) then
+            for _, Existing in pairs(AllIDs) do
+                if num ~= 0 then
+                    if ID == tostring(Existing) then
+                        Possible = false
+                    end
+                else
+                    if tonumber(actualHour) ~= tonumber(Existing) then
+                        local delFile = pcall(function()
+                            AllIDs = {}
+                            table.insert(AllIDs, actualHour)
+                        end)
+                    end
+                end
+                num = num + 1
+            end
+            if Possible == true then
+                table.insert(AllIDs, ID)
+                wait()
+                pcall(function()
+                    wait()
+                    game:GetService("TeleportService"):TeleportToPlaceInstance(PlaceID, ID,
+                        game.Players.LocalPlayer)
+                end)
+                wait(4)
+            end
+        end
+    end
+end
+
+function Teleport()
+    pcall(function()
+        TPReturner()
+        if foundAnything ~= "" then
+            TPReturner()
+        end
+    end)
+end
+
+spawn(function()
+    pcall(function()
+        while wait() do
+            pcall(function()
+                if path then
+                    v6.Invoke("CustomEggs_Hatch", path.Name, save.Get().EggHatchCount)
+                end
+            end)
+        end
+    end)
+end)
+local v0 = require(game.ReplicatedStorage.Library.Client.TabController);
+local _ = require(game.ReplicatedStorage.Library.Types.EventUpgrades);
+local v2 = require(game.ReplicatedStorage.Library.Directory.EventUpgrades);
+local _ = require(game.ReplicatedStorage.Library.Client.MachineCmds);
+local v4 = require(game.ReplicatedStorage.Library.Client.EventUpgradeCmds);
+local v5 = require(game.ReplicatedStorage.Library.Client.GUI);
+local v6 = require(game.ReplicatedStorage.Library.Client.Message);
+local v7 = require(game.ReplicatedStorage.Library.Functions);
+local v8 = require(game.ReplicatedStorage.Library.Client.GUIFX);
+local v9 = require(game.ReplicatedStorage.Library.Client.UI.ItemUI);
+local v10 = require(game.ReplicatedStorage.Library.Items.MiscItem);
+local v11 = require(game.ReplicatedStorage.Library.Audio);
+local v12 = require(game.ReplicatedStorage.Library.Client.Save);
+local v13 = require(game.ReplicatedStorage.Library.Client.FFlags);
+local v14 = require(game.ReplicatedStorage.Library.Client.Network);
+local v22 = {
+    "LuckyRaidPets",
+    "LuckyRaidDamage",
+    "LuckyRaidAttackSpeed",
+    "LuckyRaidPetSpeed",
+    "LuckyRaidEggCost",
+    "LuckyRaidMoreCurrency",
+    "LuckyRaidXP",
+    "LuckyRaidBetterLoot",
+    "LuckyRaidHugeChest",
+    "LuckyRaidTitanicChest"
+};
+local v23 = v10("Lucky Raid Orb");
+isMaxxed = function(v25) --[[ Line: 53 ]]
+    --[[ Name: isMaxxed ]]
+    -- upvalues: v4 (copy)
+    return v4.GetTier(v25) >= #v25.TierPowers;
+end;
+getCost = function(v26, v27) --[[ Line: 59 ]]
+    --[[ Name: getCost ]]
+    -- upvalues: v13 (copy)
+    local v28 = v13.Get(v13.Keys.MapleLeafCost) or 1;
+    local v29 = v26.TierCosts[v27]:Clone();
+    return v29:SetAmount((math.ceil(v29:GetAmount() * v28)));
+end;
+spawn(function()
+    while wait() do
+        for i, v in save.Get().Inventory.Misc do
+            if v.id == "Clover" and v._am and v._am >= 10 then
+                local args = {
+                    [1] = v._am
+                }
+
+                game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("LeprechaunMachine_Activate")
+                    :InvokeServer(unpack(args))
+            end
+        end
+    end
+end)
+function getorb()
+    for i, v in save.Get().Inventory.Misc do
+        if v.id == "Lucky Raid Orb" then
+            return v._am or 1
+        end
+    end
+    return 0
+end
+
+spawn(function()
+    while wait() do
+        for _, v46 in pairs(v2) do
+            local v48 = v4.GetTier(v46);
+            local v49 = #v46.TierPowers;
+            if table.find(v22, v46._id) then
+                if v48 < v49 then
+                    if getorb() >= getCost(v46, v48 + 1):GetAmount() then
+                        v4.Purchase(v46._id)
+                    end
+                end
+            end
+        end
+    end
+end)
