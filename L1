@@ -1,9 +1,9 @@
 getgenv().Config = {
     ["Boost FPS"] = true,
-    ["FPS"] = 5,
+    ["FPS"] = 3,
     ["Black Screen"] = false,
     ["Account Send"] = { "barus1ik", "mcane9gb", "boudo_4uz", "boekh6uo", "gills6ii" },
-    ["Amount"] = "1",
+    ["Amount"] = "2",
     ["Url"] =
     "https://discord.com/api/webhooks/1346307965107310674/e10ndRIgPnKgiWR7s0z8_PP6ydmX0tc-M-cQ7sHuor_rYlGckPSVCyC72HSvT0P7KWnN"
 }
@@ -268,52 +268,7 @@ game:service("Players").LocalPlayer.Idled:connect(
         VirtualUser:ClickButton2(Vector2.new())
     end
 )
-workspace.__DEBRIS.ChildAdded:Connect(function(v)
-    v:Destroy()
-end)
-spawn(function()
-    while wait() do 
-        for i, v in workspace.__DEBRIS:GetChildren() do
-            v:Destroy()
-        end
-       
-    end
-end)
 if getgenv().Config["Boost FPS"] then
-    -- for i, v in game:GetService("CoreGui"):GetChildren() do
-    --     v:Destroy()
-    -- end
-    for i, v in game:GetService("Players").LocalPlayer.PlayerGui:GetChildren() do
-        v:Destroy()
-    end
-    workspace.MAP:Destroy()
-    workspace.INTERACT:Destroy()
-    workspace.Clouds:Destroy()
-    workspace.Part1:Destroy()
-    workspace.Part2:Destroy()
-    workspace.Part3:Destroy()
-    workspace.Part4:Destroy()
-    workspace.Part5:Destroy()
-    workspace.Pot:Destroy()
-    workspace.Walls:Destroy()
-    for i, v in workspace.__DEBRIS:GetChildren() do
-        v:Destroy()
-    end
-    -- workspace.__DEBRIS:Destroy()
-    workspace.__DEBRIS.ChildAdded:Connect(function(v)
-        v:Destroy()
-    end)
-    for i, v in workspace.__THINGS:GetChildren() do
-        if v:IsA("Folder") then
-            if v.Name ~= "Instances" and v.Name ~= "Orbs" and v.Name ~= "Lootbags" and v.Name ~= "Lootboxes" then
-                v:Destroy()
-            end
-        end
-    end
-
-    -- for i,v in game:GetService("Players").LocalPlayer.PlayerScripts:GetChildren() do
-    --     v:Destroy()
-    -- end
     for i, v in next, workspace:GetDescendants() do
         pcall(function()
             v.Transparency = 1
