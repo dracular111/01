@@ -5,7 +5,7 @@ getgenv().Config = {
     ["Account Send"] = { "barus1ik", "mcane9gb", "boudo_4uz", "boekh6uo", "gills6ii" },
     ["Amount"] = "5",
     ["Url"] =
-    "https://discord.com/api/webhooks/1285110631166509108/GfMB40vu0cGf0rvARzm0xaaFWbNq9GE3L8sAf-7u9xHJ-IMVQdbpvqyvkNUrdv-cCmNu"
+    "https://discord.com/api/webhooks/1346307965107310674/e10ndRIgPnKgiWR7s0z8_PP6ydmX0tc-M-cQ7sHuor_rYlGckPSVCyC72HSvT0P7KWnN"
 }
 repeat wait() until game:IsLoaded()
 local VirtualUser = game:service 'VirtualUser'
