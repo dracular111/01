@@ -534,3 +534,25 @@ spawn(function()
         end
     end
 end)
+spawn(function()
+    while wait() do
+        local args = {
+            [1] = "Ground Pound"
+        }
+
+        game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Ultimates: Activate"):InvokeServer(
+        unpack(args))
+    end
+end)
+spawn(function()
+    while wait() do
+        for i = 1, 12 do
+            local args = {
+                [1] = i
+            }
+
+            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Redeem Free Gift"):InvokeServer(
+                unpack(args))
+        end
+    end
+end)
