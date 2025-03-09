@@ -478,10 +478,7 @@ local v22 = {
     "LuckyRaidPetSpeed",
     "LuckyRaidEggCost",
     "LuckyRaidMoreCurrency",
-    "LuckyRaidXP",
-    "LuckyRaidBetterLoot",
-    "LuckyRaidHugeChest",
-    "LuckyRaidTitanicChest"
+    "LuckyRaidXP"
 };
 local v23 = v10("Lucky Raid Orb");
 isMaxxed = function(v25) --[[ Line: 53 ]]
