@@ -1,7 +1,7 @@
 getgenv().data = {
     ["Account Send Mail"] = { "barus1ik", "mcane9gb", "boudo_4uz", "boekh6uo", "gills6ii" },
     ["Item"] = {
-        ["Lucky Raid Damage Booster"] = 1,
+        ["Huge Arcade Dog Card"] = 1,
         ["Huge Pog Cat Card"] = 1,
         ["Huge Storm Axolotl Card"] = 1,
         ["Huge Nightmare Dog Card"] = 1,
@@ -19,6 +19,7 @@ getgenv().data = {
         ["Hype Egg 2"] = 1,
         ["Daycare egg 5"] = 1,
         ["Ninja Pack"] = 2,
+        ["Lucky Raid Damage Booster"] = 1,
         ["Lucky Gift"] = 3,
     },
     ["Minutes"] = 1,
