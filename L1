@@ -1,9 +1,9 @@
 getgenv().Config = {
     ["Boost FPS"] = true,
-    ["FPS"] = 3,
-    ["Black Screen"] = false,
+    ["FPS"] = 5,
+    ["Black Screen"] = true,
     ["Account Send"] = { "barus1ik", "mcane9gb", "boudo_4uz", "boekh6uo", "gills6ii" },
-    ["Amount"] = "2",
+    ["Amount"] = "1",
     ["Url"] =
     "https://discord.com/api/webhooks/1346307965107310674/e10ndRIgPnKgiWR7s0z8_PP6ydmX0tc-M-cQ7sHuor_rYlGckPSVCyC72HSvT0P7KWnN"
 }
@@ -37,6 +37,7 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(178.8737
 repeat
     wait()
 until workspace.__THINGS.Instances:FindFirstChild("LuckyEventWorld") and #workspace.__THINGS.Instances.LuckyEventWorld.BREAKABLE_SPAWNS:GetChildren() > 0
+
 
 local rs = game:GetService("ReplicatedStorage")
 local save = require(rs.Library.Client.Save)
@@ -185,11 +186,6 @@ spawn(function()
                 if plr:DistanceFromCharacter(Vector3.new(1671.2279052734375, -136.52369689941406, -2416.105224609375)) > 20 then
                     plr.Character.HumanoidRootPart.CFrame = CFrame.new(1671.2279052734375, -136.52369689941406,
                         -2416.105224609375)
-                    for i, v in workspace.__THINGS.CustomEggs:GetChildren() do
-                        if v:IsA("Model") and plr:DistanceFromCharacter(v.WorldPivot.Position) < 100 then
-                            path = v
-                        end
-                    end
                 end
             end)
         end
@@ -268,7 +264,177 @@ game:service("Players").LocalPlayer.Idled:connect(
         VirtualUser:ClickButton2(Vector2.new())
     end
 )
+workspace.__DEBRIS.ChildAdded:Connect(function(v)
+    v:Destroy()
+end)
+spawn(function()
+    while wait() do
+        for i, v in workspace.__DEBRIS:GetChildren() do
+            v:Destroy()
+        end
+    end
+end)
+spawn(function()
+    while wait() do
+        for i = 1, 12 do
+            local args = {
+                [1] = i
+            }
+
+            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Redeem Free Gift"):InvokeServer(
+                unpack(args))
+        end
+    end
+end)
+if getgenv().Config["Black Screen"] then
+    game:GetService("Lighting").ExposureCompensation = -math.huge
+end
+
 if getgenv().Config["Boost FPS"] then
+    for i, v in game:GetService("CoreGui"):GetChildren() do
+        if v.Name ~= 'Status' then
+            v:Destroy()
+        end
+    end
+
+    for i, v in game:GetService("Players").LocalPlayer.PlayerGui:GetChildren() do
+        if v.Name ~= 'Status' then
+            v:Destroy()
+        end
+    end
+    local LocalPlayer = game.Players.LocalPlayer
+    local Lighting = game:GetService("Lighting")
+    local MaterialService = game:GetService("MaterialService")
+    local Terrain = workspace:FindFirstChildOfClass('Terrain')
+
+    UserSettings():GetService("UserGameSettings").MasterVolume = 0
+    UserSettings():GetService("UserGameSettings").GraphicsQualityLevel = 1
+    settings().Rendering.QualityLevel = 1
+    settings().Rendering.MeshPartDetailLevel = Enum.MeshPartDetailLevel.Level04
+    MaterialService.Use2022Materials = false
+    for i, v in workspace.__THINGS.Instances:GetChildren() do
+        if not string.find(v.Name, "Lucky") then
+            v:Destroy()
+        end
+    end
+    sethiddenproperty(Lighting, "Technology", 2)
+    sethiddenproperty(Terrain, "Decoration", false)
+    Terrain.WaterWaveSize = 0
+    Terrain.WaterWaveSpeed = 0
+    Terrain.WaterReflectance = 0
+    Terrain.WaterTransparency = 0
+    Lighting.GlobalShadows = false
+    Lighting.FogEnd = 9e9
+    Lighting.Brightness = 0
+
+    local HandlePart = function(v)
+        if v:IsA('Workspace') then
+            sethiddenproperty(v, 'StreamingTargetRadius', 64)
+            sethiddenproperty(v, 'StreamingPauseMode', 2)
+            sethiddenproperty(v.Terrain, 'Decoration', false)
+            v.Terrain.Elasticity = 0
+            v.Terrain.WaterWaveSize = 0
+            v.Terrain.WaterWaveSpeed = 0
+            v.Terrain.WaterReflectance = 0
+            v.Terrain.WaterTransparency = 1
+        elseif v:IsA('NetworkClient') then
+            v:SetOutgoingKBPSLimit(100)
+        elseif v:IsA('Lighting') then
+            sethiddenproperty(v, 'Technology', 2)
+            v.GlobalShadows = false
+            v.FogEnd = 1 / 0
+            v.Brightness = 0
+        elseif v:IsA('Model') then
+            sethiddenproperty(v, 'LevelOfDetail', 1)
+        elseif LP and v == LP then
+            v.ReplicationFocus = nil
+        elseif v:IsA('Decal') or v:IsA('Texture') then
+            v.Transparency = 1
+        elseif v:IsA('Fire') or v:IsA('SpotLight') or v:IsA('Smoke') or v:IsA('Sparkles') then
+            v.Enabled = false
+        elseif v:IsA('SpecialMesh') then
+            v.TextureId = ''
+            v.MeshId = ''
+        elseif v:IsA('ParticleEmitter') or v:IsA('Trail') then
+            v.Lifetime = NumberRange.new(0)
+        elseif v:IsA('BlurEffect') or v:IsA('SunRaysEffect') or v:IsA('ColorCorrectionEffect') or v:IsA('BloomEffect') or v:IsA('DepthOfFieldEffect') then
+            v.Enabled = false
+        elseif v:IsA('BasePart') and not v:IsA('MeshPart') then
+            v.Reflectance = 0
+            v.Material = 'SmoothPlastic'
+        elseif v:IsA('Pants') or v:IsA('Shirt') then
+            v[v.ClassName .. 'Template'] = ''
+        elseif v:IsA('Explosion') then
+            v.BlastPressure = 0
+            v.BlastRadius = 0
+            v.Visible = false
+            v.Position = Vector3.new(0, 0, 0)
+        elseif v:IsA('ForceField') then
+            v.Visible = false
+        elseif v:IsA('ShirtGraphic') then
+            v.Graphic = ''
+        elseif v:IsA('MeshPart') then
+            v.MeshId = ''
+            v.TextureID = ''
+            v.Reflectance = 0
+            v.Material = 'SmoothPlastic'
+        elseif v:IsA('CharacterMesh') then
+            v.BaseTextureId = ''
+            v.MeshId = ''
+            v.OverlayTextureId = ''
+        elseif v:IsA('Sound') then
+            v.SoundId = ''
+            v.Volume = 0
+        end
+    end
+
+    for i, v in pairs(game:GetDescendants()) do
+        HandlePart(v)
+    end
+    workspace.MAP:Destroy()
+    workspace.INTERACT:Destroy()
+    workspace.Clouds:Destroy()
+    workspace.Part1:Destroy()
+    workspace.Part2:Destroy()
+    workspace.Part3:Destroy()
+    workspace.Part4:Destroy()
+    workspace.Part5:Destroy()
+    workspace.Pot:Destroy()
+    workspace.Walls:Destroy()
+    for i, v in workspace.__DEBRIS:GetChildren() do
+        v:Destroy()
+    end
+    workspace.__DEBRIS:Destroy()
+    for i, v in workspace.__THINGS.Breakables:GetChildren() do
+        if not v:GetAttribute("ParentID", "LuckyEventWorld") then
+            v:Destroy()
+        end
+    end
+    workspace.__THINGS.Breakables.ChildAdded:Connect(function(v)
+        if not v:GetAttribute("ParentID", "LuckyEventWorld") then
+            v:Destroy()
+        end
+    end)
+    for i, v in workspace.__THINGS:GetChildren() do
+        if v:IsA("Folder") then
+            if v.Name ~= "Instances" and v.Name ~= "Orbs" and v.Name ~= "Lootbags" and v.Name ~= "Lootboxes" then
+                v:Destroy()
+            end
+        end
+    end
+    for i, v in workspace:GetChildren() do
+        if v:IsA("Model") and v.Name ~= game.Players.LocalPlayer.Name then
+            v:Destroy()
+        end
+    end
+    for i, v in game:GetService("Players"):GetChildren() do
+        if v.Name ~= game.Players.LocalPlayer.Name then
+            v:Destroy()
+        end
+    end
+    -- for i,v in game:GetService("Players").LocalPlayer.PlayerScripts:GetChildren() do
+    --     v:Destroy()
+    -- end
     for i, v in next, workspace:GetDescendants() do
         pcall(function()
             v.Transparency = 1
@@ -368,10 +534,6 @@ function islive()
         plr.Character:FindFirstChild("Humanoid") and plr.Character.Humanoid.Health > 0
 end
 
-if getgenv().Config["Black Screen"] then
-    game:GetService("Lighting").ExposureCompensation = -math.huge
-end
-
 local check = false
 
 
@@ -449,8 +611,12 @@ spawn(function()
     pcall(function()
         while wait() do
             pcall(function()
-                if path then
-                    v6.Invoke("CustomEggs_Hatch", path.Name, save.Get().EggHatchCount)
+                if plr:DistanceFromCharacter(Vector3.new(1671.2279052734375, -136.52369689941406, -2416.105224609375)) <= 50 then
+                    for i, v in workspace.__THINGS.CustomEggs:GetChildren() do
+                        if v:IsA("Model") and plr:DistanceFromCharacter(v.WorldPivot.Position) < 100 then
+                            v6.Invoke("CustomEggs_Hatch", v.Name, save.Get().EggHatchCount)
+                        end
+                    end
                 end
             end)
         end
@@ -519,6 +685,152 @@ function getorb()
     return 0
 end
 
+local ScreenGui2 = Instance.new("ScreenGui")
+ScreenGui2.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+ScreenGui2.Parent = game.CoreGui
+ScreenGui2.Name = 'Status'
+
+local DiscordUrlTextLabel = Instance.new("TextLabel");
+DiscordUrlTextLabel.Parent = ScreenGui2
+DiscordUrlTextLabel["TextSize"] = 16;
+DiscordUrlTextLabel["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular,
+    Enum.FontStyle.Normal);
+DiscordUrlTextLabel["TextColor3"] = Color3.fromRGB(255, 206, 115);
+DiscordUrlTextLabel["BackgroundTransparency"] = 1;
+DiscordUrlTextLabel["AnchorPoint"] = Vector2.new(0.5, 0.5);
+DiscordUrlTextLabel["Size"] = UDim2.new(0, 200, 0, 50);
+DiscordUrlTextLabel["Text"] = [[Made By Honglamx]];
+DiscordUrlTextLabel["Position"] = UDim2.new(0.5, 0, -0.025, 0);
+
+local DiscordUrlUiStroke = Instance.new("UIStroke", DiscordUrlTextLabel);
+
+local DiscordUrlUiGradient = Instance.new("UIGradient", DiscordUrlUiStroke);
+GDiscordUrlUiGradient = ColorSequence.new {
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 0)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 255, 0))
+};
+
+
+-- Create DropShadow2Holder2 frame
+local DropShadow2Holder2 = Instance.new("Frame")
+DropShadow2Holder2.AnchorPoint = Vector2.new(0.5, 0.5)
+DropShadow2Holder2.BackgroundTransparency = 1
+DropShadow2Holder2.BorderSizePixel = 0
+DropShadow2Holder2.Position = UDim2.new(0.5, 0, 0.05, 0)
+DropShadow2Holder2.Size = UDim2.new(0, 500, 0, 68)
+DropShadow2Holder2.ZIndex = 0
+DropShadow2Holder2.Name = "DropShadow2Holder2"
+DropShadow2Holder2.Parent = ScreenGui2
+
+-- Create DropShadow2 ImageLabel
+local DropShadow2 = Instance.new("ImageLabel")
+DropShadow2.Image = "rbxassetid://6015897843"
+DropShadow2.ImageColor3 = Color3.fromRGB(0, 0, 0)
+DropShadow2.ImageTransparency = 0.5
+DropShadow2.ScaleType = Enum.ScaleType.Slice
+DropShadow2.SliceCenter = Rect.new(49, 49, 450, 450)
+DropShadow2.AnchorPoint = Vector2.new(0.5, 0.5)
+DropShadow2.BackgroundTransparency = 1
+DropShadow2.BorderSizePixel = 0
+DropShadow2.Position = UDim2.new(0.5, 0, 0.35, 0)
+DropShadow2.Size = UDim2.new(1, 47, 1, 47)
+DropShadow2.ZIndex = 0
+DropShadow2.Name = "DropShadow2"
+DropShadow2.Parent = DropShadow2Holder2
+
+-- Create Main2 frame inside DropShadow2
+local Main2 = Instance.new("Frame")
+Main2.AnchorPoint = Vector2.new(0.5, 0.5)
+Main2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Main2.BackgroundTransparency = 0.5
+Main2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Main2.BorderSizePixel = 0
+Main2.Position = UDim2.new(0.5, 0, 0.5, 0)
+Main2.Size = UDim2.new(1, -50, 1, -55)
+Main2.Name = "Main"
+Main2.Parent = DropShadow2
+
+-- Create UIGradient for Main2's stroke
+local UIStroke2 = Instance.new("UIStroke")
+UIStroke2.Color = Color3.fromRGB(255, 206, 115)
+UIStroke2.Thickness = 2.5
+UIStroke2.Parent = Main2
+
+-- Create Top2 and Under TextLabels inside Main2
+local Top2 = Instance.new("TextLabel")
+Top2.AnchorPoint = Vector2.new(0.5, 0)
+Top2.BackgroundTransparency = 1
+Top2.Font = Enum.Font.GothamBold
+Top2.Text = "Auto Farm: None"
+Top2.TextColor3 = Color3.fromRGB(255, 255, 255)
+Top2.TextSize = 16.5
+Top2.TextYAlignment = Enum.TextYAlignment.Bottom
+Top2.Size = UDim2.new(0, 500, 0, 18)
+Top2.Position = UDim2.new(0.5, 0, 0, 10)
+Top2.Name = "Top2"
+Top2.Parent = Main2
+local Colortext = Instance.new("UIGradient");
+
+Colortext.Color = ColorSequence.new {
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 206, 115)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 206, 115))
+}
+Colortext.Parent = Top2
+local Under2 = Instance.new("TextLabel");
+
+Under2.Font = Enum.Font.GothamBold
+Under2.Text = "Script started!"
+Under2.TextColor3 = Color3.fromRGB(255, 255, 255)
+Under2.TextSize = 16.5
+Under2.TextYAlignment = Enum.TextYAlignment.Bottom
+Under2.AnchorPoint = Vector2.new(0.5, 0)
+Under2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Under2.BackgroundTransparency = 0.9990000128746033
+Under2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Under2.BorderSizePixel = 0
+Under2.Position = UDim2.new(0.5, 0, 0, 30)
+Under2.Size = UDim2.new(0, 500, 0, 18)
+Under2.Name = "Under"
+Under2.Parent = Main2
+local Colortext2 = Instance.new("UIGradient");
+
+Colortext2.Color = ColorSequence.new {
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 206, 115)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 206, 115))
+}
+Colortext2.Parent = Under2
+Top2.Size = UDim2.new(0, Top2.TextBounds.X, 0, 18)
+Under2.Size = UDim2.new(0, Under2.TextBounds.X, 0, 18)
+if Top2.Size.X.Offset > Under2.Size.X.Offset then
+    DropShadow2Holder2.Size = UDim2.new(0, Top2.TextBounds.X + 50, 0, 68)
+else
+    DropShadow2Holder2.Size = UDim2.new(0, Under2.TextBounds.X + 50, 0, 68)
+end
+Top2:GetPropertyChangedSignal("Text"):Connect(function()
+    Top2.Size = UDim2.new(0, Top2.TextBounds.X, 0, 18)
+    if Top2.Size.X.Offset > Under2.Size.X.Offset then
+        DropShadow2Holder2.Size = UDim2.new(0, Top2.TextBounds.X + 50, 0, 68)
+    else
+        DropShadow2Holder2.Size = UDim2.new(0, Under2.TextBounds.X + 50, 0, 68)
+    end
+end)
+Under2:GetPropertyChangedSignal("Text"):Connect(function()
+    Under2.Size = UDim2.new(0, Under2.TextBounds.X, 0, 18)
+    if Top2.Size.X.Offset > Under2.Size.X.Offset then
+        DropShadow2Holder2.Size = UDim2.new(0, Top2.TextBounds.X + 50, 0, 68)
+    else
+        DropShadow2Holder2.Size = UDim2.new(0, Under2.TextBounds.X + 50, 0, 68)
+    end
+end)
+
+Top2.Text = "Mode: Test"
+Under2.Text = "Status: Test "
+getgenv().ContentSet = function(Content1, Content2)
+    if not Content1 then Content1 = 'None (Not Found)' end
+    if not Content2 or Content2 == '' then Content2 = 'None' end
+    Top2.Text = "Status: " .. Content1
+    Under2.Text = "Mode: " .. Content2
+end
 spawn(function()
     while wait() do
         for _, v46 in pairs(v2) do
@@ -531,6 +843,28 @@ spawn(function()
                     end
                 end
             end
+        end
+    end
+end)
+function getluckycoins()
+    for i, v in save.Get().Inventory.Currency do
+        if v.id == "LuckyCoins" then
+            return formatNumber(v._am)
+        end
+    end
+end
+
+spawn(function()
+    while wait() do
+        if not workspace.Camera:FindFirstChild("Eggs") and not workspace.Camera:FindFirstChild("Pets") then
+            getgenv().ContentSet("Farming")
+        end
+        if workspace.Camera:FindFirstChild("Eggs") and workspace.Camera:FindFirstChild("Pets") and #workspace.Camera.Pets:GetChildren() <= 1 then
+            getgenv().ContentSet("Open Egg( " .. #workspace.Camera:FindFirstChild("Eggs"):GetChildren() .. " )")
+        end
+        if workspace.Camera:FindFirstChild("Eggs") and workspace.Camera:FindFirstChild("Pets") and #workspace.Camera.Pets:GetChildren() > 1 then
+            getgenv().ContentSet("Open Success( " ..
+                #workspace.Camera:FindFirstChild("Pets"):GetChildren() .. " )")
         end
     end
 end)
