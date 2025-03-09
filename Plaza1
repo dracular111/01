@@ -1,7 +1,7 @@
 getgenv().Config = {
     ["Account Hold Gem"] = "congahpz001",
     ["Gem"] = "500m",
-    ["Time"] = 5,       -- minutes
+    ["Time"] = 5,        -- minutes
     ["Time Remove"] = 5, -- minutes
 }
 getgenv().hugemode = {
@@ -27,8 +27,8 @@ getgenv().hugemode = {
     }
 }
 getgenv().item = {
-    ["Hype Egg 2"] = 90,
-    ["Hype Egg"] = 90,
+    ["Hype Egg 2"] = 95,
+    ["Hype Egg"] = 95,
     ["Huge Machine Egg 4"] = 95,
     ["Huge Arcade Dog Card"] = 92,
     ["Huge Blurred Axolotl Card"] = 88,
@@ -43,11 +43,12 @@ getgenv().item = {
     ["Doodle Gift"] = 90,
     ["BIG Pack"] = 85,
     ["Pog Pack"] = 90,
-    ["Ninja Pack"] = 110,
+    ["Ninja Pack"] = 100,
     ["Axolotl Pack"] = 90,
     ["Fantasy Pack"] = 90,
     ["Nightmare Pack"] = 90,
     ["Retro Pack"] = 90,
+    ["Lucky Raid Damage Booster"] = 95,
     ["Lucky Gift"] = 95,
 }
 repeat wait() until game:IsLoaded()
@@ -72,6 +73,7 @@ spawn(function()
 end)
 local save = require(game:GetService("ReplicatedStorage").Library.Client.Save)
 local v_u_5 = require(game.ReplicatedStorage.Library.Functions)
+
 local totalhuge = 0
 spawn(function()
     while wait() do
@@ -114,6 +116,7 @@ if game.PlaceId == 15588442388 or game.PlaceId == 15502339080 then
     end
 
     local pos, id = getnearboot()
+    local Items = require(game:GetService("ReplicatedStorage").Library.Items.Types)
 
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(pos + Vector3.new(-5, 5, 0))
     wait()
@@ -123,7 +126,6 @@ if game.PlaceId == 15588442388 or game.PlaceId == 15502339080 then
     }
     game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Booths_ClaimBooth"):InvokeServer(unpack(
         args))
-    local Items = require(game:GetService("ReplicatedStorage").Library.Items.Types)
     game:GetService("Players").LocalPlayer.PlayerGui._MACHINES.MailboxMachine.Enabled = true
     local gemneedsend = game:GetService("Players").LocalPlayer.PlayerGui._MACHINES.MailboxMachine.Frame.SendFrame.Bottom
         .Diamonds.Frame.Amount.Text
@@ -176,7 +178,7 @@ if game.PlaceId == 15588442388 or game.PlaceId == 15502339080 then
     end)
     --[[
     local petItem = Items.Types["Misc"]:Get(i)
-                        local petRAP = petItem:GetDevRAP() or 0
+                        local petRAP = petItem:GetRAP() or 0
                         local args = {
                             [1] = tostring(i),
                             [2] = math.floor(petRAP * (getgenv().item[v.id] / 100)),
@@ -192,7 +194,7 @@ if game.PlaceId == 15588442388 or game.PlaceId == 15502339080 then
                     local am = v1._am or 1
                     if getgenv().item[v1.id] and i ~= "Pet" then
                         local petItem = Items.Types[i]:Get(i1)
-                        local petRAP = petItem:GetDevRAP() or 0
+                        local petRAP = petItem:GetRAP()
                         print(v1.id, v1._am, getgenv().item[v1.id])
                         if am >= 5000 and petRAP then
                             local args = {
@@ -209,6 +211,7 @@ if game.PlaceId == 15588442388 or game.PlaceId == 15502339080 then
                                 [2] = math.floor(petRAP * (getgenv().item[v1.id] / 100)),
                                 [3] = am
                             }
+                            print(unpack(args))
                             game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild(
                                 "Booths_CreateListing"):InvokeServer(unpack(args))
                         end
@@ -218,7 +221,7 @@ if game.PlaceId == 15588442388 or game.PlaceId == 15502339080 then
             for i, v in pairs(save.Get().Inventory.Pet) do
                 if string.find(v.id, "Huge") then
                     local petItem = Items.Types["Pet"]:Get(i)
-                    local petRAP = petItem:GetDevRAP() or 0
+                    local petRAP = petItem:GetRAP() or 0
 
                     for _, range in pairs(getgenv().hugemode) do
                         local minRAP = v_u_5.ParseNumberSmart(range.Min)
