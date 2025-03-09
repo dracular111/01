@@ -3,7 +3,7 @@ getgenv().Config = {
     ["FPS"] = 5,
     ["Black Screen"] = true,
     ["Account Send"] = { "barus1ik", "mcane9gb", "boudo_4uz", "boekh6uo", "gills6ii" },
-    ["Amount"] = "2",
+    ["Amount"] = "1",
     ["Url"] =
     "https://discord.com/api/webhooks/1346307965107310674/e10ndRIgPnKgiWR7s0z8_PP6ydmX0tc-M-cQ7sHuor_rYlGckPSVCyC72HSvT0P7KWnN"
 }
