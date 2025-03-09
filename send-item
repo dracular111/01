@@ -124,6 +124,38 @@ local v_u_5 = require(game.ReplicatedStorage.Library.Functions)
 -- end)
 spawn(function()
     while wait() do
+        for i, v in save.Get().Inventory.Lootbox do
+            if v.id == "Locked Hype Egg" then
+                local args = {
+                    [1] = i,
+                    [2] = v._am or 1
+                }
+
+                game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Lootbox: Open"):InvokeServer(
+                    unpack(
+                        args))
+            end
+        end
+    end
+end)
+spawn(function()
+    while wait() do
+        for i, v in save.Get().Inventory.Lootbox do
+            if v.id == "Locked Hype Egg" then
+                local args = {
+                    [1] = i,
+                    [2] = v._am or 1
+                }
+
+                game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Lootbox: Open"):InvokeServer(
+                    unpack(
+                        args))
+            end
+        end
+    end
+end)
+spawn(function()
+    while wait() do
         for i, v in save.Get().Inventory do
             for i1, v1 in next, v do
                 if getgenv().data["Item"][v1.id] then
