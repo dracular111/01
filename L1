@@ -1,6 +1,6 @@
 getgenv().Config = {
     ["Boost FPS"] = true,
-    ["FPS"] = 5,
+    ["FPS"] = 3,
     ["Black Screen"] = true,
     ["Account Send"] = { "barus1ik", "mcane9gb", "boudo_4uz", "boekh6uo", "gills6ii" },
     ["Amount"] = "1",
