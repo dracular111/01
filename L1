@@ -1,5 +1,4 @@
 loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Optimal"))()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Del-CoreGui"))()
 task.wait(5)
 getgenv().Config = {
     ["Boost FPS"] = true,
