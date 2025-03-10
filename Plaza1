@@ -48,8 +48,8 @@ getgenv().item = {
     ["Fantasy Pack"] = 90,
     ["Nightmare Pack"] = 90,
     ["Retro Pack"] = 90,
-    ["Lucky Raid Damage Booster"] = 90,
-    ["Lucky Raid XP Booster"] = 95,
+    ["Lucky Raid Damage Booster"] = 85,
+    ["Lucky Raid XP Booster"] = 90,
     ["Lucky Gift"] = 75,
 }
 repeat wait() until game:IsLoaded()
