@@ -20,7 +20,7 @@ getgenv().data = {
         ["Daycare egg 5"] = 1,
         ["Ninja Pack"] = 1,
         ["Lucky Raid Damage Booster"] = 1,
-        ["Lucky Gift"] = 3,
+        ["Lucky Gift"] = 10,
     },
     ["Minutes"] = 1,
     ["Url Webhook"] =
