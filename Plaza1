@@ -30,7 +30,6 @@ getgenv().hugemode = {
 getgenv().item = {
     ["Hype Egg 2"] = 95,
     ["Lucky Gift"] = 85,
-    ["Hype Egg 2"] = 100,
     ["Hype Egg"] = 100,
     ["Huge Machine Egg 4"] = 95,
     ["Huge Arcade Dog Card"] = 92,
