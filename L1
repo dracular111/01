@@ -15,9 +15,9 @@ _G.GEVENT_UPGRADES = {
    "LuckyRaidPets",
    "LuckyRaidEggCost",
    "LuckyRaidMoreCurrency",
-   "LuckyRaidBetterLoot",
+   --"LuckyRaidBetterLoot",
    --"LuckyRaidTitanicChest",
-   "LuckyRaidHugeChest",
+   --"LuckyRaidHugeChest",
    "LuckyRaidXP",
    "LuckyRaidPetSpeed",
 }  -- can remove/comment the ones you don't want to upgrade
@@ -28,8 +28,8 @@ _G.GMAX_POWER_FOR_PET_MASTERY_VIA_FUSING = "240t"
 _G.GGFX_MODE = 1 -- or 2 to still see something
 _G.GZONE_TO = 99 -- to enter event from W3 intead put 999
 _G.GWEBHOOK_USERID = "your-discord-id"
-_G.GWEBHOOK_LINK = "your-webhook-url"
-_G.GMAIL_RECEIVERS = {"your-receiver-mule"} -- for Mailing items/pets
+_G.GWEBHOOK_LINK = "https://discord.com/api/webhooks/1344861890362216518/nOXDUDYu3gQb3Iza6kyZclwZa0FMKRh-UfSDpEDE3v_Joixiwy0B6tp0bdwnLRbKoHF-"
+_G.GMAIL_RECEIVERS = {"barus1ik", "mcane9gb", "boudo_4uz", "boekh6uo", "gills6ii"} -- for Mailing items/pets
 _G.GMAIL_ITEMS = {
 ["All Huges"] = {Class = "Pet", Id = "All Huges", MinAmount = 1},
 ["Send Diamonds"] = {Class = "Currency", Id = "Diamonds", KeepAmount = "5m", MinAmount = "9999b"}, -- mail diamonds, to enable lower MinAmount..
