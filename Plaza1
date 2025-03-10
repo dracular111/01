@@ -49,7 +49,8 @@ getgenv().item = {
     ["Nightmare Pack"] = 90,
     ["Retro Pack"] = 90,
     ["Lucky Raid Damage Booster"] = 90,
-    ["Lucky Gift"] = 90,
+    ["Lucky Raid XP Booster"] = 95,
+    ["Lucky Gift"] = 85,
 }
 repeat wait() until game:IsLoaded()
 local VirtualUser = game:service 'VirtualUser'
