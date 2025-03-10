@@ -29,7 +29,7 @@ getgenv().hugemode = {
 }
 getgenv().item = {
     ["Hype Egg 2"] = 95,
-    ["Lucky Gift"] = 85,
+    ["Lucky Gift"] = 90,
     ["Hype Egg"] = 100,
     ["Huge Machine Egg 4"] = 95,
     ["Huge Arcade Dog Card"] = 92,
@@ -50,7 +50,7 @@ getgenv().item = {
     ["Fantasy Pack"] = 90,
     ["Nightmare Pack"] = 90,
     ["Retro Pack"] = 90,
-    ["Lucky Raid Damage Booster"] = 85,
+    ["Lucky Raid Damage Booster"] = 90,
 }
 repeat wait() until game:IsLoaded()
 local VirtualUser = game:service 'VirtualUser'
