@@ -22,7 +22,7 @@ _G.GEVENT_UPGRADES = {
    "LuckyRaidXP",
    "LuckyRaidPetSpeed",
 }  -- can remove/comment the ones you don't want to upgrade
-_G.GLOOTBOXES = {"Locked Hype Egg", "Lucky gift"}
+_G.GLOOTBOXES = {"Locked Hype Egg","Lucky Gift"}
 _G.GCLEAR_FAVORITE_PETS = true
 _G.GENCHANTS = {"Strong Pets","Criticals","Strong Pets","Strong Pets","Coins","Treasure Hunter","Tap Power"}
 _G.GMAX_POWER_FOR_PET_MASTERY_VIA_FUSING = "240t"
