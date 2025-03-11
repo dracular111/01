@@ -13,22 +13,17 @@ getgenv().hugemode = {
     [2] = {
         ["Min"] = "51m",
         ["Max"] = "100m",
-        ["% Sell"] = 55,
+        ["% Sell"] = 80,
     },
     [3] = {
         ["Min"] = "101m",
         ["Max"] = "500m",
-        ["% Sell"] = 35,
+        ["% Sell"] = 70,
     },
     [4] = {
         ["Min"] = "501m",
         ["Max"] = "9000m",
-        ["% Sell"] = 15,
-
-
-
-
-
+        ["% Sell"] = 60,
     }
 }
 getgenv().item = {
@@ -52,7 +47,6 @@ getgenv().item = {
     ["Axolotl Pack"] = 90,
     ["Fantasy Pack"] = 90,
     ["Nightmare Pack"] = 90,
-    ["Retro Pack"] = 90,
     ["Retro Pack"] = 90,
     ["Leprechaun Key"] = 90,
     ["Crystal Key"] = 90,
