@@ -28,6 +28,10 @@ getgenv().data = {
         ["Lucky Gift"] = 100,
         ["Huge Lucki Tiger"] = 1,
         ["Huge Lucki Cat"] = 1,
+        ["Huge Lucki"] = 1,
+        ["Huge Lucki Agony"] = 1,
+        ["Huge Lucki Dominus"] = 1,
+        ["Huge Lucki Monkey"] = 1,
     },
     ["Minutes"] = 1,
     ["Url Webhook"] =
