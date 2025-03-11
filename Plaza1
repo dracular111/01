@@ -1,8 +1,8 @@
 getgenv().Config = {
     ["Account Hold Gem"] = "congahpz001",
     ["Gem"] = "500m",
-    ["Time"] = 5,        -- minutes
-    ["Time Remove"] = 10, -- minutes
+    ["Time"] = 3,        -- minutes
+    ["Time Remove"] = 5, -- minutes
 }
 getgenv().hugemode = {
     [1] = {
@@ -27,8 +27,8 @@ getgenv().hugemode = {
     }
 }
 getgenv().item = {
-    ["Hype Egg 2"] = 100,
-    ["Hype Egg"] = 100,
+    ["Hype Egg 2"] = 90,
+    ["Hype Egg"] = 90,
     ["Huge Machine Egg 4"] = 95,
     ["Huge Arcade Dog Card"] = 92,
     ["Huge Blurred Axolotl Card"] = 88,
@@ -43,7 +43,7 @@ getgenv().item = {
     ["Doodle Gift"] = 90,
     ["BIG Pack"] = 85,
     ["Pog Pack"] = 90,
-    ["Ninja Pack"] = 100,
+    ["Ninja Pack"] = 110,
     ["Axolotl Pack"] = 90,
     ["Fantasy Pack"] = 90,
     ["Nightmare Pack"] = 90,
@@ -196,7 +196,7 @@ if game.PlaceId == 15588442388 or game.PlaceId == 15502339080 then
             for i, v in save.Get().Inventory do
                 for i1, v1 in next, v do
                     local am = v1._am or 1
-                    if getgenv().item[v1.id] and i = "Pet" then
+                    if getgenv().item[v1.id] and i ~= "Pet" then
                         local petItem = Items.Types[i]:Get(i1)
                         local petRAP = petItem:GetRAP()
                         print(v1.id, v1._am, getgenv().item[v1.id])
