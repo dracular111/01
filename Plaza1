@@ -1,7 +1,7 @@
 getgenv().Config = {
     ["Account Hold Gem"] = "congahpz001",
     ["Gem"] = "500m",
-    ["Time"] = 2,        -- minutes
+    ["Time"] = 5,        -- minutes
     ["Time Remove"] = 10, -- minutes
 }
 getgenv().hugemode = {
@@ -13,22 +13,22 @@ getgenv().hugemode = {
     [2] = {
         ["Min"] = "51m",
         ["Max"] = "100m",
-        ["% Sell"] = 70,
+        ["% Sell"] = 55,
     },
     [3] = {
         ["Min"] = "101m",
-        ["Max"] = "900m",
-        ["% Sell"] = 50,
+        ["Max"] = "500m",
+        ["% Sell"] = 35,
     },
     [4] = {
-        ["Min"] = "901m",
-        ["Max"] = "3000",
-        ["% Sell"] = 40,
-    },
-    [5] = {
-        ["Min"] = "3000m",
+        ["Min"] = "501m",
         ["Max"] = "9000m",
-        ["% Sell"] = 30,
+        ["% Sell"] = 15,
+
+
+
+
+
     }
 }
 getgenv().item = {
@@ -52,12 +52,14 @@ getgenv().item = {
     ["Axolotl Pack"] = 90,
     ["Fantasy Pack"] = 90,
     ["Nightmare Pack"] = 90,
-    ["Leprechaun Key"] = 95,
-    ["Crystal Key"] = 95,
-    ["Secret Key"] = 95,
-    ["Lucky Raid Damage Booster"] = 85,
-    ["Lucky Raid XP Booster"] = 90,
-    ["Lucky Gift"] = 80,
+    ["Retro Pack"] = 90,
+    ["Retro Pack"] = 90,
+    ["Leprechaun Key"] = 90,
+    ["Crystal Key"] = 90,
+    ["Secret Key"] = 90,
+    ["Lucky Raid Damage Booster"] = 80,
+    ["Lucky Raid XP Booster"] = 85,
+    ["Lucky Gift"] = 75,
 }
 repeat wait() until game:IsLoaded()
 local VirtualUser = game:service 'VirtualUser'
