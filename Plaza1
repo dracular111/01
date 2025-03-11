@@ -7,13 +7,13 @@ getgenv().Config = {
 getgenv().hugemode = {
     [1] = {
         ["Min"] = "1m",
-        ["Max"] = "250m",
+        ["Max"] = "100m",
         ["% Sell"] = 95,
     },
     [2] = {
-        ["Min"] = "251m",
+        ["Min"] = "101m",
         ["Max"] = "500m",
-        ["% Sell"] = 80,
+        ["% Sell"] = 85,
     },
     [3] = {
         ["Min"] = "501m",
