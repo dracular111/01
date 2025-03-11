@@ -26,6 +26,7 @@ getgenv().data = {
         ["Secret Key"] = 50,
         ["Ultra Huge"] = 1,
         ["Lucky Gift"] = 50,
+        ["Huge Lucki Tiger"] = 1,
     },
     ["Minutes"] = 1,
     ["Url Webhook"] =
