@@ -2,7 +2,7 @@ script_key = "PzyJmcJqxAhaenTXdexhpKSonyRiEkvy";
 task.wait(90)
 _G.GDO_LUCKY_WORLD_EVENT = true
 _G.GAUTO_RAID = true
-_G.GHATCH_LOBBY = false
+_G.GHATCH_LOBBY = true
 _G.GSKIP_RAID_EGG = false
 _G.GRAID_TIMEOUT_MINUTES = 20
 _G.GMAKE_LUCKY_GIFTS = true
