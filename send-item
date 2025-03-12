@@ -20,7 +20,7 @@ getgenv().data = {
         ["Daycare egg 5"] = 1,
         ["Ninja Pack"] = 1,
         ["Lucky Raid Damage Booster"] = 50,
-        ["Lucky Raid XP Booster"] = 30,
+        ["Lucky Raid XP Booster"] = 50,
         ["Leprechaun Key"] = 10,
         ["Crystal Key"] = 50,
         ["Secret Key"] = 50,
@@ -33,7 +33,7 @@ getgenv().data = {
         ["Huge Lucki Dominus"] = 1,
         ["Huge Lucki Monkey"] = 1,
     },
-    ["Minutes"] = 60,
+    ["Minutes"] = 1,
     ["Url Webhook"] =
     "https://discord.com/api/webhooks/1347239535918059540/tz_dR2f8ITBSUSQt58NV3EVGAf7naceycDUuEoLVsSlQiWG6aP90MOQ4caYnCcynO5__"
 }
