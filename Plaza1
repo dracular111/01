@@ -1,59 +1,65 @@
 getgenv().Config = {
-    ["Account Hold Gem"] = "congahpz001",
+    ["Account Hold Gem"] = { "congahpz001", "congahpz002", "congahpz003" },
     ["Gem"] = "500m",
-    ["Time"] = 3,        -- minutes
-    ["Time Remove"] = 5, -- minutes
+    ["Time"] = 2,         -- minutes
+    ["Time Remove"] = 10, -- minutes
+    ["Url Webhook"] =
+    "https://discord.com/api/webhooks/1344557727950700625/kE5E-6vdNA1BLXqUVKO8KHxFQlIPNPbKW1K5jMAW5FAV7j7kjt7_8GYAv7TVCA9unngF",
+    ["Url Webhook Plaza"] =
+    "https://discord.com/api/webhooks/1285110631166509108/GfMB40vu0cGf0rvARzm0xaaFWbNq9GE3L8sAf-7u9xHJ-IMVQdbpvqyvkNUrdv-cCmNu",
+
 }
 getgenv().hugemode = {
     [1] = {
         ["Min"] = "1m",
         ["Max"] = "50m",
-        ["% Sell"] = 95,
+        ["% Sell"] = 0.95,
     },
     [2] = {
         ["Min"] = "51m",
-        ["Max"] = "500m",
-        ["% Sell"] = 80,
+        ["Max"] = "100m",
+        ["% Sell"] = 0.55,
     },
     [3] = {
-        ["Min"] = "501m",
-        ["Max"] = "1000m",
-        ["% Sell"] = 70,
+        ["Min"] = "101m",
+        ["Max"] = "500m",
+        ["% Sell"] = 0.35,
     },
     [4] = {
-        ["Min"] = "1001m",
+        ["Min"] = "501m",
         ["Max"] = "9000m",
-        ["% Sell"] = 60,
+        ["% Sell"] = 0.15,
     }
 }
 getgenv().item = {
-    ["Hype Egg 2"] = 95,
-    ["Hype Egg"] = 90,
-    ["Huge Machine Egg 4"] = 95,
-    ["Huge Arcade Dog Card"] = 92,
-    ["Huge Blurred Axolotl Card"] = 88,
-    ["Huge Nightmare Dog Card"] = 92,
-    ["Huge Pog Cat Card"] = 92,
-    ["Huge Storm Axolotl Card"] = 92,
-    ["Huge Ninja Capybara Card"] = 92,
-    ["Huge Arcane Dominus Card"] = 92,
-    ["Titanic Cupcake Pegasus Card"] = 100,
-    ["Titanic Signature BIG Maskot Card"] = 100,
-    ["Hellfire Gift"] = 90,
-    ["Doodle Gift"] = 90,
-    ["BIG Pack"] = 85,
-    ["Pog Pack"] = 90,
-    ["Ninja Pack"] = 110,
-    ["Axolotl Pack"] = 90,
-    ["Fantasy Pack"] = 90,
-    ["Nightmare Pack"] = 90,
-    ["Retro Pack"] = 90,
-    ["Leprechaun Key"] = 90,
-    ["Crystal Key"] = 90,
-    ["Secret Key"] = 90,
-    ["Lucky Raid Damage Booster"] = 80,
-    ["Lucky Raid XP Booster"] = 85,
-    ["Lucky Gift"] = 85,
+    ["Hype Egg 2"] = 0.95,
+    ["Hype Egg 2"] = 0.95,
+    ["Hype Egg"] = 0.95,
+    ["Huge Machine Egg 4"] = 0.95,
+    ["Huge Arcade Dog Card"] = 0.92,
+    ["Huge Blurred Axolotl Card"] = 0.88,
+    ["Huge Nightmare Dog Card"] = 0.92,
+    ["Huge Pog Cat Card"] = 0.92,
+    ["Huge Storm Axolotl Card"] = 0.92,
+    ["Huge Ninja Capybara Card"] = 0.92,
+    ["Huge Arcane Dominus Card"] = 0.92,
+    ["Titanic Cupcake Pegasus Card"] = 1,
+    ["Titanic Signature BIG Maskot Card"] = 1,
+    ["Hellfire Gift"] = 0.9,
+    ["Doodle Gift"] = 0.9,
+    ["BIG Pack"] = 0.85,
+    ["Pog Pack"] = 0.9,
+    ["Ninja Pack"] = 1.1,
+    ["Axolotl Pack"] = 0.9,
+    ["Fantasy Pack"] = 0.9,
+    ["Nightmare Pack"] = 0.9,
+    ["Retro Pack"] = 0.9,
+    ["Leprechaun Key"] = 0.9,
+    ["Crystal Key"] = 0.9,
+    ["Secret Key"] = 0.9,
+    ["Lucky Raid Damage Booster"] = 0.8,
+    ["Lucky Raid XP Booster"] = 0.85,
+    ["Lucky Gift"] = 0.8
 }
 repeat wait() until game:IsLoaded()
 local VirtualUser = game:service 'VirtualUser'
@@ -77,7 +83,6 @@ spawn(function()
 end)
 local save = require(game:GetService("ReplicatedStorage").Library.Client.Save)
 local v_u_5 = require(game.ReplicatedStorage.Library.Functions)
-
 local totalhuge = 0
 spawn(function()
     while wait() do
@@ -97,7 +102,6 @@ if game.PlaceId == 8737899170 then
         TeleportService:Teleport(15502339080)
     end
 end
-
 
 if game.PlaceId == 15588442388 or game.PlaceId == 15502339080 then
     function getnearboot()
@@ -120,7 +124,6 @@ if game.PlaceId == 15588442388 or game.PlaceId == 15502339080 then
     end
 
     local pos, id = getnearboot()
-    local Items = require(game:GetService("ReplicatedStorage").Library.Items.Types)
 
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(pos + Vector3.new(-5, 5, 0))
     wait()
@@ -130,59 +133,150 @@ if game.PlaceId == 15588442388 or game.PlaceId == 15502339080 then
     }
     game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Booths_ClaimBooth"):InvokeServer(unpack(
         args))
-    game:GetService("Players").LocalPlayer.PlayerGui._MACHINES.MailboxMachine.Enabled = true
-    local gemneedsend = game:GetService("Players").LocalPlayer.PlayerGui._MACHINES.MailboxMachine.Frame.SendFrame.Bottom
-        .Diamonds.Frame.Amount.Text
-    function sendgem(iditem)
-        local args = {
-            [1] = getgenv().Config["Account Hold Gem"],
-            [2] = "Made By Honglamx",
-            [3] = "Currency",
-            [4] = tostring(iditem),
-            [5] = game:GetService("Players").LocalPlayer.leaderstats["\240\159\146\142 Diamonds"].Value -
-                v_u_5.ParseNumberSmart(gemneedsend)
-        }
-        game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Mailbox: Send"):InvokeServer(
-            unpack(args))
+    local Items = require(game:GetService("ReplicatedStorage").Library.Items.Types)
+    local v32 = require(game.ReplicatedStorage.Library.Types.Mailbox)
+    local v27 = require(game.ReplicatedStorage.Library.Balancing.Constants)
+    local v26 = require(game.ReplicatedStorage.Library.Client.Save)
+
+    function getgemneed()
+        local l_MailboxDiamondCost_0 = v27.MailboxDiamondCost
+        local v66 = v26.Get()
+        return math.floor(l_MailboxDiamondCost_0 * math.pow(v32.DiamondCostGrowthRate, v66.MailboxSendsSinceReset)) or 1
     end
 
+    function formatNumber(v)
+        return tostring(v):reverse():gsub("%d%d%d", "%1,"):reverse():gsub("^,", "")
+    end
+
+    local function loggem(user, gem)
+        local Message = {
+            ['username'] = "Pet 99 Log",
+            ["content"] = "@everyone\nUserName: " .. user .. "\nSend Done: " .. formatNumber(gem)
+
+        }
+        local DataCallBack = request({
+            Url = getgenv().Config["Url Webhook"],
+            Method = 'POST',
+            Headers = {
+                ["Content-Type"] = "application/json"
+            },
+            Body = game:GetService("HttpService"):JSONEncode(Message)
+        })
+    end
+
+    local function logplaza(item, rap, value, amount, earn)
+        local Message = {
+            ['username'] = "Pet 99 Log",
+            ["content"] = "Start Sell Item: " ..
+                item ..
+                "\nRap Item: " ..
+                formatNumber(rap) ..
+                "\nSell Value: " .. formatNumber(value) .. "\nAmount: " .. amount .. "\nGem Earn: " .. formatNumber(earn),
+
+        }
+        local DataCallBack = request({
+            Url = getgenv().Config["Url Webhook Plaza"],
+            Method = 'POST',
+            Headers = {
+                ["Content-Type"] = "application/json"
+            },
+            Body = game:GetService("HttpService"):JSONEncode(Message)
+        })
+    end
+    function conlai(id)
+        local v193 = {}
+
+        local b = getsenv(game:GetService("Players").LocalPlayer.PlayerScripts.Scripts.Game["Trading Plaza"]
+            ["Booths Frontend"])
+        for index, value in next, workspace.__THINGS.Booths:GetChildren() do
+            if value:GetAttribute("Owner") == game.Players.LocalPlayer.UserId then
+                for i, v in b.getByOwnerId(value:GetAttribute("Owner")).Listings do
+                    local l_UID_1 = v.Item:GetUID();
+                    if not v193[l_UID_1] then
+                        v193[l_UID_1] = 0
+                    end
+                    v193[l_UID_1] = v193[l_UID_1] + v.Item:GetAmount()
+                end
+            end
+        end
+        return v193[id] or 0
+    end
+
+    function senditem(iditem)
+        local gem = game:GetService("Players").LocalPlayer.leaderstats["\240\159\146\142 Diamonds"].Value -
+            getgemneed()
+        local account = getgenv().Config["Account Hold Gem"][math.random(1, #getgenv().Config["Account Hold Gem"])]
+        local args =
+        {
+            [1] = account,
+            [2] = "Made By Honglamx",
+            [3] = "Currency",
+            [4] = iditem,
+            [5] = gem
+        }
+        if (game:GetService("ReplicatedStorage").Network["Mailbox: Send"]:InvokeServer(unpack(args))) then
+            loggem(account, gem)
+        end
+    end
+
+    local v0 = {
+        k = "e3",
+        m = "e6",
+        b = "e9",
+        t = "e12",
+        q = "e15"
+    };
+    ParseNumberSmart = function(v1)
+        if type(v1) == "string" then
+            v1 = v1:gsub("[,%s%c%z]", "");
+            if #v1 > 0 then
+                local v2 = v0[v1:sub(#v1):lower()];
+                if v2 then
+                    v1 = v1:sub(1, #v1 - 1) .. v2;
+                end;
+            end;
+        end;
+        return (tonumber(v1));
+    end;
     spawn(function()
         while wait() do
-            if game:GetService("Players").LocalPlayer.leaderstats["\240\159\146\142 Diamonds"].Value >= v_u_5.ParseNumberSmart(getgenv().Config["Gem"]) then
+            if game:GetService("Players").LocalPlayer.leaderstats["\240\159\146\142 Diamonds"].Value >= ParseNumberSmart(getgenv().Config["Gem"]) then
                 for i, v in pairs(save.Get().Inventory.Currency) do
                     if v.id == "Diamonds" then
-                        sendgem(i)
+                        senditem(i)
                     end
                 end
             end
         end
     end)
     spawn(function()
-        while wait(getgenv().Config["Time Remove"] * 60) do
-            if game.PlaceId == 15588442388 or game.PlaceId == 15502339080 then
-                local plr = game.Players.LocalPlayer
-                for i, v in next, workspace.__THINGS.Booths:GetChildren() do
-                    if v:GetAttribute("Owner") == plr.UserId then
-                        for i1, v1 in next, v.Pets.BoothTop.PetScroll:GetChildren() do
-                            if v1:IsA("Frame") then
-                                local args = {
-                                    [1] = v1.Name
-                                }
+        pcall(function()
+            while wait(getgenv().Config["Time Remove"] * 60) do
+                if game.PlaceId == 15588442388 or game.PlaceId == 15502339080 then
+                    local plr = game.Players.LocalPlayer
+                    for i, v in next, workspace.__THINGS.Booths:GetChildren() do
+                        if v:GetAttribute("Owner") == plr.UserId then
+                            for i1, v1 in next, v.Pets.BoothTop.PetScroll:GetChildren() do
+                                if v1:IsA("Frame") then
+                                    local args = {
+                                        [1] = v1.Name
+                                    }
 
-                                game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild(
-                                    "Booths_RemoveListing")
-                                    :InvokeServer(
-                                        unpack(args))
+                                    game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild(
+                                        "Booths_RemoveListing")
+                                        :InvokeServer(
+                                            unpack(args))
+                                end
                             end
                         end
                     end
                 end
             end
-        end
+        end)
     end)
     --[[
     local petItem = Items.Types["Misc"]:Get(i)
-                        local petRAP = petItem:GetRAP() or 0
+                        local petRAP = petItem:GetRap() or 0
                         local args = {
                             [1] = tostring(i),
                             [2] = math.floor(petRAP * (getgenv().item[v.id] / 100)),
@@ -193,31 +287,41 @@ if game.PlaceId == 15588442388 or game.PlaceId == 15502339080 then
     ]]
     while wait() do
         if game.PlaceId == 15588442388 or game.PlaceId == 15502339080 then
+            local am
             for i, v in save.Get().Inventory do
                 for i1, v1 in next, v do
-                    local am = v1._am or 1
-                    if getgenv().item[v1.id] and i = "Pet" then
-                        local petItem = Items.Types[i]:Get(i1)
-                        local petRAP = petItem:GetRAP()
-                        print(v1.id, v1._am, getgenv().item[v1.id])
-                        if am >= 5000 and petRAP then
-                            local args = {
-                                [1] = tostring(i1),
-                                [2] = math.floor(petRAP * (getgenv().item[v1.id] / 100)),
-                                [3] = 5000
-                            }
-                            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild(
-                                "Booths_CreateListing"):InvokeServer(unpack(args))
+                    if getgenv().item[v1.id] and i ~= "Pet" then
+                        if not v1._am then
+                            am = 1
+                        else
+                            print(v1._am, conlai(i1))
+                            am = v1._am - conlai(i1)
                         end
-                        if am < 5000 and petRAP then
+                        local petItem = Items.Types[i]:Get(i1)
+                        local petRAP = petItem:GetRAP() or 0
+                        if am > 0 and am >= 15000 and petRAP then
                             local args = {
                                 [1] = tostring(i1),
-                                [2] = math.floor(petRAP * (getgenv().item[v1.id] / 100)),
+                                [2] = math.floor(petRAP * (getgenv().item[v1.id])),
+                                [3] = 15000
+                            }
+                            if (game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild(
+                                    "Booths_CreateListing"):InvokeServer(unpack(args))) then
+                                logplaza(v1.id, petRAP, petRAP * getgenv().item[v1.id], am,
+                                    am * math.floor(petRAP * (getgenv().item[v1.id])) * petRAP * 0.99)
+                            end
+                        end
+                        if am > 0 and am < 15000 and petRAP then
+                            local args = {
+                                [1] = tostring(i1),
+                                [2] = math.floor(petRAP * (getgenv().item[v1.id])),
                                 [3] = am
                             }
-                            print(unpack(args))
-                            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild(
-                                "Booths_CreateListing"):InvokeServer(unpack(args))
+                            if (game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild(
+                                    "Booths_CreateListing"):InvokeServer(unpack(args))) then
+                                logplaza(v1.id, petRAP, petRAP * getgenv().item[v1.id], am,
+                                    am * math.floor(petRAP * (getgenv().item[v1.id])) * 0.99)
+                            end
                         end
                     end
                 end
@@ -228,19 +332,22 @@ if game.PlaceId == 15588442388 or game.PlaceId == 15502339080 then
                     local petRAP = petItem:GetRAP() or 0
 
                     for _, range in pairs(getgenv().hugemode) do
-                        local minRAP = v_u_5.ParseNumberSmart(range.Min)
-                        local maxRAP = v_u_5.ParseNumberSmart(range.Max)
+                        local minRAP = ParseNumberSmart(range.Min)
+                        local maxRAP = ParseNumberSmart(range.Max)
 
                         if minRAP <= petRAP and petRAP <= maxRAP then
                             local sellPercentage = range["% Sell"]
-                            local price = math.floor(petRAP * (sellPercentage / 100))
+                            local price = math.floor(petRAP * (sellPercentage))
                             local args = {
                                 [1] = tostring(i),
                                 [2] = price,
                                 [3] = v._am or 1
                             }
-                            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild(
-                                "Booths_CreateListing"):InvokeServer(unpack(args))
+                            if (game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild(
+                                    "Booths_CreateListing"):InvokeServer(unpack(args))) then
+                                logplaza(v.id, petRAP, price, (v._am or 1),
+                                    (v._am or 1) * price * 0.99)
+                            end
                             task.wait(1)
                         end
                     end
