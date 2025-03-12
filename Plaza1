@@ -6,7 +6,7 @@ getgenv().Config = {
     ["Url Webhook"] =
     "https://discord.com/api/webhooks/1344557727950700625/kE5E-6vdNA1BLXqUVKO8KHxFQlIPNPbKW1K5jMAW5FAV7j7kjt7_8GYAv7TVCA9unngF",
     ["Url Webhook Plaza"] =
-    "https://discord.com/api/webhooks/1285110631166509108/GfMB40vu0cGf0rvARzm0xaaFWbNq9GE3L8sAf-7u9xHJ-IMVQdbpvqyvkNUrdv-cCmNu",
+    "https://discord.com/api/webhooks/1344557851619622994/Vy32BUZvmsiEP-Qg01VomWeyYSV7CDB6qXqI90v6DJBRNrWDmnqhLsHTA63NCPfbhAse",
 
 }
 getgenv().hugemode = {
