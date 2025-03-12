@@ -1,5 +1,6 @@
 getgenv().Config = {
     ["Account Hold Gem"] = { "congahpz001", "congahpz002", "congahpz003" },
+    ["Account To Skip"] = { "congahpz001", "congahpz002", "congahpz003" },
     ["Gem"] = "500m",
     ["Time"] = 2,         -- minutes
     ["Time Remove"] = 10, -- minutes
@@ -13,7 +14,7 @@ getgenv().hugemode = {
     [1] = {
         ["Min"] = "1m",
         ["Max"] = "30m",
-        ["% Sell"] = 0.9,
+        ["% Sell"] = 0.95,
     },
     [2] = {
         ["Min"] = "31m",
@@ -130,6 +131,80 @@ if game.PlaceId == 15588442388 or game.PlaceId == 15502339080 then
         return tostring(v):reverse():gsub("%d%d%d", "%1,"):reverse():gsub("^,", "")
     end
 
+    local PlaceID = game.PlaceId
+    local AllIDs = {}
+    local foundAnything = ""
+    local actualHour = os.date("!*t").hour
+    local Deleted = false
+    local File = pcall(function()
+        AllIDs = game:GetService('HttpService'):JSONDecode(readfile("NotSameServers.json"))
+    end)
+    if not File then
+        table.insert(AllIDs, actualHour)
+        writefile("NotSameServers.json", game:GetService('HttpService'):JSONEncode(AllIDs))
+    end
+    function TPReturner()
+        local Site;
+        if foundAnything == "" then
+            Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' ..
+                game.PlaceId .. '/servers/0?sortOrder=5&excludeFullGames=true&limit=100'))
+        end
+        local ID = ""
+        if Site.nextPageCursor and Site.nextPageCursor ~= "null" and Site.nextPageCursor ~= nil then
+            foundAnything = Site.nextPageCursor
+        end
+        local num = 0;
+        for i, v in pairs(Site.data) do
+            local Possible = true
+            ID = tostring(v.id)
+            if tonumber(v.maxPlayers) > tonumber(v.playing) then
+                for _, Existing in pairs(AllIDs) do
+                    if num ~= 0 then
+                        if ID == tostring(Existing) then
+                            Possible = false
+                        end
+                    else
+                        if tonumber(actualHour) ~= tonumber(Existing) then
+                            local delFile = pcall(function()
+                                AllIDs = {}
+                                table.insert(AllIDs, actualHour)
+                            end)
+                        end
+                    end
+                    num = num + 1
+                end
+                if Possible == true then
+                    table.insert(AllIDs, ID)
+                    wait()
+                    pcall(function()
+                        wait()
+                        game:GetService("TeleportService"):TeleportToPlaceInstance(PlaceID, ID,
+                            game.Players.LocalPlayer)
+                    end)
+                    wait(4)
+                end
+            end
+        end
+    end
+
+    function Teleport()
+        pcall(function()
+            TPReturner()
+            if foundAnything ~= "" then
+                TPReturner()
+            end
+        end)
+    end
+
+    spawn(function()
+        while wait() do
+            for i, v in game.Players:GetChildren() do
+                if table.find(getgenv().Config["Account To Skip"], v.Name) then
+                    Teleport()
+                end
+            end
+        end
+    end)
     local function loggem(user, gem)
         local Message = {
             ['username'] = "Pet 99 Log",
@@ -165,19 +240,23 @@ if game.PlaceId == 15588442388 or game.PlaceId == 15502339080 then
             Body = game:GetService("HttpService"):JSONEncode(Message)
         })
     end
-    function conlai(id)
-        local v193 = {}
+    local v193 = {}
 
+    function conlai(id)
         local b = getsenv(game:GetService("Players").LocalPlayer.PlayerScripts.Scripts.Game["Trading Plaza"]
             ["Booths Frontend"])
         for index, value in next, workspace.__THINGS.Booths:GetChildren() do
-            if value:GetAttribute("Owner") == game.Players.LocalPlayer.UserId then
-                for i, v in b.getByOwnerId(value:GetAttribute("Owner")).Listings do
-                    local l_UID_1 = v.Item:GetUID();
-                    if not v193[l_UID_1] then
-                        v193[l_UID_1] = 0
+            if b.getByOwnerId then
+                if value:GetAttribute("Owner") == game.Players.LocalPlayer.UserId then
+                    v193 = {}
+
+                    for i, v in b.getByOwnerId(value:GetAttribute("Owner")).Listings do
+                        local l_UID_1 = v.Item:GetUID();
+                        if not v193[l_UID_1] then
+                            v193[l_UID_1] = 0
+                        end
+                        v193[l_UID_1] = v193[l_UID_1] + v.Item:GetAmount()
                     end
-                    v193[l_UID_1] = v193[l_UID_1] + v.Item:GetAmount()
                 end
             end
         end
@@ -276,7 +355,6 @@ if game.PlaceId == 15588442388 or game.PlaceId == 15502339080 then
                         if not v1._am then
                             am = 1
                         else
-                            print(v1._am, conlai(i1))
                             am = v1._am - conlai(i1)
                         end
                         local petItem = Items.Types[i]:Get(i1)
