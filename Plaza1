@@ -29,7 +29,7 @@ getgenv().hugemode = {
     [4] = {
         ["Min"] = "501m",
         ["Max"] = "9000m",
-        ["% Sell"] = 0.35,
+        ["% Sell"] = 0.25,
     }
 }
 getgenv().item = {
