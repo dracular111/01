@@ -19,7 +19,7 @@ getgenv().hugemode = {
     [2] = {
         ["Min"] = "31m",
         ["Max"] = "100m",
-        ["% Sell"] = 0.75,
+        ["% Sell"] = 0.85,
     },
     [3] = {
         ["Min"] = "101m",
@@ -40,7 +40,7 @@ getgenv().item = {
     ["Leprechaun Key"] = 0.9,
     ["Crystal Key"] = 0.9,
     ["Secret Key"] = 0.9,
-    ["Lucky Raid Damage Booster"] = 0.8,
+    ["Lucky Raid Damage Booster"] = 0.9,
     ["Lucky Raid XP Booster"] = 0.8,
     ["Lucky Gift"] = 1
 }
