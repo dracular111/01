@@ -1,5 +1,5 @@
 script_key = "PzyJmcJqxAhaenTXdexhpKSonyRiEkvy";
-task.wait(90)
+task.wait(60)
 _G.GDO_LUCKY_WORLD_EVENT = true
 _G.GAUTO_RAID = true
 _G.GRAID_FOR_COINS = true
