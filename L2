@@ -7,7 +7,7 @@ _G.GHATCH_LOBBY = true
 _G.GSKIP_RAID_EGG = false
 _G.GRAID_TIMEOUT_MINUTES = 20
 _G.GMAKE_LUCKY_GIFTS = true
-_G.GLIMIT_LUCKY_GIFTS = 50
+_G.GLIMIT_LUCKY_GIFTS = 30
 _G.GUSE_LEPRECHAUN_KEYS = false
 _G.GMAX_RAID_LEVEL = 55
 _G.GMIN_MULTIPLIER = 0 -- which egg to hatch
@@ -24,7 +24,7 @@ _G.GEVENT_UPGRADES = {
    "LuckyRaidXP",
    "LuckyRaidPetSpeed",
 }  -- can remove/comment the ones you don't want to upgrade
-_G.GLOOTBOXES = {"Locked Hype Egg"}
+_G.GLOOTBOXES = {"Locked Hype Egg","Lucky Gift"}
 _G.GCLEAR_FAVORITE_PETS = true
 _G.GENCHANTS = {"Strong Pets","Criticals","Strong Pets","Strong Pets","Coins","Treasure Hunter","Tap Power"}
 _G.GMAX_POWER_FOR_PET_MASTERY_VIA_FUSING = "240t"
