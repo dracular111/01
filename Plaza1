@@ -37,11 +37,11 @@ getgenv().item = {
     ["Hype Egg 2"] = 0.95,
     ["Hype Egg"] = 0.95,
     ["Huge Machine Egg 4"] = 0.95,
-    ["Leprechaun Key"] = 0.9,
+    ["Leprechaun Key"] = 1,
     ["Crystal Key"] = 0.9,
     ["Secret Key"] = 0.9,
-    ["Lucky Raid Damage Booster"] = 0.9,
-    ["Lucky Raid XP Booster"] = 0.8,
+    ["Lucky Raid Damage Booster"] = 1,
+    ["Lucky Raid XP Booster"] = 1,
     ["Lucky Gift"] = 1.1
 }
 repeat wait() until game:IsLoaded()
