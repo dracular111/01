@@ -1,16 +1,18 @@
 script_key = "AvcAncvfcZEFOqMnVcRxVZfdiQKjYEgd";
 task.wait(90)
 _G.GDO_LUCKY_WORLD_EVENT = true
-_G.GAUTO_RAID = false
+_G.GAUTO_RAID = true
+_G.GRAID_FOR_COINS = true
 _G.GUSE_BOOSTS = false
 _G.GHATCH_LOBBY = true
 _G.GSKIP_RAID_EGG = false
-_G.GRAID_TIMEOUT_MINUTES = 20
+_G.GRAID_TIMEOUT_MINUTES = 15
 _G.GMAKE_LUCKY_GIFTS = true
 _G.GLIMIT_LUCKY_GIFTS = 30
 _G.GUSE_LEPRECHAUN_KEYS = false
-_G.GMAX_RAID_LEVEL = 55
-_G.GMIN_MULTIPLIER = 0 -- which egg to hatch
+_G.GDISABLE_MINUTE_HATCH = true
+_G.GMAX_RAID_LEVEL = 10
+_G.GMIN_MULTIPLIER = 4 -- which egg to hatch
 _G.GMAKE_LUCKY_GIFTS = true
 _G.GEVENT_UPGRADES = {
    "LuckyRaidDamage",
