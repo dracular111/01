@@ -12,7 +12,7 @@ _G.GLIMIT_LUCKY_GIFTS = 30
 _G.GUSE_LEPRECHAUN_KEYS = true
 _G.GDISABLE_MINUTE_HATCH = true
 _G.GMAX_RAID_LEVEL = 10
-_G.GMIN_MULTIPLIER = 4 -- which egg to hatch
+_G.GMIN_MULTIPLIER = 50 -- which egg to hatch
 _G.GMAKE_LUCKY_GIFTS = true
 _G.GEVENT_UPGRADES = {
    "LuckyRaidDamage",
