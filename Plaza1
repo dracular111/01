@@ -45,7 +45,8 @@ getgenv().item = {
     ["Mining Speed Booster"] = 0.7,
     ["Leprechaun Key"] = 1,
     ["Crystal Key"] = 0.9,
-    ["Secret Key"] = 0.9
+    ["Secret Key"] = 0.9,
+    ["Lucky Gift"] = 1
 }
 repeat wait() until game:IsLoaded()
 local VirtualUser = game:service 'VirtualUser'
