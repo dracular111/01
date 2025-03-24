@@ -3,6 +3,7 @@ getgenv().data = {
     ["Item"] = {
         ["Sapphire Gem""] = 9999,
         ["Ruby Gem"] = 5000,
+        ["Emerald Gem"] = 100,
         ["Amethyst Gem"] = 1,
         ["Rainbow Gem"] = 1,
         ["Mining Coins Booster"] = 100,
