@@ -10,3 +10,4 @@ _G.SCRIPT2 = true
 
 -- Script của bạn
 --loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Optimal"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/timesv"))()
