@@ -1,5 +1,5 @@
 getgenv().data = {
-    ["FPS"] = 10,
+    ["FPS"] = 15,
     ["Black Screen"] = false,
     ["Disable Gui"] = false,
 }
