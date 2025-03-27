@@ -1,7 +1,7 @@
 getgenv().data = {
     ["FPS"] = 5,
     ["Black Screen"] = false,
-    ["Disable Gui"] = false,
+    ["Disable Gui"] = true,
 }
 repeat wait() until game:IsLoaded()
 local VirtualUser = game:service 'VirtualUser'
