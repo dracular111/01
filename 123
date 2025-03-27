@@ -1,7 +1,7 @@
 getgenv().data = {
     ["FPS"] = 5,
-    ["Black Screen"] = true,
-    ["Disable Gui"] = true,
+    ["Black Screen"] = false,
+    ["Disable Gui"] = false,
 }
 repeat wait() until game:IsLoaded()
 local VirtualUser = game:service 'VirtualUser'
@@ -205,16 +205,16 @@ spawn(function()
     --         v.Transparency = 1
     --     end)
     -- end)
-    -- spawn(function()
-    --     while wait() do
-    --         for i, v in workspace.__THINGS.BlockWorlds.Blocks_5:GetChildren() do
-    --             if v:GetAttribute("id") == "Gold" then
-    --                 v.Transparency = 1
-    --                 -- v:Destroy()
-    --             end
-    --         end
-    --     end
-    -- end)
+    spawn(function()
+        while wait() do
+            for i, v in workspace.__THINGS.BlockWorlds.Blocks_5:GetChildren() do
+                if v:GetAttribute("id") == "Gold" then
+                    v.Transparency = 1
+                    -- v:Destroy()
+                end
+            end
+        end
+    end)
     workspace.ClientAnimatorThrottling = Enum.ClientAnimatorThrottlingMode.Enabled
     workspace.InterpolationThrottling = Enum.InterpolationThrottlingMode.Enabled
     settings():GetService("RenderSettings").EagerBulkExecution = false
@@ -313,62 +313,75 @@ spawn(function()
     end)
 end)
 local ismap = false
+local cnt = 0
+local blocks = {}
+
 pcall(function()
     while wait() do
-        pcall(function()
+        local args = {
+            [1] = "__Zone_5"
+        }
+
+        game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild(
+            "Teleports_RequestInstanceTeleport")
+            :InvokeServer(unpack(args))
+        task.wait(2)
+
+        for i, v in a.GetLocal().BlocksByPart do
+            if v.Dir.DisplayName ~= "Gold" then
+                table.insert(blocks, v)
+            end
+        end
+        local blocknor = {}
+        for i, v in a.GetLocal().BlocksByPart do
+            if #blocknor < 100 and v.Pos.Y > -50 then
+                table.insert(blocknor, v)
+            end
+        end
+        if #blocks > 0 then
+            teleported = true
+        end
+        cnt = 0
+        -- Sort blocks by Y-coordinate in descending order
+        table.sort(blocks, function(b1, b2)
+            return b1.Pos.Y > b2.Pos.Y
+        end)
+        table.sort(blocknor, function(b1, b2)
+            return b1.Pos.Y > b2.Pos.Y
+        end)
+        for _, v in ipairs(blocks) do
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
             local args = {
-                [1] = "__Zone_5"
+                [1] = v.Pos,
+                [2] = 0,
+
             }
 
-            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild(
-                "Teleports_RequestInstanceTeleport")
-                :InvokeServer(unpack(args))
+            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("BlockWorlds_Target")
+                :FireServer(
+                    unpack(args))
+            local args = {
+                [1] = Ray.new(Vector3.new(v.CFrame.Position),
+                    Vector3.new(v.CFrame.Position)),
+                [2] = Vector3.new(v.CFrame.Position)
+            }
 
-            local blocks = {}
-            for i, v in a.GetLocal().BlocksByPart do
-                if string.find(v.Dir.DisplayName, "Ore") then
-                    table.insert(blocks, v)
-                end
-            end
-            if #blocks > 0 then
-                teleported = true
-            end
-            -- Sort blocks by Y-coordinate in descending order
-            table.sort(blocks, function(b1, b2)
-                return b1.Pos.Y > b2.Pos.Y
-            end)
+            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Click"):FireServer(unpack(
+                args))
 
-            for _, v in ipairs(blocks) do
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
-                local args = {
-                    [1] = v.Pos,
-                    [2] = 0,
+            local args = {
+                [1] = v.Pos,
+                [2] = 0
+            }
 
-                }
-
-                game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("BlockWorlds_Target")
-                    :FireServer(
-                        unpack(args))
-                local args = {
-                    [1] = Ray.new(Vector3.new(v.CFrame.Position),
-                        Vector3.new(v.CFrame.Position)),
-                    [2] = Vector3.new(v.CFrame.Position)
-                }
-
-                game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Click"):FireServer(unpack(
-                    args))
-
-                local args = {
-                    [1] = v.Pos,
-                    [2] = 0
-                }
-
-                game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("BlockWorlds_Break")
-                    :FireServer(
-                        unpack(args))
-            end
-
-            task.wait(1)
-        end)
+            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("BlockWorlds_Break")
+                :FireServer(
+                    unpack(args))
+            cnt = cnt + 1;
+            wait(0.5)
+        end
+        print("Done")
+        task.wait(3)
+        table.clear(blocks)
     end
 end)
