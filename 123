@@ -2,8 +2,8 @@ setfpscap(5)
 task.wait(10)
 getgenv().data = {
     ["FPS"] = 5,
-    ["Black Screen"] = false,
-    ["Disable Gui"] = false,
+    ["Black Screen"] = true,
+    ["Disable Gui"] = true,
 }
 repeat wait() until game:IsLoaded()
 local VirtualUser = game:service 'VirtualUser'
@@ -207,7 +207,16 @@ spawn(function()
     --         v.Transparency = 1
     --     end)
     -- end)
-
+    -- spawn(function()
+    --     while wait() do
+    --         for i, v in workspace.__THINGS.BlockWorlds.Blocks_5:GetChildren() do
+    --             if v:GetAttribute("id") == "Gold" then
+    --                 v.Transparency = 1
+    --                 -- v:Destroy()
+    --             end
+    --         end
+    --     end
+    -- end)
     workspace.ClientAnimatorThrottling = Enum.ClientAnimatorThrottlingMode.Enabled
     workspace.InterpolationThrottling = Enum.InterpolationThrottlingMode.Enabled
     settings():GetService("RenderSettings").EagerBulkExecution = false
@@ -306,71 +315,62 @@ spawn(function()
     end)
 end)
 local ismap = false
-local cnt = 0
-local blocks = {}
-
 pcall(function()
     while wait() do
-        -- local args = {
-        --     [1] = "__Zone_4"
-        -- }
+        pcall(function()
+            local args = {
+                [1] = "__Zone_5"
+            }
 
-        -- game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild(
-        --     "Teleports_RequestInstanceTeleport")
-        --     :InvokeServer(unpack(args))
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(15305.537109375, 16.256933212280273,
-            -13334.75390625)
-        task.wait(1)
-        for _, v in pairs(a.GetLocal().BlocksByPart) do
-            if v.Pos then
+            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild(
+                "Teleports_RequestInstanceTeleport")
+                :InvokeServer(unpack(args))
+
+            local blocks = {}
+            for i, v in a.GetLocal().BlocksByPart do
+                if string.find(v.Dir.DisplayName, "Ore") then
+                    table.insert(blocks, v)
+                end
+            end
+            if #blocks > 0 then
                 teleported = true
             end
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
-            local args = {
-                [1] = v.Pos --[[Generation Failure]],
-                [2] = 0,
-                [3] = {
-                    ["Caller"] = {
-                        ["LineNumber"] = 431,
-                        ["ScriptClass"] = "ModuleScript",
-                        ["Variadic"] = false,
-                        ["Traceback"] =
-                            "ReplicatedStorage.Library.Client.MiningCmds.BlockWorldClient:431 function LocalSetTarget\nReplicated" ..
-                            "Storage.Library.Client.MiningCmds.MiningFrontend:202\nReplicatedStorage.Librar" ..
-                            "y.Functions.Debounce:26\nReplicatedStorage.Library.Client.MiningCmds.MiningFro" ..
-                            "ntend:201\nReplicatedStorage.Library.Functions.RenderStepped:112 function _Ste" ..
-                            "p\nReplicatedStorage.Library.Functions.RenderStepped:170",
-                        ["ScriptPath"] = "ReplicatedStorage.Library.Client.MiningCmds.BlockWorldClient",
-                        ["FunctionName"] = "LocalSetTarget",
-                        ["Handle"] = "function: 0xfb5fce0a34e64f16",
-                        ["ScriptType"] = "Instance",
-                        ["ParameterCount"] = 2,
-                        ["SourceIdentifier"] = "ReplicatedStorage.Library.Client.MiningCmds.BlockWorldClient"
-                    }
+            -- Sort blocks by Y-coordinate in descending order
+            table.sort(blocks, function(b1, b2)
+                return b1.Pos.Y > b2.Pos.Y
+            end)
+
+            for _, v in ipairs(blocks) do
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+                local args = {
+                    [1] = v.Pos,
+                    [2] = 0,
+
                 }
-            }
 
-            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("BlockWorlds_Target"):FireServer(
-                unpack(args))
+                game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("BlockWorlds_Target")
+                    :FireServer(
+                        unpack(args))
+                local args = {
+                    [1] = Ray.new(Vector3.new(v.CFrame.Position),
+                        Vector3.new(v.CFrame.Position)),
+                    [2] = Vector3.new(v.CFrame.Position)
+                }
 
-            local args = {
-                [1] = Ray.new(Vector3.new(v.CFrame.Position),
-                    Vector3.new(v.CFrame.Position)),
-                [2] = Vector3.new(v.CFrame.Position)
-            }
+                game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Click"):FireServer(unpack(
+                    args))
 
-            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Click"):FireServer(unpack(
-                args))
+                local args = {
+                    [1] = v.Pos,
+                    [2] = 0
+                }
 
-            local args = {
-                [1] = v.Pos,
-                [2] = 0
-            }
+                game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("BlockWorlds_Break")
+                    :FireServer(
+                        unpack(args))
+            end
 
-            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("BlockWorlds_Break")
-                :FireServer(
-                    unpack(args))
-            task.wait(0.5)
-        end
+            task.wait(1)
+        end)
     end
 end)
