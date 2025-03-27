@@ -13,7 +13,7 @@ getgenv().data = {
         ["Crystal Key"] = 50,
         ["Secret Key"] = 50,
     },
-    ["Gem"] = "5m",
+    ["Gem"] = "10m",
     ["Gem Hold"] = "500k",
     ["Minutes"] = 5,
     ["Url Webhook"] =
