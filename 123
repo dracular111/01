@@ -1,7 +1,6 @@
-setfpscap(5)
-task.wait(10)
+
 getgenv().data = {
-    ["FPS"] = 5,
+    ["FPS"] = 10,
     ["Black Screen"] = true,
     ["Disable Gui"] = true,
 }
