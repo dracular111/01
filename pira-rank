@@ -1,0 +1,21 @@
+setfpscap(5)
+getgenv().Config = {
+    ["EquipEnchants"] = {},
+    ["KickWhenReachGoal"] = {
+        ["Rank"] = 99,
+        ["Rebirth"] = 99,
+        ["Area"] = 299
+    },
+    ["StopAt"] = {
+        ["Rank"] = 99, 
+        ["Area"] = 299
+    },
+    
+    ["AutoOpen"] = false,
+    ["AutoBalloon"] = true, -- WANT A BAN? REPORT A BUG IN THIS SCRIPT.
+
+    ["FPSBooster"] = true, -- REPORT NO SCRIPT BUGS.
+    ["UltraFPS"] = true, -- I WILL BAN YOU IF YOU REPORT ANY SCRIPT BUGS.
+    ["Webhook"] = "https://discord.com/api/webhooks/1346307965107310674/e10ndRIgPnKgiWR7s0z8_PP6ydmX0tc-M-cQ7sHuor_rYlGckPSVCyC72HSvT0P7KWnN", -- DO NOT REPORT ANY SCRIPT BUGS. WE KNOW ITS BUGGED.
+}
+loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/177d65e916988f4b84dd21ed33a2aa91.lua"))()
