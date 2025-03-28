@@ -1,8 +1,6 @@
-setfpscap(3)
-task.wait(10)
 getgenv().data = {
-    ["FPS"] = 3,
-    ["Black Screen"] = true,
+    ["FPS"] = 5,
+    ["Black Screen"] = false,
     ["Disable Gui"] = false,
 }
 repeat wait() until game:IsLoaded()
@@ -37,6 +35,23 @@ spawn(function()
                                 unpack(
                                     args))
                     end
+                end
+            end)
+        end
+    end)
+end)
+pcall(function()
+    spawn(function()
+        while wait() do
+            pcall(function()
+                for i, v in save.Get().Inventory.Consumable do
+                    local args = {
+                        [1] = i,
+                        [2] = v._am or 1
+                    }
+
+                    game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Consumables_Consume")
+                        :InvokeServer(unpack(args))
                 end
             end)
         end
@@ -213,7 +228,17 @@ spawn(function()
     pcall(function()
         repeat wait() until teleported
 
-
+        pcall(function()
+            spawn(function()
+                while wait() do
+                    pcall(function()
+                        for i, v in workspace.__THINGS.BlockWorlds.Blocks_5:GetDescendants() do
+                            v.Transparency = 1
+                        end
+                    end)
+                end
+            end)
+        end)
         workspace.ClientAnimatorThrottling = Enum.ClientAnimatorThrottlingMode.Enabled
         workspace.InterpolationThrottling = Enum.InterpolationThrottlingMode.Enabled
         settings():GetService("RenderSettings").EagerBulkExecution = false
@@ -318,6 +343,9 @@ local blocks = {}
 pcall(function()
     while wait() do
         pcall(function()
+            local cnt = 0
+
+
             -- local args = {
             --     [1] = "__Zone_4"
             -- }
@@ -325,9 +353,17 @@ pcall(function()
             -- game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild(
             --     "Teleports_RequestInstanceTeleport")
             --     :InvokeServer(unpack(args))
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(15305.537109375, 16.256933212280273,
-                -13334.75390625)
+            local v_u_12 = require(game.ReplicatedStorage.Library.Client.Network)
+
+            local v_u_15 = require(game.ReplicatedStorage.Library.Client.AutoMineCmds)
+            v_u_15.Disable()
+            v_u_12.Fire("AutoMine_Disable")
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(11962.814453125, 16.268951416015625,
+                -3989.33837890625)
             task.wait(1)
+
+            v_u_15.Enable()
+            v_u_12.Fire("AutoMine_Enable")
             for _, v in pairs(a.GetLocal().BlocksByPart) do
                 if v.Pos then
                     teleported = true
@@ -378,8 +414,11 @@ pcall(function()
                 game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("BlockWorlds_Break")
                     :FireServer(
                         unpack(args))
-                task.wait(0.5)
+                cnt = cnt + 1;
+                if (cnt >= 2000) then break end
             end
         end)
+
+        task.wait(10)
     end
 end)
