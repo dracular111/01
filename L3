@@ -1,4 +1,4 @@
-setfpscap(5)
+setfpscap(15)
 getgenv().ps99Config = {
     RAINBOW_ORE_AMOUNT = 10,
     DISCORD_ID = "xx",
