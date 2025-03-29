@@ -4,7 +4,7 @@ task.wait(10)
 _G.GDO_MINING_EVENT = true
 _G.GEVENT_FPS  = 10
 _G.GMINING_EVENT_MAX_AUTO_CRAFT_RECIPE = 4
-_G.GBUY_DIAMOND_PICKAXE = true
+_G.GBUY_DIAMOND_PICKAXE = false
 _G.GEVENT_UPGRADES = {
     "MiningEventLessPetsRequiredToComboThem",
 }
