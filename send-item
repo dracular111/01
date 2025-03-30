@@ -1,8 +1,8 @@
 getgenv().data = {
     ["Account Send Mail"] = { "congahpz002", "congahpz003", "congahpz004", "congahpz005" },
     ["Item"] = {
-        ["Sapphire Gem"] = 9000,
-        ["Ruby Gem"] = 8000,
+        ["Sapphire Gem"] = 99000,
+        ["Ruby Gem"] = 55000,
         ["Emerald Gem"] = 2000,
         ["Amethyst Gem"] = 1000,
         ["Rainbow Gem"] = 200,
