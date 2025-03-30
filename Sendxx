@@ -1,10 +1,10 @@
 getgenv().data = {
     ["Account Send Mail"] = {
- "handbser8681",
- "poetmcbe7063",
- "constcoo1666",
- "debuglim8343",
- "rehirboh4571"
+"handbser8681",
+"poetmcbe7063",
+"constcoo1666",
+"debuglim8343",
+"rehirboh4571"
 },
     ["Item"] = {
         ["Rainbow Gem Mole"] = 15
