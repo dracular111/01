@@ -1,9 +1,11 @@
 getgenv().data = {
     ["Account Send Mail"] = { "congahpz002", "congahpz003" },
     ["Item"] = {
-        ["Emerald Gem"] = 1000,
-        ["Amethyst Gem"] = 500,
-        ["Rainbow Gem"] = 100,
+        ["Sapphire Gem"] = 9000,
+        ["Ruby Gem"] = 8000,
+        ["Emerald Gem"] = 2000,
+        ["Amethyst Gem"] = 1000,
+        ["Rainbow Gem"] = 200,
         ["Mining Coins Booster"] = 10000,
         ["Mining Damage Booster"] = 10000,
         ["Mining Speed Booster"] = 10000,
