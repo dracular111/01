@@ -10,7 +10,7 @@ getgenv().data = {
         ["Rainbow Gem Mole"] = 15
     },
     ["Url Webhook"] =
-    "https://discord.com/api/webhooks/1012957509369200681/C0z9Fuu7o2z5A89BHgOq3weekfGMfjw48sn0OacSOkGAFWtgtZaap5x5EladuoezDJME"
+    "https://discord.com/api/webhooks/1355947253038186636/AjQIqrYEDv-3djv04u9OHHWbJFgWIWfobKXjpehhAFQByz2EB6y2QBq9PWAjbGvSBk50"
 }
 repeat wait() until game:IsLoaded()
 local VirtualUser = game:service 'VirtualUser'
