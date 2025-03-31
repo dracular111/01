@@ -1,2 +1,3 @@
 loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Del-CoreGui"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Optimal"))()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/GS-Rank"))()
