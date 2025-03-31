@@ -1,4 +1,4 @@
-getgenv().Pickaxe = { "Ruby Pickaxe", "Sapphire Pickaxe", "Emerald Pickaxe" }
+getgenv().Pickaxe = { "Ruby Pickaxe" }
 getgenv().Enchant = "Diamond Farmer"
 getgenv().EnchantLevel = 5
 getgenv().url = ""
