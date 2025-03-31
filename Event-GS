@@ -1,6 +1,6 @@
 setfpscap(10)
 script_key = "RpvdgcJvlMHaoMeeFDyqmdBvHdqHRPJX";
-task.wait(10)
+task.wait(60)
 _G.GDO_MINING_EVENT = true
 _G.GMINING_EVENT_ZONE_TO = 5
 _G.GEVENT_FPS  = 10
