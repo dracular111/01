@@ -1,4 +1,4 @@
-getgenv().Pickaxe = "Sapphire Pickaxe"
+getgenv().Pickaxe = { "Ruby Pickaxe", "Sapphire Pickaxe", "Emerald Pickaxe" }
 getgenv().Enchant = "Diamond Farmer"
 getgenv().EnchantLevel = 5
 getgenv().url = ""
@@ -24,7 +24,7 @@ local function Log()
 end
 function getenchant()
     for i, v in v_u_9.Get().Inventory.Pickaxe do
-        if v.id == getgenv().Pickaxe then
+        if table.find(getgenv().Pickaxe, v.id) then
             if v.ch then
                 pcall(function()
                     for i, v in v._uq.ch do
@@ -40,7 +40,7 @@ end
 
 function GetId()
     for i, v in v_u_9.Get().Inventory.Pickaxe do
-        if v.id == getgenv().Pickaxe then
+        if table.find(getgenv().Pickaxe, v.id) then
             return i
         end
     end
