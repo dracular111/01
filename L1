@@ -1,3 +1,4 @@
+setfpscap(10)
 getgenv().Config = {
     ["AreaToFarm"] = 5 -- Farms this area after ruby pickaxe is unlocked
 }
