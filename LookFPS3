@@ -1,0 +1,80 @@
+-- Kiểm tra biến toàn cục để xác định script đã chạy hay chưa
+if _G.LOOKFPSX then
+    warn("Script đã được chạy trước đó!")
+    return -- Dừng script nếu đã chạy
+end
+
+-- Đánh dấu script đã được chạy
+_G.LOOKFPSX = true
+_G.LOOKFPS_STOP = false  -- Biến để dừng script an toàn
+
+spawn(function()
+    -- Cấu hình FPS có thể thay đổi dễ dàng
+    _G.fpsSettings = {
+        default = 10,  -- FPS mặc định khi bắt đầu
+        allowedFps = {10},  -- Các mức FPS hợp lệ
+        timeMarks = {18000, 36000},  -- Mốc thời gian (5 giờ, 10 giờ)
+        fpsLevels = {10, 10}  -- Mức FPS tương ứng với từng mốc thời gian
+    }
+
+    -- Biến để thay đổi FPS ngay lập tức
+    _G.overrideFps = 10
+
+    -- Chờ script1 hoàn thành
+    while not _G.script1Done do
+        if _G.LOOKFPS_STOP then
+            print("Dừng script: Đang thoát vòng lặp chờ...")
+            _G.LOOKFPS5 = nil
+            return
+        end
+        print("Script 1 chưa hoàn thành, đang chờ...")
+        task.wait(1)
+    end
+
+    -- Đặt FPS ban đầu
+    setfpscap(_G.fpsSettings.default)
+    print("Đã set fpscap thành", _G.fpsSettings.default)
+
+    local startTime = tick()
+    local nextMark = 1
+
+    -- Vòng lặp kiểm tra FPS liên tục
+    while true do
+        -- Kiểm tra nếu có yêu cầu dừng script
+        if _G.LOOKFPS_STOP then
+            print("Script đang dừng lại...")
+            _G.LOOKFPS5 = nil
+            return
+        end
+
+        task.wait()  -- Kiểm tra FPS mỗi giây
+        local elapsedTime = tick() - startTime
+        local currentFpsCap = getfpscap()
+
+        -- Kiểm tra nếu có yêu cầu thay đổi FPS ngay lập tức
+        if _G.overrideFps then
+            setfpscap(_G.overrideFps)
+            print("FPS đã được thay đổi thủ công thành", _G.overrideFps)
+            _G.overrideFps = nil  -- Reset sau khi thay đổi
+        end
+
+        -- Nếu FPS không nằm trong danh sách hợp lệ, đặt lại FPS phù hợp
+        if not table.find(_G.fpsSettings.allowedFps, currentFpsCap) then
+            local newCap = _G.fpsSettings.default
+            for i, time in ipairs(_G.fpsSettings.timeMarks) do
+                if elapsedTime >= time then
+                    newCap = _G.fpsSettings.fpsLevels[i]
+                end
+            end
+            setfpscap(newCap)
+            print("FPS bị thay đổi ngoài mức hợp lệ, đã đặt lại thành", newCap)
+        end
+
+        -- Kiểm tra nếu đã đến mốc thời gian tiếp theo
+        if nextMark <= #_G.fpsSettings.timeMarks and elapsedTime >= _G.fpsSettings.timeMarks[nextMark] then
+            setfpscap(_G.fpsSettings.fpsLevels[nextMark])
+            print(string.format("Đã set fpscap xuống %d sau %d giờ!", _G.fpsSettings.fpsLevels[nextMark], _G.fpsSettings.timeMarks[nextMark] / 3600))
+            nextMark = nextMark + 1
+        end
+    end
+end)
