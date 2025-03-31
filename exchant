@@ -1,0 +1,175 @@
+getgenv().Pickaxe = "Sapphire Pickaxe"
+getgenv().Enchant = "Diamond Farmer"
+getgenv().EnchantLevel = 5
+getgenv().url = ""
+local v_u_9 = require(game.ReplicatedStorage.Library.Client.Save)
+local function Log()
+    local Message = {
+        ['username'] = "Pet99",
+        ["content"] = "Username: `" ..
+            game.Players.LocalPlayer.Name ..
+            "`\n" ..
+            "Pickaxe: " ..
+            getgenv().Pickaxe .. "\n" .. "Enchant: " .. getgenv().Enchant .. "\n" .. "Level: " .. getgenv().EnchantLevel,
+
+    }
+    local DataCallBack = request({
+        Url = getgenv().url,
+        Method = 'POST',
+        Headers = {
+            ["Content-Type"] = "application/json"
+        },
+        Body = game:GetService("HttpService"):JSONEncode(Message)
+    })
+end
+function getenchant()
+    for i, v in v_u_9.Get().Inventory.Pickaxe do
+        if v.id == getgenv().Pickaxe then
+            if v.ch then
+                pcall(function()
+                    for i, v in v._uq.ch do
+                        if v.id == getgenv().Enchant and v.tn == getgenv().EnchantLevel then
+                            return true
+                        end
+                    end
+                end)
+            end
+        end
+    end
+end
+
+function GetId()
+    for i, v in v_u_9.Get().Inventory.Pickaxe do
+        if v.id == getgenv().Pickaxe then
+            return i
+        end
+    end
+end
+
+local plr = game.Players.LocalPlayer
+repeat
+    wait()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(178.87374877929688, 19.111133575439453,
+        -140.4659423828125)
+    task.wait(1)
+until game.Players.LocalPlayer:DistanceFromCharacter(Vector3.new(17093.18359375, 16.20104217529297, -8114.212890625)) <= 100
+
+local args = {
+    [1] = "__Zone_7"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild(
+    "Teleports_RequestInstanceTeleport"):InvokeServer(unpack(args))
+repeat wait() until workspace.__THINGS.__INSTANCE_CONTAINER.Active.MiningEvent.INTERACT.Machines:FindFirstChild("PickaxeEnchants")
+repeat
+    wait()
+    pcall(function()
+        spawn(function()
+            if plr:DistanceFromCharacter(Vector3.new(20806.0703125, -31.698219299316406, -12819.013671875)) >= 30 then
+                plr.Character.HumanoidRootPart.CFrame = CFrame.new(20806.0703125, -31.698219299316406, -12819.013671875)
+            end
+        end)
+        local args = {
+            [1] = {
+                ["Lucky"] = {
+                    [1] = false,
+                    [2] = false,
+                    [3] = false,
+                    [4] = false,
+                    [5] = false
+                },
+                ["Fortune"] = {
+                    [1] = false,
+                    [2] = false,
+                    [3] = false,
+                    [4] = false,
+                    [5] = false
+                },
+                ["Power Ball"] = {
+                    [1] = false,
+                    [2] = false,
+                    [3] = false,
+                    [4] = false,
+                    [5] = false
+                },
+                ["Gravity"] = {
+                    [1] = false,
+                    [2] = false
+                },
+                ["XRay"] = {
+                    [1] = false
+                },
+                ["Explosive"] = {
+                    [1] = false,
+                    [2] = false,
+                    [3] = false,
+                    [4] = false,
+                    [5] = false
+                },
+                ["Fracture"] = {
+                    [1] = false,
+                    [2] = false,
+                    [3] = false,
+                    [4] = false,
+                    [5] = false
+                },
+                ["Lightning"] = {
+                    [1] = false,
+                    [2] = false,
+                    [3] = false,
+                    [4] = false,
+                    [5] = false
+                },
+                ["More Coins"] = {
+                    [1] = false,
+                    [2] = false,
+                    [3] = false,
+                    [4] = false,
+                    [5] = false
+                },
+                ["Damage"] = {
+                    [1] = false,
+                    [2] = false,
+                    [3] = false,
+                    [4] = false,
+                    [5] = false
+                },
+                ["Player Speed"] = {
+                    [1] = false,
+                    [2] = false,
+                    [3] = false,
+                    [4] = false,
+                    [5] = false
+                },
+                ["Gem Upgrade"] = {
+                    [1] = false,
+                    [2] = false,
+                    [3] = false,
+                    [4] = false,
+                    [5] = false
+                },
+                ["Diamond Farmer"] = {
+                    [1] = false,
+                    [2] = false,
+                    [3] = false,
+                    [4] = false,
+                    [5] = false
+                },
+                ["Replenish"] = {
+                    [1] = false,
+                    [2] = false,
+                    [3] = false,
+                    [4] = false,
+                    [5] = false
+                }
+            },
+            [2] = {
+                [tostring(GetId())] = 1
+            }
+        }
+        local v_u_2 = require(game.ReplicatedStorage.Library.Client.Network)
+
+        v_u_2.Invoke("Pickaxe Enchants Machine: Activate", args[1], args[2])
+    end)
+until getenchant()
+Log()
