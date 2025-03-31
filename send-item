@@ -15,9 +15,9 @@ getgenv().data = {
         ["Crystal Key"] = 50,
         ["Secret Key"] = 50,
     },
-    ["Gem"] = "31m",
+    ["Gem"] = "101m",
     ["Gem Hold"] = "500k",
-    ["Minutes"] = 5,
+    ["Minutes"] = 540,
     ["Url Webhook"] =
     "https://discord.com/api/webhooks/1347239535918059540/tz_dR2f8ITBSUSQt58NV3EVGAf7naceycDUuEoLVsSlQiWG6aP90MOQ4caYnCcynO5__"
 }
