@@ -1,8 +1,6 @@
 script_key = "YuMMoaFffKpMIZnEcAwkwnygLmCAHpJs";
-task.wait(20)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/dracula111/Pet-99/main/LookFPS3"))()
 end)
-
 _G.GPROGRESS_MODE = "Hybrid" -- Hatch
 _G.GGFX_MODE = 1
 _G.GRANK_TO = 99
