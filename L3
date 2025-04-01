@@ -1,16 +1,5 @@
 setfpscap(10)
 getgenv().Config = {
-    ["Farming"] = {
-        ["AreaToFarm"] = 5,
-        ["StartAtBottom"] = true,
-        ["AutoCraft"] = false, -- Autocraft Onyx Gems // After max cheaper upgrade is bought
-    },
-    ["Pickaxe"] = {
-        ["AutoEnchant"] = true, -- Enchants ur best Pickaxe
-        ["GetAllEnchants"] = false,
-        ["PickaxeEnchants"] = {
-            ["Diamond Farmer"] = 5, -- This will stop at Diamond Farmer 5
-        },
-    }
+    ["AreaToFarm"] = 5 -- Farms this area after ruby pickaxe is unlocked
 }
 loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/8b810254a48d29099a962e99b2291c45.lua"))()
