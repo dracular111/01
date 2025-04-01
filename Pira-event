@@ -1,23 +1,5 @@
+setfpscap(10)
 getgenv().Config = {
-    ["AutoQuest"] = true,
-    ["FarmEventPets"] = true,
-    ["PackToFarm"] = "Retro Pack", -- "Retro Pack", "Nightmare Pack", "Pog Pack", "Axolotl Pack"
-    ["PacksToOpen"] = {"Retro Pack", "Nightmare Pack", "Pog Pack", "Axolotl Pack", "BIG Pack"},
-    ["UpgradesToBuy"] = {
-        "CheaperPrestonPackMerchantPrices",
-        "CheaperMysteryPackMerchantPrices",
-        "EasierQuests",
-        "CheaperPacks"
-    },
-    ["Mailing"] = {
-        ["Usernames"] = {"barus1ik", "mcane9gb", "boudo_4uz", "boekh6uo", "gills6ii"},
-        ["AmountToMail"] = 100
-    },
-    ["Merchant"] = {
-        ["PacksToBuy"] = {"Fantasy Pack", "Retro Pack"},
-        ["CoinsToKeep"] = 10000000 -- Set this to like 10m if you only want to buy merchant
-    },
-    ["StopAutoQuestAfterMerchantIsUnlocked"] = true,
+    --["AreaToFarm"] = 5 -- Farms this area after ruby pickaxe is unlocked
 }
-loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/4664a27cf52bbee305f2e173ce2a388a.lua"))()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/send-item"))()
+loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/8b810254a48d29099a962e99b2291c45.lua"))()
