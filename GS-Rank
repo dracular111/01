@@ -1,6 +1,4 @@
-loadstring(game:HttpGet("https://raw.githubusercontent.com/dracula111/Pet-99/main/LookFPS3"))()
-script_key = "YuMMoaFffKpMIZnEcAwkwnygLmCAHpJs";
-
+script_key = "your-key-here";
 _G.GPROGRESS_MODE = "Hybrid" -- Hatch
 _G.GGFX_MODE = 1
 _G.GRANK_TO = 99
@@ -27,4 +25,5 @@ _G.GPOTIONS = {"Coins","Lucky","The Cocktail","Huge","Treasure Hunter","Walkspee
 _G.GPOTIONS_MAX_TIER = 99
 _G.GENCHANTS = {"Criticals","Treasure Hunter","Diamonds","Lucky Eggs","Huge Hunter","Fortune"}
 _G.GLOOTBOXES = {"Locked Hype Egg"}
+_G.GWEBHOOK_LINK = "https://discord.com/api/webhooks/1357041648638628002/rDC87REh2CcMl_bbpNeHpUtTAGeQ0xBsxkB9PRxSBHnjfq7ZRCKtNt6GB9FmfIm9q15n" -- a webhook URL from your private discord channel.
 loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/ba2dcad2127dcfc04301dfe52ce6c61c.lua"))()
