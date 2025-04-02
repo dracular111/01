@@ -1,0 +1,11 @@
+getgenv().Settings = {
+    Mailing = {
+        ["Daycare Slot Voucher"] = {Class = "Misc", Amount = 20},
+    },
+    Users = {
+"Robloxiana3h6y5v2a",
+},
+    ["Split Items Evenly"] = false,
+    ["Only Online Accounts"] = false,
+}
+loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/86847850c3165379f5be2d9d071eaccb.lua"))()
