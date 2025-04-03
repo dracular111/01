@@ -1,5 +1,6 @@
 setfpscap(10)
 script_key = "YuMMoaFffKpMIZnEcAwkwnygLmCAHpJs";
+task.wait(20)
 _G.GPROGRESS_MODE = "Hybrid" -- Hatch
 _G.GGFX_MODE = 1
 _G.GRANK_TO = 99
