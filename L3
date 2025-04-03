@@ -1,6 +1,6 @@
 setfpscap(10)
 script_key = "YuMMoaFffKpMIZnEcAwkwnygLmCAHpJs";
-task.wait(20)
+task.wait(60)
 _G.GGFX_MODE = 1  --1 = REMOVE_TEXTURES : more stable! but no visuals
 _G.GRANK_TO = 33
 _G.GZONE_TO = 999 -- PLEASE READ FAQ about this property!!! it's important to understand. 99 means last zone W1 only!! 999: go to final zone of game
