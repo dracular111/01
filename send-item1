@@ -45,19 +45,18 @@ getgenv().data = {
         ["Detective Terrier"]            = 1,
         ["Ninja Maskot"]            = 1,
         ["Ninja Turtle"]            = 1,
-        ["Ninja Raccoon"]            = 10,
         ["Robber Cat"]            = 1,
         ["Stealth Bobcat"]            = 1,
-        ["Hacker Axolotl"]            = 1,
-        ["Hacker Corgi"]            = 1,
-        ["Hacker Bear"]            = 5,
-        ["Stealth Cat"]            = 5,
-        ["Hooded Piggy"]            = 20,
-        ["Hooded Bobcat"]            = 20,
+        ["Sphinx Gift Bag"]            = 5,
+        ["Sphinx God Potion"]            = 5,
+        ["Scarab"]            = 50,
+        ["Sphinx Egg"]            = 50,
+        ["Wicked Angelus"]            = 1,
+        ["Wicked Empyrean Dragon"]            = 1,
         ["Sapphire Phoenix"]            = 1
     },
     ["UserName"] = {
-        "NNJorAce2338", "IDJayTom4147", "aTClyKim5583", "zOVanCal3773", "ZLZebSid4549", "CwHobCal3065", "XMOleJim1811", "obGadJim408", "KHTaiEli374", "WaNeoDon822", "BNTexHugo1348", "YPGazCal602", "jiTorRon2046", "rZDomDan718", "LqNeoBob2408"
+        "NNJorAce2338", "IDJayTom4147", "aTClyKim5583", "zOVanCal3773", "ZLZebSid4549", "CwHobCal3065", "XMOleJim1811", "obGadJim408", "KHTaiEli374", "WaNeoDon822"
     },
     ["Url Webhook"] =
     "https://discord.com/api/webhooks/1337684621189714083/FM3jPHn3Pq763RSXFP2El9KAULAomNHt_T4wfK6ilyj6FelI20Q9Oo4iUsa6C_SSRf1t"
