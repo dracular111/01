@@ -2,12 +2,12 @@ setfpscap(5)
 getgenv().Config = {
     ["EquipEnchants"] = {},
     ["KickWhenReachGoal"] = {
-        ["Rank"] = 99,
+        ["Rank"] = 33,
         ["Rebirth"] = 99,
         ["Area"] = 299
     },
     ["StopAt"] = {
-        ["Rank"] = 99, 
+        ["Rank"] = 33, 
         ["Area"] = 299
     },
     
