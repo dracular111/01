@@ -55,12 +55,12 @@ getgenv().Setting = {
         ["Hooded Bobcat"] = 0.85,
         ["Shimmering Octopus"] = 0.9,
         ["Abyssal Fish"] = 0.85,
-        ["Shadow Shark"] = 0.85,
-        ["Orca"] = 0.85,
-        ["Deep Sea Fishing Rod"] = 0.9,
-        ["Deep Sea Treasure Chest"] = 0.85,
-        ["Kraken Treasure Chest"] = 0.85,
-        ["Atlantean Gift"] = 0.9
+        ["Sphinx Gift Bag"] = 0.85,
+        ["Sphinx God Potion"] = 0.85,
+        ["Scarab"] = 0.8,
+        ["Sphinx Egg"] = 0.8,
+        ["Wicked Angelus"] = 0.8,
+        ["Wicked Empyrean Dragon"] = 0.8
     },
     ["Time to remove item booth"] = 5 -- Minutes
 }
