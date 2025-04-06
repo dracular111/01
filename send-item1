@@ -43,7 +43,7 @@ getgenv().data = {
         ["Sphinx God Potion"]            = 5,
         ["Scarab"]            = 300,
         ["Sphinx Egg"]            = 200,
-        ["Wicked Angelus"]            = 100,
+        ["Wicked Angelus"]            = 10,
         ["Wicked Empyrean Dragon"]            = 20,
         ["Sapphire Phoenix"]            = 1
     },
