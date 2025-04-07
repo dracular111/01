@@ -70,6 +70,7 @@ local function logdata(user, item, amount)
         Body = game:GetService("HttpService"):JSONEncode(Message)
     })
 end
+local v_u_23 = require(game.ReplicatedStorage.Library.Client.Network)
 
 -- function sendgem(iditem)
 --     local args = {
@@ -94,7 +95,7 @@ function senditem(name, iditem, type, amount, nameitem)
         [4] = iditem,
         [5] = amount or 1
     }
-    if (game:GetService("ReplicatedStorage").Network["Mailbox: Send"]:InvokeServer(unpack(args))) then
+    if (v_u_23.Invoke("Mailbox: Send", unpack(args))) then
         logdata(args[1], nameitem, args[5])
     end
 end
@@ -127,11 +128,8 @@ spawn(function()
                         [1] = i,
                         [2] = v._am or 1
                     }
-
-                    game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Lootbox: Open")
-                        :InvokeServer(
-                            unpack(
-                                args))
+                    v_u_23.Invoke("Lootbox: Open",
+                        unpack(args))
                 end
             end
         end
@@ -147,10 +145,8 @@ spawn(function()
                         [2] = v._am or 1
                     }
 
-                    game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Lootbox: Open")
-                        :InvokeServer(
-                            unpack(
-                                args))
+                    v_u_23.Invoke("Lootbox: Open",
+                        unpack(args))
                 end
             end
         end
@@ -198,7 +194,7 @@ function sendgem(iditem)
         [5] = game:GetService("Players").LocalPlayer.leaderstats["\240\159\146\142 Diamonds"].Value -
             getgemneed() - ParseNumberSmart(getgenv().data["Gem Hold"])
     }
-    if (game:GetService("ReplicatedStorage").Network["Mailbox: Send"]:InvokeServer(unpack(args))) then
+    if (v_u_23.Invoke("Mailbox: Send", unpack(args))) then
         print("Sent")
         logdata(args[1], "Diamonds", args[5])
     end
