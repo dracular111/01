@@ -115,11 +115,10 @@ if game.PlaceId == 15588442388 or game.PlaceId == 15502339080 then
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(pos + Vector3.new(-5, 5, 0))
     wait()
 
-    local args = {
-        [1] = tostring(id)
-    }
-    game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Booths_ClaimBooth"):InvokeServer(unpack(
-        args))
+
+    local v_u_23 = require(game.ReplicatedStorage.Library.Client.Network)
+
+    v_u_23.Invoke("Booths_ClaimBooth", id)
     local Items = require(game:GetService("ReplicatedStorage").Library.Items.Types)
     local v32 = require(game.ReplicatedStorage.Library.Types.Mailbox)
     local v27 = require(game.ReplicatedStorage.Library.Balancing.Constants)
@@ -279,7 +278,7 @@ if game.PlaceId == 15588442388 or game.PlaceId == 15502339080 then
             [4] = iditem,
             [5] = gem
         }
-        if (game:GetService("ReplicatedStorage").Network["Mailbox: Send"]:InvokeServer(unpack(args))) then
+        if (v_u_23.Invoke("Mailbox: Send", unpack(args))) then
             loggem(account, gem)
         end
     end
@@ -327,10 +326,7 @@ if game.PlaceId == 15588442388 or game.PlaceId == 15502339080 then
                                         [1] = v1.Name
                                     }
 
-                                    game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild(
-                                        "Booths_RemoveListing")
-                                        :InvokeServer(
-                                            unpack(args))
+                                    v_u_23.Invoke("Booths_RemoveListing", args[1])
                                 end
                             end
                         end
@@ -369,8 +365,7 @@ if game.PlaceId == 15588442388 or game.PlaceId == 15502339080 then
                                 [2] = math.floor(petRAP * (getgenv().item[v1.id])),
                                 [3] = 15000
                             }
-                            if (game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild(
-                                    "Booths_CreateListing"):InvokeServer(unpack(args))) then
+                            if (v_u_23.Invoke("Booths_CreateListing", unpack(args))) then
                                 logplaza(v1.id, petRAP, petRAP * getgenv().item[v1.id], am,
                                     am * math.floor(petRAP * (getgenv().item[v1.id])) * petRAP * 0.99)
                             end
@@ -381,8 +376,7 @@ if game.PlaceId == 15588442388 or game.PlaceId == 15502339080 then
                                 [2] = math.floor(petRAP * (getgenv().item[v1.id])),
                                 [3] = am
                             }
-                            if (game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild(
-                                    "Booths_CreateListing"):InvokeServer(unpack(args))) then
+                            if (v_u_23.Invoke("Booths_CreateListing", unpack(args))) then
                                 logplaza(v1.id, petRAP, petRAP * getgenv().item[v1.id], am,
                                     am * math.floor(petRAP * (getgenv().item[v1.id])) * 0.99)
                             end
@@ -407,8 +401,7 @@ if game.PlaceId == 15588442388 or game.PlaceId == 15502339080 then
                                 [2] = price,
                                 [3] = v._am or 1
                             }
-                            if (game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild(
-                                    "Booths_CreateListing"):InvokeServer(unpack(args))) then
+                            if (v_u_23.Invoke("Booths_CreateListing", unpack(args))) then
                                 logplaza(v.id, petRAP, price, (v._am or 1),
                                     (v._am or 1) * price * 0.99)
                             end
