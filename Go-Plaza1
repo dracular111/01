@@ -7,7 +7,7 @@ getgenv().Setting = {
     "https://discord.com/api/webhooks/1340304329101283388/rPUeyHOojfXcpLq3eMDQPS-9MNKnLay_NbYeWf-TAZY5SaBji6HegAJ2dGLsBLmcXDpG",
     ["Rap Pet Normal"] = 0.9,
     ["Skip Pet"] = { "" }, -- Nhap pet kh muon ban
-    ["Rap Huge"] = 0.6,
+    ["Rap Huge"] = 0.7,
     ["Rap Huge Normal"] = 0.88,
     ["Custom Item"] = {
         ["Master Thief Potion"] = 0.9,
