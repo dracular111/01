@@ -49,6 +49,7 @@ getgenv().Setting = {
         ["Stealth Bobcat"] = 0.85,
         ["Hacker Corgi"] = 0.85,
         ["Hacker Bear"] = 0.8,
+        ["Flex Fluffy Cat"] = 0.85,
         ["Stealth Cat"] = 0.85,
         ["Hooded Piggy"] = 0.85,
         ["Robber Cat"] = 0.85,
