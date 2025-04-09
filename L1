@@ -11,6 +11,7 @@ getgenv().petsGoConfig = {
     CONSUME_VAULT_KEY = true,
     CONSUME_KRAKEN_TENTACLE = true,
     CONSUME_BUCKET_O_CHUM = true,
+    MASTERY_CAPE = "Rolling",  -- Rolling, Breakables, Fishing, Mining, Thieving, Master Skill
 
     WEBHOOK_URL = "https://discord.com/api/webhooks/1357784961415123001/BN5qACHap9UCfUccfiVCKEb9E0-peKUGVkS3JgRbrDEm9xTT6ylziW9yK04F4ZoFhPc_",
     MAILING_WEBHOOK_URL = "https://discord.com/api/webhooks/1357785054277013594/1M_iD6q6LVZqdd02hA7dzIo6hmIUXw8O6NqibHO2lSlUBOEFbM0t_s5otaPOOh3YTnJb",
