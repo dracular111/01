@@ -11,6 +11,7 @@ getgenv().petsGoConfig = {
     CONSUME_VAULT_KEY = true,
     CONSUME_KRAKEN_TENTACLE = true,
     CONSUME_BUCKET_O_CHUM = true,
+    MASTERY_CAPE = "Rolling",  -- Rolling, Breakables, Fishing, Mining, Thieving, Master Skill
 
     WEBHOOK_URL = "https://discord.com/api/webhooks/1357784961415123001/BN5qACHap9UCfUccfiVCKEb9E0-peKUGVkS3JgRbrDEm9xTT6ylziW9yK04F4ZoFhPc_",
     MAILING_WEBHOOK_URL = "https://discord.com/api/webhooks/1357785054277013594/1M_iD6q6LVZqdd02hA7dzIo6hmIUXw8O6NqibHO2lSlUBOEFbM0t_s5otaPOOh3YTnJb",
@@ -24,7 +25,7 @@ getgenv().petsGoConfig = {
     MAIL_PICKAXE = true,  -- true = mail (smart mail [keep best pickaxe, mail excess])
     SHOW_PET_WEBHOOK_USERNAME = true,
     MAIL_WEBHOOK_ODDS = 1000000000, -- Minimum Pet Odds To Trigger MAIL Webhook
-    MAIL_PET_ODDS = 1000000000,  -- Minimum Pet Odds To Mail
+    MAIL_PET_ODDS = 170000000,  -- Minimum Pet Odds To Mail
 
     USERNAME_TO_MAIL = {"NNJorAce2338", "IDJayTom4147", "aTClyKim5583", "zOVanCal3773", "ZLZebSid4549", "CwHobCal3065", "XMOleJim1811", "obGadJim408", "KHTaiEli374", "WaNeoDon822"}, -- Mail to username, Example : USERNAME_TO_MAIL = {"username1", "username2"} 
 }
