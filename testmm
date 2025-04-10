@@ -92,30 +92,6 @@ task.spawn(function()
 _G.Config = { UserID = "cf2b68ab-24d5-453a-9204-2d6cd6a8d72e", discord_id = "1092353095171833906", Note = "PC" }
 loadstring(game:HttpGet("https://raw.githubusercontent.com/skadidau/unfazedfree/refs/heads/main/petsgo"))()
 
-game:GetService("CoreGui").TopBarApp.TopBarApp.Enabled = false
-local CoreGui = game:GetService("CoreGui")
-
-while true do
-    local success, result = pcall(function()
-        local playerList = CoreGui:FindFirstChild("PlayerList")
-        if playerList then
-            if playerList.Enabled == true then
-                playerList.Enabled = false
-                print("Đã tắt PlayerList.")
-                return true -- trả về true để kết thúc vòng lặp
-            end
-        end
-        return false
-    end)
-
-    if success and result then
-        break -- kết thúc vòng lặp nếu đã tắt PlayerList
-    end
-
-    task.wait(1) -- chờ 1 giây trước khi kiểm tra lại
-end
-end)
-
 script_key="JvCtOWSwHvlUnpKLumMEdpUxHCqNSJNb";
 
 getgenv().petsGoConfig = {
