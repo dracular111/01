@@ -237,7 +237,6 @@ end
 end)
 
 script_key="MFRxQPZCmOGBvMZhmVcNJTaWvzJJetGk";
-setfpscap(5)
 
 getgenv().petsGoConfig = {
     AUTO_RESTART = true,
