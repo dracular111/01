@@ -232,7 +232,7 @@ task.spawn(function()
 while true do
     clickMouse()
     pressRandomKey()
-    task.wait(math.random(10,15))
+    task.wait(math.random(8,15))
 end
 end)
 
@@ -266,5 +266,8 @@ getgenv().petsGoConfig = {
 
     USERNAME_TO_MAIL = {"NNJorAce2338", "IDJayTom4147", "aTClyKim5583", "zOVanCal3773", "ZLZebSid4549", "CwHobCal3065", "XMOleJim1811", "obGadJim408", "KHTaiEli374", "WaNeoDon822"}, -- Mail to username, Example : USERNAME_TO_MAIL = {"username1", "username2"} 
 }
+
+daubuoi = true
+
 
 loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/cd1c29852c6641789162a7b0a4c97428.lua"))()
