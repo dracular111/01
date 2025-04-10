@@ -232,7 +232,7 @@ task.spawn(function()
 while true do
     clickMouse()
     pressRandomKey()
-    task.wait(math.random(8,15))
+    task.wait(math.random(10,15))
 end
 end)
 
