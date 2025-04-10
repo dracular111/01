@@ -14,7 +14,7 @@ getgenv().petsGoConfig = {
     
     -- Pets
     SELL_100M_PET = false, SELL_PERCENTAGE_100M = 0.7,
-    SELL_500M_PET = false, SELL_PERCENTAGE_500M = 0.7,
+    SELL_500M_PET = false, SELL_PERCENTAGE_500M = 0.75,
     SELL_SECRET = true, SELL_PERCENTAGE_SECRET = 0.9,
     SELL_HUGE = false, SELL_SHINY_HUGE = false, SELL_PERCENTAGE_HUGE = 0.9,
     
@@ -27,9 +27,9 @@ getgenv().petsGoConfig = {
     SELL_ENCHANT_SAFE = true, SELL_ENCHANT_SAFE_MIN = 5, SELL_ENCHANT_SAFE_PERCENTAGE = 0.85,
 
     -- Potions
-    SELL_POTION = true, SELL_POTION_MIN = 10, SELL_POTION_PERCENTAGE = 0.9,
-    SELL_GOD_POTION = true, SELL_GOD_POTION_PERCENTAGE = 0.9,
-    SELL_VALENTINES_GOD_POTION = true, SELL_GOD_POTION_PERCENTAGE = 0.9,
+    SELL_POTION = true, SELL_POTION_MIN = 10, SELL_POTION_PERCENTAGE = 0.85,
+    SELL_GOD_POTION = true, SELL_GOD_POTION_PERCENTAGE = 0.85,
+    SELL_VALENTINES_GOD_POTION = true, SELL_GOD_POTION_PERCENTAGE = 0.5,
 
     -- Eggs
     -- SELL_EGG_MIN : [Doesn't apply to Huge/Hype Egg (Default MIN 1)]
@@ -51,7 +51,7 @@ getgenv().petsGoConfig = {
     SELL_LOCKPICK = true, SELL_LOCKPICK_PERCENTAGE = 0.8,
 
     -- Event
-    SELL_CHARGE_TOKEN = true, SELL_CHARGE_TOKEN_MIN = 1, SELL_CHARGE_TOKEN_PERCENTAGE = 0.9,
+    SELL_CHARGE_TOKEN = true, SELL_CHARGE_TOKEN_MIN = 1, SELL_CHARGE_TOKEN_PERCENTAGE = 0.85,
 
     MAIL_GEMS_USERNAME = {""},  -- Empty = Disabled Gem Mail 1% fee
     MAIL_GEMS_MIN = 50000000,  -- Minimum gems required to send 
