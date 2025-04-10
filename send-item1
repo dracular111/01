@@ -7,7 +7,6 @@ getgenv().data = {
         ["Atlantean Gift"] = 1,
         ["Royal Gift"] = 1,
         --["Vault Key"] = 50,
-        ["Hacker Egg"] = 20,
         ["Royal Gift Bag"] = 1,
         ["Titanic Gift Bag"] = 1,
         ["Titanic Mining Chest"] = 1,
@@ -43,7 +42,7 @@ getgenv().data = {
         ["Sphinx God Potion"]            = 5,
         --["Scarab"]            = 300,
         --["Sphinx Egg"]            = 500,
-        ["Wicked Angelus"]            = 5,
+        ["Wicked Angelus"]            = 2,
         ["Wicked Empyrean Dragon"]            = 5,
         ["Sapphire Phoenix"]            = 1
     },
