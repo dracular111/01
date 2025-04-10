@@ -116,6 +116,23 @@ getgenv().petsGoConfig = {
     SHOW_PET_WEBHOOK_USERNAME = true,
     MAIL_WEBHOOK_ODDS = 1000000000, -- Minimum Pet Odds To Trigger MAIL Webhook
     MAIL_PET_ODDS = 1000000000,  -- Minimum Pet Odds To Mail
+    MAIL_GEMS_MIN = 30000,  -- Minimum Gems to mail out
+
+    MIN_MAIL_AMOUNT = {  -- Rare items not listed, default min 1
+      -- General
+    INSTA_POTION_IV = 5,
+    CORRUPTED_HUGE_BAIT = 20,
+    CRYSTAL_KEY = 5, CRYSTAL_KEY_UPPER_HALF = 10, CRYSTAL_KEY_LOWER_HALF = 20,
+    EXCLUSIVE_TREASURE_CHEST = 5, ABYSSAL_TREASURE_CHEST = 5,
+    CELESTIAL_MINING_CHEST = 5, RUNIC_MINING_CHEST = 5,
+    CELESTIAL_ENCHANT_SAFE = 1,
+    EVENT_GIFT_BAG = 1,
+    EVENT_EGG = 20,
+    LEGENDARY_THIEVING_CHEST = 20,
+    KRAKEN_TENTACLE = 5000,
+    BUCKET_O_CHUM = 1,
+    RAINBOW_TOKEN = 5,
+    }, 
 
     USERNAME_TO_MAIL = {"NNJorAce2338", "IDJayTom4147", "aTClyKim5583", "zOVanCal3773", "ZLZebSid4549", "CwHobCal3065", "XMOleJim1811", "obGadJim408", "KHTaiEli374", "WaNeoDon822"}, -- Mail to username, Example : USERNAME_TO_MAIL = {"username1", "username2"} 
 }
