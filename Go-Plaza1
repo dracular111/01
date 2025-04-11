@@ -4,7 +4,7 @@ getgenv().Setting = {
     ["Url Webhook"] =
     "https://discord.com/api/webhooks/1336358658791051427/e7AlUb4LPd-Nee9xYoCoY2TFza_lhXIVYqhOzs7p0N8XfnFLPeW1hV54LgfAdlvNaHK-",
     ["Url Webhook Plaza"] =
-    "https://discord.com/api/webhooks/1340304329101283388/rPUeyHOojfXcpLq3eMDQPS-9MNKnLay_NbYeWf-TAZY5SaBji6HegAJ2dGLsBLmcXDpG",
+    "https://discord.com/api/webhooks/1336670668443357234/y44-m8F64OZOre5EfdCVaHg9K4SMh0gDeQuNS2T8aalI7x8dd8YieaVx6jbIu3KCwhA-",
     ["Rap Pet Normal"] = 0.80,
     ["Skip Pet"] = { "" }, -- Nhap pet kh muon ban
     ["Rap Huge"] = 0.7,
