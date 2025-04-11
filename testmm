@@ -112,7 +112,6 @@ getgenv().petsGoConfig = {
     
     MAILING = true,  -- Auto mail
     MAIL_PICKAXE = true,  -- true = mail (smart mail [keep best pickaxe, mail excess])
-    MAIL_GEMS_MIN = 200000,  -- Minimum Gems to mail out
     SHOW_PET_WEBHOOK_USERNAME = true,
     MAIL_WEBHOOK_ODDS = 1000000000, -- Minimum Pet Odds To Trigger MAIL Webhook
     MAIL_PET_ODDS = 1000000000,  -- Minimum Pet Odds To Mail
