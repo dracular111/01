@@ -45,6 +45,11 @@ getgenv().Setting = {
         ["Sphinx God Potion"] = 0.85,
         ["Scarab"] = 0.8,
         ["Sphinx Egg"] = 0.8,
+        ["Phantom Wolf"] = 0.8,
+        ["Comet Shower Potion"] = 0.85,
+        ["Ultra Lucky Rain Potion"] = 0.85,
+        ["Anubis Potion"] = 0.85,
+        ["Evil Ram"] = 0.8,
         ["Wicked Angelus"] = 0.7,
         ["Wicked Empyrean Dragon"] = 0.7
     },
