@@ -13,8 +13,8 @@ getgenv().petsGoConfig = {
     AVOID_USERNAME = {""},  -- serverhop when it finds username
     
     -- Pets
-    SELL_100M_PET = true, SELL_PERCENTAGE_100M = 0.75,
-    SELL_500M_PET = true, SELL_PERCENTAGE_500M = 0.8,
+    SELL_100M_PET = false, SELL_PERCENTAGE_100M = 0.75,
+    SELL_500M_PET = false, SELL_PERCENTAGE_500M = 0.8,
     SELL_SECRET = true, SELL_PERCENTAGE_SECRET = 0.9,
     SELL_HUGE = false, SELL_SHINY_HUGE = false, SELL_PERCENTAGE_HUGE = 0.88,
     
