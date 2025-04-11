@@ -1,4 +1,3 @@
-task.wait(300)
 getgenv().Setting = {
     ["Account Send"] = { "WMZanCal5088", "FYOrrAlf6366", "EnErnRob2107", "MeRoyJoe2781", "JgHamVic4638" },
     ["Min Gem To Send"] = "100m",
