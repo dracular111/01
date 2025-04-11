@@ -96,10 +96,10 @@ getgenv().petsGoConfig = {
     CONSUME_CORRUPTED_HUGE_BAIT = false,
     CONSUME_ALL_MINING_CHEST = false,
     CONSUME_EVENT_EGG = true, -- Hype eggs not included
-    CONSUME_INSTA_LUCK_4 = false,
+    CONSUME_INSTA_LUCK_4 = true,
     CONSUME_VAULT_KEY = false,
     CONSUME_KRAKEN_TENTACLE = true,
-    CONSUME_BUCKET_O_CHUM = false,
+    CONSUME_BUCKET_O_CHUM = true,
     MASTERY_CAPE = "Rolling",  -- Rolling, Breakables, Fishing, Mining, Thieving, Master Skill
 
     WEBHOOK_URL = "https://discord.com/api/webhooks/1357773740909264946/uO-aU7YEMW8tN8-Fvlno-1b6GYe-A_qApTGqIJ_aJr6Klv1QUA-EFmKkESzOYAWJQ4ix",
