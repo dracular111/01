@@ -46,7 +46,7 @@ getgenv().petsGoConfig = {
 
     -- Tools
     SELL_FISHING_ROD = true, SELL_FISHING_ROD_PERCENTAGE = 0.8, 
-    SELL_PICKAXE = false, SELL_PICKAXE_PERCENTAGE = 0.8,
+    SELL_PICKAXE = true, SELL_PICKAXE_PERCENTAGE = 0.8,
     SELL_LOCKPICK = false, SELL_LOCKPICK_PERCENTAGE = 0.8,
 
     -- Event
