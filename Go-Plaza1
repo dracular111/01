@@ -52,6 +52,7 @@ getgenv().Setting = {
         ["Ultra Lucky Rain Potion"] = 0.8,
         ["Anubis Potion"] = 0.7,
         ["Evil Ram"] = 0.7,
+        ["Immortuus"] = 0.7,
         ["Wicked Angelus"] = 0.7,
         ["Wicked Empyrean Dragon"] = 0.7
     },
