@@ -54,7 +54,7 @@ getgenv().data = {
         ["Sapphire Phoenix"]            = 1
     },
     ["UserName"] = {
-        "NNJorAce2338", "IDJayTom4147", "aTClyKim5583", "zOVanCal3773", "ZLZebSid4549", "CwHobCal3065", "XMOleJim1811",
+        "NNJorAce2338", "IDJayTom4147", "aTClyKim5583", "LqNeoBob2408", "ZLZebSid4549", "CwHobCal3065", "XMOleJim1811",
         "obGadJim408", "KHTaiEli374", "WaNeoDon822"
     },
     ["Time Delay"] = 10, -- Second
