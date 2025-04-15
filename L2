@@ -87,7 +87,7 @@ function serverHop()
 	TeleportService:TeleportToPlaceInstance(placeId, newServer.id, player)
 end
 
-script_key="JvCtOWSwHvlUnpKLumMEdpUxHCqNSJNb";
+script_key="gRaLOecEGzrAamEflndvhnaklMuwUwNY";
 setfpscap(5)
 
 getgenv().petsGoConfig = {
