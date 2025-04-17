@@ -1,7 +1,7 @@
 
 getgenv().GDO_CONVEYOR_INSTANCE = true
 getgenv().GCONVEYOR_MAX_PETS_LEVEL = 141 --max 200
-getgenv().GCONVEYOR_MAX_PETS_TO_BUY = 2
+getgenv().GCONVEYOR_MAX_PETS_TO_BUY = 5
 getgenv().GMAX_BOOST_TIER = 2 -- choose 1 or 2 or 3 
 getgenv().GMAX_EGG_TIER = 15 -- or lower!
 getgenv().GCONVEYOR_RESET_UPGRADES = false
@@ -21,7 +21,7 @@ getgenv().GEVENT_UPGRADES = {
 "ConveyorMoreGiftBags",
 "ConveyorMoreSlimeTokens",
 }
-getgenv().GEVENT_FPS  = 5
+getgenv().GEVENT_FPS  = 10
 getgenv().GLOOTBOXES = {"Locked Hype Egg"}
 getgenv().GGFX_MODE = 1 -- or 2 to still see something
 getgenv().GZONE_TO = 99 -- to enter event from W3 intead put 999
