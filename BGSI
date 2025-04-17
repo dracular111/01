@@ -19,8 +19,22 @@ getgenv().Settings = {
             Targets = {"Aura Egg", "Nightmare Egg"},
             --// Targets = {} will automatically find the Top 3 BEST Rifts to hatch.
         },
-        ["Enchant Settings"] = {
-        EnchantPets = true,
+    },
+    
+    ["Debug"] = {
+        DisableUI = true,
+    },
+}
+loadstring(game:HttpGet("https://system-exodus.com/scripts/BGSI/OneClick.lua"))()
+
+
+--[[
+	Want to Enchant your Pets?
+	Add these EXTRA Config options anywhere inside Settings.
+	Do NOT include this text
+
+    ["Enchant Settings"] = {
+        EnchantPets = false,
         
         ["Require All Enchants"] = true,
         ["Enchants Needed"] = {
@@ -28,8 +42,4 @@ getgenv().Settings = {
         },
     },
 
-    ["Debug"] = {
-        DisableUI = true,
-    },
-}
-loadstring(game:HttpGet("https://system-exodus.com/scripts/BGSI/OneClick.lua"))()
+]]--
