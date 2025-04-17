@@ -26,4 +26,4 @@ _G.GPOTIONS_MAX_TIER = 99
 _G.GENCHANTS = {"Criticals","Treasure Hunter","Diamonds","Lucky Eggs","Huge Hunter","Fortune"}
 _G.GLOOTBOXES = {"Locked Hype Egg"}
 _G.GWEBHOOK_LINK = "https://discord.com/api/webhooks/1357041648638628002/rDC87REh2CcMl_bbpNeHpUtTAGeQ0xBsxkB9PRxSBHnjfq7ZRCKtNt6GB9FmfIm9q15n" -- a webhook URL from your private discord channel.
-loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/ba2dcad2127dcfc04301dfe52ce6c61c.lua"))()
+loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/34915da4ad87a5028e1fd64efbe3543f.lua"))()
