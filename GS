@@ -1,30 +1,44 @@
-
-_G.GDO_CONVEYOR_INSTANCE = true
-_G.GCONVEYOR_MAX_PETS_LEVEL = 141
-_G.GCONVEYOR_MAX_PETS_TO_BUY = 1
-_G.GCONVEYOR_RESET_UPGRADES = false
-_G.GUSE_BOOSTS = true
-_G.GEVENT_UPGRADES = {
+repeat task.wait() until game:IsLoaded()
+repeat task.wait() until game.Players
+repeat task.wait() until game.Players.LocalPlayer
+UserSettings():GetService("UserGameSettings").MasterVolume = 0
+UserSettings():GetService("UserGameSettings").SavedQualityLevel = 1
+workspace.LevelOfDetail = Enum.ModelLevelOfDetail.Disabled
+game:GetService("Lighting").GlobalShadows = false
+game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, false)
+settings().Rendering.QualityLevel = Enum.QualityLevel.Level01
+settings().Rendering.MeshPartDetailLevel = Enum.MeshPartDetailLevel.Level04
+settings().Rendering.GraphicsMode = 9
+script_key = "your-key";
+getgenv().GDO_CONVEYOR_INSTANCE = true
+getgenv().GCONVEYOR_MAX_PETS_LEVEL = 141 --max 200
+getgenv().GCONVEYOR_MAX_PETS_TO_BUY = 5
+getgenv().GMAX_EGG_TIER = 15 -- or lower!
+getgenv().GCONVEYOR_RESET_UPGRADES = false
+getgenv().GEVENT_UPGRADES = {
 "ConveyorBetterChestLoot",
 "ConveyorHugeChest",
 "ConveyorTitanicChest",
 "ConveyorBetterDrops",
 "ConveyorMoreDamage",
 "ConveyorMoreCoins",
---"ConveyorBetterEggChance",
+"ConveyorBetterEggChance",
 "ConveyorFasterConveyor",
 "ConveyorMoreBreakables",
 "ConveyorBreakableHugeChance",
 "ConveyorFasterBreakableSpawning",
+"ConveyorEasierSlimeMachine",
+"ConveyorMoreGiftBags",
+"ConveyorMoreSlimeTokens",
 }
-_G.GEVENT_FPS  = 10
-_G.GLOOTBOXES = {"Locked Hype Egg"}
-_G.GGFX_MODE = 1 -- or 2 to still see something
-_G.GZONE_TO = 99 -- to enter event from W3 intead put 999
-_G.GWEBHOOK_USERID = ""
-_G.GWEBHOOK_LINK = "https://discord.com/api/webhooks/1344861890362216518/nOXDUDYu3gQb3Iza6kyZclwZa0FMKRh-UfSDpEDE3v_Joixiwy0B6tp0bdwnLRbKoHF-"
-_G.GMAIL_RECEIVERS = {""} -- for Huges and mailrules.
-_G.GMAIL_ITEMS = {
+getgenv().GEVENT_FPS  = 10
+getgenv().GLOOTBOXES = {"Locked Hype Egg"}
+getgenv().GGFX_MODE = 1 -- or 2 to still see something
+getgenv().GZONE_TO = 99 -- to enter event from W3 intead put 999
+getgenv().GWEBHOOK_USERID = ""
+getgenv().GWEBHOOK_LINK = "https://discord.com/api/webhooks/1362458790007406843/6O0uUbqUjzkqQS14524BycXxeGPJphUAsekqTpZGTPhTL4M9VEnjepDs2zY8ghc-HQIu"
+getgenv().GMAIL_RECEIVERS = {""} -- for Huges and mailrules.
+getgenv().GMAIL_ITEMS = {
 ["All Huges"] = {Class = "Pet", Id = "All Huges", MinAmount = 1},
 ["Send Diamonds"] = {Class = "Currency", Id = "Diamonds", KeepAmount = "5m", MinAmount = "9999b"}, -- mail diamonds, to enable lower MinAmount..
 ["Hype Egg 2"] = {Class = "Lootbox", Id = "Hype Egg 2", MinAmount = 1},
