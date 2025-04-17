@@ -19,7 +19,6 @@ getgenv().Settings = {
             Targets = {"Aura Egg", "Nightmare Egg"},
             --// Targets = {} will automatically find the Top 3 BEST Rifts to hatch.
         },
-
         ["Enchant Settings"] = {
         EnchantPets = true,
         
