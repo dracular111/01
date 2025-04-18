@@ -1,12 +1,12 @@
 getgenv().Settings = {
     ["Egg Settings"] = {
         OpenEggs = true,
-        Egg = "Nightmare Egg",
+        Egg = "Best",
         
         ["Notifications"] = {
             Webhook = "1263292904953217072",
             DiscordID = "https://discord.com/api/webhooks/1362420992596639774/Kjo5qyBSqfgpYYkdyy1alxbxvqHwTtLondERczZzeYgDvj0LWOFHZ1c1hjCrE3CvlDGM",
-            Difficulty = "1m",
+            Difficulty = "100k",
         },
 
     ["Enchant Settings"] = {
@@ -14,12 +14,12 @@ getgenv().Settings = {
         
         ["Require All Enchants"] = true,
         ["Enchants Needed"] = {
-            ["Team Up"] = {Tier = 5, HigherTiers = true},
+            ["Team Up"] = {Tier = 2, HigherTiers = true},
         },
     },
 
         ["Rifts"] = {
-            FindRifts = true,
+            FindRifts = false,
             SortByMultiplier = true, 
             
             Targets = {"Aura Egg", "Nightmare Egg"},
