@@ -6,7 +6,7 @@ getgenv().Settings = {
         ["Notifications"] = {
             Webhook = "",
             DiscordID = "https://discord.com/api/webhooks/1362420992596639774/Kjo5qyBSqfgpYYkdyy1alxbxvqHwTtLondERczZzeYgDvj0LWOFHZ1c1hjCrE3CvlDGM",
-            Difficulty = "50m",
+            Difficulty = "1m",
         },
 
     ["Enchant Settings"] = {
