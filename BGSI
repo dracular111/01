@@ -4,8 +4,8 @@ getgenv().Settings = {
         Egg = "Best",
         
         ["Notifications"] = {
-            Webhook = "1263292904953217072",
-            DiscordID = "https://discord.com/api/webhooks/1362420992596639774/Kjo5qyBSqfgpYYkdyy1alxbxvqHwTtLondERczZzeYgDvj0LWOFHZ1c1hjCrE3CvlDGM",
+            Webhook = "https://discord.com/api/webhooks/1362420992596639774/Kjo5qyBSqfgpYYkdyy1alxbxvqHwTtLondERczZzeYgDvj0LWOFHZ1c1hjCrE3CvlDGM",
+            DiscordID = "1263292904953217072",
             Difficulty = "100k",
         },
 
