@@ -54,6 +54,7 @@ getgenv().Setting = {
         ["Easter Yeti"] = 0.7,
         ["Exclusive Sketch Egg"] = 0.75,
         ["Bloom Elixir Potion"] = 0.75,
+        ["Bloom Elixir"] = 0.75,
         ["Jelly Bean Potion"] = 0.75,
         ["Jelly Bean Gift Bag"] = 0.75
     },
