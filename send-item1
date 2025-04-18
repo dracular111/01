@@ -45,6 +45,7 @@ getgenv().data = {
         ["Easter Dominus"]            = 5,
         ["Easter Yeti"]            = 5,
         ["Bloom Elixir Potion"]            = 1,
+        ["Bloom Elixir"]            = 1,
         ["Jelly Bean Potion"]            = 1,
         ["Jelly Bean Gift Bag"]            = 1,
         ["Exclusive Sketch Egg"]            = 1
