@@ -10,7 +10,6 @@ getgenv().Setting = {
     ["Rap Huge"] = 0.6,
     ["Rap Huge Normal"] = 0.85,
     ["Custom Item"] = {
-        ["Master Thief Potion"] = 0.9,
         ["Vault Key"] = 0.8,
         ["Huge Egg"] = 0.9,
         ["Hype Egg"] = 0.75,
