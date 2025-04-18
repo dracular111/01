@@ -14,7 +14,6 @@ getgenv().Setting = {
         ["Huge Egg"] = 0.9,
         ["Hype Egg"] = 0.75,
         ["Heartbreak Present"] = 0.85,
-        ["HeartBreak God Potion"] = 0.9,
         ["Crystal Key Lower Half"] = 0.4,
         ["Crystal Key"] = 0.85,
         ["Emerald"] = 0.75,
