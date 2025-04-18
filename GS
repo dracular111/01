@@ -9,7 +9,7 @@ game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, false)
 settings().Rendering.QualityLevel = Enum.QualityLevel.Level01
 settings().Rendering.MeshPartDetailLevel = Enum.MeshPartDetailLevel.Level04
 settings().Rendering.GraphicsMode = 9
-script_key = "your-key";
+
 getgenv().GDO_CONVEYOR_INSTANCE = true
 getgenv().GCONVEYOR_MAX_PETS_LEVEL = 141 --max 200
 getgenv().GCONVEYOR_MAX_PETS_TO_BUY = 5
