@@ -16,18 +16,14 @@ until game:IsLoaded() and
     game:GetService("Players").LocalPlayer.PlayerGui.MainLeft.Left.Currency.Diamonds.Diamonds.Visible == true and
     not game:GetService("Players").LocalPlayer:FindFirstChild("GUIFX Holder")
 repeat wait() until game.Workspace.DistributedGameTime >= 35
+local v_u_23 = require(game.ReplicatedStorage.Library.Client.Network)
 
 local v2 = require(game.ReplicatedStorage.Library.Client.DaycareCmds)
-spawn(function()
-    while wait() do
-        game:GetService("ReplicatedStorage").Network["Mailbox: Claim All"]:InvokeServer()
-    end
-end)
+
 repeat
     wait()
     if v2.GetMaxSlots() < getgenv().maxslot then
-        game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("DaycareSlotVoucher_Consume")
-            :InvokeServer()
+        v_u_23.Invoke("DaycareSlotVoucher_Consume")
     end
     task.wait(1)
 until v2.GetMaxSlots() >= getgenv().maxslot
@@ -80,16 +76,14 @@ spawn(function()
                         [max_index] = availableSlots
                     }
                 }
-                game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Daycare: Enroll")
-                    :InvokeServer(unpack(args))
+                v_u_23.Invoke("Daycare: Enroll", unpack(args))
             else
                 local args = {
                     [1] = {
                         [max_index] = amount
                     }
                 }
-                game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Daycare: Enroll")
-                    :InvokeServer(unpack(args))
+                v_u_23.Invoke("Daycare: Enroll", unpack(args))
             end
             table.insert(savepet, name)
         else
