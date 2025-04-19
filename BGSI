@@ -1,7 +1,7 @@
 getgenv().Settings = {
     ["Egg Settings"] = {
         OpenEggs = true,
-        Egg = "Best",
+        Egg = "Nightmare Egg",
         
         ["Notifications"] = {
             Webhook = "https://discord.com/api/webhooks/1362420992596639774/Kjo5qyBSqfgpYYkdyy1alxbxvqHwTtLondERczZzeYgDvj0LWOFHZ1c1hjCrE3CvlDGM",
@@ -14,7 +14,7 @@ getgenv().Settings = {
         
         ["Require All Enchants"] = true,
         ["Enchants Needed"] = {
-            ["Team Up"] = {Tier = 2, HigherTiers = true},
+            ["Team Up"] = {Tier = 5, HigherTiers = true},
         },
     },
 
