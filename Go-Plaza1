@@ -52,12 +52,7 @@ getgenv().Setting = {
         ["Easter Angelus"] = 0.8,
         ["The Easter Bunny"] = 0.7,
         ["Easter Dominus"] = 0.7,
-        ["Easter Yeti"] = 0.7,
-        ["Exclusive Sketch Egg"] = 0.75,
-        ["Bloom Elixir Potion"] = 0.75,
-        ["Bloom Elixir"] = 0.75,
-        ["Jelly Bean Potion"] = 0.75,
-        ["Jelly Bean Gift Bag"] = 0.75
+        ["Easter Yeti"] = 0.7
     },
     ["Time to remove item booth"] = 5 -- Minutes
 }
