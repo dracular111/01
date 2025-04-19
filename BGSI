@@ -22,7 +22,7 @@ getgenv().Settings = {
             FindRifts = false,
             SortByMultiplier = true, 
             
-            Targets = {"Aura Egg", "Nightmare Egg"},
+            Targets = {"Aura Egg", "Bunny Egg", "Pastel Egg", "Nightmare Egg"},
         },
     },
     
