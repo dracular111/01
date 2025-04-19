@@ -14,7 +14,7 @@ getgenv().Settings = {
         
         ["Require All Enchants"] = true,
         ["Enchants Needed"] = {
-            ["Team Up"] = {Tier = 5, HigherTiers = true},
+            ["Team Up"] = {Tier = 3, HigherTiers = true},
         },
     },
 
