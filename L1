@@ -100,6 +100,7 @@ getgenv().petsGoConfig = {
     CONSUME_VAULT_KEY = true,
     CONSUME_KRAKEN_TENTACLE = true,
     CONSUME_BUCKET_O_CHUM = true,
+    CONSUME_LEGENDARY_THIEVING_CHEST = true,
     MASTERY_CAPE = "Rolling",  -- Rolling, Breakables, Fishing, Mining, Thieving, Master Skill
 
     WEBHOOK_URL = "https://discord.com/api/webhooks/1357773740909264946/uO-aU7YEMW8tN8-Fvlno-1b6GYe-A_qApTGqIJ_aJr6Klv1QUA-EFmKkESzOYAWJQ4ix",
@@ -127,7 +128,7 @@ getgenv().petsGoConfig = {
     CELESTIAL_ENCHANT_SAFE = 1,
     EVENT_GIFT_BAG = 1,
     EVENT_EGG = 20,
-    LEGENDARY_THIEVING_CHEST = 20,
+    LEGENDARY_THIEVING_CHEST = 200,
     KRAKEN_TENTACLE = 5000,
     BUCKET_O_CHUM = 1,
     RAINBOW_TOKEN = 5,
