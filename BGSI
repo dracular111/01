@@ -19,7 +19,7 @@ getgenv().Settings = {
     },
 
         ["Rifts"] = {
-            FindRifts = false,
+            FindRifts = true,
             SortByMultiplier = true, 
             
             Targets = {"Aura Egg", "Bunny Egg", "Pastel Egg", "Nightmare Egg"},
