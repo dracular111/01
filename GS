@@ -1,29 +1,10 @@
 
-getgenv().GDO_CONVEYOR_INSTANCE = true
-getgenv().GCONVEYOR_MAX_PETS_LEVEL = 141 --max 200
-getgenv().GCONVEYOR_MAX_PETS_TO_BUY = 5
-getgenv().GMAX_EGG_TIER = 15 -- or lower!
-getgenv().GCONVEYOR_RESET_UPGRADES = false
-getgenv().GEVENT_UPGRADES = {
-"ConveyorBetterChestLoot",
-"ConveyorHugeChest",
-"ConveyorTitanicChest",
-"ConveyorBetterDrops",
-"ConveyorMoreDamage",
-"ConveyorMoreCoins",
-"ConveyorBetterEggChance",
-"ConveyorFasterConveyor",
-"ConveyorMoreBreakables",
-"ConveyorBreakableHugeChance",
-"ConveyorFasterBreakableSpawning",
-"ConveyorEasierSlimeMachine",
-"ConveyorMoreGiftBags",
-"ConveyorMoreSlimeTokens",
-}
-getgenv().GEVENT_FPS  = 10
-getgenv().GLOOTBOXES = {"Locked Hype Egg"}
-getgenv().GGFX_MODE = 1 -- or 2 to still see something
-getgenv().GZONE_TO = 999 -- to enter event from W3 intead put 999
+getgenv().GDO_EASTER_EVENT = true
+getgenv().GEASTER_EVENT_FINAL_EGG = "Easter Bunny Egg" -- valid: "Easter Bunny Egg","Easter Diamond Egg 1x","Easter Diamond Egg 10x",Easter Diamond Egg 100x"
+
+getgenv().GGFX_MODE = 2  --1 = REMOVE_TEXTURES : more stable! but no visuals
+getgenv().GZONE_TO = 999 -- to enter event from W1 put 99, from W2 put 199, from W3 999
+getgenv().GENCHANTS = {"Tap Power", "Coins", "Treasure Hunter", "Strong Pets", "Criticals", "Diamonds"}
 getgenv().GWEBHOOK_USERID = ""
 getgenv().GWEBHOOK_LINK = "https://discord.com/api/webhooks/1362458790007406843/6O0uUbqUjzkqQS14524BycXxeGPJphUAsekqTpZGTPhTL4M9VEnjepDs2zY8ghc-HQIu"
 getgenv().GMAIL_RECEIVERS = {""} -- for Huges and mailrules.
