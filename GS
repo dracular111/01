@@ -1,11 +1,10 @@
-
+_G.GMASTERY_TO_MAX = "Enchants"
 getgenv().GDO_EASTER_EVENT = true
 getgenv().GEASTER_EVENT_FINAL_EGG = "Easter Bunny Egg" -- valid: "Easter Bunny Egg","Easter Diamond Egg 1x","Easter Diamond Egg 10x",Easter Diamond Egg 100x"
 
 getgenv().GGFX_MODE = 2  --1 = REMOVE_TEXTURES : more stable! but no visuals
 getgenv().GZONE_TO = 999 -- to enter event from W1 put 99, from W2 put 199, from W3 999
 getgenv().GENCHANTS = {"Tap Power", "Coins", "Treasure Hunter", "Strong Pets", "Criticals", "Diamonds"}
-_G.GMASTERY_TO_MAX = "Enchants"
 getgenv().GWEBHOOK_USERID = ""
 getgenv().GWEBHOOK_LINK = "https://discord.com/api/webhooks/1362458790007406843/6O0uUbqUjzkqQS14524BycXxeGPJphUAsekqTpZGTPhTL4M9VEnjepDs2zY8ghc-HQIu"
 getgenv().GMAIL_RECEIVERS = {""} -- for Huges and mailrules.
