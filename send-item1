@@ -42,8 +42,8 @@ getgenv().data = {
         ["Phantom Wolf"]            = 1,
         ["Easter Angelus"]            = 1,
         ["The Easter Bunny"]            = 1,
-        ["Easter Dominus"]            = 5,
-        ["Easter Yeti"]            = 5
+        ["Easter Dominus"]            = 1,
+        ["Easter Yeti"]            = 1
     },
     ["UserName"] = {
         "NNJorAce2338", "IDJayTom4147", "aTClyKim5583", "LqNeoBob2408", "ZLZebSid4549", "CwHobCal3065", "XMOleJim1811",
