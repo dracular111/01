@@ -1,3 +1,4 @@
+
 _G.GMASTERY_TO_MAX = "Enchants"
 getgenv().GDO_EASTER_EVENT = true
 getgenv().GEASTER_EVENT_FINAL_EGG = "Easter Bunny Egg" -- valid: "Easter Bunny Egg","Easter Diamond Egg 1x","Easter Diamond Egg 10x",Easter Diamond Egg 100x"
