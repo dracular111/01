@@ -6,14 +6,15 @@ getgenv().bgsInfConfig = {
     USE_GOLDEN_KEY = true,
     USE_MYSTERY_BOX = true,
     RARITY_TO_DELETE = {"Common", "Unique", "Rare"},  -- Delete if max inventory
+    LEGENDARY_TIER_TO_DELETE = 2,  -- Ignore Shiny/Mythic/Shiny Mythic
 
     RIFT_EGGS = {"Aura Egg", "Bunny Egg", "Pastel Egg", "Nightmare Egg"},  -- Add Any Egg Name
-    HATCH_1X_EGG = "Common Egg",  -- Hatch 1x Egg If No Rift & FARM_MIN_GEMS Completed
+    HATCH_1X_EGG = "Pastel Egg",  -- Hatch 1x Egg If No Rift & FARM_MIN_GEMS Completed
 
     WEBHOOK_URL = "https://discord.com/api/webhooks/1362995913080963072/8Tb6WNq581gS3l-tifSkgZ2ZdYP1oQUd9XI62BrbYOTFvL94ZY4SkAEEIa8y8c_VJR3l",
     DISCORD_ID = "",
     WEBHOOK_RARITY = { Common = false, Unique = false, Rare = false, Epic = false, Legendary = true, Secret = true },
-    LEGENDARY_TIER = 5,  -- Ignore if set not set "Legendary"
+    LEGENDARY_TIER = 3,  -- Ignore if set not set "Legendary"
     SHOW_PET_WEBHOOK_USERNAME = true,  -- shows username in private webhook only
 }
 
