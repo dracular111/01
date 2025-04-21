@@ -7,6 +7,9 @@ getgenv().bgsInfConfig = {
     USE_MYSTERY_BOX = true,
     RARITY_TO_DELETE = {"Common", "Unique", "Rare"},  -- Delete if max inventory
     LEGENDARY_TIER_TO_DELETE = 2,  -- Ignore Shiny/Mythic/Shiny Mythic
+    RESTOCK_SHOP = "Blackmarket", 
+    PURCHASE_BLACKMARKET = true,
+    POTIONS_TO_CRAFT = {"Coins", "Mythic", "Lucky", "Speed"}
 
     RIFT_EGGS = {"Aura Egg", "Bunny Egg", "Pastel Egg", "Nightmare Egg"},  -- Add Any Egg Name
     HATCH_1X_EGG = "Pastel Egg",  -- Hatch 1x Egg If No Rift & FARM_MIN_GEMS Completed
