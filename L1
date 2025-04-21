@@ -1,140 +1,27 @@
- local plrs = game:GetService("Players")
-local plr = plrs.LocalPlayer
-local tpService = game:GetService("TeleportService")
-local getPlayers = plrs:GetPlayers()
-local PlayerInServer = #getPlayers
-local HttpService = game:GetService("HttpService")
-local TeleportService = game:GetService("TeleportService")
-local Players = game:GetService("Players")
-local player = Players.LocalPlayer
-local placeId = game.PlaceId
-local currentJobId = game.JobId
-local uis = game:GetService("UserInputService")
-local vim = game:GetService("VirtualInputManager")
-local runService = game:GetService("RunService")
 
--- Chọn API ngẫu nhiên giữa Asc và Desc
-local function getRandomAPI()
-	local sortOrder = (math.random(1, 2) == 1) and "Asc" or "Desc"
-	return string.format(
-		"https://games.roblox.com/v1/games/%s/servers/Public?sortOrder=%s&limit=100&excludeFullGames=true",
-		placeId,
-		sortOrder
-	)
-end
- 
--- Hàm lấy danh sách server hợp lệ (có slot trống)
-local function getValidServers()
-	local servers
-	local attempts = 0
-	repeat
-		task.wait(5)
-		local url = getRandomAPI()
- 
-		local success, response = pcall(function()
-			return HttpService:JSONDecode(game:HttpGet(url)).data
-		end)
- 
-		if success and response and #response > 0 then
-			servers = {}
-			for _, server in pairs(response) do
-				if server.playing < server.maxPlayers and server.id ~= currentJobId then
-					table.insert(servers, server)
-				end
-			end
-			print("✅ Số lượng server hợp lệ:", #servers)
-		else
-			warn("⚠️ Không lấy được danh sách server! Thử lại...")
-		end
- 
-		attempts += 1
-	until (servers and #servers > 0) or attempts >= 5
- 
-	return servers
-end
- 
--- Hàm rejoin nếu không tìm được server
-local function rejoinServer()
-	TeleportService:Teleport(placeId, player)
-end
- 
--- Retry flag để tránh spam
-local retrying = false
- 
--- Tự động thử lại nếu teleport thất bại
-TeleportService.TeleportInitFailed:Connect(function(failedPlayer, teleportResult, errorMessage)
-	if failedPlayer == player and not retrying then
-		retrying = true
-		warn("⚠️ Teleport thất bại:", teleportResult, "-", errorMessage)
-		task.wait(3)
-		print("🔁 Đang thử lại teleport...")
-		serverHop()
-		retrying = false
-	end
-end)
- 
--- Hàm nhảy sang server khác
-function serverHop()
-	local servers = getValidServers()
-	if not servers or #servers == 0 then
-		warn("❌ Không tìm thấy server nào có chỗ trống sau nhiều lần thử!")
-		rejoinServer()
-		return
-	end
- 
-	local newServer = servers[math.random(1, #servers)]
-	print("🔄 Đang chuyển sang server:", newServer.id)
-	TeleportService:TeleportToPlaceInstance(placeId, newServer.id, player)
-end
+script_key="FlGZRfbYysjtmHRbaXzEqlOVABjLTUuP";
+setfpscap(15)
 
-script_key="JvCtOWSwHvlUnpKLumMEdpUxHCqNSJNb";
-setfpscap(5)
+getgenv().bgsInfConfig = {
+    AUTO_UPDATE_RESTART = true,
+    PURCHASE_ALIENSHOP = true,
+    USE_ROYAL_KEY = true,
+    USE_GOLDEN_KEY = true,
+    USE_MYSTERY_BOX = true,
+    RARITY_TO_DELETE = {"Common", "Unique", "Rare"},  -- Delete if max inventory
+    LEGENDARY_TIER_TO_DELETE = 2,  -- Ignore Shiny/Mythic/Shiny Mythic
+    RESTOCK_SHOP = "Blackmarket", 
+    PURCHASE_BLACKMARKET = true,
+    POTIONS_TO_CRAFT = {"Coins", "Mythic", "Lucky", "Speed"},
 
-getgenv().petsGoConfig = {
-    AUTO_RESTART = true,
-    -- true/false (true = consume, false = automail)
-    CONSUME_CORRUPTED_HUGE_BAIT = false,
-    CONSUME_ALL_MINING_CHEST = false,
-    CONSUME_EVENT_EGG = true, -- Hype eggs not included
-    CONSUME_INSTA_LUCK_4 = true,
-    CONSUME_VAULT_KEY = true,
-    CONSUME_KRAKEN_TENTACLE = true,
-    CONSUME_BUCKET_O_CHUM = true,
-    CONSUME_LEGENDARY_THIEVING_CHEST = true,
-    MASTERY_CAPE = "Rolling",  -- Rolling, Breakables, Fishing, Mining, Thieving, Master Skill
+    RIFT_EGGS = {"Aura Egg", "Bunny Egg", "Pastel Egg", "Nightmare Egg"},  -- Add Any Egg Name
+    HATCH_1X_EGG = "Pastel Egg",  -- Hatch 1x Egg If No Rift & FARM_MIN_GEMS Completed
 
-    WEBHOOK_URL = "https://discord.com/api/webhooks/1357773740909264946/uO-aU7YEMW8tN8-Fvlno-1b6GYe-A_qApTGqIJ_aJr6Klv1QUA-EFmKkESzOYAWJQ4ix",
-    MAILING_WEBHOOK_URL = "https://discord.com/api/webhooks/1327523375974842381/Ww1lopIFl2fm4L44NeeURrSB6eWhAd3pce3o0XdyJVHiTZh3dPNRnbGRkgk2F6sd8_Qc",
+    WEBHOOK_URL = "https://discord.com/api/webhooks/1362995913080963072/8Tb6WNq581gS3l-tifSkgZ2ZdYP1oQUd9XI62BrbYOTFvL94ZY4SkAEEIa8y8c_VJR3l",
     DISCORD_ID = "",
-    WEBHOOK_ODDS = 1000000000, -- Minimum Pet Odds To Trigger Webhook
-
-    DIAMOND_EGG = true,  -- true = Diamond Egg, false = F2P Egg
-    MINE_ALL_ORES = false,  -- true = all ore, false = runic & event ore
-    
-    MAILING = true,  -- Auto mail
-    MAIL_PICKAXE = true,  -- true = mail (smart mail [keep best pickaxe, mail excess])
-    SHOW_PET_WEBHOOK_USERNAME = true,
-    MAIL_WEBHOOK_ODDS = 1000000000, -- Minimum Pet Odds To Trigger MAIL Webhook
-    MAIL_PET_ODDS = 1000000000,  -- Minimum Pet Odds To Mail
-    MAIL_GEMS_MIN = 30000,  -- Minimum Gems to mail out
-
-    MIN_MAIL_AMOUNT = {  -- Rare items not listed, default min 1
-      -- General
-    INSTA_POTION_IV = 5,
-    CORRUPTED_HUGE_BAIT = 20,
-    CRYSTAL_KEY = 5, CRYSTAL_KEY_UPPER_HALF = 10, CRYSTAL_KEY_LOWER_HALF = 20,
-    EXCLUSIVE_TREASURE_CHEST = 5, ABYSSAL_TREASURE_CHEST = 5,
-    CELESTIAL_MINING_CHEST = 5, RUNIC_MINING_CHEST = 5,
-    CELESTIAL_ENCHANT_SAFE = 1,
-    EVENT_GIFT_BAG = 1,
-    EVENT_EGG = 20,
-    LEGENDARY_THIEVING_CHEST = 200,
-    KRAKEN_TENTACLE = 5000,
-    BUCKET_O_CHUM = 1,
-    RAINBOW_TOKEN = 5,
-    }, 
-
-    USERNAME_TO_MAIL = {"NNJorAce2338", "IDJayTom4147", "aTClyKim5583", "LqNeoBob2408", "ZLZebSid4549", "CwHobCal3065", "XMOleJim1811", "obGadJim408", "KHTaiEli374", "WaNeoDon822"}, -- Mail to username, Example : USERNAME_TO_MAIL = {"username1", "username2"} 
+    WEBHOOK_RARITY = { Common = false, Unique = false, Rare = false, Epic = false, Legendary = true, Secret = true },
+    LEGENDARY_TIER = 3,  -- Ignore if set not set "Legendary"
+    SHOW_PET_WEBHOOK_USERNAME = true,  -- shows username in private webhook only
 }
 
-loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/cd1c29852c6641789162a7b0a4c97428.lua"))()
+loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/3dc52e6a2fc4f671b66757e93f4fd38b.lua"))()
