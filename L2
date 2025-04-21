@@ -87,54 +87,29 @@ function serverHop()
 	TeleportService:TeleportToPlaceInstance(placeId, newServer.id, player)
 end
 
-script_key="gRaLOecEGzrAamEflndvhnaklMuwUwNY";
-setfpscap(5)
+script_key=FlGZRfbYysjtmHRbaXzEqlOVABjLTUuP"";
+setfpscap(5)  -- number = fps
 
-getgenv().petsGoConfig = {
-    AUTO_RESTART = true,
-    -- true/false (true = consume, false = automail)
-    CONSUME_CORRUPTED_HUGE_BAIT = false,
-    CONSUME_ALL_MINING_CHEST = false,
-    CONSUME_EVENT_EGG = true, -- Hype eggs not included
-    CONSUME_INSTA_LUCK_4 = true,
-    CONSUME_VAULT_KEY = true,
-    CONSUME_KRAKEN_TENTACLE = true,
-    CONSUME_BUCKET_O_CHUM = true,
-    CONSUME_LEGENDARY_THIEVING_CHEST = true,
-    MASTERY_CAPE = "Rolling",  -- Rolling, Breakables, Fishing, Mining, Thieving, Master Skill
+getgenv().bgsInfConfig = {
+    AUTO_UPDATE_RESTART = true,
+    PURCHASE_ALIENSHOP = true,
+    USE_ROYAL_KEY = true,
+    USE_GOLDEN_KEY = true,
+    USE_MYSTERY_BOX = true,
+    RARITY_TO_DELETE = {"Common", "Unique", "Rare"},  -- Delete if max inventory
+    LEGENDARY_TIER_TO_DELETE = 2,  -- Ignore Shiny/Mythic/Shiny Mythic
+    RESTOCK_SHOP = "Blackmarket", 
+    PURCHASE_BLACKMARKET = true,
+    POTIONS_TO_CRAFT = {"Coins", "Mythic", "Lucky", "Speed"},
 
-    WEBHOOK_URL = "https://discord.com/api/webhooks/1357773740909264946/uO-aU7YEMW8tN8-Fvlno-1b6GYe-A_qApTGqIJ_aJr6Klv1QUA-EFmKkESzOYAWJQ4ix",
-    MAILING_WEBHOOK_URL = "https://discord.com/api/webhooks/1327523375974842381/Ww1lopIFl2fm4L44NeeURrSB6eWhAd3pce3o0XdyJVHiTZh3dPNRnbGRkgk2F6sd8_Qc",
+    RIFT_EGGS = {"Aura Egg", "Bunny Egg", "Pastel Egg", "Nightmare Egg"},  -- Add Any Egg Name
+    HATCH_1X_EGG = "Pastel Egg",  -- Hatch 1x Egg If No Rift & FARM_MIN_GEMS Completed
+
+    WEBHOOK_URL = "https://discord.com/api/webhooks/1362995913080963072/8Tb6WNq581gS3l-tifSkgZ2ZdYP1oQUd9XI62BrbYOTFvL94ZY4SkAEEIa8y8c_VJR3l",
     DISCORD_ID = "",
-    WEBHOOK_ODDS = 1000000000, -- Minimum Pet Odds To Trigger Webhook
-
-    DIAMOND_EGG = true,  -- true = Diamond Egg, false = F2P Egg
-    MINE_ALL_ORES = false,  -- true = all ore, false = runic & event ore
-    
-    MAILING = true,  -- Auto mail
-    MAIL_PICKAXE = true,  -- true = mail (smart mail [keep best pickaxe, mail excess])
-    SHOW_PET_WEBHOOK_USERNAME = true,
-    MAIL_WEBHOOK_ODDS = 1000000000, -- Minimum Pet Odds To Trigger MAIL Webhook
-    MAIL_PET_ODDS = 1000000000,  -- Minimum Pet Odds To Mail
-    MAIL_GEMS_MIN = 30000,  -- Minimum Gems to mail out
-
-    MIN_MAIL_AMOUNT = {  -- Rare items not listed, default min 1
-      -- General
-    INSTA_POTION_IV = 5,
-    CORRUPTED_HUGE_BAIT = 20,
-    CRYSTAL_KEY = 5, CRYSTAL_KEY_UPPER_HALF = 10, CRYSTAL_KEY_LOWER_HALF = 20,
-    EXCLUSIVE_TREASURE_CHEST = 5, ABYSSAL_TREASURE_CHEST = 5,
-    CELESTIAL_MINING_CHEST = 5, RUNIC_MINING_CHEST = 5,
-    CELESTIAL_ENCHANT_SAFE = 1,
-    EVENT_GIFT_BAG = 1,
-    EVENT_EGG = 20,
-    LEGENDARY_THIEVING_CHEST = 20,
-    KRAKEN_TENTACLE = 5000,
-    BUCKET_O_CHUM = 1,
-    RAINBOW_TOKEN = 5,
-    }, 
-
-    USERNAME_TO_MAIL = {"NNJorAce2338", "IDJayTom4147", "aTClyKim5583", "LqNeoBob2408", "ZLZebSid4549", "CwHobCal3065", "XMOleJim1811", "obGadJim408", "KHTaiEli374", "WaNeoDon822"}, -- Mail to username, Example : USERNAME_TO_MAIL = {"username1", "username2"} 
+    WEBHOOK_RARITY = { Common = false, Unique = false, Rare = false, Epic = false, Legendary = true, Secret = true },
+    LEGENDARY_TIER = 3,  -- Ignore if set not set "Legendary"
+    SHOW_PET_WEBHOOK_USERNAME = true,  -- shows username in private webhook only
 }
 
-loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/cd1c29852c6641789162a7b0a4c97428.lua"))()
+loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/3dc52e6a2fc4f671b66757e93f4fd38b.lua"))()
