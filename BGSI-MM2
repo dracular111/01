@@ -1,5 +1,5 @@
-script_key=FlGZRfbYysjtmHRbaXzEqlOVABjLTUuP"";
-setfpscap(5)  -- number = fps
+script_key="FlGZRfbYysjtmHRbaXzEqlOVABjLTUuP";
+setfpscap(5)
 
 getgenv().bgsInfConfig = {
     AUTO_UPDATE_RESTART = true,
