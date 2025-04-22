@@ -1,3 +1,5 @@
+script_key="YRjtmepXpQEhmQslCpirTQlwlVIffftS";
+setfpscap(15)
 
 getgenv().bgsInfConfig = {
     AUTO_UPDATE_RESTART = true,
