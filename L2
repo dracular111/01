@@ -7,6 +7,7 @@ getgenv().bgsInfConfig = {
     PURCHASE_BLACKMARKET = true,
     RESTOCK_SHOP = "Blackmarket",
     POTIONS_TO_CRAFT = {"Coins", "Mythic", "Lucky", "Speed"},
+    MASTERY_BUFFS_LEVEL = 20,
 
     USE_ROYAL_KEY = true,
     USE_GOLDEN_KEY = true,
@@ -18,10 +19,10 @@ getgenv().bgsInfConfig = {
     ENCHANT_TEAMUP = true,
     ENCHANT_TEAMUP_TIER = 1,
 
-    RIFT_EGGS = {"Aura Egg", "Bunny Egg", "Pastel Egg", "Nightmare Egg"},
-    HATCH_1X_EGG = "Pastel Egg", 
+    RIFT_EGGS = {"Aura Egg", "Throwback Egg", "Bunny Egg", "Pastel Egg", "Nightmare Egg"},
+    HATCH_1X_EGG = "Throwback Egg", 
 
-    WEBHOOK_URL = "https://discord.com/api/webhooks/1364608789021458483/ri1GZFt-efLdXmjjrHv9diwF-GLhTZN8EByyG8bbjWR_CtWzz6I1ToU8lHbDDhiVQIqP",
+    WEBHOOK_URL = "https://discord.com/api/webhooks/1362995913080963072/8Tb6WNq581gS3l-tifSkgZ2ZdYP1oQUd9XI62BrbYOTFvL94ZY4SkAEEIa8y8c_VJR3l",
     DISCORD_ID = "",
     WEBHOOK_ODDS = 1000000,
     SHOW_PET_WEBHOOK_USERNAME = true,
