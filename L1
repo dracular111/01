@@ -22,7 +22,7 @@ getgenv().bgsInfConfig = {
     HATCH_1X_EGG = "Throwback Egg", 
 
     WEBHOOK_URL = "https://discord.com/api/webhooks/1364958498718482513/-_QHSZ8BISPcVQbA4Rl9CLyTBJ1g_gSFd1Lqgmm4IGCzXxHuqCEIFB-yYr_fiSedUHxY",
-    DISCORD_ID = "1263292904953217072",
+    DISCORD_ID = "",
     WEBHOOK_ODDS = 1000000,
     SHOW_PET_WEBHOOK_USERNAME = true,
 }
