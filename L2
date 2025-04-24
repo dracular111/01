@@ -7,7 +7,6 @@ getgenv().bgsInfConfig = {
     PURCHASE_BLACKMARKET = true,
     RESTOCK_SHOP = "Blackmarket",
     POTIONS_TO_CRAFT = {"Coins", "Mythic", "Lucky", "Speed"},
-    MASTERY_BUFFS_LEVEL = 20,
 
     USE_ROYAL_KEY = true,
     USE_GOLDEN_KEY = true,
