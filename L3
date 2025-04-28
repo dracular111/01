@@ -6,6 +6,7 @@ getgenv().bgsInfConfig = {
     PURCHASE_ALIENSHOP = true,
     PURCHASE_BLACKMARKET = true,
     RESTOCK_SHOP = "Blackmarket",
+    PURCHASE_STARSHOP_SLOT = 14,
     MASTERY_BUFFS_LEVEL = 16,
     POTIONS_TO_CRAFT = {"Lucky", "Mythic", "Speed"},
 
