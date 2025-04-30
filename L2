@@ -2,6 +2,7 @@ script_key="ufXBOPmnsHdHscaxbHFRlqlmiQvekpMb";
 setfpscap(5)
 
 getgenv().bgsInfConfig = {
+    ADD_FRIEND = true,
     AUTO_UPDATE_RESTART = true,
     PURCHASE_ALIENSHOP = true,
     PURCHASE_BLACKMARKET = true,
@@ -20,7 +21,7 @@ getgenv().bgsInfConfig = {
     ENCHANT_TEAMUP_TIER = 3,
 
     RIFT_EGGS = {"Silly Egg", "Throwback Egg", "Nightmare Egg"},
-    HATCH_1X_EGG = "Throwback Egg",
+    HATCH_1X_EGG = "100M Egg",
 
     WEBHOOK_URL = "https://discord.com/api/webhooks/1362995913080963072/8Tb6WNq581gS3l-tifSkgZ2ZdYP1oQUd9XI62BrbYOTFvL94ZY4SkAEEIa8y8c_VJR3l",
     DISCORD_ID = "1263292904953217072",
