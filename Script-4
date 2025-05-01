@@ -43,4 +43,3 @@ for i, v in a do
     game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Framework"):WaitForChild("Network")
         :WaitForChild("Remote"):WaitForChild("Function"):InvokeServer(unpack(args))
 end
-﻿
