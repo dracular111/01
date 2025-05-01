@@ -9,7 +9,7 @@ getgenv().Config = {
         ["Egg"] = "100M Egg"
     },
     ["Webhook"] = {
-        ["MinDifficulty"] = "1m",
+        ["MinDifficulty"] = "4m",
         ["UserID"] = "",
         ["URL"] = "https://discord.com/api/webhooks/1362420992596639774/Kjo5qyBSqfgpYYkdyy1alxbxvqHwTtLondERczZzeYgDvj0LWOFHZ1c1hjCrE3CvlDGM",
     },
