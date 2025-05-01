@@ -2,29 +2,32 @@ script_key="YRjtmepXpQEhmQslCpirTQlwlVIffftS";
 setfpscap(15)
 
 getgenv().bgsInfConfig = {
+    ADD_FRIEND = true,
     AUTO_UPDATE_RESTART = true,
     PURCHASE_ALIENSHOP = true,
     PURCHASE_BLACKMARKET = true,
     RESTOCK_SHOP = "Blackmarket",
-    POTIONS_TO_CRAFT = {"Coins", "Mythic", "Lucky", "Speed"},
+    PURCHASE_STARSHOP_SLOT = 14,
+    POTIONS_TO_CRAFT = {"Lucky", "Mythic", "Speed"},
 
     USE_ROYAL_KEY = true,
     USE_GOLDEN_KEY = true,
     USE_MYSTERY_BOX = true,
 
-    RARITY_TO_DELETE = {"Common", "Unique", "Rare"},
+    RARITY_TO_DELETE = {"Common", "Unique", "Rare", "Epic"},
     LEGENDARY_TIER_TO_DELETE = 2,
 
     ENCHANT_TEAMUP = true,
-    ENCHANT_TEAMUP_TIER = 1,
+    ENCHANT_TEAMUP_TIER = 3,
 
-    RIFT_EGGS = {"Aura Egg", "Bunny Egg", "Pastel Egg", "Nightmare Egg"},
-    HATCH_1X_EGG = "Pastel Egg", 
+    RIFT_EGGS = {"Silly Egg", "Nightmare Egg", "Void Egg", "Rainbow Egg"},
+    HATCH_1X_EGG = "Infinity Egg",
 
-    WEBHOOK_URL = "https://discord.com/api/webhooks/1362995913080963072/8Tb6WNq581gS3l-tifSkgZ2ZdYP1oQUd9XI62BrbYOTFvL94ZY4SkAEEIa8y8c_VJR3l",
+    WEBHOOK_URL = "",
     DISCORD_ID = "",
-    WEBHOOK_ODDS = 1000000,
+    WEBHOOK_ODDS = 4000000,
     SHOW_PET_WEBHOOK_USERNAME = true,
+    MASTERY_BUFFS_LEVEL = 18,
 }
 
-loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/e2d15fd8d5fd053a359cc3e296c68150.lua"))()
+loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/3dc52e6a2fc4f671b66757e93f4fd38b.lua"))()
