@@ -1,2 +1,46 @@
-_G.Config = { UserID = "cf2b68ab-24d5-453a-9204-2d6cd6a8d72e", discord_id = "1092353095171833906" , Note = "Pc00", }
-loadstring(game:HttpGet("https://raw.githubusercontent.com/skadidau/unfazedfree/refs/heads/main/bgsi"))()
+repeat
+    wait()
+until game:IsLoaded()
+repeat wait() until game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Intro")
+if game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Intro") then
+    pcall(function()
+        repeat
+            wait()
+            pcall(function()
+                if game:GetService("Players").LocalPlayer.PlayerGui.Intro.Graphics.Visible then
+                    for i, v in getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Intro.Play.Button.Activated) do
+                        v.Function()
+                    end
+                else
+                    for i, v in getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Intro.Graphics.Content.Low.Action.Button.Activated) do
+                        v.Function()
+                    end
+                end
+            end)
+        until not game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Intro") and game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Intro").Enabled == false
+    end)
+end
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Remotes = ReplicatedStorage.Remotes
+local loaded = false
+getgenv().datastats = {}
+-- Listen for PlayerDataLoaded
+Remotes.PlayerDataLoaded.OnClientEvent:Connect(function(playerData)
+    getgenv().datastats = playerData
+    loaded = true
+end)
+Remotes.PlayerDataChanged.OnClientEvent:Connect(function(p16, p17)
+    getgenv().datastats[p16] = p17
+end)
+repeat wait() until loaded
+task.wait(3)
+local a = require(game:GetService("ReplicatedStorage").Shared.Data.Codes)
+for i, v in a do
+    local args = {
+        "RedeemCode",
+        i
+    }
+    game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Framework"):WaitForChild("Network")
+        :WaitForChild("Remote"):WaitForChild("Function"):InvokeServer(unpack(args))
+end
+﻿
