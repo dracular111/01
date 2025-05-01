@@ -1,33 +1,18 @@
-script_key="UpEaWovohPDKgVmEEVzrJztbszHPXBgC";
+--script_key="UpEaWovohPDKgVmEEVzrJztbszHPXBgC";
 setfpscap(5)
 
-getgenv().bgsInfConfig = {
-    ADD_FRIEND = true,
-    AUTO_UPDATE_RESTART = true,
-    PURCHASE_ALIENSHOP = true,
-    PURCHASE_BLACKMARKET = true,
-    RESTOCK_SHOP = "Blackmarket",
-    PURCHASE_STARSHOP_SLOT = 14,
-    POTIONS_TO_CRAFT = {"Lucky", "Mythic", "Speed"},
-
-    USE_ROYAL_KEY = true,
-    USE_GOLDEN_KEY = true,
-    USE_MYSTERY_BOX = true,
-
-    RARITY_TO_DELETE = {"Common", "Unique", "Rare", "Epic"},
-    LEGENDARY_TIER_TO_DELETE = 1,
-
-    ENCHANT_TEAMUP = true,
-    ENCHANT_TEAMUP_TIER = 3,
-
-    RIFT_EGGS = {"Silly Egg", "Throwback Egg", "Nightmare Egg"},
-    HATCH_1X_EGG = "100M Egg",
-
-    WEBHOOK_URL = "https://discord.com/api/webhooks/1362995913080963072/8Tb6WNq581gS3l-tifSkgZ2ZdYP1oQUd9XI62BrbYOTFvL94ZY4SkAEEIa8y8c_VJR3l",
-    DISCORD_ID = "1263292904953217072",
-    WEBHOOK_ODDS = 4000000,
-    SHOW_PET_WEBHOOK_USERNAME = true,
-    MASTERY_BUFFS_LEVEL = 18,
+getgenv().Config = {
+    ["Hatching"] = {
+        ["Rifts"] = {
+            ["Eggs"] = {"Silly Egg", "Throwback Egg", "Nightmare Egg"}
+        },
+        ["Egg"] = "100M Egg"
+    },
+    ["Webhook"] = {
+        ["MinDifficulty"] = "1m",
+        ["UserID"] = "",
+        ["URL"] = "https://discord.com/api/webhooks/1362420992596639774/Kjo5qyBSqfgpYYkdyy1alxbxvqHwTtLondERczZzeYgDvj0LWOFHZ1c1hjCrE3CvlDGM",
+    },
+    ["AutoEnchant"] = true -- // Enchant Team Up on all Equipped Pets
 }
-
-loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/3dc52e6a2fc4f671b66757e93f4fd38b.lua"))()
+loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/6a28683e5e681161a5074613f6daf64c.lua"))()
