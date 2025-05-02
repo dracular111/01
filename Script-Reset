@@ -1,1 +1,1 @@
---game.Players.LocalPlayer:Kick("Dracular111")
+game.Players.LocalPlayer:Kick("Dracular111")
