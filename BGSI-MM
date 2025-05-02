@@ -1,5 +1,3 @@
-script_key="YRjtmepXpQEhmQslCpirTQlwlVIffftS";
-setfpscap(15)
 
 getgenv().bgsInfConfig = {
     ADD_FRIEND = true,
@@ -20,14 +18,14 @@ getgenv().bgsInfConfig = {
     ENCHANT_TEAMUP = true,
     ENCHANT_TEAMUP_TIER = 3,
 
-    RIFT_EGGS = {"Silly Egg", "Nightmare Egg", "Void Egg", "Rainbow Egg"},
+    RIFT_EGGS = {"Silly Egg", "Void Egg", "Nightmare Egg", "Rainbow Egg"},
     HATCH_1X_EGG = "Infinity Egg",
 
     WEBHOOK_URL = "https://discord.com/api/webhooks/1362995913080963072/8Tb6WNq581gS3l-tifSkgZ2ZdYP1oQUd9XI62BrbYOTFvL94ZY4SkAEEIa8y8c_VJR3l",
     DISCORD_ID = "1263292904953217072",
     WEBHOOK_ODDS = 4000000,
     SHOW_PET_WEBHOOK_USERNAME = true,
-    MASTERY_BUFFS_LEVEL = 18,
+    MASTERY_BUFFS_LEVEL = 20,
 }
 
 loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/3dc52e6a2fc4f671b66757e93f4fd38b.lua"))()
