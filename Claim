@@ -1,0 +1,38 @@
+repeat
+    wait()
+until game:IsLoaded()
+repeat wait() until game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Intro")
+if game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Intro") then
+    pcall(function()
+        repeat
+            wait()
+            pcall(function()
+                if game:GetService("Players").LocalPlayer.PlayerGui.Intro.Graphics.Visible then
+                    for i, v in getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Intro.Play.Button.Activated) do
+                        v.Function()
+                    end
+                else
+                    for i, v in getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Intro.Graphics.Content.Low.Action.Button.Activated) do
+                        v.Function()
+                    end
+                end
+            end)
+        until not game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Intro") and game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Intro").Enabled == false
+    end)
+end
+spawn(function()
+    while wait() do
+        local args = {
+            "DailyRewardClaimStars"
+        }
+        game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Framework"):WaitForChild("Network")
+            :WaitForChild("Remote"):WaitForChild("Event"):FireServer(unpack(args))
+        local args = {
+            "ClaimIndex",
+            "The Overworld",
+            "Normal"
+        }
+        game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Framework"):WaitForChild("Network")
+            :WaitForChild("Remote"):WaitForChild("Event"):FireServer(unpack(args))
+    end
+end)
