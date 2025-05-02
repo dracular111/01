@@ -1,3 +1,4 @@
+wait(15)
 --script_key="UpEaWovohPDKgVmEEVzrJztbszHPXBgC";
 setfpscap(5)
 
