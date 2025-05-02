@@ -4,12 +4,12 @@ setfpscap(5)
 getgenv().Config = {
     ["Hatching"] = {
         ["Rifts"] = {
-            ["Eggs"] = {"Silly Egg", "Throwback Egg", "Nightmare Egg"}
+            ["Eggs"] = {"Silly Egg", "Void Egg", "Nightmare Egg", "Rainbow Egg"}
         },
-        ["Egg"] = "100M Egg"
+        ["Egg"] = "Infinity Egg"
     },
     ["Webhook"] = {
-        ["MinDifficulty"] = "4m",
+        ["MinDifficulty"] = "1m",
         ["UserID"] = "",
         ["URL"] = "https://discord.com/api/webhooks/1362420992596639774/Kjo5qyBSqfgpYYkdyy1alxbxvqHwTtLondERczZzeYgDvj0LWOFHZ1c1hjCrE3CvlDGM",
     },
