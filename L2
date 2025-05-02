@@ -1,19 +1,4 @@
-wait(15)
---script_key="ufXBOPmnsHdHscaxbHFRlqlmiQvekpMb";
+script_key="ufXBOPmnsHdHscaxbHFRlqlmiQvekpMb";
 setfpscap(5)
 
-getgenv().Config = {
-    ["Hatching"] = {
-        ["Rifts"] = {
-            ["Eggs"] = {"Silly Egg", "Void Egg", "Nightmare Egg", "Rainbow Egg"}
-        },
-        ["Egg"] = "Infinity Egg"
-    },
-    ["Webhook"] = {
-        ["MinDifficulty"] = "1m",
-        ["UserID"] = "",
-        ["URL"] = "https://discord.com/api/webhooks/1362420992596639774/Kjo5qyBSqfgpYYkdyy1alxbxvqHwTtLondERczZzeYgDvj0LWOFHZ1c1hjCrE3CvlDGM",
-    },
-    ["AutoEnchant"] = true -- // Enchant Team Up on all Equipped Pets
-}
-loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/6a28683e5e681161a5074613f6daf64c.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/BGSI-MM"))()
