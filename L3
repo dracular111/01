@@ -1,4 +1,4 @@
 script_key="eCBQoTLLuLuKSdoPkBznOXxjDJecWUsa";
 setfpscap(5)
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/BGSI-MM"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/BGSI-PIRA"))()
