@@ -26,7 +26,6 @@ getgenv().bgsInfConfig = {
     DISCORD_ID = "1263292904953217072",
     WEBHOOK_ODDS = 5000000,
     SHOW_PET_WEBHOOK_USERNAME = true,
-    MASTERY_BUFFS_LEVEL = 20,
 }
 
 loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/3dc52e6a2fc4f671b66757e93f4fd38b.lua"))()
