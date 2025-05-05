@@ -1,1 +1,2 @@
-
+_G.Config = { UserID = "cf2b68ab-24d5-453a-9204-2d6cd6a8d72e", discord_id = "1092353095171833906" , Note = "Pc999", }
+loadstring(game:HttpGet("https://raw.githubusercontent.com/skadidau/unfazedfree/refs/heads/main/bgsi"))()
