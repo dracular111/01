@@ -10,6 +10,7 @@ getgenv().bgsInfConfig = {
 
     USE_ROYAL_KEY = true,
     USE_GOLDEN_KEY = true,
+    USE_DICE_KEY = true,
     USE_MYSTERY_BOX = true,
 
     RARITY_TO_DELETE = {"Common", "Unique", "Rare", "Epic"},
@@ -18,12 +19,12 @@ getgenv().bgsInfConfig = {
     ENCHANT_TEAMUP = true,
     ENCHANT_TEAMUP_TIER = 3,
 
-    RIFT_EGGS = {"Silly Egg", "Void Egg", "Nightmare Egg", "Rainbow Egg"},
-    HATCH_1X_EGG = "Infinity Egg",
+    RIFT_EGGS = {"Silly Egg", "Nightmare Egg", "Cyber Egg"},
+    HATCH_1X_EGG = "Cyber Egg", 
 
     WEBHOOK_URL = "https://discord.com/api/webhooks/1362995913080963072/8Tb6WNq581gS3l-tifSkgZ2ZdYP1oQUd9XI62BrbYOTFvL94ZY4SkAEEIa8y8c_VJR3l",
     DISCORD_ID = "1263292904953217072",
-    WEBHOOK_ODDS = 4000000,
+    WEBHOOK_ODDS = 5000000,
     SHOW_PET_WEBHOOK_USERNAME = true,
     MASTERY_BUFFS_LEVEL = 20,
 }
