@@ -6,7 +6,7 @@ getgenv().Config = {
         ["Egg"] = "Common Egg"
     },
     ["Webhook"] = {
-        ["MinDifficulty"] = "5m",
+        ["MinDifficulty"] = "50m",
         ["UserID"] = "",
         ["URL"] = "https://discord.com/api/webhooks/1362420992596639774/Kjo5qyBSqfgpYYkdyy1alxbxvqHwTtLondERczZzeYgDvj0LWOFHZ1c1hjCrE3CvlDGM",
     },
