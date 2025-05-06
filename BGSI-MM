@@ -14,10 +14,10 @@ getgenv().bgsInfConfig = {
     USE_MYSTERY_BOX = true,
 
     RARITY_TO_DELETE = {"Common", "Unique", "Rare", "Epic"},
-    LEGENDARY_TIER_TO_DELETE = 2,
+    LEGENDARY_TIER_TO_DELETE = 1,
 
     ENCHANT_TEAMUP = true,
-    ENCHANT_TEAMUP_TIER = 3,
+    ENCHANT_TEAMUP_TIER = 1,
 
     RIFT_EGGS = {"Silly Egg", "Nightmare Egg", "Cyber Egg"},
     HATCH_1X_EGG = "Cyber Egg",
