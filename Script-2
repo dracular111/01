@@ -9,6 +9,5 @@ end
 _G.SCRIPT2 = true
 
 -- Script của bạn
---loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/ADD"))()
---loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/send-item1"))()
---loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Daycare"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/BGSI999"))()
+
