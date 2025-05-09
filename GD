@@ -203,18 +203,20 @@ spawn(function()
 end)
 spawn(function()
     while wait() do
-        if game.Players.LocalPlayer.Name ~= getgenv().Data["Account Main"] then
-            if havepet() then
-                if game.PlaceId ~= 98046029518959 then
-                    TeleportService:Teleport(98046029518959)
+        if isonline() then
+            if game.Players.LocalPlayer.Name ~= getgenv().Data["Account Main"] then
+                if havepet() then
+                    if game.PlaceId ~= 98046029518959 then
+                        TeleportService:Teleport(98046029518959)
+                    else
+                        post()
+                    end
                 else
-                    post()
-                end
-            else
-                if game.PlaceId ~= 85896571713843 then
-                    Delete()
-                    task.wait(2)
-                    TeleportService:Teleport(85896571713843)
+                    if game.PlaceId ~= 85896571713843 then
+                        Delete()
+                        task.wait(2)
+                        TeleportService:Teleport(85896571713843)
+                    end
                 end
             end
         end
