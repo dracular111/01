@@ -1,6 +1,6 @@
 getgenv().Data = {
     ["Account Main"] = "congahpz002",
-    ["UID"] = "123",
+    ["UID"] = "1",
     ["Pets"] = {
         "Silly Egg",
         "King Doggy",
