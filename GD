@@ -14,8 +14,7 @@ getgenv().Data = {
         "Dementor",
         "Royal Trophy",
         "Mech Robot",
-        "Luminosity",
-        "Jackpot"
+        "Luminosity"
     }
 }
 repeat
