@@ -1,0 +1,520 @@
+getgenv().Data = {
+    ["Account Main"] = "congahpz002",
+    ["UID"] = "chickenz2",
+    ["Pets"] = {
+        "Mythic Dice Split",
+	"Silly Egg",
+        "Shiny Silly Egg",
+        "Mythic Silly Egg",
+        "Shiny Mythic Silly Egg",
+        "King Doggy",
+        "Shiny King Doggy",
+        "Mythic King Doggy",
+        "Shiny Mythic King Doggy",
+        "ROUND",
+        "Shiny ROUND",
+        "Mythic ROUND",
+        "Shiny Mythic ROUND",
+        "The Overlord",
+        "Shiny The Overlord",
+        "Mythic The Overlord",
+        "Shiny Mythic The Overlord",
+        "Avernus",
+        "Shiny Avernus",
+        "Mythic Avernus",
+        "Shiny Mythic Avernus",
+        "MAN FACE GOD",
+        "Shiny MAN FACE GOD",
+        "Mythic MAN FACE GOD",
+        "Shiny Mythic MAN FACE GOD",
+        "Giant Chocolate Chicken",
+        "Shiny Giant Chocolate Chicken",
+        "Shiny Mythic Giant Chocolate Chicken",
+        "Mythic Giant Chocolate Chicken",
+        "Easter Basket",
+        "Shiny Easter Basket",
+        "Mythic Easter Basket",
+        "Shiny Mythic Easter Basket",
+        "Godly Gem",
+        "Shiny Godly Gem",
+        "Mythic Godly Gem",
+        "Shiny Mythic Godly Gem",
+        "Dementor",
+        "Shiny Dementor",
+        "Mythic Dementor",
+        "Shiny Mythic Dementor",
+        "Royal Trophy",
+        "Shiny Royal Trophy",
+        "Mythic Royal Trophy",
+        "Shiny Mythic Royal Trophy",
+        "Mech Robot",
+        "Shiny Mech Robot",
+        "Mythic Mech Robot",
+        "Shiny Mythic Mech Robot",
+        "Luminosity",
+        "Shiny Luminosity",
+        "Mythic Luminosity",
+        "Shiny Mythic Luminosity"
+    }
+}
+repeat
+    wait()
+until game:IsLoaded()
+--repeat wait() until game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Intro")
+spawn(function()
+    while wait() do
+        pcall(function()
+            if game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Intro") then
+                repeat
+                    wait()
+                    pcall(function()
+                        if game:GetService("Players").LocalPlayer.PlayerGui.Intro.Graphics.Visible then
+                            for i, v in getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Intro.Play.Button.Activated) do
+                                v.Function()
+                            end
+                        else
+                            for i, v in getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Intro.Graphics.Content.Low.Action.Button.Activated) do
+                                v.Function()
+                            end
+                        end
+                    end)
+                until not game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Intro") and game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Intro").Enabled == false
+            end
+        end)
+    end
+end)
+local LocalData = require(game.ReplicatedStorage.Client.Framework.Services.LocalData)
+repeat
+    wait()
+until LocalData.IsReady()
+local blacklist = {}
+print("Data Loaded")
+function getuserid()
+    local PlayerService = game:GetService("Players")
+
+    return PlayerService:GetUserIdFromNameAsync(getgenv().Data["Account Main"])
+end
+
+function isonline()
+    local DataCallBack = request({
+        Url = "https://yummydata.click/isonline?userid=" .. getuserid(),
+        Method = "GET",
+        Headers = {
+            ["Content-Type"] = "application/json"
+        },
+    })
+    local data = game:GetService("HttpService"):JSONDecode(DataCallBack.Body)
+
+    if not data or next(data) == nil then
+        return {}
+    end
+
+    return data.isOnline
+end
+
+function skip(id)
+    for _, team in LocalData.Get().Teams do
+        for i1, v1 in next, team.Pets do
+            if v1 == id then
+                return true
+            end
+        end
+    end
+end
+
+function havepet()
+    for i, v in LocalData.Get().Pets do
+        if v.Mythic then
+            if v.Shiny then
+                if table.find(getgenv().Data["Pets"], "Shiny Mythic " .. v.Name) and not skip(v.Id) then
+                    return true
+                end
+            else
+                if table.find(getgenv().Data["Pets"], "Mythic " .. v.Name) and not skip(v.Id) then
+                    return true
+                end
+            end
+        end
+        if v.Shiny then
+            if table.find(getgenv().Data["Pets"], "Shiny " .. v.Name) and not skip(v.Id) then
+                return true
+            end
+        end
+        if table.find(getgenv().Data["Pets"], v.Name) and not skip(v.Id) and not v.Shiny and not v.Mythic then
+            return true
+        end
+    end
+end
+
+local save = {}
+
+for i, v in LocalData.Get().Pets do
+    if table.find(getgenv().Data["Pets"], v.Name) and not skip(v.Id) then
+        save[v.Name] = save[v.Name] or {}
+
+        table.insert(save[v.Name], v.Id .. ":" .. (v.Amount or 0))
+    end
+end
+
+function post()
+    for i, v in LocalData.Get().Pets do
+        if v.Mythic then
+            if v.Shiny then
+                if table.find(getgenv().Data["Pets"], "Shiny Mythic " .. v.Name) and not skip(v.Id) then
+                    save[v.Name] = save[v.Name] or {}
+                    if not table.find(save[v.Name], v.Id .. ":" .. (v.Amount or 0)) then
+                        table.insert(save[v.Name], v.Id .. ":" .. (v.Amount or 0))
+                    end
+                end
+            else
+                if table.find(getgenv().Data["Pets"], "Mythic " .. v.Name) and not skip(v.Id) then
+                    save[v.Name] = save[v.Name] or {}
+                    if not table.find(save[v.Name], v.Id .. ":" .. (v.Amount or 0)) then
+                        table.insert(save[v.Name], v.Id .. ":" .. (v.Amount or 0))
+                    end
+                end
+            end
+        end
+        if v.Shiny then
+            if table.find(getgenv().Data["Pets"], "Shiny " .. v.Name) and not skip(v.Id) then
+                save[v.Name] = save[v.Name] or {}
+                if not table.find(save[v.Name], v.Id .. ":" .. (v.Amount or 0)) then
+                    table.insert(save[v.Name], v.Id .. ":" .. (v.Amount or 0))
+                end
+            end
+        end
+        if table.find(getgenv().Data["Pets"], v.Name) and not skip(v.Id) and not v.Shiny and not v.Mythic then
+            save[v.Name] = save[v.Name] or {}
+            if not table.find(save[v.Name], v.Id .. ":" .. (v.Amount or 0)) then
+                table.insert(save[v.Name], v.Id .. ":" .. (v.Amount or 0))
+            end
+        end
+    end
+    local payload = {
+        ["key"] = getgenv().Data["UID"],
+        ["accounts"] = {
+            [game.Players.LocalPlayer.Name] = {
+                ["Pets"] = save,
+                ["JobId"] = game.JobId,
+                ["PlaceId"] = game.PlaceId,
+            }
+        }
+    }
+    local DataCallBack = request({
+        Url = "https://yummydata.click/addAccountByKey",
+        Method = 'POST',
+        Headers = {
+            ["Content-Type"] = "application/json"
+        },
+        Body = game:GetService("HttpService"):JSONEncode(payload)
+    })
+    --print(game:GetService("HttpService"):JSONEncode(save))
+end
+
+function postmain()
+    local payload = {
+        ["key"] = getgenv().Data["UID"],
+        ["accounts"] = {
+            [game.Players.LocalPlayer.Name] = {
+                ["JobId"] = game.JobId,
+                ["PlaceId"] = game.PlaceId,
+            }
+        }
+    }
+    local DataCallBack = request({
+        Url = "https://yummydata.click/postservermain",
+        Method = 'POST',
+        Headers = {
+            ["Content-Type"] = "application/json"
+        },
+        Body = game:GetService("HttpService"):JSONEncode(payload)
+    })
+    --print(game:GetService("HttpService"):JSONEncode(save))
+end
+
+function Delete()
+    local payload = {
+        ["key"] = getgenv().Data["UID"],
+        ["username"] = game.Players.LocalPlayer.Name,
+    }
+    local DataCallBack = request({
+        Url = "https://yummydata.click/deleteAccountByKey",
+        Method = 'POST',
+        Headers = {
+            ["Content-Type"] = "application/json"
+        },
+        Body = game:GetService("HttpService"):JSONEncode(payload)
+    })
+    print("Delete")
+    --print(game:GetService("HttpService"):JSONEncode(save))
+end
+
+function GetDataMain()
+    local res = request({
+        Url = "https://yummydata.click/getdatamain?key=" .. getgenv().Data["UID"],
+        Method = "GET"
+    })
+
+    local data = game:GetService("HttpService"):JSONDecode(res.Body)
+
+    if not data or next(data) == nil then
+        return {}
+    end
+
+    return data.data
+end
+
+function GetData()
+    local res = request({
+        Url = "https://yummydata.click/getAccountsByKey?key=" .. getgenv().Data["UID"],
+        Method = "GET"
+    })
+
+    local data = game:GetService("HttpService"):JSONDecode(res.Body)
+
+    if not data or next(data) == nil then
+        return {}
+    end
+
+    return data.data
+end
+
+local TeleportService = game:GetService("TeleportService")
+spawn(function()
+    pcall(function()
+        while wait() do
+            pcall(function()
+                if game.Players.LocalPlayer.Name == getgenv().Data["Account Main"] then
+                    if game.PlaceId ~= 98046029518959 then
+                        TeleportService:Teleport(98046029518959)
+                    else
+                        postmain()
+                    end
+                end
+            end)
+        end
+    end)
+end)
+spawn(function()
+    while wait() do
+        if game.Players.LocalPlayer.Name ~= getgenv().Data["Account Main"] then
+            if havepet() then
+                if game.PlaceId ~= 98046029518959 then
+                    TeleportService:Teleport(98046029518959)
+                else
+                    post()
+                end
+            else
+                if game.PlaceId ~= 85896571713843 then
+                    Delete()
+                    task.wait(2)
+                    TeleportService:Teleport(85896571713843)
+                end
+            end
+        end
+    end
+end)
+local v_u_5 = require(game:GetService("ReplicatedStorage").Shared.Framework.Network.Remote)
+v_u_5.Event("TradeStarted"):Connect(function(p435)
+    getgenv().Save = p435
+end)
+
+v_u_5.Event("TradeUpdated"):Connect(function(p438)
+    getgenv().Save = p438
+end)
+
+
+if game.Players.LocalPlayer.Name ~= getgenv().Data["Account Main"] then
+    spawn(function()
+        pcall(function()
+            while wait() do
+                pcall(function()
+                    if game:GetService("Players"):FindFirstChild(getgenv().Data["Account Main"]) then
+                        if not game:GetService("Players").LocalPlayer:GetAttribute("Trading") then
+                            local args = {
+                                "TradeAcceptRequest",
+                                game:GetService("Players"):WaitForChild(getgenv().Data["Account Main"])
+                            }
+                            game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Framework")
+                                :WaitForChild(
+                                    "Network")
+                                :WaitForChild("Remote"):WaitForChild("Event"):FireServer(unpack(args))
+                        end
+                    else
+                        for i, v in GetDataMain() do
+                            if v["JobId"] ~= tostring(game.JobId) then
+                                game:GetService("TeleportService"):TeleportToPlaceInstance(v["PlaceId"],
+                                    v["JobId"],
+                                    game.Players.LocalPlayer)
+                            end
+                        end
+                    end
+                end)
+            end
+        end)
+    end)
+    spawn(function()
+        while wait() do
+            if game:GetService("Players").LocalPlayer:GetAttribute("Trading") then
+                local cnt = 0
+
+                save = {}
+                for i, v in LocalData.Get().Pets do
+                    if v.Mythic then
+                        if v.Shiny then
+                            if table.find(getgenv().Data["Pets"], "Shiny Mythic " .. v.Name) and not skip(v.Id) then
+                                save[v.Name] = save[v.Name] or {}
+                                if not table.find(save[v.Name], v.Id .. ":" .. (v.Amount or 0)) then
+                                    table.insert(save[v.Name], v.Id .. ":" .. (v.Amount or 0))
+                                end
+                            end
+                        else
+                            if table.find(getgenv().Data["Pets"], "Mythic " .. v.Name) and not skip(v.Id) then
+                                save[v.Name] = save[v.Name] or {}
+                                if not table.find(save[v.Name], v.Id .. ":" .. (v.Amount or 0)) then
+                                    table.insert(save[v.Name], v.Id .. ":" .. (v.Amount or 0))
+                                end
+                            end
+                        end
+                    end
+                    if v.Shiny then
+                        if table.find(getgenv().Data["Pets"], "Shiny " .. v.Name) and not skip(v.Id) then
+                            save[v.Name] = save[v.Name] or {}
+                            if not table.find(save[v.Name], v.Id .. ":" .. (v.Amount or 0)) then
+                                table.insert(save[v.Name], v.Id .. ":" .. (v.Amount or 0))
+                            end
+                        end
+                    end
+                    if table.find(getgenv().Data["Pets"], v.Name) and not skip(v.Id) and not v.Shiny and not v.Mythic then
+                        save[v.Name] = save[v.Name] or {}
+                        if not table.find(save[v.Name], v.Id .. ":" .. (v.Amount or 0)) then
+                            table.insert(save[v.Name], v.Id .. ":" .. (v.Amount or 0))
+                        end
+                    end
+                end
+                for i, v in save do
+                    for i1, v1 in next, v do
+                        local a = string.split(v1, ":")
+                        local id = a[1]
+                        local amount = tonumber(a[2])
+
+                        if amount >= 1 then
+                            repeat
+                                wait()
+                                local args = {
+                                    "TradeAddPet",
+                                    id .. ":" .. tostring(amount),
+                                }
+                                game:GetService("ReplicatedStorage"):WaitForChild("Shared")
+                                    :WaitForChild(
+                                        "Framework")
+                                    :WaitForChild(
+                                        "Network"):WaitForChild("Remote"):WaitForChild("Event")
+                                    :FireServer(
+                                        unpack(
+                                            args))
+                                print("TradeAddPet", id .. ":" .. tostring(amount))
+                                task.wait(2)
+                                amount = amount - 1
+                                cnt = cnt + 1
+                            until amount < 0 or #getgenv().Save.Party1.Offer >= 10 or #getgenv().Save.Party0.Offer >= 10 or cnt >= 10
+                        else
+                            local args = {
+                                "TradeAddPet",
+                                v1,
+                            }
+                            game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild(
+                                "Framework")
+                                :WaitForChild(
+                                    "Network"):WaitForChild("Remote"):WaitForChild("Event")
+                                :FireServer(
+                                    unpack(
+                                        args))
+                            print("TradeAddPet", id .. ":" .. tostring(amount))
+
+                            cnt = cnt + 1
+                            print(cnt)
+                            task.wait(2)
+                        end
+                        if cnt >= 10 then
+                            break
+                        end
+                    end
+                    if cnt >= 10 then
+                        break
+                    end
+                end
+                repeat
+                    wait()
+                    local args = {
+                        "TradeAccept"
+                    }
+                    game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild(
+                        "Framework")
+                        :WaitForChild("Network"):WaitForChild("Remote"):WaitForChild("Event")
+                        :FireServer(
+                            unpack(
+                                args))
+
+                    local args = {
+                        "TradeConfirm"
+                    }
+                    game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild(
+                        "Framework")
+                        :WaitForChild("Network"):WaitForChild("Remote"):WaitForChild("Event")
+                        :FireServer(
+                            unpack(
+                                args))
+                until not game:GetService("Players").LocalPlayer:GetAttribute("Trading")
+            end
+        end
+    end)
+end
+
+spawn(function()
+    while wait() do
+        if game.Players.LocalPlayer.Name == getgenv().Data["Account Main"] then
+            pcall(function()
+                if not game:GetService("Players").LocalPlayer:GetAttribute("Trading") then
+                    for i, v in GetData() do
+                        if game.Players:FindFirstChild(i) then
+                            local args = {
+                                "TradeRequest",
+                                game:GetService("Players"):WaitForChild(i)
+                            }
+                            game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild(
+                                "Framework")
+                                :WaitForChild(
+                                    "Network"):WaitForChild("Remote"):WaitForChild("Event"):FireServer(
+                                unpack(
+                                    args))
+                        end
+                    end
+                else
+                    repeat
+                        wait()
+                        local args = {
+                            "TradeAccept"
+                        }
+                        game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild(
+                            "Framework")
+                            :WaitForChild("Network"):WaitForChild("Remote"):WaitForChild("Event")
+                            :FireServer(
+                                unpack(
+                                    args))
+                        task.wait(4)
+                        local args = {
+                            "TradeConfirm"
+                        }
+                        game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild(
+                            "Framework")
+                            :WaitForChild("Network"):WaitForChild("Remote"):WaitForChild("Event")
+                            :FireServer(
+                                unpack(
+                                    args))
+                    until not game:GetService("Players").LocalPlayer:GetAttribute("Trading")
+                end
+            end)
+        end
+    end
+end)
