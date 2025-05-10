@@ -525,6 +525,7 @@ spawn(function()
                 else
                     repeat
                         wait()
+			task.wait(4)
                         local args = {
                             "TradeAccept"
                         }
