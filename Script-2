@@ -465,7 +465,7 @@ if game.Players.LocalPlayer.Name ~= getgenv().Data["Account Main"] then
                         :FireServer(
                             unpack(
                                 args))
-
+		    task.wait(5)
                     local args = {
                         "TradeConfirm"
                     }
