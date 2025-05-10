@@ -139,6 +139,20 @@ function havepet()
                 return true
             end
         end
+        if v.Secret and not skip(v.Id) then
+            if table.find(getgenv().Data["Pets"], "Shiny " .. v.Name) and not skip(v.Id) then
+                return true
+            end
+            if table.find(getgenv().Data["Pets"], "Shiny Mythic" .. v.Name) and not skip(v.Id) then
+                return true
+            end
+            if table.find(getgenv().Data["Pets"], "Mythic " .. v.Name) and not skip(v.Id) then
+                return true
+            end
+            if table.find(getgenv().Data["Pets"], v.Name) and not skip(v.Id) then
+                return true
+            end
+        end
         if table.find(getgenv().Data["Pets"], v.Name) and not skip(v.Id) and not v.Shiny and not v.Mythic then
             return true
         end
@@ -147,13 +161,7 @@ end
 
 local save = {}
 
-for i, v in LocalData.Get().Pets do
-    if table.find(getgenv().Data["Pets"], v.Name) and not skip(v.Id) then
-        save[v.Name] = save[v.Name] or {}
 
-        table.insert(save[v.Name], v.Id .. ":" .. (v.Amount or 0))
-    end
-end
 
 function post()
     for i, v in LocalData.Get().Pets do
@@ -172,6 +180,12 @@ function post()
                         table.insert(save[v.Name], v.Id .. ":" .. (v.Amount or 0))
                     end
                 end
+            end
+        end
+        if v.Secret and not skip(v.Id) then
+            save[v.Name] = save[v.Name] or {}
+            if not table.find(save[v.Name], v.Id .. ":" .. (v.Amount or 0)) then
+                table.insert(save[v.Name], v.Id .. ":" .. (v.Amount or 0))
             end
         end
         if v.Shiny then
@@ -328,23 +342,25 @@ if game.Players.LocalPlayer.Name ~= getgenv().Data["Account Main"] then
         pcall(function()
             while wait() do
                 pcall(function()
-                    if game:GetService("Players"):FindFirstChild(getgenv().Data["Account Main"]) then
-                        if not game:GetService("Players").LocalPlayer:GetAttribute("Trading") then
-                            local args = {
-                                "TradeAcceptRequest",
-                                game:GetService("Players"):WaitForChild(getgenv().Data["Account Main"])
-                            }
-                            game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Framework")
-                                :WaitForChild(
-                                    "Network")
-                                :WaitForChild("Remote"):WaitForChild("Event"):FireServer(unpack(args))
-                        end
-                    else
-                        for i, v in GetDataMain() do
-                            if v["JobId"] ~= tostring(game.JobId) then
-                                game:GetService("TeleportService"):TeleportToPlaceInstance(v["PlaceId"],
-                                    v["JobId"],
-                                    game.Players.LocalPlayer)
+                    if havepet() then
+                        if game:GetService("Players"):FindFirstChild(getgenv().Data["Account Main"]) then
+                            if not game:GetService("Players").LocalPlayer:GetAttribute("Trading") then
+                                local args = {
+                                    "TradeAcceptRequest",
+                                    game:GetService("Players"):WaitForChild(getgenv().Data["Account Main"])
+                                }
+                                game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Framework")
+                                    :WaitForChild(
+                                        "Network")
+                                    :WaitForChild("Remote"):WaitForChild("Event"):FireServer(unpack(args))
+                            end
+                        else
+                            for i, v in GetDataMain() do
+                                if v["JobId"] ~= tostring(game.JobId) then
+                                    game:GetService("TeleportService"):TeleportToPlaceInstance(v["PlaceId"],
+                                        v["JobId"],
+                                        game.Players.LocalPlayer)
+                                end
                             end
                         end
                     end
@@ -374,6 +390,12 @@ if game.Players.LocalPlayer.Name ~= getgenv().Data["Account Main"] then
                                     table.insert(save[v.Name], v.Id .. ":" .. (v.Amount or 0))
                                 end
                             end
+                        end
+                    end
+                    if v.Secret and not skip(v.Id) then
+                        save[v.Name] = save[v.Name] or {}
+                        if not table.find(save[v.Name], v.Id .. ":" .. (v.Amount or 0)) then
+                            table.insert(save[v.Name], v.Id .. ":" .. (v.Amount or 0))
                         end
                     end
                     if v.Shiny then
@@ -454,7 +476,7 @@ if game.Players.LocalPlayer.Name ~= getgenv().Data["Account Main"] then
                         :FireServer(
                             unpack(
                                 args))
-
+                    task.wait(5)
                     local args = {
                         "TradeConfirm"
                     }
