@@ -57,7 +57,7 @@ end
 
 function isonline()
     local DataCallBack = request({
-        Url = "http://157.66.27.219:3000/isonline?userid=" .. getuserid(),
+        Url = "https://yummydata.click/isonline?userid=" .. getuserid(),
         Method = "GET",
         Headers = {
             ["Content-Type"] = "application/json"
@@ -110,7 +110,7 @@ function post()
         }
     }
     local DataCallBack = request({
-        Url = "http://157.66.27.219:3000/addAccountByKey",
+        Url = "https://yummydata.click/addAccountByKey",
         Method = 'POST',
         Headers = {
             ["Content-Type"] = "application/json"
@@ -131,7 +131,7 @@ function postmain()
         }
     }
     local DataCallBack = request({
-        Url = "http://157.66.27.219:3000/postservermain",
+        Url = "https://yummydata.click/postservermain",
         Method = 'POST',
         Headers = {
             ["Content-Type"] = "application/json"
@@ -147,7 +147,7 @@ function Delete()
         ["username"] = game.Players.LocalPlayer.Name,
     }
     local DataCallBack = request({
-        Url = "http://157.66.27.219:3000/deleteAccountByKey",
+        Url = "https://yummydata.click/deleteAccountByKey",
         Method = 'POST',
         Headers = {
             ["Content-Type"] = "application/json"
@@ -160,7 +160,7 @@ end
 
 function GetDataMain()
     local res = request({
-        Url = "http://157.66.27.219:3000/getdatamain?key=" .. getgenv().Data["UID"],
+        Url = "https://yummydata.click/getdatamain?key=" .. getgenv().Data["UID"],
         Method = "GET"
     })
 
@@ -175,7 +175,7 @@ end
 
 function GetData()
     local res = request({
-        Url = "http://157.66.27.219:3000/getAccountsByKey?key=" .. getgenv().Data["UID"],
+        Url = "https://yummydata.click/getAccountsByKey?key=" .. getgenv().Data["UID"],
         Method = "GET"
     })
 
@@ -202,20 +202,18 @@ spawn(function()
 end)
 spawn(function()
     while wait() do
-        if isonline() then
-            if game.Players.LocalPlayer.Name ~= getgenv().Data["Account Main"] then
-                if havepet() then
-                    if game.PlaceId ~= 98046029518959 then
-                        TeleportService:Teleport(98046029518959)
-                    else
-                        post()
-                    end
+        if game.Players.LocalPlayer.Name ~= getgenv().Data["Account Main"] then
+            if havepet() then
+                if game.PlaceId ~= 98046029518959 then
+                    TeleportService:Teleport(98046029518959)
                 else
-                    if game.PlaceId ~= 85896571713843 then
-                        Delete()
-                        task.wait(2)
-                        TeleportService:Teleport(85896571713843)
-                    end
+                    post()
+                end
+            else
+                if game.PlaceId ~= 85896571713843 then
+                    Delete()
+                    task.wait(2)
+                    TeleportService:Teleport(85896571713843)
                 end
             end
         end
