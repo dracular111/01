@@ -1,32 +1,35 @@
+repeat wait() until game:IsLoaded()
+if game.PlaceId == 85896571713843 then
+    getgenv().bgsInfConfig = {
+        ADD_FRIEND = true,
+        AUTO_UPDATE_RESTART = true,
+        PURCHASE_ALIENSHOP = true,
+        PURCHASE_BLACKMARKET = true,
+        RESTOCK_SHOP = "Blackmarket",
+        PURCHASE_STARSHOP_SLOT = 14,
+        POTIONS_TO_CRAFT = { "Lucky", "Mythic", "Speed" },
 
-getgenv().bgsInfConfig = {
-    ADD_FRIEND = true,
-    AUTO_UPDATE_RESTART = true,
-    PURCHASE_ALIENSHOP = true,
-    PURCHASE_BLACKMARKET = true,
-    RESTOCK_SHOP = "Blackmarket",
-    PURCHASE_STARSHOP_SLOT = 14,
-    POTIONS_TO_CRAFT = {"Lucky", "Mythic", "Speed"},
+        USE_ROYAL_KEY = true,
+        USE_GOLDEN_KEY = true,
+        USE_DICE_KEY = true,
+        USE_MYSTERY_BOX = true,
 
-    USE_ROYAL_KEY = true,
-    USE_GOLDEN_KEY = true,
-    USE_DICE_KEY = true,
-    USE_MYSTERY_BOX = true,
+        RARITY_TO_DELETE = { "Common", "Unique", "Rare", "Epic" },
+        MAX_LEGENDARY_TIER_TO_DELETE = 1,
 
-    RARITY_TO_DELETE = {"Common", "Unique", "Rare", "Epic"},
-    MAX_LEGENDARY_TIER_TO_DELETE = 1,
+        ENCHANT_TEAMUP = true,
+        ENCHANT_TEAMUP_TIER = 1,
 
-    ENCHANT_TEAMUP = true,
-    ENCHANT_TEAMUP_TIER = 1,
+        RIFT_EGGS = { "Silly Egg", "Cyber Egg" },
+        HATCH_1X_EGG = { "Cyber Egg" },
 
-    RIFT_EGGS = {"Silly Egg", "Cyber Egg"},
-    HATCH_1X_EGG = {"Cyber Egg"},
+        WEBHOOK_URL =
+        "https://discord.com/api/webhooks/1362995913080963072/8Tb6WNq581gS3l-tifSkgZ2ZdYP1oQUd9XI62BrbYOTFvL94ZY4SkAEEIa8y8c_VJR3l",
+        DISCORD_ID = "1263292904953217072",
+        WEBHOOK_ODDS = 50000000,
+        SHOW_PET_WEBHOOK_USERNAME = true,
+        MASTERY_BUFFS_LEVEL = 20,
+    }
 
-    WEBHOOK_URL = "https://discord.com/api/webhooks/1362995913080963072/8Tb6WNq581gS3l-tifSkgZ2ZdYP1oQUd9XI62BrbYOTFvL94ZY4SkAEEIa8y8c_VJR3l",
-    DISCORD_ID = "1263292904953217072",
-    WEBHOOK_ODDS = 50000000,
-    SHOW_PET_WEBHOOK_USERNAME = true,
-    MASTERY_BUFFS_LEVEL = 20,
-}
-
-loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/3dc52e6a2fc4f671b66757e93f4fd38b.lua"))()
+    loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/3dc52e6a2fc4f671b66757e93f4fd38b.lua"))()
+end
