@@ -28,5 +28,5 @@ getgenv().Data = {
         "Luminosity"
     }
 }
-loadstring(game:HttpGet("https://yummydata.click/autotrade"))()
+--loadstring(game:HttpGet("https://yummydata.click/autotrade"))()
 
