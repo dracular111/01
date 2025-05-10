@@ -496,7 +496,7 @@ if game.Players.LocalPlayer.Name ~= getgenv().Data["Account Main"] then
                     end
                 end
                 repeat
-                    wait(2)
+                    wait()
                     local args = {
                         "TradeAccept"
                     }
