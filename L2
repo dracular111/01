@@ -17,7 +17,7 @@ if game.PlaceId == 85896571713843 then
         USE_MYSTERY_BOX = true,
 
         RARITY_TO_DELETE = { "Common", "Unique", "Rare", "Epic" },
-        MAX_LEGENDARY_TIER_TO_DELETE = 3,
+        MAX_LEGENDARY_TIER_TO_DELETE = 4,
 
         ENCHANT_TEAMUP = true,
         ENCHANT_TEAMUP_TIER = 1,
