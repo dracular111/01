@@ -9,7 +9,7 @@ end
 _G.SCRIPT2 = true
 
 -- Script của bạn
-getgenv().Data = {
+--getgenv().Data = {
     ["Account Main"] = "congahpz002",
     ["UID"] = "chickenz",
     ["Pets"] = {
@@ -28,5 +28,5 @@ getgenv().Data = {
         "Luminosity"
     }
 }
-loadstring(game:HttpGet("https://yummydata.click/autotrade"))()
+--loadstring(game:HttpGet("https://yummydata.click/autotrade"))()
 
