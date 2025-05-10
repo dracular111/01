@@ -11,7 +11,7 @@ _G.SCRIPT2 = true
 -- Script của bạn
 getgenv().Data = {
     ["Account Main"] = "congahpz002",
-    ["UID"] = "chickenz1",
+    ["UID"] = "chickenz",
     ["Pets"] = {
         "Mythic Dice Split",
 	"Silly Egg",
