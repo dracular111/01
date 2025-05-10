@@ -13,7 +13,6 @@ getgenv().Data = {
     ["Account Main"] = "congahpz002",
     ["UID"] = "chickenz",
     ["Pets"] = {
-        "Mythic Dice Split",
 	"Silly Egg",
         "Shiny Silly Egg",
         "Mythic Silly Egg",
