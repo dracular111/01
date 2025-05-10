@@ -68,8 +68,6 @@ getgenv().Data = {
         "Shiny Mythic Luminosity"
     }
 }
-    }
-}
 repeat
     wait()
 until game:IsLoaded()
