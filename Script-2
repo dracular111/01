@@ -13,7 +13,7 @@ getgenv().Data = {
     ["Account Main"] = "congahpz002",
     ["UID"] = "chickenz",
     ["Pets"] = {
-	"Silly Egg",
+        "Silly Egg",
         "Shiny Silly Egg",
         "Mythic Silly Egg",
         "Shiny Mythic Silly Egg",
@@ -64,7 +64,26 @@ getgenv().Data = {
         "Luminosity",
         "Shiny Luminosity",
         "Mythic Luminosity",
-        "Shiny Mythic Luminosity"
+        "Lord Shock",
+        "ShinyLord Shock",
+        "Mythic Lord Shock",
+        "Shiny Mythic Lord Shock",
+        "Prophet",
+        "Shiny Prophet",
+        "Mythic Prophet",
+        "Shiny Mythic Prophet",
+        "Wolflord",
+        "Shiny Wolflord",
+        "Mythic Wolflord",
+        "Shiny Mythic Wolflord",
+        "Queen Kitty",
+        "Shiny Queen Kitty",
+        "Mythic Queen Kitty",
+        "Shiny Mythic Queen Kitty",
+        "DOGGY1337",
+        "Shiny DOGGY1337",
+        "Mythic DOGGY1337",
+        "Shiny Mythic DOGGY1337"
     }
 }
 repeat
@@ -477,7 +496,7 @@ if game.Players.LocalPlayer.Name ~= getgenv().Data["Account Main"] then
                     end
                 end
                 repeat
-                    wait()
+                    wait(2)
                     local args = {
                         "TradeAccept"
                     }
@@ -525,7 +544,6 @@ spawn(function()
                 else
                     repeat
                         wait()
-			task.wait(3)
                         local args = {
                             "TradeAccept"
                         }
