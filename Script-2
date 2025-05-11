@@ -9,7 +9,7 @@ end
 _G.SCRIPT2 = true
 
 -- Script của bạn
---getgenv().Data = {
+getgenv().Data = {
     ["Account Main"] = "congahpz002",
     ["UID"] = "chickenz",
     ["Pets"] = {
@@ -113,6 +113,8 @@ spawn(function()
     end
 end)
 local LocalData = require(game.ReplicatedStorage.Client.Framework.Services.LocalData)
+local v_u_5 = require(game:GetService("ReplicatedStorage").Shared.Framework.Network.Remote)
+
 repeat
     wait()
 until LocalData.IsReady()
@@ -123,6 +125,8 @@ function getuserid()
 
     return PlayerService:GetUserIdFromNameAsync(getgenv().Data["Account Main"])
 end
+
+local v_u_8 = require(game.ReplicatedStorage.Shared.Framework.Network.Remote)
 
 function isonline()
     local DataCallBack = request({
@@ -142,13 +146,7 @@ function isonline()
 end
 
 function skip(id)
-    for _, team in LocalData.Get().Teams do
-        for i1, v1 in next, team.Pets do
-            if v1 == id then
-                return true
-            end
-        end
-    end
+    return false
 end
 
 function havepet()
@@ -200,6 +198,13 @@ function post()
                 if table.find(getgenv().Data["Pets"], "Shiny Mythic " .. v.Name) and not skip(v.Id) then
                     save[v.Name] = save[v.Name] or {}
                     if not table.find(save[v.Name], v.Id .. ":" .. (v.Amount or 0)) then
+                        local args = {
+                            "UnequipPet",
+                            v.Id
+                        }
+                        v_u_5:FireServer(unpack(args))
+                        task.wait(1)
+
                         table.insert(save[v.Name], v.Id .. ":" .. (v.Amount or 0))
                     end
                 end
@@ -207,6 +212,12 @@ function post()
                 if table.find(getgenv().Data["Pets"], "Mythic " .. v.Name) and not skip(v.Id) then
                     save[v.Name] = save[v.Name] or {}
                     if not table.find(save[v.Name], v.Id .. ":" .. (v.Amount or 0)) then
+                        local args = {
+                            "UnequipPet",
+                            v.Id
+                        }
+                        v_u_5:FireServer(unpack(args))
+                        task.wait(1)
                         table.insert(save[v.Name], v.Id .. ":" .. (v.Amount or 0))
                     end
                 end
@@ -215,6 +226,12 @@ function post()
         if v.Secret and not skip(v.Id) then
             save[v.Name] = save[v.Name] or {}
             if not table.find(save[v.Name], v.Id .. ":" .. (v.Amount or 0)) then
+                local args = {
+                    "UnequipPet",
+                    v.Id
+                }
+                v_u_5:FireServer(unpack(args))
+                task.wait(1)
                 table.insert(save[v.Name], v.Id .. ":" .. (v.Amount or 0))
             end
         end
@@ -222,6 +239,13 @@ function post()
             if table.find(getgenv().Data["Pets"], "Shiny " .. v.Name) and not skip(v.Id) then
                 save[v.Name] = save[v.Name] or {}
                 if not table.find(save[v.Name], v.Id .. ":" .. (v.Amount or 0)) then
+                    local args = {
+                        "UnequipPet",
+                        v.Id
+                    }
+                    v_u_5:FireServer(unpack(args))
+                    task.wait(1)
+
                     table.insert(save[v.Name], v.Id .. ":" .. (v.Amount or 0))
                 end
             end
@@ -229,6 +253,13 @@ function post()
         if table.find(getgenv().Data["Pets"], v.Name) and not skip(v.Id) and not v.Shiny and not v.Mythic then
             save[v.Name] = save[v.Name] or {}
             if not table.find(save[v.Name], v.Id .. ":" .. (v.Amount or 0)) then
+                local args = {
+                    "UnequipPet",
+                    v.Id
+                }
+                v_u_5:FireServer(unpack(args))
+                task.wait(1)
+
                 table.insert(save[v.Name], v.Id .. ":" .. (v.Amount or 0))
             end
         end
@@ -339,25 +370,28 @@ spawn(function()
     end)
 end)
 spawn(function()
-    while wait() do
-        if game.Players.LocalPlayer.Name ~= getgenv().Data["Account Main"] then
-            if havepet() then
-                if game.PlaceId ~= 98046029518959 then
-                    TeleportService:Teleport(98046029518959)
-                else
-                    post()
+    pcall(function()
+        while wait() do
+            pcall(function()
+                if game.Players.LocalPlayer.Name ~= getgenv().Data["Account Main"] then
+                    if havepet() then
+                        if game.PlaceId ~= 98046029518959 then
+                            TeleportService:Teleport(98046029518959)
+                        else
+                            post()
+                        end
+                    else
+                        if game.PlaceId ~= 85896571713843 then
+                            Delete()
+                            task.wait(2)
+                            TeleportService:Teleport(85896571713843)
+                        end
+                    end
                 end
-            else
-                if game.PlaceId ~= 85896571713843 then
-                    Delete()
-                    task.wait(2)
-                    TeleportService:Teleport(85896571713843)
-                end
-            end
+            end)
         end
-    end
+    end)
 end)
-local v_u_5 = require(game:GetService("ReplicatedStorage").Shared.Framework.Network.Remote)
 v_u_5.Event("TradeStarted"):Connect(function(p435)
     getgenv().Save = p435
 end)
@@ -379,10 +413,7 @@ if game.Players.LocalPlayer.Name ~= getgenv().Data["Account Main"] then
                                     "TradeAcceptRequest",
                                     game:GetService("Players"):WaitForChild(getgenv().Data["Account Main"])
                                 }
-                                game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Framework")
-                                    :WaitForChild(
-                                        "Network")
-                                    :WaitForChild("Remote"):WaitForChild("Event"):FireServer(unpack(args))
+                                v_u_8:FireServer(unpack(args))
                             end
                         else
                             for i, v in GetDataMain() do
@@ -398,174 +429,174 @@ if game.Players.LocalPlayer.Name ~= getgenv().Data["Account Main"] then
             end
         end)
     end)
+
     spawn(function()
-        while wait() do
-            if game:GetService("Players").LocalPlayer:GetAttribute("Trading") then
-                local cnt = 0
+        pcall(function()
+            while wait() do
+                pcall(function()
+                    if game:GetService("Players").LocalPlayer:GetAttribute("Trading") then
+                        local cnt = 0
 
-                save = {}
-                for i, v in LocalData.Get().Pets do
-                    if v.Mythic then
-                        if v.Shiny then
-                            if table.find(getgenv().Data["Pets"], "Shiny Mythic " .. v.Name) and not skip(v.Id) then
+                        save = {}
+                        for i, v in LocalData.Get().Pets do
+                            if v.Mythic then
+                                if v.Shiny then
+                                    if table.find(getgenv().Data["Pets"], "Shiny Mythic " .. v.Name) and not skip(v.Id) then
+                                        save[v.Name] = save[v.Name] or {}
+                                        if not table.find(save[v.Name], v.Id .. ":" .. (v.Amount or 0)) then
+                                            local args = {
+                                                "UnequipPet",
+                                                v.Id
+                                            }
+                                            v_u_5:FireServer(unpack(args))
+                                            task.wait(1)
+
+                                            table.insert(save[v.Name], v.Id .. ":" .. (v.Amount or 0))
+                                        end
+                                    end
+                                else
+                                    if table.find(getgenv().Data["Pets"], "Mythic " .. v.Name) and not skip(v.Id) then
+                                        save[v.Name] = save[v.Name] or {}
+                                        if not table.find(save[v.Name], v.Id .. ":" .. (v.Amount or 0)) then
+                                            local args = {
+                                                "UnequipPet",
+                                                v.Id
+                                            }
+                                            v_u_5:FireServer(unpack(args))
+                                            task.wait(1)
+
+                                            table.insert(save[v.Name], v.Id .. ":" .. (v.Amount or 0))
+                                        end
+                                    end
+                                end
+                            end
+                            if v.Secret and not skip(v.Id) then
                                 save[v.Name] = save[v.Name] or {}
                                 if not table.find(save[v.Name], v.Id .. ":" .. (v.Amount or 0)) then
+                                    local args = {
+                                        "UnequipPet",
+                                        v.Id
+                                    }
+                                    v_u_5:FireServer(unpack(args))
+                                    task.wait(1)
                                     table.insert(save[v.Name], v.Id .. ":" .. (v.Amount or 0))
                                 end
                             end
-                        else
-                            if table.find(getgenv().Data["Pets"], "Mythic " .. v.Name) and not skip(v.Id) then
+                            if v.Shiny then
+                                if table.find(getgenv().Data["Pets"], "Shiny " .. v.Name) and not skip(v.Id) then
+                                    save[v.Name] = save[v.Name] or {}
+                                    if not table.find(save[v.Name], v.Id .. ":" .. (v.Amount or 0)) then
+                                        table.insert(save[v.Name], v.Id .. ":" .. (v.Amount or 0))
+                                    end
+                                end
+                            end
+                            if table.find(getgenv().Data["Pets"], v.Name) and not skip(v.Id) and not v.Shiny and not v.Mythic then
                                 save[v.Name] = save[v.Name] or {}
                                 if not table.find(save[v.Name], v.Id .. ":" .. (v.Amount or 0)) then
+                                    local args = {
+                                        "UnequipPet",
+                                        v.Id
+                                    }
+                                    v_u_5:FireServer(unpack(args))
+                                    task.wait(1)
+
                                     table.insert(save[v.Name], v.Id .. ":" .. (v.Amount or 0))
                                 end
                             end
                         end
-                    end
-                    if v.Secret and not skip(v.Id) then
-                        save[v.Name] = save[v.Name] or {}
-                        if not table.find(save[v.Name], v.Id .. ":" .. (v.Amount or 0)) then
-                            table.insert(save[v.Name], v.Id .. ":" .. (v.Amount or 0))
-                        end
-                    end
-                    if v.Shiny then
-                        if table.find(getgenv().Data["Pets"], "Shiny " .. v.Name) and not skip(v.Id) then
-                            save[v.Name] = save[v.Name] or {}
-                            if not table.find(save[v.Name], v.Id .. ":" .. (v.Amount or 0)) then
-                                table.insert(save[v.Name], v.Id .. ":" .. (v.Amount or 0))
+                        for i, v in save do
+                            for i1, v1 in next, v do
+                                local a = string.split(v1, ":")
+                                local id = a[1]
+                                local amount = tonumber(a[2])
+                                if amount >= 1 then
+                                    repeat
+                                        wait()
+                                        local args = {
+                                            "TradeAddPet",
+                                            id .. ":" .. tostring(amount),
+                                        }
+                                        v_u_8:FireServer(unpack(args))
+                                        print("TradeAddPet", id .. ":" .. tostring(amount))
+                                        task.wait(2)
+                                        amount = amount - 1
+                                        cnt = cnt + 1
+                                    until amount < 0 or #getgenv().Save.Party1.Offer >= 10 or #getgenv().Save.Party0.Offer >= 10 or cnt >= 10
+                                else
+                                    local args = {
+                                        "TradeAddPet",
+                                        v1,
+                                    }
+                                    v_u_8:FireServer(unpack(args))
+                                    print("TradeAddPet", id .. ":" .. tostring(amount))
+                                    cnt = cnt + 1
+                                    print(cnt)
+                                    task.wait(2)
+                                end
+                                table.remove(v, i1) -- Remove the entry from the inner table after processing
+                                if cnt >= 10 then
+                                    break
+                                end
+                            end
+                            if #v == 0 then
+                                save[i] = nil -- Remove the entry from the outer table if the inner table is empty
+                            end
+                            if cnt >= 10 then
+                                break
                             end
                         end
-                    end
-                    if table.find(getgenv().Data["Pets"], v.Name) and not skip(v.Id) and not v.Shiny and not v.Mythic then
-                        save[v.Name] = save[v.Name] or {}
-                        if not table.find(save[v.Name], v.Id .. ":" .. (v.Amount or 0)) then
-                            table.insert(save[v.Name], v.Id .. ":" .. (v.Amount or 0))
-                        end
-                    end
-                end
-                for i, v in save do
-                    for i1, v1 in next, v do
-                        local a = string.split(v1, ":")
-                        local id = a[1]
-                        local amount = tonumber(a[2])
-
-                        if amount >= 1 then
-                            repeat
-                                wait()
-                                local args = {
-                                    "TradeAddPet",
-                                    id .. ":" .. tostring(amount),
-                                }
-                                game:GetService("ReplicatedStorage"):WaitForChild("Shared")
-                                    :WaitForChild(
-                                        "Framework")
-                                    :WaitForChild(
-                                        "Network"):WaitForChild("Remote"):WaitForChild("Event")
-                                    :FireServer(
-                                        unpack(
-                                            args))
-                                print("TradeAddPet", id .. ":" .. tostring(amount))
-                                task.wait(2)
-                                amount = amount - 1
-                                cnt = cnt + 1
-                            until amount < 0 or #getgenv().Save.Party1.Offer >= 10 or #getgenv().Save.Party0.Offer >= 10 or cnt >= 10
-                        else
-                            local args = {
-                                "TradeAddPet",
-                                v1,
-                            }
-                            game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild(
-                                "Framework")
-                                :WaitForChild(
-                                    "Network"):WaitForChild("Remote"):WaitForChild("Event")
-                                :FireServer(
-                                    unpack(
-                                        args))
-                            print("TradeAddPet", id .. ":" .. tostring(amount))
-
-                            cnt = cnt + 1
-                            print(cnt)
+                        repeat
+                            wait()
                             task.wait(2)
-                        end
-                        if cnt >= 10 then
-                            break
-                        end
+                            local args = {
+                                "TradeAccept"
+                            }
+                            v_u_8:FireServer(unpack(args))
+                            task.wait(5)
+                            local args = {
+                                "TradeConfirm"
+                            }
+                            v_u_8:FireServer(unpack(args))
+                        until not game:GetService("Players").LocalPlayer:GetAttribute("Trading")
                     end
-                    if cnt >= 10 then
-                        break
-                    end
-                end
-                repeat
-                    wait()
-                    local args = {
-                        "TradeAccept"
-                    }
-                    game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild(
-                        "Framework")
-                        :WaitForChild("Network"):WaitForChild("Remote"):WaitForChild("Event")
-                        :FireServer(
-                            unpack(
-                                args))
-                    task.wait(5)
-                    local args = {
-                        "TradeConfirm"
-                    }
-                    game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild(
-                        "Framework")
-                        :WaitForChild("Network"):WaitForChild("Remote"):WaitForChild("Event")
-                        :FireServer(
-                            unpack(
-                                args))
-                until not game:GetService("Players").LocalPlayer:GetAttribute("Trading")
+                end)
             end
-        end
+        end)
     end)
 end
 
 spawn(function()
-    while wait() do
-        if game.Players.LocalPlayer.Name == getgenv().Data["Account Main"] then
+    pcall(function()
+        while wait() do
             pcall(function()
-                if not game:GetService("Players").LocalPlayer:GetAttribute("Trading") then
-                    for i, v in GetData() do
-                        if game.Players:FindFirstChild(i) then
-                            local args = {
-                                "TradeRequest",
-                                game:GetService("Players"):WaitForChild(i)
-                            }
-                            game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild(
-                                "Framework")
-                                :WaitForChild(
-                                    "Network"):WaitForChild("Remote"):WaitForChild("Event"):FireServer(
-                                unpack(
-                                    args))
+                if game.Players.LocalPlayer.Name == getgenv().Data["Account Main"] then
+                    if not game:GetService("Players").LocalPlayer:GetAttribute("Trading") then
+                        for i, v in GetData() do
+                            if game.Players:FindFirstChild(i) then
+                                local args = {
+                                    "TradeRequest",
+                                    game:GetService("Players"):WaitForChild(i)
+                                }
+                                v_u_8:FireServer(unpack(args))
+                            end
                         end
+                    else
+                        repeat
+                            wait()
+                            task.wait(2)
+                            local args = {
+                                "TradeAccept"
+                            }
+                            v_u_8:FireServer(unpack(args))
+                            task.wait(5)
+                            local args = {
+                                "TradeConfirm"
+                            }
+                            v_u_8:FireServer(unpack(args))
+                        until not game:GetService("Players").LocalPlayer:GetAttribute("Trading")
                     end
-                else
-                    repeat
-                        wait()
-                        local args = {
-                            "TradeAccept"
-                        }
-                        game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild(
-                            "Framework")
-                            :WaitForChild("Network"):WaitForChild("Remote"):WaitForChild("Event")
-                            :FireServer(
-                                unpack(
-                                    args))
-                        task.wait(4)
-                        local args = {
-                            "TradeConfirm"
-                        }
-                        game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild(
-                            "Framework")
-                            :WaitForChild("Network"):WaitForChild("Remote"):WaitForChild("Event")
-                            :FireServer(
-                                unpack(
-                                    args))
-                    until not game:GetService("Players").LocalPlayer:GetAttribute("Trading")
                 end
             end)
         end
-    end
+    end)
 end)
