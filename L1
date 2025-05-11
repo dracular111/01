@@ -24,7 +24,7 @@ if game.PlaceId == 85896571713843 then
         ENCHANT_TEAMUP = true,
         ENCHANT_TEAMUP_TIER = 1,
 
-        RIFT_EGGS = { "Underworld Egg", "Cyber Egg" },
+        RIFT_EGGS = { "Underworld Egg" },
         HATCH_1X_EGG = { "200M Egg" },
 
         WEBHOOK_URL =
