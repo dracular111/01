@@ -4,11 +4,12 @@ if game.PlaceId == 85896571713843 then
     setfpscap(5)
     getgenv().bgsInfConfig = {
         ADD_FRIEND = true,
-        AUTO_UPDATE_RESTART = true,
+        ALWAYS_INFINITY_ELIXIR = true,
         PURCHASE_ALIENSHOP = true,
         PURCHASE_BLACKMARKET = true,
-        RESTOCK_SHOP = "Blackmarket",
+        PURCHASE_DICE_MERCHANT = true,
         PURCHASE_STARSHOP_SLOT = 14,
+        RESTOCK_SHOP = "Blackmarket",
         POTIONS_TO_CRAFT = { "Lucky", "Mythic", "Speed" },
 
         USE_ROYAL_KEY = true,
@@ -22,8 +23,8 @@ if game.PlaceId == 85896571713843 then
         ENCHANT_TEAMUP = true,
         ENCHANT_TEAMUP_TIER = 1,
 
-        RIFT_EGGS = {"Underworld Egg", "Cyber Egg"},
-        HATCH_1X_EGG = {"200M Egg", "Cyber Egg"},
+        RIFT_EGGS = {"Underworld Egg", "Nightmare Egg", "Cyber Egg"},
+        HATCH_1X_EGG = {"200M Egg", "Game Egg", "Cyber Egg"}, 
 
         WEBHOOK_URL =
         "https://discord.com/api/webhooks/1362995913080963072/8Tb6WNq581gS3l-tifSkgZ2ZdYP1oQUd9XI62BrbYOTFvL94ZY4SkAEEIa8y8c_VJR3l",
