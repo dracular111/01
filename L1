@@ -24,8 +24,8 @@ if game.PlaceId == 85896571713843 then
         ENCHANT_TEAMUP = true,
         ENCHANT_TEAMUP_TIER = 1,
 
-        RIFT_EGGS = {"Underworld Egg"},
-        HATCH_1X_EGG = {"200M Egg"},
+        RIFT_EGGS = {"Underworld Egg", "Void Egg"},
+        HATCH_1X_EGG = {"200M Egg", "Void Egg"},
 
         WEBHOOK_URL =
         "https://discord.com/api/webhooks/1362995913080963072/8Tb6WNq581gS3l-tifSkgZ2ZdYP1oQUd9XI62BrbYOTFvL94ZY4SkAEEIa8y8c_VJR3l",
