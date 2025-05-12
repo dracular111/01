@@ -18,14 +18,21 @@ if game.PlaceId == 85896571713843 then
         USE_DICE_KEY = true,
         USE_MYSTERY_BOX = true,
 
-        RARITY_TO_DELETE = { "Common", "Unique", "Rare", "Epic", "Legendary" },
+        POTIONS_TO_CRAFT = {"Lucky", "Mythic", "Speed"},
+
+        USE_ROYAL_KEY = true,
+        USE_GOLDEN_KEY = true,
+        USE_DICE_KEY = true,
+        USE_MYSTERY_BOX = true,
+
+        RARITY_TO_DELETE = {"Common", "Unique", "Rare", "Epic", "Legendary"},
         MAX_LEGENDARY_TIER_TO_DELETE = 1,
 
         ENCHANT_TEAMUP = true,
         ENCHANT_TEAMUP_TIER = 1,
 
-        RIFT_EGGS = { "Underworld Egg" },
-        HATCH_1X_EGG = { "200M Egg" },
+        RIFT_EGGS = {"Underworld Egg"},
+        HATCH_1X_EGG = {"200M Egg"},
 
         WEBHOOK_URL =
         "https://discord.com/api/webhooks/1362995913080963072/8Tb6WNq581gS3l-tifSkgZ2ZdYP1oQUd9XI62BrbYOTFvL94ZY4SkAEEIa8y8c_VJR3l",
