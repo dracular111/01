@@ -73,10 +73,16 @@ getgenv().Data = {
         "Shiny D0GGY1337",
         "Mythic D0GGY1337",
         "Shiny Mythic D0GGY1337",
-        "Mythic Crimson Bloodmoon",
         "Shiny Mythic Crimson Bloodmoon",
-        "Mythic Corrupt Glitch",
-        "Shiny Mythic Corrupt Glitch"
+        "Shiny Mythic Corrupt Glitch",
+        "Queen Kitty",
+        "Shiny Queen Kitty",
+        "Mythic Queen Kitty",
+        "Shiny Mythic Queen Kitty",
+        "Prophet",
+        "Shiny Prophet",
+        "Mythic Prophet",
+        "Shiny Mythic Prophet"
     }
 }
 repeat
