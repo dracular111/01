@@ -36,7 +36,7 @@ if game.PlaceId == 85896571713843 then
         HATCH_1X_EGG = {"200M Egg", "Cyber Egg"},
 
         WEBHOOK_URL =
-        "https://discord.com/api/webhooks/1362995913080963072/8Tb6WNq581gS3l-tifSkgZ2ZdYP1oQUd9XI62BrbYOTFvL94ZY4SkAEEIa8y8c_VJR3l",
+        "https://discord.com/api/webhooks/1364608789021458483/ri1GZFt-efLdXmjjrHv9diwF-GLhTZN8EByyG8bbjWR_CtWzz6I1ToU8lHbDDhiVQIqP",
         DISCORD_ID = "1263292904953217072",
         WEBHOOK_ODDS = 50000000,
         SHOW_PET_WEBHOOK_USERNAME = true,
