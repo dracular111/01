@@ -4,16 +4,17 @@ if game.PlaceId == 85896571713843 then
     script_key = "eCBQoTLLuLuKSdoPkBznOXxjDJecWUsa";
     setfpscap(5)
     getgenv().bgsInfConfig = {
-        AUTO_UPDATE_RESTART = false,
         ADD_FRIEND = true,
-        SERVERHOP_EGG = true,
+        AUTO_UPDATE_RESTART = false,
         ALWAYS_INFINITY_ELIXIR = true,
+        AUTO_BOUNTY_RIFT = true,
+
         PURCHASE_ALIENSHOP = true,
         PURCHASE_BLACKMARKET = true,
         PURCHASE_DICE_MERCHANT = true,
         PURCHASE_STARSHOP_SLOT = 14,
         RESTOCK_SHOP = "Blackmarket",
-        AUTO_BOUNTY_RIFT = true,
+        SERVERHOP_EGG = true,
         POTIONS_TO_CRAFT = {"Lucky", "Mythic", "Speed"},
 
         USE_ROYAL_KEY = true,
@@ -22,7 +23,9 @@ if game.PlaceId == 85896571713843 then
         USE_MYSTERY_BOX = true,
 
         RARITY_TO_DELETE = {"Common", "Unique", "Rare", "Epic", "Legendary"},
+        RARITY_TO_SHINY = {"Common", "Unique", "Rare"},
         MAX_LEGENDARY_TIER_TO_DELETE = 2,
+        DELETE_LEGENDARY_SHINY = true,
 
         ENCHANT_TEAMUP = true,
         ENCHANT_TEAMUP_TIER = 1,
