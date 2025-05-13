@@ -1,13 +1,4 @@
 {
-    "device_key": "4aaddb8fab90ff6c53152abf4af2a760eb30217bb6fa716d127774c356e3d7ff",
-    "auto_execute_path": "C:\\Users\\ADMIN\\Desktop\\AWP\\autoexec",
-    "check_cookie_dead": true,
-    "roblox_fetching_server_config": {
-        "min_high_players": 0,
-        "max_high_players": 7,
-        "min_low_players": 0,
-        "max_low_players": 5
-    },
     "minimize_all_roblox_processes": true,
     "delay_minimize_after_launch": 15,
     "rearrange_roblox_windows": true,
