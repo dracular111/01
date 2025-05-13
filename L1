@@ -4,8 +4,6 @@ if game.PlaceId == 85896571713843 then
     script_key = "UpEaWovohPDKgVmEEVzrJztbszHPXBgC";
     setfpscap(5)
     getgenv().bgsInfConfig = {
-    setfpscap(5)
-    getgenv().bgsInfConfig = {
         AUTO_UPDATE_RESTART = false,
         ADD_FRIEND = true,
         SERVERHOP_EGG = true,
