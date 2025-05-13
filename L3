@@ -4,13 +4,16 @@ if game.PlaceId == 85896571713843 then
     script_key = "eCBQoTLLuLuKSdoPkBznOXxjDJecWUsa";
     setfpscap(5)
     getgenv().bgsInfConfig = {
+        AUTO_UPDATE_RESTART = false,
         ADD_FRIEND = true,
+        SERVERHOP_EGG = true,
         ALWAYS_INFINITY_ELIXIR = true,
         PURCHASE_ALIENSHOP = true,
         PURCHASE_BLACKMARKET = true,
         PURCHASE_DICE_MERCHANT = true,
         PURCHASE_STARSHOP_SLOT = 14,
         RESTOCK_SHOP = "Blackmarket",
+        AUTO_BOUNTY_RIFT = true,
         POTIONS_TO_CRAFT = {"Lucky", "Mythic", "Speed"},
 
         USE_ROYAL_KEY = true,
@@ -19,10 +22,11 @@ if game.PlaceId == 85896571713843 then
         USE_MYSTERY_BOX = true,
 
         RARITY_TO_DELETE = {"Common", "Unique", "Rare", "Epic", "Legendary"},
-        MAX_LEGENDARY_TIER_TO_DELETE = 1,
+        MAX_LEGENDARY_TIER_TO_DELETE = 2,
 
         ENCHANT_TEAMUP = true,
         ENCHANT_TEAMUP_TIER = 1,
+        ENCHANT_HIGH_ROLLER = true,
 
         RIFT_EGGS = {"Underworld Egg", "Cyber Egg"},
         HATCH_1X_EGG = {"200M Egg", "Underworld Egg"},
@@ -32,6 +36,9 @@ if game.PlaceId == 85896571713843 then
         DISCORD_ID = "1263292904953217072",
         WEBHOOK_ODDS = 50000000,
         SHOW_PET_WEBHOOK_USERNAME = true,
+        MASTERY_PETS_LEVEL = 17,
+        MASTERY_BUFFS_LEVEL = 21,
+        MASTERY_SHOPS_LEVEL = 11,
     }
 
     loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/3dc52e6a2fc4f671b66757e93f4fd38b.lua"))()
