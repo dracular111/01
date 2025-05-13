@@ -5,7 +5,7 @@ if game.PlaceId == 85896571713843 then
     setfpscap(5)
     getgenv().bgsInfConfig = {
         ADD_FRIEND = true,
-        AUTO_UPDATE_RESTART = false,
+        AUTO_UPDATE_RESTART = true,
         ALWAYS_INFINITY_ELIXIR = true,
         AUTO_BOUNTY_RIFT = true,
 
