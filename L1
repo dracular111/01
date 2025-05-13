@@ -15,6 +15,7 @@ if game.PlaceId == 85896571713843 then
         PURCHASE_STARSHOP_SLOT = 14,
         RESTOCK_SHOP = "Blackmarket",
         SERVERHOP_EGG = true,
+        IGNORE_STARTER_HATCH = true,
         POTIONS_TO_CRAFT = {"Lucky", "Mythic", "Speed"},
 
         USE_ROYAL_KEY = true,
