@@ -29,7 +29,7 @@ if game.PlaceId == 85896571713843 then
         DELETE_LEGENDARY_SHINY = true,
 
         ENCHANT_TEAMUP = true,
-        ENCHANT_TEAMUP_TIER = 1,
+        ENCHANT_TEAMUP_TIER = 5,
 
         RIFT_EGGS = {"Underworld Egg", "Cyber Egg"},
         HATCH_1X_EGG = {"200M Egg", "Cyber Egg"},
