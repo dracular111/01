@@ -1,5 +1,9 @@
 getgenv().Data = {
-    ["Account Main"] = "congahpz002",
+    ["Account Main"] =
+    {
+        ["congahpz001"] = "Chickenz2",
+        ["congahpz002"] = "Chickenz2",
+    },
     ["UID"] = "Chickenz2",
     ["Pets"] = {
         "Silly Doggy",
@@ -121,30 +125,7 @@ repeat
 until LocalData.IsReady()
 local blacklist = {}
 print("Data Loaded")
-function getuserid()
-    local PlayerService = game:GetService("Players")
 
-    return PlayerService:GetUserIdFromNameAsync(getgenv().Data["Account Main"])
-end
-
-local v_u_8 = require(game.ReplicatedStorage.Shared.Framework.Network.Remote)
-
-function isonline()
-    local DataCallBack = request({
-        Url = "https://yummydata.click/isonline?userid=" .. getuserid(),
-        Method = "GET",
-        Headers = {
-            ["Content-Type"] = "application/json"
-        },
-    })
-    local data = game:GetService("HttpService"):JSONDecode(DataCallBack.Body)
-
-    if not data or next(data) == nil then
-        return {}
-    end
-
-    return data.isOnline
-end
 
 function skip(id)
     return false
@@ -324,9 +305,9 @@ function Delete()
     --print(game:GetService("HttpService"):JSONEncode(save))
 end
 
-function GetDataMain()
+function GetDataMain(uid)
     local res = request({
-        Url = "https://yummydata.click/getdatamain?key=" .. getgenv().Data["UID"],
+        Url = "https://yummydata.click/getdatamain?key=" .. uid,
         Method = "GET"
     })
 
@@ -339,7 +320,7 @@ function GetDataMain()
     return data.data
 end
 
-function GetData()
+function GetData(uid)
     local res = request({
         Url = "https://yummydata.click/getAccountsByKey?key=" .. getgenv().Data["UID"],
         Method = "GET"
@@ -359,7 +340,7 @@ spawn(function()
     pcall(function()
         while wait() do
             pcall(function()
-                if game.Players.LocalPlayer.Name == getgenv().Data["Account Main"] then
+                if getgenv().Data["Account Main"][game.Players.LocalPlayer.Name] then
                     if game.PlaceId ~= 98046029518959 then
                         TeleportService:Teleport(98046029518959)
                     else
@@ -374,7 +355,7 @@ spawn(function()
     pcall(function()
         while wait() do
             pcall(function()
-                if game.Players.LocalPlayer.Name ~= getgenv().Data["Account Main"] then
+                if not getgenv().Data["Account Main"][game.Players.LocalPlayer.Name] then
                     if havepet() then
                         if game.PlaceId ~= 98046029518959 then
                             TeleportService:Teleport(98046029518959)
@@ -401,27 +382,39 @@ v_u_5.Event("TradeUpdated"):Connect(function(p438)
     getgenv().Save = p438
 end)
 
+local v_u_8 = require(game.ReplicatedStorage.Shared.Framework.Network.Remote)
+function havemaininserver()
+    for i1, v1 in getgenv().Data["Account Main"] do
+        if game:GetService("Players"):FindFirstChild(i1) then
+            return game:GetService("Players"):FindFirstChild(i1)
+        end
+    end
+end
 
-if game.Players.LocalPlayer.Name ~= getgenv().Data["Account Main"] then
+if not getgenv().Data["Account Main"][game.Players.LocalPlayer.Name] then
     spawn(function()
         pcall(function()
             while wait() do
                 pcall(function()
                     if havepet() then
-                        if game:GetService("Players"):FindFirstChild(getgenv().Data["Account Main"]) then
+                        if havemaininserver() then
                             if not game:GetService("Players").LocalPlayer:GetAttribute("Trading") then
                                 local args = {
                                     "TradeAcceptRequest",
-                                    game:GetService("Players"):WaitForChild(getgenv().Data["Account Main"])
+                                    game:GetService("Players"):WaitForChild(havemaininserver().Name)
                                 }
                                 v_u_8:FireServer(unpack(args))
                             end
                         else
-                            for i, v in GetDataMain() do
-                                if v["JobId"] ~= tostring(game.JobId) then
-                                    game:GetService("TeleportService"):TeleportToPlaceInstance(v["PlaceId"],
-                                        v["JobId"],
-                                        game.Players.LocalPlayer)
+                            for i1, v1 in getgenv().Data["Account Main"] do
+                                print(v1)
+                                for i, v in GetDataMain(v1) do
+                                    print(i, v)
+                                    if v["JobId"] ~= tostring(game.JobId) then
+                                        game:GetService("TeleportService"):TeleportToPlaceInstance(v["PlaceId"],
+                                            v["JobId"],
+                                            game.Players.LocalPlayer)
+                                    end
                                 end
                             end
                         end
@@ -570,9 +563,9 @@ spawn(function()
     pcall(function()
         while wait() do
             pcall(function()
-                if game.Players.LocalPlayer.Name == getgenv().Data["Account Main"] then
+                if getgenv().Data["Account Main"][game.Players.LocalPlayer.Name] then
                     if not game:GetService("Players").LocalPlayer:GetAttribute("Trading") then
-                        for i, v in GetData() do
+                        for i, v in GetData(getgenv().Data["Account Main"][game.Players.LocalPlayer.Name]) do
                             if game.Players:FindFirstChild(i) then
                                 local args = {
                                     "TradeRequest",
