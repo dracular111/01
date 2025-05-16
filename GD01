@@ -398,12 +398,16 @@ if not getgenv().Data["Account Main"][game.Players.LocalPlayer.Name] then
                 pcall(function()
                     if havepet() then
                         if havemaininserver() then
-                            if not game:GetService("Players").LocalPlayer:GetAttribute("Trading") then
-                                local args = {
-                                    "TradeAcceptRequest",
-                                    game:GetService("Players"):WaitForChild(havemaininserver().Name)
-                                }
-                                v_u_8:FireServer(unpack(args))
+                            for i1, v1 in getgenv().Data["Account Main"] do
+                                if game:GetService("Players"):FindFirstChild(i1) then
+                                    if not game:GetService("Players").LocalPlayer:GetAttribute("Trading") then
+                                        local args = {
+                                            "TradeAcceptRequest",
+                                            game:GetService("Players"):WaitForChild(i1)
+                                        }
+                                        v_u_8:FireServer(unpack(args))
+                                    end
+                                end
                             end
                         else
                             for i1, v1 in getgenv().Data["Account Main"] do
