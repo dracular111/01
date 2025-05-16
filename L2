@@ -16,11 +16,7 @@ if game.PlaceId == 85896571713843 then
         RESTOCK_SHOP = "Blackmarket",
         SERVERHOP_EGG = true,
         IGNORE_STARTER_HATCH = true,
-        POTIONS_TO_CRAFT = {"Lucky", "Mythic", "Speed"},
 
-        USE_ROYAL_KEY = true,
-        USE_GOLDEN_KEY = true,
-        USE_DICE_KEY = true,
         USE_MYSTERY_BOX = true,
 
         RARITY_TO_DELETE = {"Common", "Unique", "Rare", "Epic", "Legendary"},
