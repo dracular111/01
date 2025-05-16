@@ -17,7 +17,7 @@ if game.PlaceId == 85896571713843 then
         SERVERHOP_EGG = true,
         IGNORE_STARTER_HATCH = true,
 
-        USE_DICE_KEY = true
+        USE_DICE_KEY = true,
         USE_MYSTERY_BOX = true,
 
         RARITY_TO_DELETE = {"Common", "Unique", "Rare", "Epic", "Legendary"},
