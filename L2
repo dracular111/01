@@ -1,6 +1,6 @@
 repeat wait() until game:IsLoaded()
 if game.PlaceId == 85896571713843 then
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/GD02"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/GD01"))()
     script_key = "ufXBOPmnsHdHscaxbHFRlqlmiQvekpMb";
     setfpscap(5)
     getgenv().bgsInfConfig = {
@@ -46,5 +46,5 @@ if game.PlaceId == 85896571713843 then
 
     loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/3dc52e6a2fc4f671b66757e93f4fd38b.lua"))()
 else
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/GD02"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/GD01"))()
 end
