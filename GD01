@@ -88,7 +88,7 @@ getgenv().Data = {
         "Prophet",
         "Shiny Prophet",
         "Mythic Prophet",
-        "Shiny Mythic Prophet"
+        "Shiny Mythic Prophet",
     }
 }
 repeat
@@ -406,14 +406,14 @@ if not getgenv().Data["Account Main"][game.Players.LocalPlayer.Name] then
                                             game:GetService("Players"):WaitForChild(i1)
                                         }
                                         v_u_8:FireServer(unpack(args))
+                                        print(game.Players.LocalPlayer.Name.."Trading with " .. i1)
                                     end
+                                    task.wait(2)
                                 end
                             end
                         else
                             for i1, v1 in getgenv().Data["Account Main"] do
-                                print(v1)
                                 for i, v in GetDataMain(v1) do
-                                    print(i, v)
                                     if v["JobId"] ~= tostring(game.JobId) then
                                         game:GetService("TeleportService"):TeleportToPlaceInstance(v["PlaceId"],
                                             v["JobId"],
@@ -515,7 +515,6 @@ if not getgenv().Data["Account Main"][game.Players.LocalPlayer.Name] then
                                             id .. ":" .. tostring(amount),
                                         }
                                         v_u_8:FireServer(unpack(args))
-                                        print("TradeAddPet", id .. ":" .. tostring(amount))
                                         task.wait(2)
                                         amount = amount - 1
                                         cnt = cnt + 1
@@ -526,9 +525,7 @@ if not getgenv().Data["Account Main"][game.Players.LocalPlayer.Name] then
                                         v1,
                                     }
                                     v_u_8:FireServer(unpack(args))
-                                    print("TradeAddPet", id .. ":" .. tostring(amount))
                                     cnt = cnt + 1
-                                    print(cnt)
                                     task.wait(2)
                                 end
                                 table.remove(v, i1) -- Remove the entry from the inner table after processing
