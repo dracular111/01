@@ -104,7 +104,7 @@ getgenv().Data = {
         "Mythic Fire Guardian",
         "Shiny Mythic Fire Guardian",
         "Mythic Noctis",
-        "Shiny Mythic Noctis"
+        "Shiny Mythic Noctis",
     }
 }
 repeat
@@ -368,6 +368,21 @@ spawn(function()
     end)
 end)
 spawn(function()
+    while wait() do
+        if not game.PlaceId == 98046029518959 then
+            local plr = game.Players.LocalPlayer
+            local oldpos = plr.Character.HumanoidRootPart.Position
+            local old = tick()
+            repeat wait() until tick() - old >= 5 * 60 or plr.Character.HumanoidRootPart.Position ~= oldpos
+            if tick() - old >= 5 * 60 then
+                game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,
+                    game.JobId,
+                    game.Players.LocalPlayer)
+            end
+        end
+    end
+end)
+spawn(function()
     pcall(function()
         while wait() do
             pcall(function()
@@ -422,7 +437,7 @@ if not getgenv().Data["Account Main"][game.Players.LocalPlayer.Name] then
                                             game:GetService("Players"):WaitForChild(i1)
                                         }
                                         v_u_8:FireServer(unpack(args))
-                                        print(game.Players.LocalPlayer.Name.."Trading with " .. i1)
+                                        print(game.Players.LocalPlayer.Name .. "Trading with " .. i1)
                                     end
                                     task.wait(2)
                                 end
