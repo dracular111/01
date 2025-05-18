@@ -9,3 +9,6 @@ end
 _G.SCRIPT2 = true
 
 -- Script của bạn
+repeat wait() 
+until game:IsLoaded()
+game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,game.JobId, game.Players.LocalPlayer
