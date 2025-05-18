@@ -431,7 +431,7 @@ if not getgenv().Data["Account Main"][game.Players.LocalPlayer.Name] then
                         if havemaininserver() then
                             for i1, v1 in getgenv().Data["Account Main"] do
                                 if game:GetService("Players"):FindFirstChild(i1) then
-                                    if not game:GetService("Players").LocalPlayer:GetAttribute("Trading") then
+                                    if not game:GetService("Players").LocalPlayer:GetAttribute("Trading") and not game:GetService("Players"):FindFirstChild(i1):GetAttribute("Trading") then
                                         local args = {
                                             "TradeAcceptRequest",
                                             game:GetService("Players"):WaitForChild(i1)
@@ -598,7 +598,7 @@ spawn(function()
                 if getgenv().Data["Account Main"][game.Players.LocalPlayer.Name] then
                     if not game:GetService("Players").LocalPlayer:GetAttribute("Trading") then
                         for i, v in GetData(getgenv().Data["Account Main"][game.Players.LocalPlayer.Name]) do
-                            if game.Players:FindFirstChild(i) then
+                            if game.Players:FindFirstChild(i) and not game.Players:FindFirstChild(i):GetAttribute("Trading") then
                                 local args = {
                                     "TradeRequest",
                                     game:GetService("Players"):WaitForChild(i)
