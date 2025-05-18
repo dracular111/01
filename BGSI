@@ -1,9 +1,5 @@
 repeat wait() until game:IsLoaded()
 if game.PlaceId == 85896571713843 then
-    script_key = "YRjtmepXpQEhmQslCpirTQlwlVIffftS";
-
-repeat wait() until game:IsLoaded()
-if game.PlaceId == 85896571713843 then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/GD01"))()
     script_key = "YRjtmepXpQEhmQslCpirTQlwlVIffftS";
     setfpscap(5)
