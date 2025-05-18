@@ -89,6 +89,14 @@ getgenv().Data = {
         "Shiny Prophet",
         "Mythic Prophet",
         "Shiny Mythic Prophet",
+        "Royal Guardian",
+        "Shiny Royal Guardian",
+        "Mythic Royal Guardian",
+        "Shiny Mythic Royal Guardian",
+        "Hyperwave Kitty",
+        "Shiny Hyperwave Kitty",
+        "Mythic Hyperwave Kitty",
+        "Shiny Mythic Hyperwave Kitty"
     }
 }
 repeat
