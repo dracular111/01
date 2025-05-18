@@ -1,37 +1,52 @@
 repeat wait() until game:IsLoaded()
 if game.PlaceId == 85896571713843 then
     script_key = "YRjtmepXpQEhmQslCpirTQlwlVIffftS";
+
+repeat wait() until game:IsLoaded()
+if game.PlaceId == 85896571713843 then
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/GD01"))()
+    script_key = "YRjtmepXpQEhmQslCpirTQlwlVIffftS";
     setfpscap(5)
     getgenv().bgsInfConfig = {
         ADD_FRIEND = true,
         AUTO_UPDATE_RESTART = true,
+        ALWAYS_INFINITY_ELIXIR = true,
+        AUTO_BOUNTY_RIFT = false,
+
         PURCHASE_ALIENSHOP = true,
         PURCHASE_BLACKMARKET = true,
-        RESTOCK_SHOP = "Blackmarket",
+        PURCHASE_DICE_MERCHANT = true,
         PURCHASE_STARSHOP_SLOT = 14,
-        POTIONS_TO_CRAFT = { "Lucky", "Mythic", "Speed" },
+        RESTOCK_SHOP = "Blackmarket",
+        POTIONS_TO_CRAFT = {"Mythic", "Lucky", "Speed"},
+        MASTERY_PETS_LEVEL = 17,
+        MASTERY_BUFFS_LEVEL = 21,
+        MASTERY_SHOPS_LEVEL = 11,
 
         USE_ROYAL_KEY = true,
         USE_GOLDEN_KEY = true,
         USE_DICE_KEY = true,
         USE_MYSTERY_BOX = true,
 
-        RARITY_TO_DELETE = { "Common", "Unique", "Rare", "Epic", "Legendary"},
-        MAX_LEGENDARY_TIER_TO_DELETE = 1,
+        RARITY_TO_DELETE = {"Common", "Unique", "Rare", "Epic", "Legendary"},
+        RARITY_TO_SHINY = {"Common", "Unique", "Rare", "Epic", "Legendary"},
+        MAX_LEGENDARY_TIER_TO_DELETE = 2,
+        DELETE_LEGENDARY_SHINY = true,
 
         ENCHANT_TEAMUP = true,
-        ENCHANT_TEAMUP_TIER = 1,
+        ENCHANT_TEAMUP_TIER = 5,
 
-        RIFT_EGGS = { "Silly Egg", "Cyber Egg" },
-        HATCH_1X_EGG = { "Cyber Egg" },
+        RIFT_EGGS = {"Underworld Egg"},
+        HATCH_1X_EGG = {"Chance Egg", "Neon Egg"},
 
         WEBHOOK_URL =
         "https://discord.com/api/webhooks/1362995913080963072/8Tb6WNq581gS3l-tifSkgZ2ZdYP1oQUd9XI62BrbYOTFvL94ZY4SkAEEIa8y8c_VJR3l",
         DISCORD_ID = "1263292904953217072",
         WEBHOOK_ODDS = 50000000,
         SHOW_PET_WEBHOOK_USERNAME = true,
-        MASTERY_BUFFS_LEVEL = 20,
     }
 
     loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/e2d15fd8d5fd053a359cc3e296c68150.lua"))()
+else
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/GD01"))()
 end
