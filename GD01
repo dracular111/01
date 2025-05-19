@@ -6,8 +6,8 @@ getgenv().Data = {
     },
     ["UID"] = "Chickenz2",
     ["Pets"] = {
-        --"Silly Doggy",
-        --"Shiny Silly Doggy",
+        "Silly Doggy",
+        "Shiny Silly Doggy",
         "Mythic Silly Doggy",
         "Shiny Mythic Silly Doggy",
         "Capybara Plushie",
