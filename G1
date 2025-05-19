@@ -54,6 +54,6 @@ getgenv().Config = {
     ["PetNeedSend"] = "congahpz000",
     ["Url"] = "https://discord.com/api/webhooks/1373626816438206484/Klq2fCdRE3zf5ErO76kyS5dY_XWaPLfFZxMCLclhja_tnOWQhmjxH9pg56e3uU1_cM5F",
     ["Boost FPS"] = true,
-    ["Black Screen"] = false
+    ["Black Screen"] = true
 }
 loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/be5eb6eb83a60b4c87954ddf66dd7413.lua"))()
