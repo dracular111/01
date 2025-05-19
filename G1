@@ -52,7 +52,7 @@ getgenv().Config = {
     },
     ["PetNeedSend"] = "congahpz000",
     ["Url"] = "https://discord.com/api/webhooks/1373626816438206484/Klq2fCdRE3zf5ErO76kyS5dY_XWaPLfFZxMCLclhja_tnOWQhmjxH9pg56e3uU1_cM5F",
-    ["Boost FPS"] = false,
+    ["Boost FPS"] = true,
     ["Black Screen"] = false
 }
 repeat
