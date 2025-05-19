@@ -49,7 +49,7 @@ getgenv().Data = {
         "Shiny Royal Trophy",
         "Mythic Royal Trophy",
         "Shiny Mythic Royal Trophy",
-        --"Mech Robot",
+        "Mech Robot",
         "Shiny Mech Robot",
         "Mythic Mech Robot",
         "Shiny Mythic Mech Robot",
