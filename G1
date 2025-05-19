@@ -1,5 +1,5 @@
 getgenv().Config = {
-    ["Time To Sell"] = 5, -- Seconds
+    ["Time To Sell"] = 35, -- Seconds
     ["Seed"] = {
         ["Strawberry"] = 44,
         ["Corn"] = 44,
@@ -8,9 +8,6 @@ getgenv().Config = {
         ["Pumpkin"] = 44,
         ["Mango"] = 44,
         ["Banana"] = 44,
-        ["Grape"] = 44,
-        ["Blueberry"] = 44,
-        ["Tomato"] = 44,
         ["Orange Tulip"] = 44,
         ["Watermelon"] = 44,
         ["Dragon Fruit"] = 44,
@@ -18,11 +15,9 @@ getgenv().Config = {
         ["Daffodil"] = 44,
         ["Pepper"] = 44,
         ["Bamboo"] = 44
-
     },
     ["FPS"] = 5,
     ["Buy Egg"] = true,
-    ["Special"] = true,
     ["Egg"] = {
         ["Common Egg"] = false,
         ["Rare Egg"] = false,
@@ -30,21 +25,55 @@ getgenv().Config = {
         ["Legendary Egg"] = false,
         ["Bug Egg"] = true
     },
+    ["ItemBlood"] = {
+        ["Blood Banana"] = true,
+        ["Blood Owl"] = true,
+        ["Night Seed Pack"] = true,
+        ["Moon Melon"] = false,
+        ["Mysterious Crate"] = false,
+        ["Blood Kiwi"] = false,
+        ["Night Egg"] = false,
+        ["Star Caller"] = false,
+        ["Blood Hedgehog"] = false
+    },
+    ["Item Special Buy"] = {
+        ["Candy Blossom"] = true,
+        ["Chocolate Sprinkler"] = true,
+        ["Candy Sunflower"] = true,
+        ["Easter Egg"] = true,
+        ["Red Lollipop"] = true,
+        ["Chocolate Carrot"] = true
+    },
+    ["Sprinkler"] = {
+        ["Basic Sprinkler"] = true,
+        ["Advanced Sprinkler"] = true,
+        ["Master Sprinkler"] = true,
+        ["Godly Sprinkler"] = true
+    },
     ["PetNeedSend"] = "congahpz000",
     ["Url"] = "https://discord.com/api/webhooks/1373626816438206484/Klq2fCdRE3zf5ErO76kyS5dY_XWaPLfFZxMCLclhja_tnOWQhmjxH9pg56e3uU1_cM5F",
-    ["Boost FPS"] = true,
-    ["Black Screen"] = true,
+    ["Boost FPS"] = false,
+    ["Black Screen"] = false
 }
-repeat wait() until game:IsLoaded()
-repeat wait() until game.Players.LocalPlayer.Character
+repeat
+    wait()
+until game:IsLoaded()
+repeat
+    wait()
+until game.Players.LocalPlayer.Character
 repeat
     wait()
     game:GetService("VirtualUser"):CaptureController()
     game:GetService("VirtualUser"):Button1Down(Vector2.new(0, 0))
-until game.Players.LocalPlayer:GetAttribute("DataFullyLoaded") and game.Players.LocalPlayer:GetAttribute("Finished_Loading")
-repeat wait() until game.CoreGui
+until game.Players.LocalPlayer:GetAttribute("DataFullyLoaded") and
+    game.Players.LocalPlayer:GetAttribute("Finished_Loading")
+repeat
+    wait()
+until game.CoreGui
 if not LPH_OBFUSCATED then
-    getfenv().LPH_NO_VIRTUALIZE = function(f) return f end
+    getfenv().LPH_NO_VIRTUALIZE = function(f)
+        return f
+    end
 end
 local HopGui = Instance.new("ScreenGui")
 local NameHub = Instance.new("TextLabel")
@@ -58,7 +87,6 @@ local Time = Instance.new("TextLabel")
 local StrokeDetect = Instance.new("UIStroke")
 local Detect = Instance.new("TextLabel")
 local animation = Instance.new("Animation")
-
 
 HopGui.Name = "CyndralDev"
 HopGui.Parent = game:GetService("CoreGui")
@@ -86,7 +114,9 @@ UIStroke.Thickness = 1
 local format = function(number)
     local formatted = tostring(number)
     local k = #formatted % 3
-    if k == 0 then k = 3 end
+    if k == 0 then
+        k = 3
+    end
     local result = formatted:sub(1, k)
     for i = k + 1, #formatted, 3 do
         result = result .. "," .. formatted:sub(i, i + 2)
@@ -128,8 +158,6 @@ StrokeTime.Parent = Time
 StrokeTime.Color = Color3.fromRGB(0, 0, 0)
 StrokeTime.Thickness = 1
 
-
-
 local Blur = Instance.new("BlurEffect")
 Blur.Name = "Blur"
 Blur.Parent = game.Lighting
@@ -138,9 +166,8 @@ Blur.Enabled = false
 function equipweapon(aq)
     local c6 = tostring(aq)
     local c7 = game.Players.LocalPlayer.Backpack:FindFirstChild(c6)
-    local c8 =
-        game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") or
-        game.Players.LocalPlayer.Character:WaitForChild("Humanoid")
+    local c8 = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") or
+                   game.Players.LocalPlayer.Character:WaitForChild("Humanoid")
     if c7 then
         c8:EquipTool(c7)
     end
@@ -155,9 +182,11 @@ spawn(function()
         Time.Text = "Time : " .. hours .. "h" .. minutes .. "m" .. math.floor(seconds) .. "s"
     end
 end)
-local playertarget = { "bocanhet164", "Phapsutrungquoc" }
+local playertarget = {"bocanhet164", "Phapsutrungquoc"}
 local function SetNewReason(textstatus)
-    if not textstatus then textstatus = '' end
+    if not textstatus then
+        textstatus = ''
+    end
     if textstatus == '' then
         Bounty.Enabled = false
         Blur.Enabled = false
@@ -168,12 +197,10 @@ local function SetNewReason(textstatus)
     Bounty.Text = textstatus
 end
 local VirtualUser = game:service "VirtualUser"
-game:service("Players").LocalPlayer.Idled:connect(
-    function()
-        VirtualUser:CaptureController()
-        VirtualUser:ClickButton2(Vector2.new())
-    end
-)
+game:service("Players").LocalPlayer.Idled:connect(function()
+    VirtualUser:CaptureController()
+    VirtualUser:ClickButton2(Vector2.new())
+end)
 setfpscap(getgenv().Config["FPS"])
 if getgenv().Config["Black Screen"] then
     game:GetService("Lighting").ExposureCompensation = -math.huge
@@ -192,9 +219,9 @@ ParseNumberSmart = function(v1)
             local v2 = v0[v1:sub(#v1):lower()];
             if v2 then
                 v1 = v1:sub(1, #v1 - 1) .. v2;
-            end;
-        end;
-    end;
+            end
+        end
+    end
     return (tonumber(v1));
 end;
 function writefileyummy()
@@ -231,6 +258,7 @@ spawn(function()
         while wait() do
             pcall(function()
                 if getgenv().Config["Buy Egg"] then
+                    task.wait(3)
                     local v_u_1 = game:GetService("ReplicatedStorage")
 
                     local v_u_3 = require(v_u_1.Modules.DataService)
@@ -238,9 +266,7 @@ spawn(function()
 
                     for i, v in v33.PetEggStock.Stocks do
                         if getgenv().Config["Egg"][v.EggName] and v.Stock > 0 then
-                            local args = {
-                                i
-                            }
+                            local args = {i}
                             game:GetService("ReplicatedStorage"):WaitForChild("GameEvents"):WaitForChild("BuyPetEgg")
                                 :FireServer(unpack(args))
                         end
@@ -254,20 +280,16 @@ function sendwh(name)
     local Message = {
         ['username'] = "Grow A Garden",
         ["content"] = "@everyone Found: " .. name,
-        ["embeds"] = {
-            {
-                ["title"] = "Grow Of Garden",
-                ["description"] = "Account: ||" ..
-                    game.Players.LocalPlayer.Name ..
-                    "||\nMoney: " ..
-                    format(math.floor(game.Players.LocalPlayer.leaderstats.Sheckles.Value)) ..
-                    "\nTime: " .. os.date("%X") .. "\n",
-                ["color"] = 0x09FFF8,
-                ["footer"] = {
-                    ["text"] = "Cyndral.Dev"
-                }
+        ["embeds"] = {{
+            ["title"] = "Grow Of Garden",
+            ["description"] = "Account: ||" .. game.Players.LocalPlayer.Name .. "||\nMoney: " ..
+                format(math.floor(game.Players.LocalPlayer.leaderstats.Sheckles.Value)) .. "\nTime: " .. os.date("%X") ..
+                "\n",
+            ["color"] = 0x09FFF8,
+            ["footer"] = {
+                ["text"] = "Cyndral.Dev"
             }
-        }
+        }}
 
     }
     local DataCallBack = request({
@@ -300,20 +322,16 @@ spawn(function()
                             local Message = {
                                 ['username'] = "Grow Of Garden",
                                 ["content"] = "@everyone Found Raccon",
-                                ["embeds"] = {
-                                    {
-                                        ["title"] = "Grow Of Garden",
-                                        ["description"] = "Account: ||" ..
-                                            player.Name ..
-                                            "||\nMoney: " ..
-                                            format(math.floor(player.leaderstats.Sheckles.Value)) ..
-                                            "\nTime: " .. os.date("%X") .. "\n",
-                                        ["color"] = 0x09FFF8,
-                                        ["footer"] = {
-                                            ["text"] = "Cyndral.Dev"
-                                        }
+                                ["embeds"] = {{
+                                    ["title"] = "Grow Of Garden",
+                                    ["description"] = "Account: ||" .. player.Name .. "||\nMoney: " ..
+                                        format(math.floor(player.leaderstats.Sheckles.Value)) .. "\nTime: " ..
+                                        os.date("%X") .. "\n",
+                                    ["color"] = 0x09FFF8,
+                                    ["footer"] = {
+                                        ["text"] = "Cyndral.Dev"
                                     }
-                                }
+                                }}
 
                             }
                             local DataCallBack = request({
@@ -383,9 +401,7 @@ if getgenv().Config["Boost FPS"] then
     l.FogEnd = 9e9
     l.Brightness = 0
     for i, v in pairs(g:GetDescendants()) do
-        if v.ClassName == "WedgePart"
-            or v.ClassName == "Terrain"
-            or v.ClassName == "MeshPart" then
+        if v.ClassName == "WedgePart" or v.ClassName == "Terrain" or v.ClassName == "MeshPart" then
             v.BrickColor = BrickColor.new(155, 155, 155)
             v.Material = "Plastic"
             v.Transparency = 1
@@ -409,9 +425,7 @@ if getgenv().Config["Boost FPS"] then
         end
     end
     game.Workspace.ChildAdded:Connect(function(v)
-        if v.ClassName == "WedgePart"
-            or v.ClassName == "Terrain"
-            or v.ClassName == "MeshPart" then
+        if v.ClassName == "WedgePart" or v.ClassName == "Terrain" or v.ClassName == "MeshPart" then
             v.BrickColor = BrickColor.new(155, 155, 155)
             v.Material = "Plastic"
             v.Transparency = 1
@@ -435,12 +449,14 @@ if getgenv().Config["Boost FPS"] then
         end
     end)
     for i, e in pairs(l:GetChildren()) do
-        if e:IsA("BlurEffect") or e:IsA("SunRaysEffect") or e:IsA("ColorCorrectionEffect") or e:IsA("BloomEffect") or e:IsA("DepthOfFieldEffect") then
+        if e:IsA("BlurEffect") or e:IsA("SunRaysEffect") or e:IsA("ColorCorrectionEffect") or e:IsA("BloomEffect") or
+            e:IsA("DepthOfFieldEffect") then
             e.Enabled = false
         end
     end
     game.Lighting.ChildAdded:Connect(function(v)
-        if v:IsA("BlurEffect") or v:IsA("SunRaysEffect") or v:IsA("ColorCorrectionEffect") or v:IsA("BloomEffect") or v:IsA("DepthOfFieldEffect") then
+        if v:IsA("BlurEffect") or v:IsA("SunRaysEffect") or v:IsA("ColorCorrectionEffect") or v:IsA("BloomEffect") or
+            v:IsA("DepthOfFieldEffect") then
             v.Enabled = false
         end
     end)
@@ -449,8 +465,7 @@ end
 local plr = game.Players.LocalPlayer
 function islive()
     local plr = game.Players.LocalPlayer
-    local character = plr.Character or
-        plr.CharacterAdded:Wait() -- Wait for character to load if it doesn't exist yet
+    local character = plr.Character or plr.CharacterAdded:Wait() -- Wait for character to load if it doesn't exist yet
     local humanoid = character:WaitForChild("Humanoid")
     return humanoid
 end
@@ -485,7 +500,9 @@ end
 function getplace()
     for i, v in workspace.Farm:GetChildren() do
         if v.Name == "Farm" then
-            if v:FindFirstChild("Important") and v.Important:FindFirstChild("Data") and v.Important.Data:FindFirstChild("Owner") and v.Important.Data:FindFirstChild("Owner").Value == game.Players.LocalPlayer.Name then
+            if v:FindFirstChild("Important") and v.Important:FindFirstChild("Data") and
+                v.Important.Data:FindFirstChild("Owner") and v.Important.Data:FindFirstChild("Owner").Value ==
+                game.Players.LocalPlayer.Name then
                 return v
             end
         end
@@ -535,12 +552,12 @@ end
 function check()
     local cnt = 0
     for i, v in game:GetService("Players").LocalPlayer.Backpack:GetChildren() do
-        if v:GetAttribute("ITEM_TYPE") == "Holdable" and not string.find(v.Name, "Moonlit") and not string.find(v.Name, "Celestial") then
+        if v:GetAttribute("ITEM_TYPE") == "Holdable" and not string.find(v.Name, "Moonlit") then
             cnt = cnt + 1
         end
     end
     for i, v in game:GetService("Players").LocalPlayer.Character:GetChildren() do
-        if v:GetAttribute("ITEM_TYPE") == "Holdable" and not string.find(v.Name, "Moonlit") and not string.find(v.Name, "Celestial") then
+        if v:GetAttribute("ITEM_TYPE") == "Holdable" and not string.find(v.Name, "Moonlit") then
             cnt = cnt + 1
         end
     end
@@ -558,13 +575,12 @@ if not haveseed() then
     repeat
         wait()
         for i, v in game:GetService("Players").LocalPlayer.Backpack:GetChildren() do
-            if v:GetAttribute("ITEM_TYPE") == "Holdable" and not string.find(v.Name, "Moonlit") and not v:GetAttribute("Favorite") and not string.find(v.Name, "Celestial") then
+            if v:GetAttribute("ITEM_TYPE") == "Holdable" and not string.find(v.Name, "Moonlit") then
                 v.Parent = game:GetService("Players").LocalPlayer.Character
             end
         end
         task.wait(3)
-        game:GetService("ReplicatedStorage"):WaitForChild("GameEvents"):WaitForChild("Sell_Item")
-            :FireServer()
+        game:GetService("ReplicatedStorage"):WaitForChild("GameEvents"):WaitForChild("Sell_Item"):FireServer()
     until check() <= 10
 
     startsell = false
@@ -572,7 +588,8 @@ end
 local collect = false
 function havemoonlit()
     for i, v in game:GetService("Players").LocalPlayer.Backpack:GetChildren() do
-        if string.find(v.Name, "Moonlit") and math.floor(game:GetService("Players").LocalPlayer.leaderstats.Sheckles.Value) >= 100 and not string.find(v.Name, "Celestial") then
+        if string.find(v.Name, "Moonlit") and
+            math.floor(game:GetService("Players").LocalPlayer.leaderstats.Sheckles.Value) >= 100 then
             return true
         end
     end
@@ -588,38 +605,40 @@ end
 
 spawn(function()
     while wait() do
-        if havemoonlit() and getgenv().Config["Special"] then
-            local args = {
-                "SubmitAllPlants"
-            }
+        if havemoonlit() then
+            local args = {"SubmitAllPlants"}
             game:GetService("ReplicatedStorage"):WaitForChild("GameEvents"):WaitForChild("NightQuestRemoteEvent")
-                :FireServer(unpack(
-                    args))
+                :FireServer(unpack(args))
         end
     end
 end)
 spawn(function()
     pcall(function()
         while wait(getgenv().Config["Time To Sell"]) do
-            if not haveseed() and check() >= 1 then
+            if check() >= 1 then
                 startsell = true
                 pcall(function()
                     repeat
                         wait()
-                        for i, v in getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Teleport_UI.Frame.Sell.Activated) do
+                        for i, v in getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Teleport_UI.Frame
+                                                       .Sell.Activated) do
                             v.Function()
                         end
-                    until plr:DistanceFromCharacter(Vector3.new(66.6856689453125, 2.999606132507324, 0.40586328506469727)) < 10
+                    until plr:DistanceFromCharacter(
+                        Vector3.new(66.6856689453125, 2.999606132507324, 0.40586328506469727)) < 10
                     repeat
                         wait()
                         repeat
                             wait()
-                            for i, v in getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Teleport_UI.Frame.Sell.Activated) do
+                            for i, v in getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Teleport_UI
+                                                           .Frame.Sell.Activated) do
                                 v.Function()
                             end
-                        until plr:DistanceFromCharacter(Vector3.new(66.6856689453125, 2.999606132507324, 0.40586328506469727)) < 10
+                        until plr:DistanceFromCharacter(Vector3.new(66.6856689453125, 2.999606132507324,
+                            0.40586328506469727)) < 10
                         for i, v in game:GetService("Players").LocalPlayer.Backpack:GetChildren() do
-                            if v:GetAttribute("ITEM_TYPE") == "Holdable" and not string.find(v.Name, "Moonlit") and not v:GetAttribute("Favorite") and not string.find(v.Name, "Celestial") then
+                            if v:GetAttribute("ITEM_TYPE") == "Holdable" and not string.find(v.Name, "Moonlit") and
+                                not v:GetAttribute("Favorite") then
                                 v.Parent = game:GetService("Players").LocalPlayer.Character
                             end
                         end
@@ -637,31 +656,38 @@ spawn(function()
     pcall(function()
         while wait() do
             pcall(function()
-                if not haveseed() and (#game:GetService("Players").LocalPlayer.Backpack:GetChildren() >= 200 or (game:GetService("Players").LocalPlayer.leaderstats.Sheckles.Value < 100 and #game:GetService("Players").LocalPlayer.Backpack:GetChildren() > 1)) then
+                if (#game:GetService("Players").LocalPlayer.Backpack:GetChildren() >= 200 or
+                    (game:GetService("Players").LocalPlayer.leaderstats.Sheckles.Value < 100 and
+                        #game:GetService("Players").LocalPlayer.Backpack:GetChildren() > 1)) then
                     startsell = true
                     repeat
                         wait()
-                        for i, v in getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Teleport_UI.Frame.Sell.Activated) do
+                        for i, v in getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Teleport_UI.Frame
+                                                       .Sell.Activated) do
                             v.Function()
                         end
-                    until plr:DistanceFromCharacter(Vector3.new(66.6856689453125, 2.999606132507324, 0.40586328506469727)) < 10
+                    until plr:DistanceFromCharacter(
+                        Vector3.new(66.6856689453125, 2.999606132507324, 0.40586328506469727)) < 10
                     repeat
                         wait()
                         repeat
                             wait()
-                            for i, v in getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Teleport_UI.Frame.Sell.Activated) do
+                            for i, v in getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Teleport_UI
+                                                           .Frame.Sell.Activated) do
                                 v.Function()
                             end
-                        until plr:DistanceFromCharacter(Vector3.new(66.6856689453125, 2.999606132507324, 0.40586328506469727)) < 10
+                        until plr:DistanceFromCharacter(Vector3.new(66.6856689453125, 2.999606132507324,
+                            0.40586328506469727)) < 10
                         for i, v in game:GetService("Players").LocalPlayer.Backpack:GetChildren() do
-                            if v:GetAttribute("ITEM_TYPE") == "Holdable" and not string.find(v.Name, "Moonlit") and not string.find(v.Name, "Celestial") then
+                            if v:GetAttribute("ITEM_TYPE") == "Holdable" and not string.find(v.Name, "Moonlit") then
                                 v.Parent = game:GetService("Players").LocalPlayer.Character
                             end
                         end
                         game:GetService("ReplicatedStorage"):WaitForChild("GameEvents"):WaitForChild("Sell_Item")
                             :FireServer()
                     until check() <= 10
-                    for i, v in getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Teleport_UI.Frame.Garden.Activated) do
+                    for i, v in getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Teleport_UI.Frame.Garden
+                                                   .Activated) do
                         v.Function()
                     end
 
@@ -688,38 +714,26 @@ function haveowl()
         end
     end
 end
-
 spawn(function()
     pcall(function()
         while wait() do
             pcall(function()
-                while wait() do
-                    if haveowl() then
-                        local uuid = haveowl():GetAttribute("PET_UUID")
-                        equipweapon(haveowl().Name)
-                        task.wait(1)
-                        for i, v in workspace.Farm:GetChildren() do
-                            if v.Name == "Farm" then
-                                if v:FindFirstChild("Important") and v.Important:FindFirstChild("Data") and v.Important.Data:FindFirstChild("Owner") and v.Important.Data:FindFirstChild("Owner").Value == game.Players.LocalPlayer.Name then
-                                    for i1, v1 in v.Important.Plant_Locations:GetChildren() do
-                                        if v1.Name == "Can_Plant" then
-                                            local plantLocations = v1
-                                            local args = {
-                                                "EquipPet",
-                                                haveowl():GetAttribute("PET_UUID"),
-                                                plantLocations.CFrame
-                                            }
-                                            game:GetService("ReplicatedStorage"):WaitForChild("GameEvents"):WaitForChild(
-                                                "PetsService")
-                                                :FireServer(
-                                                    unpack(args))
-                                        end
-                                    end
-                                end
-                            end
+                for i, v in game.Players.LocalPlayer.Backpack:GetChildren() do
+                    if string.find(v.Name, "Pack") then
+                        v.Parent = game.Players.LocalPlayer.Character
+                    end
+                end
+                for i, v in game.Players.LocalPlayer.Character:GetChildren() do
+                    if string.find(v.Name, "Pack") then
+                        v:Activate()
+                        task.wait(0.2)
+                        for i, v in getconnections(game:GetService("Players").LocalPlayer.PlayerGui.RollCrate_UI.Frame
+                                                       .Skip.Activated) do
+                            v.Function()
                         end
                     end
                 end
+
             end)
         end
     end)
@@ -728,32 +742,159 @@ spawn(function()
     pcall(function()
         while wait() do
             pcall(function()
+                if workspace:GetAttribute("BloodMoonEvent") then
+                    local v1 = game:GetService("ReplicatedStorage")
+                    local priceblood = require(game:GetService("ReplicatedStorage").Data.EventShopData)
+                    local v_u_6 = require(v1.Modules.DataService)
+                    local v45 = v_u_6:GetData()
+                    for i, v in v45.EventShopStock.Stocks do
+                        if v.Stock > 0 then
+                            print(i, getgenv().Config["ItemBlood"][i], game:GetService("Players").LocalPlayer
+                                .leaderstats.Sheckles.Value >= priceblood[i].Price)
+                            if getgenv().Config["ItemBlood"][i] and
+                                game:GetService("Players").LocalPlayer.leaderstats.Sheckles.Value >= priceblood[i].Price then
+                                local args = {i}
+                                game:GetService("ReplicatedStorage"):WaitForChild("GameEvents"):WaitForChild(
+                                    "BuyEventShopStock"):FireServer(unpack(args))
+
+                            end
+                            if getgenv().Config["Item Special Buy"][i] and
+                                game:GetService("Players").LocalPlayer.leaderstats.Sheckles.Value >= priceblood[i].Price then
+                                local args = {i}
+                                game:GetService("ReplicatedStorage"):WaitForChild("GameEvents"):WaitForChild(
+                                    "BuyEventShopStock"):FireServer(unpack(args))
+
+                            end
+                        end
+                    end
+                end
+            end)
+        end
+    end)
+end)
+
+spawn(function()
+    pcall(function()
+        while wait() do
+            pcall(function()
+                local dataseed = require(game:GetService("ReplicatedStorage").Data.SeedData)
+                local v_u_1 = game:GetService("ReplicatedStorage")
+                game:GetService("TweenService")
+                local v_u_2 = game.Players.LocalPlayer.PlayerGui:WaitForChild("Seed_Shop")
+                local v_u_3 = require(v_u_1.Modules.GuiController)
+                local v_u_4 = require(v_u_1.Modules.DataService)
+                local price = require(game:GetService("ReplicatedStorage").Data.GearData)
+                local v22 = v_u_4:GetData()
+                for i, v in v22.GearStock.Stocks do
+                    if v.Stock > 0 then
+
+                        if getgenv().Config["Sprinkler"][i] and
+                            game:GetService("Players").LocalPlayer.leaderstats.Sheckles.Value >= price[i].Price then
+                            local args = {i}
+                            game:GetService("ReplicatedStorage"):WaitForChild("GameEvents"):WaitForChild("BuyGearStock")
+                                :FireServer(unpack(args))
+
+                        end
+
+                    end
+
+                end
+            end)
+        end
+    end)
+end)
+function PlantStaffs()
+    for i, v in pairs(plr.Backpack:GetChildren()) do
+        if v:IsA("Tool") and v:GetAttribute("ItemName") == "Night Staff" and
+            not getplace().Important.Objects_Physical:FindFirstChild(v:GetAttribute("ItemName")) then
+
+            local Centers = getplace().Important.Plant_Locations.Locations.Can_Plant
+            local Offset = Centers.Position + Vector3.new(0, 0.5, 0)
+
+            local Filter = v:GetAttribute("ItemName") == ("Lightning Rod" or "Star Caller") and
+                               string.gsub(v:GetAttribute("ItemName"), " ", "") .. "Service" or
+                               v:GetAttribute("ItemName") == "Night Staff" and "NightStaffRemoteEvent"
+            -- string.gsub(v:GetAttribute("ItemName")," ","").."Service"
+
+            plr.Character.Humanoid:EquipTool(v)
+            task.wait(0.5)
+
+            game.ReplicatedStorage.GameEvents[Filter]:FireServer("Create", CFrame.new(Offset))
+
+            task.wait(0.5)
+            plr.Character.Humanoid:UnequipTools()
+        end
+    end
+
+    for i, v in pairs(plr.Character:GetChildren()) do
+        if v:IsA("Tool") and v:GetAttribute("ItemName") == "Night Staff" and
+            not getplace().Important.Objects_Physical:FindFirstChild(v:GetAttribute("ItemName")) then
+
+            local Centers = getplace().Important.Plant_Locations.Locations.Can_Plant
+            local Offset = Centers.Position + Vector3.new(0, 0.5, 0)
+
+            local Filter = v:GetAttribute("ItemName") == ("Lightning Rod" or "Star Caller") and
+                               string.gsub(v:GetAttribute("ItemName"), " ", "") .. "Service" or
+                               v:GetAttribute("ItemName") == "Night Staff" and "NightStaffRemoteEvent"
+            -- string.gsub(v:GetAttribute("ItemName")," ","").."Service"
+
+           
+            game.ReplicatedStorage.GameEvents[Filter]:FireServer("Create", CFrame.new(Offset))
+
+            task.wait(0.5)
+            plr.Character.Humanoid:UnequipTools()
+        end
+    end
+end
+
+spawn(function()
+    pcall(function()
+        while wait() do
+            pcall(function()
+                for i, v in pairs(plr.Backpack:GetChildren()) do
+                    if v:IsA("Tool") and getgenv().Config["Sprinkler"][v:GetAttribute("ItemName")] and
+                        not getplace().Important.Objects_Physical:FindFirstChild(v:GetAttribute("ItemName")) then
+                        local Centers = getplace().Important.Plant_Locations.Can_Plant
+                        local Offset = Centers.Position + Vector3.new(0, 0.5, 0)
+                        v.Parent = plr.Character
+
+                        game.ReplicatedStorage.GameEvents["SprinklerService"]:FireServer("Create", CFrame.new(Offset))
+
+                        task.wait(0.5)
+                        v.Parent = plr.Backpack
+                    end
+                end
+                PlantStaffs()
+            end)
+        end
+    end)
+end)
+spawn(function()
+    pcall(function()
+        while wait() do
+            pcall(function()
+                local cnt = 0;
+
                 for i, v in getplace().Important.Plants_Physical:GetChildren() do
                     if not string.find(v.Name, "Carrot") then
                         for i1, v1 in next, v:GetChildren() do
                             if v1.Name == "Fruits" then
                                 for i2, v2 in v1:GetChildren() do
-                                    local args = {
-                                        buffer.fromstring("\001\001\000\001"),
-                                        {
-                                            v2
-                                        }
-                                    }
-                                    game:GetService("ReplicatedStorage"):WaitForChild(
-                                        "ByteNetReliable"):FireServer(unpack(args))
-                                    task.wait(0.5)
+                                    if (cnt < 200) then
+                                        local args = {buffer.fromstring("\001\001\000\001"), {v2}}
+                                        game:GetService("ReplicatedStorage"):WaitForChild("ByteNetReliable"):FireServer(
+                                            unpack(args))
+                                        task.wait(0.2)
+                                        cnt = cnt + 1
+                                    else
+                                        break
+                                    end
                                 end
                             end
                         end
                     else
-                        local args = {
-                            buffer.fromstring("\001\001\000\001"),
-                            {
-                                v
-                            }
-                        }
-                        game:GetService("ReplicatedStorage"):WaitForChild(
-                            "ByteNetReliable"):FireServer(unpack(args))
+                        local args = {buffer.fromstring("\001\001\000\001"), {v}}
+                        game:GetService("ReplicatedStorage"):WaitForChild("ByteNetReliable"):FireServer(unpack(args))
                     end
                 end
             end)
@@ -772,9 +913,7 @@ spawn(function()
                         for i1, v1 in next, v:GetChildren() do
                             if v1.Name == "Fruits" then
                                 for i2, v2 in v1:GetChildren() do
-                                    a.Crops.Collect.send({
-                                        v2
-                                    })
+                                    a.Crops.Collect.send({v2})
                                     task.wait(0.5)
                                 end
                             end
@@ -814,7 +953,9 @@ local function moveToNextIndex(startPosition, startIndex, endIndex)
     local currentIndex = startIndex
 
     local function moveToPosition()
-        if currentIndex > endIndex then return end
+        if currentIndex > endIndex then
+            return
+        end
 
         local position = calculateSpiralPosition(startPosition, currentIndex)
         pcall(function()
@@ -822,18 +963,13 @@ local function moveToNextIndex(startPosition, startIndex, endIndex)
                 local name = haveegg().Name
                 equipweapon(name)
 
-                local args = {
-                    "CreateEgg",
-                    position
-                }
-
+                local args = {"CreateEgg", position}
 
                 if plr:DistanceFromCharacter(position) > 50 then
-                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
-                        CFrame.new(position)
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(position)
                 end
-                game:GetService("ReplicatedStorage"):WaitForChild("GameEvents"):WaitForChild(
-                    "PetEggService"):FireServer(unpack(args))
+                game:GetService("ReplicatedStorage"):WaitForChild("GameEvents"):WaitForChild("PetEggService")
+                    :FireServer(unpack(args))
 
                 currentIndex = currentIndex + 1
                 moveToPosition()
@@ -843,8 +979,6 @@ local function moveToNextIndex(startPosition, startIndex, endIndex)
 
     moveToPosition()
 end
-
-
 
 local dataseed = require(game:GetService("ReplicatedStorage").Data.SeedData)
 local v_u_1 = game:GetService("ReplicatedStorage")
@@ -856,13 +990,19 @@ local v22 = v_u_4:GetData()
 function getplace()
     for i, v in workspace.Farm:GetChildren() do
         if v.Name == "Farm" then
-            if v:FindFirstChild("Important") and v.Important:FindFirstChild("Data") and v.Important.Data:FindFirstChild("Owner") and v.Important.Data:FindFirstChild("Owner").Value == game.Players.LocalPlayer.Name then
+            if v:FindFirstChild("Important") and v.Important:FindFirstChild("Data") and
+                v.Important.Data:FindFirstChild("Owner") and v.Important.Data:FindFirstChild("Owner").Value ==
+                game.Players.LocalPlayer.Name then
                 return v
             end
         end
     end
 end
+--[[
 
+local args = {"Chocolate Sprinkler"}
+game:GetService("ReplicatedStorage"):WaitForChild("GameEvents"):WaitForChild("BuyEventShopStock"):FireServer(unpack(args))
+]]
 spawn(function()
     pcall(function()
         while wait() do
@@ -872,23 +1012,27 @@ spawn(function()
                         for i, v in v22.SeedStock.Stocks do
                             if v.Stock > 0 then
                                 if i == "Carrot" then
-                                    if game:GetService("Players").LocalPlayer.leaderstats.Sheckles.Value >= dataseed[i].Price then
+                                    if game:GetService("Players").LocalPlayer.leaderstats.Sheckles.Value >=
+                                        dataseed[i].Price then
                                         buyseed = true
-                                        for i, v in getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Teleport_UI.Frame.Seeds.Activated) do
+                                        for i, v in getconnections(
+                                            game:GetService("Players").LocalPlayer.PlayerGui.Teleport_UI.Frame.Seeds
+                                                .Activated) do
                                             v.Function()
                                         end
                                         task.wait(1)
                                         repeat
                                             wait()
 
-                                            local args = {
-                                                i
-                                            }
-                                            game:GetService("ReplicatedStorage"):WaitForChild("GameEvents"):WaitForChild(
-                                                "BuySeedStock")
-                                                :FireServer(unpack(args))
-                                        until v.Stock <= 0 or game:GetService("Players").LocalPlayer.leaderstats.Sheckles.Value < dataseed[i].Price
-                                        for i, v in getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Teleport_UI.Frame.Garden.Activated) do
+                                            local args = {i}
+                                            game:GetService("ReplicatedStorage"):WaitForChild("GameEvents")
+                                                :WaitForChild("BuySeedStock"):FireServer(unpack(args))
+                                        until v.Stock <= 0 or
+                                            game:GetService("Players").LocalPlayer.leaderstats.Sheckles.Value <
+                                            dataseed[i].Price
+                                        for i, v in getconnections(
+                                            game:GetService("Players").LocalPlayer.PlayerGui.Teleport_UI.Frame.Garden
+                                                .Activated) do
                                             v.Function()
                                         end
                                         task.wait(2)
@@ -901,7 +1045,9 @@ spawn(function()
                     if haveseed() then
                         for i, v in workspace.Farm:GetChildren() do
                             if v.Name == "Farm" then
-                                if v:FindFirstChild("Important") and v.Important:FindFirstChild("Data") and v.Important.Data:FindFirstChild("Owner") and v.Important.Data:FindFirstChild("Owner").Value == game.Players.LocalPlayer.Name then
+                                if v:FindFirstChild("Important") and v.Important:FindFirstChild("Data") and
+                                    v.Important.Data:FindFirstChild("Owner") and
+                                    v.Important.Data:FindFirstChild("Owner").Value == game.Players.LocalPlayer.Name then
                                     for i1, v1 in v.Important.Plant_Locations:GetChildren() do
                                         if v1.Name == "Can_Plant" then
                                             local plantLocations = v1
@@ -914,11 +1060,9 @@ spawn(function()
                                             }
                                             if plr:DistanceFromCharacter(plantLocations.Position) > 50 then
                                                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
-                                                    plantLocations
-                                                    .CFrame
+                                                    plantLocations.CFrame
                                             end
-
-                                            isshit.Parent = game.Players.LocalPlayer.Character
+                                            isshit.Parent = plr.Character
                                             game.ReplicatedStorage.GameEvents.Plant_RE:FireServer(unpack(arguments))
                                         end
                                     end
@@ -936,7 +1080,7 @@ spawn(function()
         while wait() do
             pcall(function()
                 SetNewReason("Coins: " ..
-                    format(math.floor(game:GetService("Players").LocalPlayer.leaderstats.Sheckles.Value)))
+                                 format(math.floor(game:GetService("Players").LocalPlayer.leaderstats.Sheckles.Value)))
             end)
         end
     end)
@@ -961,19 +1105,19 @@ spawn(function()
                 for i, v in v22.SeedStock.Stocks do
                     if v.Stock > 0 then
                         if getgenv().Config["Seed"][i] then
-                            if cnt(i) < getgenv().Config["Seed"][i] and game:GetService("Players").LocalPlayer.leaderstats.Sheckles.Value >= dataseed[i].Price then
+                            if cnt(i) < getgenv().Config["Seed"][i] and
+                                game:GetService("Players").LocalPlayer.leaderstats.Sheckles.Value >= dataseed[i].Price then
                                 buyseed = true
 
                                 repeat
                                     wait()
 
-                                    local args = {
-                                        i
-                                    }
+                                    local args = {i}
                                     game:GetService("ReplicatedStorage"):WaitForChild("GameEvents"):WaitForChild(
-                                        "BuySeedStock")
-                                        :FireServer(unpack(args))
-                                until v.Stock <= 0 or cnt(i) >= getgenv().Config["Seed"][i] or game:GetService("Players").LocalPlayer.leaderstats.Sheckles.Value < dataseed[i].Price
+                                        "BuySeedStock"):FireServer(unpack(args))
+                                until v.Stock <= 0 or cnt(i) >= getgenv().Config["Seed"][i] or
+                                    game:GetService("Players").LocalPlayer.leaderstats.Sheckles.Value <
+                                    dataseed[i].Price
                             end
                         end
                     end
@@ -985,7 +1129,6 @@ spawn(function()
 end)
 local VirtualUser = game:GetService("VirtualUser")
 
-
 spawn(function()
     pcall(function()
         while wait() do
@@ -995,18 +1138,16 @@ spawn(function()
                         getgenv().noclip = false
                         for i, v in workspace.Farm:GetChildren() do
                             if v.Name == "Farm" then
-                                if v:FindFirstChild("Important") and v.Important:FindFirstChild("Data") and v.Important.Data:FindFirstChild("Owner") and v.Important.Data:FindFirstChild("Owner").Value == game.Players.LocalPlayer.Name then
+                                if v:FindFirstChild("Important") and v.Important:FindFirstChild("Data") and
+                                    v.Important.Data:FindFirstChild("Owner") and
+                                    v.Important.Data:FindFirstChild("Owner").Value == game.Players.LocalPlayer.Name then
                                     for i1, v1 in v.Important.Plant_Locations:GetChildren() do
                                         if v1.Name == "Can_Plant" then
                                             local plantLocations = v1
                                             local isshit = haveegg()
                                             local name = isshit:GetAttribute("ItemName")
                                             local timeout = tick()
-                                            moveToNextIndex(
-                                                plantLocations.Position,
-                                                1,
-                                                100000
-                                            )
+                                            moveToNextIndex(plantLocations.Position, 1, 100000)
                                         end
                                     end
                                 end
@@ -1029,7 +1170,9 @@ spawn(function()
                     getgenv().noclip = false
                     for i, v in workspace.Farm:GetChildren() do
                         if v.Name == "Farm" then
-                            if v:FindFirstChild("Important") and v.Important:FindFirstChild("Data") and v.Important.Data:FindFirstChild("Owner") and v.Important.Data:FindFirstChild("Owner").Value == game.Players.LocalPlayer.Name then
+                            if v:FindFirstChild("Important") and v.Important:FindFirstChild("Data") and
+                                v.Important.Data:FindFirstChild("Owner") and
+                                v.Important.Data:FindFirstChild("Owner").Value == game.Players.LocalPlayer.Name then
                                 for i1, v1 in v.Important.Plant_Locations:GetChildren() do
                                     if v1.Name == "Can_Plant" then
                                         local plantLocations = v1
@@ -1042,11 +1185,10 @@ spawn(function()
                                         }
                                         if plr:DistanceFromCharacter(plantLocations.Position) > 50 then
                                             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
-                                                plantLocations
-                                                .CFrame
+                                                plantLocations.CFrame
                                         end
 
-                                        isshit.Parent = game.Players.LocalPlayer.Character
+                                        isshit.Parent = plr.Character
                                         game.ReplicatedStorage.GameEvents.Plant_RE:FireServer(unpack(arguments))
                                     end
                                 end
