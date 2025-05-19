@@ -11,4 +11,4 @@ _G.SCRIPT2 = true
 -- Script của bạn
 repeat wait(10) 
 until game:IsLoaded()
-game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,game.JobId, game.Players.LocalPlayer
+--game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,game.JobId, game.Players.LocalPlayer
