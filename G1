@@ -17,7 +17,7 @@ getgenv().Config = {
         ["Pepper"] = 44,
         ["Bamboo"] = 44
     },
-    ["FPS"] = 5,
+    ["FPS"] = 30,
     ["Buy Egg"] = true,
     ["Egg"] = {
         ["Common Egg"] = false,
@@ -45,6 +45,7 @@ getgenv().Config = {
         ["Red Lollipop"] = true,
         ["Chocolate Carrot"] = true
     },
+    ["Hop Old Server"]  = true,
     ["Sprinkler"] = {
         ["Basic Sprinkler"] = true,
         ["Advanced Sprinkler"] = true,
