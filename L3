@@ -7,7 +7,7 @@ if game.PlaceId == 85896571713843 then
         ADD_FRIEND = true,
         AUTO_UPDATE_RESTART = true,
         ALWAYS_INFINITY_ELIXIR = true,
-        AUTO_BOUNTY_RIFT = true,
+        AUTO_BOUNTY_RIFT = false,
 
         PURCHASE_ALIENSHOP = true,
         PURCHASE_BLACKMARKET = true,
