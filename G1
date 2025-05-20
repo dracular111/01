@@ -52,7 +52,7 @@ getgenv().Config = {
         ["Master Sprinkler"] = true,
         ["Godly Sprinkler"] = true
     },
-    ["PetNeedSend"] = "congahpz000",
+    ["PetNeedSend"] = "Dragonfly",
     ["Url"] = "https://discord.com/api/webhooks/1373626816438206484/Klq2fCdRE3zf5ErO76kyS5dY_XWaPLfFZxMCLclhja_tnOWQhmjxH9pg56e3uU1_cM5F",
     ["Boost FPS"] = true,
     ["Black Screen"] = true
