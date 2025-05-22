@@ -8,13 +8,14 @@ if game.PlaceId == 85896571713843 then
         AUTO_UPDATE_RESTART = true,
         ALWAYS_INFINITY_ELIXIR = true,
         AUTO_BOUNTY_RIFT = true,
+        --AUTO_BOUNTY_RIFT = false,
 
         PURCHASE_ALIENSHOP = true,
         PURCHASE_BLACKMARKET = true,
         PURCHASE_DICE_MERCHANT = true,
         PURCHASE_STARSHOP_SLOT = 14,
         RESTOCK_SHOP = "Blackmarket",
-        POTIONS_TO_CRAFT = {"Mythic", "Lucky", "Speed"},
+        --POTIONS_TO_CRAFT = {"Mythic", "Lucky", "Speed"},
         MASTERY_PETS_LEVEL = 17,
         MASTERY_BUFFS_LEVEL = 21,
         MASTERY_SHOPS_LEVEL = 11,
@@ -28,10 +29,10 @@ if game.PlaceId == 85896571713843 then
         RARITY_TO_SHINY = {"Common", "Unique", "Rare", "Epic", "Legendary"},
         MAX_LEGENDARY_TIER_TO_DELETE = 2,
         DELETE_LEGENDARY_SHINY = true,
-        DELETE_LEGENDARY_MYTHIC = true,
+        --DELETE_LEGENDARY_MYTHIC = true,
 
         ENCHANT_TEAMUP = true,
-        ENCHANT_TEAMUP_TIER = 5,
+        ENCHANT_TEAMUP_TIER = 3,
 
         RIFT_EGGS = {"Underworld Egg", "Cyber Egg", "Nightmare Egg"},
         HATCH_1X_EGG = {"Cyber Egg"},
