@@ -30,8 +30,6 @@ if game.PlaceId == 85896571713843 then
         MAX_LEGENDARY_TIER_TO_DELETE = 2,
         DELETE_LEGENDARY_SHINY = true,
         --DELETE_LEGENDARY_MYTHIC = true,
-        --DELETE_LEGENDARY_SHINY = false,
-        DELETE_LEGENDARY_MYTHIC = false,
 
         ENCHANT_TEAMUP = true,
         ENCHANT_TEAMUP_TIER = 3,
