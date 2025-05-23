@@ -16,9 +16,9 @@ if game.PlaceId == 85896571713843 then
         PURCHASE_STARSHOP_SLOT = 14,
         RESTOCK_SHOP = "Blackmarket",
         --POTIONS_TO_CRAFT = {"Mythic", "Lucky", "Speed"},
-        MASTERY_PETS_LEVEL = 17,
-        MASTERY_BUFFS_LEVEL = 21,
-        MASTERY_SHOPS_LEVEL = 11,
+        --MASTERY_PETS_LEVEL = 17,
+        --MASTERY_BUFFS_LEVEL = 21,
+        --MASTERY_SHOPS_LEVEL = 11,
 
         USE_ROYAL_KEY = true,
         USE_GOLDEN_KEY = true,
