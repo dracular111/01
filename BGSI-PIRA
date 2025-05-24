@@ -3,12 +3,12 @@ getgenv().Config = {
         ["Rifts"] = {
             ["Eggs"] = {"Underworld Egg", "Cyber Egg", "Nightmare Egg"}
         },
-        ["Egg"] = "Common Egg"
+        ["Egg"] = "Cyber Egg"
     },
     ["Webhook"] = {
         ["MinDifficulty"] = "50m",
         ["UserID"] = "",
-        ["URL"] = "https://discord.com/api/webhooks/1362420992596639774/Kjo5qyBSqfgpYYkdyy1alxbxvqHwTtLondERczZzeYgDvj0LWOFHZ1c1hjCrE3CvlDGM",
+        ["URL"] = "https://discord.com/api/webhooks/1375644620851253288/DlFDlh2FRlms8SKE51nZgGung6tBXcm21Po9069INUvcslOEMin5Ov3AFAE2ybnCAiuu",
     },
     ["AutoEnchant"] = true -- // Enchant Team Up on all Equipped Pets
 }
