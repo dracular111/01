@@ -1,23 +1,27 @@
-setfpscap(5)  -- number = fps
+repeat wait() until game:IsLoaded()
+if game.PlaceId == 85896571713843 then
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/GD01"))()
+    setfpscap(5)
 
-task.spawn(function()
-_G.Config = { UserID = "cf2b68ab-24d5-453a-9204-2d6cd6a8d72e", discord_id = "1092353095171833906" , Note = "Pc111", } loadstring(game:HttpGet("https://raw.githubusercontent.com/skadidau/unfazedfree/refs/heads/main/bgsi"))()
-end)
+    task.spawn(function()
+    _G.Config = { UserID = "cf2b68ab-24d5-453a-9204-2d6cd6a8d72e", discord_id = "1092353095171833906" , Note = "Pc111", } loadstring(game:HttpGet("https://raw.githubusercontent.com/skadidau/unfazedfree/refs/heads/main/bgsi"))()
+    end)
 
-task.spawn(function()
-getgenv().Config = {
-    ["Hatching"] = {
-        ["Rifts"] = {
-            ["Eggs"] = {"Cyber Egg", "Nightmare Egg"}
+    task.spawn(function()
+    getgenv().Config = {
+        ["Hatching"] = {
+            ["Rifts"] = {
+                ["Eggs"] = {"Cyber Egg", "Nightmare Egg"}
+            },
+            ["Egg"] = "Cyber Egg"
+        ["Webhook"] = {
+            ["MinDifficulty"] = "5m",
+            ["UserID"] = "",
+            ["URL"] = "https://discord.com/api/webhooks/1375644620851253288/DlFDlh2FRlms8SKE51nZgGung6tBXcm21Po9069INUvcslOEMin5Ov3AFAE2ybnCAiuu",
         },
-        ["Egg"] = "Cyber Egg"
-    },
-    ["Webhook"] = {
-        ["MinDifficulty"] = "5m",
-        ["UserID"] = "",
-        ["URL"] = "https://discord.com/api/webhooks/1375644620851253288/DlFDlh2FRlms8SKE51nZgGung6tBXcm21Po9069INUvcslOEMin5Ov3AFAE2ybnCAiuu",
-    },
-    ["AutoEnchant"] = true -- // Enchant Team Up on all Equipped Pets
-}
-loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/9ba58bbb26e46302b4e601379491c5da.lua"))()
-end)
+        ["AutoEnchant"] = true -- // Enchant Team Up on all Equipped Pets
+    }
+    loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/9ba58bbb26e46302b4e601379491c5da.lua"))()
+else
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/GD01"))()
+end
