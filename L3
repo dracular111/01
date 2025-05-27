@@ -12,7 +12,7 @@ if game.PlaceId == 85896571713843 then
         PURCHASE_BLACKMARKET = true,
         PURCHASE_DICE_MERCHANT = true,
         PURCHASE_STARSHOP_SLOT = 14,
-        RESTOCK_SHOP = "Blackmarket",
+        RESTOCK_SHOP = "Event Shop",
         --POTIONS_TO_CRAFT = {"Mythic", "Lucky", "Speed"},
         --MASTERY_PETS_LEVEL = 17,
         --MASTERY_BUFFS_LEVEL = 21,
