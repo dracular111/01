@@ -34,8 +34,9 @@ if game.PlaceId == 85896571713843 then
         ENCHANT_TEAMUP = true,
         ENCHANT_TEAMUP_TIER = 3,
 
-        RIFT_EGGS = {"Underworld Egg", "Cyber Egg", "Nightmare Egg"},
-        HATCH_1X_EGG = {"Cyber Egg"},
+        AUTO_BOUNTY_RIFT = true,
+        HATCH_1X_EGG = {"Icecream Egg"}, 
+        ALWAYS_INFINITY_ELIXIR = true,
 
         WEBHOOK_URL =
         "https://discord.com/api/webhooks/1374803391330517112/fkp0g73EqEdfDTscxZkZNQxGoVl8Tv2eOJWRVP-mHUw2HXr5vGkNJPGEPDQqtStwIKUX",
