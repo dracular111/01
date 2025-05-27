@@ -4,9 +4,9 @@ if game.PlaceId == 85896571713843 then
     script_key = "eCBQoTLLuLuKSdoPkBznOXxjDJecWUsa";
     setfpscap(5)
     getgenv().bgsInfConfig = {
+        SUMMER_EVENT = true,
         ADD_FRIEND = true,
         AUTO_UPDATE_RESTART = true,
-        ALWAYS_INFINITY_ELIXIR = true,
 
         PURCHASE_ALIENSHOP = true,
         PURCHASE_BLACKMARKET = true,
