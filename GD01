@@ -1,4 +1,4 @@
---getgenv().Data = {
+getgenv().Data = {
     ["Account Main"] = {
         ["thirt8ik"] = "Chickenz2"
     },
