@@ -83,7 +83,7 @@ getgenv().Config = {
             ["Divine"] = false,
             ["Mythical"] = false
         },
-        ["Pet Dont Delete"] = {"Queen Bee", "Night Owl", "Raccoon", "Red Fox", "Dragonfly", "Disco Bee", "Butterfly","Mimic Octopus"}
+        ["Pet Dont Delete"] = {"Queen Bee", "Night Owl", "Raccoon", "Red Fox", "Dragonfly", "Disco Bee", "Butterfly", "Mimic Octopus"}
     },
     ["Webhook Mode"] = {
         ["Enable Send Pet Weight"] = false,
