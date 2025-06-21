@@ -10,4 +10,3 @@ _G.SCRIPT1 = true
 
 -- Script của bạn
 loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Trackyummy"))()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Trackyummy2"))()
