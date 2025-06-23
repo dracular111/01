@@ -39,8 +39,8 @@ getgenv().Config = {
             ["Place"] = false
         },
         ["Mythical Egg"] = {
-            ["Buy"] = true,
-            ["Place"] = true
+            ["Buy"] = false,
+            ["Place"] = false
         },
         ["Anti Bee Egg"] = {
             ["Place"] = true
