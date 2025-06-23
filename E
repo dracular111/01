@@ -85,7 +85,7 @@ getgenv().Config = {
     ["Url"] = "", -- Webhook 
 
     ["Boost FPS"] = true,
-    ["Black Screen"] = true8,
+    ["Black Screen"] = true,
     ["Note"] = "Cyndral Hub",
     ["Pet Mode"] = {
         ["Sell Pet"] = true,
