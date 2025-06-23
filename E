@@ -28,11 +28,11 @@ getgenv().Config = {
     ["Egg"] = {
         ["Common Egg"] = {
             ["Buy"] = false,
-            ["Place"] = true
+            ["Place"] = false
         },
         ["Uncommon Egg"] = {
             ["Buy"] = false,
-            ["Place"] = true
+            ["Place"] = false
         },
         ["Rare Egg"] = {
             ["Buy"] = false,
@@ -101,6 +101,11 @@ getgenv().Config = {
             ["Legendary"] = false,
             ["Divine"] = false,
             ["Mythical"] = false
+        },
+        ["Upgrade Slot Egg"] = {
+            ["Enable"] = true,
+            ["Black List Pet For Upgrade Slots"] = {"Queen Bee", "Red Fox", "Dragonfly", "Raccoon", "Disco Bee",
+                                                    "Butterfly", "Mimic Octopus"}
         },
         ["Pet Dont Delete"] = {"Queen Bee", "Red Fox", "Dragonfly", "Raccoon", "Disco Bee", "Butterfly", "Mimic Octopus"}
     },
