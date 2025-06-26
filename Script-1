@@ -9,3 +9,45 @@ end
 _G.SCRIPT1 = true
 
 -- Script của bạn
+getgenv().Config = {
+    ["TimeMin"] = 2, -- Hour
+    ["TimeMax"] = 5 -- Hour
+}
+repeat
+    wait()
+until game:IsLoaded()
+local old = tick()
+local time = math.random(getgenv().Config["TimeMin"], getgenv().Config["TimeMin"])
+repeat
+    wait()
+until tick() - old >= time * 3600
+if #game:GetService("Players"):GetPlayers() <= 1 or #game:GetService("Players"):GetPlayers() >= 5 then
+    wait()
+    repeat
+        wait()
+        game:GetService("TeleportService"):Teleport(game.PlaceId, game.Players.LocalPlayer)
+    until honglamx
+else
+    game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId, game.Players.LocalPlayer)
+end
+getgenv().Config = {
+    ["TimeMin"] = 2, -- Hour
+    ["TimeMax"] = 5 -- Hour
+}
+repeat
+    wait()
+until game:IsLoaded()
+local old = tick()
+local time = math.random(getgenv().Config["TimeMin"], getgenv().Config["TimeMin"])
+repeat
+    wait()
+until tick() - old >= time * 3600
+if #game:GetService("Players"):GetPlayers() <= 1 or #game:GetService("Players"):GetPlayers() >= 5 then
+    wait()
+    repeat
+        wait()
+        game:GetService("TeleportService"):Teleport(game.PlaceId, game.Players.LocalPlayer)
+    until honglamx
+else
+    game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId, game.Players.LocalPlayer)
+end
