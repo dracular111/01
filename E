@@ -113,9 +113,10 @@ getgenv().Config = {
                                                     "Butterfly", "Mimic Octopus", "Blood Owl"}
         },
         ["Pet Dont Delete"] = {"Chicken", "Fennec Fox", "Disco Bee", "Butterfly", "Mimic Octopus", "Peacock", "Scarlet Macaw", "Moth",
-                               "Brown Mouse", "Queen Bee", "Dragonfly", "Raccoon", "Red Fox", "Night Owl", "Blood Owl", Blood Kiwi",
-                               "Red Giant Ant", "Giant Ant", "Grey Mouse", "Mole", "Bear Bee", "Praying Mantis", "Starfish",
-                               "Sea Turtle", "Echo Frog", "Hamster", "Hyacinth Macaw", "Axolotl", "Sand Snake"}
+                               "Brown Mouse", "Queen Bee", "Dragonfly", "Raccoon", "Red Fox", "Night Owl", "Blood Owl",
+                               "Blood Kiwi", "Red Giant Ant", "Giant Ant", "Grey Mouse", "Moon Cat", "Caterpillar",
+                               "Mole", "Bear Bee", "Praying Mantis", "Starfish", "Sea Turtle", "Snail", "Squirrel",
+                               "Echo Frog", "Hamster", "Hyacinth Macaw", "Axolotl", "Sand Snake"}
     },
     ["Webhook Mode"] = {
         ["Enable Send Pet Weight"] = false,
