@@ -37,11 +37,11 @@ getgenv().Config = {
         ["Uncommon Egg"] = {
             ["Buy"] = true,
             ["Place"] = true,
-            ["Priority"] = 2
+            ["Priority"] = 1
         },
         ["Oasis Egg"] = {
             ["Place"] = true,
-            ["Priority"] = 1
+            ["Priority"] = 2
         },
         ["Anti Bee Egg"] = {
             ["Place"] = true,
@@ -90,7 +90,7 @@ getgenv().Config = {
         ["Auto Destroy when have money"] = 1000000, -- its will destroy all trees select when money >= select
         ["Trees"] = {"Strawberry", "Blueberry", "Corn", "Orange Tulip", "Carrot"}
     },
-    ["Url"] = "", -- Webhook 
+    ["Url"] = "https://discord.com/api/webhooks/1385675948166479892/R9bU35slhp3LqRt_pZfILFTQaGFXXpP8kDrE6s_ZgTMT5BDat0yNdKw0xr6yXqJuHyB-", -- Webhook 
 
     ["Boost FPS"] = true,
     ["Black Screen"] = true,
@@ -99,6 +99,7 @@ getgenv().Config = {
         ["Sell Pet"] = true,
         ["Equip Pet"] = true,
         ["Name Pet Equip"] = {
+            ["Blood Kiwi"] = true,
             ["Chicken"] = true,
             ["Red Fox"] = true,
             ["Brown Mouse"] = true,
@@ -113,9 +114,10 @@ getgenv().Config = {
                                                     "Butterfly", "Mimic Octopus", "Blood Owl"}
         },
         ["Pet Dont Delete"] = {"Chicken", "Fennec Fox", "Disco Bee", "Butterfly", "Mimic Octopus", "Peacock", "Scarlet Macaw", "Moth",
-                               "Brown Mouse", "Queen Bee", "Dragonfly", "Raccoon", "Red Fox", "Night Owl", "Blood Owl", Blood Kiwi",
-                               "Red Giant Ant", "Giant Ant", "Grey Mouse", "Mole", "Bear Bee", "Praying Mantis", "Starfish",
-                               "Sea Turtle", "Echo Frog", "Hamster", "Hyacinth Macaw", "Axolotl", "Sand Snake"}
+                               "Brown Mouse", "Queen Bee", "Dragonfly", "Raccoon", "Red Fox", "Night Owl", "Blood Owl",
+                               "Blood Kiwi", "Red Giant Ant", "Giant Ant", "Grey Mouse", "Moon Cat",
+                               "Mole", "Bear Bee", "Praying Mantis", "Starfish", "Sea Turtle",
+                               "Echo Frog", "Hamster", "Hyacinth Macaw", "Axolotl", "Sand Snake"}
     },
     ["Webhook Mode"] = {
         ["Enable Send Pet Weight"] = false,
