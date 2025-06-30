@@ -1,9 +1,5 @@
 repeat wait() until game:IsLoaded()
 wait(5)
-repeat wait() until game:IsLoaded()
-wait(5)
-repeat wait() until game:IsLoaded()
-wait(5)
 getgenv().Config = {
     ["Time To Sell"] = 35, -- Seconds
     ["Craft Event"] = {
@@ -41,11 +37,11 @@ getgenv().Config = {
         ["Uncommon Egg"] = {
             ["Buy"] = true,
             ["Place"] = true,
-            ["Priority"] = 2
+            ["Priority"] = 1
         },
         ["Oasis Egg"] = {
             ["Place"] = true,
-            ["Priority"] = 1
+            ["Priority"] = 2
         },
         ["Anti Bee Egg"] = {
             ["Place"] = true,
@@ -103,6 +99,7 @@ getgenv().Config = {
         ["Sell Pet"] = true,
         ["Equip Pet"] = true,
         ["Name Pet Equip"] = {
+            ["Blood Kiwi"] = true,
             ["Chicken"] = true,
             ["Red Fox"] = true,
             ["Brown Mouse"] = true,
@@ -118,8 +115,8 @@ getgenv().Config = {
         },
         ["Pet Dont Delete"] = {"Chicken", "Fennec Fox", "Disco Bee", "Butterfly", "Mimic Octopus", "Peacock", "Scarlet Macaw", "Moth",
                                "Brown Mouse", "Queen Bee", "Dragonfly", "Raccoon", "Red Fox", "Night Owl", "Blood Owl",
-                               "Blood Kiwi", "Red Giant Ant", "Giant Ant", "Grey Mouse", "Moon Cat", "Caterpillar",
-                               "Mole", "Bear Bee", "Praying Mantis", "Starfish", "Sea Turtle", "Snail", "Squirrel",
+                               "Blood Kiwi", "Red Giant Ant", "Giant Ant", "Grey Mouse", "Moon Cat",
+                               "Mole", "Bear Bee", "Praying Mantis", "Starfish", "Sea Turtle",
                                "Echo Frog", "Hamster", "Hyacinth Macaw", "Axolotl", "Sand Snake"}
     },
     ["Webhook Mode"] = {
@@ -153,13 +150,6 @@ getgenv().Config = {
     }
 }
 setfpscap(getgenv().Config["FPS"])
-script_key="uufdNwBMukWKyAtvxBaCxqlRebzqZwge";
-
-repeat
-    wait()
-    loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/be5eb6eb83a60b4c87954ddf66dd7413.lua"))()
-    task.wait(5)
-until getgenv().Loaded
 script_key="RHUksoCwqaInnjjYLacJNMYLDHFLhbOj";
 
 repeat
