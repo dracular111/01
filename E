@@ -115,7 +115,7 @@ getgenv().Config = {
         },
         ["Pet Dont Delete"] = {"Chicken", "Fennec Fox", "Disco Bee", "Butterfly", "Mimic Octopus",
                                "Queen Bee", "Dragonfly", "Raccoon", "Red Fox", "Night Owl", "Blood Owl",
-                               "Blood Kiwi", "Red Giant Ant", "Grey Mouse", "Moon Cat",
+                               "Blood Kiwi", "Red Giant Ant", "Grey Mouse", "Moon Cat", "Brown Mouse",
                                "Bear Bee", "Starfish", "Sea Turtle", "Scarlet Macaw",
                                "Echo Frog", "Hamster", "Hyacinth Macaw", "Axolotl", "Sand Snake"}
     },
