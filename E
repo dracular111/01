@@ -116,7 +116,7 @@ getgenv().Config = {
         ["Pet Dont Delete"] = {"Chicken", "Fennec Fox", "Disco Bee", "Butterfly", "Mimic Octopus",
                                "Queen Bee", "Dragonfly", "Raccoon", "Red Fox", "Night Owl", "Blood Owl",
                                "Blood Kiwi", "Red Giant Ant", "Grey Mouse", "Moon Cat",
-                               "Bear Bee", "Starfish", "Sea Turtle",
+                               "Bear Bee", "Starfish", "Sea Turtle", "Scarlet Macaw",
                                "Echo Frog", "Hamster", "Hyacinth Macaw", "Axolotl", "Sand Snake"}
     },
     ["Webhook Mode"] = {
