@@ -107,16 +107,16 @@ getgenv().Config = {
             ["Red Giant Ant"] = true,
             ["Mole"] = true
         },
-        ["Max Slot Pet To Sell"] = 40, -- If Total Pet In Inventory >= ["Max Slot Pet To Sell"] script will sell pet
+        ["Max Slot Pet To Sell"] = 30, -- If Total Pet In Inventory >= ["Max Slot Pet To Sell"] script will sell pet
         ["Upgrade Slot Egg"] = {
             ["Enable"] = true,
             ["Black List Pet For Upgrade Slots"] = {"Fennec Fox", "Queen Bee", "Dragonfly", "Raccoon", "Disco Bee",
                                                     "Butterfly", "Mimic Octopus", "Blood Owl"}
         },
-        ["Pet Dont Delete"] = {"Chicken", "Fennec Fox", "Disco Bee", "Butterfly", "Mimic Octopus", "Peacock", "Scarlet Macaw", "Moth",
-                               "Brown Mouse", "Queen Bee", "Dragonfly", "Raccoon", "Red Fox", "Night Owl", "Blood Owl",
-                               "Blood Kiwi", "Red Giant Ant", "Giant Ant", "Grey Mouse", "Moon Cat",
-                               "Mole", "Bear Bee", "Praying Mantis", "Starfish", "Sea Turtle",
+        ["Pet Dont Delete"] = {"Chicken", "Fennec Fox", "Disco Bee", "Butterfly", "Mimic Octopus",
+                               "Queen Bee", "Dragonfly", "Raccoon", "Red Fox", "Night Owl", "Blood Owl",
+                               "Blood Kiwi", "Red Giant Ant", "Grey Mouse", "Moon Cat",
+                               "Bear Bee", "Starfish", "Sea Turtle",
                                "Echo Frog", "Hamster", "Hyacinth Macaw", "Axolotl", "Sand Snake"}
     },
     ["Webhook Mode"] = {
