@@ -127,7 +127,7 @@ getgenv().Config = {
         ["Auto Rejoin When Error Module Egg"] = false,
         ["Auto rejoin on script update"] = false,
         ["Enable Rejoin After X Time"] = true,
-        ["Rejoin After X Time"] = 120 -- Minutes
+        ["Rejoin After X Time"] = 300 -- Minutes
     },
     ["Limit Tree"] = 250,
     ["Mutation Skips"] = { -- Skip Havest
