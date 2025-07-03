@@ -59,7 +59,7 @@ getgenv().Config = {
         ["Bee Egg"] = {
             ["Buy"] = true,
             ["Place"] = false,
-            ["Priority"] = 8
+            ["Priority"] = 7
         }
     },
     ["SummerEvent"] = {
