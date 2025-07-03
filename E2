@@ -91,6 +91,7 @@ getgenv().Config = {
         ["Mode Destroy"] = "Auto", --"Custom"
         ["Trees"] = {"Strawberry", "Blueberry", "Corn", "Orange Tulip", "Carrot"},
         ["Rarity Destroy Auto"] = {"Common","Uncommon","Rare"}
+    },
     ["Url"] = "", -- Webhook 
 
     ["Boost FPS"] = true,
