@@ -88,7 +88,9 @@ getgenv().Config = {
                        "Hyacinth Macaw", "Fennec Fox"},
     ["Destroy Mode"] = {
         ["Auto Destroy when have money"] = 1000000, -- its will destroy all trees select when money >= select
-        ["Trees"] = {"Strawberry", "Banana", "Blueberry", "Corn", "Orange Tulip", "Carrot"}
+        ["Mode Destroy"] = "Auto", --"Custom"
+        ["Trees"] = {"Strawberry", "Blueberry", "Corn", "Orange Tulip", "Carrot"},
+        ["Rarity Destroy Auto"] = {"Common","Uncommon","Rare"}
     },
     ["Url"] = "", -- Webhook 
 
