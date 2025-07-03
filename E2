@@ -119,7 +119,7 @@ getgenv().Config = {
                                "Queen Bee", "Dragonfly", "Raccoon", "Red Fox", "Night Owl", "Blood Owl",
                                "Blood Kiwi", "Red Giant Ant", "Grey Mouse", "Moon Cat", "Brown Mouse",
                                "Bear Bee", "Starfish", "Sea Turtle", "Scarlet Macaw", "Mole",
-                               "Echo Frog", "Hamster", "Hyacinth Macaw", "Axolotl", "Sand Snake"}
+                               "Echo Frog", "Hamster", "Hyacinth Macaw", "Axolotl", "Sand Snake", "Toucan"}
     },
     ["Webhook Mode"] = {
         ["Enable Send Pet Weight"] = false,
