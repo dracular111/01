@@ -29,11 +29,6 @@ getgenv().Config = {
     ["Keep Seed"] = {},
     ["FPS"] = 2,
     ["Egg"] = {
-        ["Mythical Egg"] = {
-            ["Buy"] = true,
-            ["Place"] = false,
-            ["Priority"] = 7
-        },
         ["Uncommon Egg"] = {
             ["Buy"] = true,
             ["Place"] = true,
