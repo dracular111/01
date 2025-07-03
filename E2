@@ -64,7 +64,7 @@ getgenv().Config = {
     },
     ["SummerEvent"] = {
         ["Traveler's Fruit"] = false,
-        ["Summer Seed Pack"] = true,
+        ["Summer Seed Pack"] = false,
         ["Hamster"] = false,
         ["Oasis Egg"] = true,
         ["Delphinium"] = false,
