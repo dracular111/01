@@ -30,42 +30,42 @@ getgenv().Config = {
     ["Keep Seed"] = {"Dragon Pepper", "Elephant Ears", "Sunflower", "Candy Blossom"},
     ["FPS"] = 3,
     ["Egg"] = {
-        ["Uncommon Egg"] = {
-            ["Buy"] = true,
-            ["Place"] = true,
-            ["Priority"] = 7
-        },
-        ["Rare Egg"] = {
-            ["Buy"] = true,
-            ["Place"] = true,
-            ["Priority"] = 8
-        },
         ["Oasis Egg"] = {
             ["Place"] = true,
-            ["Priority"] = 6
-        },
-        ["Anti Bee Egg"] = {
-            ["Place"] = true,
             ["Priority"] = 1
-        },
-        ["Night Egg"] = {
-            ["Place"] = true,
-            ["Priority"] = 4
-        },
-        ["Bug Egg"] = {
+        }
+        ["Paradise Egg"] = {
             ["Buy"] = true,
             ["Place"] = true,
             ["Priority"] = 2
         },
-        ["Paradise Egg"] = {
+        ["Bug Egg"] = {
             ["Buy"] = true,
             ["Place"] = true,
             ["Priority"] = 3
         },
+        ["Anti Bee Egg"] = {
+            ["Place"] = true,
+            ["Priority"] = 4
+        },
+        ["Night Egg"] = {
+            ["Place"] = true,
+            ["Priority"] = 5
+        },
+        ["Uncommon Egg"] = {
+            ["Buy"] = true,
+            ["Place"] = true,
+            ["Priority"] = 6
+        },
+        ["Rare Egg"] = {
+            ["Buy"] = true,
+            ["Place"] = true,
+            ["Priority"] = 7
+        },
         ["Bee Egg"] = {
             ["Buy"] = true,
             ["Place"] = false,
-            ["Priority"] = 5
+            ["Priority"] = 8
         }
     },
     ["SummerEvent"] = {
@@ -86,7 +86,7 @@ getgenv().Config = {
     },
     ["Plant Candy"] = false,
     ["PetNeedSend"] = {"Queen Bee", "Red Fox", "Dragonfly", "Raccoon", "Disco Bee", "Butterfly", "Mimic Octopus",
-                       "Meerkat", "Sand Snake", "Fennec Fox"},
+                       "Meerkat", "Sand Snake", "Fennec Fox", "Axolotl", "Hyacinth Macaw"},
     ["Destroy Mode"] = {
         ["Auto Destroy when have money"] = 1000000, -- its will destroy all trees select when money >= select
         ["Mode Destroy"] = "Auto", -- "Custom"
@@ -126,9 +126,9 @@ getgenv().Config = {
                                                     "Hyacinth Macaw", "Rooster", "Blad Eagle", "Chicken", "Chicken Zombie"}
         },
         ["Pet Dont Delete"] = {"Queen Bee", "Red Fox", "Dragonfly", "Raccoon", "Disco Bee", "Butterfly",
-                               "Mimic Octopus", "Meerkat", "Sand Snake", "Fennec Fox", "Axolotl", "Hyacinth Macaw",
-                               "Hamster", "Golden Lab", "Rooster", "Chicken", "Chicken Zombie", "Scarlet Macaw",
-                               "Hyacinth Macaw", "Blood Kiwi", "Blood Owl", "Starfish", "Blad Eagle", "Night Owl"},
+                               "Mimic Octopus", "Meerkat", "Sand Snake", "Fennec Fox", "Axolotl", "Hamster",
+                               "Golden Lab", "Rooster", "Chicken", "Chicken Zombie", "Scarlet Macaw", "Hyacinth Macaw",
+                               "Blood Kiwi", "Blood Owl", "Starfish", "Blad Eagle", "Night Owl"},
         ["Dont Sell Pet If Weight > x"] = 10 -- Script dont sell pet if this weight >= 10
     },
     ["Webhook Mode"] = {
