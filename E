@@ -30,42 +30,42 @@ getgenv().Config = {
     ["Keep Seed"] = {"Dragon Pepper", "Elephant Ears", "Sunflower", "Candy Blossom"},
     ["FPS"] = 3,
     ["Egg"] = {
-        ["Oasis Egg"] = {
-            ["Place"] = true,
-            ["Priority"] = 1
-        }
-        ["Paradise Egg"] = {
-            ["Buy"] = true,
-            ["Place"] = true,
-            ["Priority"] = 2
-        },
-        ["Bug Egg"] = {
-            ["Buy"] = true,
-            ["Place"] = true,
-            ["Priority"] = 3
-        },
-        ["Anti Bee Egg"] = {
-            ["Place"] = true,
-            ["Priority"] = 4
-        },
-        ["Night Egg"] = {
-            ["Place"] = true,
-            ["Priority"] = 5
-        },
         ["Uncommon Egg"] = {
-            ["Buy"] = true,
-            ["Place"] = true,
-            ["Priority"] = 6
-        },
-        ["Rare Egg"] = {
             ["Buy"] = true,
             ["Place"] = true,
             ["Priority"] = 7
         },
+        ["Rare Egg"] = {
+            ["Buy"] = true,
+            ["Place"] = true,
+            ["Priority"] = 8
+        },
+        ["Oasis Egg"] = {
+            ["Place"] = true,
+            ["Priority"] = 6
+        },
+        ["Anti Bee Egg"] = {
+            ["Place"] = true,
+            ["Priority"] = 1
+        },
+        ["Night Egg"] = {
+            ["Place"] = true,
+            ["Priority"] = 4
+        },
+        ["Bug Egg"] = {
+            ["Buy"] = true,
+            ["Place"] = true,
+            ["Priority"] = 2
+        },
+        ["Paradise Egg"] = {
+            ["Buy"] = true,
+            ["Place"] = true,
+            ["Priority"] = 3
+        },
         ["Bee Egg"] = {
             ["Buy"] = true,
             ["Place"] = false,
-            ["Priority"] = 8
+            ["Priority"] = 5
         }
     },
     ["SummerEvent"] = {
@@ -86,7 +86,7 @@ getgenv().Config = {
     },
     ["Plant Candy"] = false,
     ["PetNeedSend"] = {"Queen Bee", "Red Fox", "Dragonfly", "Raccoon", "Disco Bee", "Butterfly", "Mimic Octopus",
-                       "Meerkat", "Sand Snake", "Fennec Fox", "Axolotl", "Hyacinth Macaw"},
+                       "Meerkat", "Sand Snake", "Fennec Fox"},
     ["Destroy Mode"] = {
         ["Auto Destroy when have money"] = 1000000, -- its will destroy all trees select when money >= select
         ["Mode Destroy"] = "Auto", -- "Custom"
