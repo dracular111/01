@@ -115,6 +115,7 @@ getgenv().Config = {
             ["Chicken"] = true,
             ["Red Fox"] = true,
             ["Starfish"] = true,
+            ["Echo Frog"] = true,
             ["Moth"] = true
         },
         ["Max Slot Pet To Sell"] = 30, -- If Total Pet In Inventory >= ["Max Slot Pet To Sell"] script will sell pet
@@ -127,7 +128,7 @@ getgenv().Config = {
         ["Pet Dont Delete"] = {"Queen Bee", "Red Fox", "Dragonfly", "Raccoon", "Disco Bee", "Butterfly",
                                "Mimic Octopus", "Sand Snake", "Fennec Fox", "Axolotl",
                                "Hamster", "Golden Lab", "Rooster", "Chicken", "Chicken Zombie", "Scarlet Macaw",
-                               "Hyacinth Macaw", "Blood Kiwi", "Blood Owl", "Starfish", "Blad Eagle", "Night Owl", "Moth"},
+                               "Hyacinth Macaw", "Blood Kiwi", "Blood Owl", "Starfish", "Blad Eagle", "Night Owl", "Moth", "Echo Frog"},
         ["Dont Sell Pet If Weight > x"] = 10 -- Script dont sell pet if this weight >= 10
     },
     ["Webhook Mode"] = {
