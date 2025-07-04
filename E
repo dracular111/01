@@ -103,7 +103,7 @@ getgenv().Config = {
 
     },
     ["Boost FPS"] = true,
-    ["Black Screen"] = false,
+    ["Black Screen"] = true,
     ["Note"] = "Cyndral Hub",
     ["Pet Mode"] = {
         ["Sell Pet"] = true,
