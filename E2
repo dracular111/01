@@ -1,5 +1,5 @@
 script_key="owToYPrLyPfXORxPyyNmVYIQtvxDsCQk";
-setfpscap(3)
+setfpscap(2)
 
 getgenv().gagConfig = {
     SUMMER_EVENT = true,
