@@ -126,7 +126,7 @@ getgenv().Config = {
         ["Enable Rejoin After X Time"] = false,
         ["Rejoin After X Time"] = 360 -- Minutes
     },
-    ["Limit Tree"] = 300,
+    ["Limit Tree"] = 250,
     ["Mutation Skips"] = { -- Skip Havest
         ["Pollinated"] = false,
         ["Disco"] = false,
