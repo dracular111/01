@@ -85,8 +85,8 @@ getgenv().Config = {
         ["Godly Sprinkler"] = true
     },
     ["Plant Candy"] = false,
-    ["PetNeedSend"] = {"Queen Bee", "Red Fox", "Dragonfly", "Raccoon", "Disco Bee", "Butterfly", "Mimic Octopus",
-                       "Meerkat", "Sand Snake", "Fennec Fox"},
+    ["PetNeedSend"] = {"Queen Bee", "Dragonfly", "Raccoon", "Disco Bee", "Butterfly", "Mimic Octopus",
+                       "Fennec Fox"},
     ["Destroy Mode"] = {
         ["Auto Destroy when have money"] = 1000000, -- its will destroy all trees select when money >= select
         ["Mode Destroy"] = "Auto", -- "Custom"
@@ -115,20 +115,19 @@ getgenv().Config = {
             ["Chicken"] = true,
             ["Red Fox"] = true,
             ["Starfish"] = true,
-            ["Scarlet Macaw"] = true,
-            ["Hyacinth Macaw"] = true
+            ["Moth"] = true
         },
         ["Max Slot Pet To Sell"] = 30, -- If Total Pet In Inventory >= ["Max Slot Pet To Sell"] script will sell pet
         ["Upgrade Slot Egg"] = {
             ["Enable"] = true,
             ["Black List Pet For Upgrade Slots"] = {"Queen Bee", "Red Fox", "Dragonfly", "Raccoon", "Disco Bee", "Butterfly",
-                                                    "Mimic Octopus", "Meerkat", "Fennec Fox", "Blood Kiwi", "Scarlet Macaw",
-                                                    "Hyacinth Macaw", "Rooster", "Blad Eagle", "Chicken", "Chicken Zombie"}
+                                                    "Mimic Octopus", "Fennec Fox", "Blood Kiwi", "Chicken Zombie", "Moth",
+                                                    "Rooster", "Blad Eagle", "Chicken"}
         },
         ["Pet Dont Delete"] = {"Queen Bee", "Red Fox", "Dragonfly", "Raccoon", "Disco Bee", "Butterfly",
-                               "Mimic Octopus", "Meerkat", "Sand Snake", "Fennec Fox", "Axolotl",
+                               "Mimic Octopus", "Sand Snake", "Fennec Fox", "Axolotl",
                                "Hamster", "Golden Lab", "Rooster", "Chicken", "Chicken Zombie", "Scarlet Macaw",
-                               "Hyacinth Macaw", "Blood Kiwi", "Blood Owl", "Starfish", "Blad Eagle", "Night Owl"},
+                               "Hyacinth Macaw", "Blood Kiwi", "Blood Owl", "Starfish", "Blad Eagle", "Night Owl", "Moth"},
         ["Dont Sell Pet If Weight > x"] = 10 -- Script dont sell pet if this weight >= 10
     },
     ["Webhook Mode"] = {
@@ -139,7 +138,7 @@ getgenv().Config = {
         ["Auto Rejoin When Error Module Egg"] = false,
         ["Auto rejoin on script update"] = false,
         ["Enable Rejoin After X Time"] = false,
-        ["Rejoin After X Time"] = 60 -- Minutes
+        ["Rejoin After X Time"] = 720 -- Minutes
     },
     ["Limit Tree"] = 300,
     ["Mutation Skips"] = { -- Skip Havest
