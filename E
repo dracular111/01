@@ -3,7 +3,7 @@ setfpscap(3)
 
 getgenv().gagConfig = {
     SUMMER_EVENT = true,
-    CRAFT_EVENT = { "Anti Bee Egg" },
+    CRAFT_EVENT = { "Anti Bee Egg", "Lightning Rod" },
     BUY_EVENT_SHOP = { "Oasis Egg" },
     BUY_4TH_JULY_SHOP = { "Bald Eagle", "4th July Crate" },
     IGNORE_FRUIT_SUMMER_EVENT = {},  -- Put fruit names to ignore ("Submit Plant")
@@ -37,7 +37,7 @@ getgenv().gagConfig = {
     -- EQUIP_PETS Priority (Left -> Right)
     EQUIP_PETS = { "Bald Eagle", "Rooster", "Blood Kiwi", "Chicken", "Starfish", "Red Fox", "Scarlet Macaw", "Hyacinth Macaw" },
 
-    BUY_GEAR_SHOP = { "Master Sprinkler", "Godly Sprinkler", "Advanced Sprinkler", "Basic Sprinkler" },
+    BUY_GEAR_SHOP = { "Master Sprinkler", "Godly Sprinkler", "Advanced Sprinkler", "Lightning Rod", "Basic Sprinkler" },
     USE_SPRINKLER = { "Basic Sprinkler", "Master Sprinkler", "Godly Sprinkler", "Advanced Sprinkler" },
 
 }
