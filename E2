@@ -96,11 +96,10 @@ getgenv().Config = {
         ["Sell Pet"] = true,
         ["Equip Pet"] = true,
         ["Name Pet Equip"] = {
-            ["Blood Kiwi"] = true,
+            ["Blad Eagle"] = true,
             ["Chicken"] = true,
             ["Red Fox"] = true,
             ["Brown Mouse"] = true,
-            ["Blood Owl"] = true,
             ["Red Giant Ant"] = true,
             ["Mole"] = true
         },
