@@ -125,7 +125,7 @@ getgenv().Config = {
                                "Mimic Octopus", "Sand Snake", "Fennec Fox", "Axolotl", "Echo Frog",
                                "Hamster", "Golden Lab", "Rooster", "Chicken", "Chicken Zombie", "Scarlet Macaw",
                                "Hyacinth Macaw", "Blood Kiwi", "Blood Owl", "Starfish", "Blad Eagle", "Night Owl", "Moth"},
-        ["Dont Sell Pet If Weight > x"] = 10 -- Script dont sell pet if this weight >= 10
+        ["Dont Sell Pet If Weight > x"] = 5 -- Script dont sell pet if this weight >= 5
     },
     ["Webhook Mode"] = {
         ["Enable Send Pet Weight"] = false,
