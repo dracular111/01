@@ -5,7 +5,7 @@ setfpscap(getgenv().Config["FPS"])
 script_key="RHUksoCwqaInnjjYLacJNMYLDHFLhbOj";
 
 repeat
-    wait()
+    wait(20)
     loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/be5eb6eb83a60b4c87954ddf66dd7413.lua"))()
     task.wait(5)
 until getgenv().Loaded
