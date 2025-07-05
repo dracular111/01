@@ -119,8 +119,7 @@ getgenv().Config = {
         ["Upgrade Slot Egg"] = {
             ["Enable"] = true,
             ["Black List Pet For Upgrade Slots"] = {"Queen Bee", "Red Fox", "Dragonfly", "Raccoon", "Disco Bee", "Butterfly",
-                                                    "Mimic Octopus", "Fennec Fox", "Blood Kiwi", "Chicken Zombie", "Moth",
-                                                    "Rooster", "Blad Eagle", "Chicken", "Chicken Zombie"}
+                                                    "Mimic Octopus", "Fennec Fox", "Blad Eagle", "Chicken", "Chicken Zombie"}
         },
         ["Pet Dont Delete"] = {"Queen Bee", "Red Fox", "Dragonfly", "Raccoon", "Disco Bee", "Butterfly",
                                "Mimic Octopus", "Sand Snake", "Fennec Fox", "Axolotl", "Echo Frog",
