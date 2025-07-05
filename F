@@ -66,14 +66,7 @@ getgenv().Config = {
             ["Priority"] = 8
         }
     },
-    ["SummerEvent"] = {
-        ["Traveler's Fruit"] = false,
-        ["Summer Seed Pack"] = false,
-        ["Hamster"] = false,
-        ["Oasis Egg"] = true,
-        ["Delphinium"] = false,
-        ["Lily of the Valley"] = false
-    },
+
     ["Sprinkler"] = {
         ["Place Sprinkler"] = true,
         ["Buy Sprinkler"] = true,
@@ -83,7 +76,8 @@ getgenv().Config = {
         ["Godly Sprinkler"] = true
     },
     ["Plant Candy"] = false,
-    ["PetNeedSend"] = {"Queen Bee", "Dragonfly", "Raccoon", "Disco Bee", "Butterfly", "Mimic Octopus", "Fennec Fox"},
+    ["PetNeedSend"] = {"Queen Bee", "Red Fox", "Dragonfly", "Raccoon", "Disco Bee", "Butterfly", "Mimic Octopus",
+                       "Fennec Fox", "Golden Lab"},
     ["Destroy Mode"] = {
         ["Auto Destroy when have money"] = 1000000, -- its will destroy all trees select when money >= select
         ["Mode Destroy"] = "Auto", -- "Custom"
@@ -92,15 +86,17 @@ getgenv().Config = {
         ["Destroy Untill"] = 200
     },
     ["Url"] = "", -- Webhook 
-    ["4th July Event"] = {
-        ["Firework Flower"] = false,
-        ["Firework"] = false,
-        ["Bald Eagle"] = true,
-        ["Liberty Lily"] = false
 
-    },
     ["Boost FPS"] = true,
     ["Black Screen"] = true,
+    ["Dino Event"] = {
+        ["Auto Claim Quest"] = true,
+        ["Auto Restart Quest"] = true,
+        ["Auto Trade Eggs"] = true,
+        ["Pet Dont Trade"] = {"Queen Bee", "Red Fox", "Dragonfly", "Raccoon", "Disco Bee", "Butterfly", "Moth"
+                               "Mimic Octopus", "Meerkat", "Fennec Fox", "Blad Eagle", "Chicken", "Chicken Zombie",
+                               "Rooster", "Blood Kiwi", "Echo Frog", "Starfish", "Hamster", "Golden Lab"}
+    },
     ["Note"] = "Cyndral Hub",
     ["Pet Mode"] = {
         ["Sell Pet"] = true,
@@ -119,23 +115,23 @@ getgenv().Config = {
         ["Upgrade Slot Egg"] = {
             ["Enable"] = true,
             ["Black List Pet For Upgrade Slots"] = {"Queen Bee", "Red Fox", "Dragonfly", "Raccoon", "Disco Bee", "Butterfly",
-                                                    "Mimic Octopus", "Fennec Fox", "Blad Eagle", "Chicken", "Chicken Zombie", "Blood Kiwi"}
+                                                    "Mimic Octopus", "Fennec Fox", "Blad Eagle", "Chicken", "Chicken Zombie", "Golden Lab"}
         },
         ["Pet Dont Delete"] = {"Queen Bee", "Red Fox", "Dragonfly", "Raccoon", "Disco Bee", "Butterfly",
                                "Mimic Octopus", "Sand Snake", "Fennec Fox", "Axolotl", "Echo Frog",
                                "Hamster", "Golden Lab", "Rooster", "Chicken", "Chicken Zombie", "Scarlet Macaw",
-                               "Hyacinth Macaw", "Blood Kiwi", "Blood Owl", "Starfish", "Blad Eagle", "Night Owl", "Moth"},
-        ["Dont Sell Pet If Weight > x"] = 5 -- Script dont sell pet if this weight >= 5
+                               "Hyacinth Macaw", "Blood Kiwi", "Blood Owl", "Starfish", "Blad Eagle", "Night Owl", "Moth", "Golden Lab"},
+        ["Dont Sell Pet If Weight > x"] = 5 -- Script dont sell pet if this weight >= 10
     },
     ["Webhook Mode"] = {
         ["Enable Send Pet Weight"] = false,
-        ["Weight"] = 10 -- if Weight >= 10 they will send wh
+        ["Weight"] = 5 -- if Weight >= 10 they will send wh
     },
     ["Rejoin Mode"] = {
         ["Auto Rejoin When Error Module Egg"] = false,
         ["Auto rejoin on script update"] = false,
         ["Enable Rejoin After X Time"] = false,
-        ["Rejoin After X Time"] = 720 -- Minutes
+        ["Rejoin After X Time"] = 60 -- Minutes
     },
     ["Limit Tree"] = 250,
     ["Mutation Skips"] = { -- Skip Havest
@@ -157,3 +153,4 @@ getgenv().Config = {
         ["Shocked"] = false
     }
 }
+setfpscap(getgenv().Config["FPS"])
