@@ -92,7 +92,7 @@ getgenv().Config = {
         ["Mode Destroy"] = "Auto", -- "Custom"
         ["Trees"] = {"Strawberry", "Blueberry", "Corn", "Orange Tulip", "Carrot"},
         ["Rarity Destroy Auto"] = {"Common", "Uncommon", "Rare", "Legendary"},
-        ["Destroy Untill"] = 200
+        ["Destroy Untill"] = 150
     },
     ["Url"] = "", -- Webhook 
 
@@ -143,7 +143,7 @@ getgenv().Config = {
         ["Enable Rejoin After X Time"] = false,
         ["Rejoin After X Time"] = 60 -- Minutes
     },
-    ["Limit Tree"] = 250,
+    ["Limit Tree"] = 200,
     ["Mutation Skips"] = { -- Skip Havest
         ["Pollinated"] = false,
         ["Disco"] = false,
