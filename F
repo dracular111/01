@@ -135,7 +135,7 @@ getgenv().Config = {
                                "Mimic Octopus", "Sand Snake", "Fennec Fox", "Axolotl", "Echo Frog",
                                "Hamster", "Golden Lab", "Rooster", "Chicken", "Chicken Zombie", "Scarlet Macaw",
                                "Hyacinth Macaw", "Blood Kiwi", "Blood Owl", "Starfish", "Bald Eagle", "Night Owl", "Moth",
-                               "T-Rex", "Brontosaurus", "Pterodactyl", "Stegosaurus", "Triceratops", "Raptor", "Pterodactyl"},
+                               "T-Rex", "Brontosaurus"},
         ["Dont Sell Pet If Weight > x"] = 5 -- Script dont sell pet if this weight >= 10
     },
     ["Webhook Mode"] = {
