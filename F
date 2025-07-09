@@ -102,7 +102,8 @@ getgenv().Config = {
     ["Url"] = "", -- Webhook 
 
     ["Boost FPS"] = true,
-    ["Black Screen"] = true,
+    ["Black Screen"] = false,
+    ["White Screen"] = true
     ["Dino Event"] = {
         ["Auto Claim Quest"] = true,
         ["Auto Restart Quest"] = true,
