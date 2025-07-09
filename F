@@ -26,7 +26,7 @@ getgenv().Config = {
         ["Kiwi"] = 44
     },
     ["Keep Seed"] = {"Dragon Pepper", "Elephant Ears", "Sunflower", "Candy Blossom"},
-    ["FPS"] = 5,
+    ["FPS"] = 2,
     ["Egg"] = {
         ["Dinosaur Egg"] = {
             ["Place"] = true,
