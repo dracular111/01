@@ -1,0 +1,45 @@
+getgenv().gagConfig = {
+    -- Event:
+    CRAFT_EVENT = { "Anti Bee Egg", "Ancient Seed Pack" },
+    KEEP_PETS_TRADE_DINO = { "Queen Bee", "Red Fox", "Dragonfly", "Raccoon", "Disco Bee", "Butterfly", "Moth", "Mimic Octopus", "Meerkat", "Fennec Fox", "Blad Eagle", "Chicken", "Chicken Zombie", "Rooster", "Blood Kiwi", "Echo Frog", "Starfish", "T-Rex" },
+    
+    -- General:
+    AUTO_UPDATE_RESTART = true,
+    REDEEM_CODES = {},
+    EXTRA_PET_SLOTS = 2,
+    EXTRA_EGG_SLOTS = 2,
+    OPEN_ALL_SEED_PACK = true,
+    ADD_FRIEND = true,
+
+    MAX_PLANTS = 200,
+    DESTROY_UNTIL_MIN_PLANTS = 150,
+    DELETE_PLANTS_AFTER_MAX = { "Carrot", "Strawberry", "Blueberry", "Tomato", "Cauliflower" },
+    
+    BUY_EGGS = { "Bug Egg", "Bee Egg", "Paradise Egg", "Common Summer Egg", "Rare Egg", "Uncommon Egg" },
+    PLANT_EGGS = { "Oasis Egg", "Dinosaur Egg", "Paradise Egg", "Anti Bee Egg", "Bug Egg", "Common Summer Egg", "Rare Egg", "Uncommon Egg", "Night Egg" },
+    
+    -- BUY_SEED_SHOP Priority (Left -> Right)
+    BUY_SEED_SHOP = { "Ember Lily", "Beanstalk", "Cacao", "Pepper", "Mushroom", "Grape", "Mango", "Dragon Fruit", "Cactus", "Coconut", "Bamboo", "Apple", "Pumpkin", "Watermelon", "Daffodil", "Tomato", "Orange Tulip", "Blueberry", "Strawberry", "Carrot" },
+    KEEP_SEEDS = {},
+    KEEP_SEEDS_AFTER_MAX_PLANTS = { "Carrot", "Strawberry", "Blueberry", "Orange Tulip", "Tomato" },
+    
+    FAVOURITE_FRUIT_MUTATIONS = {},  -- Stop Autosell
+    SKIP_HARVEST_MUTATIONS = {},  -- Stop Harvest
+
+    KEEP_PETS = { "Queen Bee", "Red Fox", "Dragonfly", "Raccoon", "Disco Bee", "Butterfly", "Mimic Octopus", "Sand Snake", "Fennec Fox", "Axolotl", "Echo Frog", "Hamster", "Rooster", "Chicken", "Chicken Zombie", "Scarlet Macaw", "Hyacinth Macaw", "Blood Kiwi", "Blood Owl", "Starfish", "Bald Eagle", "Night Owl", "Moth", "T-Rex", "Brontosaurus" },
+    KEEP_PETS_WEIGHT = 10,
+
+    -- EQUIP_PETS Priority (Left -> Right)
+    EQUIP_PETS = { "Starfish", "Starfish", "Starfish", "Starfish", "Starfish", "Blad Eagle", "Rooster", "Blood Kiwi", "Chicken", "Moth" },
+
+    BUY_GEAR_SHOP = { "Master Sprinkler", "Godly Sprinkler", "Advanced Sprinkler", "Basic Sprinkler" },
+    USE_SPRINKLER = { "Basic Sprinkler", "Master Sprinkler", "Godly Sprinkler", "Advanced Sprinkler" },
+
+    PET_WEBHOOK_URL = "",
+    SEED_WEBHOOK_URL = "", 
+    NOTIFY_PETS = { "Bald Eagle", "Fennec Fox", "Disco Bee", "Raccoon", "Queen Bee", "Night Owl", "Dragonfly", "Butterfly", "Mimic Octopus", "Red Fox", "Red Giant Ant", "Hyacinth Macaw", "Axolotl", "Echo Frog", "Bear Bee", "Praying Mantis", "Pterodactyl", "Brontosaurus", "T-Rex" },
+    NOTIFY_PETS_WEIGHT = 10,
+    DISCORD_ID = "",
+    WEBHOOK_NOTE = "",
+    SHOW_WEBHOOK_USERNAME = true,
+}
