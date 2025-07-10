@@ -1,7 +1,7 @@
 getgenv().gagConfig = {
     -- Event:
     CRAFT_EVENT = { "Anti Bee Egg", "Ancient Seed Pack" },
-    KEEP_PETS_TRADE_DINO = { "Queen Bee", "Capybara", "Red Fox", "Dragonfly", "Raccoon", "Disco Bee", "Butterfly", "Moth", "Mimic Octopus", "Meerkat", "Fennec Fox", "Blad Eagle", "Chicken", "Chicken Zombie", "Rooster", "Blood Kiwi", "Echo Frog", "Starfish", "T-Rex" },
+    KEEP_PETS_TRADE_DINO = { "Queen Bee", "Capybara", "Red Fox", "Dragonfly", "Raccoon", "Disco Bee", "Butterfly", "Mimic Octopus", "Fennec Fox", "Blad Eagle", "Chicken", "Chicken Zombie", "Rooster", "Blood Kiwi", "Echo Frog", "Starfish", "T-Rex" },
     
     -- General:
     AUTO_UPDATE_RESTART = true,
@@ -26,7 +26,7 @@ getgenv().gagConfig = {
     FAVOURITE_FRUIT_MUTATIONS = {},  -- Stop Autosell
     SKIP_HARVEST_MUTATIONS = {},  -- Stop Harvest
 
-    KEEP_PETS = { "Queen Bee", "Capybara", "Red Fox", "Dragonfly", "Raccoon", "Disco Bee", "Butterfly", "Mimic Octopus", "Sand Snake", "Fennec Fox", "Axolotl", "Echo Frog", "Hamster", "Rooster", "Chicken", "Chicken Zombie", "Scarlet Macaw", "Hyacinth Macaw", "Blood Kiwi", "Blood Owl", "Starfish", "Bald Eagle", "Night Owl", "Moth", "T-Rex", "Brontosaurus" },
+    KEEP_PETS = { "Queen Bee", "Capybara", "Red Fox", "Dragonfly", "Raccoon", "Disco Bee", "Butterfly", "Mimic Octopus", "Fennec Fox", "Echo Frog", "Hamster", "Rooster", "Chicken", "Chicken Zombie", "Blood Kiwi", "Blood Owl", "Starfish", "Bald Eagle", "Night Owl", "T-Rex", "Brontosaurus" },
     KEEP_PETS_WEIGHT = 10,
 
     -- EQUIP_PETS Priority (Left -> Right)
