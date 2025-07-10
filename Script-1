@@ -9,3 +9,28 @@ end
 _G.SCRIPT1 = true
 
 -- Script của bạn
+repeat
+    wait()
+until game:IsLoaded()
+repeat
+    wait()
+until game.Players.LocalPlayer.Character
+repeat
+    wait()
+    game:GetService("VirtualUser"):CaptureController()
+    game:GetService("VirtualUser"):Button1Down(Vector2.new(0, 0))
+until game.Players.LocalPlayer:GetAttribute("DataFullyLoaded") and
+    game.Players.LocalPlayer:GetAttribute("Finished_Loading")
+local getplace = (function()
+    local GetFarm = require(game.ReplicatedStorage.Modules.GetFarm)(game.Players.LocalPlayer)
+    return GetFarm
+end)
+spawn(function()
+    while wait() do
+        for i, v in workspace.PetsPhysical:GetChildren() do
+            if v:GetAttribute("OWNER") == game.Players.LocalPlayer.Name then
+                v.CFrame = getplace().PetArea.CFrame
+            end
+        end
+    end
+end)
