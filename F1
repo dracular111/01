@@ -1,7 +1,7 @@
 getgenv().gagConfig = {
     -- Event:
     CRAFT_EVENT = { "Anti Bee Egg", "Ancient Seed Pack" },
-    KEEP_PETS_TRADE_DINO = { "Seagull", "Stegosaurus", "Crab", "Flamingo", "Starfish", "Ostrich", "Peacock", "Scarlet Macaw", "Toucan" },
+    KEEP_PETS_TRADE_DINO = { "Seagull", "Crab", "Flamingo", "Starfish", "Ostrich", "Peacock", "Scarlet Macaw", "Toucan" },
     
     -- General:
     AUTO_UPDATE_RESTART = true,
