@@ -59,25 +59,20 @@ getgenv().Config = {
             ["Place"] = true,
             ["Priority"] = 7
         },
-        ["Rare Egg"] = {
+        ["Common Summer Egg"] = {
             ["Buy"] = true,
             ["Place"] = true,
             ["Priority"] = 8
         },
-        ["Common Summer Egg"] = {
-            ["Buy"] = true,
-            ["Place"] = true,
-            ["Priority"] = 9
-        },
         ["Mythical Egg"] = {
             ["Buy"] = false,
             ["Place"] = false,
-            ["Priority"] = 10
+            ["Priority"] = 9
         },
         ["Bee Egg"] = {
             ["Buy"] = true,
             ["Place"] = false,
-            ["Priority"] = 11
+            ["Priority"] = 10
         }
     },
 
@@ -130,9 +125,9 @@ getgenv().Config = {
                                                     "Mimic Octopus", "Fennec Fox", "Bald Eagle", "Chicken", "Chicken Zombie", "T-Rex"}
         },
         ["Pet Dont Delete"] = {"Queen Bee", "Capybara", "Red Fox", "Dragonfly", "Raccoon", "Disco Bee", "Butterfly",
-                               "Mimic Octopus", "Sand Snake", "Fennec Fox", "Axolotl", "Echo Frog",
+                               "Mimic Octopus", "Fennec Fox", "Echo Frog",
                                "Hamster", "Rooster", "Chicken", "Chicken Zombie", "Scarlet Macaw",
-                               "Hyacinth Macaw", "Blood Kiwi", "Blood Owl", "Starfish", "Bald Eagle", "Night Owl", "Moth",
+                               "Hyacinth Macaw", "Blood Kiwi", "Blood Owl", "Starfish", "Bald Eagle", "Night Owl",
                                "T-Rex", "Brontosaurus"},
         ["Dont Sell Pet If Weight > x"] = 5 -- Script dont sell pet if this weight >= 10
     },
