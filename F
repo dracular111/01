@@ -105,7 +105,7 @@ getgenv().Config = {
         ["Auto Trade Eggs"] = true,
         ["Pet Dont Trade"] = {"Queen Bee", "Capybara", "Red Fox", "Dragonfly", "Raccoon", "Disco Bee", "Butterfly", "Moth",
                                "Mimic Octopus", "Meerkat", "Fennec Fox", "Blad Eagle", "Chicken", "Chicken Zombie",
-                               "Rooster", "Blood Kiwi", "Echo Frog", "Starfish", "T-Rex"}
+                               "Rooster", "Blood Kiwi", "Echo Frog", "T-Rex"}
     },
     ["Note"] = "Cyndral Hub",
     ["Pet Mode"] = {
