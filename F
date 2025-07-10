@@ -103,8 +103,8 @@ getgenv().Config = {
         ["Auto Claim Quest"] = true,
         ["Auto Restart Quest"] = true,
         ["Auto Trade Eggs"] = true,
-        ["Pet Dont Trade"] = {"Queen Bee", "Capybara", "Red Fox", "Dragonfly", "Raccoon", "Disco Bee", "Butterfly", "Moth",
-                               "Mimic Octopus", "Meerkat", "Fennec Fox", "Blad Eagle", "Chicken", "Chicken Zombie",
+        ["Pet Dont Trade"] = {"Queen Bee", "Capybara", "Red Fox", "Dragonfly", "Raccoon", "Disco Bee", "Butterfly",
+                               "Mimic Octopus", "Fennec Fox", "Blad Eagle", "Chicken", "Chicken Zombie",
                                "Rooster", "Blood Kiwi", "Echo Frog", "T-Rex"}
     },
     ["Note"] = "Cyndral Hub",
