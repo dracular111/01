@@ -97,8 +97,8 @@ getgenv().Config = {
     ["Url"] = "", -- Webhook 
 
     ["Boost FPS"] = true,
-    ["Black Screen"] = false,
-    ["White Screen"] = true,
+    ["Black Screen"] = true,
+    ["White Screen"] = false,
     ["Dino Event"] = {
         ["Auto Claim Quest"] = true,
         ["Auto Restart Quest"] = true,
@@ -118,7 +118,7 @@ getgenv().Config = {
             ["Starfish"] = true,
             ["Capybara"] = true
         },
-        ["Max Slot Pet To Sell"] = 50, -- If Total Pet In Inventory >= ["Max Slot Pet To Sell"] script will sell pet
+        ["Max Slot Pet To Sell"] = 55, -- If Total Pet In Inventory >= ["Max Slot Pet To Sell"] script will sell pet
         ["Upgrade Slot Egg"] = {
             ["Enable"] = true,
             ["Black List Pet For Upgrade Slots"] = {"Queen Bee", "Capybara", "Dragonfly", "Raccoon", "Disco Bee", "Butterfly",
