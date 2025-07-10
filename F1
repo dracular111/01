@@ -1,7 +1,7 @@
 getgenv().gagConfig = {
     -- Event:
     CRAFT_EVENT = { "Anti Bee Egg", "Ancient Seed Pack" },
-    KEEP_PETS_TRADE_DINO = { "Queen Bee", "Capybara", "Red Fox", "Dragonfly", "Raccoon", "Disco Bee", "Butterfly", "Mimic Octopus", "Fennec Fox", "Blad Eagle", "Chicken", "Chicken Zombie", "Rooster", "Blood Kiwi", "Echo Frog", "Starfish", "T-Rex" },
+    KEEP_PETS_TRADE_DINO = { "Queen Bee", "Capybara", "Red Fox", "Dragonfly", "Raccoon", "Disco Bee", "Butterfly", "Mimic Octopus", "Fennec Fox", "Blad Eagle", "Chicken", "Chicken Zombie", "Rooster", "Blood Kiwi", "Echo Frog", "T-Rex" },
     
     -- General:
     AUTO_UPDATE_RESTART = true,
