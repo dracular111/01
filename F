@@ -161,4 +161,3 @@ getgenv().Config = {
         ["Shocked"] = false
     }
 }
-setfpscap(getgenv().Config["FPS"])
