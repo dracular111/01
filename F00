@@ -1,0 +1,17 @@
+repeat
+    wait()
+until game:IsLoaded()
+repeat
+    wait()
+until game.Players.LocalPlayer.Character
+repeat
+    wait()
+    game:GetService("VirtualUser"):CaptureController()
+    game:GetService("VirtualUser"):Button1Down(Vector2.new(0, 0))
+until game.Players.LocalPlayer:GetAttribute("DataFullyLoaded") and
+    game.Players.LocalPlayer:GetAttribute("Finished_Loading")
+game.Players.LocalPlayer.Character.DescendantAdded:Connect(function(v)
+    if v:GetAttribute("PET_UUID") then 
+        v.Parent = game.Players.LocalPlayer.Backpack
+    end
+end)
