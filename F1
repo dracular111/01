@@ -26,11 +26,11 @@ getgenv().gagConfig = {
     FAVOURITE_FRUIT_MUTATIONS = {},  -- Stop Autosell
     SKIP_HARVEST_MUTATIONS = {},  -- Stop Harvest
 
-    KEEP_PETS = { "Bald Eagle", "Brontosaurus", "T-Rex", "Fennec Fox", "Disco Bee", "Raccoon", "Queen Bee", "Dragonfly", "Butterfly", "Mimic Octopus", "Red Fox", "Hyacinth Macaw", "Scarlet Macaw", "Axolotl", "Echo Frog", "Hamster", "Blood Owl", "Chicken Zombie", "Chicken", ["Blood Kiwi"] = 2, ["Starfish"] = 5, ["Capybara"] = 2, ["Rooster"] = 2, ["Blood Kiwi"] = 2, ["Starfish"] = 5, ["Seagull"] = 1, ["Crab"] = 1, ["Ostrich"] = 1, ["Peacock"] = 1, ["Dog"] = 1, ["Bunny"] = 1, ["Golden Lab"] = 1 },
+    KEEP_PETS = { "Bald Eagle", "Brontosaurus", "T-Rex", "Fennec Fox", "Disco Bee", "Raccoon", "Queen Bee", "Dragonfly", "Butterfly", "Mimic Octopus", "Red Fox", "Hyacinth Macaw", "Scarlet Macaw", "Axolotl", "Echo Frog", "Hamster", "Blood Owl", "Chicken Zombie", "Chicken", ["Starfish"] = 5, ["Capybara"] = 2, ["Rooster"] = 2, ["Blood Kiwi"] = 2, ["Starfish"] = 5, ["Seagull"] = 1, ["Crab"] = 1, ["Ostrich"] = 1, ["Peacock"] = 1, ["Dog"] = 1, ["Bunny"] = 1, ["Golden Lab"] = 1 },
     KEEP_PETS_WEIGHT = 5,
 
     -- EQUIP_PETS Priority (Left -> Right)
-    EQUIP_PETS = { ["Starfish"] = 1, ["Starfish"] = 1, ["Capybara"] = 1, ["Starfish"] = 5 },
+    EQUIP_PETS = { ["Capybara"] = 1, ["Starfish"] = 4, ["Bald Eagle"] = 2, ["Rooster"] = 2, ["Blood Kiwi"] = 2 },
 
     BUY_GEAR_SHOP = { "Master Sprinkler", "Godly Sprinkler", "Advanced Sprinkler", "Basic Sprinkler" },
     USE_SPRINKLER = { "Basic Sprinkler", "Master Sprinkler", "Godly Sprinkler", "Advanced Sprinkler" },
