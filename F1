@@ -1,45 +1,37 @@
 getgenv().gagConfig = {
     -- Event:
-    CRAFT_EVENT = { "Anti Bee Egg", "Ancient Seed Pack" },
-    KEEP_PETS_TRADE_DINO = { "Seagull", "Crab", "Caterpillar", "Snail", "Starfish", "Sand Snake", "Ostrich", "Peacock", "Scarlet Macaw", "Toucan" },
+    CRAFT_EVENT = { "Anti Bee Egg" },
+    PETS_TRADE_DINO = { "Seagull", "Crab", "Starfish", "Ostrich", "Peacock", "Dog", "Bunny", "Golden Lab"  },
     
     -- General:
     AUTO_UPDATE_RESTART = true,
     REDEEM_CODES = {},
     EXTRA_PET_SLOTS = 2,
     EXTRA_EGG_SLOTS = 2,
-    OPEN_ALL_SEED_PACK = true,
     ADD_FRIEND = true,
 
-    MAX_PLANTS = 200,
-    DESTROY_UNTIL_MIN_PLANTS = 150,
+    MAX_PLANTS = 250,
+    DESTROY_UNTIL_MIN_PLANTS = 230,
     DELETE_PLANTS_AFTER_MAX = { "Carrot", "Strawberry", "Blueberry", "Tomato", "Cauliflower" },
     
     BUY_EGGS = { "Bug Egg", "Bee Egg", "Paradise Egg", "Common Summer Egg", "Uncommon Egg" },
-    PLANT_EGGS = { "Oasis Egg", "Dinosaur Egg", "Paradise Egg", "Anti Bee Egg", "Bug Egg", "Common Summer Egg", "Uncommon Egg" },
+    PLANT_EGGS = { "Oasis Egg", "Dinosaur Egg", "Anti Bee Egg", "Bug Egg", "Paradise Egg", "Common Summer Egg", "Uncommon Egg" },
+    --PLANT_EGGS = { "Oasis Egg", "Dinosaur Egg", "Common Summer Egg", "Uncommon Egg" },
     
     -- BUY_SEED_SHOP Priority (Left -> Right)
-    BUY_SEED_SHOP = { "Ember Lily", "Beanstalk", "Cacao", "Pepper", "Mushroom", "Grape", "Mango", "Dragon Fruit", "Cactus", "Coconut", "Bamboo", "Apple", "Pumpkin", "Watermelon", "Daffodil", "Tomato", "Orange Tulip", "Blueberry", "Strawberry", "Carrot" },
+    BUY_SEED_SHOP = { "Ember Lily", "Beanstalk", "Cacao", "Pepper", "Mushroom", "Grape", "Mango", "Dragon Fruit", "Cactus", "Coconut", "Bamboo", "Apple", "Pumpkin", "Watermelon", ["Daffodil"] = 50, ["Tomato"] = 50, ["Orange Tulip"] = 50, ["Blueberry"] = 50, ["Strawberry"] = 50, ["Carrot"] = 50 },
     KEEP_SEEDS = {},
-    KEEP_SEEDS_AFTER_MAX_PLANTS = { "Carrot", "Strawberry", "Blueberry", "Orange Tulip", "Tomato" },
+    KEEP_SEEDS_AFTER_MAX_PLANTS = { "Carrot", "Strawberry", "Blueberry", "Orange Tulip", "Tomato", "Daffodil" },
     
     FAVOURITE_FRUIT_MUTATIONS = {},  -- Stop Autosell
     SKIP_HARVEST_MUTATIONS = {},  -- Stop Harvest
 
-    KEEP_PETS = { "Queen Bee", "Capybara", "Red Fox", "Dragonfly", "Raccoon", "Disco Bee", "Butterfly", "Mimic Octopus", "Fennec Fox", "Echo Frog", "Sand Snake", "Hamster", "Axolotl", "Hyacinth Macaw", "Scarlet Macaw", "Rooster", "Chicken", "Chicken Zombie", "Blood Kiwi", "Blood Owl", "Starfish", "Seagull", "Bald Eagle", "Night Owl", "T-Rex", "Brontosaurus" },
+    KEEP_PETS = { "Bald Eagle", "Brontosaurus", "T-Rex", "Fennec Fox", "Disco Bee", "Raccoon", "Queen Bee", "Dragonfly", "Butterfly", "Mimic Octopus", "Red Fox", "Hyacinth Macaw", "Scarlet Macaw", "Axolotl", "Echo Frog", "Hamster", "Blood Owl", "Chicken Zombie", "Chicken", ["Blood Kiwi"] = 2, ["Starfish"] = 5, ["Capybara"] = 2, ["Rooster"] = 2, ["Blood Kiwi"] = 2, ["Starfish"] = 5, ["Seagull"] = 1, ["Crab"] = 1, ["Ostrich"] = 1, ["Peacock"] = 1, ["Dog"] = 1, ["Bunny"] = 1, ["Golden Lab"] = 1 },
     KEEP_PETS_WEIGHT = 10,
 
     -- EQUIP_PETS Priority (Left -> Right)
-    EQUIP_PETS = { "Starfish", "Starfish", "Capybara", "Starfish", "Starfish" },
+    EQUIP_PETS = { ["Capybara"] = 1, ["Starfish"] = 4 },
 
     BUY_GEAR_SHOP = { "Master Sprinkler", "Godly Sprinkler", "Advanced Sprinkler", "Basic Sprinkler" },
     USE_SPRINKLER = { "Basic Sprinkler", "Master Sprinkler", "Godly Sprinkler", "Advanced Sprinkler" },
-
-    PET_WEBHOOK_URL = "",
-    SEED_WEBHOOK_URL = "", 
-    NOTIFY_PETS = { "Bald Eagle", "Fennec Fox", "Disco Bee", "Raccoon", "Queen Bee", "Night Owl", "Dragonfly", "Butterfly", "Mimic Octopus", "Red Fox", "Red Giant Ant", "Hyacinth Macaw", "Axolotl", "Echo Frog", "Bear Bee", "Praying Mantis", "Pterodactyl", "Brontosaurus", "T-Rex" },
-    NOTIFY_PETS_WEIGHT = 10,
-    DISCORD_ID = "",
-    WEBHOOK_NOTE = "",
-    SHOW_WEBHOOK_USERNAME = true,
 }
