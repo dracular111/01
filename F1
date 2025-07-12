@@ -34,4 +34,13 @@ getgenv().gagConfig = {
 
     BUY_GEAR_SHOP = { "Master Sprinkler", "Godly Sprinkler", "Advanced Sprinkler", "Basic Sprinkler" },
     USE_SPRINKLER = { "Basic Sprinkler", "Master Sprinkler", "Godly Sprinkler", "Advanced Sprinkler" },
+
+    PET_WEBHOOK_URL = "",
+    SEED_WEBHOOK_URL = "", 
+    NOTIFY_PETS = { "Bald Eagle", "Fennec Fox", "Disco Bee", "Raccoon", "Queen Bee", "Dragonfly", "Butterfly", "Mimic Octopus", "T-Rex" },
+    NOTIFY_PETS_WEIGHT = 5,
+    DISCORD_ID = "11111",
+    WEBHOOK_NOTE = "",
+    SHOW_WEBHOOK_USERNAME = true,
+    SHOW_WEBHOOK_JOBID = true,
 }
