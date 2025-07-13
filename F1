@@ -1,7 +1,7 @@
 getgenv().gagConfig = {
     -- Event:
     CRAFT_EVENT = { "Anti Bee Egg" },
-    PETS_TRADE_DINO = { "Seagull", "Crab", "Starfish", "Ostrich", "Peacock", "Dog", "Bunny", "Golden Lab" },
+    PETS_TRADE_DINO = { "Orange Tabby", "Spotted Deer", "Pig", "Rooster", "Monkey", "Seagull", "Crab", "Starfish", "Ostrich", "Peacock", "Dog", "Bunny", "Golden Lab" },
     
     -- General:
     AUTO_UPDATE_RESTART = true,
@@ -15,8 +15,8 @@ getgenv().gagConfig = {
     DESTROY_UNTIL_MIN_PLANTS = 230,
     DELETE_PLANTS_AFTER_MAX = { "Carrot", "Strawberry", "Blueberry", "Tomato", "Cauliflower" },
     
-    BUY_EGGS = { "Primal Egg", "Bug Egg", "Bee Egg", "Paradise Egg", "Common Summer Egg", "Uncommon Egg" },
-    PLANT_EGGS = { "Dinosaur Egg", "Primal Egg", "Anti Bee Egg", "Bug Egg", "Paradise Egg", "Common Summer Egg", "Uncommon Egg", "Oasis Egg" },
+    BUY_EGGS = { "Primal Egg", "Bug Egg", "Bee Egg", "Paradise Egg", "Common Summer Egg", "Rare Egg", "Uncommon Egg" },
+    PLANT_EGGS = { "Dinosaur Egg", "Primal Egg", "Anti Bee Egg", "Bug Egg", "Paradise Egg", "Night Egg", "Common Summer Egg", "Rare Egg", "Uncommon Egg", "Oasis Egg" },
     
     -- BUY_SEED_SHOP Priority (Left -> Right)
     BUY_SEED_SHOP = { "Ember Lily", "Beanstalk", "Cacao", "Pepper", "Mushroom", "Grape", "Mango", "Dragon Fruit", "Cactus", "Coconut", "Bamboo", "Apple", "Pumpkin", "Watermelon", ["Daffodil"] = 50, ["Tomato"] = 50, ["Orange Tulip"] = 50, ["Blueberry"] = 50, ["Strawberry"] = 50, ["Carrot"] = 50 },
@@ -26,7 +26,7 @@ getgenv().gagConfig = {
     FAVOURITE_FRUIT_MUTATIONS = {},  -- Stop Autosell
     SKIP_HARVEST_MUTATIONS = {},  -- Stop Harvest
 
-    KEEP_PETS = { "Dilophosaurus", "Ankylosaurus", "Spinosaurus", "Bald Eagle", "Brontosaurus", "T-Rex", "Fennec Fox", "Disco Bee", "Raccoon", "Queen Bee", "Dragonfly", "Butterfly", "Mimic Octopus", "Red Fox", "Hyacinth Macaw", "Scarlet Macaw", "Axolotl", "Echo Frog", "Hamster", "Blood Owl", "Chicken Zombie", "Chicken", "Starfish", ["Capybara"] = 5, ["Rooster"] = 5, ["Blood Kiwi"] = 5, ["Seagull"] = 10, ["Crab"] = 10, ["Dog"] = 5, ["Bunny"] = 5, ["Golden Lab"] = 5 },
+    KEEP_PETS = { "Dilophosaurus", "Ankylosaurus", "Spinosaurus", "Bald Eagle", "Brontosaurus", "T-Rex", "Fennec Fox", "Disco Bee", "Raccoon", "Queen Bee", "Dragonfly", "Butterfly", "Mimic Octopus", "Red Fox", "Hyacinth Macaw", "Scarlet Macaw", "Axolotl", "Echo Frog", "Hamster", "Blood Owl", "Chicken Zombie", "Chicken", "Starfish", ["Capybara"] = 5, ["Rooster"] = 5, ["Blood Kiwi"] = 5, ["Seagull"] = 10, ["Crab"] = 10, ["Dog"] = 5, ["Bunny"] = 5, ["Golden Lab"] = 5, ["Orange Tabby"] =5 , ["Spotted Deer"] = 5, ["Pig"] = 5, ["Monkey"] = 5 },
     KEEP_PETS_WEIGHT = 10,
 
     -- EQUIP_PETS Priority (Left -> Right)
