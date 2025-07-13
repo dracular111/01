@@ -2,7 +2,8 @@ getgenv().Config = {
     ["Time To Sell"] = 35, -- Seconds
     ["Craft Event"] = {
         ["Crafters Seed Pack"] = true,
-        ["Anti Bee Egg"] = true
+        ["Anti Bee Egg"] = true,
+        ["Ancient Seed Pack"] = true
     },
     ["Dont Open Pack"] = false,
     ["Dont Use Flower Seed Pack"] = true, -- If u Enable Crafters Seed Pack pls enable this
@@ -32,6 +33,7 @@ getgenv().Config = {
     ["FPS"] = 2,
     ["Egg"] = {
         ["Primal Egg"] = {
+            ["Buy"] = true,
             ["Place"] = true,
             ["Priority"] = 1
         },
@@ -99,7 +101,7 @@ getgenv().Config = {
         ["Mode Destroy"] = "Auto", -- "Custom"
         ["Trees"] = {"Strawberry", "Blueberry", "Corn", "Orange Tulip", "Carrot"},
         ["Rarity Destroy Auto"] = {"Common", "Uncommon", "Rare", "Legendary", "Mythical"},
-        ["Destroy Untill"] = 230
+        ["Destroy Untill"] = 170
     },
     ["Url"] = "", -- Webhook 
 
@@ -109,6 +111,7 @@ getgenv().Config = {
     ["Dino Event"] = {
         ["Auto Claim Quest"] = true,
         ["Auto Restart Quest"] = true,
+        ["Auto Submit"] = true,
         ["Auto Trade Eggs"] = true,
         ["Pet Dont Trade"] = {"Queen Bee", "Capybara", "Red Fox", "Dragonfly", "Raccoon", "Disco Bee", "Butterfly",
                                "Mimic Octopus", "Fennec Fox", "Blad Eagle", "Chicken", "Chicken Zombie",
@@ -152,7 +155,7 @@ getgenv().Config = {
         ["Enable Rejoin After X Time"] = false,
         ["Rejoin After X Time"] = 180 -- Minutes
     },
-    ["Limit Tree"] = 250,
+    ["Limit Tree"] = 200,
     ["Mutation Skips"] = { -- Skip Havest
         ["Pollinated"] = false,
         ["Disco"] = false,
