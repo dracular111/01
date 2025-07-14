@@ -1,3 +1,6 @@
-wait(10)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/F"))()
-loadstring(game:HttpGet[[https://yummydata.click/script/gag.lua]])()
+script_key="owToYPrLyPfXORxPyyNmVYIQtvxDsCQk";
+setfpscap(3)
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/F1"))()
+
+loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/6b71bc8fa2ff932327c20f197e426686.lua"))()
