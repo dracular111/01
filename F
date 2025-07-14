@@ -33,7 +33,6 @@ getgenv().Config = {
     ["FPS"] = 2,
     ["Egg"] = {
         ["Primal Egg"] = {
-            ["Buy"] = true,
             ["Place"] = true,
             ["Priority"] = 1
         },
