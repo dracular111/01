@@ -1,176 +1,46 @@
-getgenv().Config = {
-    ["Time To Sell"] = 35, -- Seconds
-    ["Craft Event"] = {
-        ["Crafters Seed Pack"] = true,
-        ["Anti Bee Egg"] = true,
-        ["Ancient Seed Pack"] = true
-    },
-    ["Dont Open Pack"] = false,
-    ["Dont Use Flower Seed Pack"] = true, -- If u Enable Crafters Seed Pack pls enable this
-    ["Mode Plant"] = "Custom", -- "Custom"
+getgenv().gagConfig = {
+    -- Event:
+    CRAFT_EVENT = { "Anti Bee Egg", "Primal Egg" },
+    PETS_TRADE_DINO = { "Hedgehog", "Mole", "Frog", "Orange Tabby", "Spotted Deer", "Pig", "Rooster", "Monkey", "Seagull", "Crab", "Starfish", "Ostrich", "Peacock", "Dog", "Bunny", "Golden Lab" },
+    
+    -- General:
+    AUTO_UPDATE_RESTART = true,
+    REDEEM_CODES = {},
+    EXTRA_PET_SLOTS = 5,
+    EXTRA_EGG_SLOTS = 5,
+    ADD_FRIEND = true,
+    OPEN_ALL_SEED_PACK = true,
 
-    ["Seed"] = { -- Seed Plant Custom
-        ["Ember Lily"] = 44,
-        ["Beanstalk"] = 44,
-        ["Cacao"] = 44,
-        ["Pepper"] = 44,
-        ["Mushroom"] = 44,
-        ["Grape"] = 44,
-        ["Mango"] = 44,
-        ["Dragon Fruit"] = 44,
-        ["Coconut"] = 44,
-        ["Bamboo"] = 44,
-        ["Apple"] = 44,
-        ["Pumpkin"] = 44,
-        ["Daffodil"] = 44,
-        ["Tomato"] = 44,
-        ["Orange Tulip"] = 44,
-        ["Blueberry"] = 44,
-        ["Strawberry"] = 44,
-        ["Carrot"] = 44
-    },
-    ["Keep Seed"] = {"Dragon Pepper", "Elephant Ears", "Sunflower", "Candy Blossom"},
-    ["FPS"] = 2,
-    ["Egg"] = {
-        ["Primal Egg"] = {
-            ["Place"] = true,
-            ["Priority"] = 1
-        },
-        ["Dinosaur Egg"] = {
-            ["Place"] = true,
-            ["Priority"] = 2
-        },
-        ["Oasis Egg"] = {
-            ["Place"] = true,
-            ["Priority"] = 3
-        },
-        ["Anti Bee Egg"] = {
-            ["Place"] = true,
-            ["Priority"] = 4
-        },
-        ["Bug Egg"] = {
-            ["Buy"] = true,
-            ["Place"] = true,
-            ["Priority"] = 5
-        },
-        ["Paradise Egg"] = {
-            ["Buy"] = true,
-            ["Place"] = true,
-            ["Priority"] = 6
-        },
-        ["Night Egg"] = {
-            ["Place"] = true,
-            ["Priority"] = 7
-        },
-        ["Uncommon Egg"] = {
-            ["Buy"] = true,
-            ["Place"] = true,
-            ["Priority"] = 8
-        },
-        ["Common Summer Egg"] = {
-            ["Buy"] = true,
-            ["Place"] = true,
-            ["Priority"] = 9
-        },
-        ["Mythical Egg"] = {
-            ["Buy"] = false,
-            ["Place"] = false,
-            ["Priority"] = 10
-        },
-        ["Bee Egg"] = {
-            ["Buy"] = true,
-            ["Place"] = false,
-            ["Priority"] = 11
-        }
-    },
+    MAX_PLANTS = 250,
+    DESTROY_UNTIL_MIN_PLANTS = 230,
+    DELETE_PLANTS_AFTER_MAX = { "Carrot" },
+    
+    BUY_EGGS = { ["Common Egg"] = 1, "Primal Egg", "Bug Egg", "Bee Egg", "Paradise Egg", "Common Summer Egg", "Rare Egg", "Uncommon Egg" },
+    PLANT_EGGS = { "Common Egg", "Primal Egg", "Dinosaur Egg", "Anti Bee Egg", "Bug Egg", "Paradise Egg", "Night Egg", "Common Summer Egg", "Rare Egg", "Uncommon Egg", "Oasis Egg" },
+    
+    -- BUY_SEED_SHOP Priority (Left -> Right)
+    BUY_SEED_SHOP = { "Ember Lily", "Beanstalk", "Cacao", "Pepper", "Mushroom", "Grape", "Mango", "Dragon Fruit", "Cactus", "Coconut", "Bamboo", "Apple", "Pumpkin", "Watermelon", ["Daffodil"] = 50, ["Tomato"] = 50, ["Orange Tulip"] = 50, ["Blueberry"] = 50, ["Strawberry"] = 50, ["Carrot"] = 50 },
+    KEEP_SEEDS = {},
+    KEEP_SEEDS_AFTER_MAX_PLANTS = { "Carrot", "Strawberry", "Blueberry", "Orange Tulip", "Tomato", "Daffodil" },
+    
+    FAVOURITE_FRUIT_MUTATIONS = {},  -- Stop Autosell
+    SKIP_HARVEST_MUTATIONS = {},  -- Stop Harvest
 
-    ["Sprinkler"] = {
-        ["Place Sprinkler"] = true,
-        ["Buy Sprinkler"] = true,
-        ["Basic Sprinkler"] = true,
-        ["Advanced Sprinkler"] = true,
-        ["Master Sprinkler"] = true,
-        ["Godly Sprinkler"] = true
-    },
-    ["Plant Candy"] = false,
-    ["PetNeedSend"] = {"Queen Bee", "Dragonfly", "Raccoon", "Disco Bee", "Butterfly", "Mimic Octopus",
-                       "Fennec Fox", "T-Rex", "Spinosaurus"},
-    ["Destroy Mode"] = {
-        ["Auto Destroy when have money"] = 10000000, -- its will destroy all trees select when money >= select
-        ["Mode Destroy"] = "Custom", -- "Custom"
-        ["Trees"] = {"Carrot", "Strawberry", "Blueberry", "Orange Tulip", "Tomato", "Daffodil"},
-        ["Rarity Destroy Auto"] = {"Common", "Uncommon", "Rare", "Legendary", "Mythical"},
-        ["Destroy Untill"] = 150
-    },
-    ["Url"] = "", -- Webhook 
+    KEEP_PETS = { "Dilophosaurus", "Ankylosaurus", "Spinosaurus", "Bald Eagle", "Brontosaurus", "T-Rex", "Fennec Fox", "Disco Bee", "Raccoon", "Queen Bee", "Dragonfly", "Butterfly", "Mimic Octopus", "Red Fox", "Hyacinth Macaw", "Scarlet Macaw", "Axolotl", "Echo Frog", "Hamster", "Blood Owl", "Chicken Zombie", "Chicken", ["Starfish"] = 8, ["Capybara"] = 2, ["Rooster"] = 5, ["Blood Kiwi"] = 5, "Dog", "Bunny", "Golden Lab", ["Seagull"] = 5, ["Crab"] = 5, ["Orange Tabby"] = 2 , ["Spotted Deer"] = 2, ["Pig"] = 2, ["Monkey"] = 2, ["Hedgehog"] = 2, ["Mole"] = 2, ["Frog"] = 2 },
+    KEEP_PETS_WEIGHT = 10,
 
-    ["Boost FPS"] = true,
-    ["Black Screen"] = true,
-    ["White Screen"] = false,
-    ["Dino Event"] = {
-        ["Auto Claim Quest"] = true,
-        ["Auto Restart Quest"] = true,
-        ["Auto Submit"] = true,
-        ["Auto Trade Eggs"] = true,
-        ["Pet Dont Trade"] = {"Queen Bee", "Capybara", "Red Fox", "Dragonfly", "Raccoon", "Disco Bee", "Butterfly",
-                               "Mimic Octopus", "Fennec Fox", "Blad Eagle", "Chicken", "Chicken Zombie",
-                               "Rooster", "Blood Kiwi", "T-Rex", "Dilophosaurus", "Ankylosaurus", "Spinosaurus"}
-    },
-    ["Note"] = "Cyndral Hub",
-    ["Pet Mode"] = {
-        ["Sell Pet"] = true,
-        ["Equip Pet"] = true,
-        ["Name Pet Equip"] = {
-            ["Starfish"] = true,
-            ["Starfish"] = true,
-            ["Capybara"] = true,
-            ["Starfish"] = true,
-            ["Starfish"] = true,
-            ["Starfish"] = true,
-            ["Starfish"] = true,
-            ["Starfish"] = true
-        },
-        ["Max Slot Pet To Sell"] = 55, -- If Total Pet In Inventory >= ["Max Slot Pet To Sell"] script will sell pet
-        ["Upgrade Slot Egg"] = {
-            ["Enable"] = true,
-            ["Black List Pet For Upgrade Slots"] = {"Queen Bee", "Capybara", "Dragonfly", "Raccoon", "Disco Bee", "Butterfly",
-                                                    "Mimic Octopus", "Fennec Fox", "Bald Eagle", "Chicken", "Chicken Zombie", "T-Rex",
-                                                    "Dilophosaurus", "Ankylosaurus", "Spinosaurus"}
-        },
-        ["Pet Dont Delete"] = {"Queen Bee", "Capybara", "Red Fox", "Dragonfly", "Raccoon", "Disco Bee", "Butterfly",
-                               "Mimic Octopus", "Fennec Fox", "Echo Frog",
-                               "Hamster", "Rooster", "Chicken", "Chicken Zombie", "Scarlet Macaw",
-                               "Hyacinth Macaw", "Blood Kiwi", "Blood Owl", "Starfish", "Bald Eagle",
-                               "T-Rex", "Brontosaurus", "Dilophosaurus", "Ankylosaurus", "Spinosaurus"},
-        ["Dont Sell Pet If Weight > x"] = 5 -- Script dont sell pet if this weight >= 10
-    },
-    ["Webhook Mode"] = {
-        ["Enable Send Pet Weight"] = false,
-        ["Weight"] = 6 -- if Weight >= 10 they will send wh
-    },
-    ["Rejoin Mode"] = {
-        ["Auto Rejoin When Error Module Egg"] = false,
-        ["Auto rejoin on script update"] = false,
-        ["Enable Rejoin After X Time"] = false,
-        ["Rejoin After X Time"] = 180 -- Minutes
-    },
-    ["Limit Tree"] = 200,
-    ["Mutation Skips"] = { -- Skip Havest
-        ["Pollinated"] = false,
-        ["Disco"] = false,
-        ["Twisted"] = false,
-        ["Wet"] = false,
-        ["Choc"] = false,
-        ["Bloodlit"] = false,
-        ["Celestial"] = false,
-        ["Moonlit"] = false,
-        ["Chilled"] = false,
-        ["Zombified"] = false,
-        ["Plasma"] = false,
-        ["Burnt"] = false,
-        ["Frozen"] = false,
-        ["Voidtouched"] = false,
-        ["HoneyGlazed"] = false,
-        ["Shocked"] = false
-    }
+    -- EQUIP_PETS Priority (Left -> Right)
+    EQUIP_PETS = { ["Starfish"] = 4, "Bald Eagle", ["Capybara"] = 1, ["Rooster"] = 4, ["Blood Kiwi"] = 4, ["Chicken"] = 1 },
+
+    BUY_GEAR_SHOP = { "Master Sprinkler", "Godly Sprinkler", "Advanced Sprinkler", "Basic Sprinkler" },
+    USE_SPRINKLER = { "Basic Sprinkler", "Master Sprinkler", "Godly Sprinkler", "Advanced Sprinkler" },
+
+    PET_WEBHOOK_URL = "https://discord.com/api/webhooks/1388710819084243045/o0HmOjqsTPM2D-2lsEuXxElYEtEbpXtLQhbG6E1T47WIqDEcSI8lWJ8S8yJuF_G5FkZi",
+    SEED_WEBHOOK_URL = "", 
+    NOTIFY_PETS = { "Bald Eagle", "Fennec Fox", "Disco Bee", "Raccoon", "Queen Bee", "Dragonfly", "Butterfly", "Mimic Octopus", "T-Rex", "Dilophosaurus", "Ankylosaurus", "Spinosaurus" },
+    NOTIFY_PETS_WEIGHT = 6,
+    DISCORD_ID = "",
+    WEBHOOK_NOTE = "",
+    SHOW_WEBHOOK_USERNAME = true,
+    SHOW_WEBHOOK_JOBID = true,
 }
