@@ -77,10 +77,15 @@ getgenv().Config = {
             ["Place"] = false,
             ["Priority"] = 10
         },
+        ["Common Egg"] = {
+            ["Buy"] = true,
+            ["Place"] = true,
+            ["Priority"] = 11
+        }
         ["Bee Egg"] = {
             ["Buy"] = true,
             ["Place"] = false,
-            ["Priority"] = 11
+            ["Priority"] = 12
         }
     },
 
@@ -100,7 +105,7 @@ getgenv().Config = {
         ["Mode Destroy"] = "Custom", -- "Custom"
         ["Trees"] = {"Carrot", "Strawberry", "Blueberry", "Orange Tulip", "Tomato", "Daffodil"},
         ["Rarity Destroy Auto"] = {"Common", "Uncommon", "Rare", "Legendary", "Mythical"},
-        ["Destroy Untill"] = 150
+        ["Destroy Untill"] = 200
     },
     ["Url"] = "", -- Webhook 
 
@@ -154,7 +159,7 @@ getgenv().Config = {
         ["Enable Rejoin After X Time"] = false,
         ["Rejoin After X Time"] = 180 -- Minutes
     },
-    ["Limit Tree"] = 200,
+    ["Limit Tree"] = 230,
     ["Mutation Skips"] = { -- Skip Havest
         ["Pollinated"] = false,
         ["Disco"] = false,
