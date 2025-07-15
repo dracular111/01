@@ -15,8 +15,8 @@ getgenv().gagConfig = {
     DESTROY_UNTIL_MIN_PLANTS = 230,
     DELETE_PLANTS_AFTER_MAX = { "Carrot" },
     
-    BUY_EGGS = { "Primal Egg", "Bug Egg", "Bee Egg", "Paradise Egg", "Common Summer Egg", "Rare Egg", ["Common Egg"] = 1, "Uncommon Egg" },
-    PLANT_EGGS = { "Dinosaur Egg", "Primal Egg", "Anti Bee Egg", "Bug Egg", "Paradise Egg", "Night Egg", "Common Summer Egg", "Rare Egg", "Common Egg", "Uncommon Egg", "Oasis Egg" },
+    BUY_EGGS = { ["Common Egg"] = 1, "Primal Egg", "Bug Egg", "Bee Egg", "Paradise Egg", "Common Summer Egg", "Rare Egg", "Uncommon Egg" },
+    PLANT_EGGS = { "Common Egg", "Dinosaur Egg", "Primal Egg", "Anti Bee Egg", "Bug Egg", "Paradise Egg", "Night Egg", "Common Summer Egg", "Uncommon Egg", "Oasis Egg" },
     
     -- BUY_SEED_SHOP Priority (Left -> Right)
     BUY_SEED_SHOP = { "Ember Lily", "Beanstalk", "Cacao", "Pepper", "Mushroom", "Grape", "Mango", "Dragon Fruit", "Cactus", "Coconut", "Bamboo", "Apple", "Pumpkin", "Watermelon", ["Daffodil"] = 50, ["Tomato"] = 50, ["Orange Tulip"] = 50, ["Blueberry"] = 50, ["Strawberry"] = 50, ["Carrot"] = 50 },
@@ -26,7 +26,7 @@ getgenv().gagConfig = {
     FAVOURITE_FRUIT_MUTATIONS = {},  -- Stop Autosell
     SKIP_HARVEST_MUTATIONS = {},  -- Stop Harvest
 
-    KEEP_PETS = { "Dilophosaurus", "Ankylosaurus", "Spinosaurus", "Bald Eagle", "Brontosaurus", "T-Rex", "Fennec Fox", "Disco Bee", "Raccoon", "Queen Bee", "Dragonfly", "Butterfly", "Mimic Octopus", "Red Fox", "Hyacinth Macaw", "Scarlet Macaw", "Axolotl", "Echo Frog", "Hamster", "Blood Owl", "Chicken Zombie", "Chicken", "Starfish", ["Capybara"] = 5, ["Rooster"] = 15, ["Blood Kiwi"] = 15, ["Seagull"] = 5, ["Crab"] = 5, ["Dog"] = 2, ["Bunny"] = 2, ["Golden Lab"] = 2, ["Orange Tabby"] = 2 , ["Spotted Deer"] = 2, ["Pig"] = 2, ["Monkey"] = 2, ["Hedgehog"] = 2, ["Mole"] = 2, ["Frog"] = 2 },
+    KEEP_PETS = { "Dilophosaurus", "Ankylosaurus", "Spinosaurus", "Bald Eagle", "Brontosaurus", "T-Rex", "Fennec Fox", "Disco Bee", "Raccoon", "Queen Bee", "Dragonfly", "Butterfly", "Mimic Octopus", "Red Fox", "Hyacinth Macaw", "Scarlet Macaw", "Axolotl", "Echo Frog", "Hamster", "Blood Owl", "Chicken Zombie", "Chicken", "Starfish", "Capybara", "Rooster", "Blood Kiwi", ["Seagull"] = 5, ["Crab"] = 5, "Dog", "Bunny", "Golden Lab", ["Orange Tabby"] = 2 , ["Spotted Deer"] = 2, ["Pig"] = 2, ["Monkey"] = 2, ["Hedgehog"] = 2, ["Mole"] = 2, ["Frog"] = 2 },
     KEEP_PETS_WEIGHT = 10,
 
     -- EQUIP_PETS Priority (Left -> Right)
