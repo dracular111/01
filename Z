@@ -1,7 +1,7 @@
 getgenv().gagConfig = {
     -- Event:
     CRAFT_EVENT = { "Anti Bee Egg", "Primal Egg" },
-    PETS_TRADE_DINO = { "Hedgehog", "Mole", "Frog", "Orange Tabby", "Spotted Deer", "Pig", "Monkey", "Seagull", "Crab", "Starfish", "Ostrich", "Peacock", "Dog", "Bunny", "Golden Lab" },
+    PETS_TRADE_DINO = { "Hedgehog", "Mole", "Frog", "Orange Tabby", "Spotted Deer", "Pig", "Monkey", "Seagull", "Crab", "Capybara", "Starfish", "Ostrich", "Peacock", "Dog", "Bunny", "Golden Lab" },
     BUY_TRAVELING_MERCHANT = { "Bee Egg", "Loquat", "Feijoa", "Pitcher Plant" },
 
     -- General:
