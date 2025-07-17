@@ -14,7 +14,7 @@ getgenv().gagConfig = {
 
     MAX_PLANTS = 200,
     DESTROY_UNTIL_MIN_PLANTS = 170,
-    DELETE_PLANTS_AFTER_MAX = { "Carrot" },
+    DELETE_PLANTS_AFTER_MAX = { "Carrot", "Strawberry", "Blueberry", "Orange Tulip", "Tomato", "Daffodil" },
     
     BUY_EGGS = { ["Common Egg"] = 1, "Primal Egg", "Bug Egg", "Bee Egg", "Paradise Egg", "Common Summer Egg", "Rare Egg", "Uncommon Egg" },
     PLANT_EGGS = { "Common Egg", "Anti Bee Egg", "Primal Egg", "Dinosaur Egg", "Bug Egg", "Paradise Egg", "Night Egg", "Common Summer Egg", "Rare Egg", "Uncommon Egg", "Oasis Egg" },
