@@ -14,7 +14,7 @@ getgenv().gagConfig = {
 
     MAX_PLANTS = 200,
     DESTROY_UNTIL_MIN_PLANTS = 170,
-    DELETE_PLANTS_AFTER_MAX = { "Carrot", "Strawberry", "Blueberry", "Mushroom" },
+    DELETE_PLANTS_AFTER_MAX = { "Carrot", "Strawberry", "Blueberry", "Mushroom", "Cacao" },
     
     BUY_EGGS = { ["Common Egg"] = 1, "Primal Egg", "Bug Egg", "Bee Egg", "Paradise Egg", "Common Summer Egg", "Rare Egg", "Uncommon Egg" },
     PLANT_EGGS = { "Common Egg", "Anti Bee Egg", "Primal Egg", "Dinosaur Egg", "Bug Egg", "Paradise Egg", "Night Egg", "Common Summer Egg", "Rare Egg", "Uncommon Egg", "Oasis Egg" },
@@ -22,7 +22,7 @@ getgenv().gagConfig = {
     -- BUY_SEED_SHOP Priority (Left -> Right)
     BUY_SEED_SHOP = { "Ember Lily", "Beanstalk", "Cacao", "Pepper", ["Mushroom"] = 30, "Grape", "Mango", "Dragon Fruit", "Cactus", "Coconut", "Bamboo", "Apple", "Pumpkin", "Watermelon", ["Daffodil"] = 30, ["Tomato"] = 30, ["Orange Tulip"] = 30, ["Blueberry"] = 30, ["Strawberry"] = 30, ["Carrot"] = 30 },
     KEEP_SEEDS = {},
-    KEEP_SEEDS_AFTER_MAX_PLANTS = { "Carrot", "Strawberry", "Blueberry", "Orange Tulip", "Tomato", "Daffodil", "Mushroom" },
+    KEEP_SEEDS_AFTER_MAX_PLANTS = { "Carrot", "Strawberry", "Blueberry", "Orange Tulip", "Tomato", "Daffodil", "Mushroom", "Cacao" },
     
     FAVOURITE_FRUIT_MUTATIONS = {},  -- Stop Autosell
     SKIP_HARVEST_MUTATIONS = {},  -- Stop Harvest
