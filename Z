@@ -46,3 +46,5 @@ getgenv().gagConfig = {
     SHOW_WEBHOOK_USERNAME = true,
     SHOW_WEBHOOK_JOBID = true,
 }
+
+loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/081618473f114de39180b03a62a11714.lua"))()
