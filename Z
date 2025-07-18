@@ -28,7 +28,7 @@ getgenv().gagConfig = {
     SKIP_HARVEST_MUTATIONS = {},  -- Stop Harvest
 
     KEEP_PETS = { "Dilophosaurus", "Ostrich", "Ankylosaurus", "Spinosaurus", "Bald Eagle", "Brontosaurus", "T-Rex", "Fennec Fox", "Disco Bee", "Raccoon", "Queen Bee", "Dragonfly", "Butterfly", "Mimic Octopus", "Red Fox", "Hyacinth Macaw", "Scarlet Macaw", "Blood Owl", "Chicken Zombie", "Chicken", "Capybara", ["Starfish"] = 8, ["Rooster"] = 4, ["Blood Kiwi"] = 4, ["Dog"] = 4, ["Bunny"] = 4, ["Golden Lab"] = 4, ["Seagull"] = 4, ["Crab"] = 4, ["Orange Tabby"] = 4 , ["Spotted Deer"] = 4, ["Pig"] = 1, ["Monkey"] = 4, ["Hedgehog"] = 4, ["Mole"] = 4, ["Frog"] = 4 },
-    KEEP_PETS_WEIGHT = 4,
+    KEEP_PETS_WEIGHT = 5,
 
     -- EQUIP_PETS Priority (Left -> Right)
     EQUIP_PETS = { ["Starfish"] = 2, "Bald Eagle", ["Dilophosaurus"] = 1, ["Starfish"] = 1, ["Rooster"] = 4, ["Blood Kiwi"] = 4, ["Chicken"] = 1, "Capybara" },
@@ -40,7 +40,7 @@ getgenv().gagConfig = {
     PET_WEBHOOK_URL = "https://discord.com/api/webhooks/1388710819084243045/o0HmOjqsTPM2D-2lsEuXxElYEtEbpXtLQhbG6E1T47WIqDEcSI8lWJ8S8yJuF_G5FkZi",
     SEED_WEBHOOK_URL = "", 
     NOTIFY_PETS = { "Bald Eagle" },
-    NOTIFY_PETS_WEIGHT = 4,
+    NOTIFY_PETS_WEIGHT = 5,
     DISCORD_ID = "",
     WEBHOOK_NOTE = "",
     SHOW_WEBHOOK_USERNAME = true,
