@@ -1,0 +1,182 @@
+getgenv().ConfigsKaitun = {
+ ["Low Cpu"] = true,
+
+ ["Limit Tree"] = {
+  ["Limit"] = 200,
+  ["Destroy Untill"] = 150,
+  ["Safe Tree"] = {
+   "IDK",
+   "IDK",
+   "IDK",
+   "IDK"
+  }
+ },
+ Seed = {
+  Buy = {
+   Mode = "Auto", -- Custom , Auto
+   Custom = {
+    "Carrot",
+    "Bamboo",
+    "Pumpkin",
+    "Daffodil",
+    "Orange Tulip",
+    "Watermelon",
+    "Mushroom",
+    "Nightshade",
+    "Beanstalk",
+   }
+  },
+  Place = {
+   Mode = "Lock", -- Select , Lock
+   Select = {
+    "IDK",
+    "IDK",
+    "IDK",
+    "IDK"
+   },
+   Lock = {
+    "IDK",
+ "IDK",
+ "IDK"
+   }
+  }
+ },
+
+ ["Seed Pack"] = {
+  Locked = {
+
+  }
+ },
+
+ Events = {
+		Dino = true,
+
+		["Traveling Shop"] = {
+			"IDK",
+			"IDK",
+			"Night Staff",
+			"Bee Egg"
+		},
+		Craft = {
+			"Lightning Rod",
+			"Anti Bee Egg",
+		},
+		Shop = {
+			"Zen Seed Pack",
+			"Zen Egg",
+			"Zenflare",
+			"Soft Sunshine",
+			--"Koi",
+			"Spiked Mango",
+			"Pet Shard Tranquil"
+		}
+	},
+
+	Gear = {
+		Buy = { 
+			"Master Sprinkler",
+			"Basic Sprinkler",
+			"Godly Sprinkler",
+			"Advanced Sprinkler",
+			"Lightning Rod",
+			"Tanning Mirror"
+		},
+		Lock = {
+			"Godly Sprinkler",
+		},
+	},
+
+ Eggs = {
+  Place = {
+   "Zen Egg",
+   "Anti Bee Egg",
+   "Primal Egg", 
+   "Dinosaur Egg",
+   "Bug Egg",
+   "Paradise Egg",
+   "Rare Egg",
+   "Common Summer Egg",
+  },
+  Buy = {
+   "Anti Bee Egg",
+   "Zen Egg",
+   "Paradise Egg",
+   "Bee Egg",
+   "Night Egg",
+   "Bug Egg",
+   "Common Summer Egg"
+  }
+ },
+
+ Pets = {
+ ["Start Delete Pet At"] = 40, 
+ ["Upgrade Slot"] = {
+   ["Pet"] = {
+    "Starfish",
+   },
+   ["Limit Upgrade"] = 5,
+   ["Equip When Done"] = {
+    "Starfish",
+   },
+  },
+  Locked = {
+   "T-Rex",
+   "Kitsune",
+   "Dragonfly",
+   "Raccon",
+   "Fennec Fox",
+   "Spinosaurus",
+   "Disco Bee",
+   "Butterfly",
+   "Mimic Octopus",
+   ["Starfish"] = 20,
+   ["Dog"] = 10,
+  },
+  LockPet_Weight = 10, -- if Weight >= 10 they will locked,
+  Instant_Sell = {
+    "Bunny",
+    "Golden Lab",
+    "Seagull",
+    "Crab",
+    "Raptor",
+    "Triceratops",
+    "Stegosaurus",
+    "Pterodactyl",
+    "Parasaurolophus",
+    "Iguanodon",
+    "Pachycephalosaurus",
+    "Dilophosaurus",
+    "Ankylosaurus",
+    "Brontosaurus",
+  }
+ },
+
+ Webhook = {
+  UrlPet = "",
+  UrlSeed = "",
+  PcName = "PC1",
+
+  Noti = {
+   Seeds = {
+    "IDK",
+    "IDK",
+    "IDK",
+   },
+   SeedPack = {
+    "Idk",
+   },
+   Pets = {
+    "Dragonfly",
+    "Spinosaurus",
+    "T-Rex",
+    "Kitsune",
+    "Raccoon",
+    "Disco Bee",
+    "Fennec Fox",
+    "Butterfly",
+    "Mimic Octopus",
+   },
+   Pet_Weight_Noti = true,
+  }
+ },
+}
