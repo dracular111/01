@@ -179,4 +179,4 @@ getgenv().Config = {
     }
 }
 
-https://api.luarmor.net/files/v3/loaders/be5eb6eb83a60b4c87954ddf66dd7413.lua
+ loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/be5eb6eb83a60b4c87954ddf66dd7413.lua"))() 
