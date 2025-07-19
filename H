@@ -50,44 +50,46 @@ getgenv().ConfigsKaitun = {
  },
 
  Events = {
-		Dino = true,
+  Dino = true,
+  
+  ["Traveling Shop"] = {
+   "Bee Egg",
+   "Night Staff",
+   "IDK"
+  },
+  Craft = {
+   "Ancient Seed Pack",
+   "Anti Bee Egg",
+   "Lightning Rod",
+  },
+  Shop = {
+   "Traveler's Fruit",
+   "Zen Seed Pack",
+   "Zen Egg",
+   "Zenflare",
+   "Soft Sunshine",
+   "Koi",
+   "Spiked Mango",
+   "Pet Shard Tranquil",
+  }
+ },
 
-		["Traveling Shop"] = {
-			"Bee Egg"
-		},
-		Craft = {
-			"Ancient Seed Pack",
-			"Anti Bee Egg",
-			"Lightning Rod",
-		},
-		Shop = {
-			"Zen Seed Pack",
-			"Zen Egg",
-			"Zenflare",
-			"Soft Sunshine",
-			"Koi",
-			"Spiked Mango",
-			"Pet Shard Tranquil",
-		}
-	},
-
-	Gear = {
-		Buy = { 
-			"Master Sprinkler",
-			"Basic Sprinkler",
-			"Godly Sprinkler",
-			"Advanced Sprinkler",
-			"Lightning Rod",
-			"Tanning Mirror"
-		},
-		Lock = {
-			"Master Sprinkler",
-			"Godly Sprinkler",
-			"Advanced Sprinkler",
-			"Basic Sprinkler",
-			"Lightning Rod",
-		},
-	},
+ Gear = {
+  Buy = { 
+   "Master Sprinkler",
+   "Basic Sprinkler",
+   "Godly Sprinkler",
+   "Advanced Sprinkler",
+   "Lightning Rod",
+  },
+  Lock = {
+   "Master Sprinkler",
+   "Godly Sprinkler",   
+   "Advanced Sprinkler",
+   "Basic Sprinkler",
+   "Lightning Rod",
+  },
+ },
 
  Eggs = {
   Place = {
