@@ -1,5 +1,6 @@
 setfpscap(2)
 getgenv().ConfigsKaitun = {
+ ["Stack Plant"] = true,
  ["Low Cpu"] = true,
 
  ["Limit Tree"] = {
