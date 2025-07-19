@@ -34,11 +34,11 @@ getgenv().Config = {
     ["Egg"] = {
         ["Primal Egg"] = {
             ["Place"] = true,
-            ["Priority"] = 1
+            ["Priority"] = 4
         },
         ["Dinosaur Egg"] = {
             ["Place"] = true,
-            ["Priority"] = 2
+            ["Priority"] = 5
         },
         ["Oasis Egg"] = {
             ["Place"] = true,
@@ -46,17 +46,17 @@ getgenv().Config = {
         },
         ["Anti Bee Egg"] = {
             ["Place"] = true,
-            ["Priority"] = 4
+            ["Priority"] = 1
         },
         ["Bug Egg"] = {
             ["Buy"] = true,
             ["Place"] = true,
-            ["Priority"] = 5
+            ["Priority"] = 2
         },
         ["Paradise Egg"] = {
             ["Buy"] = true,
             ["Place"] = true,
-            ["Priority"] = 6
+            ["Priority"] = 3
         },
         ["Night Egg"] = {
             ["Place"] = true,
@@ -103,9 +103,9 @@ getgenv().Config = {
     ["Destroy Mode"] = {
         ["Auto Destroy when have money"] = 10000000, -- its will destroy all trees select when money >= select
         ["Mode Destroy"] = "Custom", -- "Custom"
-        ["Trees"] = {"Carrot"},
+        ["Trees"] = {"Carrot", "Strawberry", "Blueberry", "Mushroom", "Cacao", "Tomato"},
         ["Rarity Destroy Auto"] = {"Common", "Uncommon", "Rare", "Legendary", "Mythical"},
-        ["Destroy Untill"] = 200
+        ["Destroy Untill"] = 150
     },
     ["Url"] = "", -- Webhook 
 
@@ -118,7 +118,7 @@ getgenv().Config = {
         ["Auto Submit"] = true,
         ["Auto Trade Eggs"] = true,
         ["Pet Dont Trade"] = {"Queen Bee", "Capybara", "Red Fox", "Dragonfly", "Raccoon", "Disco Bee", "Butterfly",
-                               "Mimic Octopus", "Fennec Fox", "Blad Eagle", "Chicken", "Chicken Zombie",
+                               "Mimic Octopus", "Fennec Fox", "Bald Eagle", "Chicken", "Chicken Zombie",
                                "Rooster", "Blood Kiwi", "T-Rex", "Dilophosaurus", "Ankylosaurus", "Spinosaurus"}
     },
     ["Note"] = "Cyndral Hub",
