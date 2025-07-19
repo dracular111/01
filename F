@@ -29,7 +29,7 @@ getgenv().Config = {
         ["Strawberry"] = 44,
         ["Carrot"] = 44
     },
-    ["Keep Seed"] = {"Dragon Pepper", "Elephant Ears", "Sunflower", "Candy Blossom"},
+    ["Keep Seed"] = {"Ember Lily", "Dragon Pepper", "Elephant Ears", "Sunflower", "Candy Blossom"},
     ["FPS"] = 2,
     ["Egg"] = {
         ["Primal Egg"] = {
@@ -98,8 +98,7 @@ getgenv().Config = {
         ["Godly Sprinkler"] = true
     },
     ["Plant Candy"] = false,
-    ["PetNeedSend"] = {"Queen Bee", "Dragonfly", "Raccoon", "Disco Bee", "Butterfly", "Mimic Octopus",
-                       "Fennec Fox", "T-Rex", "Spinosaurus"},
+    ["PetNeedSend"] = {"Bald Eagle"},
     ["Destroy Mode"] = {
         ["Auto Destroy when have money"] = 10000000, -- its will destroy all trees select when money >= select
         ["Mode Destroy"] = "Custom", -- "Custom"
@@ -119,7 +118,7 @@ getgenv().Config = {
         ["Auto Trade Eggs"] = true,
         ["Pet Dont Trade"] = {"Queen Bee", "Capybara", "Red Fox", "Dragonfly", "Raccoon", "Disco Bee", "Butterfly",
                                "Mimic Octopus", "Fennec Fox", "Bald Eagle", "Chicken", "Chicken Zombie",
-                               "Rooster", "Blood Kiwi", "T-Rex", "Dilophosaurus", "Ankylosaurus", "Spinosaurus"}
+                               "Rooster", "Blood Kiwi", "Blood Owl", "T-Rex", "Dilophosaurus", "Spinosaurus", "Ostrich"}
     },
     ["Note"] = "Cyndral Hub",
     ["Pet Mode"] = {
@@ -143,15 +142,15 @@ getgenv().Config = {
                                                     "Dilophosaurus", "Ankylosaurus", "Spinosaurus"}
         },
         ["Pet Dont Delete"] = {"Queen Bee", "Capybara", "Red Fox", "Dragonfly", "Raccoon", "Disco Bee", "Butterfly",
-                               "Mimic Octopus", "Fennec Fox", "Echo Frog",
-                               "Hamster", "Rooster", "Chicken", "Chicken Zombie", "Scarlet Macaw",
+                               "Mimic Octopus", "Fennec Fox", "Echo Frog", "Ostrich",
+                               "Rooster", "Chicken", "Chicken Zombie", "Scarlet Macaw",
                                "Hyacinth Macaw", "Blood Kiwi", "Blood Owl", "Starfish", "Bald Eagle",
                                "T-Rex", "Brontosaurus", "Dilophosaurus", "Ankylosaurus", "Spinosaurus"},
-        ["Dont Sell Pet If Weight > x"] = 5 -- Script dont sell pet if this weight >= 10
+        ["Dont Sell Pet If Weight > x"] = 6 -- Script dont sell pet if this weight >= 10
     },
     ["Webhook Mode"] = {
-        ["Enable Send Pet Weight"] = false,
-        ["Weight"] = 6 -- if Weight >= 10 they will send wh
+        ["Enable Send Pet Weight"] = true,
+        ["Weight"] = 5 -- if Weight >= 10 they will send wh
     },
     ["Rejoin Mode"] = {
         ["Auto Rejoin When Error Module Egg"] = false,
@@ -159,7 +158,7 @@ getgenv().Config = {
         ["Enable Rejoin After X Time"] = false,
         ["Rejoin After X Time"] = 180 -- Minutes
     },
-    ["Limit Tree"] = 230,
+    ["Limit Tree"] = 180,
     ["Mutation Skips"] = { -- Skip Havest
         ["Pollinated"] = false,
         ["Disco"] = false,
