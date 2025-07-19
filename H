@@ -1,11 +1,11 @@
-setfpscap(2)
+setfpscap(3)
 getgenv().ConfigsKaitun = {
  ["Stack Plant"] = true,
  ["Low Cpu"] = true,
 
  ["Limit Tree"] = {
   ["Limit"] = 200,
-  ["Destroy Untill"] = 150,
+  ["Destroy Untill"] = 150s,
   ["Safe Tree"] = {
    "IDK",
    "IDK",
@@ -120,7 +120,7 @@ getgenv().ConfigsKaitun = {
    ["Pet"] = {
     "Starfish",
    },
-   ["Limit Upgrade"] = 4,
+   ["Limit Upgrade"] = ,
    ["Equip When Done"] = {
     "Starfish",
     "Bald Eagle",
