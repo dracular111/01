@@ -110,7 +110,7 @@ getgenv().ConfigsKaitun = {
  },
 
  Pets = {
- ["Start Delete Pet At"] = 40, 
+ ["Start Delete Pet At"] = 50, 
  ["Upgrade Slot"] = {
    ["Pet"] = {
     "Starfish",
@@ -155,9 +155,6 @@ getgenv().ConfigsKaitun = {
     "Parasaurolophus",
     "Iguanodon",
     "Pachycephalosaurus",
-    "Dilophosaurus",
-    "Ankylosaurus",
-    "Brontosaurus",
   }
  },
 
