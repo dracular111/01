@@ -3,7 +3,7 @@ getgenv().ConfigsKaitun = {
 
  ["Limit Tree"] = {
   ["Limit"] = 200,
-  ["Destroy Untill"] = 100,
+  ["Destroy Untill"] = 150,
   ["Safe Tree"] = {
    "IDK",
    "IDK",
@@ -52,14 +52,12 @@ getgenv().ConfigsKaitun = {
 		Dino = true,
 
 		["Traveling Shop"] = {
-			"IDK",
-			"IDK",
-			"Night Staff",
 			"Bee Egg"
 		},
 		Craft = {
-			"Lightning Rod",
+			"Ancient Seed Pack",
 			"Anti Bee Egg",
+			"Lightning Rod",
 		},
 		Shop = {
 			"Zen Seed Pack",
@@ -82,13 +80,18 @@ getgenv().ConfigsKaitun = {
 			"Tanning Mirror"
 		},
 		Lock = {
+			"Master Sprinkler",
 			"Godly Sprinkler",
+			"Advanced Sprinkler",
+			"Basic Sprinkler",
+			"Lightning Rod",
 		},
 	},
 
  Eggs = {
   Place = {
    "Zen Egg",
+   "Oasis Egg",
    "Anti Bee Egg",
    "Primal Egg", 
    "Dinosaur Egg",
@@ -115,7 +118,7 @@ getgenv().ConfigsKaitun = {
    ["Pet"] = {
     "Starfish",
    },
-   ["Limit Upgrade"] = 5,
+   ["Limit Upgrade"] = 4,
    ["Equip When Done"] = {
     "Starfish",
     "Bald Eagle",
@@ -166,9 +169,9 @@ getgenv().ConfigsKaitun = {
  },
 
  Webhook = {
-  UrlPet = "",
+  UrlPet = "https://discord.com/api/webhooks/1396165603538239659/8DB0vG63IklWDGs-EAiMszsy4tvnrMOeTJ4FGuKcLL1N4wlnVL8LMtjBc3MFHL1aIuzn",
   UrlSeed = "",
-  PcName = "PC1",
+  PcName = "",
 
   Noti = {
    Seeds = {
@@ -180,15 +183,7 @@ getgenv().ConfigsKaitun = {
     "Idk",
    },
    Pets = {
-    "Dragonfly",
-    "Spinosaurus",
-    "T-Rex",
     "Kitsune",
-    "Raccoon",
-    "Disco Bee",
-    "Fennec Fox",
-    "Butterfly",
-    "Mimic Octopus",
    },
    Pet_Weight_Noti = true,
   }
