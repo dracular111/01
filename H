@@ -118,6 +118,10 @@ getgenv().ConfigsKaitun = {
    ["Limit Upgrade"] = 5,
    ["Equip When Done"] = {
     "Starfish",
+    "Bald Eagle",
+    "Blood Kiwi",
+    "Rooster",
+    "Capybara",
    },
   },
   Locked = {
