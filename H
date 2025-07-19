@@ -53,7 +53,7 @@ getgenv().ConfigsKaitun = {
 		Dino = true,
 
 		["Traveling Shop"] = {
-			"Bee Egg"
+			"Bee Egg",
 		},
 		Craft = {
 			"Ancient Seed Pack",
