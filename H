@@ -150,6 +150,7 @@ getgenv().ConfigsKaitun = {
    "Blood Owl",
    "Capybara",
    "Chicken",
+   "Koi",
    ["Rooster"] = 4,
    ["Blood Kiwi"] = 4,
    ["Starfish"] = 8,
