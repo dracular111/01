@@ -67,7 +67,7 @@ getgenv().ConfigsKaitun = {
 			"Soft Sunshine",
 			"Koi",
 			"Spiked Mango",
-			"Pet Shard Tranquil"
+			"Pet Shard Tranquil",
 		}
 	},
 
