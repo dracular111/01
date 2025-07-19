@@ -50,46 +50,48 @@ getgenv().ConfigsKaitun = {
  },
 
  Events = {
-  Dino = true,
-  
-  ["Traveling Shop"] = {
-   "Bee Egg",
-   "Night Staff",
-   "IDK"
-  },
-  Craft = {
-   "Ancient Seed Pack",
-   "Anti Bee Egg",
-   "Lightning Rod",
-  },
-  Shop = {
-   "Traveler's Fruit",
-   "Zen Seed Pack",
-   "Zen Egg",
-   "Zenflare",
-   "Soft Sunshine",
-   "Koi",
-   "Spiked Mango",
-   "Pet Shard Tranquil",
-  }
- },
+		Dino = true,
 
- Gear = {
-  Buy = { 
-   "Master Sprinkler",
-   "Basic Sprinkler",
-   "Godly Sprinkler",
-   "Advanced Sprinkler",
-   "Lightning Rod",
-  },
-  Lock = {
-   "Master Sprinkler",
-   "Godly Sprinkler",   
-   "Advanced Sprinkler",
-   "Basic Sprinkler",
-   "Lightning Rod",
-  },
- },
+		["Traveling Shop"] = {
+			"IDK",
+			"IDK",
+			"Night Staff",
+			"Bee Egg"
+		},
+		Craft = {
+			"Ancient Seed Pack",
+			"Lightning Rod",
+			"Anti Bee Egg",
+		},
+		Shop = {
+			"Zen Seed Pack",
+			"Zen Egg",
+			"Zenflare",
+			"Soft Sunshine",
+			"Koi",
+			"Spiked Mango",
+			"Pet Shard Tranquil"
+		}
+	},
+
+	Gear = {
+		Buy = { 
+			"Master Sprinkler",
+			"Basic Sprinkler",
+			"Godly Sprinkler",
+			"Advanced Sprinkler",
+			"Lightning Rod",
+			"Tanning Mirror"
+		},
+		Lock = {
+			"Master Sprinkler",
+			"Godly Sprinkler",
+			"Advanced Sprinkler",
+			"Godly Sprinkler",
+			"Basic Sprinkler",
+			"Lightning Rod",
+		},
+	},
 
  Eggs = {
   Place = {
@@ -121,7 +123,7 @@ getgenv().ConfigsKaitun = {
    ["Pet"] = {
     "Starfish",
    },
-   ["Limit Upgrade"] = ,
+   ["Limit Upgrade"] = 5,
    ["Equip When Done"] = {
     "Starfish",
     "Bald Eagle",
