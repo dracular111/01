@@ -75,7 +75,7 @@ getgenv().ConfigsKaitun = {
 			"Spiked Mango",
 			"Pet Shard Tranquil"
 		},
-		Restocks_limit = 5000000,
+		Restocks_limit = 16000000,
 		MinimumChi = 10
 	},
 
