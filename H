@@ -133,6 +133,7 @@ getgenv().ConfigsKaitun = {
   },
   Locked = {
    "Kitsune",
+   "Kappa",
    "Bald Eagle",
    "Spinosaurus",
    "T-Rex",
