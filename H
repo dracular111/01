@@ -69,11 +69,7 @@ getgenv().ConfigsKaitun = {
 		Shop = {
 			"Zen Seed Pack",
 			"Zen Egg",
-			"Zenflare",
-			"Soft Sunshine",
-			"Koi",
-			"Spiked Mango",
-			"Pet Shard Tranquil"
+			"Koi"
 		},
 		Restocks_limit = 16000000,
 		MinimumChi = 10
