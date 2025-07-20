@@ -33,31 +33,31 @@ getgenv().Config = {
     ["Keep Seed"] = {"Ember Lily", "Dragon Pepper", "Elephant Ears", "Sunflower", "Candy Blossom"},
     ["FPS"] = 2,
     ["Egg"] = {
-        ["Primal Egg"] = {
+        ["Zen Egg"] = {
             ["Place"] = true,
-            ["Priority"] = 4
-        },
-        ["Dinosaur Egg"] = {
-            ["Place"] = true,
-            ["Priority"] = 5
-        },
-        ["Oasis Egg"] = {
-            ["Place"] = true,
-            ["Priority"] = 3
+            ["Priority"] = 1
         },
         ["Anti Bee Egg"] = {
             ["Place"] = true,
-            ["Priority"] = 1
+            ["Priority"] = 2
+        },
+        ["Primal Egg"] = {
+            ["Place"] = true,
+            ["Priority"] = 3
+        },
+        ["Dinosaur Egg"] = {
+            ["Place"] = true,
+            ["Priority"] = 4
         },
         ["Bug Egg"] = {
             ["Buy"] = true,
             ["Place"] = true,
-            ["Priority"] = 2
+            ["Priority"] = 5
         },
         ["Paradise Egg"] = {
             ["Buy"] = true,
             ["Place"] = true,
-            ["Priority"] = 3
+            ["Priority"] = 6
         },
         ["Night Egg"] = {
             ["Place"] = true,
@@ -78,8 +78,7 @@ getgenv().Config = {
             ["Place"] = false,
             ["Priority"] = 10
         },
-        ["Common Egg"] = {
-            ["Buy"] = true,
+        ["Oasis Egg"] = {
             ["Place"] = true,
             ["Priority"] = 11
         },
@@ -90,6 +89,7 @@ getgenv().Config = {
         }
     },
 
+    ["Limit Tree"] = 180,
     ["Sprinkler"] = {
         ["Place Sprinkler"] = true,
         ["Buy Sprinkler"] = true,
@@ -107,20 +107,18 @@ getgenv().Config = {
         ["Rarity Destroy Auto"] = {"Common", "Uncommon", "Rare", "Legendary", "Mythical"},
         ["Destroy Untill"] = 150
     },
+    ["Zen Event"] = {
+        ["Restock Max Cost"] = 16000000,
+        ["Zen Seed Pack"] = true,
+        ["Zen Egg"] = true,
+        ["Koi"] = true,
+        ["Spiked Mango"] = true
+    },
+    },
     ["Url"] = "https://discord.com/api/webhooks/1395969320751861890/ov3zF65-vdyFRH8-ugc4ue1Hz3GhTA_Dd8C5QbJTa4tJ0nqTMqLhzpGRM3kUxYxb0OHz", -- Webhook 
 
     ["Boost FPS"] = true,
     ["Black Screen"] = true,
-    ["White Screen"] = false,
-    ["Dino Event"] = {
-        ["Auto Claim Quest"] = true,
-        ["Auto Restart Quest"] = true,
-        ["Auto Submit"] = true,
-        ["Auto Trade Eggs"] = true,
-        ["Pet Dont Trade"] = {"Queen Bee", "Capybara", "Red Fox", "Dragonfly", "Raccoon", "Disco Bee", "Butterfly",
-                               "Mimic Octopus", "Fennec Fox", "Bald Eagle", "Chicken", "Chicken Zombie",
-                               "Rooster", "Blood Kiwi", "Blood Owl", "T-Rex", "Dilophosaurus", "Spinosaurus", "Ostrich"}
-    },
     ["Note"] = "Cyndral Hub",
     ["Pet Mode"] = {
         ["Sell Pet"] = true,
@@ -139,44 +137,20 @@ getgenv().Config = {
             ["Enable"] = true,
             ["Black List Pet For Upgrade Slots"] = {"Queen Bee", "Capybara", "Dragonfly", "Raccoon", "Disco Bee", "Butterfly",
                                                     "Mimic Octopus", "Fennec Fox", "Bald Eagle", "Chicken", "Chicken Zombie", "T-Rex",
-                                                    "Dilophosaurus", "Ankylosaurus", "Spinosaurus"}
+                                                    "Dilophosaurus", "Ankylosaurus", "Spinosaurus", "Kitsune"}
         },
         ["Pet Dont Delete"] = {"Queen Bee", "Capybara", "Red Fox", "Dragonfly", "Raccoon", "Disco Bee", "Butterfly",
                                "Mimic Octopus", "Fennec Fox", "Echo Frog", "Ostrich",
                                "Rooster", "Chicken", "Chicken Zombie", "Scarlet Macaw",
                                "Hyacinth Macaw", "Blood Kiwi", "Blood Owl", "Starfish", "Bald Eagle",
-                               "T-Rex", "Brontosaurus", "Dilophosaurus", "Ankylosaurus", "Spinosaurus"},
+                               "T-Rex", "Brontosaurus", "Dilophosaurus", "Ankylosaurus", "Spinosaurus", "Kitsune", "Kappa"},
         ["Dont Sell Pet If Weight > x"] = 6 -- Script dont sell pet if this weight >= 10
     },
     ["Webhook Mode"] = {
         ["Enable Send Pet Weight"] = true,
-        ["Weight"] = 5 -- if Weight >= 10 they will send wh
-    },
-    ["Rejoin Mode"] = {
-        ["Auto Rejoin When Error Module Egg"] = false,
-        ["Auto rejoin on script update"] = false,
-        ["Enable Rejoin After X Time"] = false,
-        ["Rejoin After X Time"] = 180 -- Minutes
-    },
-    ["Limit Tree"] = 180,
-    ["Mutation Skips"] = { -- Skip Havest
-        ["Pollinated"] = false,
-        ["Disco"] = false,
-        ["Twisted"] = false,
-        ["Wet"] = false,
-        ["Choc"] = false,
-        ["Bloodlit"] = false,
-        ["Celestial"] = false,
-        ["Moonlit"] = false,
-        ["Chilled"] = false,
-        ["Zombified"] = false,
-        ["Plasma"] = false,
-        ["Burnt"] = false,
-        ["Frozen"] = false,
-        ["Voidtouched"] = false,
-        ["HoneyGlazed"] = false,
-        ["Shocked"] = false
+        ["Weight"] = 6 -- if Weight >= 10 they will send wh
     }
+
 }
 
 loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/be5eb6eb83a60b4c87954ddf66dd7413.lua"))()
