@@ -113,9 +113,7 @@ getgenv().Config = {
         ["Koi"] = true,
         ["Spiked Mango"] = true
     },
-    },
-    ["Url"] = "https://discord.com/api/webhooks/1395969320751861890/ov3zF65-vdyFRH8-ugc4ue1Hz3GhTA_Dd8C5QbJTa4tJ0nqTMqLhzpGRM3kUxYxb0OHz", -- Webhook 
-
+    ["Url"] = "https://discord.com/api/webhooks/1395969320751861890/ov3zF65-vdyFRH8-ugc4ue1Hz3GhTA_Dd8C5QbJTa4tJ0nqTMqLhzpGRM3kUxYxb0OHz", -- Webhook
     ["Boost FPS"] = true,
     ["Black Screen"] = true,
     ["Note"] = "Cyndral Hub",
