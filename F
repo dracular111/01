@@ -122,7 +122,7 @@ getgenv().Config = {
         ["Equip Pet"] = true,
         ["Name Pet Equip"] = {
             ["Starfish"] = true,
-            ["Starfish"] = true,
+            ["Koi"] = true,
             ["Spinosaurus"] = true,
             ["Bald Eagle"] = true,
             ["Blood Kiwi"] = true,
@@ -134,13 +134,13 @@ getgenv().Config = {
             ["Enable"] = true,
             ["Black List Pet For Upgrade Slots"] = {"Queen Bee", "Capybara", "Dragonfly", "Raccoon", "Disco Bee", "Butterfly",
                                                     "Mimic Octopus", "Fennec Fox", "Bald Eagle", "Chicken", "Chicken Zombie", "T-Rex",
-                                                    "Dilophosaurus", "Ankylosaurus", "Spinosaurus", "Kitsune"}
+                                                    "Dilophosaurus", "Ankylosaurus", "Spinosaurus", "Kitsune", "Koi"}
         },
         ["Pet Dont Delete"] = {"Queen Bee", "Capybara", "Red Fox", "Dragonfly", "Raccoon", "Disco Bee", "Butterfly",
                                "Mimic Octopus", "Fennec Fox", "Echo Frog", "Ostrich",
                                "Rooster", "Chicken", "Chicken Zombie", "Scarlet Macaw",
                                "Hyacinth Macaw", "Blood Kiwi", "Blood Owl", "Starfish", "Bald Eagle",
-                               "T-Rex", "Brontosaurus", "Dilophosaurus", "Ankylosaurus", "Spinosaurus", "Kitsune", "Kappa"},
+                               "T-Rex", "Brontosaurus", "Dilophosaurus", "Ankylosaurus", "Spinosaurus", "Kitsune", "Kappa", "Koi"},
         ["Dont Sell Pet If Weight > x"] = 6 -- Script dont sell pet if this weight >= 10
     },
     ["Webhook Mode"] = {
