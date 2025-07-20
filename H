@@ -84,17 +84,18 @@ getgenv().ConfigsKaitun = {
 	Gear = {
 		Buy = { 
 			"Master Sprinkler",
-			"Basic Sprinkler",
 			"Godly Sprinkler",
 			"Advanced Sprinkler",
+			"Basic Sprinkler",
 			"Lightning Rod",
-			"Tanning Mirror"
+			"Level Up Lollipop",
+			"Medium Treat",
+			"Medium Toy",
 		},
 		Lock = {
 			"Master Sprinkler",
 			"Godly Sprinkler",
 			"Advanced Sprinkler",
-			"Godly Sprinkler",
 			"Basic Sprinkler",
 			"Lightning Rod",
 		},
@@ -131,6 +132,7 @@ getgenv().ConfigsKaitun = {
    },
    ["Limit Upgrade"] = 5,
    ["Equip When Done"] = {
+    "Koi",
     "Starfish",
     "Bald Eagle",
     "Blood Kiwi",
