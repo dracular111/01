@@ -2,7 +2,7 @@ getgenv().ConfigsKaitun = {
  ["Stack Plant"] = true,
 
  ["Low Cpu"] = true,
-
+ ["Auto Rejoin"] = false,
  ["Rejoin When Update"] = false,
 
  ["Limit Tree"] = {
