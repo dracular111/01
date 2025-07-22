@@ -27,14 +27,14 @@ getgenv().gagConfig = {
     FAVOURITE_FRUIT_MUTATIONS = {},  -- Stop Autosell
     SKIP_HARVEST_MUTATIONS = {},  -- Stop Harvest
 
-    KEEP_PETS = { "Kappa", "Kitsune", "Dilophosaurus", "Ankylosaurus", "Spinosaurus", "Bald Eagle", "Brontosaurus", "T-Rex", "Fennec Fox", "Disco Bee", "Raccoon", "Queen Bee", "Dragonfly", "Butterfly", "Mimic Octopus", "Red Fox", "Hyacinth Macaw", "Scarlet Macaw", "Blood Owl", "Chicken Zombie", "Chicken", "Capybara", ["Starfish"] = 8, ["Rooster"] = 8, ["Blood Kiwi"] = 8 },
+    KEEP_PETS = { "Koi", "Kappa", "Kitsune", "Dilophosaurus", "Ankylosaurus", "Spinosaurus", "Bald Eagle", "Brontosaurus", "T-Rex", "Fennec Fox", "Disco Bee", "Raccoon", "Queen Bee", "Dragonfly", "Butterfly", "Mimic Octopus", "Red Fox", "Hyacinth Macaw", "Scarlet Macaw", "Blood Owl", "Chicken Zombie", "Chicken", "Capybara", ["Starfish"] = 8, ["Rooster"] = 8, ["Blood Kiwi"] = 8 },
     KEEP_PETS_WEIGHT = 5,
     KEEP_PETS_AGE = 20,
 
     -- EQUIP_PETS Priority (Left -> Right)
-    EQUIP_PETS = { ["Starfish"] = 1, "Bald Eagle", ["Dilophosaurus"] = 2, ["Rooster"] = 3, ["Blood Kiwi"] = 3, ["Chicken"] = 1, ["Capybara"] = 1 },
+    EQUIP_PETS = { ["Starfish"] = 1, ["Koi"] = 4, "Bald Eagle", ["Dilophosaurus"] = 2, ["Rooster"] = 3, ["Blood Kiwi"] = 3, ["Chicken"] = 1, ["Capybara"] = 1 },
     USE_PETS_FOR_UPGRADE_SLOT = { "Starfish" },
-    REMOVE_PET_MAX_UPGRADE = { "Starfish" },
+    REMOVE_PET_MAX_UPGRADE = { "Starfish", "Capybara" },
 
     BUY_GEAR_SHOP = { "Master Sprinkler", "Godly Sprinkler", "Advanced Sprinkler", "Basic Sprinkler" },
     USE_SPRINKLER = { "Basic Sprinkler", "Master Sprinkler", "Godly Sprinkler", "Advanced Sprinkler" },
