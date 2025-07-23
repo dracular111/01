@@ -1,4 +1,3 @@
-setfpscap(2)
 getgenv().Config = {
     ["Time To Sell"] = 35, -- Seconds
     ["Craft Event"] = {
@@ -6,30 +5,26 @@ getgenv().Config = {
         ["Anti Bee Egg"] = true
     },
     ["Dont Open Pack"] = false,
-    ["Dont Use Flower Seed Pack"] = true, -- If u Enable Crafters Seed Pack pls enable this
     ["Mode Plant"] = "Auto", -- "Custom"
 
     ["Seed"] = { -- Seed Plant Custom
-        ["Ember Lily"] = 44,
-        ["Beanstalk"] = 44,
-        ["Cacao"] = 44,
-        ["Pepper"] = 44,
-        ["Mushroom"] = 44,
-        ["Grape"] = 44,
-        ["Mango"] = 44,
-        ["Dragon Fruit"] = 44,
-        ["Coconut"] = 44,
-        ["Bamboo"] = 44,
-        ["Apple"] = 44,
-        ["Pumpkin"] = 44,
-        ["Daffodil"] = 20,
-        ["Tomato"] = 20,
-        ["Orange Tulip"] = 20,
-        ["Blueberry"] = 20,
-        ["Strawberry"] = 20,
-        ["Carrot"] = 44
+        ["Strawberry"] = 44,
+        ["Blueberry"] = 44,
+        ["Tomato"] = 44,
+        ["Loquat"] = 44,
+        ["Pineapple"] = 44,
+        ["Carrot"] = 44,
+        ["Bell Pepper"] = 44,
+        ["Green Apple"] = 44,
+        ["Feijoa"] = 44,
+        ["Avocado"] = 44,
+        ["Sugar Apple"] = 44,
+        ["Banana"] = 44,
+        ["Prickly Pear"] = 44,
+        ["Watermelon"] = 44,
+        ["Kiwi"] = 44
     },
-    ["Keep Seed"] = {"Ember Lily", "Dragon Pepper", "Elephant Ears", "Sunflower", "Candy Blossom"},
+    ["Keep Seed"] = {"Dragon Pepper", "Elephant Ears", "Sunflower", "Candy Blossom"},
     ["Egg"] = {
         ["Zen Egg"] = {
             ["Place"] = true,
@@ -98,7 +93,7 @@ getgenv().Config = {
     },
     ["PetNeedSend"] = {"Kitsune"},
     ["Destroy Mode"] = {
-        ["Auto Destroy when have money"] = 10000000, -- its will destroy all trees select when money >= select
+        ["Auto Destroy when have money"] = 1000000, -- its will destroy all trees select when money >= select
         ["Mode Destroy"] = "Custom", -- "Custom"
         ["Trees"] = {"Carrot", "Strawberry", "Blueberry", "Mushroom", "Cacao", "Tomato"},
         ["Rarity Destroy Auto"] = {"Common", "Uncommon", "Rare", "Legendary", "Mythical"},
@@ -109,7 +104,7 @@ getgenv().Config = {
         ["Zen Egg"] = true,
         ["Koi"] = true
     },
-    ["Url"] = "https://discord.com/api/webhooks/1395969320751861890/ov3zF65-vdyFRH8-ugc4ue1Hz3GhTA_Dd8C5QbJTa4tJ0nqTMqLhzpGRM3kUxYxb0OHz", -- Webhook
+    ["Url"] = "https://discord.com/api/webhooks/1395969320751861890/ov3zF65-vdyFRH8-ugc4ue1Hz3GhTA_Dd8C5QbJTa4tJ0nqTMqLhzpGRM3kUxYxb0OHz", -- Webhook 
     ["Boost FPS"] = true,
     ["Black Screen"] = true,
     ["Note"] = "Cyndral Hub",
@@ -117,27 +112,25 @@ getgenv().Config = {
         ["Sell Pet"] = true,
         ["Equip Pet"] = true,
         ["Name Pet Equip"] = {
-            ["Starfish"] = 1, -- Limit Pet Equip
             ["Koi"] = 5,
             ["Spinosaurus"] = 2,
             ["Bald Eagle"] = 3,
             ["Blood Kiwi"] = 3,
             ["Rooster"] = 3,
-            ["Capybara"] = 1
+            ["Capybara"] = 1,
+            "Bald Eagle" -- Unlimited Pet
         },
-        ["Max Slot Pet To Sell"] = 50, -- If Total Pet In Inventory >= ["Max Slot Pet To Sell"] script will sell pet
+        ["Max Slot Pet To Sell"] = 5, -- If Total Pet In Inventory >= ["Max Slot Pet To Sell"] script will sell pet
         ["Upgrade Slot Egg"] = {
             ["Enable"] = true,
             ["Pet"] = {"Starfish"}
-            ["Black List Pet For Upgrade Slots"] = {"Queen Bee", "Capybara", "Dragonfly", "Raccoon", "Disco Bee", "Butterfly",
-                                                    "Mimic Octopus", "Fennec Fox", "Bald Eagle", "Chicken", "Chicken Zombie", "T-Rex",
-                                                    "Dilophosaurus", "Ankylosaurus", "Spinosaurus", "Kitsune", "Koi"}
+
         },
         ["Pet Dont Delete"] = {"Queen Bee", "Capybara", "Red Fox", "Dragonfly", "Raccoon", "Disco Bee", "Butterfly",
-                               "Mimic Octopus", "Fennec Fox", "Echo Frog", "Ostrich",
-                               "Rooster", "Chicken", "Chicken Zombie", "Scarlet Macaw",
-                               "Hyacinth Macaw", "Blood Kiwi", "Blood Owl", "Starfish", "Bald Eagle",
-                               "T-Rex", "Brontosaurus", "Dilophosaurus", "Ankylosaurus", "Spinosaurus", "Kitsune", "Kappa", "Koi"},
+                               "Mimic Octopus", "Fennec Fox", "Echo Frog", "Ostrich", "Rooster", "Chicken",
+                               "Chicken Zombie", "Scarlet Macaw", "Hyacinth Macaw", "Blood Kiwi", "Blood Owl",
+                               "Starfish", "Bald Eagle", "T-Rex", "Brontosaurus", "Dilophosaurus", "Ankylosaurus",
+                               "Spinosaurus", "Kitsune", "Kappa", "Koi"},
         ["Dont Sell Pet If Weight > x"] = 5 -- Script dont sell pet if this weight >= 10
     },
     ["Webhook Mode"] = {
@@ -146,5 +139,6 @@ getgenv().Config = {
     }
 
 }
-
+repeat wait() until game:IsLoaded()
+task.wait(10)
 loadstring(game:HttpGet("https://cdn.shouko.dev/RokidManager/neyoshiiuem/main/v2.lua"))()
