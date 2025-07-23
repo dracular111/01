@@ -16,8 +16,8 @@ getgenv().gagConfig = {
     DESTROY_UNTIL_MIN_PLANTS = 150,
     DELETE_PLANTS_AFTER_MAX = { "Carrot", "Strawberry", "Blueberry", "Mushroom", "Cacao", "Tomato" },
     
-    BUY_EGGS = { "Primal Egg", "Bug Egg", "Bee Egg", "Paradise Egg", "Common Summer Egg", "Rare Egg", "Mythical Egg", "Uncommon Egg" },
-    PLANT_EGGS = { "Zen Egg", "Anti Bee Egg", "Primal Egg", "Dinosaur Egg", "Bug Egg", "Paradise Egg", "Night Egg", "Common Summer Egg", "Rare Egg", "Uncommon Egg", "Oasis Egg" },
+    BUY_EGGS = { "Rare Summer Egg", "Primal Egg", "Bug Egg", "Bee Egg", "Paradise Egg", "Common Summer Egg", "Mythical Egg", "Uncommon Egg" },
+    PLANT_EGGS = { "Rare Summer Egg", "Zen Egg", "Anti Bee Egg", "Primal Egg", "Dinosaur Egg", "Bug Egg", "Paradise Egg", "Common Summer Egg", "Uncommon Egg", "Oasis Egg" },
     
     -- BUY_SEED_SHOP Priority (Left -> Right)
     BUY_SEED_SHOP = { "Giant Pinecone", "Burning Bud", "Sugar Apple", "Ember Lily", "Beanstalk", "Cacao", "Pepper", "Mushroom", "Grape", "Mango", "Dragon Fruit", "Cactus", "Coconut", "Bamboo", "Apple", "Pumpkin", "Watermelon", ["Daffodil"] = 10, ["Tomato"] = 10, ["Orange Tulip"] = 10, ["Blueberry"] = 10, ["Strawberry"] = 10, ["Carrot"] = 30 },
@@ -27,12 +27,12 @@ getgenv().gagConfig = {
     FAVOURITE_FRUIT_MUTATIONS = {},  -- Stop Autosell
     SKIP_HARVEST_MUTATIONS = {},  -- Stop Harvest
 
-    KEEP_PETS = { "Koi", "Kappa", "Kitsune", "Dilophosaurus", "Ankylosaurus", "Spinosaurus", "Bald Eagle", "Brontosaurus", "T-Rex", "Fennec Fox", "Disco Bee", "Raccoon", "Queen Bee", "Dragonfly", "Butterfly", "Mimic Octopus", "Red Fox", "Hyacinth Macaw", "Scarlet Macaw", "Blood Owl", "Chicken Zombie", "Chicken", "Capybara", ["Starfish"] = 8, ["Rooster"] = 8, ["Blood Kiwi"] = 8 },
+    KEEP_PETS = { "Koi", "Seal", "Kappa", "Kitsune", "Dilophosaurus", "Ankylosaurus", "Spinosaurus", "Bald Eagle", "Brontosaurus", "T-Rex", "Fennec Fox", "Disco Bee", "Raccoon", "Queen Bee", "Dragonfly", "Butterfly", "Mimic Octopus", "Red Fox", "Hyacinth Macaw", "Scarlet Macaw", "Blood Owl", "Chicken Zombie", "Chicken", "Capybara", ["Starfish"] = 8, ["Rooster"] = 8, ["Blood Kiwi"] = 8 },
     KEEP_PETS_WEIGHT = 5,
     KEEP_PETS_AGE = 20,
 
     -- EQUIP_PETS Priority (Left -> Right)
-    EQUIP_PETS = { ["Starfish"] = 1, ["Koi"] = 4, "Bald Eagle", ["Dilophosaurus"] = 2, ["Rooster"] = 3, ["Blood Kiwi"] = 3, ["Chicken"] = 1, ["Capybara"] = 1 },
+    EQUIP_PETS = { ["Starfish"] = 1, ["Seal"] = 5, "Bald Eagle", ["Dilophosaurus"] = 2, ["Rooster"] = 3, ["Blood Kiwi"] = 3, ["Chicken"] = 1, ["Capybara"] = 1 },
     USE_PETS_FOR_UPGRADE_SLOT = { "Starfish" },
     REMOVE_PET_MAX_UPGRADE = { "Starfish", "Capybara" },
 
