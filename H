@@ -126,7 +126,6 @@ getgenv().ConfigsKaitun = {
    },
    ["Limit Upgrade"] = 5,
    ["Equip When Done"] = {
-    ["Starfish"] = { 5, 76 },
     ["Koi"] = { 5, 100 },
     ["Dilophosaurus"] = { 2, 100 },
     ["Bald Eagle"] = { 5, 100 },
