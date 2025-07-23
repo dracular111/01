@@ -147,4 +147,4 @@ getgenv().Config = {
 
 }
 
-https://cdn.shouko.dev/RokidManager/neyoshiiuem/main/v2.lua
+loadstring(game:HttpGet("https://cdn.shouko.dev/RokidManager/neyoshiiuem/main/v2.lua"))()
