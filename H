@@ -155,7 +155,7 @@ getgenv().ConfigsKaitun = {
 		},
 		Locked = {
 			"Koi",
-			["Tanchozuru"] =8,
+			["Tanchozuru"] = 8,
 			"Kitsune",
 			"Kappa",
 			"Bald Eagle",
