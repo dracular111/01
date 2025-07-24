@@ -1,77 +1,102 @@
 getgenv().ConfigsKaitun = {
- ["Stack Plant"] = true,
+	["Stack Plant"] = true,
+	
+	["Low Cpu"] = true,
+	["Auto Rejoin"] = false,
+	
+	["Rejoin When Update"] = false,
+	["Limit Tree"] = {
+		["Limit"] = 500,
+		["Destroy Untill"] = 500,
+		["Safe Tree"] = {
+			"Bone Blossom",
+			"Fossilight",
+			"Cacao",
+			"Sugar Apple",
+			"Ember Lily",
+			"Beanstalk",
+			"Giant Pinecone",
+			"Pepper",
+			"Burning Bud",
+			"Grape",
+			"Maple Apple",
+			"Sunflower",
+			"Elephant Ears",
+			"Dragon Pepper",
+			"Mango",
+			"Coconut",
+		}
+	},
 
- ["Low Cpu"] = true,
- ["Auto Rejoin"] = false,
- ["Rejoin When Update"] = false,
+	Seed = {
+		Buy = {
+			Mode = "Auto", -- Custom , Auto
+			Custom = {
+				"Carrot",
+				"Bamboo",
+				"Pumpkin",
+				"Daffodil",
+				"Orange Tulip",
+				"Watermelon",
+				"Mushroom",
+				"Nightshade",
+				"Beanstalk",
+			}
+		},
+		Place = {
+			Mode = "Select", -- Select , Lock
+			Select = {
+				"Cacao",
+				"Sugar Apple",
+				"Ember Lily",
+				"Beanstalk",
+				"Giant Pinecone",
+				"Pepper",
+				"Burning Bud",
+				"Mushroom",
+				"Bone Blossom",
+			    "Maple Apple",
+			    "Grape",
+				"Mango",
+			    "Coconut",
+			},
+			Lock = {
+			}
+		}
+	},
 
- ["Limit Tree"] = {
-  ["Limit"] = 200,
-  ["Destroy Untill"] = 150,
-  ["Safe Tree"] = {
-   "Moon Blossom",
-   "Fossilight",
-   "IDK",
-   "IDK"
-  }
- },
- Seed = {
-  Buy = {
-   Mode = "Auto", -- Custom , Auto
-   Custom = {
-    "Carrot",
-    "Bamboo",
-    "Pumpkin",
-    "Daffodil",
-    "Orange Tulip",
-    "Watermelon",
-    "Mushroom",
-    "Nightshade",
-    "Beanstalk",
-   }
-  },
-  Place = {
-   Mode = "Lock", -- Select , Lock
-   Select = {
-    "IDK",
-    "IDK",
-    "IDK",
-    "IDK"
-   },
-   Lock = {
-    "IDK",
- "IDK",
- "IDK"
-   }
-  }
- },
+	["Seed Pack"] = {
+		Locked = {
 
- ["Seed Pack"] = {
-  Locked = {
+		}
+	},
 
-  }
- },
-
- Events = {
-		Dino = true,
-
+	Events = {
+		["Zen Event"] = {
+			["Restocking"] = { -- Minimumthing to restock
+				Max_Restocks_Price = 64_000_000,
+				Minimum_Money = 1_000_000,
+				Minimum_Chi = 10
+			},
+			["Doing"] = {
+				Minimum_Money = 10_000_000, -- minimum money to start play this event
+				First_Upgrade_Tree = 7,
+				Maximum_Chi = 999,
+			}
+		},
 		["Traveling Shop"] = {
-			"IDK",
-			"IDK",
+			"Bald Eagle",
 			"Night Staff",
-			"Bee Egg"
+			"Star Caller",
+			"Bee Egg",
 		},
 		Craft = {
 			"Ancient Seed Pack",
-			"Lightning Rod",
 			"Anti Bee Egg",
 		},
 		Shop = {
 			"Zen Egg",
-			"Koi"
 		},
-		Restocks_limit = 16000000,
-		MinimumChi = 10
 	},
 
 	Gear = {
@@ -94,124 +119,116 @@ getgenv().ConfigsKaitun = {
 		},
 	},
 
- Eggs = {
-  Place = {
-   "Zen Egg",
-   "Oasis Egg",
-   "Anti Bee Egg",
-   "Primal Egg", 
-   "Dinosaur Egg",
-   "Bug Egg",
-   "Paradise Egg",
-   "Common Summer Egg",
-  },
-  Buy = {
-   "Anti Bee Egg",
-   "Zen Egg",
-   "Paradise Egg",
-   "Bee Egg",
-   "Night Egg",
-   "Bug Egg",
-   "Common Summer Egg",
-   "Mythical Egg",
-   "Rare Egg",
-  }
- },
+	Eggs = {
+		Place = {
+			"Zen Egg",
+			"Anti Bee Egg",
+			"Rare Summer Egg",
+			"Primal Egg",
+		},
+		Buy = {
+			"Bee Egg",
+			"Zen Egg",
+			"Oasis Egg",
+			"Paradise Egg",
+			"Anti Bee Egg",
+			"Night Egg",
+			"Bug Egg",
+			"Rare Summer Egg",
+			"Mythical Egg",
+			"Common Summer Egg",
+		}
+	},
 
- Pets = {
- ["Start Delete Pet At"] = 50, 
- ["Upgrade Slot"] = {
-   ["Pet"] = {
-    ["Starfish"] = { 5, 76 },
-   },
-   ["Limit Upgrade"] = 5,
-   ["Equip When Done"] = {
-    ["Koi"] = { 5 },
-    ["Dilophosaurus"] = { 2 },
-    ["Bald Eagle"] = { 5 },
-    ["Blood Kiwi"] = { 4 },
-    ["Rooster"] = { 4 },
-    ["Chicken"] = { 4 },
-    ["Capybara"] = { 1 },
-   },
-  },
-  Locked = {
-   "Kitsune",
-   "Kappa",
-   "Bald Eagle",
-   "Spinosaurus",
-   "T-Rex",
-   "Dragonfly",
-   "Butterfly",
-   "Raccon",
-   "Fennec Fox",
-   "Red Fox",
-   "Disco Bee",
-   "Queen Bee",
-   "Mimic Octopus",
-   "Dilophosaurus",
-   "Ankylosaurus",
-   "Hyacinth Macaw",
-   "Scarlet Macaw",
-   "Blood Owl",
-   "Chicken",
-   "Koi",
-   ["Capybara"] = 4,
-   ["Rooster"] = 8,
-   ["Blood Kiwi"] = 8,
-   ["Starfish"] = 8,
-  },
-  LockPet_Weight = 5, -- if Weight >= 10 they will locked,
-  Instant_Sell = {
-    "Bunny",
-    "Giant Ant",
-    "Caterpillar",
-    "Crab",
-    "Dog",
-    "Frog",
-    "Golden Lab",
-    "Hedgehog",
-    "Iguanodon",
-    "Mole",
-    "Monkey",
-    "Nihonzaru",
-    "Orange Tabby",
-    "Ostrich",
-    "Pachycephalosaurus",
-    "Parasaurolophus",
-    "Raptor",
-    "Seagull",
-    "Shiba Inu",
-    "Snail",
-    "Spotted Deer",
-    "Stegosaurus",
-    "Tanchozuru",
-    "Tanuki",
-    "Tarantula Hawk",
-    "Triceratops",
-    "Wasp",
-    "Pterodactyl",
-  }
- },
+	Pets = {
+		["Start Delete Pet At"] = 50,
+		["Upgrade Slot"] = {
+			["Pet"] = {
+				["Starfish"] = { 1, 76, 1 },
+			},
+			["Limit Upgrade"] = 5,
+			["Equip When Done"] = {
+				["Dilophosaurus"] = { 1, 100, 3 },
+				["Tanchozuru"] = { 4, 100, 4 },
+				["Seal"] = { 3, 100, 2 },
+			},
+		},
+		Locked = {
+			"Koi",
+			["Tanchozuru"] =8,
+			"Kitsune",
+			"Kappa",
+			"Bald Eagle",
+			"Spinosaurus",
+			"T-Rex",
+			"Dragonfly",
+			"Butterfly",
+			"Raccon",
+			"Fennec Fox",
+			"Red Fox",
+			"Disco Bee",
+			"Queen Bee",
+			"Mimic Octopus",
+			"Dilophosaurus",
+			"Ankylosaurus",
+			"Hyacinth Macaw",
+			"Scarlet Macaw",
+			"Blood Owl",
+			"Chicken",
+			"Koi",
+			["Capybara"] = 2,
+			["Rooster"] = 8,
+			["Blood Kiwi"] = 8,
+			["Starfish"] = 10,
+		},
+		LockPet_Weight = 5, -- if Weight >= 10 they will locked,
+		Instant_Sell = {		
+			"Shiba Inu",
+			"Bunny",
+			"Giant Ant",
+			"Caterpillar",
+			"Crab",
+			"Dog",
+			"Frog",
+			"Golden Lab",
+			"Hedgehog",
+			"Iguanodon",
+			"Mole",
+			"Monkey",
+			"Orange Tabby",
+			"Ostrich",
+			"Pachycephalosaurus",
+			"Parasaurolophus",
+			"Raptor",
+			"Seagull",
+			"Shiba Inu",
+			"Snail",
+			"Spotted Deer",
+			"Stegosaurus",
+			"Tanuki",
+			"Tarantula Hawk",
+			"Triceratops",
+			"Wasp",
+			"Pterodactyl",
+		}
+	},
 
- Webhook = {
-  UrlPet = "https://discord.com/api/webhooks/1396165603538239659/8DB0vG63IklWDGs-EAiMszsy4tvnrMOeTJ4FGuKcLL1N4wlnVL8LMtjBc3MFHL1aIuzn",
-  UrlSeed = "",
-  PcName = "",
+	Webhook = {
+		UrlPet = "https://discord.com/api/webhooks/1396165603538239659/8DB0vG63IklWDGs-EAiMszsy4tvnrMOeTJ4FGuKcLL1N4wlnVL8LMtjBc3MFHL1aIuzn",
+		UrlSeed = "xxx",
+		PcName = "",
 
-  Noti = {
-   Seeds = {
-    "IDK",
-    "IDK",
-    "IDK",
-   },
-   SeedPack = {
-    "Idk",
-   },
-   Pets = {
-    "Kitsune",
-   },
-   Pet_Weight_Noti = true,
-  }
- },
+		Noti = {
+			Seeds = {
+				"IDK",
+			},
+			SeedPack = {
+				"Idk"
+			},
+			Pets = {
+				"Kitsune",
+			},
+			Pet_Weight_Noti = true,
+		}
+	},
 }
