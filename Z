@@ -39,8 +39,8 @@ getgenv().gagConfig = {
 
     -- EQUIP_PETS Priority (Left -> Right)
     --EQUIP_PETS = { ["Dilophosaurus"] = 1, ["Starfish"] = 4, ["Capybara"] = 1 },
-    EQUIP_PETS = { ["Dilophosaurus"] = 1, ["Tanchozuru"] = 6, ["Seal"] = 5, ["Koi"] = 6, "Bald Eagle", ["Rooster"] = 3, ["Blood Kiwi"] = 3, ["Chicken"] = 1, ["Capybara"] = 1 },
-    EQUIP_PETS = { ["Dilophosaurus"] = 1, ["Tanchozuru"] = 7, ["Seal"] = 4 },
+    --EQUIP_PETS = { ["Dilophosaurus"] = 1, ["Tanchozuru"] = 6, ["Seal"] = 5, ["Koi"] = 6, "Bald Eagle", ["Rooster"] = 3, ["Blood Kiwi"] = 3, ["Chicken"] = 1, ["Capybara"] = 1 },
+    EQUIP_PETS = { ["Dilophosaurus"] = 1, ["Tanchozuru"] = 7, ["Seal"] = 7 },
     USE_PETS_FOR_UPGRADE_SLOT = { "Starfish", "Koi", "Red Fox" },
     USE_PETS_FOR_UPGRADE_SLOT = { "Starfish", "Koi", "Red Fox" },
     REMOVE_PET_MAX_UPGRADE = { "Starfish", "Capybara" },
