@@ -1,13 +1,11 @@
 getgenv().ConfigsKaitun = {
-	["Stack Plant"] = true,
-	
 	["Low Cpu"] = true,
 	["Auto Rejoin"] = false,
 	
 	["Rejoin When Update"] = false,
 	["Limit Tree"] = {
-		["Limit"] = 500,
-		["Destroy Untill"] = 500,
+		["Limit"] = 300,
+		["Destroy Untill"] = 280,
 		["Safe Tree"] = {
 			"Bone Blossom",
 			"Fossilight",
