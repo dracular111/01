@@ -2,7 +2,7 @@ getgenv().gagConfig = {
     -- Event:
     CRAFT_EVENT = { "Anti Bee Egg", "Zen Egg", "Primal Egg" },
     BUY_EVENT_SHOP = { "Zen Egg", "Koi" },
-    MAX_EVENT_RESTOCK_SHECKLES = 16000000,
+    MAX_EVENT_RESTOCK_SHECKLES = 64000000,
 
     -- General:
     AUTO_UPDATE_RESTART = true,
@@ -12,8 +12,8 @@ getgenv().gagConfig = {
     ADD_FRIEND = true,
     OPEN_ALL_SEED_PACK = true,
 
-    MAX_PLANTS = 200,
-    DESTROY_UNTIL_MIN_PLANTS = 150,
+    MAX_PLANTS = 500,
+        DESTROY_UNTIL_MIN_PLANTS = 500,
     DELETE_PLANTS_AFTER_MAX = { "Carrot", "Strawberry", "Blueberry", "Mushroom", "Cacao", "Tomato" },
     
     BUY_EGGS = { "Rare Summer Egg", "Primal Egg", "Bug Egg", "Bee Egg", "Paradise Egg", "Common Summer Egg", "Mythical Egg", "Uncommon Egg" },
@@ -27,7 +27,7 @@ getgenv().gagConfig = {
     FAVOURITE_FRUIT_MUTATIONS = {},  -- Stop Autosell
     SKIP_HARVEST_MUTATIONS = {},  -- Stop Harvest
 
-    KEEP_PETS = { "Koi", "Seal", "Kappa", "Kitsune", "Dilophosaurus", "Ankylosaurus", "Spinosaurus", "Bald Eagle", "Brontosaurus", "T-Rex", "Fennec Fox", "Disco Bee", "Raccoon", "Queen Bee", "Dragonfly", "Butterfly", "Mimic Octopus", "Red Fox", "Hyacinth Macaw", "Scarlet Macaw", "Blood Owl", "Chicken Zombie", "Chicken", "Capybara", ["Starfish"] = 8, ["Rooster"] = 8, ["Blood Kiwi"] = 8 },
+    KEEP_PETS = { "Koi", "Seal", "Kappa", "Kitsune", "Dilophosaurus", "Ankylosaurus", "Spinosaurus", "Bald Eagle", "Brontosaurus", "T-Rex", "Fennec Fox", "Disco Bee", "Raccoon", "Queen Bee", "Dragonfly", "Butterfly", "Mimic Octopus", "Red Fox", "Hyacinth Macaw", "Scarlet Macaw", "Blood Owl", "Chicken Zombie", "Chicken", ["Capybara"] = 1, ["Starfish"] = 5, ["Rooster"] = 8, ["Blood Kiwi"] = 8 },
     KEEP_PETS_WEIGHT = 5,
     KEEP_PETS_AGE = 20,
 
