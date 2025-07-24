@@ -3,6 +3,8 @@ getgenv().gagConfig = {
     CRAFT_EVENT = { "Anti Bee Egg", "Zen Egg", "Primal Egg" },
     --BUY_EVENT_SHOP = { "Zen Egg", "Koi" },
     BUY_EVENT_SHOP = { "Zen Egg" },
+    --MAX_EVENT_RESTOCK_SHECKLES = 16000000,
+    --MAX_EVENT_RESTOCK_SHECKLES = 32000000,
     MAX_EVENT_RESTOCK_SHECKLES = 64000000,
 
     -- General:
