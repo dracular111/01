@@ -23,6 +23,7 @@ getgenv().gagConfig = {
     
     BUY_EGGS = { "Rare Summer Egg", "Primal Egg", "Bug Egg", "Bee Egg", "Paradise Egg", "Common Summer Egg", "Mythical Egg", "Uncommon Egg" },
     --PLANT_EGGS = { "Zen Egg", "Anti Bee Egg", "Rare Summer Egg", "Primal Egg", "Dinosaur Egg", "Bug Egg", "Paradise Egg", "Common Summer Egg", "Uncommon Egg", "Oasis Egg" },
+    PLANT_EGGS = { "Zen Egg", "Anti Bee Egg", "Rare Summer Egg" },
     PLANT_EGGS = { "Zen Egg" },
     
     -- BUY_SEED_SHOP Priority (Left -> Right)
