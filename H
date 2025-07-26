@@ -75,7 +75,7 @@ getgenv().ConfigsKaitun = {
 			["Restocking"] = { -- Minimumthing to restock
 				Max_Restocks_Price = 128_000_000,
 				Minimum_Money = 1,
-				Minimum_Chi = 30
+				Minimum_Chi = 10
 			},
 			["Doing"] = {
 				Minimum_Money = 1, -- minimum money to start play this event
@@ -156,13 +156,13 @@ getgenv().ConfigsKaitun = {
 			["Limit Upgrade"] = 5,
 			["Equip When Done"] = {
 				["Tanchozuru"] = { 8, 100, 2 },
-				["Dilophosaurus"] = { 1, 100, 3 },
-				["Bald Eagle"] = { 5, 100, 4 },
-				["Seal"] = { 3, 100, 5 },
-				["Blood Kiwi"] = { 3, 100, 6 },
-				["Rooster"] = { 3, 100, 7 },
-				["Capybara"] = { 1, 100, 8 },
-				["Koi"] = { 3, 100, 9 },
+				-- ["Dilophosaurus"] = { 1, 100, 3 },
+				-- ["Bald Eagle"] = { 5, 100, 4 },
+				-- ["Seal"] = { 3, 100, 5 },
+				-- ["Blood Kiwi"] = { 3, 100, 6 },
+				-- ["Rooster"] = { 3, 100, 7 },
+				-- ["Capybara"] = { 1, 100, 8 },
+				-- ["Koi"] = { 3, 100, 9 },
 			},
 		},
 		Locked = {
