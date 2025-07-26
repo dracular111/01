@@ -171,6 +171,7 @@ getgenv().ConfigsKaitun = {
 			"Koi",
 			"Football",
 			["Tanchozuru"] = 8,
+			"Corrupted Kitsune",
 			"Kitsune",
 			"Kappa",
 			"Bald Eagle",
