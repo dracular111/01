@@ -169,6 +169,7 @@ getgenv().ConfigsKaitun = {
 		},
 		Locked = {
 			"Koi",
+			"Raiju",
 			"Football",
 			["Tanchozuru"] = 8,
 			"Corrupted Kitsune",
