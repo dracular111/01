@@ -28,7 +28,6 @@ getgenv().ConfigsKaitun = {
   }
  },
 
-
  Seed = {
   Buy = {
    Mode = "Auto", -- Custom , Auto
@@ -147,7 +146,7 @@ getgenv().ConfigsKaitun = {
    ["Pet"] = {
     ["Starfish"] = { 5, 76 },
    },
-   ["Limit Upgrade"] = 8,
+   ["Limit Upgrade"] = 5,
    ["Equip When Done"] = {
     ["Tanchozuru"] = { 8, 999 },
    },
