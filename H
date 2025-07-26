@@ -1,256 +1,258 @@
 getgenv().ConfigsKaitun = {
-["Block Pet Gift"] = true, 
-["Low Cpu"] = true,
+	["Low Cpu"] = true,
+	["Auto Rejoin"] = false,
+	
+	["Rejoin When Update"] = false,
+	["Limit Tree"] = {
+		["Limit"] = 500,
+		["Destroy Untill"] = 480,
 
- ["Rejoin When Update"] = false,
+		["Safe Tree"] = {
+			"Bone Blossom",
+			"Fossilight",
+			"Cacao",
+			"Sugar Apple",
+			"Ember Lily",
+			"Beanstalk",
+			"Giant Pinecone",
+			"Pepper",
+			"Burning Bud",
+			"Grape",
+			"Maple Apple",
+			"Sunflower",
+			"Elephant Ears",
+			"Dragon Pepper",
+			"Mango",
+			"Coconut",
+		}
+	},
 
- ["Limit Tree"] = {
-  ["Limit"] = 500,
-  ["Destroy Untill"] = 480,
+	Seed = {
+		Buy = {
+			Mode = "Auto", -- Custom , Auto
+			Custom = {
+				"Carrot",
+				"Bamboo",
+				"Pumpkin",
+				"Daffodil",
+				"Orange Tulip",
+				"Watermelon",
+				"Mushroom",
+				"Nightshade",
+				"Beanstalk",
+			}
+		},
+		Place = {
+			Mode = "Select", -- Select , Lock
+			Select = {
+				"Cacao",
+				"Sugar Apple",
+				"Ember Lily",
+				"Beanstalk",
+				"Giant Pinecone",
+				"Pepper",
+				"Burning Bud",
+				"Mushroom",
+				"Bone Blossom",
+			    "Maple Apple",
+			    "Grape",
+				"Mango",
+			    "Coconut",
+			},
+			Lock = {
+			}
+		}
+	},
 
-  ["Safe Tree"] = {
-   "Bone Blossom",
-   "Fossilight",
-   "Cacao",
-   "Sugar Apple",
-   "Ember Lily",
-   "Beanstalk",
-   "Giant Pinecone",
-   "Pepper",
-   "Burning Bud",
-   "Grape",
-   "Maple Apple",
-   "Sunflower",
-   "Elephant Ears",
-   "Dragon Pepper",
-   "Mango",
-   "Coconut",
-  }
- },
+	["Seed Pack"] = {
+		Locked = {
 
+		}
+	},
 
- Seed = {
-  Buy = {
-   Mode = "Auto", -- Custom , Auto
-   Custom = {
-    "Carrot",
-    "Bamboo",
-    "Pumpkin",
-    "Daffodil",
-    "Orange Tulip",
-    "Watermelon",
-    "Mushroom",
-    "Nightshade",
-    "Beanstalk",
-   }
-  },
-  Place = {
-   Mode = "Select", -- Select , Lock
-   Select = {
-    "Cacao",
-    "Sugar Apple",
-    "Ember Lily",
-    "Beanstalk",
-    "Giant Pinecone",
-    "Pepper",
-    "Burning Bud",
-    "Mushroom",
-    "Bone Blossom",
-       "Maple Apple",
-       "Grape",
-    "Mango",
-       "Coconut",
-   },
-   Lock = {
-   }
-  }
- },
+	Events = {
+		["Zen Event"] = {
+			["Restocking"] = { -- Minimumthing to restock
+				-- Max_Restocks_Price = 64_000_000,
+				-- Max_Restocks_Price = 128_000_000,
+				Max_Restocks_Price = 256_000_000,
+				Minimum_Money = 1,
+				Minimum_Chi = 10
+			},
+			["Doing"] = {
+				Minimum_Money = 1, -- minimum money to start play this event
+				First_Upgrade_Tree = 1,
+				Maximum_Chi = 50,
+			}
+		},
+		["Traveling Shop"] = {
+			"Bald Eagle",
+			"Night Staff",
+			"Star Caller",
+			"Bee Egg",
+		},
+		Craft = {
+			"Lightning Rod",
+			"Anti Bee Egg",
+		},
+		Shop = {
+			"Zen Egg",
+		},
+	},
 
- ["Seed Pack"] = {
-  Locked = {
+	Gear = {
+		Buy = { 
+			"Watering Can",
+			"Trowel",
+			"Recall Wrench",
+			"Magnifying Glass",
+			"Tanning Mirror",
+			"Cleaning Spray",
+			"Favorite Tool",
+			"Harvest Tool",
+			"Friendship Pot",
+			"Master Sprinkler",
+			"Basic Sprinkler",
+			"Godly Sprinkler",
+			"Advanced Sprinkler",
+			"Medium Toy",
+			"Medium Treat",
+			"Levelup Lollipop",
+			"Lightning Rod",
+		},
+		Lock = {
+			"Master Sprinkler",
+			"Godly Sprinkler",
+			"Advanced Sprinkler",
+			"Basic Sprinkler",
+			"Lightning Rod",
+		},
+	},
 
-  }
- },
+	Eggs = {
+		Place = {
+			"Zen Egg",
+			"Common Summer Egg",
+			-- "Anti Bee Egg",
+			-- "Primal Egg",
+			-- "Paradise Egg",
+			-- "Oasis Egg",
+			-- "Night Egg",
+			-- "Bug Egg",
+			-- "Mythical Egg",
+			"Rare Egg",
+			"Rare Summer Egg",
+		},
+		Buy = {
+			"Bee Egg",
+			"Zen Egg",
+			"Oasis Egg",
+			"Paradise Egg",
+			"Anti Bee Egg",
+			"Night Egg",
+			"Bug Egg",
+			"Rare Egg",
+			"Rare Summer Egg",
+			"Mythical Egg",
+			"Common Summer Egg",
+		}
+	},
 
- Events = {
-  ["Traveling Shop"] = {
-   "Bald Eagle",
-   "Night Staff",
-   "Star Caller",
-   "Bee Egg",
-  },
-  Craft = {
-   "Lightning Rod",
-   "Anti Bee Egg",
-  },
-  Shop = {
-   "Zen Egg",
-  },
-  -- Restocks_limit = 64000000,
-  Restocks_limit = 128000000,
-  -- Restocks_limit = 256000000,
-  MinimumChi = 10
- },
+	Pets = {
+		["Start Delete Pet At"] = 50,
+		["Upgrade Slot"] = {
+			["Pet"] = {
+				["Starfish"] = { 5, 76, 1 },
+			},
+			["Limit Upgrade"] = 5,
+			["Equip When Done"] = {
+				["Tanchozuru"] = { 8, 100, 1 },
+				-- ["Dilophosaurus"] = { 1, 100, 2 },
+				-- ["Bald Eagle"] = { 5, 100, 3 },
+				-- ["Seal"] = { 3, 100, 4 },
+				-- ["Blood Kiwi"] = { 3, 100, 5 },
+				-- ["Rooster"] = { 3, 100, 6 },
+				-- ["Capybara"] = { 1, 100, 7 },
+				-- ["Koi"] = { 3, 100, 8 },
+			},
+		},
+		Locked = {
+			"Koi",
+			["Tanchozuru"] = 8,
+			"Corrupted Kitsune",
+			"Kitsune",
+			"Kappa",
+			"Bald Eagle",
+			"Spinosaurus",
+			"T-Rex",
+			"Dragonfly",
+			"Butterfly",
+			"Raccon",
+			"Fennec Fox",
+			"Red Fox",
+			"Disco Bee",
+			"Queen Bee",
+			"Mimic Octopus",
+			"Dilophosaurus",
+			"Ankylosaurus",
+			"Hyacinth Macaw",
+			"Scarlet Macaw",
+			"Blood Owl",
+			"Chicken",
+			["Capybara"] = 2,
+			"Rooster",
+			"Blood Kiwi",
+			["Starfish"] = 5,
+		},
+		LockPet_Weight = 5, -- if Weight >= 10 they will locked,
+		Instant_Sell = {		
+			"Shiba Inu",
+			"Bunny",
+			"Giant Ant",
+			"Caterpillar",
+			"Crab",
+			"Dog",
+			"Frog",
+			"Golden Lab",
+			"Hedgehog",
+			"Iguanodon",
+			"Mole",
+			"Monkey",
+			"Orange Tabby",
+			"Ostrich",
+			"Pachycephalosaurus",
+			"Parasaurolophus",
+			"Raptor",
+			"Seagull",
+			"Shiba Inu",
+			"Snail",
+			"Spotted Deer",
+			"Stegosaurus",
+			"Tanuki",
+			"Tarantula Hawk",
+			"Triceratops",
+			"Wasp",
+			"Pterodactyl",
+		}
+	},
 
- Gear = {
-  Buy = { 
-   "Master Sprinkler",
-   "Godly Sprinkler",
-   "Advanced Sprinkler",
-   "Basic Sprinkler",
-   "Lightning Rod",
-   "Level Up Lollipop",
-   "Medium Treat",
-   "Medium Toy",
-  },
-  Lock = {
-   "Godly Sprinkler",
-            "Master Sprinkler",
-            "Level Up Lollipop"
-  },
- },
+	Webhook = {
+		UrlPet = "https://discord.com/api/webhooks/1396165603538239659/8DB0vG63IklWDGs-EAiMszsy4tvnrMOeTJ4FGuKcLL1N4wlnVL8LMtjBc3MFHL1aIuzn",
+		UrlSeed = "xxx",
+		PcName = "",
 
- Eggs = {
-  Place = {
-      "Zen Egg",
-      "Common Summer Egg",
-      "Zen Egg",
-      -- "Anti Bee Egg",
-      -- "Primal Egg",
-      -- "Paradise Egg",
-      -- "Oasis Egg",
-      -- "Night Egg",
-      -- "Bug Egg",
-      -- "Mythical Egg",
-      -- "Rare Egg",
-      -- "Rare Summer Egg",
-  },
-  Buy = {
-   "Anti Bee Egg",
-   "Bee Egg",
-   "Zen Egg",
-   "Oasis Egg",
-   "Paradise Egg",   
-   "Anti Bee Egg",
-   "Night Egg",
-   "Bug Egg",
-   "Rare Egg",
-   "Rare Summer Egg",
-   "Mythical Egg",
-   "Common Summer Egg",
-  }
- },
-
- Pets = {
-  ["Start Delete Pet At"] = 50,
-  ["Upgrade Slot"] = {
-   ["Pet"] = {
-    ["Starfish"] = { 5, 76 },
-   },
-   ["Limit Upgrade"] = 8,
-   ["Equip When Done"] = {
-    ["Tanchozuru"] = { 8, 999 },
-   },
-  },
-  Locked_Pet_Age = 50, -- pet that age > 60 will lock
-  Locked = {
-   "Corrupted Kitsune",
-   "Kitsune",
-   "Bald Eagle",
-   "Spinosaurus",
-   "T-Rex",
-   "Dragonfly",
-   "Butterfly",
-   "Raccon",
-   "Fennec Fox",
-   "Red Fox",
-   "Disco Bee",
-   "Queen Bee",
-   "Mimic Octopus",
-   "Dilophosaurus",
-   "Ankylosaurus",
-   "Hyacinth Macaw",
-   "Blood Owl",
-   "Chicken",
-   "Rooster",
-   "Blood Kiwi",
-   ["Koi"] = 8,
-   ["Scarlet Macaw"] = 8,
-   ["Tanchozuru"] = 8,
-   ["Capybara"] = 2,
-   ["Starfish"] = 5,
-  },
-  LockPet_Weight = 5, -- if Weight >= 10 they will locked,
-  Instant_Sell = {
-   "Dog",
-   "Bunny",
-   "Golden Lab",
-   "Triceratops",
-   "Stegosaurus",
-   "Raptor",
-   "Seagull",
-   "Parasaurolophus",
-   "Pachycephalosaurus",
-   "Iguanodon",
-   "Shiba Inu",
-   "Nihonzaru",
-   "Tanuki",
-   "Kappa",
-   "Caterpillar",
-   "Snail",
-   "Giant Ant",
-   "Praying Mantis",
-   "Ankylosaurus",
-   "Ostrich",
-   "Peacock",
-   "Scarlet Macaw",
-   "Capybara",
-   "Wasp",
-   "Tarantula Hawk",
-   "Moth",
-   "Bee",
-   "Honey Bee",
-   "Bear Bee",
-   "Petal Bee",
-   "Grey Mouse",
-   "Brown Mouse",
-   "Squirrel",
-   "Red Giant Ant",
-   "Hedgehog",
-   "Mole",
-   "Kodama",
-   "Maneki-neko",
-   "Raiju"
-   "Frog",
-   "Echo Frog",
-   "Night Owl",
-   "Brontosaurus",
-   "Dilophosaurus",
-   "Pterodactyl",
-   "Crab",
-   "Football",
-   "Sea Turtle",
-   "Seagull",
-  }
- },
-
- Webhook = {
-  UrlPet = "https://discord.com/api/webhooks/1396165603538239659/8DB0vG63IklWDGs-EAiMszsy4tvnrMOeTJ4FGuKcLL1N4wlnVL8LMtjBc3MFHL1aIuzn",
-  UrlSeed = "",
-  PcName = "",
-
-  Noti = {
-   Seeds = {
-    "Idk",
-   },
-   SeedPack = {
-    "Idk",
-   },
-   Pets = {
-           "Kitsune",
-           "Corrupted Kitsune",
-   },
-   Pet_Weight_Noti = true,
-  }
- },
+		Noti = {
+			Seeds = {
+				"IDK",
+			},
+			SeedPack = {
+				"Idk"
+			},
+			Pets = {
+				"Kitsune",
+				"Corrupted Kitsune",
+			},
+			Pet_Weight_Noti = true,
+		}
+	},
 }
