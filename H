@@ -225,8 +225,6 @@ getgenv().ConfigsKaitun = {
    "Frog",
    "Echo Frog",
    "Night Owl",
-   "Brontosaurus",
-   "Dilophosaurus",
    "Pterodactyl",
    "Crab",
    "Football",
