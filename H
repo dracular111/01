@@ -57,10 +57,10 @@ getgenv().ConfigsKaitun = {
     "Burning Bud",
     "Mushroom",
     "Bone Blossom",
-       "Maple Apple",
-       "Grape",
+    "Maple Apple",
+    "Grape",
     "Mango",
-       "Coconut",
+    "Coconut",
    },
    Lock = {
    }
@@ -106,8 +106,8 @@ getgenv().ConfigsKaitun = {
   },
   Lock = {
    "Godly Sprinkler",
-            "Master Sprinkler",
-            "Level Up Lollipop"
+   "Master Sprinkler",
+   "Level Up Lollipop"
   },
  },
 
