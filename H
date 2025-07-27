@@ -145,11 +145,11 @@ getgenv().ConfigsKaitun = {
   ["Start Delete Pet At"] = 50,
   ["Upgrade Slot"] = {
    ["Pet"] = {
-    ["Starfish"] = { 5, 76 },
+    ["Starfish"] = { 5, 76, 1 },
    },
    ["Limit Upgrade"] = 5,
    ["Equip When Done"] = {
-    ["Tanchozuru"] = { 8, 999 },
+    ["Tanchozuru"] = { 8, 100, 1 },
    },
   },
   Locked_Pet_Age = 50, -- pet that age > 60 will lock
