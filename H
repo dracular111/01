@@ -88,8 +88,8 @@ getgenv().ConfigsKaitun = {
    "Zen Egg",
   },
   -- Restocks_limit = 64000000,
-  Restocks_limit = 128000000,
-  -- Restocks_limit = 256000000,
+  -- Restocks_limit = 128000000,
+  Restocks_limit = 256000000,
   MinimumChi = 10
  },
 
