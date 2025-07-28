@@ -11,6 +11,11 @@ getgenv().ConfigsKaitun = {
   -- ["Destroy Untill"] = 500,
 
   ["Safe Tree"] = {
+   "Zen Rocks",
+   "Taro Flower",
+   "Hinomai",
+   "Bone Blossom",
+   "Soft Sunshine",
    "Bone Blossom",
    "Fossilight",
    "Cacao",
@@ -58,6 +63,10 @@ getgenv().ConfigsKaitun = {
     "Mushroom",
     "Bone Blossom",
     "Maple Apple",
+    "Zen Rocks",
+    "Taro Flower",
+    "Hinomai",
+    "Soft Sunshine",
     "Grape",
     "Mango",
     "Coconut",
