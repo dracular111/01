@@ -97,7 +97,7 @@ getgenv().ConfigsKaitun = {
   },
   Shop = {
    "Zen Egg",
-   "Zen Seed Pack",
+   -- "Zen Seed Pack",
   },
   -- Restocks_limit = 64000000,
   -- Restocks_limit = 128000000,
