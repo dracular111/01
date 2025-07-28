@@ -5,10 +5,10 @@ getgenv().ConfigsKaitun = {
  ["Rejoin When Update"] = false,
 
  ["Limit Tree"] = {
-  ["Limit"] = 450,
-  -- ["Limit"] = 500,
-  ["Destroy Untill"] = 430,
-  -- ["Destroy Untill"] = 500,
+  -- ["Limit"] = 450,
+  ["Limit"] = 500,
+  -- ["Destroy Untill"] = 430,
+  ["Destroy Untill"] = 480,
 
   ["Safe Tree"] = {
    "Zen Rocks",
