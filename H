@@ -161,6 +161,7 @@ getgenv().ConfigsKaitun = {
    "Spinosaurus",
    "T-Rex",
    "Dilophosaurus",
+   "Brontosaurus",
    "Ankylosaurus",
    "Dragonfly",
    "Butterfly",
@@ -184,6 +185,9 @@ getgenv().ConfigsKaitun = {
   LockPet_Weight = 5, -- if Weight >= 10 they will locked,
   Instant_Sell = {
    "Dog",
+   "Kodama",
+   "Maneki-neko",
+   "Flamingo",
    "Bunny",
    "Golden Lab",
    "Triceratops",
