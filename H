@@ -53,7 +53,6 @@ getgenv().ConfigsKaitun = {
   Place = {
    Mode = "Select", -- Select , Lock
    Select = {
-    "Cacao",
     "Serenity",
     "Monoblooma",
     "Sugar Apple",
