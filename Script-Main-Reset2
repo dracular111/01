@@ -1,0 +1,4 @@
+while true do
+    wait(1)  -- chờ 10 giây (0 phút)
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Script-Reset2"))()
+end
