@@ -8,7 +8,7 @@ getgenv().ConfigsKaitun = {
   -- ["Limit"] = 450,
   ["Limit"] = 500,
   -- ["Destroy Untill"] = 430,
-  ["Destroy Untill"] = 480,
+  ["Destroy Untill"] = 500,
 
   ["Safe Tree"] = {
    "Zen Rocks",
@@ -164,6 +164,8 @@ getgenv().ConfigsKaitun = {
    ["Limit Upgrade"] = 5,
    ["Equip When Done"] = {
     ["Tanchozuru"] = { 8, 100, 2 },
+    ["Corrupted Kodama"] = { 8, 100, 3 },
+    ["Dilophosaurus"] = { 1, 100, 4 },
    },
   },
   Locked_Pet_Age = 40, -- pet that age > 60 will lock
