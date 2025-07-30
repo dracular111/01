@@ -5,10 +5,10 @@ getgenv().ConfigsKaitun = {
  ["Rejoin When Update"] = false,
 
  ["Limit Tree"] = {
-  ["Limit"] = 400,
-  -- ["Limit"] = 500,
-  ["Destroy Untill"] = 400,
-  -- ["Destroy Untill"] = 500,
+  -- ["Limit"] = 400,
+  ["Limit"] = 500,
+  -- ["Destroy Untill"] = 400,
+  ["Destroy Untill"] = 500,
 
   ["Safe Tree"] = {
    "Zen Rocks",
@@ -260,7 +260,6 @@ getgenv().ConfigsKaitun = {
    },
    Pets = {
            "Kitsune",
-           "Corrupted Kitsune",
    },
    Pet_Weight_Noti = true,
   }
