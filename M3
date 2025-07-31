@@ -1,0 +1,4 @@
+getgenv().Config = {
+    ["Account Main"] = {"thirt8ik"},
+    ["Pet"] = {"Hyacinth Macaw"}
+}
