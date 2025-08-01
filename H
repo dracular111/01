@@ -152,7 +152,6 @@ getgenv().ConfigsKaitun = {
    "Zen Egg",
    "Oasis Egg",
    "Paradise Egg",   
-   "Anti Bee Egg",
    "Night Egg",
    "Bug Egg",
    "Rare Egg",
@@ -208,7 +207,6 @@ getgenv().ConfigsKaitun = {
   LockPet_Weight = 5, -- if Weight >= 10 they will locked,
   Instant_Sell = {
    "Dog",
-   "Maneki-neko",
    "Flamingo",
    "Bunny",
    "Golden Lab",
