@@ -20,17 +20,17 @@ getgenv().gagConfig = {
     MAX_PLANTS = 450,
     -- DESTROY_UNTIL_MIN_PLANTS = 700,
     DESTROY_UNTIL_MIN_PLANTS = 400,
-    DELETE_PLANTS_AFTER_MAX = { "Orange Tulip", "Daffodil", "Lettuce", "Broccoli", "Cabbage", "Wheat", "Potato", "Sunflower", "Daisy", "Rose", "Lily", "Lemon", "Orange", "Clover", "Bonsai", "Stump", "Mini Log", "Flower Mix", "Snow Plant" },
-    LIMIT_PLANT_SEED = { ["Strawberry"] = 50, ["Blueberry"] = 30 },
+    DELETE_PLANTS_AFTER_MAX = { "Carrot", "Tomato", "Orange Tulip", "Daffodil", "Lettuce", "Broccoli", "Cabbage", "Wheat", "Potato", "Sunflower", "Daisy", "Rose", "Lily", "Lemon", "Orange", "Clover", "Bonsai", "Stump", "Mini Log", "Flower Mix", "Snow Plant" },
+    LIMIT_PLANT_SEED = { ["Apple"] = 3, ["Coconut"] = 10, ["Pepper"] = 5, ["Cactus"] = 5, ["Mushroom"] = 5, ["Grape"] = 5, ["Cacao"] = 3, ["Maple Apple"] = 2, ["Strawberry"] = 2, ["Blueberry"] = 2, ["Orange Tulip"] = 2, ["Tomato"] = 2, ["Corn"] = 2, ["Daffodil"] = 2, ["Bamboo"] = 2, ["Pumpkin"] = 2, ["Watermelon"] = 2, ["Dragon Fruit"] = 2, ["Mango"] = 2 },
     BUY_EGGS = { "Bug Egg", "Bee Egg", "Paradise Egg", "Mythical Egg", "Rare Summer Egg", "Common Summer Egg", "Rare Egg", "Uncommon Egg" },
     PLANT_EGGS = { "Zen Egg", "Corrupted Zen Egg", "Common Summer Egg" },
     
     -- BUY_SEED_SHOP Priority (Left -> Right)
     BUY_SEED_SHOP = {   "Elder Strawberry", "Giant Pinecone", "Burning Bud", "Sugar Apple", "Ember Lily", "Beanstalk", "Cacao", "Pepper", "Mushroom", "Grape", "Mango", "Dragon Fruit", "Cactus", "Coconut", "Bamboo", "Apple", "Pumpkin", "Watermelon", ["Strawberry"] = 10, ["Blueberry"] = 10, ["Carrot"] = 10, ["Tomato"] = 10, ["Orange Tulip"] = 10, ["Daffodil"] = 10 },
-    KEEP_SEEDS = { "Rosy Delight", "Orange Tulip", "Daffodil", "Lettuce", "Broccoli", "Cabbage", "Wheat", "Potato", "Sunflower", "Daisy", "Rose", "Lily", "Lemon", "Orange", "Clover", "Bonsai", "Stump", "Mini Log", "Flower Mix", "Snow Plant" },
-    KEEP_SEEDS_AFTER_MAX_PLANTS = { "Orange Tulip", "Daffodil", "Lettuce", "Broccoli", "Cabbage", "Wheat", "Potato", "Sunflower", "Daisy", "Rose", "Lily", "Lemon", "Orange", "Clover", "Bonsai", "Stump", "Mini Log", "Flower Mix", "Snow Plant" },
+    KEEP_SEEDS = { "Carrot", "Rosy Delight", "Orange Tulip", "Daffodil", "Lettuce", "Broccoli", "Cabbage", "Wheat", "Potato", "Sunflower", "Daisy", "Rose", "Lily", "Lemon", "Orange", "Clover", "Bonsai", "Stump", "Mini Log", "Flower Mix", "Snow Plant" },
+    KEEP_SEEDS_AFTER_MAX_PLANTS = { "Carrot", "Orange Tulip", "Daffodil", "Lettuce", "Broccoli", "Cabbage", "Wheat", "Potato", "Sunflower", "Daisy", "Rose", "Lily", "Lemon", "Orange", "Clover", "Bonsai", "Stump", "Mini Log", "Flower Mix", "Snow Plant" },
     
-    FAVOURITE_FRUIT_MUTATIONS = { "Ember Lily", "Burning Bud", "Sugar Apple", "Beanstalk", "Elder Strawberry", "Giant Pinecone" },  -- Stop Autosell
+    FAVOURITE_FRUIT_MUTATIONS = { "Sugar Apple", "Ember Lily", "Burning Bud", "Giant Pinecone", "Beanstalk", "Elder Strawberry", "Serenity", "Tranquil Bloom", "Ember Lily", "Burning Bud", "Sugar Apple", "Beanstalk", "Elder Strawberry", "Giant Pinecone" },  -- Stop Autosell
     SKIP_HARVEST_MUTATIONS = { "Burning Bud", "Rosy Delight" },  -- Stop Harvest
 
     KEEP_PETS = { "Corrupted Kitsune", "Kitsune", "Corrupted Kodama", "Kodama", "Rooster", "Blood Kiwi", ["Tanchozuru"] = 8, "Koi", "Seal", "Dilophosaurus", "Ankylosaurus", "Spinosaurus", "Bald Eagle", "Brontosaurus", "T-Rex", "Fennec Fox", "Disco Bee", "Raccoon", "Queen Bee", "Dragonfly", "Butterfly", "Mimic Octopus", "Red Fox", "Hyacinth Macaw", "Scarlet Macaw", "Blood Owl", "Chicken Zombie", "Chicken", ["Capybara"] = 1, ["Starfish"] = 5 },
