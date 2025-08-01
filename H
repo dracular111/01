@@ -14,7 +14,6 @@ getgenv().ConfigsKaitun = {
    "Zen Rocks",
    "Taro Flower",
    "Hinomai",
-   "Bone Blossom",
    "Soft Sunshine",
    "Bone Blossom",
    "Fossilight",
@@ -91,7 +90,6 @@ getgenv().ConfigsKaitun = {
 
  ["Seed Pack"] = {
   Locked = {
-
   }
  },
 
@@ -168,7 +166,7 @@ getgenv().ConfigsKaitun = {
   ["Start Delete Pet At"] = 50,
   ["Upgrade Slot"] = {
    ["Pet"] = {
-    ["Starfish"] = { 5, 76, 1 },
+    ["Starfish"] = { 5, 76, 1, true },
    },
    ["Limit Upgrade"] = 5,
    ["Equip When Done"] = {
@@ -177,7 +175,7 @@ getgenv().ConfigsKaitun = {
     ["Dilophosaurus"] = { 1, 100, 4 },
    },
   },
-  Locked_Pet_Age = 40, -- pet that age > 60 will lock
+  Locked_Pet_Age = 45, -- pet that age > 60 will lock
   Locked = {
    "Corrupted Kitsune",
    "Corrupted Kodama",
@@ -210,7 +208,6 @@ getgenv().ConfigsKaitun = {
   LockPet_Weight = 5, -- if Weight >= 10 they will locked,
   Instant_Sell = {
    "Dog",
-   "Kodama",
    "Maneki-neko",
    "Flamingo",
    "Bunny",
