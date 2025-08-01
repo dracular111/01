@@ -54,7 +54,6 @@ getgenv().ConfigsKaitun = {
    Mode = "Select", -- Select , Lock
    Select = {
     "Serenity",
-    "Corrupted Zen Egg",
     "Tranquil Bloom",
     "Fossilight",
     "Starfruit",
@@ -110,9 +109,8 @@ getgenv().ConfigsKaitun = {
    "Zen Egg",
    -- "Zen Seed Pack",
   },
-  -- Restocks_limit = 64000000,
+  -- Restocks_limit = 1000000000,
   Restocks_limit = 512000000,
-  -- Restocks_limit = 256000000,
   MinimumChi = 10
  },
 
