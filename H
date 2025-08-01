@@ -6,9 +6,9 @@ getgenv().ConfigsKaitun = {
 
  ["Limit Tree"] = {
   -- ["Limit"] = 400,
-  ["Limit"] = 500,
+  ["Limit"] = 450,
   -- ["Destroy Untill"] = 400,
-  ["Destroy Untill"] = 500,
+  ["Destroy Untill"] = 450,
 
   ["Safe Tree"] = {
    "Zen Rocks",
@@ -54,7 +54,11 @@ getgenv().ConfigsKaitun = {
    Mode = "Select", -- Select , Lock
    Select = {
     "Serenity",
-    "Monoblooma",
+    "Corrupted Zen Egg",
+    "Tranquil Bloom",
+    "Fossilight",
+    "Starfruit",
+    "Sunlight Clover",
     "Sugar Apple",
     "Ember Lily",
     "Beanstalk",
@@ -71,6 +75,15 @@ getgenv().ConfigsKaitun = {
     "Grape",
     "Mango",
     "Coconut",
+    "Loquat",
+    "Feijoa",
+    "Dragon Fruit",
+    "Cacao",
+    "Bamboo",
+    "Strawberry",
+    "Blueberry",
+    "Pitcher Plant",
+    "Tranquil Clover",
    },
    Lock = {
    }
@@ -91,7 +104,6 @@ getgenv().ConfigsKaitun = {
    "Bee Egg",
   },
   Craft = {
-   "Lightning Rod",
    "Anti Bee Egg",
   },
   Shop = {
