@@ -170,12 +170,12 @@ getgenv().ConfigsKaitun = {
    },
    ["Limit Upgrade"] = 5,
    ["Equip When Done"] = {
+    ["Corrupted Kodama"] = { 4, 100, 1 },
     ["Tanchozuru"] = { 8, 100, 2 },
-    ["Corrupted Kodama"] = { 8, 100, 3 },
-    ["Dilophosaurus"] = { 1, 100, 4 },
+    ["Dilophosaurus"] = { 1, 100, 3 },
    },
   },
-  Locked_Pet_Age = 45, -- pet that age > 60 will lock
+  Locked_Pet_Age = 40, -- pet that age > 60 will lock
   Locked = {
    "Corrupted Kitsune",
    "Corrupted Kodama",
