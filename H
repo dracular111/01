@@ -91,7 +91,7 @@ getgenv().ConfigsKaitun = {
     ["Blueberry"] = 1,
     ["Strawberry"] = 1,
     ["Dragon Fruit"] = 1,
-    ["Dragon Pepper"] = 1
+    ["Dragon Pepper"] = 1,
    }
   }
  },
