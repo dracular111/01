@@ -21,7 +21,7 @@ getgenv().gagConfig = {
     PLANT_EGGS = { "Gourmet Egg", "Zen Egg", "Corrupted Zen Egg", "Common Summer Egg" },
     
     -- BUY_SEED_SHOP Priority (Left -> Right)
-    BUY_SEED_SHOP = { "Elder Strawberry", "Giant Pinecone", "Burning Bud", "Sugar Apple", "Ember Lily", "Beanstalk", "Maple Apple", "Taro Flower", "Fossilight", "Cacao", "Pepper", "Mushroom", "Grape", "Onion", "Dragon Fruit", "Dragon Pepper", "Coconut", "Bamboo", ["Strawberry"] = 10, ["Blueberry"] = 10, ["Tomato"] = 10, ["Garlic"] = 10, ["Onion"] = 10, ["Pepper"] = 10, ["Cucumber"] = 10 },
+    BUY_SEED_SHOP = { "Elder Strawberry", "Giant Pinecone", "Burning Bud", "Sugar Apple", "Ember Lily", "Beanstalk", "Maple Apple", "Taro Flower", "Fossilight", "Cacao", "Mushroom", "Grape", "Dragon Fruit", "Dragon Pepper", "Coconut", "Bamboo", ["Strawberry"] = 10, ["Blueberry"] = 10, ["Tomato"] = 10, ["Garlic"] = 10, ["Onion"] = 10, ["Pepper"] = 10, ["Cucumber"] = 10 },
     KEEP_SEEDS = { "Carrot", "Rosy Delight", "Orange Tulip", "Daffodil", "Lettuce", "Broccoli", "Cabbage", "Wheat", "Potato", "Sunflower", "Daisy", "Rose", "Lily", "Lemon", "Orange", "Clover", "Bonsai", "Stump", "Mini Log", "Flower Mix", "Snow Plant" },
     KEEP_SEEDS_AFTER_MAX_PLANTS = { "Carrot", "Rosy Delight", "Orange Tulip", "Daffodil", "Lettuce", "Broccoli", "Cabbage", "Wheat", "Potato", "Sunflower", "Daisy", "Rose", "Lily", "Lemon", "Orange", "Clover", "Bonsai", "Stump", "Mini Log", "Flower Mix", "Snow Plant" },
     
