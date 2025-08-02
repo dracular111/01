@@ -38,6 +38,7 @@ getgenv().ConfigsKaitun = {
    "Hinomai",
    "Dragon Pepper",
    "Maple Apple",
+   "Giant Pinecone",
   }
  },
 
@@ -67,12 +68,30 @@ getgenv().ConfigsKaitun = {
     "Mango",
     "Pineapple",
     "Taro Flower",
-    "Dragon Pepper",
-    "Maple Apple",,
-    "Hinomai",
-    "Zen Rocks",
+    "Maple Apple",
    },
    Lock = {
+    ["Tomato"] = 1,
+    ["Cucumber"] = 1,
+    ["Grape"] = 1,
+    ["Mango"] = 1,
+    ["Pineapple"] = 1,
+    ["Coconut"] = 1,
+    ["Onion"] = 1,
+    ["Garlic"] = 1,
+    ["Pepper"] = 1,
+    ["Loquat"] = 1,
+    ["Wheat"] = 1,
+    ["Maple Apple"] = 1,
+    ["Cacao"] = 1,
+    ["Sugar Apple"] = 1,
+    ["Fossilight"] = 1,
+    ["Taro Flower"] = 1,
+    ["Pitcher Plant"] = 1,
+    ["Blueberry"] = 1,
+    ["Strawberry"] = 1,
+    ["Dragon Fruit"] = 1,
+    ["Dragon Pepper"] = 1
    }
   }
  },
