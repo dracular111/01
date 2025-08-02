@@ -2,7 +2,7 @@ getgenv().gagConfig = {
     -- Event:
     CRAFT_EVENT = { "Anti Bee Egg" },
     BUY_TRAVELING_MERCHANT = { "Bee Egg", "Loquat", "Feijoa", "Pitcher Plant" },
-    BUY_EVENT_SHOP = { "Zen Egg" },
+    BUY_EVENT_SHOP = { "Gourmet Egg", "Zen Egg" },
     -- MAX_EVENT_RESTOCK_SHECKLES = 1000000000,
     MAX_EVENT_RESTOCK_SHECKLES = 512000000,
 
@@ -22,8 +22,8 @@ getgenv().gagConfig = {
     DESTROY_UNTIL_MIN_PLANTS = 400,
     DELETE_PLANTS_AFTER_MAX = { "Pumpkin", "Monoblooma", "Fruitball", "Watermelon", "Mango", "Elephant Ears", "Rosy Delight", "Carrot", "Coconut", "Apple", "Pepper", "Cactus", "Tomato", "Corn", "Orange Tulip", "Daffodil", "Lettuce", "Broccoli", "Cabbage", "Wheat", "Potato", "Sunflower", "Daisy", "Rose", "Lily", "Lemon", "Orange", "Clover", "Bonsai", "Stump", "Mini Log", "Flower Mix", "Snow Plant" },
     LIMIT_PLANT_SEED = { ["Apple"] = 2, ["Coconut"] = 10, ["Pepper"] = 2, ["Cactus"] = 2, ["Mushroom"] = 2, ["Grape"] = 2, ["Cacao"] = 2, ["Maple Apple"] = 3, ["Strawberry"] = 2, ["Blueberry"] = 2, ["Orange Tulip"] = 1, ["Tomato"] = 1, ["Corn"] = 1, ["Daffodil"] = 1, ["Bamboo"] = 2, ["Pumpkin"] = 2, ["Watermelon"] = 2, ["Dragon Fruit"] = 2, ["Mango"] = 2 },
-    BUY_EGGS = { "Bug Egg", "Bee Egg", "Paradise Egg", "Mythical Egg", "Rare Summer Egg", "Common Summer Egg", "Rare Egg", "Uncommon Egg" },
-    PLANT_EGGS = { "Zen Egg", "Corrupted Zen Egg", "Common Summer Egg" },
+    BUY_EGGS = { "Gourmet Egg", "Bug Egg", "Bee Egg", "Paradise Egg", "Mythical Egg", "Rare Summer Egg", "Common Summer Egg", "Rare Egg", "Uncommon Egg" },
+    PLANT_EGGS = { "Gourmet Egg", "Zen Egg", "Corrupted Zen Egg", "Common Summer Egg" },
     
     -- BUY_SEED_SHOP Priority (Left -> Right)
     BUY_SEED_SHOP = { "Elder Strawberry", "Giant Pinecone", "Burning Bud", "Sugar Apple", "Ember Lily", "Beanstalk", "Cacao", "Pepper", "Mushroom", "Grape", "Mango", "Dragon Fruit", "Cactus", "Coconut", "Bamboo", "Apple", "Pumpkin", "Watermelon", ["Strawberry"] = 10, ["Blueberry"] = 10, ["Carrot"] = 10, ["Tomato"] = 5, ["Orange Tulip"] = 1, ["Daffodil"] = 1 },
@@ -33,12 +33,12 @@ getgenv().gagConfig = {
     FAVOURITE_FRUIT_MUTATIONS = {},  -- Stop Autosell
     SKIP_HARVEST_MUTATIONS = {},  -- Stop Harvest
 
-    KEEP_PETS = { "Corrupted Kitsune", "Kitsune", "Corrupted Kodama", "Rooster", "Blood Kiwi", ["Tanchozuru"] = 8, "Koi", "Seal", "Dilophosaurus", "Ankylosaurus", "Spinosaurus", "Bald Eagle", "Brontosaurus", "T-Rex", "Fennec Fox", "Disco Bee", "Raccoon", "Queen Bee", "Dragonfly", "Butterfly", "Mimic Octopus", "Red Fox", "Hyacinth Macaw", "Scarlet Macaw", "Blood Owl", "Chicken Zombie", "Chicken", ["Capybara"] = 1, ["Starfish"] = 5 },
+    KEEP_PETS = { "French Fry Ferret", ["Sushi Bear"] = 8, ["Spaghetti Sloth"] = 8, "Corrupted Kitsune", "Kitsune", "Corrupted Kodama", "Rooster", "Blood Kiwi", ["Tanchozuru"] = 8, "Koi", "Seal", "Dilophosaurus", "Ankylosaurus", "Spinosaurus", "Bald Eagle", "Brontosaurus", "T-Rex", "Fennec Fox", "Disco Bee", "Raccoon", "Queen Bee", "Dragonfly", "Butterfly", "Mimic Octopus", "Red Fox", "Hyacinth Macaw", "Scarlet Macaw", "Blood Owl", "Chicken Zombie", "Chicken", ["Capybara"] = 1, ["Starfish"] = 5 },
     KEEP_PETS_WEIGHT = 5,
     KEEP_PETS_AGE = 20,
 
     -- EQUIP_PETS Priority (Left -> Right)
-    EQUIP_PETS = { ["Corrupted Kodama"] = 3, "Tanchozuru", ["Starfish"] = 5, ["Dilophosaurus"] = 1 },
+    EQUIP_PETS = { ["Dilophosaurus"] = 1, "Corrupted Kodama", "Sushi Bear", "Spaghetti Sloth", ["Starfish"] = 5 },
     USE_PETS_FOR_UPGRADE_SLOT = { "Starfish", "Koi", "Red Fox", "Pachycephalosaurus" },
     REMOVE_PET_MAX_UPGRADE = { "Starfish", "Capybara" },
 
@@ -47,7 +47,7 @@ getgenv().gagConfig = {
 
     PET_WEBHOOK_URL = "https://discord.com/api/webhooks/1388710819084243045/o0HmOjqsTPM2D-2lsEuXxElYEtEbpXtLQhbG6E1T47WIqDEcSI8lWJ8S8yJuF_G5FkZi",
     SEED_WEBHOOK_URL = "", 
-    NOTIFY_PETS = { "Kitsune", "Corrupted Kitsune" },
+    NOTIFY_PETS = { "French Fry Ferret", "Kitsune" },
     NOTIFY_PETS_WEIGHT = 5,
     DISCORD_ID = "",
     WEBHOOK_NOTE = "",
