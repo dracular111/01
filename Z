@@ -17,7 +17,7 @@ getgenv().gagConfig = {
     DESTROY_UNTIL_MIN_PLANTS = 400,
     DELETE_PLANTS_AFTER_MAX = { "Pumpkin", "Monoblooma", "Fruitball", "Watermelon", "Mango", "Elephant Ears", "Rosy Delight", "Carrot", "Coconut", "Apple", "Pepper", "Cactus", "Tomato", "Corn", "Orange Tulip", "Daffodil", "Lettuce", "Broccoli", "Cabbage", "Wheat", "Potato", "Sunflower", "Daisy", "Rose", "Lily", "Lemon", "Orange", "Clover", "Bonsai", "Stump", "Mini Log", "Flower Mix", "Snow Plant" },
     LIMIT_PLANT_SEED = { ["Tomato"] = 2, ["Cucumber"] = 2, ["Grape"] = 2, ["Mango"] = 2, ["Pineapple"] = 2, ["Onion"] = 2, ["Garlic"] = 2, ["Pepper"] = 2, ["Loquat"] = 2, ["Cacao"] = 2, ["Sugar Apple"] = 2, ["Taro Flower"] = 2, ["Fossilight"] = 2, ["Pitcher Plant"] = 2, ["Maple Apple"] = 2, ["Dragon Fruit"] = 2, ["Dragon Pepper"] = 2, ["Strawberry"] = 2, ["Blueberry"] = 2, ["Coconut"] = 2, ["Wheat"] = 1, ["Zen Rocks"] = 1, ["Elder Strawberry"] = 1, ["Giant Pinecone"] = 1, ["Burning Bud"] = 1, ["Ember Lily"] = 1, ["Beanstalk"] = 1 },
-    BUY_EGGS = { "Gourmet Egg", "Bug Egg", "Bee Egg", "Paradise Egg", "Mythical Egg", "Rare Summer Egg", "Common Summer Egg", "Rare Egg", "Uncommon Egg" },
+    BUY_EGGS = { "Bug Egg", "Bee Egg", "Paradise Egg", "Mythical Egg", "Rare Summer Egg", "Common Summer Egg", "Rare Egg", "Uncommon Egg" },
     PLANT_EGGS = { "Gourmet Egg", "Zen Egg", "Corrupted Zen Egg", "Common Summer Egg" },
     
     -- BUY_SEED_SHOP Priority (Left -> Right)
@@ -28,7 +28,7 @@ getgenv().gagConfig = {
     FAVOURITE_FRUIT_MUTATIONS = {},  -- Stop Autosell
     SKIP_HARVEST_MUTATIONS = {},  -- Stop Harvest
 
-    KEEP_PETS = { "French Fry Ferret", ["Sushi Bear"] = 8, ["Spaghetti Sloth"] = 8, "Corrupted Kitsune", "Kitsune", "Corrupted Kodama", "Rooster", "Blood Kiwi", ["Tanchozuru"] = 8, "Koi", "Seal", "Dilophosaurus", "Ankylosaurus", "Spinosaurus", "Bald Eagle", "Brontosaurus", "T-Rex", "Fennec Fox", "Disco Bee", "Raccoon", "Queen Bee", "Dragonfly", "Butterfly", "Mimic Octopus", "Red Fox", "Hyacinth Macaw", "Scarlet Macaw", "Blood Owl", "Chicken Zombie", "Chicken", ["Capybara"] = 1, ["Starfish"] = 5 },
+    KEEP_PETS = { "French Fry Ferret", ["Sushi Bear"] = 3, ["Spaghetti Sloth"] = 3, "Corrupted Kitsune", "Kitsune", "Corrupted Kodama", "Rooster", "Blood Kiwi", ["Tanchozuru"] = 8, "Koi", "Seal", "Dilophosaurus", "Ankylosaurus", "Spinosaurus", "Bald Eagle", "Brontosaurus", "T-Rex", "Fennec Fox", "Disco Bee", "Raccoon", "Queen Bee", "Dragonfly", "Butterfly", "Mimic Octopus", "Red Fox", "Hyacinth Macaw", "Scarlet Macaw", "Blood Owl", "Chicken Zombie", "Chicken", ["Capybara"] = 1, ["Starfish"] = 5 },
     KEEP_PETS_WEIGHT = 5,
     KEEP_PETS_AGE = 20,
 
