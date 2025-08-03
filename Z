@@ -41,7 +41,7 @@ getgenv().gagConfig = {
     REMOVE_PET_MAX_UPGRADE = { "Starfish", "Capybara" },
 
     BUY_GEAR_SHOP = { "Master Sprinkler", "Godly Sprinkler", "Advanced Sprinkler", "Basic Sprinkler", "Trading Ticket" },
-    USE_SPRINKLER = { "Master Sprinkler", "Godly Sprinkler", "Advanced Sprinkler" },
+    USE_SPRINKLER = { "Basic Sprinkler", "Master Sprinkler", "Godly Sprinkler", "Advanced Sprinkler" },
 
     PET_WEBHOOK_URL = "https://discord.com/api/webhooks/1388710819084243045/o0HmOjqsTPM2D-2lsEuXxElYEtEbpXtLQhbG6E1T47WIqDEcSI8lWJ8S8yJuF_G5FkZi",
     SEED_WEBHOOK_URL = "", 
