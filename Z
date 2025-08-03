@@ -17,9 +17,9 @@ getgenv().gagConfig = {
     OPEN_ALL_SEED_PACK = true,
 
     -- MAX_PLANTS = 400,
-    MAX_PLANTS = 420,
+    MAX_PLANTS = 400,
     -- DESTROY_UNTIL_MIN_PLANTS = 400,
-    DESTROY_UNTIL_MIN_PLANTS = 400,
+    DESTROY_UNTIL_MIN_PLANTS = 350,
     DELETE_PLANTS_AFTER_MAX = { "Pumpkin", "Monoblooma", "Fruitball", "Watermelon", "Mango", "Elephant Ears", "Rosy Delight", "Carrot", "Coconut", "Apple", "Pepper", "Cactus", "Tomato", "Corn", "Orange Tulip", "Daffodil", "Lettuce", "Broccoli", "Cabbage", "Wheat", "Potato", "Sunflower", "Daisy", "Rose", "Lily", "Lemon", "Orange", "Clover", "Bonsai", "Stump", "Mini Log", "Flower Mix", "Snow Plant" },
     LIMIT_PLANT_SEED = { ["Apple"] = 2, ["Coconut"] = 10, ["Pepper"] = 2, ["Cactus"] = 2, ["Mushroom"] = 2, ["Grape"] = 2, ["Cacao"] = 2, ["Maple Apple"] = 3, ["Strawberry"] = 2, ["Blueberry"] = 2, ["Orange Tulip"] = 1, ["Tomato"] = 1, ["Corn"] = 1, ["Daffodil"] = 1, ["Bamboo"] = 2, ["Pumpkin"] = 2, ["Watermelon"] = 2, ["Dragon Fruit"] = 2, ["Mango"] = 2 },
     PLANT_EGGS = { "Gourmet Egg", "Zen Egg", "Corrupted Zen Egg", "Common Summer Egg" },
