@@ -17,9 +17,9 @@ getgenv().gagConfig = {
     OPEN_ALL_SEED_PACK = true,
 
     -- MAX_PLANTS = 400,
-    MAX_PLANTS = 400,
+    MAX_PLANTS = 300,
     -- DESTROY_UNTIL_MIN_PLANTS = 400,
-    DESTROY_UNTIL_MIN_PLANTS = 350,
+    DESTROY_UNTIL_MIN_PLANTS = 250,
     DELETE_PLANTS_AFTER_MAX = { "Carrot", "Strawberry", "Blueberry", "Tomato", "Apple" },
     LIMIT_PLANT_SEED = { ["Tomato"] = 5, ["Cucumber"] = 5, ["Grape"] = 5, ["Mango"] = 5, ["Pineapple"] = 5, ["Onion"] = 5, ["Garlic"] = 5, ["Pepper"] = 5, ["Taro Flower"] = 5, ["Sugar Apple"] = 5, ["Cacao"] = 5, ["Elder Strawberry"] = 5, ["Giant Pinecone"] = 5, ["Burning Bud"] = 5, ["Ember Lily"] = 5, ["Beanstalk"] = 5, ["Mushroom"] = 5, ["Bone Blossom"] = 5, ["Dragon Fruit"] = 5, ["Maple Apple"] = 5, ["Strawberry"] = 5, ["Blueberry"] = 5, ["Corn"] = 5, ["Apple"] = 5 },
     BUY_EGGS = { "Bug Egg", "Bee Egg", "Paradise Egg", "Mythical Egg", "Rare Summer Egg", "Common Summer Egg", "Rare Egg", "Uncommon Egg" },
