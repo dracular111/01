@@ -30,12 +30,12 @@ getgenv().gagConfig = {
     FAVOURITE_FRUIT_MUTATIONS = {},  -- Stop Autosell
     SKIP_HARVEST_MUTATIONS = {},  -- Stop Harvest
 
-    KEEP_PETS = { "French Fry Ferret", "Mochi Mouse", ["Sushi Bear"] = 3, ["Spaghetti Sloth"] = 3, "Corrupted Kitsune", "Kitsune", "Kodama"", "Corrupted Kodama", "Rooster", "Blood Kiwi", ["Tanchozuru"] = 8, "Koi", "Seal", "Dilophosaurus", "Ankylosaurus", "Spinosaurus", "Bald Eagle", "Brontosaurus", "T-Rex", "Fennec Fox", "Disco Bee", "Raccoon", "Queen Bee", "Dragonfly", "Butterfly", "Mimic Octopus", "Red Fox", "Hyacinth Macaw", "Scarlet Macaw", "Blood Owl", "Chicken Zombie", "Chicken", ["Capybara"] = 1, ["Starfish"] = 5 },
+    KEEP_PETS = { "French Fry Ferret", "Mochi Mouse", ["Sushi Bear"] = 3, ["Spaghetti Sloth"] = 3, "Corrupted Kitsune", "Kitsune", "Kodama", "Corrupted Kodama", "Rooster", "Blood Kiwi", ["Tanchozuru"] = 8, "Koi", "Seal", "Dilophosaurus", "Ankylosaurus", "Spinosaurus", "Bald Eagle", "Brontosaurus", "T-Rex", "Fennec Fox", "Disco Bee", "Raccoon", "Queen Bee", "Dragonfly", "Butterfly", "Mimic Octopus", "Red Fox", "Hyacinth Macaw", "Scarlet Macaw", "Blood Owl", "Chicken Zombie", "Chicken", ["Capybara"] = 1, ["Starfish"] = 5 },
     KEEP_PETS_WEIGHT = 5,
     KEEP_PETS_AGE = 20,
 
     -- EQUIP_PETS Priority (Left -> Right)
-    EQUIP_PETS = { ["Dilophosaurus"] = 1, ["Spaghetti Sloth"] = 2, ["Sushi Bear"] = 2, "Corrupted Kodama", "Kodama"", "Tanchozuru", ["Starfish"] = 5 },
+    EQUIP_PETS = { ["Dilophosaurus"] = 1, ["Spaghetti Sloth"] = 2, ["Sushi Bear"] = 2, "Corrupted Kodama", "Kodama", "Tanchozuru", ["Starfish"] = 5 },
     USE_PETS_FOR_UPGRADE_SLOT = { "Starfish", "Koi", "Red Fox", "Pachycephalosaurus" },
     REMOVE_PET_MAX_UPGRADE = { "Starfish", "Capybara" },
 
