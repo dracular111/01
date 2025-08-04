@@ -2,7 +2,7 @@ getgenv().gagConfig = {
     -- Event:
     CRAFT_EVENT = { "Anti Bee Egg" },
     BUY_TRAVELING_MERCHANT = { "Bee Egg", "Loquat", "Feijoa", "Pitcher Plant" },
-    BUY_EVENT_SHOP = { "Zen Egg" },
+    BUY_EVENT_SHOP = { "Zen Egg", "Gourmet Egg" },
     -- MAX_EVENT_RESTOCK_SHECKLES = 256000000,
     MAX_EVENT_RESTOCK_SHECKLES = 1000000000,
 
@@ -20,14 +20,14 @@ getgenv().gagConfig = {
     MAX_PLANTS = 400,
     -- DESTROY_UNTIL_MIN_PLANTS = 400,
     DESTROY_UNTIL_MIN_PLANTS = 350,
-    DELETE_PLANTS_AFTER_MAX = { "Pumpkin", "Monoblooma", "Fruitball", "Watermelon", "Mango", "Elephant Ears", "Rosy Delight", "Carrot", "Coconut", "Apple", "Pepper", "Cactus", "Tomato", "Corn", "Orange Tulip", "Daffodil", "Lettuce", "Broccoli", "Cabbage", "Wheat", "Potato", "Sunflower", "Daisy", "Rose", "Lily", "Lemon", "Orange", "Clover", "Bonsai", "Stump", "Mini Log", "Flower Mix", "Snow Plant" },
-    LIMIT_PLANT_SEED = { ["Apple"] = 2, ["Coconut"] = 10, ["Pepper"] = 2, ["Cactus"] = 2, ["Mushroom"] = 2, ["Grape"] = 2, ["Cacao"] = 2, ["Maple Apple"] = 3, ["Strawberry"] = 2, ["Blueberry"] = 2, ["Orange Tulip"] = 1, ["Tomato"] = 1, ["Corn"] = 1, ["Daffodil"] = 1, ["Bamboo"] = 2, ["Pumpkin"] = 2, ["Watermelon"] = 2, ["Dragon Fruit"] = 2, ["Mango"] = 2 },
+    DELETE_PLANTS_AFTER_MAX = { "Carrot", "Strawberry", "Blueberry", "Tomato", "Apple" },
+    LIMIT_PLANT_SEED = { ["Tomato"] = 5, ["Cucumber"] = 5, ["Grape"] = 5, ["Mango"] = 5, ["Pineapple"] = 5, ["Onion"] = 5, ["Garlic"] = 5, ["Pepper"] = 5, ["Taro Flower"] = 5, ["Sugar Apple"] = 5, ["Cacao"] = 5, ["Elder Strawberry"] = 5, ["Giant Pinecone"] = 5, ["Burning Bud"] = 5, ["Ember Lily"] = 5, ["Beanstalk"] = 5, ["Mushroom"] = 5, ["Bone Blossom"] = 5, ["Dragon Fruit"] = 5, ["Maple Apple"] = 5, ["Strawberry"] = 5, ["Blueberry"] = 5, ["Corn"] = 5, ["Apple"] = 5 },
     PLANT_EGGS = { "Gourmet Egg", "Zen Egg", "Corrupted Zen Egg", "Common Summer Egg" },
     
     -- BUY_SEED_SHOP Priority (Left -> Right)
-    BUY_SEED_SHOP = { "Elder Strawberry", "Giant Pinecone", "Burning Bud", "Sugar Apple", "Ember Lily", "Beanstalk", "Cacao", "Pepper", "Mushroom", "Grape", "Mango", "Dragon Fruit", "Cactus", "Coconut", "Bamboo", "Apple", "Pumpkin", "Watermelon", ["Strawberry"] = 10, ["Blueberry"] = 10, ["Carrot"] = 10, ["Tomato"] = 5, ["Orange Tulip"] = 1, ["Daffodil"] = 1 },
-    KEEP_SEEDS = { "Carrot", "Rosy Delight", "Orange Tulip", "Daffodil", "Lettuce", "Broccoli", "Cabbage", "Wheat", "Potato", "Sunflower", "Daisy", "Rose", "Lily", "Lemon", "Orange", "Clover", "Bonsai", "Stump", "Mini Log", "Flower Mix", "Snow Plant" },
-    KEEP_SEEDS_AFTER_MAX_PLANTS = { "Carrot", "Rosy Delight", "Orange Tulip", "Daffodil", "Lettuce", "Broccoli", "Cabbage", "Wheat", "Potato", "Sunflower", "Daisy", "Rose", "Lily", "Lemon", "Orange", "Clover", "Bonsai", "Stump", "Mini Log", "Flower Mix", "Snow Plant" },
+    BUY_SEED_SHOP = { "Elder Strawberry", "Giant Pinecone", "Burning Bud", "Sugar Apple", "Ember Lily", "Beanstalk", "Cacao", "Pepper", "Mushroom", "Grape", "Mango", "Dragon Fruit", "Cactus", ["Coconut"] = 50, ["Bamboo"] = 50, ["Apple"] = 50, ["Pumpkin"] = 50, ["Watermelon"] = 50, ["Daffodil"] = 50, ["Tomato"] = 50, ["Orange Tulip"] = 50, ["Blueberry"] = 50, ["Strawberry"] = 50, ["Carrot"] = 50 },
+    KEEP_SEEDS = { "Bone Blossom", "Carrot", "Orange Tulip", "Daffodil" },
+    KEEP_SEEDS_AFTER_MAX_PLANTS = { "Carrot" },
     
     FAVOURITE_FRUIT_MUTATIONS = {},  -- Stop Autosell
     SKIP_HARVEST_MUTATIONS = {},  -- Stop Harvest
@@ -37,7 +37,7 @@ getgenv().gagConfig = {
     KEEP_PETS_AGE = 20,
 
     -- EQUIP_PETS Priority (Left -> Right)
-    EQUIP_PETS = { "Corrupted Kodama", "Tanchozuru", ["Starfish"] = 5 },
+    EQUIP_PETS = { ["Mochi Mouse"] = 1, "Spaghetti Sloth", "Sushi Bear", "Corrupted Kodama", "Tanchozuru", ["Starfish"] = 5 },
     USE_PETS_FOR_UPGRADE_SLOT = { "Starfish", "Koi", "Red Fox", "Pachycephalosaurus" },
     REMOVE_PET_MAX_UPGRADE = { "Starfish", "Capybara" },
 
