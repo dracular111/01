@@ -17,14 +17,14 @@ getgenv().gagConfig = {
     -- MAX_PLANTS = 350,
     DESTROY_UNTIL_MIN_PLANTS = 350,
     -- DESTROY_UNTIL_MIN_PLANTS = 300,
-    DELETE_PLANTS_AFTER_MAX = { "Carrot", "Tomato", "Corn", "Pumpkin", "Strawberry", "Monoblooma", "Rosy Delight", "Artichoke", "Cactus", "Pepper", "Watermelon", "Bamboo", "Apple", "Maple Apple" },
-    LIMIT_PLANT_SEED = { ["Tomato"] = 5, ["Cucumber"] = 5, ["Grape"] = 5, ["Mango"] = 5, ["Pineapple"] = 5, ["Onion"] = 5, ["Garlic"] = 5, ["Pepper"] = 5, ["Taro Flower"] = 5, ["Sugar Apple"] = 5, ["Cacao"] = 5, ["Elder Strawberry"] = 5, ["Giant Pinecone"] = 5, ["Burning Bud"] = 5, ["Ember Lily"] = 5, ["Beanstalk"] = 5, ["Mushroom"] = 5, ["Bone Blossom"] = 5, ["Dragon Fruit"] = 5, ["Maple Apple"] = 5, ["Strawberry"] = 5, ["Blueberry"] = 5, ["Corn"] = 5, ["Apple"] = 5 },
+    DELETE_PLANTS_AFTER_MAX = { "Carrot", "Strawberry", "Blueberry", "Tomato", "Apple" },
+    LIMIT_PLANT_SEED = { ["Strawberry"] = 5, ["Blueberry"] = 5, ["Apple"] = 5, ["Tomato"] = 5, ["Corn"] = 5, ["Bamboo"] = 5, ["Coconut"] = 5, ["Pumpkin"] = 5, ["Watermelon"] = 5, ["Pepper"] = 5 },
     BUY_EGGS = { "Bug Egg", "Bee Egg", "Paradise Egg", "Mythical Egg", "Rare Summer Egg", "Common Summer Egg", "Rare Egg", "Uncommon Egg" },
     PLANT_EGGS = { "Gourmet Egg", "Zen Egg", "Corrupted Zen Egg", "Anti Bee Egg", "Primal Egg", "Paradise Egg", "Oasis Egg", "Bug Egg", "Rare Egg", "Common Summer Egg" },
     
     -- BUY_SEED_SHOP Priority (Left -> Right)
     BUY_SEED_SHOP = { "Elder Strawberry", "Giant Pinecone", "Burning Bud", "Sugar Apple", "Ember Lily", "Beanstalk", "Cacao", "Pepper", "Mushroom", "Grape", "Mango", "Dragon Fruit", "Cactus", ["Coconut"] = 50, ["Bamboo"] = 50, ["Apple"] = 50, ["Pumpkin"] = 50, ["Watermelon"] = 50, ["Daffodil"] = 50, ["Tomato"] = 50, ["Orange Tulip"] = 50, ["Blueberry"] = 50, ["Strawberry"] = 50, ["Carrot"] = 50 },
-    KEEP_SEEDS = { "Bone Blossom", "Carrot", "Orange Tulip", "Daffodil" },
+    KEEP_SEEDS = { "Bone Blossom" },
     KEEP_SEEDS_AFTER_MAX_PLANTS = { "Carrot" },
     
     FAVOURITE_FRUIT_MUTATIONS = {},  -- Stop Autosell
