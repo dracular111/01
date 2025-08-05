@@ -35,7 +35,7 @@ getgenv().gagConfig = {
     KEEP_PETS_AGE = 20,
 
     -- EQUIP_PETS Priority (Left -> Right)
-    EQUIP_PETS = { ["Dilophosaurus"] = 1, ["Spaghetti Sloth"] = 3, ["Sushi Bear"] = 3, "Corrupted Kodama", "Tanchozuru", ["Starfish"] = 5 },
+    EQUIP_PETS = { ["Dilophosaurus"] = 1, ["Sushi Bear"] = 2, "Spaghetti Sloth", "Corrupted Kodama", "Tanchozuru", ["Starfish"] = 5 },
     USE_PETS_FOR_UPGRADE_SLOT = { "Starfish", "Koi", "Red Fox", "Pachycephalosaurus" },
     REMOVE_PET_MAX_UPGRADE = { "Starfish", "Capybara" },
 
