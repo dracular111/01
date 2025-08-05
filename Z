@@ -6,7 +6,7 @@ getgenv().gagConfig = {
     MAX_EVENT_RESTOCK_SHECKLES = 1000000000,
 
     -- General:
-    AUTO_UPDATE_RESTART = false,
+    AUTO_UPDATE_RESTART = true,
     REDEEM_CODES = {},
     EXTRA_PET_SLOTS = 5,
     EXTRA_EGG_SLOTS = 5,
