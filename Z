@@ -29,7 +29,7 @@ getgenv().gagConfig = {
     SKIP_HARVEST_MUTATIONS = {},  -- Stop Harvest
 
     KEEP_PETS = { ["Giant Ant"] = 8, "French Fry Ferret", ["Mochi Mouse"] = 8, "Sushi Bear", "Spaghetti Sloth", "Corrupted Kitsune", "Kitsune", "Kodama", "Corrupted Kodama", "Rooster", "Blood Kiwi", ["Tanchozuru"] = 8, "Koi", "Seal", "Dilophosaurus", "Ankylosaurus", "Spinosaurus", "Bald Eagle", "Brontosaurus", "T-Rex", "Fennec Fox", "Disco Bee", "Raccoon", "Queen Bee", "Dragonfly", "Butterfly", "Mimic Octopus", "Red Fox", "Hyacinth Macaw", "Scarlet Macaw", "Blood Owl", "Chicken Zombie", "Chicken", ["Capybara"] = 1, ["Starfish"] = 5 },
-    KEEP_PETS_WEIGHT = { ["Capybara"] = 5 },
+    KEEP_PETS_WEIGHT = { ["Capybara"] = 5, ["Mochi Mouse"] = 5 },
     KEEP_PETS_AGE = { ["Starfish"] = 20 },
 
     -- EQUIP_PETS Priority (Left -> Right)
@@ -41,13 +41,8 @@ getgenv().gagConfig = {
     USE_SPRINKLER = { "Basic Sprinkler", "Master Sprinkler", "Godly Sprinkler", "Advanced Sprinkler" },
 
     PET_WEBHOOK_URL = "https://discord.com/api/webhooks/1388710819084243045/o0HmOjqsTPM2D-2lsEuXxElYEtEbpXtLQhbG6E1T47WIqDEcSI8lWJ8S8yJuF_G5FkZi",
-    SEED_WEBHOOK_URL = "", 
     NOTIFY_PETS = { "French Fry Ferret", "Kitsune" },
     NOTIFY_PETS_WEIGHT = 5,
-    DISCORD_ID = "",
-    WEBHOOK_NOTE = "",
-    SHOW_WEBHOOK_USERNAME = true,
-    SHOW_WEBHOOK_JOBID = false,
 }
 
 loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/c916e5b90dc37c71ecf1ec00dfce3d5d.lua"))()
