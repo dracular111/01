@@ -2,7 +2,7 @@ getgenv().gagConfig = {
     -- Event:
     CRAFT_EVENT = { "Anti Bee Egg" },
     BUY_TRAVELING_MERCHANT = { "Bee Egg", "Loquat", "Feijoa", "Pitcher Plant" },
-    CLAIM_FOOD_CONNOISSEUR_REWARD = { "Culinarian Chest", "Gorilla Chef", "Gourmet Egg", "Sunny-Side Chicken", "Pet Shard Aromatic" },
+    CLAIM_FOOD_CONNOISSEUR_REWARD = { "Culinarian Chest", "Gorilla Chef", "Gourmet Egg", "Sunny-Side Chicken", "Pet Shard Aromatic", "Cooking Cauldron", "Gourmet Seed Pack", "Bitter Melon Seed", "Pricklefruit Seed", "Butternut Squash Seed", "Spring Onion Seed", "Kitchen Crate", "Kitchen Flooring", "Kitchen Cart", "Smoothie Fountain" },
     BUY_EVENT_SHOP = { "Zen Egg" },
     MAX_EVENT_RESTOCK_SHECKLES = 1000000000,
 
@@ -38,8 +38,8 @@ getgenv().gagConfig = {
     USE_PETS_FOR_UPGRADE_SLOT = { "Starfish", "Koi", "Red Fox", "Pachycephalosaurus" },
     REMOVE_PET_MAX_UPGRADE = { "Starfish", "Capybara" },
 
-    BUY_GEAR_SHOP = { "Master Sprinkler", "Godly Sprinkler", "Advanced Sprinkler", "Basic Sprinkler", "Trading Ticket" },
-    USE_SPRINKLER = { "Basic Sprinkler", "Master Sprinkler", "Godly Sprinkler", "Advanced Sprinkler" },
+    BUY_GEAR_SHOP = { "Grandmaster Sprinkler", "Master Sprinkler", "Godly Sprinkler", "Advanced Sprinkler", "Basic Sprinkler", "Trading Ticket" },
+    USE_SPRINKLER = { "Basic Sprinkler", "Master Sprinkler", "Godly Sprinkler", "Advanced Sprinkler", "Grandmaster Sprinkler" },
 
     PET_WEBHOOK_URL = "https://discord.com/api/webhooks/1388710819084243045/o0HmOjqsTPM2D-2lsEuXxElYEtEbpXtLQhbG6E1T47WIqDEcSI8lWJ8S8yJuF_G5FkZi",
     NOTIFY_PETS = { "Lobster Thermidor", "Kitsune" },
