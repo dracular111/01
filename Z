@@ -31,7 +31,7 @@ getgenv().gagConfig = {
     FAVOURITE_FRUIT_MUTATIONS = {},  -- Stop Autosell
     SKIP_HARVEST_MUTATIONS = {},  -- Stop Harvest
 
-    KEEP_PETS = { "King Cabbage", "Badlands Pepper", "Raiju", ["Gorilla Chef"] = 8, "Lobster Thermidor", "Sunny-Side Chicken", ["Hotdog Daschund"] = 8, ["Bacon Pig"] = 2, ["Giant Ant"] = 8, "French Fry Ferret", ["Mochi Mouse"] = 2, ["Sushi Bear"] =8, ["Spaghetti Sloth"] = 8, "Corrupted Kitsune", "Kitsune", "Kodama", "Corrupted Kodama", "Rooster", "Blood Kiwi", ["Tanchozuru"] = 8, "Koi", "Seal", "Dilophosaurus", "Ankylosaurus", "Spinosaurus", "Bald Eagle", "Brontosaurus", "T-Rex", "Fennec Fox", "Disco Bee", "Raccoon", "Queen Bee", "Dragonfly", "Butterfly", "Mimic Octopus", "Red Fox", "Hyacinth Macaw", "Scarlet Macaw", "Blood Owl", "Chicken Zombie", "Chicken", ["Capybara"] = 1, ["Starfish"] = 5 },
+    KEEP_PETS = { "Raiju", ["Gorilla Chef"] = 8, "Lobster Thermidor", "Sunny-Side Chicken", ["Hotdog Daschund"] = 8, ["Bacon Pig"] = 2, ["Giant Ant"] = 8, "French Fry Ferret", ["Mochi Mouse"] = 2, ["Sushi Bear"] =8, ["Spaghetti Sloth"] = 8, "Corrupted Kitsune", "Kitsune", "Kodama", "Corrupted Kodama", "Rooster", "Blood Kiwi", ["Tanchozuru"] = 8, "Koi", "Seal", "Dilophosaurus", "Ankylosaurus", "Spinosaurus", "Bald Eagle", "Brontosaurus", "T-Rex", "Fennec Fox", "Disco Bee", "Raccoon", "Queen Bee", "Dragonfly", "Butterfly", "Mimic Octopus", "Red Fox", "Hyacinth Macaw", "Scarlet Macaw", "Blood Owl", "Chicken Zombie", "Chicken", ["Capybara"] = 1, ["Starfish"] = 5 },
     KEEP_PETS_WEIGHT = { ["Capybara"] = 5, ["Mochi Mouse"] = 5, ["Gorilla Chef"] = 5 },
     KEEP_PETS_AGE = { ["Starfish"] = 50, ["Capybara"] = 50 },
 
