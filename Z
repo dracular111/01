@@ -31,8 +31,8 @@ getgenv().gagConfig = {
     FAVOURITE_FRUIT_MUTATIONS = {},  -- Stop Autosell
     SKIP_HARVEST_MUTATIONS = {},  -- Stop Harvest
 
-    KEEP_PETS = { "Junkbot", "Gorilla Chef", "Lobster Thermidor", "Sunny-Side Chicken", "Pet Shard Aromatic", ["Hotdog Daschund"] = 8, ["Bacon Pig"] = 2, ["Giant Ant"] = 2, "French Fry Ferret", ["Mochi Mouse"] = 8, ["Sushi Bear"] =8, ["Spaghetti Sloth"] = 8, "Corrupted Kitsune", "Kitsune", "Kodama", "Corrupted Kodama", "Rooster", "Blood Kiwi", ["Tanchozuru"] = 8, "Koi", "Seal", "Dilophosaurus", "Ankylosaurus", "Spinosaurus", "Bald Eagle", "Brontosaurus", "T-Rex", "Fennec Fox", "Disco Bee", "Raccoon", "Queen Bee", "Dragonfly", "Butterfly", "Mimic Octopus", "Red Fox", "Hyacinth Macaw", "Scarlet Macaw", "Blood Owl", "Chicken Zombie", "Chicken", ["Capybara"] = 1, ["Starfish"] = 5 },
-    KEEP_PETS_WEIGHT = { ["Capybara"] = 5, ["Mochi Mouse"] = 5 },
+    KEEP_PETS = { "Junkbot", ["Gorilla Chef"] = 2, "Lobster Thermidor", "Sunny-Side Chicken", "Pet Shard Aromatic", ["Hotdog Daschund"] = 8, ["Bacon Pig"] = 2, ["Giant Ant"] = 2, "French Fry Ferret", ["Mochi Mouse"] = 8, ["Sushi Bear"] =8, ["Spaghetti Sloth"] = 8, "Corrupted Kitsune", "Kitsune", "Kodama", "Corrupted Kodama", "Rooster", "Blood Kiwi", ["Tanchozuru"] = 8, "Koi", "Seal", "Dilophosaurus", "Ankylosaurus", "Spinosaurus", "Bald Eagle", "Brontosaurus", "T-Rex", "Fennec Fox", "Disco Bee", "Raccoon", "Queen Bee", "Dragonfly", "Butterfly", "Mimic Octopus", "Red Fox", "Hyacinth Macaw", "Scarlet Macaw", "Blood Owl", "Chicken Zombie", "Chicken", ["Capybara"] = 1, ["Starfish"] = 5 },
+    KEEP_PETS_WEIGHT = { ["Capybara"] = 5, ["Mochi Mouse"] = 5, ["Gorilla Chef"] = 5 },
     KEEP_PETS_AGE = { ["Starfish"] = 50, ["Capybara"] = 50 },
 
     -- EQUIP_PETS Priority (Left -> Right)
