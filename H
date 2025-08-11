@@ -224,7 +224,7 @@ Webhook = {
         Pets = {
             "French Fry Ferret",
             "Kitsune",
-            "Lobster Thermidor"
+            "Lobster Thermidor",
         },
         Pet_Weight_Noti = true
     }
