@@ -92,8 +92,7 @@ getgenv().ConfigsKaitun = {
 			"Raiju",
 		},
 		Restocks_limit = 1000000000,
-		MinimumChi = 10
-		},
+		MinimumChi = 10,
 		Start_Do_Honey = 2_000_000 -- start trade fruit for honey at money
 	},
 
