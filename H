@@ -156,7 +156,7 @@ getgenv().ConfigsKaitun = {
             }
         },
         Favorite_LockedPet = true,
-        Locked_Pet_Age = 60,
+        Locked_Pet_Age = 50,
         Locked = {
             "Raiju",
             "Gorilla Chef",
