@@ -214,24 +214,18 @@ getgenv().ConfigsKaitun = {
 		}
 	},
 
- Webhook = {
-  UrlPet = "https://discord.com/api/webhooks/1396165603538239659/8DB0vG63IklWDGs-EAiMszsy4tvnrMOeTJ4FGuKcLL1N4wlnVL8LMtjBc3MFHL1aIuzn",
-  UrlSeed = "",
-  PcName = "",
-
-		Noti = {
-			Seeds = {
-				"Idk"
-			},
-			SeedPack = {
-				"Idk"
-			},
-			Pets = {
-				"French Fry Ferret",
-				"Kitsune",
-    "Lobster Thermidor",
-			},
-			Pet_Weight_Noti = true,
-		}
-	},
+Webhook = {
+    UrlPet = "https://discord.com/api/webhooks/1396165603538239659/8DB0vG63IklWDGs-EAiMszsy4tvnrMOeTJ4FGuKcLL1N4wlnVL8LMtjBc3MFHL1aIuzn",
+    UrlSeed = "",
+    PcName = "",
+    Noti = {
+        Seeds = { "Idk" },
+        SeedPack = { "Idk" },
+        Pets = {
+            "French Fry Ferret",
+            "Kitsune",
+            "Lobster Thermidor"
+        },
+        Pet_Weight_Noti = true
+    }
 }
