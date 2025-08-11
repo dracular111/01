@@ -82,8 +82,6 @@ getgenv().ConfigsKaitun = {
             "Sakura Bush",
             "Raiju"
         },
-        Restocks_limit = 1_000_000_000,
-        MinimumChi = 10,
         Start_Do_Honey = 2_000_000 -- start trade fruit for honey at money
     },
 
