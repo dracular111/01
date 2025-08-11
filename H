@@ -19,7 +19,6 @@ getgenv().ConfigsKaitun = {
 			"Moon Blossom",
 			"Fossilight",
 			"Bone Blossom",
-			"Fossilight",
 			"Sugar Apple",
 			"Ember Lily",
 			"Beanstalk",
