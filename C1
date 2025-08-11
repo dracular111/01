@@ -1,0 +1,10 @@
+if _G.DELMAPS then
+    return
+end
+_G.DELMAPS = true
+
+-- Xoá BasePlate nếu tồn tại
+pcall(function() workspace.BasePlate:Destroy() end)
+
+-- Xoá CurrentExpansion trong workspace.Farm.Farm nếu tồn tại
+pcall(function() workspace.Farm.Farm.CurrentExpansion:Destroy() end)
