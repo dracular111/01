@@ -12,7 +12,7 @@ getgenv().Config = {
             ["Mango"] = 1,
             ["Sugarglaze"] = 1,
             ["Orange Tulip"] = 1,
-            ["Bamboo"] = 1,
+            ["Bamboo"] = 0,
             ["Carrot"] = 0
         }
     }
