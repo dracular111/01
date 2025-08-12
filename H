@@ -160,7 +160,7 @@ getgenv().ConfigsKaitun = {
             "Raiju",
             ["Gorilla Chef"] = 8,
             "Lobster Thermidor",
-            ["Sunny-Side Chicken"] = 8,
+            "Sunny-Side Chicken",
             "French Fry Ferret",
             "Corrupted Kitsune",
             "Kitsune",
@@ -185,7 +185,7 @@ getgenv().ConfigsKaitun = {
             "Mimic Octopus",
             "Red Fox",
             "Hyacinth Macaw",
-            "Scarlet Macaw",
+            ["Scarlet Macaw"] = 8,
             "Blood Owl",
             "Chicken Zombie",
             "Chicken",
@@ -194,7 +194,7 @@ getgenv().ConfigsKaitun = {
             ["Spaghetti Sloth"] = 2,
             ["Tanchozuru"] = 8,
             ["Capybara"] = 1,
-            ["Starfish"] = 1
+            ["Starfish"] = 2
         },
         LockPet_Weight = 5,
         Instant_Sell = {
