@@ -1,6 +1,7 @@
 -- Giới hạn số lượng cần giữ cho từng loại cây
 local keepLimit = {
     ["Hinomai"] = 5,
+    ["Mango"] = 2,
     ["Carrot"] = 0
 }
 
