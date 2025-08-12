@@ -3,7 +3,13 @@ getgenv().Config = {
         ['Trees'] = {
             ["Hinomai"] = 2,
             ["Mango"] = 1,
-            ["Bamboo"] = 1,
+            ["Dragon Fruit"] = 2,
+            ["Dragon Pepper"] = 2,
+            ["Burning Bud"] = 2,
+            ["Sugarglaze"] = 1,
+            ["Cactus"] = 2,
+            ["Coconut"] = 2,
+            ["Bamboo"] = 0,
             ["Carrot"] = 0
         }
     }
