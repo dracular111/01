@@ -216,9 +216,5 @@ getgenv().ConfigsKaitun = {
         }
     }
 }
-
-loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/C1"))()
-
 loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/limit"))()
-
-
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/C1"))()
