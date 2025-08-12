@@ -182,8 +182,8 @@ getgenv().ConfigsKaitun = {
             "Butterfly",
             "Mimic Octopus",
             "Red Fox",
-            ["Hyacinth Macaw"] = 2,
-            ["Scarlet Macaw"] = 2,
+            "Hyacinth Macaw"
+            "Scarlet Macaw"
             "Blood Owl",
             "Chicken Zombie",
             "Chicken",
