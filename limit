@@ -1,7 +1,7 @@
 getgenv().Config = {
     ['Destroy Plants'] = {
         ['Trees'] = {
-            ["Hinomai"] = 5,
+            ["Hinomai"] = 2,
             ["Mango"] = 1,
             ["Bamboo"] = 1,
             ["Carrot"] = 0
