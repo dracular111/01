@@ -134,7 +134,7 @@ getgenv().ConfigsKaitun = {
     },
 
     Pets = {
-        ["Start Delete Pet At"] = 50,
+        ["Start Delete Pet At"] = 45,
         ["Upgrade Slot"] = {
             ["Pet"] = {
                 ["Starfish"] = { 5, 76, 1, true }
