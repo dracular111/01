@@ -137,7 +137,8 @@ getgenv().ConfigsKaitun = {
         ["Start Delete Pet At"] = 50,
         ["Upgrade Slot"] = {
             ["Pet"] = {
-                ["Starfish"] = { 5, 76, 1, true }
+                ["Starfish"] = { 5, 76, 1, true },
+                ["Koi"] = { 1, 76, 15, true }
             },
             ["Limit Upgrade"] = 5, -- max is 5 (more than or lower than 1 will do nothing
             ["Equip When Done"] = {
@@ -183,7 +184,7 @@ getgenv().ConfigsKaitun = {
             "Mimic Octopus",
             "Red Fox",
             "Hyacinth Macaw",
-            "Scarlet Macaw",
+            ["Scarlet Macaw"] = 8,
             "Blood Owl",
             "Chicken Zombie",
             "Chicken",
