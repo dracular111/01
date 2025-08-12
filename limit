@@ -1,28 +1,32 @@
--- Giới hạn số lượng cần giữ cho từng loại cây
 local keepLimit = {
     ["Hinomai"] = 5,
     ["Mango"] = 2,
     ["Carrot"] = 0
 }
 
--- Biến đếm hiện tại
 local currentCount = {}
 for name, _ in pairs(keepLimit) do
     currentCount[name] = 0
 end
 
--- Hàm xử lý từng ô đất
 for _, plot in pairs(GetAllPlots()) do
     local plantName = plot:GetPlantName()
+    print("Plot", plot.id, "has plant:", plantName)
 
-    -- Nếu cây nằm trong danh sách cần giới hạn
     if keepLimit[plantName] then
         if currentCount[plantName] >= keepLimit[plantName] then
-            print("Removing extra " .. plantName .. " at plot " .. plot.id)
-            plot:Remove() -- hoặc plot:ClickRemoveButton() nếu hàm Remove khác
+            print("→ Removing extra", plantName, "at plot", plot.id)
+            -- Thử các cách remove:
+            if plot.Remove then
+                plot:Remove()
+            elseif plot.ClickRemoveButton then
+                plot:ClickRemoveButton()
+            else
+                game.ReplicatedStorage:WaitForChild("RemovePlant"):FireServer(plot)
+            end
         else
             currentCount[plantName] = currentCount[plantName] + 1
-            print("Keeping " .. plantName .. " #" .. currentCount[plantName])
+            print("→ Keeping", plantName, "#" .. currentCount[plantName])
         end
     end
 end
