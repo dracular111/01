@@ -56,11 +56,11 @@ getgenv().ConfigsKaitun = {
         ["Cook Event"] = {
             Minimum_Money = 10_000_000, -- minimum money to start play this event
             Rewards_Item = { -- The top is the most top mean preferred
+                "Pet Shard Aromatic",
                 "Culinarian Chest",
                 "Gourmet Egg",
                 "Gorilla Chef",
                 "Sunny-Side Chicken",
-                "Pet Shard Aromatic",
                 "Gourmet Seed Pack",
                 "Bitter Melon Seed",
                 "Pricklefruit Seed",
