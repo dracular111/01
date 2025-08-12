@@ -123,7 +123,7 @@ getgenv().ConfigsKaitun = {
             "Bee Egg",
             "Zen Egg",
             "Oasis Egg",
-            "Paradise Egg",   
+            "Paradise Egg",
             "Night Egg",
             "Bug Egg",
             "Rare Egg",
@@ -216,7 +216,5 @@ getgenv().ConfigsKaitun = {
         }
     }
 }
-
-loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/limit"))()
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/C1"))()
