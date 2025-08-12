@@ -1,6 +1,6 @@
 -- Giới hạn số lượng cần giữ cho từng loại cây
 local keepLimit = {
-    ["Hinomai"] = 2
+    ["Hinomai"] = 5
 }
 
 -- Biến đếm hiện tại
