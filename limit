@@ -1,32 +1,59 @@
-local keepLimit = {
-    ["Hinomai"] = 5,
-    ["Mango"] = 2,
-    ["Carrot"] = 0
+getgenv().Config = {
+    ['Destroy Plants'] = {
+        ['Trees'] = {
+            ["Hinomai"] = 5
+        }
+    }
 }
-
-local currentCount = {}
-for name, _ in pairs(keepLimit) do
-    currentCount[name] = 0
+repeat
+    wait()
+    game:GetService("VirtualUser"):CaptureController()
+    game:GetService("VirtualUser"):Button1Down(Vector2.new(0, 0))
+until game.Players.LocalPlayer:GetAttribute("DataFullyLoaded") and
+    game.Players.LocalPlayer:GetAttribute("Finished_Loading")
+repeat
+    wait()
+until game.CoreGui
+function equipweapon(aq)
+    local c6 = tostring(aq)
+    local c7 = game.Players.LocalPlayer.Backpack:FindFirstChild(c6)
+    local c8 = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") or
+                   game.Players.LocalPlayer.Character:WaitForChild("Humanoid")
+    if c7 then
+        c8:EquipTool(c7)
+    end
 end
+while wait() do
+    equipweapon("Shovel [Destroy Plants]")
+    local getplace = (function()
+        local GetFarm = require(game.ReplicatedStorage.Modules.GetFarm)(game.Players.LocalPlayer)
+        return GetFarm
+    end)
+    local plantCounts = {}
 
-for _, plot in pairs(GetAllPlots()) do
-    local plantName = plot:GetPlantName()
-    print("Plot", plot.id, "has plant:", plantName)
+    for _, plantModel in pairs(getplace().Important.Plants_Physical:GetChildren()) do
+        local plantName = plantModel.Name
 
-    if keepLimit[plantName] then
-        if currentCount[plantName] >= keepLimit[plantName] then
-            print("→ Removing extra", plantName, "at plot", plot.id)
-            -- Thử các cách remove:
-            if plot.Remove then
-                plot:Remove()
-            elseif plot.ClickRemoveButton then
-                plot:ClickRemoveButton()
-            else
-                game.ReplicatedStorage:WaitForChild("RemovePlant"):FireServer(plot)
+        for configName, configValue in pairs(getgenv().Config['Destroy Plants']['Trees']) do
+            local shouldDestroy = false
+            if typeof(configValue) == "number" and plantName == configName then
+                plantCounts[plantName] = (plantCounts[plantName] or 0) + 1
+                if plantCounts[plantName] > configValue then
+                    shouldDestroy = true
+                end
+
+            elseif typeof(configValue) == "string" and plantName == configValue then
+                shouldDestroy = true
             end
-        else
-            currentCount[plantName] = currentCount[plantName] + 1
-            print("→ Keeping", plantName, "#" .. currentCount[plantName])
+
+            if shouldDestroy then
+
+                game:GetService("ReplicatedStorage").GameEvents.Remove_Item:FireServer(
+                    plantModel:FindFirstChildOfClass("Part"))
+                task.wait(0.5)
+            end
+
         end
     end
+
 end
