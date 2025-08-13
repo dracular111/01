@@ -1,0 +1,2 @@
+-- ["Kitsune","Dragonfly","French Fry","Lobster Thermidor","Raiju","Red Fox","Mimic"]
+["Lobster Thermidor"]
