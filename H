@@ -152,7 +152,8 @@ getgenv().ConfigsKaitun = {
                 ["Hotdog Daschund"] = { 2, 100, 9 },
             }
         },
-        Favorite_LockedPet = true,
+        Unfavorite_AllPet = true,
+        Favorite_LockedPet = false,
         Locked_Pet_Age = 50,
         Locked = {
             "Raiju",
