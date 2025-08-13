@@ -1,63 +1,98 @@
--- danh sách pet cần tìm
-repeat task.wait() until game:IsLoaded()
-wait(10)
-local Players = game:GetService("Players")
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local AddItem = ReplicatedStorage.GameEvents.TradeEvents.AddItem -- RemoteEvent 
-local Accept = ReplicatedStorage.GameEvents.TradeEvents.Accept
-local Confirm = ReplicatedStorage.GameEvents.TradeEvents.Confirm
-local SendRequest = ReplicatedStorage.GameEvents.TradeEvents.SendRequest -- RemoteEvent 
-local TradingUI = game:GetService("Players").LocalPlayer.PlayerGui.TradingUI
-local playerNameToCheck = "LiamV0rtexFire"
+getgenv().Config = {
+    ["Account Main"] = {"LiamV0rtexFire"},
+    ["Pet"] = {"Lobster Thermidor"}
+}
+repeat
+    wait()
+until game:IsLoaded()
+repeat
+    wait()
+until game.Players.LocalPlayer.Character
+repeat
+    wait()
+    game:GetService("VirtualUser"):CaptureController()
+    game:GetService("VirtualUser"):Button1Down(Vector2.new(0, 0))
+until game.Players.LocalPlayer:GetAttribute("DataFullyLoaded") and
+    game.Players.LocalPlayer:GetAttribute("Finished_Loading")
+ function equipweapon(aq)
+        local c6 = tostring(aq)
+        local c7 = game.Players.LocalPlayer.Backpack:FindFirstChild(c6)
+        local c8 = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") or
+                       game.Players.LocalPlayer.Character:WaitForChild("Humanoid")
+        if c7 then
+            c8:EquipTool(c7)
+        end
+    end
+game.ReplicatedStorage.GameEvents.GiftPet.OnClientEvent:Connect(function(p_u_6, p7, p8)
+    if table.find(getgenv().Config["Account Main"], game.Players.LocalPlayer.Name) then
+        game.ReplicatedStorage.GameEvents.AcceptPetGift:FireServer(true, p_u_6)
+    end
+end)
+function havepet()
+    for i, v in game:GetService("Players").LocalPlayer.Backpack:GetChildren() do
+        if v:IsA("Tool") and v:GetAttribute("ItemType") == "Pet" then
+            for i1, v1 in getgenv().Config["Pet"] do
+                if string.find(v.Name, v1) then
+                    return v
+                end
+            end
+        end
+    end
+    for i, v in game:GetService("Players").LocalPlayer.Character:GetChildren() do
+        if v:IsA("Tool") and v:GetAttribute("ItemType") == "Pet" then
+            for i1, v1 in getgenv().Config["Pet"] do
+                if string.find(v.Name, v1) then
+                    return v
+                end
+            end
+        end
+    end
+end
 
-function equipticket()
-	for _, tool in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-		if string.find(string.lower(tool.Name), string.lower("Trading Ticket")) then
-			game.Players.LocalPlayer.Character.Humanoid:EquipTool(tool)
-			print("Đã trang bị:", tool.Name)
-			break -- Nếu chỉ muốn equip cái đầu tiên tìm thấy
-		end
-	end
+function checkcntmain()
+    local ReplicatedStorage = game:GetService("ReplicatedStorage")
+    local DataService = require(ReplicatedStorage.Modules.DataService)
+    local PetUtilities = require(ReplicatedStorage.Modules:WaitForChild("PetServices"):WaitForChild("PetUtilities"))
+    local playerdata = DataService:GetData()
+    local inventoryData = playerdata.PetsData and playerdata.PetsData.PetInventory and
+                              playerdata.PetsData.PetInventory.Data or {}
+    local cnt = 0
+    for i, v in inventoryData do
+        cnt = cnt + 1
+    end
+    return cnt
 end
-function additem()
-	local listpet = {"Lobster Thermidor"} 
-	for _, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-		for _, petName in ipairs(listpet) do
-			if string.find(v.Name, petName) then
-				local uuid = v:GetAttribute("PET_UUID")
-				AddItem:FireServer(
-					"Pet",
-					uuid
-				)
-			end
-		end
-	end
-end
-while wait(2) do
-	pcall(function ()
-		if TradingUI.Enabled then
-		additem()
-		if TradingUI.Main.Main.AcceptButton.Main.TextLabel.Text == "Accept" then
-			Accept:FireServer()
-		end
-		if TradingUI.Main.Main.AcceptButton.Main.TextLabel.Text == "Confirm" then
-			Confirm:FireServer()
-		end
-	else
-		local playerFound = game.Players:FindFirstChild(playerNameToCheck)
-		if playerFound then
-			equipticket()
-			SendRequest:FireServer(
-				Players.LiamV0rtexFire
-			)
-			additem()
-			wait(1)
-			Accept:FireServer()
-			wait(1)
-			Confirm:FireServer()
-		else
-				wait(10)
-		end
-	end
-	end)
-end
+spawn(function()
+    while wait() do
+        if table.find(getgenv().Config["Account Main"], game.Players.LocalPlayer.Name) and checkcntmain() >= 60 then
+            writefile(game.Players.LocalPlayer.Name .. ".txt", "Completed-Done Trading Main Account")
+
+        end
+    end
+end)
+spawn(function()
+    while wait() do
+        pcall(function()
+            if not table.find(getgenv().Config["Account Main"], game.Players.LocalPlayer.Name) and not havepet() then
+                writefile(game.Players.LocalPlayer.Name .. ".txt", "Completed-Trading Done")
+                task.wait(3)
+                game:Shutdown()
+            end
+            if havepet() and not table.find(getgenv().Config["Account Main"], game.Players.LocalPlayer.Name) then
+                for i, v in getgenv().Config["Account Main"] do
+                    if game.Players:FindFirstChild(v) then
+                        equipweapon(havepet().Name)
+                        if havepet():GetAttribute("d") then
+                            havepet():SetAttribute("d", false)
+                        end
+                        local args = {"GivePet", game:GetService("Players"):WaitForChild(v)}
+                        game:GetService("ReplicatedStorage"):WaitForChild("GameEvents")
+                            :WaitForChild("PetGiftingService"):FireServer(unpack(args))
+                        task.wait(3)
+                    end
+                end
+            end
+
+        end)
+    end
+end)
