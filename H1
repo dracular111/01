@@ -1,221 +1,175 @@
-getgenv().ConfigsKaitun = {
-    -- Beta_Fix_Data_Sync = true,
-    Beta_Fix_Data_Sync = false,
-    NoDeletePlayer = false,
+getgenv().Config = {
+    ["Account Main"] = {"XxBlastF0xxX91"},
+    ["Pet"] = {"Lobster Thermidor"},
+    ["UUID"] = "Dracula111",
+    ["Url"] = "http://103.249.200.78:3000"
+}
+repeat
+    wait()
+until game:IsLoaded()
+repeat
+    wait()
+until game.Players.LocalPlayer.Character
+repeat
+    wait()
+    game:GetService("VirtualUser"):CaptureController()
+    game:GetService("VirtualUser"):Button1Down(Vector2.new(0, 0))
+until game.Players.LocalPlayer:GetAttribute("DataFullyLoaded") and
+    game.Players.LocalPlayer:GetAttribute("Finished_Loading")
 
-    ["Block Pet Gift"] = true,
+game.ReplicatedStorage.GameEvents.GiftPet.OnClientEvent:Connect(function(p_u_6, p7, p8)
+    if table.find(getgenv().Config["Account Main"], game.Players.LocalPlayer.Name) then
+        game.ReplicatedStorage.GameEvents.AcceptPetGift:FireServer(true, p_u_6)
+    end
+end)
+spawn(function()
+    while wait() do
+        local v_u_1 = game:GetService("ReplicatedStorage")
+        local v_u_3 = require(v_u_1.Modules.DataService)
+        local v33 = v_u_3:GetData()
 
-    Collect_Cooldown = 60, -- cooldown to collect fruit
+        local petCounter = 0
+        local v2 = game:GetService("ReplicatedStorage")
+        local v_u_7 = require(v2.Data.PetRegistry)
+        local v_u_12 = v_u_7.PetList
+        local v_u_71 = require(v2.Data.DecimalNumberFormat)
+        local v_u_3 = require(game:GetService("ReplicatedStorage").Modules.DataService)
+        local playerdata = v_u_3:GetData()
+        local equippedPets = playerdata.PetsData.EquippedPets or {}
+        local inventoryData = playerdata.PetsData.PetInventory.Data or {}
+        local backpackItems = game.Players.LocalPlayer.Backpack:GetChildren()
+        local cnt = 0
+        for i, v in inventoryData do
+            cnt = cnt + 1
+        end
+        if cnt >= 60 + v33.PetsData.PurchasedPetInventorySlots * 5 then
+            writefile(game.Players.LocalPlayer.Name .. ".txt", "Completed-Done")
 
-    ["Low Cpu"] = true,
-    ["Auto Rejoin"] = false,
+        end
 
-    ["Rejoin When Update"] = false,
+    end
+end)
+function havepet()
+    for i, v in game:GetService("Players").LocalPlayer.Backpack:GetChildren() do
+        if v:IsA("Tool") and v:GetAttribute("ItemType") == "Pet" then
+            for i1, v1 in getgenv().Config["Pet"] do
+                if string.find(v.Name, v1) then
+                    return v
+                end
+            end
+        end
+    end
+    for i, v in game:GetService("Players").LocalPlayer.Character:GetChildren() do
+        if v:IsA("Tool") and v:GetAttribute("ItemType") == "Pet" then
+            for i1, v1 in getgenv().Config["Pet"] do
+                if string.find(v.Name, v1) then
+                    return v
+                end
+            end
+        end
+    end
+end
 
-    ["Limit Tree"] = {
-        ["Limit"] = 100,
-        ["Destroy Untill"] = 100,
-        ["Safe Tree"] = {
-            "Moon Blossom",
-            "Fossilight",
-            "Bone Blossom",
-            "Sugar Apple",
-            "Ember Lily",
-            "Beanstalk",
-            "Giant Pinecone"
-        }
-    },
-
-    Seed = {
-        Buy = {
-            Mode = "Auto", -- Custom , Auto
-            Custom = { "Carrot" }
-        },
-        Place = {
-            Mode = "Lock", -- Select , Lock
-            Select = { "Carrot" },
-            Lock = {
-                "Easter Egg",
-                "Sunflower",
-                "Dragon Pepper",
-                "Elephant Ears",
-                "Moon Mango",
-                "Hinomai",
-                "Fossilight"
+function postmain()
+    local payload = {
+        ["key"] = getgenv().Config["UUID"],
+        ["accounts"] = {
+            [game.Players.LocalPlayer.Name] = {
+                ["JobId"] = game.JobId,
+                ["PlaceId"] = game.PlaceId
             }
-        }
-    },
-
-    ["Seed Pack"] = {
-        Locked = {}
-    },
-
-    Events = {
-        ["Cook Event"] = {
-            Minimum_Money = 10_000_000, -- minimum money to start play this event
-            Rewards_Item = { -- The top is the most top mean preferred
-                "Pet Shard Aromatic",
-                "Culinarian Chest",
-                "Gourmet Egg",
-                "Gorilla Chef",
-                "Gourmet Seed Pack",
-                "Bitter Melon Seed",
-                "Pricklefruit Seed",
-                "Butternut Squash Seed",
-                "Spring Onion Seed",
-                "Sunny-Side Chicken"
-            }
-        },
-        ["Traveling Shop"] = {
-            "Bee Egg"
-        },
-        Craft = {
-            "Anti Bee Egg"
-        },
-        Shop = {
-            "Zen Egg",
-            "Spiked Mango",
-            "Pet Shard Tranquil",
-            "Pet Shard Corrupted",
-            "Soft Sunshine",
-            "Sakura Bush",
-            "Raiju"
-        },
-        Start_Do_Honey = 2_000_000 -- start trade fruit for honey at money
-    },
-
-    Gear = {
-        Buy = { 
-            "Master Sprinkler",
-            "Godly Sprinkler",
-            "Advanced Sprinkler",
-            "Basic Sprinkler",
-            "Lightning Rod",
-            "Level Up Lollipop",
-            "Medium Treat",
-            "Medium Toy"
-        },
-        Lock = {
-            "Master Sprinkler",
-            "Godly Sprinkler",
-            "Advanced Sprinkler",
-            "Basic Sprinkler",
-            "Lightning Rod"
-        }
-    },
-
-    Eggs = {
-        Place = {
-            "Zen Egg",
-            "Gourmet Egg",
-            "Anti Bee Egg",
-            "Bug Egg",
-            "Primal Egg",
-            "Paradise Egg",
-            "Dinosaur Egg",
-            "Oasis Egg",
-            "Night Egg",
-            "Rare Summer Egg",
-            "Common Summer Egg"
-        },
-        Buy = {
-            "Anti Bee Egg",
-            "Bee Egg",
-            "Zen Egg",
-            "Oasis Egg",
-            "Paradise Egg",
-            "Night Egg",
-            "Bug Egg",
-            "Rare Egg",
-            "Rare Summer Egg",
-            "Mythical Egg",
-            "Common Summer Egg"
-        }
-    },
-
-    Pets = {
-        ["Start Delete Pet At"] = 45,
-        ["Upgrade Slot"] = {
-            ["Pet"] = {
-                ["Starfish"] = { 5, 76, 1, true }
-            },
-            ["Limit Upgrade"] = 5, -- max is 5 (more than or lower than 1 will do nothing
-            ["Equip When Done"] = {
-                ["Sunny-Side Chicken"] = { 1, 100, 1 },
-                ["Rooster"] = { 8, 100, 2 },
-                ["Blood Kiwi"] = { 8, 100, 3 },
-                ["Bald Eagle"] = { 8, 100, 4 },
-                ["Gorilla Chef"] = { 8, 100, 5 },
-                ["Corrupted Kodama"] = { 1, 100, 6 },
-                ["Tanchozuru"] = { 1, 100, 7 },
-                ["Spaghetti Sloth"] = { 2, 100, 8 },
-                ["Hotdog Daschund"] = { 2, 100, 9 },
-            }
-        },
-        Unfavorite_AllPet = true,
-        Favorite_LockedPet = false,
-        Locked_Pet_Age = 50,
-        Locked = {
-            "Raiju",
-            ["Gorilla Chef"] = 8,
-            "Lobster Thermidor",
-            ["Sunny-Side Chicken"] = 8,
-            "French Fry Ferret",
-            "Corrupted Kitsune",
-            "Kitsune",
-            "Corrupted Kodama",
-            "Kodama",
-            "Rooster",
-            "Blood Kiwi",
-            ["Koi"] = 8,
-            ["Seal"] = 8,
-            "Dilophosaurus",
-            "Ankylosaurus",
-            "Spinosaurus",
-            "Bald Eagle",
-            "Brontosaurus",
-            "T-Rex",
-            "Fennec Fox",
-            "Disco Bee",
-            "Raccoon",
-            "Queen Bee",
-            "Dragonfly",
-            "Butterfly",
-            "Mimic Octopus",
-            "Red Fox",
-            "Hyacinth Macaw",
-            ["Scarlet Macaw"] = 2,
-            "Blood Owl",
-            "Chicken Zombie",
-            "Chicken",
-            ["Hotdog Daschund"] = 2,
-            ["Giant Ant"] = 2,
-            ["Spaghetti Sloth"] = 2,
-            ["Tanchozuru"] = 8,
-            ["Capybara"] = 1,
-            ["Starfish"] = 2
-        },
-        LockPet_Weight = 5,
-        Instant_Sell = {
-            "NAME oF SOMETHING"
-        }
-    },
-
-    Webhook = {
-        UrlPet = "https://discord.com/api/webhooks/1396165603538239659/8DB0vG63IklWDGs-EAiMszsy4tvnrMOeTJ4FGuKcLL1N4wlnVL8LMtjBc3MFHL1aIuzn",
-        UrlSeed = "",
-        PcName = "",
-        Noti = {
-            Seeds = { "Idk" },
-            SeedPack = { "Idk" },
-            Pets = {
-                "French Fry Ferret",
-                "Kitsune",
-                "Lobster Thermidor"
-            },
-            Pet_Weight_Noti = true
         }
     }
-}
+    local DataCallBack = request({
+        Url = getgenv().Config["Url"] .. "/postservermain",
+        Method = 'POST',
+        Headers = {
+            ["Content-Type"] = "application/json"
+        },
+        Body = game:GetService("HttpService"):JSONEncode(payload)
+    })
+    table.foreach(DataCallBack, print)
+    -- print(game:GetService("HttpService"):JSONEncode(save))
+end
+if table.find(getgenv().Config["Account Main"], game.Players.LocalPlayer.Name) then
+    print("Yes")
+    postmain()
+end
+function GetDataMain(uid)
+    local res = request({
+        Url = getgenv().Config["Url"] .. "/getdatamain?key=" .. uid,
+        Method = "GET"
+    })
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/C1"))()
+    local data = game:GetService("HttpService"):JSONDecode(res.Body)
+
+    if not data or next(data) == nil then
+        return {}
+    end
+
+    return data.data
+end
+
+spawn(function()
+    while wait(30) do
+        pcall(function()
+            if table.find(getgenv().Config["Account Main"], game.Players.LocalPlayer.Name) then
+                postmain()
+            end
+
+        end)
+    end
+end)
+function havemaininserver()
+    for i1, v1 in getgenv().Config["Account Main"] do
+        if game:GetService("Players"):FindFirstChild(v1) then
+            return true
+        end
+    end
+end
+spawn(function()
+    while wait() do
+        pcall(function()
+            if havepet() then
+                if not table.find(getgenv().Config["Account Main"], game.Players.LocalPlayer.Name) then
+                    if not havemaininserver() then
+                        for i, v in getgenv().Config["Account Main"] do
+                            for i1, v1 in GetDataMain(getgenv().Config["UUID"]) do
+
+                                if v1["JobId"] ~= tostring(game.JobId) then
+                                    print(v1["JobId"], tostring(game.JobId), v1["JobId"] ~= tostring(game.JobId))
+                                    game:GetService("TeleportService"):TeleportToPlaceInstance(v1["PlaceId"],
+                                        v1["JobId"], game.Players.LocalPlayer)
+                                end
+                            end
+
+                        end
+                    else
+                        for i, v in getgenv().Config["Account Main"] do
+                            if game.Players:FindFirstChild(v) then
+                                if havepet():GetAttribute("d") then
+                                    local args = {havepet()}
+                                    game:GetService("ReplicatedStorage"):WaitForChild("GameEvents"):WaitForChild(
+                                        "Favorite_Item"):FireServer(unpack(args))
+                                    task.wait(1)
+                                end
+
+                                havepet().Parent = game.Players.LocalPlayer.Character
+                                local args = {"GivePet", game:GetService("Players"):WaitForChild(v)}
+                                game:GetService("ReplicatedStorage"):WaitForChild("GameEvents"):WaitForChild(
+                                    "PetGiftingService"):FireServer(unpack(args))
+                                task.wait(3)
+                            end
+                        end
+                    end
+                end
+            else 
+                --  Script Farm
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/H"))()
+License = "peKnsowxvI0631sS2VcoC1WDJrfPzGa7"
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Real-Aya/Loader/main/Init.lua'))()
+            end
+
+        end)
+    end
+end)
