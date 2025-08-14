@@ -63,7 +63,7 @@ getgenv().ConfigsKaitun = {
                 "Pricklefruit Seed",
                 "Butternut Squash Seed",
                 "Spring Onion Seed",
-                -- "Sunny-Side Chicken"
+                "Sunny-Side Chicken"
             }
         },
         ["Traveling Shop"] = {
