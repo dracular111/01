@@ -36,12 +36,12 @@ getgenv().ConfigsKaitun = {
             Select = { "Carrot" },
             Lock = {
                 "Easter Egg",
-                "Sunflower",
-                "Dragon Pepper",
+                -- "Sunflower",
+                -- "Dragon Pepper",
+                -- "Fossilight",
                 "Elephant Ears",
                 "Moon Mango",
-                "Hinomai",
-                "Fossilight"
+                "Hinomai"
             }
         }
     },
@@ -55,8 +55,8 @@ getgenv().ConfigsKaitun = {
             Minimum_Money = 10_000_000, -- minimum money to start play this event
 		},
         Shop = {
-			"Spriggan",
 			"Sprout Egg",
+			"Spriggan",
 			"Sprout Seed Pack",
 			-- "Mandrake",
 			"Silver Fertilizer",
@@ -137,7 +137,7 @@ getgenv().ConfigsKaitun = {
                 ["Rooster"] = { 8, 100, 2 },
                 ["Blood Kiwi"] = { 8, 100, 3 },
                 ["Bald Eagle"] = { 8, 100, 4 },
-                ["Spriggan"] = { 8, 100, 5 },
+	            ["Spriggan"] = { 8, 100, 5 },
                 ["Jackalope"] = { 8, 100, 6 },
                 ["Gorilla Chef"] = { 8, 100, 7 },
                 ["Corrupted Kodama"] = { 1, 100, 8 },
