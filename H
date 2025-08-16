@@ -157,6 +157,8 @@ getgenv().ConfigsKaitun = {
         Locked_Pet_Age = 20,
         Locked = {
             "Raiju",
+            "Golden Goose",
+            ["Jackalope"] = 8,
             ["Gorilla Chef"] = 8,
             "Lobster Thermidor",
             ["Sunny-Side Chicken"] = 8,
@@ -184,12 +186,10 @@ getgenv().ConfigsKaitun = {
             "Mimic Octopus",
             "Red Fox",
             "Hyacinth Macaw",
-            ["Scarlet Macaw"] = 2,
             "Blood Owl",
             "Chicken Zombie",
             "Chicken",
             ["Giant Ant"] = 2,
-            ["Spaghetti Sloth"] = 2,
             ["Tanchozuru"] = 8,
             ["Capybara"] = 1,
             ["Starfish"] = 2
