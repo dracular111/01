@@ -51,36 +51,26 @@ getgenv().ConfigsKaitun = {
     },
 
     Events = {
-        ["Cook Event"] = {
+        ["Bean Event"] = {
             Minimum_Money = 10_000_000, -- minimum money to start play this event
-            Rewards_Item = { -- The top is the most top mean preferred
-                "Pet Shard Aromatic",
-                "Culinarian Chest",
-                "Gourmet Egg",
-                "Sunny-Side Chicken",
-                "Gorilla Chef",
-                "Gourmet Seed Pack",
-                "Bitter Melon Seed",
-                "Pricklefruit Seed",
-                "Butternut Squash Seed",
-                "Spring Onion Seed"
-            }
+		},
+        Shop = {
+			"Spriggan",
+			"Sprout Egg",
+			"Sprout Seed Pack",
+			-- "Mandrake",
+			"Silver Fertilizer",
+			-- "Canary Melon",
+			-- "Amberheart",
+            "Zen Egg",
+            "Pet Shard Tranquil",
+            "Pet Shard Corrupted",
         },
         ["Traveling Shop"] = {
             "Bee Egg"
         },
         Craft = {
             "Anti Bee Egg"
-        },
-        Shop = {
-            "Sprout Egg",
-            "Zen Egg",
-            "Spiked Mango",
-            "Pet Shard Tranquil",
-            "Pet Shard Corrupted",
-            "Soft Sunshine",
-            "Sakura Bush",
-            "Raiju"
         },
         Start_Do_Honey = 2_000_000 -- start trade fruit for honey at money
     },
@@ -197,8 +187,28 @@ getgenv().ConfigsKaitun = {
             ["Starfish"] = 2
         },
         LockPet_Weight = 5,
+		Ignore_Pet_Weight = {
+			"Starfish",
+			"Caterpillar",
+			"Triceratops",
+			"Crab",
+			"Seagull",
+			"Pancake Mole",
+			"Bagel Bunny",
+			"Sushi Bear",
+			"Raptor",
+			"Stegosaurus",
+		},
         Instant_Sell = {
-            "NAME oF SOMETHING"
+			"Caterpillar",
+			"Triceratops",
+			"Crab",
+			"Seagull",
+			"Pancake Mole",
+			"Bagel Bunny",
+			"Sushi Bear",
+			"Raptor",
+			"Stegosaurus",
         }
     },
 
@@ -212,7 +222,8 @@ getgenv().ConfigsKaitun = {
             Pets = {
                 "French Fry Ferret",
                 "Kitsune",
-                "Lobster Thermidor"
+                "Lobster Thermidor",
+                "Golden Goose"
             },
             Pet_Weight_Noti = true
         }
