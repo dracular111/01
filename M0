@@ -1,6 +1,6 @@
 getgenv().Config = {
     ["Account Main"] = {"XxBlastF0xxX91"},
-    ["Pet"] = {""},
+    ["Pet"] = {"Lobster Thermidor"},
     ["UUID"] = "Dracula111",
     ["Url"] = "http://103.249.200.78:3000"
 }
