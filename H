@@ -145,11 +145,11 @@ getgenv().ConfigsKaitun = {
                 ["Rooster"] = { 8, 100, 2 },
                 ["Blood Kiwi"] = { 8, 100, 3 },
                 ["Bald Eagle"] = { 8, 100, 4 },
+                ["Jackalope"] = { 8, 100, 5 },
                 ["Gorilla Chef"] = { 8, 100, 5 },
                 ["Corrupted Kodama"] = { 1, 100, 6 },
                 ["Tanchozuru"] = { 1, 100, 7 },
-                ["Spaghetti Sloth"] = { 2, 100, 8 },
-                ["Hotdog Daschund"] = { 2, 100, 9 },
+
             }
         },
         Unfavorite_AllPet = true,
