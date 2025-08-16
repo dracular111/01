@@ -120,38 +120,3 @@ spawn(function()
         end)
     end
 end)
-
-spawn(function()
-    while wait() do
-        pcall(function()
-            if not table.find(getgenv().Config["Account Main"], game.Players.LocalPlayer.Name) then
-                if havepet() then
-                    if not havemaininserver() then
-                        for _, _ in getgenv().Config["Account Main"] do
-                            for _, v1 in GetDataMain(getgenv().Config["UUID"]) do
-                                if v1["JobId"] ~= tostring(game.JobId) then
-                                    game:GetService("TeleportService"):TeleportToPlaceInstance(
-                                        v1["PlaceId"], v1["JobId"], game.Players.LocalPlayer
-                                    )
-                                end
-                            end
-                        end
-                    else
-                        for _, v in getgenv().Config["Account Main"] do
-                            if game.Players:FindFirstChild(v) then
-                                if havepet():GetAttribute("d") then
-                                    game:GetService("ReplicatedStorage").GameEvents.Favorite_Item:FireServer(havepet())
-                                    task.wait(1)
-                                end
-                                havepet().Parent = game.Players.LocalPlayer.Character
-                                game:GetService("ReplicatedStorage").GameEvents.PetGiftingService:FireServer("GivePet", game.Players[v])
-                                task.wait(3)
-                            end
-                        end
-                    end
-                else
-                end
-            end
-        end)
-    end
-end)
