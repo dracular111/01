@@ -147,7 +147,6 @@ spawn(function()
                 local req = game:HttpGet("https://games.roblox.com/v1/games/" .. game.PlaceId ..
                                              "/servers/Public?sortOrder=Asc&limit=100&excludeFullGames=true")
                 local body = HttpService:JSONDecode(req)
-                -- local TeleportService = (game:GetService("TeleportService"))
 
                 if body and body.data then
                     for i, v in next, body.data do
