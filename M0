@@ -1,6 +1,6 @@
 getgenv().Config = {
     ["Account Main"] = {"XxBlastF0xxX91"},
-    ["Pet"] = {"Lobster Thermidor"},
+    ["Pet"] = {""},
     ["UUID"] = "Dracula111",
     ["Url"] = "http://103.249.200.78:3000"
 }
@@ -128,16 +128,42 @@ function havemaininserver()
     end
 end
 spawn(function()
-    while wait() do
+    while wait() do 
         pcall(function()
-            if not table.find(getgenv().Config["Account Main"], game.Players.LocalPlayer.Name) then
-                if havepet() then
-                    repeat
-                        wait()
-                    until not havepet()
-                    game.Players.LocalPlayer:Kick("Done")
-                end
+            if havepet() then 
+                repeat wait() until not havepet()
+                game.Players.LocalPlayer:Kick("Done")
             end
+        end)
+    end
+
+end)
+local aaa = tick()
+spawn(function()
+    while wait() do 
+        pcall(function()
+            repeat wait() until tick() - aaa >= 5*60 
+             local servers = {}
+                local req = game:HttpGet("https://games.roblox.com/v1/games/" .. game.PlaceId ..
+                                             "/servers/Public?sortOrder=Asc&limit=100&excludeFullGames=true")
+                local body = HttpService:JSONDecode(req)
+                local TeleportService = (game:GetService("TeleportService"))
+
+                if body and body.data then
+                    for i, v in next, body.data do
+                        if type(v) == "table" and tonumber(v.playing) and tonumber(v.maxPlayers) and v.playing <
+                            v.maxPlayers and v.id ~= game.JobId then
+                            table.insert(servers, 1, v.id)
+                        end
+                    end
+                end
+
+                if #servers > 0 then
+                    TeleportService:TeleportToPlaceInstance(game.PlaceId, servers[math.random(1, #servers)],
+                        game.Players.LocalPlayer)
+                else
+                    print("Couldn't find a server.")
+                end
         end)
     end
 end)
@@ -145,13 +171,13 @@ spawn(function()
     while wait() do
         pcall(function()
             if not table.find(getgenv().Config["Account Main"], game.Players.LocalPlayer.Name) then
-                if havepet() then
-
+                if  havepet()  then
                     if not havemaininserver() then
                         for i, v in getgenv().Config["Account Main"] do
                             for i1, v1 in GetDataMain(getgenv().Config["UUID"]) do
 
                                 if v1["JobId"] ~= tostring(game.JobId) then
+                                    print(v1["JobId"], tostring(game.JobId), v1["JobId"] ~= tostring(game.JobId))
                                     game:GetService("TeleportService"):TeleportToPlaceInstance(v1["PlaceId"],
                                         v1["JobId"], game.Players.LocalPlayer)
                                 end
@@ -176,14 +202,15 @@ spawn(function()
                             end
                         end
                     end
-                else
-                    --  Script Farm
+                    else 
+                --  Script Farm
 loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/H"))()
 License = "peKnsowxvI0631sS2VcoC1WDJrfPzGa7"
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Real-Aya/Loader/main/Init.lua'))()
                 end
-
+            
             end
+
         end)
     end
 end)
