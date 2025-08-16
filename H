@@ -154,7 +154,7 @@ getgenv().ConfigsKaitun = {
         },
         Unfavorite_AllPet = true,
         Favorite_LockedPet = false,
-        Locked_Pet_Age = 50,
+        Locked_Pet_Age = 20,
         Locked = {
             "Raiju",
             ["Gorilla Chef"] = 8,
@@ -188,7 +188,6 @@ getgenv().ConfigsKaitun = {
             "Blood Owl",
             "Chicken Zombie",
             "Chicken",
-            ["Hotdog Daschund"] = 2,
             ["Giant Ant"] = 2,
             ["Spaghetti Sloth"] = 2,
             ["Tanchozuru"] = 8,
