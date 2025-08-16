@@ -195,6 +195,18 @@ getgenv().ConfigsKaitun = {
             ["Starfish"] = 2
         },
         LockPet_Weight = 5,
+		Ignore_Pet_Weight = {
+			"Starfish",
+			"Caterpillar",
+			"Triceratops",
+			"Crab",
+			"Seagull",
+			"Pancake Mole",
+			"Bagel Bunny",
+			"Sushi Bear",
+			"Raptor",
+			"Stegosaurus",
+		},
         Instant_Sell = {
             "NAME oF SOMETHING"
         }
