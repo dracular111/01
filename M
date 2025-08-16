@@ -114,6 +114,7 @@ spawn(function()
         pcall(function()
             if havepet() then 
                 repeat wait() until not havepet()
+                wait(10)
                 game.Players.LocalPlayer:Kick("Done")
             end
         end)
