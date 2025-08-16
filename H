@@ -57,13 +57,13 @@ getgenv().ConfigsKaitun = {
                 "Pet Shard Aromatic",
                 "Culinarian Chest",
                 "Gourmet Egg",
+                "Sunny-Side Chicken",
                 "Gorilla Chef",
                 "Gourmet Seed Pack",
                 "Bitter Melon Seed",
                 "Pricklefruit Seed",
                 "Butternut Squash Seed",
-                "Spring Onion Seed",
-                "Sunny-Side Chicken"
+                "Spring Onion Seed"
             }
         },
         ["Traveling Shop"] = {
