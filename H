@@ -59,8 +59,8 @@ getgenv().ConfigsKaitun = {
 			"Sprout Egg",
 		},
         Shop = {
+			["Spriggan"] = 8,
 			"Sprout Egg",
-			"Spriggan",
 			"Sprout Seed Pack",
 			-- "Mandrake",
 			"Silver Fertilizer",
