@@ -118,7 +118,6 @@ spawn(function()
                         end
                     end
                 else
-writefile(game.Players.LocalPlayer.Name .. ".txt", "Completed-done clone"
                 end
 
             end
