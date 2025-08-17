@@ -84,6 +84,7 @@ spawn(function()
                     repeat
                         wait()
                     until not havepet()
+writefile(game.Players.LocalPlayer.Name .. ".txt", "Completed-done clone")
                     game.Players.LocalPlayer:Kick("Done")
                 end
             end
