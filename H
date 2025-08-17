@@ -64,7 +64,7 @@ getgenv().ConfigsKaitun = {
 			"Sprout Seed Pack",
 			-- "Mandrake",
 			"Silver Fertilizer",
-			-- "Canary Melon",
+			"Canary Melon",
 			-- "Amberheart",
             "Zen Egg",
             "Pet Shard Tranquil",
