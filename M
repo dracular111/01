@@ -2,143 +2,124 @@ getgenv().Config = {
     ["Account Main"] = {"XxBlastF0xxX91"},
     ["Pet"] = {"Lobster Thermidor"},
     ["UUID"] = "Dracula111",
-    ["Url"] = "http://103.249.200.78:3000"
 }
-
-repeat wait() until game:IsLoaded()
-repeat wait() until game.Players.LocalPlayer.Character
+repeat
+    wait()
+until game:IsLoaded()
+repeat
+    wait()
+until game.Players.LocalPlayer.Character
 repeat
     wait()
     game:GetService("VirtualUser"):CaptureController()
     game:GetService("VirtualUser"):Button1Down(Vector2.new(0, 0))
 until game.Players.LocalPlayer:GetAttribute("DataFullyLoaded") and
-      game.Players.LocalPlayer:GetAttribute("Finished_Loading")
+    game.Players.LocalPlayer:GetAttribute("Finished_Loading")
 
--- Nhận pet nếu là account main
-game.ReplicatedStorage.GameEvents.GiftPet.OnClientEvent:Connect(function(p_u_6)
+game.ReplicatedStorage.GameEvents.GiftPet.OnClientEvent:Connect(function(p_u_6, p7, p8)
     if table.find(getgenv().Config["Account Main"], game.Players.LocalPlayer.Name) then
         game.ReplicatedStorage.GameEvents.AcceptPetGift:FireServer(true, p_u_6)
     end
 end)
+spawn(function()
+    while wait() do
+        local v_u_1 = game:GetService("ReplicatedStorage")
+        local v_u_3 = require(v_u_1.Modules.DataService)
+        local v33 = v_u_3:GetData()
 
--- Hàm kiểm tra pet cần trade
+        local petCounter = 0
+        local v2 = game:GetService("ReplicatedStorage")
+        local v_u_7 = require(v2.Data.PetRegistry)
+        local v_u_12 = v_u_7.PetList
+        local v_u_71 = require(v2.Data.DecimalNumberFormat)
+        local v_u_3 = require(game:GetService("ReplicatedStorage").Modules.DataService)
+        local playerdata = v_u_3:GetData()
+        local equippedPets = playerdata.PetsData.EquippedPets or {}
+        local inventoryData = playerdata.PetsData.PetInventory.Data or {}
+        local backpackItems = game.Players.LocalPlayer.Backpack:GetChildren()
+        local cnt = 0
+        for i, v in inventoryData do
+            cnt = cnt + 1
+        end
+        if cnt >= 60 + v33.PetsData.PurchasedPetInventorySlots * 5 then
+            writefile(game.Players.LocalPlayer.Name .. ".txt", "Completed-Done")
+
+        end
+
+    end
+end)
 function havepet()
-    local function findPetIn(container)
-        for _, v in container:GetChildren() do
-            if v:IsA("Tool") and v:GetAttribute("ItemType") == "Pet" then
-                for _, petName in getgenv().Config["Pet"] do
-                    if string.find(v.Name, petName) then
-                        return v
-                    end
+    for i, v in game:GetService("Players").LocalPlayer.Backpack:GetChildren() do
+        if v:IsA("Tool") and v:GetAttribute("ItemType") == "Pet" then
+            for i1, v1 in getgenv().Config["Pet"] do
+                if string.find(v.Name, v1) then
+                    return v
                 end
             end
         end
     end
-    return findPetIn(game:GetService("Players").LocalPlayer.Backpack) or
-           findPetIn(game:GetService("Players").LocalPlayer.Character)
-end
-
--- Post thông tin account main lên server
-function postmain()
-    local payload = {
-        ["key"] = getgenv().Config["UUID"],
-        ["accounts"] = {
-            [game.Players.LocalPlayer.Name] = {
-                ["JobId"] = game.JobId,
-                ["PlaceId"] = game.PlaceId
-            }
-        }
-    }
-    local DataCallBack = request({
-        Url = getgenv().Config["Url"] .. "/postservermain",
-        Method = 'POST',
-        Headers = {
-            ["Content-Type"] = "application/json"
-        },
-        Body = game:GetService("HttpService"):JSONEncode(payload)
-    })
-    table.foreach(DataCallBack, print)
-end
-
--- Lấy dữ liệu account main từ server
-function GetDataMain(uid)
-    local res = request({
-        Url = getgenv().Config["Url"] .. "/getdatamain?key=" .. uid,
-        Method = "GET"
-    })
-    local data = game:GetService("HttpService"):JSONDecode(res.Body)
-    if not data or next(data) == nil then
-        return {}
+    for i, v in game:GetService("Players").LocalPlayer.Character:GetChildren() do
+        if v:IsA("Tool") and v:GetAttribute("ItemType") == "Pet" then
+            for i1, v1 in getgenv().Config["Pet"] do
+                if string.find(v.Name, v1) then
+                    return v
+                end
+            end
+        end
     end
-    return data.data
 end
 
--- Kiểm tra main có trong server không
 function havemaininserver()
-    for _, mainAcc in getgenv().Config["Account Main"] do
-        if game:GetService("Players"):FindFirstChild(mainAcc) then
+    for i1, v1 in getgenv().Config["Account Main"] do
+        if game:GetService("Players"):FindFirstChild(v1) then
             return true
         end
     end
 end
-
--- Nếu là account main thì post thông tin ngay khi vào
-if table.find(getgenv().Config["Account Main"], game.Players.LocalPlayer.Name) then
-    postmain()
-end
-
--- Cập nhật thông tin account main 30s/lần
 spawn(function()
-    while wait(30) do
-        pcall(function()
-            if table.find(getgenv().Config["Account Main"], game.Players.LocalPlayer.Name) then
-                postmain()
-            end
-        end)
-    end
-end)
-
--- Kiểm tra đầy kho thì kick
-spawn(function()
-    while wait(5) do
-        pcall(function()
-            local Rep = game:GetService("ReplicatedStorage")
-            local DataService = require(Rep.Modules.DataService)
-            local playerdata = DataService:GetData()
-            local inventoryData = playerdata.PetsData.PetInventory.Data or {}
-            
-            local count = 0
-            for _ in inventoryData do
-                count += 1
-            end
-
-            if count >= 60 + (playerdata.PetsData.PurchasedPetInventorySlots or 0) * 5 then
-                writefile(game.Players.LocalPlayer.Name .. ".txt", "Completed-Done")
-                game.Players.LocalPlayer:Kick("Inventory Full")
-            end
-        end)
-    end
-end)
-
--- Trade và kick sau 5 giây
-spawn(function()
-    while wait() do 
+    while wait() do
         pcall(function()
             if not table.find(getgenv().Config["Account Main"], game.Players.LocalPlayer.Name) then
-                if havepet() and havemaininserver() then
-                    for _, mainAcc in getgenv().Config["Account Main"] do
-                        if game.Players:FindFirstChild(mainAcc) then
-                            if havepet():GetAttribute("d") then
-                                game.ReplicatedStorage.GameEvents.Favorite_Item:FireServer(havepet())
-                                task.wait(1)
+                if havepet() then
+                    repeat
+                        wait()
+                    until not havepet()
+                    game.Players.LocalPlayer:Kick("Done")
+                end
+            end
+        end)
+    end
+end)
+spawn(function()
+    while wait() do
+        pcall(function()
+            if not table.find(getgenv().Config["Account Main"], game.Players.LocalPlayer.Name) then
+                if havepet() then
+
+                    if not havemaininserver() then
+
+                    else
+                        for i, v in getgenv().Config["Account Main"] do
+                            if game.Players:FindFirstChild(v) then
+                                if havepet():GetAttribute("d") then
+                                    local args = {havepet()}
+                                    game:GetService("ReplicatedStorage"):WaitForChild("GameEvents"):WaitForChild(
+                                        "Favorite_Item"):FireServer(unpack(args))
+                                    task.wait(1)
+                                end
+
+                                havepet().Parent = game.Players.LocalPlayer.Character
+                                local args = {"GivePet", game:GetService("Players"):WaitForChild(v)}
+                                game:GetService("ReplicatedStorage"):WaitForChild("GameEvents"):WaitForChild(
+                                    "PetGiftingService"):FireServer(unpack(args))
+                                task.wait(3)
                             end
-                            havepet().Parent = game.Players.LocalPlayer.Character
-                            game.ReplicatedStorage.GameEvents.PetGiftingService:FireServer("GivePet", game.Players:FindFirstChild(mainAcc))
-                            task.wait(5) -- đợi 5s sau khi trade
-                            game.Players.LocalPlayer:Kick("Trade Done")
                         end
                     end
+                else
+                    --  Script Farm
                 end
+
             end
         end)
     end
