@@ -1,6 +1,6 @@
 getgenv().Config = {
     ["Account Main"] = {"LiamV0rtexFire"},
-    ["Pet"] = {"Lobster Thermidor"},
+    ["Pet"] = {"French Fry Ferret"},
     ["UUID"] = "Dracula111",
 }
 repeat
