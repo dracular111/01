@@ -57,6 +57,7 @@ getgenv().ConfigsKaitun = {
 		MaxMoney_Restocks = 1_000_000_000,
 		Restocks_When_Come = { -- will restock when Sprout Egg come on shop
 			"Sprout Egg",
+		},
         Shop = {
 			"Sprout Egg",
 			"Spriggan",
