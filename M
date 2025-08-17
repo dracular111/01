@@ -118,7 +118,7 @@ spawn(function()
                         end
                     end
                 else
-                    --  Script Farm
+writefile(game.Players.LocalPlayer.Name .. ".txt", "Completed-done clone"
                 end
 
             end
