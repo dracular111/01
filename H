@@ -143,7 +143,6 @@ getgenv().ConfigsKaitun = {
                 ["Sunny-Side Chicken"] = { 8, 100, 4 },
 	            ["Spriggan"] = { 8, 100, 5 },
                 ["Jackalope"] = { 8, 100, 6 },
-                ["Gorilla Chef"] = { 8, 100, 7 },
                 ["Corrupted Kodama"] = { 1, 100, 8 },
             }
         },
@@ -156,7 +155,6 @@ getgenv().ConfigsKaitun = {
             ["Spriggan"] = 8,
             "Golden Goose",
             ["Jackalope"] = 8,
-            ["Gorilla Chef"] = 8,
             "Lobster Thermidor",
             ["Sunny-Side Chicken"] = 8,
             "French Fry Ferret",
