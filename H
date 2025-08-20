@@ -164,7 +164,7 @@ getgenv().ConfigsKaitun = {
             "Rooster",
             "Blood Kiwi",
             ["Koi"] = 8,
-            ["Seal"] = 8,
+            "Seal",
             "Dilophosaurus",
             "Ankylosaurus",
             "Spinosaurus",
