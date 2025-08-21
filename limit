@@ -1,7 +1,6 @@
 getgenv().Config = {
     ['Destroy Plants'] = {
         ['Trees'] = {
-            ["Dragon Fruit"] = 5,
             ["Hinomai"] = 5,
             ["Dragon Pepper"] = 5,
             ["Burning Bud"] = 5,
@@ -16,6 +15,9 @@ getgenv().Config = {
             ["Mango"] = 12,
             ["Tomato"] = 20,
             ["Cactus"] = 12,
+            ["Beanstalk"] = 15,
+            ["Poseidon Plant"] = 15,
+            ["Giant Pinecone"] = 15,
         }
     }
 }
