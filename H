@@ -292,7 +292,7 @@ getgenv().ConfigsKaitun = {
         Locked = {
             "Raiju",
             "Griffin",
-			["Peach Wasp"] = 8,
+			"Peach Wasp",
             "Lemon Lion",
             ["Golem"] = 2,
             ["Spriggan"] = 2,
