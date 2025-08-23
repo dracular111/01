@@ -1,23 +1,26 @@
 getgenv().Config = {
     ['Destroy Plants'] = {
+        -- 🟨 Medium (giá trị cao, giới hạn vừa phải)
         ['Trees'] = {
-            ["Hinomai"] = 2,
-            ["Dragon Pepper"] = 2,
-            ["Burning Bud"] = 2,
-            ["Spiked Mango"] = 2,
-            ["Crown Melon"] = 2,
-            ["Sugarglaze"] = 2,
-            ["Blueberry"] = 4,
-            ["Strawberry"] = 4,
-            ["Apple"] = 3,
-            ["Coconut"] = 4,
-            ["Dragon Fruit"] = 4,
-            ["Mango"] = 4,
-            ["Tomato"] = 7,
-            ["Cactus"] = 4,
-            ["Beanstalk"] = 5,
-            ["Poseidon Plant"] = 5,
-            ["Giant Pinecone"] = 5,
+        ["Hinomai"] = 2,
+        ["Dragon Pepper"] = 2,
+        ["Burning Bud"] = 2,
+        ["Spiked Mango"] = 2,
+        ["Crown Melon"] = 2,
+        ["Sugarglaze"] = 2,
+        ["Dragon Fruit"] = 4,
+        ["Mango"] = 4,
+        -- 🟩 Safe (có thể tăng thêm số lượng)
+        ["Blueberry"] = 4,
+        ["Strawberry"] = 4,
+        ["Apple"] = 3,
+        ["Coconut"] = 4,
+        ["Tomato"] = 7,
+        ["Cactus"] = 4,
+        -- 🟥 Heavy (lag mạnh, chỉ tượng trưng)
+        ["Beanstalk"] = 2,
+        ["Poseidon Plant"] = 2,
+        ["Giant Pinecone"] = 2,
         }
     }
 }
