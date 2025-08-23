@@ -270,7 +270,7 @@ getgenv().ConfigsKaitun = {
     },
 
     Pets = {
-        ["Start Delete Pet At"] = 45,
+        ["Start Delete Pet At"] = 50,
         ["Upgrade Slot"] = {
             ["Pet"] = {
                 ["Starfish"] = { 5, 76, 1, true }
@@ -344,6 +344,15 @@ getgenv().ConfigsKaitun = {
 		},
         Instant_Sell = {
 			"Caterpillar",
+			"Bacon Pig",
+			"Dairy Cow",
+			"Flamingo",
+			"Hotdog Daschund",
+			"Iguanodon",
+			"Orangutan",
+			"Seedling",
+			"Shiba Inu",
+			"Snail",
 			"Triceratops",
 			"Crab",
 			"Seagull",
