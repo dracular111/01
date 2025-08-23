@@ -292,6 +292,7 @@ getgenv().ConfigsKaitun = {
         Locked_Pet_Age = 40,
         Locked = {
             "Raiju",
+			"Peach Wasp",
             "Lemon Lion",
             ["Golem"] = 8,
             ["Spriggan"] = 8,
