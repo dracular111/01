@@ -171,7 +171,6 @@ getgenv().ConfigsKaitun = {
                 "Zen Rocks",
                 "Enkaku",
                 "Corn",
-
             }
         },
         Place = {
