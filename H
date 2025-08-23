@@ -274,6 +274,7 @@ getgenv().ConfigsKaitun = {
         ["Upgrade Slot"] = {
             ["Pet"] = {
                 ["Starfish"] = { 5, 76, 1, true }
+                ["Tanchozuru"] = { 5, 76, 11, true }
             },
             ["Limit Upgrade"] = 5, -- max is 5 (more than or lower than 1 will do nothing
             ["Equip When Done"] = {
