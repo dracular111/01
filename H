@@ -203,7 +203,7 @@ getgenv().ConfigsKaitun = {
 			"Silver Fertilizer",
 			-- "Canary Melon",
 			-- "Amberheart",
-			["Spriggan"] = 8,
+			["Spriggan"] = 2,
 			-- Friend Shop
 			"Skyroot Chest",
 			"Pet Shard GiantBean",
@@ -293,7 +293,7 @@ getgenv().ConfigsKaitun = {
 			"Peach Wasp",
             "Lemon Lion",
             ["Golem"] = 8,
-            ["Spriggan"] = 8,
+            ["Spriggan"] = 2,
             "Golden Goose",
             "Lobster Thermidor",
             "Sunny-Side Chicken",
