@@ -197,17 +197,17 @@ getgenv().ConfigsKaitun = {
 		Restocks_When_Come = { -- will restock when Sprout Egg come on shop
 			"Sprout Egg",
 		},
-        Shop = {
-			"Sprout Egg",
+		Shop = { -- un comment to buy
 			"Sprout Seed Pack",
-			["Spriggan"] = 8,
+			"Sprout Egg",
 			-- "Mandrake",
-			-- "Silver Fertilizer",
+			"Silver Fertilizer",
 			-- "Canary Melon",
 			-- "Amberheart",
-            "Zen Egg",
-            "Pet Shard Tranquil",
-            "Pet Shard Corrupted",
+			["Spriggan"] = 8,
+			-- Friend Shop
+			"Skyroot Chest",
+			"Pet Shard GiantBean",
         },
         ["Traveling Shop"] = {
             "Bee Egg"
@@ -365,11 +365,9 @@ getgenv().ConfigsKaitun = {
             Seeds = { "Idk" },
             SeedPack = { "Idk" },
             Pets = {
-                "French Fry Ferret",
                 "Kitsune",
-                "Lobster Thermidor",
                 "Golden Goose",
-                "Lemon Lion"
+                "Lemon Lion",
             },
             Pet_Weight_Noti = true
         }
