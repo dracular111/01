@@ -199,8 +199,8 @@ getgenv().ConfigsKaitun = {
 		},
         Shop = {
 			"Sprout Egg",
+			"Sprout Seed Pack",
 			["Spriggan"] = 8,
-			-- "Sprout Seed Pack",
 			-- "Mandrake",
 			-- "Silver Fertilizer",
 			-- "Canary Melon",
@@ -213,7 +213,9 @@ getgenv().ConfigsKaitun = {
             "Bee Egg"
         },
         Craft = {
-            "Anti Bee Egg"
+			"Anti Bee Egg",
+			"Pet Shard GiantBean",
+			"Sprout Egg",
         },
         Start_Do_Honey = 1_000_000 -- start trade fruit for honey at money
     },
@@ -290,7 +292,7 @@ getgenv().ConfigsKaitun = {
         Locked_Pet_Age = 60,
         Locked = {
             "Raiju",
-            "Golem",
+            ["Golem"] = 10,
             ["Spriggan"] = 8,
             "Golden Goose",
             "Lobster Thermidor",
