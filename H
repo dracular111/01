@@ -289,7 +289,7 @@ getgenv().ConfigsKaitun = {
         },
         Unfavorite_AllPet = true,
         Favorite_LockedPet = false,
-        Locked_Pet_Age = 60,
+        Locked_Pet_Age = 40,
         Locked = {
             "Raiju",
             ["Golem"] = 10,
