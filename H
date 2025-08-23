@@ -197,16 +197,17 @@ getgenv().ConfigsKaitun = {
 			"Sprout Egg",
 		},
 		Shop = { -- un comment to buy
-			"Sprout Seed Pack",
+			"Skyroot Chest",
 			"Sprout Egg",
+			"Pet Shard GiantBean",
+			"Sprout Seed Pack",
 			-- "Mandrake",
-			"Silver Fertilizer",
+			-- "Silver Fertilizer",
 			-- "Canary Melon",
 			-- "Amberheart",
 			["Spriggan"] = 2,
 			-- Friend Shop
-			"Skyroot Chest",
-			"Pet Shard GiantBean",
+			"Sprout Seed Pack",
         },
         ["Traveling Shop"] = {
             "Bee Egg"
