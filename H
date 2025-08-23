@@ -280,11 +280,11 @@ getgenv().ConfigsKaitun = {
             ["Equip When Done"] = {
 	            ["Spriggan"] = { 1, 100, 1 },
                 ["Peach Wasp"] = { 1, 100, 2 },
-                ["Chicken Zombie"] = { 8, 100, 2 },
-                ["Rooster"] = { 8, 100, 3 },
-                ["Blood Kiwi"] = { 8, 100, 4 },
-                ["Bald Eagle"] = { 8, 100, 5 },
-                ["Sunny-Side Chicken"] = { 8, 100, 6 },
+                ["Chicken Zombie"] = { 8, 100, 3 },
+                ["Rooster"] = { 8, 100, 4 },
+                ["Blood Kiwi"] = { 8, 100, 5 },
+                ["Bald Eagle"] = { 8, 100, 6 },
+                ["Sunny-Side Chicken"] = { 8, 100, 7 },
             }
         },
         Unfavorite_AllPet = true,
