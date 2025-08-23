@@ -207,7 +207,6 @@ getgenv().ConfigsKaitun = {
 			-- "Amberheart",
 			["Spriggan"] = 2,
 			-- Friend Shop
-			"Sprout Seed Pack",
         },
         ["Traveling Shop"] = {
             "Bee Egg"
