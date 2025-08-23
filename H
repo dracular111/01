@@ -277,12 +277,12 @@ getgenv().ConfigsKaitun = {
             },
             ["Limit Upgrade"] = 5, -- max is 5 (more than or lower than 1 will do nothing
             ["Equip When Done"] = {
+	            ["Spriggan"] = { 2, 100, 1 },
                 ["Rooster"] = { 8, 100, 1 },
                 ["Blood Kiwi"] = { 8, 100, 2 },
                 ["Bald Eagle"] = { 8, 100, 3 },
                 ["Sunny-Side Chicken"] = { 8, 100, 4 },
-                ["Peach Wasp"] = { 8, 100, 5 },
-	            ["Spriggan"] = { 8, 100, 6 },
+                ["Peach Wasp"] = { 1, 100, 5 },
                 ["Jackalope"] = { 8, 100, 7 },
                 ["Corrupted Kodama"] = { 1, 100, 8 },
             }
