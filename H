@@ -304,6 +304,7 @@ getgenv().ConfigsKaitun = {
             "Kodama",
             "Rooster",
             "Blood Kiwi",
+            "Kiwi",
             "Koi",
             "Seal",
             "Dilophosaurus",
