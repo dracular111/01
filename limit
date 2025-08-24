@@ -19,7 +19,7 @@ getgenv().Config = {
         ["Cactus"] = 5,
         -- 🟥 Heavy (lag mạnh, chỉ tượng trưng)
         ["Beanstalk"] = 5,
-        ["Poseidon Plant"] = 1,
+        ["Poseidon Plant"] = 2,
         ["Giant Pinecone"] = 2,
         }
     }
