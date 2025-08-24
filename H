@@ -282,6 +282,7 @@ getgenv().ConfigsKaitun = {
                 ["Blood Kiwi"] = { 8, 100, 5 },
                 ["Bald Eagle"] = { 8, 100, 6 },
                 ["Sunny-Side Chicken"] = { 8, 100, 7 },
+                ["Chicken"] = { 8, 100, 8 },
             }
         },
         Unfavorite_AllPet = true,
