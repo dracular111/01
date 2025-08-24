@@ -193,7 +193,6 @@ getgenv().ConfigsKaitun = {
             Minimum_Money = 100_000, -- minimum money to start play this event
 		},
 		MaxMoney_Restocks = 1_000_000_000,
-		},
 		Shop = { -- un comment to buy
 			"Skyroot Chest",
 			"Sprout Egg",
