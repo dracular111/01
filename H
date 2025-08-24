@@ -343,6 +343,9 @@ getgenv().ConfigsKaitun = {
 			"Sushi Bear",
 			"Raptor",
 			"Stegosaurus",
+			"Elk",
+			"Cat",
+			"Deer",
 		},
         Instant_Sell = {
 			"Caterpillar",
@@ -363,6 +366,9 @@ getgenv().ConfigsKaitun = {
 			"Sushi Bear",
 			"Raptor",
 			"Stegosaurus",
+			"Elk",
+			"Cat",
+			"Deer",
         }
     },
 
