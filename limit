@@ -18,7 +18,7 @@ getgenv().Config = {
         ["Tomato"] = 7,
         ["Cactus"] = 4,
         -- 🟥 Heavy (lag mạnh, chỉ tượng trưng)
-        ["Beanstalk"] = 1,
+        ["Beanstalk"] = 50,
         ["Poseidon Plant"] = 1,
         ["Giant Pinecone"] = 1,
         }
