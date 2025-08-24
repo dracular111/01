@@ -8,8 +8,8 @@ getgenv().Config = {
         ["Spiked Mango"] = 2,
         ["Crown Melon"] = 2,
         ["Sugarglaze"] = 2,
-        ["Dragon Fruit"] = 4,
-        ["Mango"] = 4,
+        ["Dragon Fruit"] = 5,
+        ["Mango"] = 5,
         -- 🟩 Safe (có thể tăng thêm số lượng)
         ["Blueberry"] = 5,
         ["Strawberry"] = 5,
