@@ -249,7 +249,7 @@ getgenv().ConfigsKaitun = {
             "Oasis Egg",
             "Night Egg",
             "Rare Summer Egg",
-            -- "Common Summer Egg"
+            "Common Summer Egg"
         },
         Buy = {
             "Anti Bee Egg",
@@ -303,11 +303,6 @@ getgenv().ConfigsKaitun = {
             "Kitsune",
             "Corrupted Kodama",
             "Kodama",
-            "Rooster",
-            "Blood Kiwi",
-            "Kiwi",
-            "Koi",
-            "Seal",
             "Dilophosaurus",
             "Ankylosaurus",
             "Spinosaurus",
@@ -323,10 +318,15 @@ getgenv().ConfigsKaitun = {
             "Mimic Octopus",
             "Red Fox",
             "Blood Owl",
+            "Rooster",
+            "Blood Kiwi",
+            "Kiwi",
+            "Koi",
+            "Seal",
             "Chicken Zombie",
             "Chicken",
             "Tanchozuru",
-            ["Capybara"] = 8,
+            ["Capybara"] = 7,
             ["Starfish"] = 10
         },
         LockPet_Weight = 5,
