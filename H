@@ -297,6 +297,7 @@ getgenv().ConfigsKaitun = {
             "Lemon Lion",
             ["Golem"] = 1,
             ["Spriggan"] = 1,
+            ["Jackalope"] = 1,
             "Golden Goose",
             "Lobster Thermidor",
             "French Fry Ferret",
@@ -369,6 +370,10 @@ getgenv().ConfigsKaitun = {
 			"Elk",
 			"Cat",
 			"Deer",
+			"Black Bunny",
+			"Orange Tabby",
+			"Dairy Cow",
+Black Bunny
         }
     },
 
