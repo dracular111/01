@@ -372,6 +372,8 @@ getgenv().ConfigsKaitun = {
 			"Deer",
 			"Black Bunny",
 			"Orange Tabby",
+			"Spotted Deer",
+			"Orangutan",
 			"Dairy Cow",
 			"Jackalope",
         }
