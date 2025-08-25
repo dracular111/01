@@ -373,7 +373,7 @@ getgenv().ConfigsKaitun = {
 			"Black Bunny",
 			"Orange Tabby",
 			"Dairy Cow",
-Black Bunny
+			"Jackalope",
         }
     },
 
