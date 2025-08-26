@@ -272,8 +272,10 @@ getgenv().ConfigsKaitun = {
         ["Start Delete Pet At"] = 50,
         ["Upgrade Slot"] = {
             ["Pet"] = {
-                ["Starfish"] = { 5, 76, 1, true },
-                ["Sea Turtle"] = { 5, 76, 1, true },
+                ["Starfish"] = { 5, 76, 1 },
+                ["Sea Turtle"] = { 5, 76, 2 },
+                ["Tanchozuru"] = { 5, 76, 3 },
+                ["Chicken"] = { 5, 76, 4 },
             },
             ["Limit Upgrade"] = 5, -- max is 5 (more than or lower than 1 will do nothing
             ["Equip When Done"] = {
@@ -328,8 +330,7 @@ getgenv().ConfigsKaitun = {
             ["Seal"] = 8,
             "Sunny-Side Chicken",
             "Chicken Zombie",
-            ["Chicken"] = 8,
-            ["Tanchozuru"] = 2,
+
             ["Capybara"] = 1,
             ["Sea Turtle"] = 1,
             ["Starfish"] = 10
