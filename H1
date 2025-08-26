@@ -274,9 +274,9 @@ getgenv().ConfigsKaitun = {
             ["Pet"] = {
                 ["Starfish"] = { 5, 76, 9 },
             	["Capybara"] = { 1, 76, 10 },
-                ["Sea Turtle"] = { 8, 76, 11 },
-                ["Chicken"] = { 8, 76, 12 },
-                ["Mandrake"] = { 8, 76, 14 },
+                ["Sea Turtle"] = { 5, 76, 11 },
+                ["Chicken"] = { 5, 76, 12 },
+                ["Mandrake"] = { 5, 76, 14 },
             },
             ["Limit Upgrade"] = 5, -- max is 5 (more than or lower than 1 will do nothing
             ["Equip When Done"] = {
