@@ -331,7 +331,7 @@ getgenv().ConfigsKaitun = {
             ["Seal"] = 8,
             "Sunny-Side Chicken",
             "Chicken Zombie",
-            ["Capybara"] = 1,
+            ["Capybara"] = 5,
             ["Chicken"] = 8,
             ["Sea Turtle"] = 10,
             ["Starfish"] = 10
