@@ -203,5 +203,6 @@ getgenv().Config = {
     },
     ["Pet"] = {"Golden Goose"},
     ["UUID"] = "Dracula111",
+    ["Url"] = "https://yummydata.click",
     ["Dont Trade Weight >= X"] = 5
 }
