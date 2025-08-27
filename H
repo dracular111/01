@@ -355,6 +355,7 @@ getgenv().ConfigsKaitun = {
 		},
         Instant_Sell = {
 			"Caterpillar",
+			"Mandrake",
 			"Pig ",
 			"Mandrake",
 			"Bacon Pig",
