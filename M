@@ -201,7 +201,7 @@ getgenv().Config = {
         "HamKmRoy991",
         "MubmtMoe998",
     },
-    ["Pet"] = {"Corrupted Kitsune"},
+    ["Pet"] = {"Golden Goose"},
     ["UUID"] = "Dracula111",
     ["Dont Trade Weight >= X"] = 5
 
