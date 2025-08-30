@@ -150,7 +150,7 @@ getgenv().ConfigsKaitun = {
             "Sprout Egg",
             "Gourmet Egg",
             "Zen Egg",
-            --"Anti Bee Egg",
+            "Anti Bee Egg",
             "Paradise Egg",
             "Bug Egg",
             "Rare Summer Egg",
