@@ -297,7 +297,6 @@ getgenv().ConfigsKaitun = {
             "Raiju",
             ["Ladybug"] = 8,
             "Pixie",
-            "Imp",
             "Glimmering Sprite",
             "Cockatrice",
             "Gnome",
