@@ -335,7 +335,7 @@ getgenv().ConfigsKaitun = {
             ["Capybara"] = 5,
             ["Chicken"] = 8,
             ["Sea Turtle"] = 10,
-            ["Mandrake"] = 5,
+            ["Mandrake"] = 2,
             ["Starfish"] = 10
         },
         LockPet_Weight = 5,
