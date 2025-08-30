@@ -84,8 +84,8 @@ getgenv().ConfigsKaitun = {
 		MaxMoney_Restocks = 1_000_000_000,
 		Shop = { -- un comment to buy
 			"Enchanted Egg",
-			"Enchanted Seed Pack",
-			"Pet Mutation Shard Glimmering",
+			--"Enchanted Seed Pack",
+			--"Pet Mutation Shard Glimmering",
 			"Skyroot Chest",
 			"Sprout Egg",
 			"Pet Shard GiantBean",
