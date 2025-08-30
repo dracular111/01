@@ -206,6 +206,6 @@ getgenv().Config = {
         "SonfkLeo305",
         "RonepJon434",
     },
-    ["Pet"] = {"Golden Goose"},
+    ["Pet"] = {"Griffin"},
     ["UUID"] = "Dracula111",
 }
