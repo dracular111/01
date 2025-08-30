@@ -322,7 +322,6 @@ getgenv().ConfigsKaitun = {
             "Blood Owl",
             "Bald Eagle",
             "Blood Kiwi",
-            ["Ostrich"] = 8,
             ["Rooster"] = 8,
             ["Kiwi"] = 8,
             ["Koi"] = 8,
@@ -330,8 +329,8 @@ getgenv().ConfigsKaitun = {
             "Sunny-Side Chicken",
             "Chicken Zombie",
             ["Capybara"] = 5,
-            ["Chicken"] = 8,
-            ["Sea Turtle"] = 10,
+            ["Chicken"] = 5,
+            ["Sea Turtle"] = 5,
             ["Mandrake"] = 2,
             ["Starfish"] = 10
         },
