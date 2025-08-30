@@ -13,6 +13,8 @@ getgenv().ConfigsKaitun = {
     ["Rejoin When Update"] = false,
 
 	["Limit Tree"] = {
+		--["Limit"] = 150,
+		--["Destroy Until"] = 150,
 		["Limit"] = 120,
 		["Destroy Until"] = 120,
         ["Safe Tree"] = {
@@ -67,15 +69,6 @@ getgenv().ConfigsKaitun = {
                 "Carrot"
             },
             Lock = {
-				"Maple Apple",
-				"Sunflower",
-				"Dragon Pepper",
-				"Elephant Ears",
-				"Moon Melon",
-				"Easter Egg",
-				"Moon Mango",
-				"Bone Blossom",
-				"Fossilight",
             }
         }
     },
@@ -91,8 +84,8 @@ getgenv().ConfigsKaitun = {
 		MaxMoney_Restocks = 1_000_000_000,
 		Shop = { -- un comment to buy
 			"Enchanted Egg",
-			"Enchanted Seed Pack",
-			"Pet Mutation Shard Glimmering",
+			--"Enchanted Seed Pack",
+			--"Pet Mutation Shard Glimmering",
 			"Skyroot Chest",
 			"Sprout Egg",
 			"Pet Shard GiantBean",
