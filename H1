@@ -286,8 +286,8 @@ getgenv().ConfigsKaitun = {
                 ["Bald Eagle"] = { 8, 100, 7 },
                 ["Sunny-Side Chicken"] = { 8, 100, 8 },
                 ["Peach Wasp"] = { 1, 100, 9 },
-                ["Sea Turtle"] = { 5, 76, 10, true },
-                ["Chicken"] = { 8, 100, 11, true },
+                -- ["Sea Turtle"] = { 5, 76, 10, true },
+                -- ["Chicken"] = { 8, 100, 11, true },
             }
         },
         Unfavorite_AllPet = true,
