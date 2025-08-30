@@ -33,7 +33,7 @@ getgenv().Config = {
         ["Watermelon"] = 3,
         ["Elder Strawberry"] = 6,
         ["Romanesco"] = 6,
-        ["Sugar Apple"] = 6
+        ["Sugar Apple"] = 6,
         }
     }
 }
