@@ -1,27 +1,16 @@
 getgenv().ConfigsKaitun = {
-	Beta_Fix_Data_Sync = false,
+    -- Beta_Fix_Data_Sync = true,
+    Beta_Fix_Data_Sync = false,
+    NoDeletePlayer = false,
 
-	NoDeletePlayer = false,
+    ["Block Pet Gift"] = true,
 
-	["Block Pet Gift"] = true,
+    Collect_Cooldown = 120, -- cooldown to collect fruit
 
-	Collect_Cooldown = 120, -- cooldown to collect fruit
+    ["Low Cpu"] = true,
+    ["Auto Rejoin"] = false,
 
-	["Low Cpu"] = true,
-	["Auto Rejoin"] = false,
-
-	["Rejoin When Update"] = false,
-
-	["Auto Trade Pet"] = { -- not done yet bro dont use
-		["Enabled"] = false, 
-		["Target"] =  { -- multi users
-			"username1",
-			"username2",
-		},
-		["Pet To Send"] = {
-			
-		}
-	},
+    ["Rejoin When Update"] = false,
 
 	["Limit Tree"] = {
 		["Limit"] = 120,
@@ -145,20 +134,20 @@ getgenv().ConfigsKaitun = {
     Eggs = {
         Place = {
             "Enchanted Egg",
-            -- "Sprout Egg",
+            --"Sprout Egg",
+            --"Gourmet Egg",
             "Zen Egg",
-            -- "Gourmet Egg",
             "Anti Bee Egg",
             "Paradise Egg",
             "Bug Egg",
             "Rare Summer Egg",
-            -- "Uncommon Egg",
-            -- "Rare Egg",
             "Primal Egg",
             "Dinosaur Egg",
             "Oasis Egg",
             "Night Egg",
-            -- "Common Summer Egg"
+            --"Uncommon Egg",
+            --"Rare Egg",
+            --"Common Summer Egg"
         },
         Buy = {
             "Anti Bee Egg",
@@ -185,7 +174,7 @@ getgenv().ConfigsKaitun = {
             ["Limit Upgrade"] = 5, -- max is 5 (more than or lower than 1 will do nothing
             ["Equip When Done"] = {
 	            ["Glimmering Sprite"] = { 8, 100, 2 },
-	            ["Pixie",] = { 1, 100, 2 },
+	            ["Pixie"] = { 1, 100, 2 },
 	            ["Ladybug"] = { 1, 100, 3 },
 	            ["Spriggan"] = { 1, 100, 4 },
                 ["Chicken Zombie"] = { 8, 100, 5 },
@@ -194,8 +183,8 @@ getgenv().ConfigsKaitun = {
                 ["Bald Eagle"] = { 8, 100, 8 },
                 ["Sunny-Side Chicken"] = { 8, 100, 9 },
                 ["Peach Wasp"] = { 1, 100, 10 },
-                -- ["Sea Turtle"] = { 5, 76, 11, true },
-                -- ["Chicken"] = { 8, 100, 12, true },
+                --["Sea Turtle"] = { 5, 76, 11, true },
+                --["Chicken"] = { 8, 100, 12, true },
             }
         },
         Unfavorite_AllPet = true,
