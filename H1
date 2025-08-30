@@ -1,16 +1,27 @@
 getgenv().ConfigsKaitun = {
-    -- Beta_Fix_Data_Sync = true,
-    Beta_Fix_Data_Sync = false,
-    NoDeletePlayer = false,
+	Beta_Fix_Data_Sync = false,
 
-    ["Block Pet Gift"] = true,
+	NoDeletePlayer = false,
 
-    Collect_Cooldown = 120, -- cooldown to collect fruit
+	["Block Pet Gift"] = true,
 
-    ["Low Cpu"] = true,
-    ["Auto Rejoin"] = false,
+	Collect_Cooldown = 120, -- cooldown to collect fruit
 
-    ["Rejoin When Update"] = false,
+	["Low Cpu"] = true,
+	["Auto Rejoin"] = false,
+
+	["Rejoin When Update"] = false,
+
+	["Auto Trade Pet"] = { -- not done yet bro dont use
+		["Enabled"] = false, 
+		["Target"] =  { -- multi users
+			"username1",
+			"username2",
+		},
+		["Pet To Send"] = {
+			
+		}
+	},
 
 	["Limit Tree"] = {
 		["Limit"] = 120,
