@@ -26,10 +26,10 @@ getgenv().ConfigsKaitun = {
             "Fossilight",
             "Princess Thorn",
             ["Spirit Flower"] = 20,
-            ["Aurora Vine"] = 10,
+            ["Aurora Vine"] = 15,
             ["Sunbulb"] = 10,
-            ["Moonberry"] = 5,
-            ["Glowthorn"] = 5,
+            ["Moonberry"] = 10,
+            ["Glowthorn"] = 10,
             ["Dragon Fruit"] = 5,
             ["Mango"] = 5,
         }
