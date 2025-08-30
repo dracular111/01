@@ -380,6 +380,7 @@ getgenv().ConfigsKaitun = {
 			"Orangutan",
 			"Dairy Cow",
 			"Jackalope",
+			"Mandrake",
         }
     },
 
