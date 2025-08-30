@@ -8,19 +8,32 @@ getgenv().Config = {
         ["Spiked Mango"] = 2,
         ["Crown Melon"] = 2,
         ["Sugarglaze"] = 2,
-        ["Dragon Fruit"] = 5,
-        ["Mango"] = 5,
-        -- 🟩 Safe (có thể tăng thêm số lượng)
+        ["Dragon Fruit"] = 5,    -- giữ giá trị cao nhất
+        ["Mango"] = 5,           -- giữ giá trị cao nhất
         ["Blueberry"] = 2,
-        ["Strawberry"] = 2,
-        ["Apple"] = 2,
+        ["Strawberry"] = 3,      -- giữ giá trị cao nhất
+        ["Apple"] = 3,           -- giữ giá trị cao nhất
         ["Coconut"] = 2,
-        ["Tomato"] = 2,
+        ["Tomato"] = 3,          -- giữ giá trị cao nhất
         ["Cactus"] = 2,
-        -- 🟥 Heavy (lag mạnh, chỉ tượng trưng)
-        ["Beanstalk"] = 5,
+        ["Beanstalk"] = 6,       -- giữ giá trị cao nhất
         ["Poseidon Plant"] = 2,
         ["Giant Pinecone"] = 2,
+        ["Spirit Flower"] = 3,
+        ["Aurora Vine"] = 5,
+        ["Sunbulb"] = 5,
+        ["Moonberry"] = 5,
+        ["Glowthorn"] = 6,
+        ["Carrot"] = 3,
+        ["Corn"] = 3,
+        ["Orange Tulip"] = 3,
+        ["Bamboo"] = 3,
+        ["Daffodil"] = 3,
+        ["Pumpkin"] = 5,
+        ["Watermelon"] = 3,
+        ["Elder Strawberry"] = 6,
+        ["Romanesco"] = 6,
+        ["Sugar Apple"] = 6
         }
     }
 }
