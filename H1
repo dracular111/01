@@ -47,12 +47,12 @@ getgenv().ConfigsKaitun = {
             ["Carrot"] = 2,
             ["Corn"] = 2,
             ["Orange Tulip"] = 2,
-            ["Strawberry"] = 1,
-            ["Tomato"] = 1,
-            ["Apple"] = 1,
-            ["Blueberry"] = 1,
+            ["Strawberry"] = 2,
+            ["Tomato"] = 2,
+            ["Apple"] = 2,
+            ["Blueberry"] = 2,
             ["Cactus"] = 2,
-            ["Grape"] = 1,
+            ["Grape"] = 2,
         }
     },
 
