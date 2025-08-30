@@ -11,12 +11,12 @@ getgenv().Config = {
         ["Dragon Fruit"] = 5,
         ["Mango"] = 5,
         -- 🟩 Safe (có thể tăng thêm số lượng)
-        ["Blueberry"] = 5,
-        ["Strawberry"] = 5,
-        ["Apple"] = 5,
-        ["Coconut"] = 5,
-        ["Tomato"] = 7,
-        ["Cactus"] = 5,
+        ["Blueberry"] = 2,
+        ["Strawberry"] = 2,
+        ["Apple"] = 2,
+        ["Coconut"] = 2,
+        ["Tomato"] = 2,
+        ["Cactus"] = 2,
         -- 🟥 Heavy (lag mạnh, chỉ tượng trưng)
         ["Beanstalk"] = 5,
         ["Poseidon Plant"] = 2,
