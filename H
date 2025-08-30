@@ -90,9 +90,9 @@ getgenv().ConfigsKaitun = {
 		},
 		MaxMoney_Restocks = 1_000_000_000,
 		Shop = { -- un comment to buy
-			"Enchanted Egg",
-			"Enchanted Seed Pack",
-			"Pet Mutation Shard Glimmering",
+			-- "Enchanted Egg",
+			-- "Enchanted Seed Pack",
+			-- "Pet Mutation Shard Glimmering",
 			"Skyroot Chest",
 			"Sprout Egg",
 			"Pet Shard GiantBean",
@@ -105,7 +105,7 @@ getgenv().ConfigsKaitun = {
         Craft = {
 			"Anti Bee Egg",
 			"Pet Shard GiantBean",
-			"Pet Mutation Shard Glimmering",
+			-- "Pet Mutation Shard Glimmering",
 			"Sprout Egg",
         },
         Start_Do_Honey = 1_000_000 -- start trade fruit for honey at money
