@@ -90,9 +90,9 @@ getgenv().ConfigsKaitun = {
 		},
 		MaxMoney_Restocks = 1_000_000_000,
 		Shop = { -- un comment to buy
-			-- "Enchanted Egg",
-			-- "Enchanted Seed Pack",
-			-- "Pet Mutation Shard Glimmering",
+			"Enchanted Egg",
+			"Enchanted Seed Pack",
+			"Pet Mutation Shard Glimmering",
 			"Skyroot Chest",
 			"Sprout Egg",
 			"Pet Shard GiantBean",
@@ -105,7 +105,7 @@ getgenv().ConfigsKaitun = {
         Craft = {
 			"Anti Bee Egg",
 			"Pet Shard GiantBean",
-			-- "Pet Mutation Shard Glimmering",
+			"Pet Mutation Shard Glimmering",
 			"Sprout Egg",
         },
         Start_Do_Honey = 1_000_000 -- start trade fruit for honey at money
@@ -174,7 +174,7 @@ getgenv().ConfigsKaitun = {
             ["Limit Upgrade"] = 5, -- max is 5 (more than or lower than 1 will do nothing
             ["Equip When Done"] = {
 	            ["Glimmering Sprite"] = { 8, 100, 2 },
-	            ["Pixie",] = { 1, 100, 2 },
+	            ["Pixie"] = { 1, 100, 2 },
 	            ["Ladybug"] = { 1, 100, 3 },
 	            ["Spriggan"] = { 1, 100, 4 },
                 ["Chicken Zombie"] = { 8, 100, 5 },
