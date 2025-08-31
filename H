@@ -92,8 +92,9 @@ getgenv().ConfigsKaitun = {
 		["Fairy Event"] = {
 			Minimum_Money = 1_000_000, -- minimum money to start play this event
 			Rewards_Item = {
-				"FairyPoints",
 				"Enchanted Egg",
+				"Pet Shard Glimmering",
+				"FairyPoints",
 				"Enchanted Seed Pack",
 			},
 			Upgrade = {
@@ -101,8 +102,8 @@ getgenv().ConfigsKaitun = {
 				Order = { -- top upgrade first, not put mean not upgrade
 					"Fairy Spawn Amount",
 					"Loose Fairy Spawn Amount",
-					"Fairy Event Duration",
 					"Glimmer Multiplier",
+					"Fairy Event Duration",
 				},
 				Limit = {
 					["Glimmer Multiplier"] = 10, -- max 10
