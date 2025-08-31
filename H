@@ -220,7 +220,6 @@ getgenv().ConfigsKaitun = {
 			"Peach Wasp",
             "Lemon Lion",
             "Tanchozuru",
-            ["Golem"] = 1,
             ["Spriggan"] = 1,
             "Golden Goose",
             "Lobster Thermidor",
@@ -252,7 +251,6 @@ getgenv().ConfigsKaitun = {
             "Sunny-Side Chicken",
             "Chicken Zombie",
             ["Capybara"] = 1,
-            ["Sea Turtle"] = 1,
             ["Starfish"] = 2
         },
         LockPet_Weight = 5,
