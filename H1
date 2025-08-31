@@ -217,7 +217,7 @@ getgenv().ConfigsKaitun = {
             "Raiju",
             ["Ladybug"] = 1,
             ["Pixie"] = 1,
-            ["Glimmering Sprite"] = 8,
+            "Glimmering Sprite",
             "Cockatrice",
             "Gnome",
 			"Griffin",
