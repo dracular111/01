@@ -96,8 +96,8 @@ getgenv().ConfigsKaitun = {
 				Order = { -- top upgrade first, not put mean not upgrade
 					"Fairy Spawn Amount",
 					"Loose Fairy Spawn Amount",
-					"Glimmer Multiplier",
 					"Fairy Event Duration",
+					"Glimmer Multiplier",
 				},
 				Limit = {
 					["Glimmer Multiplier"] = 10, -- max 10
