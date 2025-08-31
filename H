@@ -196,7 +196,7 @@ getgenv().ConfigsKaitun = {
         ["Start Delete Pet At"] = 50,
         ["Upgrade Slot"] = {
             ["Pet"] = {
-                ["Starfish"] = { 5, 76, 12, true },
+                ["Starfish"] = { 5, 76, 13, true },
             },
             ["Limit Upgrade"] = 5, -- max is 5 (more than or lower than 1 will do nothing
             ["Equip When Done"] = {
@@ -209,8 +209,9 @@ getgenv().ConfigsKaitun = {
                 ["Blood Kiwi"] = { 8, 100, 7 },
                 ["Bald Eagle"] = { 8, 100, 8 },
                 ["Sunny-Side Chicken"] = { 8, 100, 9 },
-                ["Peach Wasp"] = { 1, 100, 10 },
-                ["Chicken"] = { 8, 100, 11, true },
+				["Tanchozuru"] = { 8, 100, 10 },
+                ["Peach Wasp"] = { 1, 100, 11 },
+                ["Chicken"] = { 8, 100, 12, true },
             }
         },
         Unfavorite_AllPet = true,
