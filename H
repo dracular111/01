@@ -195,7 +195,6 @@ getgenv().ConfigsKaitun = {
 
 		MutationPet = {
 			["Glimmering Sprite"] = { "Glimmering" },
-			["Pixie"] = { "Glimmering" },
 			["Spriggan"] = { "Glimmering" },
 			["Chicken Zombie"] = { "Glimmering" },
 			["Rooster"] = { "Glimmering" },
