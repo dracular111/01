@@ -9,7 +9,6 @@ getgenv().Config = {
         ["Aurora Vine"] = 3,
         ["Princess Thorn"] = 3,
 		["Beanstalk"] = 3,
-}
         }
     }
 }
