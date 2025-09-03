@@ -194,7 +194,14 @@ getgenv().ConfigsKaitun = {
 		["Auto Feed"] = true,
 
 		MutationPet = {
-			["PET NAME"] = { "Glimmering Sprite", "Spriggan", "Tanchozuru", "Brontosaurus", "Seal", "Koi", "Chicken Zombie" }
+			["Glimmering Sprite"] = { "Glimmering" },
+			["Pixie"] = { "Glimmering" },
+			["Spriggan"] = { "Glimmering" },
+			["Chicken Zombie"] = { "Glimmering" },
+			["Rooster"] = { "Glimmering" },
+			["Blood Kiwi"] = { "Glimmering" },
+			["Bald Eagle"] = { "Glimmering" },
+			["Sunny-Side Chicken"] = { "Glimmering" },
 		},
 
 		["Start Delete Pet At"] = 50,
