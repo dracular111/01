@@ -201,7 +201,7 @@ getgenv().ConfigsKaitun = {
 			["Rooster"] = { "Glimmering" },
 			["Blood Kiwi"] = { "Glimmering" },
 			["Bald Eagle"] = { "Glimmering" },
-			["Sunny-Side Chicken"] = { "Glimmering" }
+			["Sunny-Side Chicken"] = { "Glimmering" },
 		},
 
 		["Start Delete Pet At"] = 50,
