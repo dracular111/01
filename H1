@@ -1,4 +1,4 @@
-getgenv().ConfigsKaitun = {
+  getgenv().ConfigsKaitun = {
     -- Beta_Fix_Data_Sync = true,
     Beta_Fix_Data_Sync = false,
     NoDeletePlayer = false,
@@ -231,7 +231,7 @@ getgenv().ConfigsKaitun = {
         Locked = {
             "Raiju",
             ["Pixie"] = 1,
-            "Glimmering Sprite",
+            ["Glimmering Sprite"] = 8,
             "Cockatrice",
             "Gnome",
 			"Griffin",
