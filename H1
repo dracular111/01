@@ -15,8 +15,8 @@
 	["Limit Tree"] = {
 		--["Limit"] = 200,
 		--["Destroy Until"] = 200,
-		["Limit"] = 150,
-		["Destroy Until"] = 150,
+		["Limit"] = 120,
+		["Destroy Until"] = 120,
         ["Safe Tree"] = {
 			["Glowthorn"] = 5,
 			["Mushroom"] = 5,
@@ -113,7 +113,7 @@
 				}
 			}
 		},
-		MaxMoney_Restocks = 1_000_000_000,
+		MaxMoney_Restocks = 10_000_000,
 		Shop = { -- un comment to buy
 			"Enchanted Egg",
 			--"Enchanted Seed Pack",
@@ -193,10 +193,14 @@
 	Pets = {
 		["Auto Feed"] = true,
 
+		MutationPet = {
+			["Glimmering Sprite"] = { "Glimmering" }
+		},
+
 		["Start Delete Pet At"] = 50,
         ["Upgrade Slot"] = {
             ["Pet"] = {
-                ["Starfish"] = { 5, 76, 11, true },
+                ["Starfish"] = { 5, 76, 1, true },
             },
             ["Limit Upgrade"] = 5, -- max is 5 (more than or lower than 1 will do nothing
             ["Equip When Done"] = {
@@ -214,7 +218,7 @@
         },
         Unfavorite_AllPet = true,
         Favorite_LockedPet = false,
-        Locked_Pet_Age = 40,
+        Locked_Pet_Age = 50,
         Locked = {
             "Raiju",
             ["Glimmering Sprite"] = 8,
@@ -289,6 +293,7 @@
 			"Spotted Deer",
 			"Orangutan",
 			"Jackalope",
+			"Ladybug",
         }
     },
 
