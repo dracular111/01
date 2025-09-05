@@ -194,7 +194,7 @@
 		["Auto Feed"] = true,
 
 		MutationPet = {
-			--["Glimmering Sprite"] = { "Glimmering" },
+			-- ["Glimmering Sprite"] = { "Glimmering" },
 		},
 
 		["Start Delete Pet At"] = 50,
@@ -267,7 +267,6 @@
 		},
         Instant_Sell = {
 			"Caterpillar",
-			"Mandrake",
 			"Pig ",
 			"Mandrake",
 			"Bacon Pig",
@@ -275,7 +274,6 @@
 			"Flamingo",
 			"Hotdog Daschund",
 			"Iguanodon",
-			"Orangutan",
 			"Seedling",
 			"Shiba Inu",
 			"Snail",
@@ -294,9 +292,7 @@
 			"Orange Tabby",
 			"Spotted Deer",
 			"Orangutan",
-			"Dairy Cow",
 			"Jackalope",
-			"Mandrake",
         }
     },
 
