@@ -194,7 +194,7 @@
 		["Auto Feed"] = true,
 
 		MutationPet = {
-			["Glimmering Sprite"] = { "Glimmering" },
+			--["Glimmering Sprite"] = { "Glimmering" },
 		},
 
 		["Start Delete Pet At"] = 50,
