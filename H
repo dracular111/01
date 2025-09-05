@@ -193,6 +193,9 @@
 	Pets = {
 		["Auto Feed"] = true,
 
+		MutationPet = {
+			["Glimmering Sprite"] = { "Glimmering" }
+		},
 		["Start Delete Pet At"] = 50,
         ["Upgrade Slot"] = {
             ["Pet"] = {
@@ -289,6 +292,7 @@
 			"Spotted Deer",
 			"Orangutan",
 			"Jackalope",
+			"Ladybug",
         }
     },
 
