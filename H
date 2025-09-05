@@ -196,6 +196,7 @@
 		MutationPet = {
 			["Glimmering Sprite"] = { "Glimmering" }
 		},
+
 		["Start Delete Pet At"] = 50,
         ["Upgrade Slot"] = {
             ["Pet"] = {
