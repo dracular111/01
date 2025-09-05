@@ -121,8 +121,6 @@
 			"Skyroot Chest",
 			"Sprout Egg",
 			"Pet Shard GiantBean",
-			"Sprout Seed Pack",
-			["Spriggan"] = 1,
         },
         ["Traveling Shop"] = {
             "Bee Egg"
@@ -130,7 +128,6 @@
         Craft = {
 			"Anti Bee Egg",
 			"Pet Shard GiantBean",
-			"Pet Mutation Shard Glimmering",
 			"Sprout Egg",
         },
         Start_Do_Honey = 1_000_000 -- start trade fruit for honey at money
@@ -294,6 +291,7 @@
 			"Orangutan",
 			"Jackalope",
 			"Ladybug",
+			"Gorilla Chef",
         }
     },
 
