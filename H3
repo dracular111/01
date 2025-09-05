@@ -1,4 +1,4 @@
-getgenv().ConfigsKaitun = {
+  getgenv().ConfigsKaitun = {
     -- Beta_Fix_Data_Sync = true,
     Beta_Fix_Data_Sync = false,
     NoDeletePlayer = false,
@@ -15,44 +15,51 @@ getgenv().ConfigsKaitun = {
 	["Limit Tree"] = {
 		--["Limit"] = 200,
 		--["Destroy Until"] = 200,
-		["Limit"] = 150,
-		["Destroy Until"] = 150,
+		["Limit"] = 120,
+		["Destroy Until"] = 120,
         ["Safe Tree"] = {
+			["Glowthorn"] = 5,
+			["Mushroom"] = 5,
+			["Pepper"] = 5,
+			["Grape"] = 5,
+			["Sunbulb"] = 5,
 			["Ember Lily"] = 3,
-            ["Glowthorn"] = 2,
-            ["Beanstalk"] = 2,
-            ["Elder Strawberry"] = 5,
-            ["Romanesco"] = 5,
-            ["Sugar Apple"] = 2,
-            ["Spirit Flower"] = 5,
-            ["Aurora Vine"] = 5,
-            ["Sunbulb"] = 2,
-            ["Moonberry"] = 5,
-            ["Dragon Fruit"] = 5,
-            ["Mango"] = 5,
-            ["Pumpkin"] = 5,
-            ["Moon Blossom"] = 5,
-            ["Bone Blossom"] = 5,
-            ["Moon Melon"] = 5,
-            ["Maple Apple"] = 5,
-            ["Moon Mango"] = 3,
-            ["Dragon Pepper"] = 3,
-            ["Elephant Ears"] = 3,
-            ["Fossilight"] = 2,
-            ["Princess Thorn"] = 3,
-            ["Coconut"] = 3,
-            ["Bamboo"] = 3,
-            ["Daffodil"] = 3,
-            ["Watermelon"] = 3,
-            ["Carrot"] = 2,
-            ["Corn"] = 2,
-            ["Orange Tulip"] = 2,
-            ["Strawberry"] = 2,
-            ["Tomato"] = 2,
-            ["Apple"] = 2,
-            ["Blueberry"] = 2,
-            ["Cactus"] = 2,
-            ["Grape"] = 2,
+			["Lightshoot"] = 2,
+			["Cacao"] = 4,
+			["Beanstalk"] = 3,
+			["Sugar Apple"] = 5,
+			["Burning Bud"] = 5,
+			["Giant Pinecone"] = 3,
+			["Elder Strawberry"] = 5,
+			["Romanesco"] = 3,
+			["Aurora Vine"] = 3,
+			["Moonberry"] = 4,
+			["Dragon Fruit"] = 5,
+			["Mango"] = 5,
+			["Pumpkin"] = 2,
+			["Moon Blossom"] = 4,
+			["Bone Blossom"] = 4,
+			["Moon Melon"] = 4,
+			["Maple Apple"] = 5,
+			["Moon Mango"] = 5,
+			["Dragon Pepper"] = 4,
+			["Elephant Ears"] = 4,
+			["Fossilight"] = 2,
+			["Princess Thorn"] = 3,
+			["Sugarglaze"] = 3,
+			["Hinomai"] = 2,
+			["Coconut"] = 2,
+			["Bamboo"] = 4,
+			["Daffodil"] = 4,
+			["Watermelon"] = 2,
+			["Carrot"] = 2,
+			["Corn"] = 2,
+			["Orange Tulip"] = 4,
+			["Strawberry"] = 4,
+			["Tomato"] = 4,
+			["Apple"] = 4,
+			["Blueberry"] = 4,
+			["Cactus"] = 2,
         }
     },
 
@@ -69,6 +76,8 @@ getgenv().ConfigsKaitun = {
                 "Carrot"
             },
             Lock = {
+				"Easter Egg",
+				"Sunflower",
             }
         }
     },
@@ -81,9 +90,12 @@ getgenv().ConfigsKaitun = {
 		["Fairy Event"] = {
 			Minimum_Money = 1_000_000, -- minimum money to start play this event
 			Rewards_Item = {
-				"FairyPoints",
 				"Enchanted Egg",
+				"Pet Shard Glimmering",
+				"Mutation Spray Glimmering",
+				"FairyPoints",
 				"Enchanted Seed Pack",
+				"Fairy Targeter",
 			},
 			Upgrade = {
 				Mode = "Order", -- Order (mean will up on order), Chepest, Highest
@@ -101,7 +113,7 @@ getgenv().ConfigsKaitun = {
 				}
 			}
 		},
-		MaxMoney_Restocks = 1_000_000_000,
+		MaxMoney_Restocks = 10_000_000,
 		Shop = { -- un comment to buy
 			"Enchanted Egg",
 			--"Enchanted Seed Pack",
@@ -150,7 +162,7 @@ getgenv().ConfigsKaitun = {
             "Sprout Egg",
             "Gourmet Egg",
             "Zen Egg",
-            --"Anti Bee Egg",
+            "Anti Bee Egg",
             "Paradise Egg",
             "Bug Egg",
             "Rare Summer Egg",
@@ -178,35 +190,37 @@ getgenv().ConfigsKaitun = {
         }
     },
 
-    Pets = {
-        ["Start Delete Pet At"] = 50,
+	Pets = {
+		["Auto Feed"] = true,
+
+		MutationPet = {
+			["Glimmering Sprite"] = { "Glimmering" }
+		},
+
+		["Start Delete Pet At"] = 50,
         ["Upgrade Slot"] = {
             ["Pet"] = {
-                ["Starfish"] = { 5, 76, 13, true },
+                ["Starfish"] = { 5, 76, 1, true },
             },
             ["Limit Upgrade"] = 5, -- max is 5 (more than or lower than 1 will do nothing
             ["Equip When Done"] = {
-	            ["Glimmering Sprite"] = { 8, 100, 2 },
+	            ["Glimmering Sprite"] = { 8, 100, 1 },
 	            ["Pixie"] = { 1, 100, 2 },
-	            ["Ladybug"] = { 1, 100, 3 },
-	            ["Spriggan"] = { 1, 100, 4 },
-                ["Chicken Zombie"] = { 8, 100, 5 },
-                ["Rooster"] = { 8, 100, 6 },
-                ["Blood Kiwi"] = { 8, 100, 7 },
-                ["Bald Eagle"] = { 8, 100, 8 },
-                ["Sunny-Side Chicken"] = { 8, 100, 9 },
+	            ["Spriggan"] = { 1, 100, 3 },
+                ["Chicken Zombie"] = { 8, 100, 4 },
+                ["Rooster"] = { 8, 100, 5 },
+                ["Blood Kiwi"] = { 8, 100, 6 },
+                ["Bald Eagle"] = { 8, 100, 7 },
+                ["Sunny-Side Chicken"] = { 8, 100, 8 },
+				["Tanchozuru"] = { 8, 100, 9 },
                 ["Peach Wasp"] = { 1, 100, 10 },
-                --["Sea Turtle"] = { 5, 76, 11, true },
-                --["Chicken"] = { 8, 100, 12, true },
             }
         },
         Unfavorite_AllPet = true,
         Favorite_LockedPet = false,
-        Locked_Pet_Age = 40,
+        Locked_Pet_Age = 50,
         Locked = {
             "Raiju",
-            ["Ladybug"] = 1,
-            ["Pixie"] = 1,
             ["Glimmering Sprite"] = 8,
             "Cockatrice",
             "Gnome",
@@ -214,7 +228,6 @@ getgenv().ConfigsKaitun = {
 			"Peach Wasp",
             "Lemon Lion",
             "Tanchozuru",
-            ["Golem"] = 1,
             ["Spriggan"] = 1,
             "Golden Goose",
             "Lobster Thermidor",
@@ -246,28 +259,14 @@ getgenv().ConfigsKaitun = {
             "Sunny-Side Chicken",
             "Chicken Zombie",
             ["Capybara"] = 1,
-            ["Sea Turtle"] = 1,
-            ["Starfish"] = 2
+            ["Starfish"] = 10
         },
         LockPet_Weight = 5,
 		Ignore_Pet_Weight = {
 			"Starfish",
-			"Caterpillar",
-			"Triceratops",
-			"Crab",
-			"Seagull",
-			"Pancake Mole",
-			"Bagel Bunny",
-			"Sushi Bear",
-			"Raptor",
-			"Stegosaurus",
-			"Elk",
-			"Cat",
-			"Deer",
 		},
         Instant_Sell = {
 			"Caterpillar",
-			"Mandrake",
 			"Pig ",
 			"Mandrake",
 			"Bacon Pig",
@@ -275,7 +274,6 @@ getgenv().ConfigsKaitun = {
 			"Flamingo",
 			"Hotdog Daschund",
 			"Iguanodon",
-			"Orangutan",
 			"Seedling",
 			"Shiba Inu",
 			"Snail",
@@ -294,9 +292,8 @@ getgenv().ConfigsKaitun = {
 			"Orange Tabby",
 			"Spotted Deer",
 			"Orangutan",
-			"Dairy Cow",
 			"Jackalope",
-			"Mandrake",
+			"Ladybug",
         }
     },
 
