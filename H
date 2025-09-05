@@ -113,7 +113,7 @@
 				}
 			}
 		},
-		MaxMoney_Restocks = 1_000_000_000,
+		MaxMoney_Restocks = 10_000_000,
 		Shop = { -- un comment to buy
 			"Enchanted Egg",
 			--"Enchanted Seed Pack",
@@ -199,7 +199,7 @@
 		["Start Delete Pet At"] = 50,
         ["Upgrade Slot"] = {
             ["Pet"] = {
-                ["Starfish"] = { 5, 76, 11, true },
+                ["Starfish"] = { 5, 76, 1, true },
             },
             ["Limit Upgrade"] = 5, -- max is 5 (more than or lower than 1 will do nothing
             ["Equip When Done"] = {
@@ -217,7 +217,7 @@
         },
         Unfavorite_AllPet = true,
         Favorite_LockedPet = false,
-        Locked_Pet_Age = 40,
+        Locked_Pet_Age = 50,
         Locked = {
             "Raiju",
             ["Glimmering Sprite"] = 8,
