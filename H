@@ -230,7 +230,6 @@
         Locked_Pet_Age = 40,
         Locked = {
             "Raiju",
-            ["Pixie"] = 1,
             ["Glimmering Sprite"] = 8,
             "Cockatrice",
             "Gnome",
