@@ -264,7 +264,7 @@
 		},
         Instant_Sell = {
 			"Caterpillar",
-			"Pig ",
+			"Pig",
 			"Mandrake",
 			"Bacon Pig",
 			"Dairy Cow",
@@ -291,7 +291,7 @@
 			"Orangutan",
 			"Jackalope",
 			"Ladybug",
-			"Pixie x1",
+			"Pixie",
 			"Gorilla Chef",
         }
     },
