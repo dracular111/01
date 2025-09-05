@@ -15,8 +15,8 @@
 	["Limit Tree"] = {
 		--["Limit"] = 200,
 		--["Destroy Until"] = 200,
-		["Limit"] = 120,
-		["Destroy Until"] = 120,
+		["Limit"] = 150,
+		["Destroy Until"] = 150,
         ["Safe Tree"] = {
 			["Glowthorn"] = 5,
 			["Mushroom"] = 5,
@@ -113,7 +113,7 @@
 				}
 			}
 		},
-		MaxMoney_Restocks = 10_000_000,
+		MaxMoney_Restocks = 1_000_000_000,
 		Shop = { -- un comment to buy
 			"Enchanted Egg",
 			--"Enchanted Seed Pack",
@@ -123,7 +123,7 @@
 			"Pet Shard GiantBean",
         },
         ["Traveling Shop"] = {
-            "Bee Egg"
+            "Bee Egg",
         },
         Craft = {
 			"Anti Bee Egg",
