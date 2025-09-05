@@ -291,6 +291,7 @@
 			"Orangutan",
 			"Jackalope",
 			"Ladybug",
+			"Pixie x1",
 			"Gorilla Chef",
         }
     },
