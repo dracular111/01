@@ -60,6 +60,7 @@
 			["Apple"] = 4,
 			["Blueberry"] = 4,
 			["Cactus"] = 2,
+			["Sunbulb"] = 10,
         }
     },
 
@@ -118,7 +119,7 @@
 		Shop = { -- un comment to buy
 			"Enchanted Chest",
 			"Enchanted Egg",
-			--"Enchanted Seed Pack",
+			"Enchanted Seed Pack",
 			--"Pet Mutation Shard Glimmering",
 			"Skyroot Chest",
 			"Sprout Egg",
