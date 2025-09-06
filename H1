@@ -92,11 +92,11 @@
 			Minimum_Money = 1_000_000, -- minimum money to start play this event
 			Rewards_Item = {
 				"Enchanted Chest",
+				"Enchanted Seed Pack",
 				"Enchanted Egg",
 				"Pet Shard Glimmering",
 				"Mutation Spray Glimmering",
 				"FairyPoints",
-				"Enchanted Seed Pack",
 				"Fairy Targeter",
 			},
 			Upgrade = {
@@ -118,8 +118,8 @@
 		MaxMoney_Restocks = 1_000_000_000,
 		Shop = { -- un comment to buy
 			"Enchanted Chest",
-			"Enchanted Egg",
 			"Enchanted Seed Pack",
+			"Enchanted Egg",
 			--"Pet Mutation Shard Glimmering",
 			"Skyroot Chest",
 			"Sprout Egg",
