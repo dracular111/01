@@ -79,6 +79,7 @@
             Lock = {
 				"Easter Egg",
 				"Sunflower",
+				"Sunbulb",
             }
         }
     },
