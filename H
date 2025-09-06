@@ -128,8 +128,8 @@
             "Bee Egg",
         },
         Craft = {
-			"Fairy Net",
 			"Enchanted Chest",
+			"Fairy Net",
 			"Enchanted Egg",
 			"Anti Bee Egg",
 			"Pet Shard GiantBean",
