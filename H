@@ -121,7 +121,6 @@
 			"Skyroot Chest",
 			"Sprout Egg",
 			"Pet Shard GiantBean",
-			"Rainbow Lollipop",
         },
         ["Traveling Shop"] = {
             "Bee Egg",
@@ -144,7 +143,6 @@
             "Level Up Lollipop",
             "Medium Treat",
             "Medium Toy",
-			"Rainbow Lollipop",
         },
         Lock = {
             "Master Sprinkler",
@@ -175,7 +173,6 @@
         },
         Buy = {
             "Anti Bee Egg",
-			"Rainbow Lollipop",
             "Bee Egg",
             "Zen Egg",
             "Oasis Egg",
