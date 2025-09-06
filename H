@@ -19,7 +19,6 @@
 		--["Destroy Until"] = 150,
         ["Safe Tree"] = {
 			["Glowthorn"] = 5,
-			["Glowthorn"] = 3,
 			["Mushroom"] = 3,
 			["Pepper"] = 3,
 			["Grape"] = 3,
