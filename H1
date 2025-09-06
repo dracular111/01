@@ -319,9 +319,6 @@
             Seeds = { "Idk" },
             SeedPack = { "Idk" },
             Pets = {
-                "Kitsune",
-                "Golden Goose",
-                "Griffin",
                 "Cockatrice",
                 "Phoenix",
             },
