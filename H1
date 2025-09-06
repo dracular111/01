@@ -101,8 +101,8 @@
 			Upgrade = {
 				Mode = "Order", -- Order (mean will up on order), Chepest, Highest
 				Order = { -- top upgrade first, not put mean not upgrade
-					"Fairy Spawn Amount",
 					"Roaming Fairy Spawn Amount",
+					"Fairy Spawn Amount",
 					"Loose Fairy Spawn Amount",
 					"Glimmer Multiplier",
 					"Fairy Event Duration",
@@ -198,7 +198,9 @@
 		["Auto Feed"] = true,
 
 		MutationPet = {
-			["Glimmering Sprite"] = { "Glimmering" }
+			["Glimmering Sprite"] = { "Glimmering" },
+			["Spriggan"] = { "Glimmering" },
+			["Pixie"] = { "Glimmering" }
 		},
 
 		["Start Delete Pet At"] = 50,
