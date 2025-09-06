@@ -102,13 +102,15 @@
 				Mode = "Order", -- Order (mean will up on order), Chepest, Highest
 				Order = { -- top upgrade first, not put mean not upgrade
 					"Fairy Spawn Amount",
+					"Roaming Fairy Spawn Amount",
 					"Loose Fairy Spawn Amount",
 					"Glimmer Multiplier",
 					"Fairy Event Duration",
 				},
 				Limit = {
 					["Glimmer Multiplier"] = 10, -- max 10
-					["Loose Fairy Spawn Amount"] = 4, -- max 4
+					["Loose Fairy Spawn Amount"] = 10, -- max 4
+					["Roaming Fairy Spawn Amount"] = 10, -- max 4
 					["Fairy Event Duration"] = 10, -- max 10
 					["Fairy Spawn Amount"] = 9, -- max 9
 				}
