@@ -130,6 +130,8 @@
             "Bee Egg",
         },
         Craft = {
+			"Enchanted Chest",
+			"Enchanted Egg",
 			"Anti Bee Egg",
 			"Pet Shard GiantBean",
 			"Sprout Egg",
