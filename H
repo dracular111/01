@@ -18,6 +18,7 @@
 		--["Limit"] = 150,
 		--["Destroy Until"] = 150,
         ["Safe Tree"] = {
+			["Aetherfruit"] = 1,
 			["Glowthorn"] = 5,
 			["Mushroom"] = 3,
 			["Pepper"] = 3,
@@ -60,6 +61,7 @@
 			["Apple"] = 3,
 			["Blueberry"] = 3,
 			["Cactus"] = 2,
+Aetherfruit
         }
     },
 
@@ -77,6 +79,7 @@
             },
             Lock = {
 				"Easter Egg",
+				"Aetherfruit",
 				"Sunflower",
 				"Sunbulb",
 				"Strawberry",
