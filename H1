@@ -55,12 +55,12 @@
 			["Carrot"] = 2,
 			["Corn"] = 2,
 			["Orange Tulip"] = 4,
-			["Strawberry"] = 10,
+			["Strawberry"] = 4,
 			["Tomato"] = 4,
 			["Apple"] = 4,
 			["Blueberry"] = 4,
 			["Cactus"] = 2,
-			["Sunbulb"] = 10,
+			["Sunbulb"] = 4,
         }
     },
 
