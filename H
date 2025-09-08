@@ -81,6 +81,7 @@
 				"Sunbulb",
 				"Strawberry",
 				--"Mushroom",
+				["Enchanted Seed Pack"] = 100,
             }
         }
     },
