@@ -22,7 +22,7 @@
 			["Mushroom"] = 5,
 			["Pepper"] = 3,
 			["Grape"] = 3,
-			["Sunbulb"] = 20,
+			["Sunbulb"] = 10,
 			["Ember Lily"] = 2,
 			["Lightshoot"] = 2,
 			["Cacao"] = 3,
