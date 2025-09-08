@@ -79,14 +79,19 @@
 				"Princess Thorn",
 				"Aetherfruit",
 				"Sunflower",
+				"Maple Apple",
+				"Dragon Pepper",
+				"Moon Melon",
+				"Moon Mango",
+				"Fossilight",
             }
         }
     },
 
 	["Seed Pack"] = {
 		Locked = {
-			["Enchanted Seed Packs"] = 10,
-			--["Enchanted Seed Packs"] = 50,
+			--["Enchanted Seed Packs"] = 10,
+			["Enchanted Seed Packs"] = 50,
 		}
 	},
 
