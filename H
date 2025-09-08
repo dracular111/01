@@ -80,7 +80,6 @@
 				"Sunflower",
 				"Sunbulb",
 				"Strawberry",
-				"Mushroom",
             }
         }
     },
