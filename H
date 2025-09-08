@@ -79,6 +79,11 @@
 				"Princess Thorn",
 				"Aetherfruit",
 				"Sunflower",
+				"Maple Apple",
+				"Dragon Pepper",
+				"Moon Melon",
+				"Moon Mango",
+				"Fossilight",
             }
         }
     },
