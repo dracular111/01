@@ -76,19 +76,23 @@
             },
             Lock = {
 				"Easter Egg",
+				"Aurora Vine",
+				"Moon Blossom",
+				"Bone Blossom",
+				"Elephant Ears",
+				"Princess Thorn",
 				"Aetherfruit",
 				"Sunflower",
-				"Sunbulb",
-				"Strawberry",
-				--"Mushroom",
-				["Enchanted Seed Pack"] = 100,
             }
         }
     },
 
-    ["Seed Pack"] = {
-        Locked = {}
-    },
+	["Seed Pack"] = {
+		Locked = {
+			["Enchanted Seed Packs"] = 30,
+			--["Enchanted Seed Packs"] = 10,
+		}
+	},
 
   	Events = {
 		["Fairy Event"] = {
