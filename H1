@@ -5,7 +5,7 @@
 
     ["Block Pet Gift"] = true,
 
-    Collect_Cooldown = 120, -- cooldown to collect fruit
+    Collect_Cooldown = 60, -- cooldown to collect fruit
 
     ["Low Cpu"] = true,
     ["Auto Rejoin"] = false,
@@ -13,52 +13,48 @@
     ["Rejoin When Update"] = false,
 
 	["Limit Tree"] = {
-		["Limit"] = 100,
-		["Destroy Until"] = 100,
-		--["Limit"] = 150,
-		--["Destroy Until"] = 150,
+		["Limit"] = 150,
+		["Destroy Until"] = 150,
+		--["Limit"] = 250,
+		--["Destroy Until"] = 250,
         ["Safe Tree"] = {
-			["Glowthorn"] = 5,
+			["Moonberry"] = 1,
+			["Moon Melon"] = 1,
+			["Moon Mango"] = 1,
+			["Dragon Pepper"] = 1,
+			["Fossilight"] = 1,
+			["Sugarglaze"] = 1,
+    -- 🌟 Cây chính, quest nhiều (giữ cao)
+			["Sunbulb"] = 20,         -- Core quest, xuất hiện nhiều
+			["Glowthorn"] = 5,        -- Nhiều nhiệm vụ cấp cao
+			["Lightshoot"] = 5,       -- Xuất hiện lặp
+			["Ember Lily"] = 5,       -- Rất hay gặp
+    -- 🌻 Quest vừa (giữ trung bình 5)
+			["Beanstalk"] = 5,
+			["Romanesco"] = 5,
+			["Elder Strawberry"] = 5,
+			["Burning Bud"] = 5,
+			["Giant Pinecone"] = 5,
+			["Sugar Apple"] = 5,
+			["Dragon Fruit"] = 5,
+			["Mango"] = 5,
+			["Pumpkin"] = 5,
+			["Coconut"] = 5,
+			["Bamboo"] = 5,
+			["Strawberry"] = 5,
+			["Tomato"] = 5,
+			["Apple"] = 5,
+			["Blueberry"] = 5,
+			["Cactus"] = 5,
+    -- 🌱 Quest ít gặp (giảm xuống 2–3)
 			["Mushroom"] = 5,
 			["Pepper"] = 3,
 			["Grape"] = 3,
-			["Sunbulb"] = 10,
-			["Ember Lily"] = 2,
-			["Lightshoot"] = 2,
 			["Cacao"] = 3,
-			["Beanstalk"] = 2,
-			["Sugar Apple"] = 3,
-			["Burning Bud"] = 3,
-			["Giant Pinecone"] = 2,
-			["Elder Strawberry"] = 3,
-			["Romanesco"] = 2,
-			["Aurora Vine"] = 3,
-			["Moonberry"] = 3,
-			["Dragon Fruit"] = 3,
-			["Mango"] = 3,
-			["Pumpkin"] = 2,
-			["Moon Blossom"] = 3,
-			["Bone Blossom"] = 3,
-			["Moon Melon"] = 3,
-			["Maple Apple"] = 3,
-			["Moon Mango"] = 3,
-			["Dragon Pepper"] = 3,
-			["Elephant Ears"] = 3,
-			["Fossilight"] = 2,
-			["Princess Thorn"] = 2,
-			["Sugarglaze"] = 2,
-			["Coconut"] = 2,
-			["Bamboo"] = 3,
-			["Daffodil"] = 3,
+			["Daffodil"] = 5,
+			["Orange Tulip"] = 5,
 			["Watermelon"] = 2,
-			["Carrot"] = 2,
 			["Corn"] = 2,
-			["Orange Tulip"] = 3,
-			["Strawberry"] = 3,
-			["Tomato"] = 3,
-			["Apple"] = 3,
-			["Blueberry"] = 3,
-			["Cactus"] = 2,
         }
     },
 
@@ -90,7 +86,7 @@
 	["Seed Pack"] = {
 		Locked = {
 			["Enchanted Seed Packs"] = 10,
-			--["Enchanted Seed Packs"] = 30,
+			--["Enchanted Seed Packs"] = 50,
 		}
 	},
 
