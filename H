@@ -132,7 +132,7 @@
 		Shop = { -- un comment to buy
 			"Enchanted Chest",
 			"Enchanted Seed Pack",
-			"Enchanted Egg",
+			--"Enchanted Egg",
 			--"Pet Mutation Shard Glimmering",
 			"Skyroot Chest",
 			"Sprout Egg",
