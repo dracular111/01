@@ -19,7 +19,7 @@
 		--["Destroy Until"] = 150,
         ["Safe Tree"] = {
 			["Glowthorn"] = 5,
-			["Mushroom"] = 10,
+			["Mushroom"] = 5,
 			["Pepper"] = 3,
 			["Grape"] = 3,
 			["Sunbulb"] = 4,
@@ -78,8 +78,8 @@
 				"Easter Egg",
 				"Aetherfruit",
 				"Sunflower",
-				"Sunbulb",
-				"Strawberry",
+				--"Sunbulb",
+				--"Strawberry",
 				--"Mushroom",
             }
         }
