@@ -48,11 +48,11 @@
 			["Cactus"] = 5,
     -- 🌱 Quest ít gặp (giảm xuống 2–3)
 			["Mushroom"] = 5,
-			["Pepper"] = 4,
-			["Grape"] = 4,
-			["Cacao"] = 4,
-			["Daffodil"] = 5,
-			["Orange Tulip"] = 5,
+			["Pepper"] = 3,
+			["Grape"] = 3,
+			["Cacao"] = 3,
+			["Daffodil"] = 3,
+			["Orange Tulip"] = 3,
 			["Watermelon"] = 3,
 			["Corn"] = 3,
         }
@@ -85,6 +85,10 @@
 				"Moon Mango",
 				"Fossilight",
 				"Wispwing",
+				"Briar Rose",
+				"Pyracantha",
+				"Moonberry",
+				"Spirit Flower",
             }
         }
     },
@@ -117,18 +121,20 @@
 					"Fairy Event Duration",
 				},
 				Limit = {
-					["Glimmer Multiplier"] = 10, -- max 10
+					["Glimmer Multiplier"] = 5, -- max 10
 					["Loose Fairy Spawn Amount"] = 10, -- max 10
 					["Fairy Event Duration"] = 10, -- max 10
 					["Fairy Spawn Amount"] = 9, -- max 9
 				}
-			}
+			},
+			
+			Catch_Fairy_Before_Restock = 51, -- fr it 50 but to be sure i put 51
 		},
 		MaxMoney_Restocks = 1_000_000_000,
 		Shop = { -- un comment to buy
 			"Enchanted Chest",
 			"Enchanted Seed Pack",
-			"Enchanted Egg",
+			--"Enchanted Egg",
 			--"Pet Mutation Shard Glimmering",
 			"Skyroot Chest",
 			"Sprout Egg",
