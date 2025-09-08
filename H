@@ -5,7 +5,7 @@
 
     ["Block Pet Gift"] = true,
 
-    Collect_Cooldown = 60, -- cooldown to collect fruit
+    Collect_Cooldown = 120, -- cooldown to collect fruit
 
     ["Low Cpu"] = true,
     ["Auto Rejoin"] = false,
@@ -48,11 +48,11 @@
 			["Cactus"] = 5,
     -- 🌱 Quest ít gặp (giảm xuống 2–3)
 			["Mushroom"] = 5,
-			["Pepper"] = 4,
-			["Grape"] = 4,
-			["Cacao"] = 4,
-			["Daffodil"] = 5,
-			["Orange Tulip"] = 5,
+			["Pepper"] = 3,
+			["Grape"] = 3,
+			["Cacao"] = 3,
+			["Daffodil"] = 3,
+			["Orange Tulip"] = 3,
 			["Watermelon"] = 3,
 			["Corn"] = 3,
         }
