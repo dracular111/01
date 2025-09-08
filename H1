@@ -78,8 +78,8 @@
 				"Easter Egg",
 				"Aetherfruit",
 				"Sunflower",
-				"Sunbulb",
-				"Strawberry",
+				--"Sunbulb",
+				--"Strawberry",
 				--"Mushroom",
             }
         }
