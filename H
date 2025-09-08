@@ -13,10 +13,10 @@
     ["Rejoin When Update"] = false,
 
 	["Limit Tree"] = {
-		["Limit"] = 125,
-		["Destroy Until"] = 125,
-		--["Limit"] = 150,
-		--["Destroy Until"] = 150,
+		["Limit"] = 140,
+		["Destroy Until"] = 140,
+		--["Limit"] = 120,
+		--["Destroy Until"] = 120,
         ["Safe Tree"] = {
 			["Moonberry"] = 1,
 			["Moon Melon"] = 1,
