@@ -5,7 +5,7 @@
 
     ["Block Pet Gift"] = true,
 
-    Collect_Cooldown = 120, -- cooldown to collect fruit
+    Collect_Cooldown = 60, -- cooldown to collect fruit
 
     ["Low Cpu"] = true,
     ["Auto Rejoin"] = false,
@@ -121,12 +121,14 @@
 					"Fairy Event Duration",
 				},
 				Limit = {
-					["Glimmer Multiplier"] = 10, -- max 10
+					["Glimmer Multiplier"] = 5, -- max 10
 					["Loose Fairy Spawn Amount"] = 10, -- max 10
 					["Fairy Event Duration"] = 10, -- max 10
 					["Fairy Spawn Amount"] = 9, -- max 9
 				}
-			}
+			},
+			
+			Catch_Fairy_Before_Restock = 51, -- fr it 50 but to be sure i put 51
 		},
 		MaxMoney_Restocks = 1_000_000_000,
 		Shop = { -- un comment to buy
