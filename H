@@ -85,6 +85,10 @@
 				"Moon Mango",
 				"Fossilight",
 				"Wispwing",
+				"Briar Rose",
+				"Pyracantha",
+				"Moonberry",
+				"Spirit Flower",
             }
         }
     },
