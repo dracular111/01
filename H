@@ -32,7 +32,7 @@
 			["Giant Pinecone"] = 2,
 			["Elder Strawberry"] = 3,
 			["Romanesco"] = 2,
-			["Aurora Vine"] = 3,
+			["Aurora Vine"] = 1,
 			["Moonberry"] = 3,
 			["Dragon Fruit"] = 3,
 			["Mango"] = 3,
