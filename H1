@@ -13,8 +13,8 @@
     ["Rejoin When Update"] = false,
 
 	["Limit Tree"] = {
-		["Limit"] = 140,
-		["Destroy Until"] = 140,
+		["Limit"] = 130,
+		["Destroy Until"] = 130,
 		--["Limit"] = 120,
 		--["Destroy Until"] = 120,
         ["Safe Tree"] = {
@@ -128,6 +128,7 @@
 				}
 			},
 			
+			Minimum_Fairy_Point_Restock = 10000, -- if fairy point more then this will restock
 			Catch_Fairy_Before_Restock = 51, -- fr it 50 but to be sure i put 51
 		},
 		MaxMoney_Restocks = 1_000_000_000,
