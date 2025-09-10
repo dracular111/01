@@ -15,8 +15,8 @@
 	["Limit Tree"] = {
 		["Limit"] = 130,
 		["Destroy Until"] = 130,
-		--["Limit"] = 150,
-		--["Destroy Until"] = 150,
+		--["Limit"] = 120,
+		--["Destroy Until"] = 120,
         ["Safe Tree"] = {
 			["Moonberry"] = 1,
 			["Moon Melon"] = 1,
@@ -107,8 +107,8 @@
 				"Enchanted Chest",
 				"Enchanted Seed Pack",
 				"Enchanted Egg",
-				"Pet Shard Glimmering",
 				"Mutation Spray Glimmering",
+				"Pet Shard Glimmering",
 				"FairyPoints",
 				"Fairy Targeter",
 			},
@@ -137,9 +137,6 @@
 			"Enchanted Seed Pack",
 			--"Enchanted Egg",
 			--"Pet Mutation Shard Glimmering",
-			"Skyroot Chest",
-			"Sprout Egg",
-			"Pet Shard GiantBean",
         },
         ["Traveling Shop"] = {
             "Bee Egg",
