@@ -1,7 +1,7 @@
 getgenv().Config = {
     ["Pet"] = {
         ["Peacock"] = {"Rainbow"},
-        ["Rainbow Dilophosaurus"] = {"Golden"},
+        ["Rainbow Dilophosaurus"] = {"Rainbow"},
         --["Rainbow Dilophosaurus"] = {"Rainbow"},
         --["Cockatrice"] = {"Rainbow"}
     }
