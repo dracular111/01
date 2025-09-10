@@ -137,9 +137,6 @@
 			"Enchanted Seed Pack",
 			--"Enchanted Egg",
 			--"Pet Mutation Shard Glimmering",
-			"Skyroot Chest",
-			"Sprout Egg",
-			"Pet Shard GiantBean",
         },
         ["Traveling Shop"] = {
             "Bee Egg",
