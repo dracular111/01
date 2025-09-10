@@ -321,6 +321,7 @@
 			"Gorilla Chef",
 			"Imp",
 			"Cardinal",
+			"Shroomie",
         }
     },
 
