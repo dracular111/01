@@ -3,7 +3,8 @@ getgenv().Config = {
         -- 🟨 Medium (giá trị cao, giới hạn vừa phải)
         ['Trees'] = {
         ["Hinomai"] = 0,
-        ["Sunbulb"] = 15, 
+        ["Burning Bud"] = 1,
+        ["Sunbulb"] = 10, 
         ["Moonberry"] = 1,
         ["Moon Melon"] = 1,
         ["Moon Mango"] = 1,
