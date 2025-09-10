@@ -242,6 +242,7 @@
         Locked = {
             "Raiju",
             "Phoenix",
+            "Luminous Sprite",
             ["Glimmering Sprite"] = 8,
             "Cockatrice",
             "Gnome",
