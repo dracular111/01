@@ -109,8 +109,8 @@
 				"Enchanted Egg",
 				"Mutation Spray Glimmering",
 				"Pet Shard Glimmering",
-				"FairyPoints",
 				"Fairy Targeter",
+				"FairyPoints",
 			},
 			Upgrade = {
 				Mode = "Order", -- Order (mean will up on order), Chepest, Highest
