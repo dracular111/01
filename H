@@ -15,8 +15,8 @@
 	["Limit Tree"] = {
 		["Limit"] = 130,
 		["Destroy Until"] = 130,
-		--["Limit"] = 120,
-		--["Destroy Until"] = 120,
+		--["Limit"] = 150,
+		--["Destroy Until"] = 150,
         ["Safe Tree"] = {
 			["Moonberry"] = 1,
 			["Moon Melon"] = 1,
