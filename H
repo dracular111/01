@@ -72,6 +72,7 @@
             },
             Lock = {
 				"Easter Egg",
+				"Burning Bud",
 				"Aurora Vine",
 				"Moon Blossom",
 				"Bone Blossom",
