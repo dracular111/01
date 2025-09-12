@@ -97,7 +97,7 @@
 	["Seed Pack"] = {
 		Locked = {
 			--["Enchanted Seed Packs"] = 20,
-			["Enchanted Seed Packs"] = 50,
+			["Enchanted Seed Packs"] = 99,
 		}
 	},
 
