@@ -102,6 +102,8 @@
 	},
 
   	Events = {
+		["Fall Event"] = {
+			Minimum_Money = 1_000_000, -- minimum money to start play this event
 		["Fairy Event"] = {
 			Minimum_Money = 1_000_000, -- minimum money to start play this event
 			Rewards_Item = {
@@ -247,7 +249,8 @@
         Locked = {
             "Raiju",
             "Swan",
-            "Barn Owl",
+            ["Grizzly Bear"] = 8,
+            ["Barn Owl"] = 8,
             "Phoenix",
             "Luminous Sprite",
             ["Glimmering Sprite"] = 8,
