@@ -341,6 +341,7 @@
             Pets = {
                 "Cockatrice",
                 "Phoenix",
+                "Swan",
             },
             Pet_Weight_Noti = true
         }
