@@ -105,6 +105,7 @@
 		["Fairy Event"] = {
 			Minimum_Money = 1_000_000, -- minimum money to start play this event
 			Rewards_Item = {
+				"Fall Egg",
 				"Enchanted Chest",
 				"Enchanted Seed Pack",
 				"Enchanted Egg",
@@ -134,6 +135,7 @@
 		},
 		MaxMoney_Restocks = 1_000_000_000,
 		Shop = { -- un comment to buy
+            "Fall Egg",
 			"Enchanted Chest",
 			"Enchanted Seed Pack",
 			--"Enchanted Egg",
@@ -177,6 +179,7 @@
 
     Eggs = {
         Place = {
+            "Fall Egg",
             "Enchanted Egg",
             "Sprout Egg",
             "Gourmet Egg",
@@ -194,6 +197,7 @@
             --"Common Summer Egg"
         },
         Buy = {
+            "Fall Egg",
             "Anti Bee Egg",
             "Bee Egg",
             "Zen Egg",
@@ -242,6 +246,8 @@
         Locked_Pet_Age = 50,
         Locked = {
             "Raiju",
+            "Swan",
+            "Barn Owl",
             "Phoenix",
             "Luminous Sprite",
             ["Glimmering Sprite"] = 8,
