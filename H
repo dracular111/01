@@ -137,7 +137,7 @@
             }
         },
         Place = {
-            Mode = "Select", -- Select , Lock
+            Mode = "Lock", -- Select , Lock
             Select = {
                 "Elder Strawberry",
                 "Strawberry",
@@ -250,6 +250,13 @@
 				"Briar Rose",
 				"Moonberry",
 				"Spirit Flower",
+				"Pyracantha",
+				"Watermelon",
+				"Pyracantha",
+				"Sunbulb",
+				"Watermelon",
+				"Pyracantha",
+Sunbulb
             }
         }
     },
