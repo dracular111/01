@@ -14,8 +14,8 @@
     ["Rejoin When Update"] = false,
 
 	["Limit Tree"] = {
-		["Limit"] = 385,
-		["Destroy Until"] = 385,
+		["Limit"] = 300,
+		["Destroy Until"] = 300,
 		--["Limit"] = 120,
 		--["Destroy Until"] = 120,
         ["Safe Tree"] = {
