@@ -420,7 +420,7 @@
             "Space Squirrel",
             "Sugar Glider",
             --["Grizzly Bear"] = 8,
-            ["Barn Owl"] = 8,
+            --["Barn Owl"] = 8,
             "Phoenix",
             "Luminous Sprite",
             --["Glimmering Sprite"] = 8,
@@ -501,6 +501,8 @@
 			"Imp",
 			"Cardinal",
 			"Shroomie",
+			"Grizzly Bear",
+			"Glimmering Sprite",
         }
     },
 
