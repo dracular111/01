@@ -14,77 +14,119 @@
     ["Rejoin When Update"] = false,
 
 	["Limit Tree"] = {
-		["Limit"] = 250,
-		["Destroy Until"] = 250,
+		["Limit"] = 400,
+		["Destroy Until"] = 400,
 		--["Limit"] = 120,
 		--["Destroy Until"] = 120,
         ["Safe Tree"] = {
-			["Elder Strawberry"] = 7,  -- Legendary ✓ (Points: 7)
-			["Blueberry"] = 2,         -- Uncommon ✓ (Points: 2)
-			["Strawberry"] = 1,        -- Common ✓ (Points: 1)
-			["Raspberry"] = 3,         -- Rare ✓ (Points: 3)
-			["Sugar Apple"] = 7,       -- Prismatic ✓ (Points: 7)
-			["Beanstalk"] = 7,         -- Prismatic ✓ (Points: 7)
-			["Romanesco"] = 7,         -- Prismatic ✓ (Points: 7)
-			-- Flower
-			["Ember Lily"] = 5,        -- Legendary ✓ (Points: 5)
-			["Daffodil"] = 3,          -- Rare ✓ (Points: 3)
-			["Orange Tulip"] = 2,      -- Legendary ✓ (Points: 2)
-			["Aurora Bloom"] = 1,      -- Unknown (Points: ?)
-			["Prism Apple"] = 1,       -- Unknown (Points: ?)
-			["Radiant Sunflower"] = 6, -- Legendary ✓ (Points: 6)
-			["Starfruit"] = 4,         -- Legendary ✗ (Points: 4)
-			-- Fruit
-			["Dragon Fruit"] = 5,      -- Mythical ✓ (Points: 5)
-			["Mango"] = 5,             -- Mythical ✓ (Points: 5)
-			["Coconut"] = 5,           -- Mythical ✓ (Points: 5)
-			["Apple"] = 4,             -- Legendary ✓ (Points: 4)
-			["Grape"] = 6,             -- Divine ✓ (Points: 6)
-			["Cacao"] = 6,             -- Divine ✓ (Points: 6)
-			["Pepper"] = 6,            -- Divine ✓ (Points: 6)
-			["Burning Bud"] = 7,       -- Prismatic ✓ (Points: 7)
-			["Bell Pepper"] = 5,       -- Mythical ✓ (Points: 5)
-			["Untold Bell"] = 5,       -- Mythical ✓ (Points: 5)
-			["Kiwi"] = 5,              -- Mythical ✓ (Points: 5)
-			["Pineapple"] = 5,         -- Mythical ✓ (Points: 5)
-			["Mangosteen"] = 6,        -- Legendary ✓ (Points: 6)
-			["Canary Melon"] = 6,      -- Legendary ✓ (Points: 6)
-			["Moon Melon"] = 5,        -- Unknown (Points: ?)
-			["Moon Mango"] = 5,        -- Unknown (Points: ?)
-			-- Leafy
-			["Sunflower"] = 6,         -- Legendary ✓ (Points: 6)
-			["Loquat"] = 6,            -- Legendary ✓ (Points: 6)
-			-- Tropical
-			["Kiwi"] = 5,              -- Mythical ✓ (Points: 5)
-			["Pineapple"] = 5,         -- Mythical ✓ (Points: 5)
-			["Mango"] = 5,             -- Mythical ✓ (Points: 5)
-			["Coconut"] = 5,           -- Mythical ✓ (Points: 5)
-			-- Vegetable / Crop
-			["Corn"] = 3,              -- Rare ✓ (Points: 3)
-			["Tomato"] = 3,            -- Rare ✓ (Points: 3)
-			["Cauliflower"] = 3,       -- Rare ✓ (Points: 3)
-			["Mandrake"] = 3,          -- Rare ✓ (Points: 3)
-			["Pumpkin"] = 4,           -- Legendary ✓ (Points: 4)
-			["Bamboo"] = 4,            -- Legendary ✓ (Points: 4)
-			["Sunbulb"] = 5,           -- Unknown (Points: ?)
-			["Cactus"] = 5,            -- Mythical ✓ (Points: 5)
-			["Giant Pinecone"] = 7,    -- Prismatic ✓ (Points: 7)
-			["Mushroom"] = 6,          -- Divine ✓ (Points: 6)
-			-- Prickly / Woody / Stalky
-			["Dragon Pepper"] = 6,     -- Divine ✗ (Points: 6)
-			["Sugarglaze"] = 5,        -- Mythical ✗ (Points: 5)
-			["Glowthorn"] = 4,         -- Unknown (Points: ?)
-			["Lightshoot"] = 5,        -- Unknown (Points: ?)
-			["Prickly Pear"] = 5,      -- Mythical ✓ (Points: 5)
-			["Spiked Mango"] = 5,      -- Mythical ✗ (Points: 5)
-			["Cocovine"] = 5,          -- Mythical ✗ (Points: 5)
-			["Amberheart"] = 5,        -- Mythical ✗ (Points: 5)
-			["Bendboo"] = 5,           -- Mythical ✗ (Points: 5)
-			["Firefly Fern"] = 5,      -- Mythical ✗ (Points: 5)
-			["Hinomai"] = 5,           -- Mythical ✗ (Points: 5)
-			["Lily Of The Valley"] = 5,-- Mythical ✗ (Points: 5)
-			["Poseidon Plant"] = 5,    -- Mythical ✗ (Points: 5)
-			["Tall Asparagus"] = 5     -- Mythical ✗ (Points: 5)
+ 		    -- 🍓 Berry
+			["Elder Strawberry"] = 7,
+			["Strawberry"] = 1,
+			["Blueberry"] = 2,
+			["Raspberry"] = 3,
+			["Cranberry"] = 4,
+			["White Mulberry"] = 4,
+			["Lingonberry"] = 4,
+			["Celestiberry"] = 6, -- Berry + Prickly
+			["Grape"] = 6,         -- Berry + Fruit
+  		    -- 🌸 Flower
+			["Rose"] = 2,
+			["Artichoke"] = 2,     
+			["Orange Tulip"] = 2,
+			["Pink Tulip"] = 2,
+			["Lavender"] = 2,
+			["Manuka Flower"] = 2,
+			["Crocus"] = 2,
+			["Bee Balm"] = 3,
+			["Daffodil"] = 3,
+			["Foxglove"] = 3,
+			["Paradise Petal"] = 3,
+			["Rafflesia"] = 3,
+			["Stonebite"] = 3,      
+			["Liberty Lily"] = 3,
+			["Succulent"] = 3,
+			["Candy Sunflower"] = 3,
+			["Taro Flower"] = 4,    
+			["Cherry Blossom"] = 4,
+			["Lilac"] = 4,
+			["Moonflower"] = 4,     -- Flower + Fruit
+			["Noble Flower"] = 4,
+			["Monoblooma"] = 4,
+			["Soft Sunshine"] = 4,
+			["Hinomai"] = 5,        -- Flower + Stalky
+			["Zenflare"] = 4,
+			["Veinpetal"] = 4,      -- Flower + Stalky
+			["Firework Flower"] = 4,
+			["Pink Lily"] = 5,
+			["Moon Blossom"] = 6,   -- Flower + Fruit
+			["Kniphofia"] = 5,      -- Flower + Stalky
+			["Purple Dahlia"] = 5,
+			["Parasol Flower"] = 5, -- Flower + Fruit
+			["Rosy Delight"] = 5,
+			["Lily Of The Valley"] = 5, -- Flower + Stalky
+			["Honeysuckle"] = 5,
+			["Sunflower"] = 6,      -- Flower + Leafy
+			["Lotus"] = 6,          -- Flower + Stalky
+			["Candy Blossom"] = 6,  -- Flower + Fruit
+			["Grand Volcania"] = 6, -- Flower + Stalky
+			["Ember Lily"] = 7,
+			["Burning Bud"] = 7,    -- Flower + Stalky
+			["Tranquil Bloom"] = 7,
+			["Bone Blossom"] = 8,
+            -- 🍎 Fruit
+			["Apple"] = 4,
+			["Dragon Fruit"] = 5,
+			["Mango"] = 5,           -- Fruit + Tropical
+			["Coconut"] = 5,         -- Fruit + Tropical
+			["Kiwi"] = 5,            -- Fruit + Tropical
+			["Pineapple"] = 5,       -- Fruit + Tropical
+			["Mangosteen"] = 6,
+			["Canary Melon"] = 6,
+			["Starfruit"] = 4,
+			["Cacao"] = 6,
+			["Pepper"] = 6,
+			["Sugar Apple"] = 7,
+			["Prism Apple"] = 1,
+			["Moon Melon"] = 5,
+			["Moon Mango"] = 5,      -- Fruit + Tropical
+			["Papaya"] = 5,          -- Fruit + Woody
+			["Nectarine"] = 5,       -- Fruit + Woody
+			["Hive Fruit"] = 5,      -- Fruit + Woody
+			["Traveler's Fruit"] = 5,-- Fruit + Woody
+			["Maple Apple"] = 5,     -- Fruit + Woody
+            -- 🥕 Vegetable / Crop
+			["Corn"] = 3,
+			["Tomato"] = 3,
+			["Cauliflower"] = 3,
+			["Mandrake"] = 3,
+			["Pumpkin"] = 4,
+			["Bamboo"] = 4,
+			["Romanesco"] = 7,
+			["Giant Pinecone"] = 7,
+			["Mushroom"] = 6,
+			["Beanstalk"] = 7,
+            -- 🌿 Leafy
+			["Loquat"] = 10,
+            -- 🌵 Prickly / Woody / Stalky
+			["Cactus"] = 5,
+			["Prickly Pear"] = 5,
+			["Dragon Pepper"] = 6,
+			["Sugarglaze"] = 5,
+			["Glowthorn"] = 4,
+			["Lightshoot"] = 5,
+			["Spiked Mango"] = 5,
+			["Cocovine"] = 5,
+			["Amberheart"] = 5,
+			["Bendboo"] = 5,
+			["Firefly Fern"] = 5,
+			["Poseidon Plant"] = 5,
+			["Tall Asparagus"] = 5,
+            -- 🌳 Woody
+			["Duskpuff"] = 5,
+			["Dragon Sapling"] = 6,
+			["Sakura Bush"] = 5,     
+			["Gleamroot"] = 5,       
+			["Mangrove"] = 6,
         }
     },
 
@@ -103,18 +145,11 @@
             Lock = {
 				"Easter Egg",
 				"Aurora Vine",
-				"Moon Blossom",
-				"Bone Blossom",
 				"Elephant Ears",
-				"Princess Thorn",
 				"Aetherfruit",
-				"Maple Apple",
-				"Moon Melon",
-				"Moon Mango",
 				"Fossilight",
 				"Wispwing",
 				"Briar Rose",
-				"Pyracantha",
 				"Moonberry",
 				"Spirit Flower",
             }
