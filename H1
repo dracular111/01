@@ -315,6 +315,8 @@
         },
         ["Traveling Shop"] = {
             "Bee Egg",
+			"Paradise Egg", 
+			"Loquat", 
         },
         Craft = {
 			"Enchanted Chest",
