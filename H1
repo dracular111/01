@@ -14,8 +14,8 @@
     ["Rejoin When Update"] = false,
 
 	["Limit Tree"] = {
-		["Limit"] = 385,
-		["Destroy Until"] = 385,
+		["Limit"] = 300,
+		["Destroy Until"] = 300,
 		--["Limit"] = 120,
 		--["Destroy Until"] = 120,
         ["Safe Tree"] = {
@@ -137,7 +137,7 @@
             }
         },
         Place = {
-            Mode = "Select", -- Select , Lock
+            Mode = "Lock", -- Select , Lock
             Select = {
                 "Elder Strawberry",
                 "Strawberry",
@@ -250,6 +250,13 @@
 				"Briar Rose",
 				"Moonberry",
 				"Spirit Flower",
+				"Pyracantha",
+				"Watermelon",
+				"Pyracantha",
+				"Sunbulb",
+				"Watermelon",
+				"Pyracantha",
+Sunbulb
             }
         }
     },
