@@ -86,7 +86,6 @@
 			["Cacao"] = 6,
 			["Pepper"] = 6,
 			["Sugar Apple"] = 7,
-			["Prism Apple"] = 1,
 			["Moon Melon"] = 5,
 			["Moon Mango"] = 5,      -- Fruit + Tropical
 			["Papaya"] = 5,          -- Fruit + Woody
