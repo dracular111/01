@@ -255,8 +255,6 @@
 				"Pyracantha",
 				"Sunbulb",
 				"Watermelon",
-				"Pyracantha",
-Sunbulb
             }
         }
     },
