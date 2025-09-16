@@ -2,32 +2,7 @@ getgenv().Config = {
     ['Destroy Plants'] = {
         -- 🟨 Medium (giá trị cao, giới hạn vừa phải)
         ['Trees'] = {
-        ["Hinomai"] = 0,
-        ["Sunbulb"] = 10, 
-        ["Moonberry"] = 1,
-        ["Moon Melon"] = 1,
-        ["Moon Mango"] = 1,
-        ["Dragon Pepper"] = 1,
-        ["Sugarglaze"] = 1,
-        ["Aetherfruit"] = 1,
-        ["Easter Egg"] = 0,
-        ["Aurora Vine"] = 0,
-        ["Moon Blossom"] = 0,
-        ["Bone Blossom"] = 0,
-        ["Elephant Ears"] = 0,
-        ["Princess Thorn"] = 0,
-        ["Aetherfruit"] = 0,
-        ["Sunflower"] = 0,
-        ["Maple Apple"] = 0,
-        ["Dragon Pepper"] = 0,
-        ["Moon Melon"] = 0,
-        ["Moon Mango"] = 0,
-        ["Fossilight"] = 0,
-        ["Wispwing"] = 0,
-        ["Briar Rose"] = 0,
-        ["Pyracantha"] = 0,
-        ["Moonberry"] = 0,
-        ["Spirit Flower"] = 0,
+        ["Hinomai"] = 666,
         }
     }
 }
