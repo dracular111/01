@@ -1,0 +1,10 @@
+if _G.DELMAPS then
+    return
+end
+_G.DELMAPS = true
+
+--
+pcall(function() workspace.BasePlate:Destroy() end)
+
+-- 
+pcall(function() workspace.Farm.Farm.CurrentExpansion:Destroy() end)
