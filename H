@@ -506,6 +506,7 @@
 			"Shroomie",
 			"Grizzly Bear",
 			"Glimmering Sprite",
+			"Robin",
         }
     },
 
