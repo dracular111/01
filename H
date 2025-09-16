@@ -306,8 +306,8 @@
 		MaxMoney_Restocks = 1_000_000_000,
 		Shop = { -- un comment to buy
             "Fall Egg",
-            "Space Squirrel",
-            "Sugar Glider",
+            --"Space Squirrel",
+            --"Sugar Glider",
 			"Enchanted Chest",
 			"Enchanted Seed Pack",
 			--"Enchanted Egg",
