@@ -391,7 +391,10 @@
 		["Auto Feed"] = true,
 
 		MutationPet = {
-			["Glimmering Sprite"] = { "Glimmering" },
+			["Rooster"] = { "Glimmering" },
+			["Blood Kiwi"] = { "Glimmering" },
+			["Sunny-Side Chicken"] = { "Glimmering" },
+			["Chicken Zombie"] = { "Glimmering" },
 		},
 
 		["Start Delete Pet At"] = 50,
