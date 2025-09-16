@@ -407,10 +407,9 @@
                 ["Bald Eagle"] = { 8, 100, 1 },
                 ["Rooster"] = { 8, 100, 2 },
                 ["Blood Kiwi"] = { 8, 100, 3 },
-                ["Chicken Zombie"] = { 8, 100, 4 },
-                ["Sunny-Side Chicken"] = { 8, 100, 5 },
+                ["Sunny-Side Chicken"] = { 8, 100, 4 },
+                ["Chicken Zombie"] = { 8, 100, 5 },
 	            ["Glimmering Sprite"] = { 8, 100, 6 },
-	            ["Pixie"] = { 1, 100, 7 },
 	            ["Spriggan"] = { 1, 100, 8 },
             }
         },
