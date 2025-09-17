@@ -420,7 +420,6 @@
             "Raiju",
             "Swan",
             "Space Squirrel",
-            "Sugar Glider",
             "Phoenix",
             "Cockatrice",
 			"Griffin",
