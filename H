@@ -499,6 +499,10 @@
 			"Glimmering Sprite",
 			"Robin",
 			"Badger",
+			"Sugar Glider",
+			"Apple Gazelle",
+			"Giant Ant",
+			"Praying Mantis",
         }
     },
 
