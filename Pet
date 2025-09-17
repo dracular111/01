@@ -1,6 +1,6 @@
 getgenv().Config = {
     ["Pet"] = {
-        ["Peacock"] = {"Rainbow"}
+        ["Peacock"] = {"Golden", "Rainbow"}
     },
     ["Webhook"] = {
         ["Url"] = "https://discord.com/api/webhooks/1415719468306399436/NNXioL4nc3ki6Wwvs61UGrLnGPGTjMEFDxJSCut7x8W2U9SpXZQVgy8xT9Age1A_qXsF",
