@@ -422,7 +422,6 @@
             "Cockatrice",
 			"Griffin",
             "Tanchozuru",
-            ["Spriggan"] = 1,
             "Golden Goose",
             "Lobster Thermidor",
             "French Fry Ferret",
@@ -501,6 +500,7 @@
 			"Giant Ant",
 			"Praying Mantis",
 			"Barn Owl",
+			"Spriggan",
         }
     },
 
