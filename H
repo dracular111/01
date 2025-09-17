@@ -503,6 +503,7 @@
 			"Apple Gazelle",
 			"Giant Ant",
 			"Praying Mantis",
+			"Barn Owl",
         }
     },
 
