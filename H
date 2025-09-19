@@ -501,6 +501,7 @@
 			"Praying Mantis",
 			"Barn Owl",
 			"Spriggan",
+			"Monkey",
         }
     },
 
