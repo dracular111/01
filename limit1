@@ -1,0 +1,101 @@
+getgenv().Config = {
+    Limits = {
+        ["Rooster"] = 8,
+        ["Seal"] = 8,
+        ["Capybara"] = 1,
+    },
+    NoLimit = {"Sunny-Side Chicken", "Chicken Zombie", "Koi", "Blood Kiwi", "Bald Eagle", "Brontosaurus"}
+}
+
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local PetRegistry = require(ReplicatedStorage.Data.PetRegistry)
+local DecimalNumberFormat = require(ReplicatedStorage.Data.DecimalNumberFormat)
+local DataService = require(ReplicatedStorage.Modules.DataService)
+
+local playerdata = DataService:GetData()
+local inventoryData = playerdata.PetsData.PetInventory.Data or {}
+
+-- Đếm số pet cùng loại đã favorite
+local function getFavCount(petName)
+    local cnt = 0
+    for _, v in pairs(inventoryData) do
+        if v.PetType == petName and v.PetData.IsFavorite then
+            cnt = cnt + 1
+        end
+    end
+    return cnt
+end
+
+while wait() do
+    pcall(function()
+        local save = {}
+
+        -- Check pet có trong Limits
+        for _, v in pairs(inventoryData) do
+            local limit = getgenv().Config.Limits[v.PetType]
+            if limit then
+                local favCount = getFavCount(v.PetType)
+                if favCount < limit and not v.PetData.IsFavorite then
+                    table.insert(save, _) -- lưu UUID
+                    favCount = favCount + 1
+                    print(favCount, "/", limit, v.PetType)
+                    for i1, v1 in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
+                        local uuid = v1:GetAttribute("PET_UUID")
+                        if uuid and table.find(save, uuid) then
+                            if not v1:GetAttribute("d") then
+                                print("[Backpack] Favoriting:", v1.Name)
+                                ReplicatedStorage:WaitForChild("GameEvents"):WaitForChild("Favorite_Item")
+                                    :FireServer(v1)
+                                task.wait(1)
+                            end
+                        end
+                    end
+                    for i1, v1 in pairs(game:GetService("Players").LocalPlayer.Character:GetChildren()) do
+                        local uuid = v1:GetAttribute("PET_UUID")
+                        if uuid and table.find(save, uuid) then
+                            if not v1:GetAttribute("d") then
+                                print("[Character] Favoriting:", v1.Name)
+                                ReplicatedStorage:WaitForChild("GameEvents"):WaitForChild("Favorite_Item"):FireServer(v)
+                            end
+                        end
+                    end
+
+                    if favCount >= limit then
+                        -- đủ limit thì không thêm nữa
+                    end
+                end
+            end
+        end
+
+        -- Check pet có trong NoLimit
+        for _, v in pairs(inventoryData) do
+            for _, name in ipairs(getgenv().Config.NoLimit) do
+                if v.PetType == name and not v.PetData.IsFavorite then
+                    table.insert(save, _)
+                    for i1, v1 in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
+                        local uuid = v1:GetAttribute("PET_UUID")
+                        if uuid and table.find(save, uuid) then
+                            if not v1:GetAttribute("d") then
+                                print("[Backpack] Favoriting:", v1.Name)
+                                ReplicatedStorage:WaitForChild("GameEvents"):WaitForChild("Favorite_Item")
+                                    :FireServer(v1)
+                                task.wait(1)
+                            end
+                        end
+                    end
+                    for i1, v1 in pairs(game:GetService("Players").LocalPlayer.Character:GetChildren()) do
+                        local uuid = v1:GetAttribute("PET_UUID")
+                        if uuid and table.find(save, uuid) then
+                            if not v1:GetAttribute("d") then
+                                print("[Character] Favoriting:", v1.Name)
+                                ReplicatedStorage:WaitForChild("GameEvents"):WaitForChild("Favorite_Item"):FireServer(v)
+                            end
+                        end
+                    end
+
+                end
+            end
+        end
+    end)
+end
+
