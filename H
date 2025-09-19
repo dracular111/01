@@ -413,7 +413,7 @@
         },
         Unfavorite_AllPet = false,
         Favorite_LockedPet = false,
-        Locked_Pet_Age = 40,
+        Locked_Pet_Age = 10,
         Locked = {
             "Raiju",
             "Swan",
