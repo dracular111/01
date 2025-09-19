@@ -1,6 +1,5 @@
 getgenv().Config = {
     Limits = {
-        ["Rooster"] = 8,
         ["Seal"] = 8,
         ["Capybara"] = 1,
     },
