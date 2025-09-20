@@ -1,7 +1,5 @@
 getgenv().Config = {
     ["Pet"] = {
-        ["Orange Tabby"] = {"Rainbow"},
-        ["Orange Tabby"] = {"Golden"},
         ["Orange Tabby"] = {"Golden", "Rainbow"}
     },
     ["Webhook"] = {
