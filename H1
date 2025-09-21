@@ -417,6 +417,7 @@
         Locked_Pet_Age = 20,
         Locked = {
             "Raiju",
+            "Red Panda",
             "Swan",
             "Space Squirrel",
             "Phoenix",
@@ -459,7 +460,6 @@
 			"Starfish",
 		},
         Instant_Sell = {
-            "Red Panda",
 			"Caterpillar",
 			"Pig",
 			"Mandrake",
