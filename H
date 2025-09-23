@@ -392,7 +392,6 @@
 			"Cardinal",
 			"Shroomie",
 			"Grizzly Bear",
-			"Glimmering Sprite",
 			"Robin",
 			"Badger",
 			"Sugar Glider",
