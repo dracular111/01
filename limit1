@@ -63,35 +63,69 @@ while wait() do
                         -- đủ limit thì không thêm nữa
                     end
                 end
+            else
+                for i1, v1 in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
+                    if v1:GetAttribute("d") then
+                        print("[Backpack] Favoriting:", v1.Name)
+                        ReplicatedStorage:WaitForChild("GameEvents"):WaitForChild("Favorite_Item"):FireServer(v1)
+                        task.wait(1)
+                    end
+                end
+                for i1, v1 in pairs(game:GetService("Players").LocalPlayer.Character:GetChildren()) do
+                    if v1:GetAttribute("d") then
+                        print("[Character] Favoriting:", v1.Name)
+                        ReplicatedStorage:WaitForChild("GameEvents"):WaitForChild("Favorite_Item"):FireServer(v1)
+
+                    end
+                end
             end
         end
 
         -- Check pet có trong NoLimit
         for _, v in pairs(inventoryData) do
             for _, name in ipairs(getgenv().Config.NoLimit) do
-                if v.PetType == name and not v.PetData.IsFavorite then
-                    table.insert(save, _)
-                    for i1, v1 in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
-                        local uuid = v1:GetAttribute("PET_UUID")
-                        if uuid and table.find(save, uuid) then
-                            if not v1:GetAttribute("d") then
-                                print("[Backpack] Favoriting:", v1.Name)
-                                ReplicatedStorage:WaitForChild("GameEvents"):WaitForChild("Favorite_Item")
-                                    :FireServer(v1)
-                                task.wait(1)
+                if v.PetType == name then
+                    if not v.PetData.IsFavorite then
+                        table.insert(save, _)
+                        for i1, v1 in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
+                            local uuid = v1:GetAttribute("PET_UUID")
+                            if uuid and table.find(save, uuid) then
+                                if not v1:GetAttribute("d") then
+                                    print("[Backpack] Favoriting:", v1.Name)
+                                    ReplicatedStorage:WaitForChild("GameEvents"):WaitForChild("Favorite_Item")
+                                        :FireServer(v1)
+                                    task.wait(1)
+                                end
                             end
+                        end
+                        for i1, v1 in pairs(game:GetService("Players").LocalPlayer.Character:GetChildren()) do
+                            local uuid = v1:GetAttribute("PET_UUID")
+                            if uuid and table.find(save, uuid) then
+                                if not v1:GetAttribute("d") then
+                                    print("[Character] Favoriting:", v1.Name)
+                                    ReplicatedStorage:WaitForChild("GameEvents"):WaitForChild("Favorite_Item")
+                                        :FireServer(v)
+
+                                end
+                            end
+                        end
+
+                    end
+                else
+                    for i1, v1 in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
+                        if v1:GetAttribute("d") then
+                            print("[Backpack] Favoriting:", v1.Name)
+                            ReplicatedStorage:WaitForChild("GameEvents"):WaitForChild("Favorite_Item"):FireServer(v1)
+                            task.wait(1)
                         end
                     end
                     for i1, v1 in pairs(game:GetService("Players").LocalPlayer.Character:GetChildren()) do
-                        local uuid = v1:GetAttribute("PET_UUID")
-                        if uuid and table.find(save, uuid) then
-                            if not v1:GetAttribute("d") then
-                                print("[Character] Favoriting:", v1.Name)
-                                ReplicatedStorage:WaitForChild("GameEvents"):WaitForChild("Favorite_Item"):FireServer(v)
-                            end
+                        if v1:GetAttribute("d") then
+                            print("[Character] Favoriting:", v1.Name)
+                            ReplicatedStorage:WaitForChild("GameEvents"):WaitForChild("Favorite_Item"):FireServer(v1)
+
                         end
                     end
-
                 end
             end
         end
