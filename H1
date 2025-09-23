@@ -311,7 +311,7 @@
         },
         Unfavorite_AllPet = false,
         Favorite_LockedPet = false,
-        Locked_Pet_Age = 50,
+        Locked_Pet_Age = 75,
         Locked = {
             "Raiju",
             "Red Panda",
