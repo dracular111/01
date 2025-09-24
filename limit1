@@ -3,7 +3,7 @@ getgenv().Config = {
         ["Seal"] = 8,
         ["Capybara"] = 1,
     },
-    NoLimit = {"Sunny-Side Chicken", "Chicken Zombie", "Koi", "Blood Kiwi", "Bald Eagle", "Brontosaurus"}
+    NoLimit = {"Sunny-Side Chicken", "Chicken Zombie", "Koi", "Blood Kiwi", "Bald Eagle", "Brontosaurus"},
 }
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -131,4 +131,3 @@ while wait() do
         end
     end)
 end
-
