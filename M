@@ -198,7 +198,8 @@ getgenv().Config = {
         "RWU_Jg8A3823",
         "GOW_Jm203824",
         "LFG_Kt8G3826",
+        "congahpz002",
     },
-    ["Pet"] = {"Cockatrice"},
+    ["Pet"] = {"Orange Tabby"},
     ["UUID"] = "Dracula111",
 }
