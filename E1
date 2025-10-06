@@ -48,7 +48,7 @@ getgenv().Config = {
             ["Delays"] = 30,
         },
         ["Auto Collect Money"] = {
-            ["Enable"] = false,
+            ["Enable"] = true,
             ["Delays"] = 5
         },
         ["Auto Plant"] = {
@@ -62,7 +62,7 @@ getgenv().Config = {
                     ["Enable"] = true,
                     ["Limit"] = 2
                 },
-                ["Delays"] = 60,
+                ["Delays"] = 30,
             },
         },
         ["Auto Unlock Rows"] = {
