@@ -28,7 +28,7 @@ getgenv().Config = {
     },
     ["Performance"] = {
         ["Auto Rejoin"] = {
-            ["Enable"] = true, -- Reduced Bug/Error IDK [ Recommended ]
+            ["Enable"] = false, -- Reduced Bug/Error IDK [ Recommended ]
             ["Delays"] = 1, -- [ Hours ] 0.5 = 30mins
         },
         ["FPS Lock"] = 3,
