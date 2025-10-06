@@ -1,5 +1,4 @@
 getgenv().Config = {
-    ["Key"] = "UrKey",
     ["Redeem Code"] = true,
     ["Skip Tutorial"] = true,
     ["Webhook"] = {
