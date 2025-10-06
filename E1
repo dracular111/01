@@ -34,7 +34,7 @@ getgenv().Config = {
         ["FPS Lock"] = 3,
         ["Setting Low Ingame"] = true,
         ["FPS Boost"] = true,
-        ["UI"] = true,
+        ["UI"] = false,
     },
     ["Event"] = {
         ["Enable"] = true,
