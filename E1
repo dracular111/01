@@ -87,8 +87,8 @@ getgenv().Config = {
                     ["Crazylone Pizaione"] = true, -- Rebirth 3,5
                     ["Los Mr Carrotitos"] = true, -- Rebirth 4
                     ["Los Sekolitos"] = true, -- Rebirth 4,5
-                    --["Dragon Cannelloni"] = true -- Limited
-                    --["Wardenelli Brickatoni"] = true -- Limited
+                    --["Dragon Cannelloni"] = true, -- Limited
+                    --["Wardenelli Brickatoni"] = true, -- Limited
                 },
                 ["Select Brainrot Rarity"] = {
                     ["Rare"] = true,
