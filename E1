@@ -2,7 +2,7 @@ getgenv().Config = {
     ["Redeem Code"] = true,
     ["Skip Tutorial"] = true,
     ["Webhook"] = {
-        ["Enable"] = true,
+        ["Enable"] = false,
         ["Url"] = "https://discord.com/api/webhooks/1424724834805616762/WdRswhG2sgE9B2MwfLOdxJw5Uv6RiTbmVlJpGaUtsHe1ibhbL85kmNHALv3F1TxPVuGC",
         ["Mentions ID"] = "",
         ["Ping Mentions when"] = {
@@ -36,11 +36,6 @@ getgenv().Config = {
         ["FPS Boost"] = true,
         ["UI"] = true,
     },
-    ["Event"] = {
-        ["Enable"] = true,
-        ["Auto Redeem Pet Wanted"] = true,
-        ["Auto Reset When Completed"] = true
-    },
     ["Auto Play"] = {
         ["Auto Equiped Best Brainrot"] = {
             ["Enable"] = true,
@@ -48,8 +43,8 @@ getgenv().Config = {
             ["Delays"] = 30,
         },
         ["Auto Collect Money"] = {
-            ["Enable"] = true,
-            ["Delays"] = 240
+            ["Enable"] = false,
+            ["Delays"] = 5
         },
         ["Auto Gears"] = {
             ["Frost Grenade"] = {
@@ -64,7 +59,6 @@ getgenv().Config = {
                 ["Enable"] = true,
                 ["Only Plant When Event"] = false,
                 ["New Seed Plant"] = 1,
-                ["Auto Use Water Bucket"] = true,
                 ["Limit Countdowns Seeds"] = {
                     ["Enable"] = true,
                     ["Limit"] = 2
@@ -84,7 +78,7 @@ getgenv().Config = {
             ["Sell If Max"] = true,
             ["Brainrot"] = {
                 ["Enable"] = true,
-                ["Dont Sell Weight Above"] = 50,
+                ["Dont Sell Weight Above"] = 99.9,
                 ["Ignore Sell"] = {
                     ["Tralalero Tralala"] = true, -- Rebirth 1
                     ["Bombini Gussini"] = true, -- Rebirth 1
@@ -94,8 +88,7 @@ getgenv().Config = {
                     ["Crazylone Pizaione"] = true, -- Rebirth 3,5
                     ["Los Mr Carrotitos"] = true, -- Rebirth 4
                     ["Los Sekolitos"] = true, -- Rebirth 4,5
-                    --["Dragon Cannelloni"] = true, -- Limited
-                    --["Wardenelli Brickatoni"] = true, -- Limited
+                    ["Dragon Cannelloni"] = true, -- Limited
                 },
                 ["Select Brainrot Rarity"] = {
                     ["Rare"] = true,
@@ -118,11 +111,11 @@ getgenv().Config = {
             },
             ["Plants"] = {
                 ["Enable"] = true,
-                ["Dont Sell Weight Above"] = 5,
+                ["Dont Sell Weight Above"] = 50,
                 ["Ignore Sell"] = {
                     ["Tomatrio"] = true,
                     ["Shroombino"] = true,
-                    ["Mango"] = true,
+                    ["Mango Seed"] = true,
                 },
                 ["Select Plants Rarity"] = {
                     ["Rare"] = true,
@@ -175,5 +168,4 @@ getgenv().Config = {
         }
     }
 }
-
-loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/C1"))()
+--loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/C1"))()
