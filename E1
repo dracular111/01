@@ -49,7 +49,7 @@ getgenv().Config = {
         },
         ["Auto Collect Money"] = {
             ["Enable"] = true,
-            ["Delays"] = 5
+            ["Delays"] = 60
         },
         ["Auto Plant"] = {
             ["Enable"] = true,
