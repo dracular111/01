@@ -111,7 +111,7 @@ getgenv().Config = {
             },
             ["Plants"] = {
                 ["Enable"] = true,
-                ["Dont Sell Weight Above"] = 50,
+                ["Dont Sell Weight Above"] = 10,
                 ["Ignore Sell"] = {
                     ["Tomatrio"] = true,
                     ["Shroombino"] = true,
