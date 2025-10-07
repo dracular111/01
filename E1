@@ -49,7 +49,14 @@ getgenv().Config = {
         },
         ["Auto Collect Money"] = {
             ["Enable"] = true,
-            ["Delays"] = 120
+            ["Delays"] = 240
+        },
+        ["Auto Gears"] = {
+            ["Frost Grenade"] = {
+                ["Enable"] = true,
+                ["Brainrot Health Above"] = 100000,
+            },
+            ["Auto Use Water Bucket"] = true
         },
         ["Auto Plant"] = {
             ["Enable"] = true,
@@ -62,7 +69,7 @@ getgenv().Config = {
                     ["Enable"] = true,
                     ["Limit"] = 2
                 },
-                ["Delays"] = 30,
+                ["Delays"] = 60,
             },
         },
         ["Auto Unlock Rows"] = {
@@ -111,7 +118,7 @@ getgenv().Config = {
             },
             ["Plants"] = {
                 ["Enable"] = true,
-                ["Dont Sell Weight Above"] = 3,
+                ["Dont Sell Weight Above"] = 5,
                 ["Ignore Sell"] = {
                     ["Tomatrio"] = true,
                     ["Shroombino"] = true,
