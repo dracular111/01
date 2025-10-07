@@ -40,7 +40,7 @@ getgenv().Config = {
         ["Auto Equiped Best Brainrot"] = {
             ["Enable"] = true,
             ["Auto Buy More Slot Brainrot Zone"] = true,
-            ["Delays"] = 30,
+            ["Delays"] = 60,
         },
         ["Auto Collect Money"] = {
             ["Enable"] = false,
@@ -63,7 +63,7 @@ getgenv().Config = {
                     ["Enable"] = true,
                     ["Limit"] = 2
                 },
-                ["Delays"] = 60,
+                ["Delays"] = 120,
             },
         },
         ["Auto Unlock Rows"] = {
