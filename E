@@ -63,7 +63,7 @@ getgenv().Config = {
                     ["Enable"] = true,
                     ["Limit"] = 2
                 },
-                ["Delays"] = 120,
+                ["Delays"] = 60,
             },
         },
         ["Auto Unlock Rows"] = {
@@ -78,7 +78,7 @@ getgenv().Config = {
             ["Sell If Max"] = true,
             ["Brainrot"] = {
                 ["Enable"] = true,
-                ["Dont Sell Weight Above"] = 30,
+                ["Dont Sell Weight Above"] = 50,
                 ["Ignore Sell"] = {
                     ["Tralalero Tralala"] = true, -- Rebirth 1
                     ["Bombini Gussini"] = true, -- Rebirth 1
@@ -168,4 +168,4 @@ getgenv().Config = {
         }
     }
 }
-loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/D-low"))()
+--loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/C1"))()
