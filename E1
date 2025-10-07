@@ -115,7 +115,7 @@ getgenv().Config = {
                 ["Ignore Sell"] = {
                     ["Tomatrio"] = true,
                     ["Shroombino"] = true,
-                    ["Mango Seed"] = true,
+                    ["Mango"] = true,
                 },
                 ["Select Plants Rarity"] = {
                     ["Rare"] = true,
