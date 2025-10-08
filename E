@@ -3,7 +3,7 @@ getgenv().Config = {
     ["Skip Tutorial"] = true,
     ["Webhook"] = {
         ["Enable"] = false,
-        ["Url"] = "https://discord.com/api/webhooks/1424724834805616762/WdRswhG2sgE9B2MwfLOdxJw5Uv6RiTbmVlJpGaUtsHe1ibhbL85kmNHALv3F1TxPVuGC",
+        ["Url"] = "",
         ["Mentions ID"] = "",
         ["Ping Mentions when"] = {
             ["Rarity"] = {
@@ -58,12 +58,12 @@ getgenv().Config = {
             ["Auto Plant Best Seed"] = {
                 ["Enable"] = true,
                 ["Only Plant When Event"] = false,
-                ["New Seed Plant"] = 1,
+                ["New Seed Plant"] = 2,
                 ["Limit Countdowns Seeds"] = {
                     ["Enable"] = true,
                     ["Limit"] = 2
                 },
-                ["Delays"] = 120,
+                ["Delays"] = 180,
             },
         },
         ["Auto Unlock Rows"] = {
@@ -78,7 +78,7 @@ getgenv().Config = {
             ["Sell If Max"] = true,
             ["Brainrot"] = {
                 ["Enable"] = true,
-                ["Dont Sell Weight Above"] = 50,
+                ["Dont Sell Weight Above"] = 30,
                 ["Ignore Sell"] = {
                     ["Tralalero Tralala"] = true, -- Rebirth 1
                     ["Bombini Gussini"] = true, -- Rebirth 1
