@@ -1,171 +1,18 @@
-getgenv().Config = {
-    ["Redeem Code"] = true,
-    ["Skip Tutorial"] = true,
-    ["Webhook"] = {
-        ["Enable"] = false,
-        ["Url"] = "",
-        ["Mentions ID"] = "",
-        ["Ping Mentions when"] = {
-            ["Rarity"] = {
-                ["Rare"] = false,
-                ["Epic"] = false,
-                ["Legendary"] = false,
-                ["Mythic"] = false,
-                ["Godly"] = false,
-                ["Limited"] = true,
-                ["Secret"] = true
-            },
-            ["Mutation"] = {
-                ["Normal"] = true,
-                ["Diamond"] = true,
-                ["Neon"] = true,
-                ["Gold"] = true,
-                ["Rainbow"] = true,
-                ["Galactic"] = true,
-                ["Frozen"] = true
-            }
-        },
-    },
-    ["Performance"] = {
-        ["Auto Rejoin"] = {
-            ["Enable"] = false, -- Reduced Bug/Error IDK [ Recommended ]
-            ["Delays"] = 1, -- [ Hours ] 0.5 = 30mins
-        },
-        ["FPS Lock"] = 3,
-        ["Setting Low Ingame"] = true,
-        ["FPS Boost"] = true,
-        ["UI"] = true,
-    },
-    ["Auto Play"] = {
-        ["Auto Equiped Best Brainrot"] = {
-            ["Enable"] = true,
-            ["Auto Buy More Slot Brainrot Zone"] = true,
-            ["Delays"] = 120,
-        },
-        ["Auto Collect Money"] = {
-            ["Enable"] = false,
-            ["Delays"] = 5
-        },
-        ["Auto Gears"] = {
-            ["Frost Grenade"] = {
-                ["Enable"] = true,
-                ["Brainrot Health Above"] = 100000,
-            },
-            ["Auto Use Water Bucket"] = true
-        },
-        ["Auto Plant"] = {
-            ["Enable"] = true,
-            ["Auto Plant Best Seed"] = {
-                ["Enable"] = true,
-                ["Only Plant When Event"] = false,
-                ["New Seed Plant"] = 2,
-                ["Limit Countdowns Seeds"] = {
-                    ["Enable"] = true,
-                    ["Limit"] = 2
-                },
-                ["Delays"] = 120,
-            },
-        },
-        ["Auto Unlock Rows"] = {
-            ["Enable"] = true,
-            ["Max Unlock"] = 7
-        },
-        ["Auto Rebirth"] = {
-            ["Enable"] = true,
-            ["Max Rebirth Reach"] = 5
-        },
-        ["Auto Sell"] = {
-            ["Sell If Max"] = true,
-            ["Brainrot"] = {
-                ["Enable"] = true,
-                ["Dont Sell Weight Above"] = 50,
-                ["Ignore Sell"] = {
-                    ["Tralalero Tralala"] = true, -- Rebirth 1
-                    ["Bombini Gussini"] = true, -- Rebirth 1
-                    ["La Tomatoro"] = true, -- Rebirth 2
-                    ["Los Tralaleritos"] = true, -- Rebirth 2
-                    ["Garamararam"] = true, -- Rebirth 3
-                    ["Crazylone Pizaione"] = true, -- Rebirth 3,5
-                    ["Los Mr Carrotitos"] = true, -- Rebirth 4
-                    ["Los Sekolitos"] = true, -- Rebirth 4,5
-                    ["Dragon Cannelloni"] = true, -- Limited
-                },
-                ["Select Brainrot Rarity"] = {
-                    ["Rare"] = true,
-                    ["Epic"] = true,
-                    ["Legendary"] = true,
-                    ["Mythic"] = true,
-                    ["Godly"] = true,
-                    ["Limited"] = false,
-                    ["Serect"] = false
-                },
-                ["Select Brainrot Mutation"] = {
-                    ["Normal"] = true,
-                    ["Diamond"] = true,
-                    ["Neon"] = true,
-                    ["Gold"] = true,
-                    ["Rainbow"] = true,
-                    ["Galactic"] = true,
-                    ["Frozen"] = true
-                }
-            },
-            ["Plants"] = {
-                ["Enable"] = true,
-                ["Dont Sell Weight Above"] = 10,
-                ["Ignore Sell"] = {
-                    ["Tomatrio"] = true,
-                    ["Shroombino"] = true,
-                    ["Mango"] = true,
-                },
-                ["Select Plants Rarity"] = {
-                    ["Rare"] = true,
-                    ["Epic"] = true,
-                    ["Legendary"] = true,
-                    ["Mythic"] = false,
-                    ["Godly"] = false,
-                    ["Limited"] = false,
-                    ["Serect"] = false
-                },
-                ["Select Plants Mutation"] = {
-                    ["Normal"] = true,
-                    ["Diamond"] = true,
-                    ["Neon"] = true,
-                    ["Gold"] = true,
-                    ["Rainbow"] = true,
-                    ["Galactic"] = true,
-                    ["Frozen"] = true
-                }
-            }
-        },
-    },
-    ["Auto Buy Gears"] = {
-        ["Enable"] = true,
-        ["Select Gear"] = {
-            ["Water Bucket"] = true,
-            ["Frost Grenade"] = true,
-            ["Banana Gun"] = false,
-            ["Frost Blower"] = false,
-            ["Carrot Launcher"] = false,
-        }
-    },
-    ["Auto Buy Seeds"] = {
-        ["Enable"] = true,
-        ["Select Seeds"] = {
-            ["Cactus Seed"] = true,
-            ["Strawberry Seed"] = true,
-            ["Pumpkin Seed"] = true,
-            ["Sunflower Seed"] = true,
-            ["Dragon Fruit Seed"] = true,
-            ["Eggplant Seed"] = true,
-            ["Watermelon Seed"] = true,
-            ["Cocotank Seed"] = true,
-            ["Grape Seed"] = true,
-            ["Carnivorous Plant Seed"] = true,
-            ["Mr Carrot Seed"] = true,
-            ["Tomatrio Seed"] = true,
-            ["Shroombino Seed"] = true,
-            ["Mango Seed"] = true
-        }
-    }
+getgenv().YuukiHub = {
+    ["Performance"] = {["FPS Lock"] = 3, ["Low CPU"] = true},
+    ["Buy Seed"] = {
+        "Mango Seed","Shroombino Seed","Tomatrio Seed","Mr Carrot Seed","Carnivorous Plant Seed","Grape Seed","Cocotank Seed","Watermelon Seed",
+        ["Eggplant Seed"] = 5,["Dragon Fruit Seed"] = 5,["Sunflower Seed"] = 5,["Pumpkin Seed"] = 5,["Strawberry Seed"] = 5,["Cactus Seed"] = 5},
+    ["Buy Gears"] = {"Water Bucket","Frost Grenade"},
+    ["Auto Rebirth"] = 5,
+    ["Ignore Sell"] = {
+        "Tralalero Tralala","Bombini Gussini","La Tomatoro","Los Tralaleritos",
+        "Garamararam","Crazylone Pizaione","Los Mr Carrotitos","Los Sekolitos"},
+    ["Use Frost Grenade HP"] = 100000,  -- Brainrot HP >= 100k will use Frost Grenade (0 = off)
+    ["Use Water Bucket"] = true,
+    ["Ignore Keep Until Max Rebirth"] = true,
+    ["Keep Plant Rarity"] = { "Secret", "Limited", "Godly", "Mythic" },
+    ["Keep Brainrot Money Per Second"] = 20000, -- Keep Brainrot with $/s ≥ 20k
+    ["Start Delete Brainrot At"] = 100,         -- Delete when inventory maxes out at 100
 }
---loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Dell-m"))()
+loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/a0f6accc12f1c528650dafe0f338de4f.lua"))()
