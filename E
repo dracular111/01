@@ -13,7 +13,7 @@ getgenv().YuukiHub = {
         "Tralalero Tralala","Bombini Gussini","La Tomatoro","Los Tralaleritos",
         "Garamararam","Crazylone Pizaione","Los Mr Carrotitos","Los Sekolitos"
     },
-    ["Use Water Bucket For"] = { "Mythic","Godly","Limited","Secret" },
+    ["Use Water Bucket For"] = { "Legendary","Mythic","Godly","Limited","Secret" },
     ["Delays Arrange Plant"] = 300,
     ["Ignore Keep Until Max Rebirth"] = true,
     ["Keep Plant Rarity"] = { "Secret", "Limited", "Godly", "Mythic" },
