@@ -1,3 +1,4 @@
+script_key="ur key";
 getgenv().YuukiHub = {
     ["Performance"] = {["FPS Lock"] = 3, ["Low CPU"] = true},
     ["Buy Seed"] = {
@@ -8,6 +9,7 @@ getgenv().YuukiHub = {
     ["Ignore Sell"] = {
         "Tralalero Tralala","Bombini Gussini","La Tomatoro","Los Tralaleritos",
         "Garamararam","Crazylone Pizaione","Los Mr Carrotitos","Los Sekolitos"},
+    ["Delays Plant"] = 240,
     ["Use Frost Grenade HP"] = 100000,  -- Brainrot HP >= 100k will use Frost Grenade (0 = off)
     ["Use Water Bucket"] = true,
     ["Ignore Keep Until Max Rebirth"] = true,
