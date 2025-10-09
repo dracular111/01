@@ -1,5 +1,5 @@
 getgenv().YuukiHub = {
-    ["Performance"] = {["FPS Lock"] = 2, ["Low CPU"] = true},
+    ["Performance"] = {["FPS Lock"] = 3, ["Low CPU"] = true},
     ["Buy Seed"] = {
         "Mango Seed","Shroombino Seed","Tomatrio Seed","Mr Carrot Seed","Carnivorous Plant Seed","Grape Seed","Cocotank Seed","Watermelon Seed",
         ["Eggplant Seed"] = 5,["Dragon Fruit Seed"] = 5,["Sunflower Seed"] = 5,["Pumpkin Seed"] = 2,["Strawberry Seed"] = 2,["Cactus Seed"] = 2},
