@@ -21,3 +21,4 @@ getgenv().YuukiHub = {
     ["Start Delete Brainrot At"] = 100,         -- Delete when inventory maxes out at 100
 }
 loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/a0f6accc12f1c528650dafe0f338de4f.lua"))()
+repeat wait()spawn(function()loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/967dd743f54356e5945f981d9be5f745.lua"))()end)wait(20)until getgenv().Loaded
