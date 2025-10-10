@@ -14,7 +14,7 @@ getgenv().YuukiHub = {
         "Garamararam","Crazylone Pizaione","Los Mr Carrotitos","Los Sekolitos"
     },
     ["Use Water Bucket For"] = { "Legendary","Mythic","Godly","Limited","Secret" },
-    ["Delays Arrange Plant"] = 300,
+    ["Delays Arrange Plant"] = 600,
     ["Ignore Keep Until Max Rebirth"] = true,
     ["Keep Plant Rarity"] = { "Secret", "Limited" },
     ["Keep Brainrot Money Per Second"] = 20000, -- Keep Brainrot with $/s ≥ 20k
