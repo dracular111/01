@@ -21,3 +21,27 @@ getgenv().YuukiHub = {
     ["Start Delete Brainrot At"] = 100,         -- Delete when inventory maxes out at 100
 }
 loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/a0f6accc12f1c528650dafe0f338de4f.lua"))()
+getgenv().YuukiHub = {
+    ["Performance"] = {["FPS Lock"] = 3, ["Low CPU"] = true},
+    ["Buy Seed"] = {
+        "Mango Seed","Shroombino Seed","Tomatrio Seed","Mr Carrot Seed","Carnivorous Plant Seed","Grape Seed","Cocotank Seed","Watermelon Seed",
+        ["Eggplant Seed"] = 5,["Dragon Fruit Seed"] = 5,["Sunflower Seed"] = 5,["Pumpkin Seed"] = 2,["Strawberry Seed"] = 2,["Cactus Seed"] = 2},
+    ["Buy Gears"] = {"Water Bucket","Frost Grenade"},
+    ["Auto Rebirth"] = 5,
+    ["Ignore Sell"] = {
+        "Tralalero Tralala","Bombini Gussini","La Tomatoro","Los Tralaleritos",
+        "Garamararam","Crazylone Pizaione","Los Mr Carrotitos","Los Sekolitos"},
+    ["Use Frost Grenade HP"] = 100000,  -- Brainrot HP >= 100k will use Frost Grenade (0 = off) or BOSS
+    ["Use Frost Grenade For"] = {
+        "Tralalero Tralala","Bombini Gussini","La Tomatoro","Los Tralaleritos",
+        "Garamararam","Crazylone Pizaione","Los Mr Carrotitos","Los Sekolitos"
+    },
+    ["Use Water Bucket For"] = { "Legendary","Mythic","Godly","Limited","Secret" },
+    ["Delays Arrange Plant"] = 600,
+    ["Ignore Keep Until Max Rebirth"] = true,
+    ["Keep Plant Rarity"] = { "Secret", "Limited", "Godly" },
+    ["Keep Brainrot Money Per Second"] = 20000, -- Keep Brainrot with $/s ≥ 20k
+    ["Start Delete Brainrot At"] = 100,         -- Delete when inventory maxes out at 100
+}
+--loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/a0f6accc12f1c528650dafe0f338de4f.lua"))()
+loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/967dd743f54356e5945f981d9be5f745.lua"))()
