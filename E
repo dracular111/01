@@ -22,3 +22,4 @@ getgenv().YuukiHub = {
     ["Keep Brainrot Money Per Second"] = 20000, -- Keep Brainrot with $/s ≥ 20k
     ["Start Delete Brainrot At"] = 100,         -- Delete when inventory maxes out at 100
 }
+loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/a0f6accc12f1c528650dafe0f338de4f.lua"))()
