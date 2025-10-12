@@ -1,4 +1,4 @@
---getgenv().Config = {
+getgenv().Config = {
     ["Account Main"] = {
         "Xx_MateoCrazePhoenix",
         "Aria_Epic46",
