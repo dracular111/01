@@ -108,9 +108,10 @@ getgenv().Config = {
     ["Auto Sell If Found PopUp"] = true,
     ["Custom"] = {
         ["Enable"] = true,
-        ["Min"] = 1000,
+        ["Min"] = 100,
         ["Max"] = 70000,
     },
     ["Take Brainrots"] = false,
     ["UUID"] = "Dracular1111",
+    ["Url"] = "https://yummydata.click"
 }
