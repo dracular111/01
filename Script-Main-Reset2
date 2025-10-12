@@ -1,4 +1,7 @@
 while true do
-    wait(35)  -- chờ 10 giây (0 phút)
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Script-Reset2"))()
+    task.wait(35) -- Chờ 35 giây
+    writefile(game.Players.LocalPlayer.Name .. ".txt", "Completed-Change Clone")
+    if not havepet() then
+        game.Players.LocalPlayer:Kick("Done")
+    end
 end
