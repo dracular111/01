@@ -105,6 +105,7 @@ getgenv().Config = {
         "Mango",
     },
     ["Take Plants"] = true,
+    ["Auto Sell If Found PopUp"] = true,
     ["Custom"] = {
         ["Enable"] = true,
         ["Min"] = 1000,
