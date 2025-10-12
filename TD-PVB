@@ -1,0 +1,10 @@
+getgenv().Config = {
+    ["Account Main"] = {"AiOmaKen4104"},
+    ["Item Gift"] = {"Mango"},
+    ["Take Plants"] = true,
+    ["Custom"] = {
+        ["Enable"] = true,
+        ["Min"] = 1000,
+        ["Max"] = 50000
+    },
+}
