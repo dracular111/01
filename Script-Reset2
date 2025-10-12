@@ -1,1 +1,1 @@
-game.Players.LocalPlayer:Kick("Done")
+--game.Players.LocalPlayer:Kick("Done")
