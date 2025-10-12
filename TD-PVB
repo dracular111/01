@@ -108,8 +108,8 @@ getgenv().Config = {
     ["Auto Sell If Found PopUp"] = true,
     ["Custom"] = {
         ["Enable"] = true,
-        ["Min"] = 100,
-        ["Max"] = 70000,
+        ["Min"] = 10000,
+        ["Max"] = 100000,
     },
     ["Take Brainrots"] = false,
     ["UUID"] = "Dracular1111",
