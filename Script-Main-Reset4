@@ -23,10 +23,13 @@ function havepet()
     return false
 end
 
--- 🚀 Thực thi kiểm tra
-if not havepet() then
-    writefile(game.Players.LocalPlayer.Name .. ".txt", "Completed-Change Clone")
-    game.Players.LocalPlayer:Kick("Done") -- Kick nếu không còn pet cần gift
-else
-    print("Still have giftable pets ✅")
+-- ⏳ Lặp kiểm tra mỗi 30 giây
+while wait(30) do
+    if not havepet() then
+        writefile(game.Players.LocalPlayer.Name .. ".txt", "Completed-Change Clone")
+        game.Players.LocalPlayer:Kick("Done") -- Kick nếu không còn pet cần gift
+        break -- dừng vòng lặp sau khi kick
+    else
+        print("✅ Vẫn còn pet có thể gift, kiểm tra lại sau 30s...")
+    end
 end
