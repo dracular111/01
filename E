@@ -27,6 +27,6 @@ getgenv().YuukiHub = {
     ["Keep Plant Rarity"] = { "Secret", "Limited", "Godly" },
     ["Keep Brainrot Money Per Second"] = 30000, -- Keep Brainrot with $/s ≥ 20k
     ["Start Delete Plant At"] = 100,
-    ["Start Delete Brainrot At"] = 80,
+    ["Start Delete Brainrot At"] = 50,
 }
 loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/17130305da586e83253f031ed98d5836.lua"))()
