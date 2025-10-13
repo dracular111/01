@@ -1,0 +1,5 @@
+while true do
+    task.wait(30) -- Chờ 35 giây
+    --writefile(game.Players.LocalPlayer.Name .. ".txt", "Completed-Change Clone")
+    game.Players.LocalPlayer:Kick("Done")
+end
