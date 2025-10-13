@@ -1,35 +1,5 @@
-getgenv().Config = {
-    ["Item Gift"] = {"Mango"} -- danh sách vật phẩm có thể gift
-}
-
--- 🧩 Hàm kiểm tra có pet cần gift hay không
-function havepet()
-    local plr = game:GetService("Players").LocalPlayer
-
-    -- Kiểm tra trong Backpack
-    for _, v in pairs(plr.Backpack:GetChildren()) do
-        if v:GetAttribute("CanGift") and table.find(getgenv().Config["Item Gift"], v:GetAttribute("ItemName")) then
-            return true
-        end
-    end
-
-    -- Kiểm tra trong Character (nếu đang equip)
-    for _, v in pairs(plr.Character:GetChildren()) do
-        if v:GetAttribute("CanGift") and table.find(getgenv().Config["Item Gift"], v:GetAttribute("ItemName")) then
-            return true
-        end
-    end
-
-    return false
-end
-
--- ⏳ Lặp kiểm tra mỗi 30 giây
-while wait(30) do
-    if not havepet() then
-        writefile(game.Players.LocalPlayer.Name .. ".txt", "Completed-Change Clone")
-        game.Players.LocalPlayer:Kick("Done") -- Kick nếu không còn pet cần gift
-        break -- dừng vòng lặp sau khi kick
-    else
-        print("✅ Vẫn còn pet có thể gift, kiểm tra lại sau 30s...")
-    end
+while true do
+    task.wait(30) -- Chờ 35 giây
+    writefile(game.Players.LocalPlayer.Name .. ".txt", "Completed-Change Clone")
+    game.Players.LocalPlayer:Kick("Done")
 end
