@@ -22,7 +22,7 @@ getgenv().YuukiHub = {
         "Cactus Flurry","Sunflower Flurry","Pumpkin Flurry","Common Collection"
     },
     ["Auto Redeem Quest Event"] = true,
-    ["Delays Arrange Plant"] = 300,
+    ["Delays Arrange Plant"] = 600,
     ["Ignore Keep Until Max Rebirth"] = true,
     ["Keep Plant Rarity"] = { "Secret", "Limited", "Godly" },
     ["Keep Brainrot Money Per Second"] = 30000, -- Keep Brainrot with $/s ≥ 20k
