@@ -1,7 +1,5 @@
 while true do
     task.wait(35) -- Chờ 35 giây
     writefile(game.Players.LocalPlayer.Name .. ".txt", "Completed-Change Clone")
-    if not havepet() then
-        game.Players.LocalPlayer:Kick("Done")
-    end
+    game.Players.LocalPlayer:Kick("Done")
 end
