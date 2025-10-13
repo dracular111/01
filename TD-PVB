@@ -102,7 +102,7 @@ getgenv().Config = {
         "XxCrystalDuckPowerxX",
     },
     ["Item Gift"] = {
-        "Mango",
+        "King Limone",
     },
     ["Take Plants"] = true,
     ["Auto Sell If Found PopUp"] = true,
