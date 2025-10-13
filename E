@@ -14,12 +14,19 @@ getgenv().YuukiHub = {
         "Garamararam","Crazylone Pizaione","Los Mr Carrotitos","Meowzio Sushini","Los Sekolitos"
     },    
     ["Use Water Bucket For"] = { "Mythic","Godly","Limited","Secret"},
-    ["Equip Card"] = {"Home Run","Bloom Ascendant","Batter Up","Brainrot Blessing","Epic Collection","Plant Frenzy"},
+    ["Equip Card"] = {
+        "Doom Bloom","Bloom Ascendant","Plant Frenzy","Overgrowth","Brainrot Blessing","Epic Collection",
+        "Home Run","Batter Up","Time Blossom","Chain Lightning","Toxic Cloud","Frozen Blast",
+        "Secret Slayer","Solar Burst","Whirlwind","Rare Collection",
+        "Petal Storm","Inferno Petal","Tile Trio","Secret Collection","Limited Collection","Rizzrot Manifestation",
+        "Cactus Flurry","Sunflower Flurry","Pumpkin Flurry","Common Collection"
+    },
     ["Auto Redeem Quest Event"] = true,
     ["Delays Arrange Plant"] = 300,
     ["Ignore Keep Until Max Rebirth"] = true,
-    ["Keep Plant Rarity"] = { "Secret", "Godly" },
+    ["Keep Plant Rarity"] = { "Secret", "Limited", "Godly" },
     ["Keep Brainrot Money Per Second"] = 20000, -- Keep Brainrot with $/s ≥ 20k
-    ["Start Delete Brainrot At"] = 100,         -- Delete when inventory maxes out at 100
+    ["Start Delete Plant At"] = 100,
+    ["Start Delete Brainrot At"] = 80,
 }
 loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/17130305da586e83253f031ed98d5836.lua"))()
