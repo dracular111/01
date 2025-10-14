@@ -1,22 +1,13 @@
 getgenv().Config = {
-    ["Account Main"] = {
-        "congahpz010",
-    },
-    ["Item Gift"] = {
-        "King Limone",
-        "Mango",
-        "Mr Carrot",
-        "Shroombino",
-        "Tomatrio",
-    },
+    ["Account Main"] = {"congahpz010"},
+    ["Item Gift"] = {"King Limone", "Mango", "Mr Carrot", "Shroombino", "Tomatrio"},
     ["Take Plants"] = true,
-    ["Auto Sell If Found PopUp"] = false,
     ["Custom"] = {
         ["Enable"] = true,
         ["Min"] = 100000,
-        ["Max"] = 900000,
+        ["Max"] = 900000
     },
     ["Take Brainrots"] = false,
-    ["UUID"] = "Dracular0000",
+    ["UUID"] = "dracular000",
     ["Url"] = "https://yummydata.click"
 }
