@@ -106,9 +106,9 @@ getgenv().Config = {
     ["Take Plants"] = true,
     ["Auto Sell If Found PopUp"] = true,
     ["Custom"] = {
-        ["Enable"] = false,
-        ["Min"] = 10000,
-        ["Max"] = 100000,
+        ["Enable"] = true,
+        ["Min"] = 1000,
+        ["Max"] = 90000,
     },
     ["Take Brainrots"] = false,
     ["UUID"] = "Dracular4444",
