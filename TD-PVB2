@@ -112,5 +112,4 @@ getgenv().Config = {
     },
     ["Take Brainrots"] = false,
     ["UUID"] = "Dracular2222",
-    ["Url"] = "https://yummydata.click"
 }
