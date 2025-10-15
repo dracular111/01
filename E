@@ -28,4 +28,4 @@ getgenv().YuukiHub = {
     ["Start Delete Brainrot At"] = 50,
 }
 repeat wait()spawn(function()loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/a0f6accc12f1c528650dafe0f338de4f.lua"))()end)wait(20)until getgenv().Loaded
-loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/17130305da586e83253f031ed98d5836.lua"))()
+https://raw.githubusercontent.com/Konggs/FreeStuff/refs/heads/main/Config.lua
