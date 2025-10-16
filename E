@@ -1,4 +1,3 @@
-script_key="dDFJYQMQHVgDqqPktGgXYYuXnNYnpoXS";
 getgenv().YuukiHub = {
     ["Performance"] = {["FPS Lock"] = 2, ["Low CPU"] = true},
     ["Buy Seed"] = {
