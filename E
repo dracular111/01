@@ -26,7 +26,7 @@ getgenv().YuukiHub = {
     ["Start Delete Brainrot At"] = 50,
     ["Equip Best"] = {
         ["Delays"] = 300, -- [ Seconds ]
-        ["Rebirth 0"] = 5, ["Rebirth 1"] = 10, ["Rebirth 2"] = 10, ["Rebirth 3"] = 10, ["Rebirth 4"] = 5, ["Rebirth 5"] = 5, ["Rebirth 6"] = 5
+        ["Rebirth 0"] = 5, ["Rebirth 1"] = 10, ["Rebirth 2"] = 10, ["Rebirth 3"] = 10, ["Rebirth 4"] = 5, ["Rebirth 5"] = 4, ["Rebirth 6"] = 3
     }
 }
 task.delay(120, function() if not getgenv().Loaded then game:GetService("TeleportService"):Teleport(game.PlaceId) end end)
