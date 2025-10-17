@@ -37,7 +37,7 @@ getgenv().Config = {
     ["Custom"] = {
         ["Enable"] = true,
         ["Min"] = 1000,
-        ["Max"] = 79000,
+        ["Max"] = 50000,
     },
     ["Take Brainrots"] = false,
     ["UUID"] = "Dracular2222",
