@@ -20,10 +20,10 @@ getgenv().YuukiHub = {
     ["Auto Redeem Quest Event"] = true,
     ["Delays Arrange Plant"] = 300,
     ["Ignore Keep Until Max Rebirth"] = true,
-    ["Keep Plant Rarity"] = { "Secret", ["Godly"] = 35 },
+    ["Keep Plant Rarity"] = { "Secret", ["Godly"] = 25 },
     ["Keep Brainrot Money Per Second"] = 50000,
-    ["Start Delete Plant At"] = 100,
-    ["Start Delete Brainrot At"] = 100,
+    ["Start Delete Plant At"] = 80,
+    ["Start Delete Brainrot At"] = 80,
     ["Equip Best"] = {
         ["Delays"] = 300, -- [ Seconds ]
         ["Rebirth 0"] = 5, ["Rebirth 1"] = 10, ["Rebirth 2"] = 10, ["Rebirth 3"] = 10, ["Rebirth 4"] = 5, ["Rebirth 5"] = 5, ["Rebirth 6"] = 1
