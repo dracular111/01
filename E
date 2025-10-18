@@ -29,7 +29,7 @@ getgenv().YuukiHub = {
         ["Rebirth 0"] = 5, ["Rebirth 1"] = 10, ["Rebirth 2"] = 10, ["Rebirth 3"] = 10, ["Rebirth 4"] = 5, ["Rebirth 5"] = 1, ["Rebirth 6"] = 1
     }
 }
-task.delay(120, function() if not getgenv().Loaded then game:GetService("TeleportService"):Teleport(game.PlaceId) end end)
+task.delay(90, function() if not getgenv().Loaded then game:GetService("TeleportService"):Teleport(game.PlaceId) end end)
 repeat task.wait(5)
     local success, err = pcall(function() loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/2c0716d3a841a2f1ed0569a57ff337f8.lua"))() end)
     if not success then task.wait(15) end
