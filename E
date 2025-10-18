@@ -26,7 +26,7 @@ getgenv().YuukiHub = {
     ["Start Delete Brainrot At"] = 80,
     ["Equip Best"] = {
         ["Delays"] = 300, -- [ Seconds ]
-        ["Rebirth 0"] = 5, ["Rebirth 1"] = 10, ["Rebirth 2"] = 10, ["Rebirth 3"] = 10, ["Rebirth 4"] = 5, ["Rebirth 5"] = 5, ["Rebirth 6"] = 1
+        ["Rebirth 0"] = 5, ["Rebirth 1"] = 10, ["Rebirth 2"] = 10, ["Rebirth 3"] = 10, ["Rebirth 4"] = 5, ["Rebirth 5"] = 1, ["Rebirth 6"] = 1
     }
 }
 loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/2c0716d3a841a2f1ed0569a57ff337f8.lua"))()
