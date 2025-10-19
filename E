@@ -20,9 +20,9 @@ getgenv().YuukiHub = {
     ["Auto Redeem Quest Event"] = true,
     ["Delays Arrange Plant"] = 300,
     ["Ignore Keep Until Max Rebirth"] = true,
-    ["Keep Plant Rarity"] = { "Secret" },
+    ["Keep Plant Rarity"] = { "Secret", ["Godly"] = 7 },
     ["Keep Brainrot Money Per Second"] = 50000,
-    ["Start Delete Plant At"] = 20,
+    ["Start Delete Plant At"] = 35,
     ["Start Delete Brainrot At"] = 50,
     ["Equip Best"] = {
         ["Delays"] = 300, -- [ Seconds ]
