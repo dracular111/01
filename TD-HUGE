@@ -1,5 +1,6 @@
 getgenv().Config = {
     ["Account Main"] = {"congahpz010"},
+    ["Item Gift"] = {""},
     ["Take Plants"] = true,
     ["Auto Sell If Found PopUp"] = true,
     ["Custom"] = {
