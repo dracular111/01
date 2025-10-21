@@ -25,7 +25,7 @@ getgenv().YuukiHub = {
     ["Start Delete Plant At"] = 20,
     ["Start Delete Brainrot At"] = 50,
     ["Equip Best"] = {
-        ["Delays"] = 120, -- [ Seconds ]
+        ["Delays"] = 12000000, -- [ Seconds ]
         ["Rebirth 0"] = 5, ["Rebirth 1"] = 10, ["Rebirth 2"] = 10, ["Rebirth 3"] = 10, ["Rebirth 4"] = 5, ["Rebirth 5"] = 1, ["Rebirth 6"] = 0
     }
 }
