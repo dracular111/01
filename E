@@ -31,6 +31,7 @@ getgenv().YuukiHub = {
 }
 task.delay(90, function() if not getgenv().Loaded then game:GetService("TeleportService"):Teleport(game.PlaceId) end end)
 repeat task.wait(5)
-    local success, err = pcall(function() loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/17130305da586e83253f031ed98d5836.lua"))() end)
+    --local success, err = pcall(function() loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/17130305da586e83253f031ed98d5836.lua"))() end)
+    local success, err = pcall(function() loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/2c0716d3a841a2f1ed0569a57ff337f8.lua"))() end)
     if not success then task.wait(15) end
 until getgenv().Loaded
