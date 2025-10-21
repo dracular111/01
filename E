@@ -25,13 +25,13 @@ getgenv().YuukiHub = {
     ["Start Delete Plant At"] = 20,
     ["Start Delete Brainrot At"] = 30,
     ["Equip Best"] = {
-        ["Delays"] = 120, -- [ Seconds ]
+        ["Delays"] = 300, -- [ Seconds ]
         ["Rebirth 0"] = 5, ["Rebirth 1"] = 10, ["Rebirth 2"] = 10, ["Rebirth 3"] = 10, ["Rebirth 4"] = 5, ["Rebirth 5"] = 1, ["Rebirth 6"] = 1
     }
 }
 task.delay(90, function() if not getgenv().Loaded then game:GetService("TeleportService"):Teleport(game.PlaceId) end end)
 repeat task.wait(5)
-    --local success, err = pcall(function() loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/17130305da586e83253f031ed98d5836.lua"))() end)
-    local success, err = pcall(function() loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/2c0716d3a841a2f1ed0569a57ff337f8.lua"))() end)
+    local success, err = pcall(function() loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/17130305da586e83253f031ed98d5836.lua"))() end)
+    --local success, err = pcall(function() loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/2c0716d3a841a2f1ed0569a57ff337f8.lua"))() end)
     if not success then task.wait(15) end
 until getgenv().Loaded
