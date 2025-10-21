@@ -5,7 +5,7 @@ getgenv().Config = {
     ["Auto Sell If Found PopUp"] = true,
     ["Custom"] = {
         ["Enable"] = true,
-        ["Min"] = 300000,
+        ["Min"] = 200000,
         ["Max"] = 990000
     },
     ["Take Brainrots"] = false,
