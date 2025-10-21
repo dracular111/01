@@ -23,7 +23,7 @@ getgenv().YuukiHub = {
     ["Keep Plant Rarity"] = { "Secret" },
     ["Keep Brainrot Money Per Second"] = 100000,
     ["Start Delete Plant At"] = 20,
-    ["Start Delete Brainrot At"] = 50,
+    ["Start Delete Brainrot At"] = 30,
     ["Equip Best"] = {
         ["Delays"] = 120, -- [ Seconds ]
         ["Rebirth 0"] = 5, ["Rebirth 1"] = 10, ["Rebirth 2"] = 10, ["Rebirth 3"] = 10, ["Rebirth 4"] = 5, ["Rebirth 5"] = 1, ["Rebirth 6"] = 1
