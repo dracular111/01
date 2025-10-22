@@ -101,7 +101,11 @@ getgenv().Config = {
         "ViperChill81",
     },
     ["Item Gift"] = {
-        "",
+        "King Limone",
+        "Mango",
+        "Mr Carrot",
+        "Shroombino",
+        "Tomatrio",
     },
     ["Take Plants"] = true,
     ["Auto Sell If Found PopUp"] = true,
