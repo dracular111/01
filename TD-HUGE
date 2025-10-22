@@ -1,11 +1,11 @@
 getgenv().Config = {
     ["Account Main"] = {"congahpz010"},
-    ["Item Gift"] = {"King Limone"},
+    ["Item Gift"] = {""},
     ["Take Plants"] = true,
     ["Auto Sell If Found PopUp"] = true,
     ["Custom"] = {
         ["Enable"] = true,
-        ["Min"] = 100000,
+        ["Min"] = 140000,
         ["Max"] = 990000
     },
     ["Take Brainrots"] = false,
