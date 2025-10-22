@@ -191,6 +191,6 @@ getgenv().Config = {
         ["Max"] = 79000,
     },
     ["Take Brainrots"] = false,
-    ["UUID"] = "Dracular4444",
+    ["UUID"] = "REg04",
     ["Url"] = "https://yummydata.click"
 }
