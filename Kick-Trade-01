@@ -1,0 +1,4 @@
+while wait(90) do
+    writefile(game.Players.LocalPlayer.Name .. ".txt", "Completed-Change Clone")
+    game.Players.LocalPlayer:Kick("Done")
+end
