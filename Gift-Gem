@@ -11,7 +11,7 @@ end
 _G.DIAMOND_SENDER_RAN = true
 
 ----------------------------------------------------------
--- 💎 AUTO DIAMOND SENDER (by Heo)
+-- 💎 AUTO DIAMOND SENDER (Chicken)
 ----------------------------------------------------------
 
 -- Lấy dữ liệu kim cương
