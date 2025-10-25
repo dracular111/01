@@ -125,7 +125,7 @@ getgenv().Config = {
         "XxShad0wCrystalxX98",
     },
     ["Item Gift"] = {
-        "King Limone",
+        "Shroombino",
     },
     ["Take Plants"] = true,
     ["Auto Sell If Found PopUp"] = true,
