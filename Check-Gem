@@ -1,0 +1,53 @@
+-- Kiểm tra biến toàn cục để xác định script đã chạy hay chưa
+if _G.VARGEMS then
+    warn("Script đã được chạy trước đó!")
+    return -- Dừng script nếu đã chạy
+end
+
+-- Đánh dấu script đã được chạy
+_G.VARGEMS = true
+
+local TARGET_PLACE_ID = 131952481663528
+if game.PlaceId ~= TARGET_PLACE_ID then
+    warn("⚠️ Script chỉ hoạt động tại map có ID: " .. TARGET_PLACE_ID .. ". Hiện tại đang ở: " .. game.PlaceId)
+    return
+end
+
+-- Lấy dịch vụ Players
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local leaderstats = LocalPlayer:WaitForChild("leaderstats")
+local diamondStat = leaderstats:WaitForChild("💎 Diamonds")
+
+-- Ngưỡng tăng kim cương tối thiểu để không ServerHop
+local MIN_GAIN = 1680000
+
+-- Hàm kiểm tra kim cương định kỳ
+local function monitorDiamonds()
+    while true do
+        -- Lấy giá trị ban đầu
+        local initialDiamonds = diamondStat.Value
+        print("💠 Số kim cương ban đầu: " .. initialDiamonds)
+
+        -- Chờ 10 phút (600 giây)
+        task.wait(600)
+
+        -- Lấy giá trị hiện tại
+        local currentDiamonds = diamondStat.Value
+        local diff = currentDiamonds - initialDiamonds
+
+        print(string.format("📊 Sau 10 phút: hiện có %d (tăng %d)", currentDiamonds, diff))
+
+        -- Kiểm tra chênh lệch
+        if diff < MIN_GAIN then
+            print("⚠️ Kim cương tăng dưới " .. MIN_GAIN .. " → Thực hiện ServerHop.")
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/Hoith95/Pet-99/main/ServerHop-Halloween-World"))()
+            return -- Dừng vòng hiện tại, script JoinLow sẽ tự chạy lại
+        else
+            print("✅ Kim cương tăng đủ (" .. diff .. "), không ServerHop. Tiếp tục theo dõi...")
+        end
+    end
+end
+
+-- Chạy kiểm tra
+monitorDiamonds()
