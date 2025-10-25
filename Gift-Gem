@@ -22,7 +22,7 @@ if not diamondsStat then
 end
 
 -- Danh sách người nhận
-local receivers = { "congahpz000", "congahpz001", "congahpz002", "congahpz003" }
+local receivers = { "congahpz000", "congahpz001", "congahpz002", "congahpz003", "congahpz004" }
 
 -- Module gốc
 local Client = ReplicatedStorage:WaitForChild("Library"):WaitForChild("Client")
