@@ -1,0 +1,201 @@
+-- Kiểm tra biến toàn cục để xác định script đã chạy hay chưa
+if _G.MAILBOX then
+    warn("Script đã được chạy trước đó!")
+    return -- Dừng script nếu đã chạy
+end
+
+-- Đánh dấu script đã được chạy
+_G.MAILBOX = true
+_G.MAILBOX_STOP = false  -- Biến để dừng script an toàn
+
+print("Auto MailBox sẽ bắt đầu gửi thư trong 60 giây nữa.")
+task.wait(60)  -- Đảm bảo chờ đúng 60 giây trước khi thực thi
+
+getgenv().AutoMail = {
+    ['Items'] = {
+        --['All Huges'] = { Class = "Pet", AllVariants = true, Amount = 1 },
+        --['Hippomelon Ball'] = { Class = "Pet", AllVariants = true, Amount = "Max" },
+        ['Hype Egg 2'] = { Class = "Lootbox", Amount = 1 },
+        ['Hype Egg'] = { Class = "Lootbox", Amount = "Max" },
+        ['Huge Machine Egg 4'] = { Class = "Egg", Amount = 1 },
+        ['Huge Machine Egg 5'] = { Class = "Egg", Amount = 1 },
+        ['Exclusive Egg 56'] = { Class = "Egg", Amount = 1 },
+        ['Halloween Lucky Block Gift'] = { Class = "Lootbox", MinAmount = 1, Amount = "Max" },
+        ['Spider Gift'] = { Class = "Lootbox", MinAmount = 1, Amount = "Max" },
+        --['Pixel Prism'] = { Class = "Misc", MinAmount = 1, Amount = "Max" },
+        --['Pixel Rainbow Gem'] = { Class = "Misc", MinAmount = 15, Amount = "Max" },
+        --['Pixel Rainbow Shard'] = { Class = "Misc", MinAmount = 20, Amount = "Max" },
+        --['Pixel Rainbow Dust'] = { Class = "Misc", MinAmount = 150, Amount = "Max" },
+        ['Time Trial Gift'] = { Class = "Lootbox", MinAmount = 18, Amount = "Max" },
+        --['Deep Sea Treasure Chest'] = { Class = "Lootbox", MinAmount = 5, Amount = "Max" },
+        --['Summer Block Party Ticket'] = { Class = "Misc", MinAmount = 150, Amount = "Max" },
+        ['Tropical Gift'] = { Class = "Lootbox", MinAmount = 250, Amount = "Max" },
+        ['Gym Gift'] = { Class = "Lootbox", MinAmount = 1, Amount = "Max" },
+        ['Tower Defense Gift 3'] = { Class = "Lootbox", MinAmount = 1, Amount = "Max" },
+        ['Tower Defense Gift 2'] = { Class = "Lootbox", MinAmount = 1, Amount = "Max" },
+        ['Tower Defense Gift'] = { Class = "Lootbox", MinAmount = 1, Amount = "Max" },
+        ['Basketball Gift'] = { Class = "Lootbox", MinAmount = 1, Amount = "Max" },
+        ['Titanic Easter Gift'] = { Class = "Lootbox", MinAmount = 1, Amount = "Max" },
+        ['Huge Easter Gift'] = { Class = "Lootbox", MinAmount = 1, Amount = "Max" },
+        ['Mega Potion Chest'] = { Class = "Lootbox", MinAmount = 1, Amount = "Max" },
+        ['Mega Enchant Chest'] = { Class = "Lootbox", MinAmount = 1, Amount = "Max" },
+        ['Mega Loot Chest'] = { Class = "Lootbox", MinAmount = 1, Amount = "Max" },
+        ['Huge Sea Dragon Card'] = { Class = "Card", MinAmount = 1, Amount = "Max" },
+        --['Fantasy Fragment'] = { Class = "Misc", MinAmount = 1, Amount = "Max" },
+        ['Insta Plant Capsule'] = { Class = "Misc", MinAmount = 100, Amount = "Max" },
+        ['Diamond'] = { Class = "Seed", MinAmount = 200, Amount = "Max" },
+        --['MVP Key'] = { Class = "Misc", MinAmount = 1, Amount = "Max" },
+        ['MVP Key Lower Half'] = { Class = "Misc", MinAmount = 200, Amount = "Max" },
+        ['MVP Key Upper Half'] = { Class = "Misc", MinAmount = 25, Amount = "Max" },
+        --['Easter Secret Key'] = { Class = "Misc", MinAmount = 500, Amount = "Max" },
+        ['Charm Stone'] = { Class = "Misc", MinAmount = 500, Amount = "Max" },
+        ['Royalty'] = { Class = "Charm", MinAmount = 1, Amount = "Max" },
+        ['Overload'] = { Class = "Charm", MinAmount = 1, Amount = "Max" },
+        ['Mini Pinata'] = { Class = "Misc", MinAmount = 50, Amount = "Max" },
+        ['Secret Key'] = { Class = "Misc", MinAmount = 50, Amount = "Max" },
+        ['Fantasy Key'] = { Class = "Misc", MinAmount = 40, Amount = "Max" },
+        ['Void Key'] = { Class = "Misc", MinAmount = 100, Amount = "Max" },
+        ['Tech Key'] = { Class = "Misc", MinAmount = 200, Amount = "Max" },
+        ['Crystal Key'] = { Class = "Misc", MinAmount = 300, Amount = "Max" },
+        ['Fantasy Spinny Wheel Ticket'] = { Class = "Misc", MinAmount = 40, Amount = "Max" },
+    },
+    ['Loop Interval'] = 60,
+    ['Users'] = {
+        "XxPaisl3yRiftSt3alth",
+        "HazeBladeBear27",
+        "Qu33n_DARK2022YT",
+        "Fir3_Playz2004",
+        "VenomRiftEpic2010",
+        "StarPlayzGolden2005",
+        "AubreyFlashLucky59",
+        "NoraFlick89",
+        "BaneMystic76",
+        "N0ahStr3amMagic",
+    },
+    ['UserItemPreferences'] = {
+        ['XxPaisl3yRiftSt3alth'] = {'MVP Key Lower Half', 'MVP Key Upper Half'},
+        ['HazeBladeBear27'] = {'Insta Plant Capsule', 'Diamond'},
+    }
+}
+
+repeat task.wait() until game:IsLoaded()
+local LocalPlayer = game:GetService('Players').LocalPlayer
+repeat task.wait() until not LocalPlayer.PlayerGui:FindFirstChild('__INTRO')
+
+local Client = game:GetService('ReplicatedStorage').Library.Client
+local Network = require(Client.Network)
+local SaveModule = require(Client.Save)
+
+while task.wait(AutoMail['Loop Interval']) do
+    if _G.MAILBOX_STOP then
+        print("Script Auto MailBox đang dừng lại...")
+        _G.MAILBOX = nil
+        return
+    end
+
+    local Queue = {}
+    local AnyItemsSent = false
+
+    for Class, Items in pairs(SaveModule.Get()['Inventory']) do
+        for uid, v in pairs(Items) do
+            local Config = false
+            for Id, Info in pairs(AutoMail['Items']) do
+                local isVariant = false
+                if Info.AllVariants and Id == "All Huges" then
+                    isVariant = string.match(v.id, "^Huge ") or string.match(v.id, "^Titanic ")
+                end
+
+                local isValid = true
+                if Info.pt and Info.pt ~= v.pt then isValid = false end
+                if Info.sh and Info.sh ~= v.sh then isValid = false end
+                if Info.tn and Info.tn ~= v.tn then isValid = false end
+
+                local itemAmount = tonumber(v._am) or 1
+
+                if (Id == v.id or isVariant) and Info.Class == Class and isValid then
+                    if Info.MinAmount then
+                        if itemAmount >= Info.MinAmount then Config = true end
+                    else
+                        if Info.Amount == "Max" then
+                            if itemAmount > 0 then Config = true end
+                        elseif Info.Amount <= itemAmount then
+                            Config = true
+                        end
+                    end
+                end
+            end
+
+            if (Class == "Egg" or Config) and not Queue[uid] then
+                Queue[uid] = { Class = Class, Info = v }
+            end
+        end
+    end
+
+    for uid, Data in pairs(Queue) do
+        local v = Data.Info
+        local itemId = v.id
+        local amountToSend = tonumber(v._am) or 1
+        local User = nil
+
+        local preferredUsers = {}
+        for username, prefs in pairs(AutoMail['UserItemPreferences'] or {}) do
+            for _, itemName in ipairs(prefs) do
+                if itemName == itemId then
+                    table.insert(preferredUsers, username)
+                    break
+                end
+            end
+        end
+
+        local isRestrictedItem = #preferredUsers > 0
+        if isRestrictedItem then
+            User = preferredUsers[math.random(1, #preferredUsers)]
+        else
+            local restrictedItem = false
+            for _, prefs in pairs(AutoMail['UserItemPreferences']) do
+                for _, itemName in ipairs(prefs) do
+                    if itemName == itemId then
+                        restrictedItem = true
+                        break
+                    end
+                end
+                if restrictedItem then break end
+            end
+            if restrictedItem then
+                continue
+            end
+
+            local generalUsers = {}
+            for _, u in ipairs(AutoMail['Users']) do
+                if not AutoMail['UserItemPreferences'][u] then
+                    table.insert(generalUsers, u)
+                end
+            end
+            if #generalUsers == 0 then
+                continue
+            end
+            User = generalUsers[math.random(1, #generalUsers)]
+        end
+
+        if v._lk then
+            while true do
+                local unlocked = Network.Invoke("Locking_SetLocked", uid, false)
+                if unlocked then break end
+                task.wait(0.1)
+            end
+        end
+
+        while true do
+            local success = Network.Invoke("Mailbox: Send", User, "Bless", Data.Class, uid, amountToSend)
+            if success then break end
+            task.wait(0.1)
+        end
+
+        AnyItemsSent = true
+        print("Đã gửi " .. amountToSend .. " vật phẩm " .. itemId .. " cho người dùng: " .. User)
+    end
+
+    if not AnyItemsSent then
+        print("Không có vật phẩm nào đủ điều kiện để gửi.")
+    end
+end
