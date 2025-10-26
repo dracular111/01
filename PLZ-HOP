@@ -6,7 +6,7 @@ local mathRandom = math.random
 local function teleportToMostPopulatedServer(placeId, retryLimit, userIdsToExclude)
     retryLimit = retryLimit or 5 -- Số lần thử lại mặc định là 5
     local attempts = 0
-    local minPlayers = 15 -- Số lượng người chơi tối thiểu (ví dụ: 15 người)
+    local minPlayers = 10 -- Số lượng người chơi tối thiểu (ví dụ: 15 người)
 
     -- Lấy ID server ban đầu của người chơi
     local function getCurrentServerId()
@@ -100,10 +100,9 @@ end
 
 -- Danh sách các UserId cố định mà bạn muốn tránh
 local userIdsToExclude = {
-    9697614953, 9697613877, 9697622055, 9697600866, 9697600866, 9697610243, 9697591435, 9697583483, 9697603849,
-    9697620984, 9697614453
+    9697614953, 9697613877, 9697622055, 9697600866, 9697600866, 9697610243
 }
 
 -- Gọi hàm với PlaceId cụ thể và danh sách các UserId bạn muốn tránh
 task.wait(1)
-teleportToMostPopulatedServer(15502339080, 25, userIdsToExclude) -- Thử tối đa 25 lần
+teleportToMostPopulatedServer(15502339080, 10, userIdsToExclude) -- Thử tối đa 25 lần
