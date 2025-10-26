@@ -105,4 +105,4 @@ local userIdsToExclude = {
 
 -- Gọi hàm với PlaceId cụ thể và danh sách các UserId bạn muốn tránh
 task.wait(1)
-teleportToMostPopulatedServer(15502339080, 10, userIdsToExclude) -- Thử tối đa 25 lần
+--teleportToMostPopulatedServer(15502339080, 10, userIdsToExclude) -- Thử tối đa 25 lần
