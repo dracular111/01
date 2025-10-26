@@ -1,7 +1,7 @@
 getgenv().Config = {
     ["Account Hold Gem"] = { "boudo_4uz", "gills6ii", "boekh6uo", "BenderMichael2", "jovia_3cw" },
     ["Account To Skip"] = { "" },
-    ["Gem"] = "500m",
+    ["Gem"] = "1000m",
     ["Time"] = 2,         -- minutes
     ["Time Remove"] = 10, -- minutes
     ["Url Webhook"] =
