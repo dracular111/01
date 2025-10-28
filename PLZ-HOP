@@ -100,7 +100,7 @@ end
 
 -- Danh sách các UserId cố định mà bạn muốn tránh
 local userIdsToExclude = {
-    7663066485, 7651373833, 7674754512,
+    --7663066485, 7651373833, 7674754512,
 }
 
 -- Gọi hàm với PlaceId cụ thể và danh sách các UserId bạn muốn tránh
