@@ -1,3 +1,7 @@
-local TeleportService = game:GetService("TeleportService")
+repeat task.wait() until game:IsLoaded()
+
 local placeId = 131952481663528
-TeleportService:Teleport(placeId, game.Players.LocalPlayer)
+local HttpService = game:GetService("HttpService")
+local TeleportService = game:GetService("TeleportService")
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
