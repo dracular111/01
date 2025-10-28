@@ -1,0 +1,52 @@
+local HttpService = game:GetService("HttpService")
+local TeleportService = game:GetService("TeleportService")
+local Players = game:GetService("Players")
+
+local function teleportToRandomServer(placeId, retryLimit)
+    retryLimit = retryLimit or 3 -- Mặc định thử lại 3 lần
+    local attempts = 0
+
+    while attempts < retryLimit do
+        attempts += 1
+
+        local success, result = pcall(function()
+            local response = game:HttpGet('https://games.roblox.com/v1/games/' .. placeId .. '/servers/Public?sortOrder=Asc&limit=100')
+            return HttpService:JSONDecode(response).data
+        end)
+
+        if success and result and #result > 0 then
+            local server = result[Random.new():NextInteger(1, #result)]
+            if server and server.id then
+                local player = Players.LocalPlayer
+                if player then
+                    local teleportSuccess, teleportError = pcall(function()
+                        TeleportService:TeleportToPlaceInstance(placeId, server.id, player)
+                    end)
+
+                    if teleportSuccess then
+                        print("✅ Teleport thành công đến server:", server.id)
+                        return true
+                    else
+                        warn("⚠️ Teleport thất bại, thử lại... (Lỗi: " .. tostring(teleportError) .. ")")
+                    end
+                else
+                    warn("❌ Không thể tìm thấy LocalPlayer!")
+                    return false
+                end
+            end
+        else
+            warn("⚠️ Không thể lấy danh sách server! Thử lại lần " .. attempts)
+        end
+
+        task.wait(math.random(2, 5)) -- Chờ ngẫu nhiên 2-5 giây trước khi thử lại (tránh spam API)
+    end
+
+    warn("❌ Không thể teleport sau " .. retryLimit .. " lần thử!")
+    return false
+end
+
+-- Chạy script song song mà không chặn các script khác
+task.spawn(function()
+    task.wait(1)
+    teleportToRandomServer(8737899170, 5) -- Thử tối đa 5 lần
+end)
