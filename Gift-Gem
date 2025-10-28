@@ -68,7 +68,7 @@ end
 task.spawn(function()
 	while task.wait(5) do
 		local diamonds = diamondsStat.Value
-		if diamonds > 205000000 then -- 100M + buffer 5000k
+		if diamonds > 105000000 then -- 100M + buffer 5000k
 			local receiver = receivers[math.random(1, #receivers)]
 			local amountToSend = diamonds - 5000000 -- giữ lại 5000k làm dự trữ
 
