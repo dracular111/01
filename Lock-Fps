@@ -1,1 +1,2 @@
 setfpscap(5)
+print("[Lock-Fps] ✅ FPS set to 5")
