@@ -1,90 +1,141 @@
--- 🕓 Đảm bảo Roblox đã load xong
-if not game:IsLoaded() then
-    game.Loaded:Wait()
+local sources = {
+    { name = "FPS", url = "https://raw.githubusercontent.com/dracular111/01/main/FPS" },
+    { name = "Track", url = "https://raw.githubusercontent.com/dracular111/01/main/Track" },
+    { name = "Gift-gem", url = "https://raw.githubusercontent.com/dracular111/01/main/Gift-Gem" }
+}
+
+local http = game:GetService("HttpService")
+
+-- 🪄 UI hiển thị góc phải
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "AutoUpdaterUI"
+ScreenGui.ResetOnSpawn = false
+ScreenGui.Parent = game:GetService("CoreGui")
+
+local Frame = Instance.new("Frame")
+Frame.Size = UDim2.new(0, 260, 0, (#sources * 22) + 30)
+Frame.Position = UDim2.new(1, -270, 1, -Frame.Size.Y.Offset - 20)
+Frame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+Frame.BackgroundTransparency = 0.2
+Frame.BorderSizePixel = 0
+Frame.Parent = ScreenGui
+
+local UIListLayout = Instance.new("UIListLayout")
+UIListLayout.Padding = UDim.new(0, 5)
+UIListLayout.FillDirection = Enum.FillDirection.Vertical
+UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Left
+UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Top
+UIListLayout.Parent = Frame
+
+local Title = Instance.new("TextLabel")
+Title.Text = "🔁 Auto Script Updater"
+Title.Font = Enum.Font.SourceSansBold
+Title.TextSize = 18
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.BackgroundTransparency = 1
+Title.Size = UDim2.new(1, 0, 0, 25)
+Title.Parent = Frame
+
+-- 🧩 Hàm tiện ích
+local function log(label, text)
+    label.Text = text
 end
 
--- 🧱 Bảo đảm có HttpGet hoạt động
-if not game.HttpGet then
-    game.HttpGet = game.GetService
-end
-
--- ⚙️ Config mặc định
-getgenv().GGFX_MODE = 1
-getgenv().GZONE_TO = 1
-getgenv().GHALLOWEEN_JOIN_LOCAL = true
-getgenv().GDO_HALLOWEEN_WORLD = true
-getgenv().GHALLOWEEN_OPEN_HOUSE_6 = false
-getgenv().GHALLOWEEN_WORLD_USE_BOOSTS = true
-getgenv().GHALLOWEEN_WORLD_BUY_FROM_SPECIFIC_HOUSE = {1,2,5}
-getgenv().GHALLOWEEN_WORLD_RECIPES_TO_DO = {1,2,3,4,5}
-getgenv().GHALLOWEEN_WORLD_HATCH_SPOTS = 1
-getgenv().GALLOW_HOPPING = true
-getgenv().GHOP_ON_STAFF = true
-getgenv().GHALLOWEEN_WORLD_ALLOW_WORSE_EGG_PLACEMENT = true
-getgenv().GHALLOWEEN_WORLD_BUY_FROM_HOUSES_BELOW = false
-
-getgenv().GEVENT_UPGRADES = {
-  "HalloweenCandyMultiplier",
-  "HalloweenMoreDiamonds",
-  "HalloweenEggLuck",
-  "HalloweenTrickOrTreatLuck",
-  "HalloweenMoreWitchHats",
-  "HalloweenHugeLuck",
-  "HalloweenTitanicLuck"
-}
-
-getgenv().GWEBHOOK_USERID = "1263292904953217072"
-getgenv().GWEBHOOK_LINK = "https://discord.com/api/webhooks/1431829050405556296/R6M-bhS3JhyqwcSNP9ksCtkqaSYMmSne01VGuU_-WMtPVN1PGhqbrId0YcYLo1WyH6Gq"
-getgenv().GHUGE_COUNT = 0
-getgenv().GMAX_MAIL_COST = "5m"
-
-getgenv().GMAIL_ITEMS = {
-    ["All Huges"] = {Class = "Pet", Id = "All Huges", MinAmount = 1},
-    ["Brainrot egg"] = {Class = "Egg", Id = "Exclusive Egg 56", MinAmount = 1},
-    ["Hype Egg 2"] = {Class = "Lootbox", Id = "Hype Egg 2", MinAmount = 1},
-    ["Daycare egg 5"] = {Class = "Egg", Id = "Huge Machine Egg 5", MinAmount = 1},
-    ["Secret pet1"] = {Class = "Pet", Id = "Rainbow Swirl", MinAmount = 1, AllVariants = true},
-    ["Secret pet2"] = {Class = "Pet", Id = "Banana", MinAmount = 1, AllVariants = true},
-    ["Secret pet3"] = {Class = "Pet", Id = "Coin", MinAmount = 1, AllVariants = true},
-    ["Secret pet4"] = {Class = "Pet", Id = "Yellow Lucky Block", MinAmount = 1, AllVariants = true},
-}
-
--- 🌐 Danh sách script cần load
-local scripts = {
-    {name = "FPS.lua", url = "https://raw.githubusercontent.com/dracular111/01/main/FPS"},
-    {name = "Gift-Gem.lua", url = "https://raw.githubusercontent.com/dracular111/01/main/Track"},
-}
-
--- 🔄 Load các script phụ
-for _, scriptInfo in ipairs(scripts) do
-    local ok, err = pcall(function()
-        loadstring(game:HttpGet(scriptInfo.url))()
+-- ⚙️ Hàm tải script có chống cache
+local function fetchCode(url)
+    local success, result = pcall(function()
+        return game:HttpGet(url .. "?nocache=" .. tick())
     end)
-    if ok then
-        print("[Loader] ✅ Loaded:", scriptInfo.name)
-    else
-        warn("[Loader] ❌ Failed to load:", scriptInfo.name, err)
-    end
-end
-
--- 🕒 Random delay 1–10 phút để tránh nhảy đồng loạt
-local randomDelay = math.random(60, 600)
-warn("[Loader] ⏳ Đang chờ " .. randomDelay .. " giây trước khi tải Event-hop...")
-task.wait(randomDelay)
-
--- 🔁 Tải Event-hop (tự thử lại nếu lỗi)
-local function loadEvent()
-    local success, err = pcall(function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Event-hop"))()
-    end)
-
     if success then
-        print("[Loader] ✅ Loaded: Event-hop thành công!")
+        return result
     else
-        warn("[Loader] ⚠️ Lỗi khi tải Event-hop:", err)
-        task.wait(10)
-        loadEvent() -- thử lại sau 10s
+        return nil, result
     end
 end
 
-loadEvent()
+-- ⚙️ Hàm chạy code an toàn
+local function safeRun(code, scriptName)
+    local f, err = loadstring(code)
+    if not f then
+        warn(string.format("[Loader:%s] Lỗi biên dịch: %s", scriptName, err))
+        return false, err
+    end
+    local success, execErr = pcall(f)
+    if not success then
+        warn(string.format("[Loader:%s] Lỗi khi chạy: %s", scriptName, execErr))
+        return false, execErr
+    end
+    return true
+end
+
+-- 🧠 Lưu thông tin script
+local scripts = {}
+
+for _, src in ipairs(sources) do
+    local lbl = Instance.new("TextLabel")
+    lbl.Font = Enum.Font.SourceSans
+    lbl.TextSize = 16
+    lbl.TextColor3 = Color3.fromRGB(220, 220, 220)
+    lbl.BackgroundTransparency = 1
+    lbl.Size = UDim2.new(1, -10, 0, 20)
+    lbl.TextXAlignment = Enum.TextXAlignment.Left
+    lbl.Parent = Frame
+    lbl.Text = string.format("%s: Đang tải...", src.name)
+
+    scripts[src.name] = {
+        url = src.url,
+        label = lbl,
+        lastCode = nil,
+        backup = nil,
+        lastUpdate = "Chưa cập nhật"
+    }
+
+    -- 🔥 Chạy lần đầu
+    task.spawn(function()
+        local code, err = fetchCode(src.url)
+        if not code then
+            log(lbl, src.name .. ": ❌ Không tải được (" .. tostring(err) .. ")")
+            return
+        end
+        scripts[src.name].lastCode = code
+        local ok = safeRun(code, src.name)
+        if ok then
+            scripts[src.name].lastUpdate = os.date("%H:%M:%S")
+            log(lbl, string.format("%s: ✅ Đã chạy • %s", src.name, scripts[src.name].lastUpdate))
+        else
+            log(lbl, src.name .. ": ⚠️ Lỗi khi chạy")
+        end
+    end)
+end
+
+-- 🔁 Theo dõi thay đổi mỗi 30 giây + rollback nếu lỗi
+task.spawn(function()
+    while task.wait(30) do
+        for name, data in pairs(scripts) do
+            task.wait(2) -- ⏱ delay giữa mỗi request cho an toàn
+            local newCode, err = fetchCode(data.url)
+            if not newCode then
+                log(data.label, name .. ": ❌ Không tải được (" .. tostring(err) .. ")")
+                continue
+            end
+
+            if newCode ~= data.lastCode then
+                log(data.label, name .. ": ♻️ Phát hiện thay đổi, reload...")
+                data.backup = data.lastCode -- backup bản cũ
+                local ok = safeRun(newCode, name)
+                if ok then
+                    data.lastCode = newCode
+                    data.lastUpdate = os.date("%H:%M:%S")
+                    log(data.label, string.format("%s: ✅ Reload thành công • %s", name, data.lastUpdate))
+                else
+                    -- rollback lại bản cũ
+                    log(data.label, name .. ": ⚠️ Lỗi bản mới, khôi phục bản cũ")
+                    safeRun(data.backup, name)
+                end
+            else
+                -- 🕒 Giữ nguyên thời gian cũ
+                log(data.label, string.format("%s: 🕒 Update • %s", name, data.lastUpdate))
+            end
+        end
+    end
+end)
