@@ -64,4 +64,49 @@ local function fetchAndRun(scriptInfo)
     -- 🧹 Gọi cleanup nếu có bản cũ đang chạy
     if getgenv()[scriptInfo.name .. "_CLEANUP"] then
         pcall(getgenv()[scriptInfo.name .. "_CLEANUP"])
-        getgenv()[scriptInfo.name .. "]()
+        getgenv()[scriptInfo.name .. "_CLEANUP"] = nil
+    end
+
+    local func, err = loadstring(code)
+    if not func then
+        warn("[Loader] ⚠️ Compile error in", scriptInfo.name, ":", err)
+        loading[scriptInfo.name] = false
+        return
+    end
+
+    local ok2, execErr = pcall(func)
+    if not ok2 then
+        warn("[Loader] ⚠️ Runtime error:", scriptInfo.name, ":", execErr)
+    else
+        print("[Loader] ✅ Loaded:", scriptInfo.name)
+    end
+
+    loading[scriptInfo.name] = false
+    return code
+end
+
+-- 🔥 Initial run
+for _, info in ipairs(scripts) do
+    lastCodes[info.name] = fetchAndRun(info)
+end
+showNotification("✅ Scripts loaded at " .. os.date("%H:%M:%S"))
+
+-- 🔁 Kiểm tra cập nhật định kỳ
+task.spawn(function()
+    while task.wait(reloadDelay) do
+        for _, info in ipairs(scripts) do
+            local ok, newCode = pcall(function()
+                return game:HttpGet(info.url)
+            end)
+            if ok and newCode then
+                newCode = newCode:gsub("\r\n", "\n")
+                if newCode ~= lastCodes[info.name] then
+                    lastCodes[info.name] = newCode
+                    fetchAndRun(info)
+                    showNotification("🔄 Updated " .. info.name .. " at " .. os.date("%H:%M:%S"))
+                end
+            end
+            task.wait(1.5) -- tránh spam request
+        end
+    end
+end)
