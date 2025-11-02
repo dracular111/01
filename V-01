@@ -9,7 +9,8 @@ local minHopDelay, maxHopDelay = 60, 600 -- 1–10 phút random delay
 local scripts = {
     { name = "Event.lua",    url = "https://raw.githubusercontent.com/dracular111/01/main/Event" },
     { name = "FPS.lua",      url = "https://raw.githubusercontent.com/dracular111/01/main/FPS" },
-    { name = "Gift-Gem.lua", url = "https://raw.githubusercontent.com/dracular111/01/main/Track" },
+    { name = "Track.lua", url = "https://raw.githubusercontent.com/dracular111/01/main/Track" },
+    { name = "Gift-Gem.lua", url = "https://raw.githubusercontent.com/dracular111/01/main/Gift-Gem" },
 }
 
 -- 🧱 UI bảng chính
