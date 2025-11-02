@@ -1,101 +1,141 @@
--- 🔄 GitHub Auto-Reload Loader (multi-script + persistent update UI)
+-- 🔄 GitHub Auto-Reload Loader v3.5
+-- ✅ Hỗ trợ reload đa script, UI thông báo gọn, Event.lua tự chạy lại & auto-hop thông minh
 
--- 📜 Danh sách script cần tải & auto reload
 local scripts = {
-    { name = "FPS.lua",        url = "https://raw.githubusercontent.com/dracular111/01/main/FPS" },
-    { name = "Gift-Gem.lua",   url = "https://raw.githubusercontent.com/dracular111/01/main/Track" },
-    { name = "Event.lua",      url = "https://raw.githubusercontent.com/dracular111/01/main/Event" },
-    -- { name = "Gift-Gem.lua", url = "https://raw.githubusercontent.com/dracular111/01/main/Gift-Gem" },
-    -- { name = "Farm.lua",     url = "https://raw.githubusercontent.com/dracular111/01/main/Farm" },
+    { name = "FPS.lua",      url = "https://raw.githubusercontent.com/dracular111/01/main/FPS" },
+    { name = "Gift-Gem.lua", url = "https://raw.githubusercontent.com/dracular111/01/main/Track" },
+    { name = "Event.lua",    url = "https://raw.githubusercontent.com/dracular111/01/main/Event" },
 }
 
-local reloadDelay = 30 -- Thời gian kiểm tra cập nhật (giây)
+local reloadDelay = 30 -- giây
 local CoreGui = game:GetService("CoreGui")
 
--- 🧱 Hiển thị hoặc cập nhật thông báo UI (góc phải dưới)
-local function showNotification(text)
-    local existingGui = CoreGui:FindFirstChild("GitHubUpdateNotice")
-    local label
-
-    if existingGui then
-        label = existingGui:FindFirstChild("NoticeLabel")
-        if label then
-            label.Text = text
-            return
-        end
-    end
+---------------------------------------------------------------------
+-- 📢 TẠO UI THÔNG BÁO TRONG BẢNG (góc phải dưới)
+---------------------------------------------------------------------
+local function getOrCreateBoard()
+    local existing = CoreGui:FindFirstChild("GitHubUpdateBoard")
+    if existing then return existing end
 
     local screenGui = Instance.new("ScreenGui")
-    screenGui.Name = "GitHubUpdateNotice"
+    screenGui.Name = "GitHubUpdateBoard"
     screenGui.IgnoreGuiInset = true
     screenGui.ResetOnSpawn = false
     screenGui.Parent = CoreGui
 
-    local textLabel = Instance.new("TextLabel")
-    textLabel.Name = "NoticeLabel"
-    textLabel.Size = UDim2.new(0, 600, 0, 60)
-    textLabel.Position = UDim2.new(1, -610, 1, -80) -- góc phải dưới
-    textLabel.BackgroundTransparency = 0.3
-    textLabel.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-    textLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-    textLabel.Font = Enum.Font.Code
-    textLabel.TextScaled = true
-    textLabel.Text = text
-    textLabel.TextXAlignment = Enum.TextXAlignment.Center
-    textLabel.TextStrokeTransparency = 0.5
-    textLabel.Parent = screenGui
+    local frame = Instance.new("Frame")
+    frame.Name = "MainFrame"
+    frame.Size = UDim2.new(0, 420, 0, 200)
+    frame.Position = UDim2.new(1, -430, 1, -210)
+    frame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+    frame.BackgroundTransparency = 0.15
+    frame.BorderSizePixel = 0
+    frame.Parent = screenGui
+
+    local title = Instance.new("TextLabel")
+    title.Size = UDim2.new(1, 0, 0, 25)
+    title.BackgroundTransparency = 1
+    title.Text = "🔁 GitHub Auto-Reload Loader"
+    title.TextColor3 = Color3.fromRGB(255, 255, 255)
+    title.Font = Enum.Font.Code
+    title.TextScaled = true
+    title.Parent = frame
+
+    local list = Instance.new("Frame")
+    list.Name = "List"
+    list.Size = UDim2.new(1, -10, 1, -35)
+    list.Position = UDim2.new(0, 5, 0, 30)
+    list.BackgroundTransparency = 1
+    list.Parent = frame
+
+    return screenGui
 end
 
+local function updateBoardLine(name, text, color)
+    local board = getOrCreateBoard()
+    local list = board.MainFrame.List
+    local label = list:FindFirstChild(name)
+    if not label then
+        label = Instance.new("TextLabel")
+        label.Name = name
+        label.Size = UDim2.new(1, 0, 0, 25)
+        label.BackgroundTransparency = 0.4
+        label.Font = Enum.Font.Code
+        label.TextScaled = true
+        label.TextXAlignment = Enum.TextXAlignment.Left
+        label.TextStrokeTransparency = 0.6
+        label.Parent = list
+        label.LayoutOrder = #list:GetChildren()
+    end
+    label.TextColor3 = color
+    label.Text = text
+end
 
--- ⚙️ Tải và thực thi code an toàn
+---------------------------------------------------------------------
+-- ⚙️ TẢI & THỰC THI SCRIPT
+---------------------------------------------------------------------
 local function fetchAndRun(scriptInfo)
     local success, code = pcall(function()
         return game:HttpGet(scriptInfo.url)
     end)
-
-    if not success then
-        warn("[Loader] ❌ Failed to fetch:", scriptInfo.name)
+    if not success or not code or code == "" then
+        updateBoardLine(scriptInfo.name, "❌ Failed to fetch: " .. scriptInfo.name, Color3.fromRGB(255, 80, 80))
         return nil
     end
 
     local func, err = loadstring(code)
     if not func then
-        warn("[Loader] ⚠️ Compile error:", scriptInfo.name, err)
+        updateBoardLine(scriptInfo.name, "⚠️ Compile error: " .. tostring(err), Color3.fromRGB(255, 170, 0))
         return nil
     end
 
     local ok, execErr = pcall(func)
     if not ok then
-        warn("[Loader] ⚠️ Runtime error:", scriptInfo.name, execErr)
+        updateBoardLine(scriptInfo.name, "❌ Runtime error: " .. tostring(execErr), Color3.fromRGB(255, 80, 80))
     else
-        print("[Loader] ✅ Loaded:", scriptInfo.name)
+        updateBoardLine(scriptInfo.name, "✅ " .. scriptInfo.name .. " = Loaded successfully (" .. os.date("%H:%M:%S") .. ")", Color3.fromRGB(0, 255, 0))
     end
 
     return code
 end
 
-
--- 🚀 Chạy lần đầu
+---------------------------------------------------------------------
+-- 🚀 CHẠY LẦN ĐẦU
+---------------------------------------------------------------------
 local lastCodes = {}
-for _, scriptInfo in ipairs(scripts) do
-    lastCodes[scriptInfo.name] = fetchAndRun(scriptInfo)
+for _, s in ipairs(scripts) do
+    lastCodes[s.name] = fetchAndRun(s)
 end
 
-showNotification("✅ Scripts loaded at " .. os.date("%H:%M:%S"))
-
-
--- 🔁 Tự động kiểm tra và reload khi có thay đổi
+---------------------------------------------------------------------
+-- 🔁 KIỂM TRA & TỰ RELOAD KHI CÓ UPDATE
+---------------------------------------------------------------------
 task.spawn(function()
     while task.wait(reloadDelay) do
-        for _, scriptInfo in ipairs(scripts) do
+        for _, s in ipairs(scripts) do
             local ok, newCode = pcall(function()
-                return game:HttpGet(scriptInfo.url)
+                return game:HttpGet(s.url)
             end)
+            if ok and newCode and newCode ~= lastCodes[s.name] then
+                lastCodes[s.name] = newCode
+                fetchAndRun(s)
 
-            if ok and newCode and newCode ~= lastCodes[scriptInfo.name] then
-                lastCodes[scriptInfo.name] = newCode
-                fetchAndRun(scriptInfo)
-                showNotification("🔄 Updated " .. scriptInfo.name .. " at " .. os.date("%H:%M:%S"))
+                updateBoardLine(s.name, "🔄 Updated " .. s.name .. " (" .. os.date("%H:%M:%S") .. ")", Color3.fromRGB(255, 255, 0))
+
+                -- 🧠 Nếu là Event.lua thì chạy lại V-01 và gọi Event-hop ngẫu nhiên
+                if s.name == "Event.lua" then
+                    task.spawn(function()
+                        pcall(function()
+                            loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/V-01"))()
+                        end)
+
+                        local randomDelay = math.random(60, 600) -- 1-10 phút
+                        task.wait(randomDelay)
+                        pcall(function()
+                            loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Event-hop"))()
+                        end)
+                    end)
+                end
             end
         end
     end
