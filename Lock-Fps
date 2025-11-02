@@ -48,7 +48,7 @@ end)
 task.spawn(function()
     while true do
         if setfpscap then
-            pcall(setfpscap, 5)
+            pcall(setfpscap, 15)
         end
         task.wait(10)
     end
