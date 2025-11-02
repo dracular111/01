@@ -1,6 +1,5 @@
 local sources = {
     { name = "FPS", url = "https://raw.githubusercontent.com/dracular111/01/main/FPS" },
-    { name = "Track", url = "https://raw.githubusercontent.com/dracular111/01/main/Track" },
     { name = "Gift-gem", url = "https://raw.githubusercontent.com/dracular111/01/main/Gift-Gem" }
 }
 
