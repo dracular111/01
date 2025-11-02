@@ -1,43 +1,56 @@
--- 🎃 Event.lua - Cleanup & Config Reload (Final)
-
--- 🕒 Đảm bảo game đã load hoàn toàn
+-- 🎃 Event.lua - Hot Reload Safe Version
 repeat task.wait() until game:IsLoaded()
 
--- 🧹 Cleanup các phần cũ (UI, threads, connections)
+print("[Event.lua] 🔁 Initializing or reloading...")
+
+-- 🧹 Step 1: Cleanup mọi thứ cũ
 pcall(function()
-    -- Xóa UI cũ nếu có
+    -- Dừng script cũ đang chạy
+    if getgenv()._EVENT_RUNNING then
+        print("[Event.lua] ⏹ Stopping old loop...")
+        getgenv()._EVENT_RUNNING = false
+        task.wait(1)
+    end
+
+    -- Xóa UI cũ
     for _, v in pairs(game:GetService("CoreGui"):GetChildren()) do
         if v.Name == "Event_UI" then
             v:Destroy()
         end
     end
 
-    -- Dừng các connections hoặc threads cũ
-    if getgenv().event_loop then
-        pcall(function() getgenv().event_loop:Disconnect() end)
-        getgenv().event_loop = nil
+    -- Ngắt connection cũ
+    if getgenv().event_connections then
+        for _, conn in pairs(getgenv().event_connections) do
+            if typeof(conn) == "RBXScriptConnection" then
+                conn:Disconnect()
+            end
+        end
     end
+    getgenv().event_connections = {}
 
+    -- Dừng thread cũ
     if getgenv().event_thread then
         getgenv().event_thread_stop = true
         getgenv().event_thread = nil
     end
 end)
 
--- ⏳ Cho Roblox ổn định trước khi load config mới
+-- ⏳ Chờ Roblox ổn định
 task.wait(5)
 
-print("[Event.lua] 🧹 Old UI & threads cleaned, applying new config...")
+print("[Event.lua] 🧹 Old threads, connections, and UI cleaned.")
 
--- 🌙 CONFIG MỚI
-getgenv().GGFX_MODE = 3
+
+-- 🌙 Step 2: Apply CONFIG MỚI
+getgenv().GGFX_MODE = 1
 getgenv().GZONE_TO = 1
 getgenv().GHALLOWEEN_JOIN_LOCAL = true
 getgenv().GDO_HALLOWEEN_WORLD = true
 getgenv().GHALLOWEEN_WORLD_USE_BOOSTS = true
 getgenv().GHALLOWEEN_OPEN_HOUSE_6 = false
-getgenv().GHALLOWEEN_WORLD_BUY_FROM_SPECIFIC_HOUSE = {1, 2, 5}
-getgenv().GHALLOWEEN_WORLD_RECIPES_TO_DO = {1, 2, 3, 4, 5}
+getgenv().GHALLOWEEN_WORLD_BUY_FROM_SPECIFIC_HOUSE = {1,2,5}
+getgenv().GHALLOWEEN_WORLD_RECIPES_TO_DO = {1,2,3,4,5}
 -- getgenv().GKEEP_CURRENCY_FOR_CRAFTS = "20m"
 getgenv().GHALLOWEEN_WORLD_HATCH_SPOTS = 1
 getgenv().GALLOW_HOPPING = true
@@ -58,9 +71,7 @@ getgenv().GEVENT_UPGRADES = {
 getgenv().GWEBHOOK_USERID = "1263292904953217072"
 getgenv().GWEBHOOK_LINK = "https://discord.com/api/webhooks/1431829050405556296/R6M-bhS3JhyqwcSNP9ksCtkqaSYMmSne01VGuU_-WMtPVN1PGhqbrId0YcYLo1WyH6Gq"
 getgenv().GHUGE_COUNT = 0
-getgenv().GMAIL_RECEIVERS = {
-    "wlopez00", "alexisjones324", "hholland606", "clairehanson7", "josephfowler06"
-}
+getgenv().GMAIL_RECEIVERS = {"wlopez00", "alexisjones324", "hholland606", "clairehanson7", "josephfowler06"}
 getgenv().GMAX_MAIL_COST = "5m"
 
 getgenv().GMAIL_ITEMS = {
@@ -75,4 +86,19 @@ getgenv().GMAIL_ITEMS = {
     ["Secret pet4"] = {Class = "Pet", Id = "Yellow Lucky Block", MinAmount = 1, AllVariants = true},
 }
 
-print("[Event.lua] ✅ Config applied successfully at " .. os.date("%H:%M:%S"))
+print("[Event.lua] ✅ New config loaded successfully.")
+
+
+-- 🌀 Step 3: Đánh dấu trạng thái script đang chạy
+getgenv()._EVENT_RUNNING = true
+
+
+-- 🔁 Step 4: Ví dụ vòng lặp chính (có thể thay bằng logic thực tế của bạn)
+task.spawn(function()
+    print("[Event.lua] 🎃 Main event loop started.")
+    while getgenv()._EVENT_RUNNING do
+        task.wait(5)
+        print("[Event.lua] 👻 Running event tick @ " .. os.date("%H:%M:%S"))
+    end
+    print("[Event.lua] ⏹ Event loop stopped (reloaded or cleanup).")
+end)
