@@ -1,7 +1,3 @@
--- 🔄 Auto Script Updater Pro (by ChatGPT)
--- Tải nhiều script từ GitHub, reload khi có thay đổi, có UI + rollback an toàn
--- 🕒 Giữ nguyên thời gian cập nhật cho đến khi có bản mới
-
 local sources = {
     { name = "FPS", url = "https://raw.githubusercontent.com/dracular111/01/main/FPS" },
     { name = "Track", url = "https://raw.githubusercontent.com/dracular111/01/main/Track" },
