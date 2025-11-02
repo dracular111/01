@@ -1,13 +1,20 @@
 repeat task.wait() until game:IsLoaded()
 
--- 🧹 Xóa UI cũ nếu đã tồn tại
+-- 🧹 Xoá UI và thread cũ nếu đã tồn tại
+if getgenv().fps_loop then
+    getgenv().fps_loop:Disconnect() -- ngắt kết nối RenderStepped cũ
+end
+if getgenv().fps_thread then
+    getgenv().fps_thread:Cancel() -- hủy vòng while cũ
+end
 if game.CoreGui:FindFirstChild("FPS_UI") then
     game.CoreGui.FPS_UI:Destroy()
 end
 
--- 🔧 Giới hạn FPS
+-- ⚙️ Giới hạn FPS mong muốn
+local TARGET_FPS = 10
 if setfpscap then
-    setfpscap(5)
+    pcall(setfpscap, TARGET_FPS)
 end
 
 -- 🧱 Tạo UI hiển thị FPS
@@ -37,23 +44,25 @@ TextLabel.TextScaled = true
 TextLabel.Text = "FPS: 0"
 TextLabel.Parent = Frame
 
--- 📈 Cập nhật FPS
+-- 📈 Hiển thị FPS thật
+local RunService = game:GetService("RunService")
+local fps = 0
+
+getgenv().fps_loop = RunService.RenderStepped:Connect(function(dt)
+    fps = math.floor(1 / dt)
+end)
+
 task.spawn(function()
-    local RunService = game:GetService("RunService")
-    local fps = 0
-    RunService.RenderStepped:Connect(function(dt)
-        fps = math.floor(1 / dt)
-    end)
     while task.wait(0.5) do
         TextLabel.Text = "FPS: " .. fps
     end
 end)
 
--- 🔄 Duy trì giới hạn FPS = 5
-task.spawn(function()
+-- 🔄 Giữ FPS thấp (thread riêng, có thể huỷ)
+getgenv().fps_thread = task.spawn(function()
     while true do
         if setfpscap then
-            pcall(setfpscap, 5)
+            pcall(setfpscap, TARGET_FPS)
         end
         task.wait(10)
     end
