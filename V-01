@@ -8,7 +8,7 @@ local scripts = {
     -- { name = "Farm.lua", url = "https://raw.githubusercontent.com/dracular111/01/main/Farm" },
 }
 
-local reloadDelay = 30 -- Check interval (seconds)
+local reloadDelay = 20 -- Check interval (seconds)
 local CoreGui = game:GetService("CoreGui")
 
 -- 🧱 Create or update bottom-right UI
