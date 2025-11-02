@@ -1,8 +1,8 @@
 local scripts = {
-    "https://raw.githubusercontent.com/dracular111/01/main/Rank",
-    "https://raw.githubusercontent.com/dracular111/01/main/Rank-Word1",
     "https://raw.githubusercontent.com/dracular111/01/main/Lock-Fps",
     "https://raw.githubusercontent.com/dracular111/01/main/Gift-Gem",
+    "https://raw.githubusercontent.com/dracular111/01/main/Trackyummy",
+    "https://raw.githubusercontent.com/dracular111/01/main/Script-Main-Reset",
 }
 
 for _, url in ipairs(scripts) do
@@ -18,5 +18,5 @@ for _, url in ipairs(scripts) do
             print("✅ Đã load: " .. url)
         end
     end)
-    task.wait(0.2) -- nghỉ 0.2 giây tránh spam request
+    task.wait(2) -- nghỉ 0.2 giây tránh spam request
 end
