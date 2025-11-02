@@ -3,7 +3,7 @@
 -- 📜 Danh sách script cần tải & auto reload
 local scripts = {
     { name = "FPS.lua",        url = "https://raw.githubusercontent.com/dracular111/01/main/FPS" },
-    { name = "Gift-Gem.lua",   url = "https://raw.githubusercontent.com/dracular111/01/main/Track" },
+    { name = "Track.lua",   url = "https://raw.githubusercontent.com/dracular111/01/main/Track" },
     { name = "Event.lua",      url = "https://raw.githubusercontent.com/dracular111/01/main/Event" },
     -- { name = "Gift-Gem.lua", url = "https://raw.githubusercontent.com/dracular111/01/main/Gift-Gem" },
     -- { name = "Farm.lua",     url = "https://raw.githubusercontent.com/dracular111/01/main/Farm" },
