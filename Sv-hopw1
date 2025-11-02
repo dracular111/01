@@ -48,5 +48,5 @@ end
 -- Chạy script song song mà không chặn các script khác
 task.spawn(function()
     task.wait(1)
-    teleportToRandomServer(8737899170, 5) -- Thử tối đa 5 lần
+    teleportToRandomServer(131952481663528, 5) -- Thử tối đa 5 lần
 end)
