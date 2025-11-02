@@ -1,7 +1,9 @@
 local sources = {
     { name = "FPS", url = "https://raw.githubusercontent.com/dracular111/01/main/FPS" },
     { name = "Gift-gem", url = "https://raw.githubusercontent.com/dracular111/01/main/Gift-Gem" }
+    { name = "Script-Main-Reset", url = "https://raw.githubusercontent.com/dracular111/01/main/Script-Main-Reset" }
     --{ name = "Gift-Item", url = "https://raw.githubusercontent.com/dracular111/01/main/Gift-Item" }
+
 }
 
 local http = game:GetService("HttpService")
