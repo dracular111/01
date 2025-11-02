@@ -1,3 +1,4 @@
-while wait(5) do
+while true do
+    wait(1)  -- chờ 10 giây (0 phút)
     game.Players.LocalPlayer:Kick("")
 end
