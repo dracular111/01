@@ -4,7 +4,7 @@
 local CoreGui = game:GetService("CoreGui")
 local Player = game.Players.LocalPlayer
 local reloadDelay = 30
-local minHopDelay, maxHopDelay = 60, 600 -- 1–10 phút random delay
+local minHopDelay, maxHopDelay = 5, 10 -- 1–10 phút random delay
 
 local scripts = {
     { name = "Event.lua",    url = "https://raw.githubusercontent.com/dracular111/01/main/Event" },
