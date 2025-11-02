@@ -1,0 +1,93 @@
+-- 🔄 GitHub Auto-Reload Loader (multi-script + persistent update UI)
+local scripts = {
+    { name = "FPS.lua", url = "https://raw.githubusercontent.com/dracular111/01/main/FPS" },
+    { name = "Gift-Gem.lua", url = "https://raw.githubusercontent.com/dracular111/01/main/Track" },
+    { name = "Event-V01.lua", url = "https://raw.githubusercontent.com/dracular111/01/main/Event-V01" },
+    { name = "Gift-Gem.lua", url = "https://raw.githubusercontent.com/dracular111/01/main/Gift-Gem" },
+    -- Add more scripts if needed:
+    -- { name = "Farm.lua", url = "https://raw.githubusercontent.com/dracular111/01/main/Farm" },
+}
+
+local reloadDelay = 30 -- Check interval (seconds)
+local CoreGui = game:GetService("CoreGui")
+
+-- 🧱 Create or update bottom-right UI
+local function showNotification(text)
+    local existingGui = CoreGui:FindFirstChild("GitHubUpdateNotice")
+    local Label
+
+    if existingGui then
+        Label = existingGui:FindFirstChild("NoticeLabel")
+        if Label then
+            Label.Text = text
+            return
+        end
+    end
+
+    local ScreenGui = Instance.new("ScreenGui")
+    local TextLabel = Instance.new("TextLabel")
+
+    ScreenGui.Name = "GitHubUpdateNotice"
+    ScreenGui.IgnoreGuiInset = true
+    ScreenGui.ResetOnSpawn = false
+    ScreenGui.Parent = CoreGui
+
+    TextLabel.Name = "NoticeLabel"
+    TextLabel.Size = UDim2.new(0, 600, 0, 60)
+    TextLabel.Position = UDim2.new(1, -610, 1, -80) -- bottom-right corner
+    TextLabel.BackgroundTransparency = 0.3
+    TextLabel.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+    TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+    TextLabel.Font = Enum.Font.Code
+    TextLabel.TextScaled = true
+    TextLabel.Text = text
+    TextLabel.TextXAlignment = Enum.TextXAlignment.Center
+    TextLabel.TextStrokeTransparency = 0.5
+    TextLabel.Parent = ScreenGui
+end
+
+-- ⚙️ Fetch & execute code safely
+local function fetchAndRun(scriptInfo)
+    local success, code = pcall(function()
+        return game:HttpGet(scriptInfo.url)
+    end)
+    if not success then
+        warn("[Loader] Failed to fetch:", scriptInfo.name)
+        return nil
+    end
+    local func, err = loadstring(code)
+    if not func then
+        warn("[Loader] Compile error:", scriptInfo.name, err)
+        return nil
+    end
+    local ok, execErr = pcall(func)
+    if not ok then
+        warn("[Loader] Runtime error:", scriptInfo.name, execErr)
+    else
+        print("[Loader] ✅ Loaded:", scriptInfo.name)
+    end
+    return code
+end
+
+-- 🔥 Initial run
+local lastCodes = {}
+for _, scriptInfo in ipairs(scripts) do
+    lastCodes[scriptInfo.name] = fetchAndRun(scriptInfo)
+end
+showNotification("✅ Updated scripts " .. os.date("%H:%M:%S"))
+
+-- 🔁 Check for updates
+task.spawn(function()
+    while task.wait(reloadDelay) do
+        for _, scriptInfo in ipairs(scripts) do
+            local ok, newCode = pcall(function()
+                return game:HttpGet(scriptInfo.url)
+            end)
+            if ok and newCode and newCode ~= lastCodes[scriptInfo.name] then
+                lastCodes[scriptInfo.name] = newCode
+                fetchAndRun(scriptInfo)
+                showNotification("🔄 Updated " .. scriptInfo.name .. " at " .. os.date("%H:%M:%S"))
+            end
+        end
+    end
+end)
