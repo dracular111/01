@@ -1,53 +1,68 @@
--- 🔒 Lock-FPS.lua (phiên bản an toàn & gọn nhẹ)
 repeat task.wait() until game:IsLoaded()
 
--- 🧹 Dọn sạch cũ (ngắt connection + dừng thread cũ)
+-- Xóa toàn bộ bản cũ (UI, connections, threads)
 pcall(function()
+    for _, v in pairs(game:GetService("CoreGui"):GetChildren()) do
+        if v.Name == "FPS_UI" then v:Destroy() end
+    end
     if getgenv().fps_loop then
-        getgenv().fps_loop:Disconnect()
+        pcall(function() getgenv().fps_loop:Disconnect() end)
         getgenv().fps_loop = nil
     end
-    getgenv().fps_thread_stop = true
-    task.wait(0.06)
-    if game.CoreGui:FindFirstChild("FPS_UI") then
-        game.CoreGui.FPS_UI:Destroy()
+    if getgenv().fps_thread then
+        getgenv().fps_thread_stop = true
+        getgenv().fps_thread = nil
     end
 end)
+task.wait(5)
 
--- ⚙️ Cấu hình
+-- Cấu hình
 local TARGET_FPS = 5
 local CoreGui = game:GetService("CoreGui")
 local RunService = game:GetService("RunService")
 
+-- UI
 local ScreenGui = Instance.new("ScreenGui")
 local Label = Instance.new("TextLabel")
+local Notice = Instance.new("TextLabel")
 
 ScreenGui.Name = "FPS_UI"
 ScreenGui.IgnoreGuiInset = true
 ScreenGui.ResetOnSpawn = false
 ScreenGui.Parent = CoreGui
 
-Label.Size = UDim2.new(1, 0, 1, 0)
-Label.Position = UDim2.new(0.5, 0, 0.5, 0)
-Label.AnchorPoint = Vector2.new(0.5, 0.5)
+-- Dòng FPS chính (siêu to, trắng, sát đỉnh)
+Label.Size = UDim2.new(0, 1200, 0, 400)
+Label.Position = UDim2.new(0.5, -600, 0, -160)
 Label.BackgroundTransparency = 1
 Label.TextColor3 = Color3.fromRGB(255, 255, 255)
 Label.Font = Enum.Font.Code
 Label.TextScaled = false
-Label.TextSize = 480 -- ⚡ siêu to (gấp đôi bản trước)
+Label.TextSize = 1000
 Label.Text = "FPS: 00"
 Label.TextXAlignment = Enum.TextXAlignment.Center
-Label.TextYAlignment = Enum.TextYAlignment.Center
 Label.TextStrokeTransparency = 0.4
 Label.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
 Label.Parent = ScreenGui
 
--- ⚙️ Set giới hạn FPS nếu executor hỗ trợ
-if setfpscap then
-    pcall(setfpscap, TARGET_FPS)
-end
+-- Dòng thông báo bên dưới
+Notice.Size = UDim2.new(1, 0, 0, 120)
+Notice.Position = UDim2.new(0, 0, 0.55, 0)
+Notice.BackgroundTransparency = 1
+Notice.TextColor3 = Color3.fromRGB(255, 255, 0)
+Notice.Font = Enum.Font.Code
+Notice.TextScaled = false
+Notice.TextSize = 100
+Notice.Text = "LOCK FPS:" .. TARGET_FPS
+Notice.TextXAlignment = Enum.TextXAlignment.Center
+Notice.TextStrokeTransparency = 0.3
+Notice.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
+Notice.Parent = Label
 
--- 📉 Ép cứng FPS bằng delay giữa frame
+-- Giới hạn FPS
+if setfpscap then pcall(setfpscap, TARGET_FPS) end
+
+-- Ép cứng FPS
 local targetDelay = 1 / TARGET_FPS
 local lastTick = tick()
 local fps = 0
@@ -62,15 +77,15 @@ getgenv().fps_loop = RunService.RenderStepped:Connect(function(dt)
     lastTick = tick()
 end)
 
--- 🔄 Cập nhật FPS mỗi 0.5s, tự dừng nếu Label bị xóa
+-- Cập nhật FPS
 task.spawn(function()
-    while task.wait(0.5) do
+    while task.wait(5) do
         if not Label or not Label.Parent then break end
         Label.Text = "FPS: " .. tostring(fps)
     end
 end)
 
--- 💤 Duy trì setfpscap ổn định
+-- Giữ ổn định setfpscap
 getgenv().fps_thread_stop = false
 getgenv().fps_thread = task.spawn(function()
     while not getgenv().fps_thread_stop do
