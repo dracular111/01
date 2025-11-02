@@ -7,7 +7,7 @@ end
 
 -- 🔧 Giới hạn FPS
 if setfpscap then
-    setfpscap(30)
+    setfpscap(5)
 end
 
 -- 🧱 Tạo UI hiển thị FPS
@@ -49,11 +49,11 @@ task.spawn(function()
     end
 end)
 
--- 🔄 Duy trì giới hạn FPS = 15
+-- 🔄 Duy trì giới hạn FPS = 5
 task.spawn(function()
     while true do
         if setfpscap then
-            pcall(setfpscap, 30)
+            pcall(setfpscap, 5)
         end
         task.wait(10)
     end
