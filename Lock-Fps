@@ -1,15 +1,13 @@
--- Lock-Fps.lua (phiên bản đã sửa lỗi cú pháp và an toàn khi reload)
+-- 🔒 Lock-FPS.lua (phiên bản an toàn & gọn nhẹ)
 repeat task.wait() until game:IsLoaded()
 
--- 🧹 Dọn sạch cũ (ngắt connection, báo thread dừng)
+-- 🧹 Dọn sạch cũ (ngắt connection + dừng thread cũ)
 pcall(function()
     if getgenv().fps_loop then
         getgenv().fps_loop:Disconnect()
         getgenv().fps_loop = nil
     end
-    -- đặt cờ để thread cũ dừng
     getgenv().fps_thread_stop = true
-    -- đợi 0.05s để thread cũ thoát vòng lặp
     task.wait(0.06)
     if game.CoreGui:FindFirstChild("FPS_UI") then
         game.CoreGui.FPS_UI:Destroy()
@@ -17,21 +15,11 @@ pcall(function()
 end)
 
 -- ⚙️ Cấu hình
-local TARGET_FPS = 3 -- chỉnh ở đây
+local TARGET_FPS = 20
 local CoreGui = game:GetService("CoreGui")
 local RunService = game:GetService("RunService")
 
--- 🖥 UI (tối giản, chỉ hiển thị FPS siêu to giữa màn hình)
-local ScreenGui = Instance.new("ScreenGui")
-local Frame = Instance.new("Frame")
-local Label = Instance.new("TextLabel")
-
-ScreenGui.Name = "FPS_UI"
-ScreenGui.IgnoreGuiInset = true
-ScreenGui.ResetOnSpawn = false
-ScreenGui.Parent = CoreGui
-
--- 🖥 UI (chỉ hiển thị chữ FPS siêu to, không nền)
+-- 🖥 UI chỉ có chữ FPS, giữa màn hình, siêu to
 local ScreenGui = Instance.new("ScreenGui")
 local Label = Instance.new("TextLabel")
 
@@ -40,28 +28,22 @@ ScreenGui.IgnoreGuiInset = true
 ScreenGui.ResetOnSpawn = false
 ScreenGui.Parent = CoreGui
 
--- ⚡ Chữ FPS siêu to, giữa màn hình
-Label.Size = UDim2.new(0, 1000, 0, 400)
-Label.Position = UDim2.new(0.5, -500, 0.5, -200)
-Label.BackgroundTransparency = 1 -- trong suốt hoàn toàn
+Label.Size = UDim2.new(1, 0, 1, 0)
+Label.Position = UDim2.new(0.5, 0, 0.5, 0)
+Label.AnchorPoint = Vector2.new(0.5, 0.5)
+Label.BackgroundTransparency = 1
 Label.TextColor3 = Color3.fromRGB(255, 255, 255)
 Label.Font = Enum.Font.Code
 Label.TextScaled = false
-Label.TextSize = 480
+Label.TextSize = 480 -- ⚡ siêu to (gấp đôi bản trước)
 Label.Text = "FPS: 00"
 Label.TextXAlignment = Enum.TextXAlignment.Center
 Label.TextYAlignment = Enum.TextYAlignment.Center
-Label.TextStrokeTransparency = 0.3
+Label.TextStrokeTransparency = 0.4
 Label.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
 Label.Parent = ScreenGui
 
--- Hiển thị tạm
-task.spawn(function()
-    Notice.Text = "Cập nhật script mới nhất ✅"
-    task.wait(2)
-end)
-
--- ⚙️ Thử setfpscap nếu executor hỗ trợ
+-- ⚙️ Set giới hạn FPS nếu executor hỗ trợ
 if setfpscap then
     pcall(setfpscap, TARGET_FPS)
 end
@@ -71,7 +53,6 @@ local targetDelay = 1 / TARGET_FPS
 local lastTick = tick()
 local fps = 0
 
--- Connect RenderStepped (lưu connection để có thể Disconnect khi reload)
 getgenv().fps_loop = RunService.RenderStepped:Connect(function(dt)
     fps = math.floor(1 / (dt > 0 and dt or 0.0001))
     local now = tick()
@@ -82,14 +63,15 @@ getgenv().fps_loop = RunService.RenderStepped:Connect(function(dt)
     lastTick = tick()
 end)
 
--- Cập nhật text mỗi 0.5s
+-- 🔄 Cập nhật FPS mỗi 0.5s, tự dừng nếu Label bị xóa
 task.spawn(function()
     while task.wait(0.5) do
+        if not Label or not Label.Parent then break end
         Label.Text = "FPS: " .. tostring(fps)
     end
 end)
 
--- 💤 Thread giữ setfpscap ổn định, có thể dừng bằng cờ
+-- 💤 Duy trì setfpscap ổn định
 getgenv().fps_thread_stop = false
 getgenv().fps_thread = task.spawn(function()
     while not getgenv().fps_thread_stop do
