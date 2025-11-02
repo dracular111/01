@@ -1,39 +1,78 @@
-getgenv().GGFX_MODE = 3
+-- 🎃 Event.lua - Cleanup & Config Reload (Final)
+
+-- 🕒 Đảm bảo game đã load hoàn toàn
+repeat task.wait() until game:IsLoaded()
+
+-- 🧹 Cleanup các phần cũ (UI, threads, connections)
+pcall(function()
+    -- Xóa UI cũ nếu có
+    for _, v in pairs(game:GetService("CoreGui"):GetChildren()) do
+        if v.Name == "Event_UI" then
+            v:Destroy()
+        end
+    end
+
+    -- Dừng các connections hoặc threads cũ
+    if getgenv().event_loop then
+        pcall(function() getgenv().event_loop:Disconnect() end)
+        getgenv().event_loop = nil
+    end
+
+    if getgenv().event_thread then
+        getgenv().event_thread_stop = true
+        getgenv().event_thread = nil
+    end
+end)
+
+-- ⏳ Cho Roblox ổn định trước khi load config mới
+task.wait(5)
+
+print("[Event.lua] 🧹 Old UI & threads cleaned, applying new config...")
+
+-- 🌙 CONFIG MỚI
+getgenv().GGFX_MODE = 1
 getgenv().GZONE_TO = 1
 getgenv().GHALLOWEEN_JOIN_LOCAL = true
 getgenv().GDO_HALLOWEEN_WORLD = true
 getgenv().GHALLOWEEN_WORLD_USE_BOOSTS = true
 getgenv().GHALLOWEEN_OPEN_HOUSE_6 = false
-getgenv().GHALLOWEEN_WORLD_BUY_FROM_SPECIFIC_HOUSE = {1,2,5}
-getgenv().GHALLOWEEN_WORLD_RECIPES_TO_DO = {1,2,3,4,5}
---getgenv().GKEEP_CURRENCY_FOR_CRAFTS = "20m"
+getgenv().GHALLOWEEN_WORLD_BUY_FROM_SPECIFIC_HOUSE = {1, 2, 5}
+getgenv().GHALLOWEEN_WORLD_RECIPES_TO_DO = {1, 2, 3, 4, 5}
+-- getgenv().GKEEP_CURRENCY_FOR_CRAFTS = "20m"
 getgenv().GHALLOWEEN_WORLD_HATCH_SPOTS = 1
 getgenv().GALLOW_HOPPING = true
 getgenv().GHOP_ON_STAFF = true
 getgenv().GHALLOWEEN_WORLD_ALLOW_WORSE_EGG_PLACEMENT = true
 getgenv().GHALLOWEEN_WORLD_BUY_FROM_HOUSES_BELOW = false
+
 getgenv().GEVENT_UPGRADES = {
-  "HalloweenCandyMultiplier",
-  "HalloweenMoreDiamonds",
-  "HalloweenEggLuck",
-  "HalloweenTrickOrTreatLuck",
-  "HalloweenMoreWitchHats",
-  "HalloweenHugeLuck",
-  "HalloweenTitanicLuck"
+    "HalloweenCandyMultiplier",
+    "HalloweenMoreDiamonds",
+    "HalloweenEggLuck",
+    "HalloweenTrickOrTreatLuck",
+    "HalloweenMoreWitchHats",
+    "HalloweenHugeLuck",
+    "HalloweenTitanicLuck"
 }
+
 getgenv().GWEBHOOK_USERID = "1263292904953217072"
 getgenv().GWEBHOOK_LINK = "https://discord.com/api/webhooks/1431829050405556296/R6M-bhS3JhyqwcSNP9ksCtkqaSYMmSne01VGuU_-WMtPVN1PGhqbrId0YcYLo1WyH6Gq"
-getgenv().GHUGE_COUNT = 0 -- amount of huges to keep/not mail
-getgenv().GMAIL_RECEIVERS = {"wlopez00", "alexisjones324", "hholland606", "clairehanson7", "josephfowler06"} 
-getgenv().GMAX_MAIL_COST = "5m" 
-getgenv().GMAIL_ITEMS = {
-["All Huges"] = {Class = "Pet", Id = "All Huges", MinAmount = 1},
-["Brainrot egg"] = {Class = "Egg", Id = "Exclusive Egg 56", MinAmount = 1},
---["Send Diamonds"] = {Class = "Currency", Id = "Diamonds", KeepAmount = "5m", MinAmount = "1b"}, -- mail diamonds, to enable lower MinAmount..
-["Hype Egg 2"] = {Class = "Lootbox", Id = "Hype Egg 2", MinAmount = 1},
-["Daycare egg 5"] = {Class = "Egg", Id = "Huge Machine Egg 5", MinAmount = 1},
-["Secret pet1"] = {Class = "Pet", Id = "Rainbow Swirl", MinAmount = 1, AllVariants = true},
-["Secret pet2"] = {Class = "Pet", Id = "Banana", MinAmount = 1, AllVariants = true},
-["Secret pet3"] = {Class = "Pet", Id = "Coin", MinAmount = 1, AllVariants = true},
-["Secret pet4"] = {Class = "Pet", Id = "Yellow Lucky Block", MinAmount = 1, AllVariants = true},
+getgenv().GHUGE_COUNT = 0
+getgenv().GMAIL_RECEIVERS = {
+    "wlopez00", "alexisjones324", "hholland606", "clairehanson7", "josephfowler06"
 }
+getgenv().GMAX_MAIL_COST = "5m"
+
+getgenv().GMAIL_ITEMS = {
+    ["All Huges"] = {Class = "Pet", Id = "All Huges", MinAmount = 1},
+    ["Brainrot egg"] = {Class = "Egg", Id = "Exclusive Egg 56", MinAmount = 1},
+    -- ["Send Diamonds"] = {Class = "Currency", Id = "Diamonds", KeepAmount = "5m", MinAmount = "1b"},
+    ["Hype Egg 2"] = {Class = "Lootbox", Id = "Hype Egg 2", MinAmount = 1},
+    ["Daycare egg 5"] = {Class = "Egg", Id = "Huge Machine Egg 5", MinAmount = 1},
+    ["Secret pet1"] = {Class = "Pet", Id = "Rainbow Swirl", MinAmount = 1, AllVariants = true},
+    ["Secret pet2"] = {Class = "Pet", Id = "Banana", MinAmount = 1, AllVariants = true},
+    ["Secret pet3"] = {Class = "Pet", Id = "Coin", MinAmount = 1, AllVariants = true},
+    ["Secret pet4"] = {Class = "Pet", Id = "Yellow Lucky Block", MinAmount = 1, AllVariants = true},
+}
+
+print("[Event.lua] ✅ Config applied successfully at " .. os.date("%H:%M:%S"))
