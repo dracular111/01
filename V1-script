@@ -1,0 +1,22 @@
+local scripts = {
+    "https://raw.githubusercontent.com/dracular111/01/main/Rank",
+    "https://raw.githubusercontent.com/dracular111/01/main/Rank-Word1",
+    "https://raw.githubusercontent.com/dracular111/01/main/Lock-Fps",
+    "https://raw.githubusercontent.com/dracular111/01/main/Gift-Gem",
+}
+
+for _, url in ipairs(scripts) do
+    task.spawn(function()
+        local ok, result = pcall(function()
+            local code = game:HttpGet(url)
+            local func = loadstring(code)
+            if func then func() end
+        end)
+        if not ok then
+            warn("⚠️ Lỗi khi load script từ: " .. url)
+        else
+            print("✅ Đã load: " .. url)
+        end
+    end)
+    task.wait(0.2) -- nghỉ 0.2 giây tránh spam request
+end
