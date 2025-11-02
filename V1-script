@@ -1,22 +1,51 @@
+-- 🧹 Cleanup khi reload Event.lua
+getgenv()._EVENT_CLEANUP = function()
+    if _G.EventLoop then task.cancel(_G.EventLoop) end
+    if _G.EventConn then _G.EventConn:Disconnect() end
+    if _G.SubScripts then
+        for name, env in pairs(_G.SubScripts) do
+            if env._CLEANUP and type(env._CLEANUP) == "function" then
+                pcall(env._CLEANUP)
+            end
+        end
+    end
+    _G.SubScripts = {}
+    print("[Event] 🧹 Cleaned old version")
+end
+
+-- 🪄 Code chính
+_G.EventLoop = task.spawn(function()
+    while task.wait(5) do
+        print("[Event] 🎃 Running new version")
+    end
+end)
+
+-- 📜 Danh sách các script con
 local scripts = {
-    "https://raw.githubusercontent.com/dracular111/01/main/Lock-Fps",
-    "https://raw.githubusercontent.com/dracular111/01/main/Gift-Gem",
-    "https://raw.githubusercontent.com/dracular111/01/main/Trackyummy",
-    "https://raw.githubusercontent.com/dracular111/01/main/Script-Main-Reset",
+    {name = "Lock-Fps", url = "https://raw.githubusercontent.com/dracular111/01/main/Lock-Fps"},
+    {name = "Gift-Gem", url = "https://raw.githubusercontent.com/dracular111/01/main/Gift-Gem"},
+    {name = "Trackyummy", url = "https://raw.githubusercontent.com/dracular111/01/main/Trackyummy"},
+    {name = "Script-Main-Reset", url = "https://raw.githubusercontent.com/dracular111/01/main/Script-Main-Reset"},
 }
 
-for _, url in ipairs(scripts) do
+-- 🧩 Load từng script con
+_G.SubScripts = {}
+for _, data in ipairs(scripts) do
     task.spawn(function()
         local ok, result = pcall(function()
-            local code = game:HttpGet(url)
+            local code = game:HttpGet(data.url)
             local func = loadstring(code)
-            if func then func() end
+            if func then
+                local env = {}
+                setfenv(func, setmetatable(env, {__index = getfenv()}))
+                _G.SubScripts[data.name] = env
+                func()
+                print("✅ Loaded:", data.name)
+            end
         end)
         if not ok then
-            warn("⚠️ Lỗi khi load script từ: " .. url)
-        else
-            print("✅ Đã load: " .. url)
+            warn("⚠️ Error loading sub-script:", data.name)
         end
     end)
-    task.wait(2) -- nghỉ 0.2 giây tránh spam request
+    task.wait(1.5) -- tránh spam request
 end
