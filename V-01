@@ -1,7 +1,7 @@
 local sources = {
     { name = "FPS", url = "https://raw.githubusercontent.com/dracular111/01/main/FPS" },
     { name = "Gift-gem", url = "https://raw.githubusercontent.com/dracular111/01/main/Gift-Gem" }
-    { name = "Script-Reset", url = "https://raw.githubusercontent.com/dracular111/01/main/Script-Reset" }
+    { name = "Reset", url = "https://raw.githubusercontent.com/dracular111/01/main/Reset" }
     --{ name = "Gift-Item", url = "https://raw.githubusercontent.com/dracular111/01/main/Gift-Item" }
 
 }
