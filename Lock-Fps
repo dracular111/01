@@ -1,6 +1,11 @@
 repeat task.wait() until game:IsLoaded()
 
--- 🔧 Giới hạn FPS ở mức 5
+-- 🧹 Xóa UI cũ nếu đã tồn tại
+if game.CoreGui:FindFirstChild("FPS_UI") then
+    game.CoreGui.FPS_UI:Destroy()
+end
+
+-- 🔧 Giới hạn FPS
 if setfpscap then
     setfpscap(15)
 end
@@ -18,7 +23,7 @@ ScreenGui.Parent = CoreGui
 
 Frame.Name = "FPSFrame"
 Frame.Size = UDim2.new(0, 130, 0, 40)
-Frame.Position = UDim2.new(1, -150, 0, 50) -- góc phải trên
+Frame.Position = UDim2.new(1, -150, 0, 50)
 Frame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
 Frame.BackgroundTransparency = 0.3
 Frame.BorderSizePixel = 0
@@ -32,7 +37,7 @@ TextLabel.TextScaled = true
 TextLabel.Text = "FPS: 0"
 TextLabel.Parent = Frame
 
--- 📈 Cập nhật FPS thật mỗi 0.5 giây
+-- 📈 Cập nhật FPS
 task.spawn(function()
     local RunService = game:GetService("RunService")
     local fps = 0
@@ -44,7 +49,7 @@ task.spawn(function()
     end
 end)
 
--- 🔄 Duy trì giới hạn FPS = 5 liên tục (phòng khi game đổi)
+-- 🔄 Duy trì giới hạn FPS = 15
 task.spawn(function()
     while true do
         if setfpscap then
