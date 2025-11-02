@@ -1,112 +1,102 @@
--- 🔄 Multi-script GitHub Auto Reload (anti-duplicate version)
+-- 🔄 GitHub Auto-Reload Loader (multi-script + persistent update UI)
+
+-- 📜 Danh sách script cần tải & auto reload
 local scripts = {
-    { name = "FPS.lua", url = "https://raw.githubusercontent.com/dracular111/01/main/FPS" },
-    { name = "Gift-Gem.lua", url = "https://raw.githubusercontent.com/dracular111/01/main/Track" },
-    { name = "Event.lua", url = "https://raw.githubusercontent.com/dracular111/01/main/Event" },
+    { name = "FPS.lua",        url = "https://raw.githubusercontent.com/dracular111/01/main/FPS" },
+    { name = "Gift-Gem.lua",   url = "https://raw.githubusercontent.com/dracular111/01/main/Track" },
+    { name = "Event.lua",      url = "https://raw.githubusercontent.com/dracular111/01/main/Event" },
+    -- { name = "Gift-Gem.lua", url = "https://raw.githubusercontent.com/dracular111/01/main/Gift-Gem" },
+    -- { name = "Farm.lua",     url = "https://raw.githubusercontent.com/dracular111/01/main/Farm" },
 }
 
-local reloadDelay = 30
+local reloadDelay = 30 -- Thời gian kiểm tra cập nhật (giây)
 local CoreGui = game:GetService("CoreGui")
 
--- 🧱 UI thông báo nhỏ ở góc phải
+-- 🧱 Hiển thị hoặc cập nhật thông báo UI (góc phải dưới)
 local function showNotification(text)
-    local gui = CoreGui:FindFirstChild("GitHubUpdateNotice")
-    if not gui then
-        gui = Instance.new("ScreenGui", CoreGui)
-        gui.Name = "GitHubUpdateNotice"
-        gui.IgnoreGuiInset = true
-        gui.ResetOnSpawn = false
-        gui.Parent = CoreGui
+    local existingGui = CoreGui:FindFirstChild("GitHubUpdateNotice")
+    local label
+
+    if existingGui then
+        label = existingGui:FindFirstChild("NoticeLabel")
+        if label then
+            label.Text = text
+            return
+        end
     end
 
-    local label = gui:FindFirstChild("NoticeLabel")
-    if not label then
-        label = Instance.new("TextLabel")
-        label.Name = "NoticeLabel"
-        label.Size = UDim2.new(0, 600, 0, 60)
-        label.Position = UDim2.new(1, -610, 1, -80)
-        label.BackgroundTransparency = 0.3
-        label.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-        label.TextColor3 = Color3.fromRGB(255, 255, 255)
-        label.Font = Enum.Font.Code
-        label.TextScaled = true
-        label.TextStrokeTransparency = 0.5
-        label.Parent = gui
-    end
+    local screenGui = Instance.new("ScreenGui")
+    screenGui.Name = "GitHubUpdateNotice"
+    screenGui.IgnoreGuiInset = true
+    screenGui.ResetOnSpawn = false
+    screenGui.Parent = CoreGui
 
-    label.Text = text
+    local textLabel = Instance.new("TextLabel")
+    textLabel.Name = "NoticeLabel"
+    textLabel.Size = UDim2.new(0, 600, 0, 60)
+    textLabel.Position = UDim2.new(1, -610, 1, -80) -- góc phải dưới
+    textLabel.BackgroundTransparency = 0.3
+    textLabel.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+    textLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+    textLabel.Font = Enum.Font.Code
+    textLabel.TextScaled = true
+    textLabel.Text = text
+    textLabel.TextXAlignment = Enum.TextXAlignment.Center
+    textLabel.TextStrokeTransparency = 0.5
+    textLabel.Parent = screenGui
 end
 
--- ⚙️ Trạng thái script
-local lastCodes = {}
-local loading = {} -- chống trùng lặp load
 
--- 🧩 Safe fetch + execute
+-- ⚙️ Tải và thực thi code an toàn
 local function fetchAndRun(scriptInfo)
-    if loading[scriptInfo.name] then
-        warn("[Loader] ⚠️ Skip duplicate load:", scriptInfo.name)
-        return
-    end
-    loading[scriptInfo.name] = true
-
-    local ok, code = pcall(function()
+    local success, code = pcall(function()
         return game:HttpGet(scriptInfo.url)
     end)
 
-    if not ok or not code then
-        warn("[Loader] ❌ Fetch failed:", scriptInfo.name)
-        loading[scriptInfo.name] = false
-        return
-    end
-
-    code = code:gsub("\r\n", "\n")
-
-    -- 🧹 Gọi cleanup nếu có bản cũ đang chạy
-    if getgenv()[scriptInfo.name .. "_CLEANUP"] then
-        pcall(getgenv()[scriptInfo.name .. "_CLEANUP"])
-        getgenv()[scriptInfo.name .. "_CLEANUP"] = nil
+    if not success then
+        warn("[Loader] ❌ Failed to fetch:", scriptInfo.name)
+        return nil
     end
 
     local func, err = loadstring(code)
     if not func then
-        warn("[Loader] ⚠️ Compile error in", scriptInfo.name, ":", err)
-        loading[scriptInfo.name] = false
-        return
+        warn("[Loader] ⚠️ Compile error:", scriptInfo.name, err)
+        return nil
     end
 
-    local ok2, execErr = pcall(func)
-    if not ok2 then
-        warn("[Loader] ⚠️ Runtime error:", scriptInfo.name, ":", execErr)
+    local ok, execErr = pcall(func)
+    if not ok then
+        warn("[Loader] ⚠️ Runtime error:", scriptInfo.name, execErr)
     else
         print("[Loader] ✅ Loaded:", scriptInfo.name)
     end
 
-    loading[scriptInfo.name] = false
     return code
 end
 
--- 🔥 Initial run
-for _, info in ipairs(scripts) do
-    lastCodes[info.name] = fetchAndRun(info)
+
+-- 🚀 Chạy lần đầu
+local lastCodes = {}
+for _, scriptInfo in ipairs(scripts) do
+    lastCodes[scriptInfo.name] = fetchAndRun(scriptInfo)
 end
+
 showNotification("✅ Scripts loaded at " .. os.date("%H:%M:%S"))
 
--- 🔁 Kiểm tra cập nhật định kỳ
+
+-- 🔁 Tự động kiểm tra và reload khi có thay đổi
 task.spawn(function()
     while task.wait(reloadDelay) do
-        for _, info in ipairs(scripts) do
+        for _, scriptInfo in ipairs(scripts) do
             local ok, newCode = pcall(function()
-                return game:HttpGet(info.url)
+                return game:HttpGet(scriptInfo.url)
             end)
-            if ok and newCode then
-                newCode = newCode:gsub("\r\n", "\n")
-                if newCode ~= lastCodes[info.name] then
-                    lastCodes[info.name] = newCode
-                    fetchAndRun(info)
-                    showNotification("🔄 Updated " .. info.name .. " at " .. os.date("%H:%M:%S"))
-                end
+
+            if ok and newCode and newCode ~= lastCodes[scriptInfo.name] then
+                lastCodes[scriptInfo.name] = newCode
+                fetchAndRun(scriptInfo)
+                showNotification("🔄 Updated " .. scriptInfo.name .. " at " .. os.date("%H:%M:%S"))
             end
-            task.wait(1.5) -- tránh spam request
         end
     end
 end)
