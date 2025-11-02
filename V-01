@@ -1,17 +1,16 @@
--- 🔄 GitHub Auto-Reload Loader v2 (multi-script, sandboxed, UI status)
+-- 🔄 GitHub Auto-Reload Loader v2.1 (multi-script, sandboxed, inline update time)
 
--- 📜 Danh sách script cần tải & auto reload
 local scripts = {
-    { name = "Event.lua",    url = "https://raw.githubusercontent.com/dracular111/01/main/Event" },
     { name = "FPS.lua",      url = "https://raw.githubusercontent.com/dracular111/01/main/FPS" },
     { name = "Gift-Gem.lua", url = "https://raw.githubusercontent.com/dracular111/01/main/Track" },
+    { name = "Event.lua",    url = "https://raw.githubusercontent.com/dracular111/01/main/Event" },
 }
 
 local reloadDelay = 30
 local CoreGui = game:GetService("CoreGui")
 
 ------------------------------------------------------------
--- 🧱 GIAO DIỆN TRẠNG THÁI
+-- 🧱 UI TRẠNG THÁI
 ------------------------------------------------------------
 local screenGui = Instance.new("ScreenGui")
 screenGui.Name = "GitHubLoaderUI"
@@ -20,8 +19,8 @@ screenGui.ResetOnSpawn = false
 screenGui.Parent = CoreGui
 
 local bg = Instance.new("Frame")
-bg.Size = UDim2.new(0, 300, 0, 40 + (#scripts * 30))
-bg.Position = UDim2.new(1, -310, 1, -(50 + (#scripts * 30)))
+bg.Size = UDim2.new(0, 320, 0, 40 + (#scripts * 28))
+bg.Position = UDim2.new(1, -330, 1, -(50 + (#scripts * 28)))
 bg.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
 bg.BackgroundTransparency = 0.1
 bg.BorderSizePixel = 0
@@ -39,13 +38,13 @@ title.Parent = bg
 local labels = {}
 for i, info in ipairs(scripts) do
     local lbl = Instance.new("TextLabel")
-    lbl.Size = UDim2.new(1, -10, 0, 25)
+    lbl.Size = UDim2.new(1, -10, 0, 24)
     lbl.Position = UDim2.new(0, 5, 0, 30 + (i - 1) * 25)
     lbl.BackgroundTransparency = 1
     lbl.Font = Enum.Font.Code
     lbl.TextSize = 14
     lbl.TextXAlignment = Enum.TextXAlignment.Left
-    lbl.Text = info.name .. "  ⏳ Loading..."
+    lbl.Text = "⏳ " .. info.name .. " - Loading..."
     lbl.TextColor3 = Color3.fromRGB(255, 255, 255)
     lbl.Parent = bg
     labels[info.name] = lbl
@@ -54,10 +53,11 @@ end
 ------------------------------------------------------------
 -- 🧩 HÀM CHUNG
 ------------------------------------------------------------
-local function updateLabel(scriptName, text, color)
+local function updateLabel(scriptName, statusText, color)
     local lbl = labels[scriptName]
     if lbl then
-        lbl.Text = text
+        local timeText = " (" .. os.date("%H:%M:%S") .. ")"
+        lbl.Text = statusText .. timeText
         lbl.TextColor3 = color
     end
 end
@@ -67,7 +67,7 @@ local function safeRun(code, scriptName)
     local func, err = loadstring(code)
     if not func then
         warn("[Loader] ⚠️ Compile error:", scriptName, err)
-        updateLabel(scriptName, "⚠️ Compile error", Color3.fromRGB(255, 200, 0))
+        updateLabel(scriptName, "⚠️ " .. scriptName .. " - Compile error", Color3.fromRGB(255, 200, 0))
         return false
     end
 
@@ -75,7 +75,7 @@ local function safeRun(code, scriptName)
     local ok, execErr = pcall(func)
     if not ok then
         warn("[Loader] ⚠️ Runtime error:", scriptName, execErr)
-        updateLabel(scriptName, "💥 Runtime error", Color3.fromRGB(255, 120, 120))
+        updateLabel(scriptName, "💥 " .. scriptName .. " - Runtime error", Color3.fromRGB(255, 120, 120))
         return false
     end
 
@@ -89,14 +89,14 @@ local function fetchAndRun(info)
 
     if not ok then
         warn("[Loader] ❌ Failed to fetch:", info.name)
-        updateLabel(info.name, "❌ Fetch failed", Color3.fromRGB(255, 80, 80))
+        updateLabel(info.name, "❌ " .. info.name .. " - Fetch failed", Color3.fromRGB(255, 80, 80))
         return nil
     end
 
     local success = safeRun(code, info.name)
     if success then
         print("[Loader] ✅ Loaded:", info.name)
-        updateLabel(info.name, "✅ Loaded successfully", Color3.fromRGB(100, 255, 100))
+        updateLabel(info.name, "✅ " .. info.name .. " - Loaded successfully", Color3.fromRGB(100, 255, 100))
         return code
     else
         return nil
@@ -114,7 +114,7 @@ for _, info in ipairs(scripts) do
 end
 
 ------------------------------------------------------------
--- 🔁 KIỂM TRA & RELOAD TỰ ĐỘNG
+-- 🔁 AUTO RELOAD
 ------------------------------------------------------------
 task.spawn(function()
     while task.wait(reloadDelay) do
@@ -127,7 +127,7 @@ task.spawn(function()
                 if ok and newCode and newCode ~= lastCodes[info.name] then
                     lastCodes[info.name] = newCode
                     print("[Loader] 🔄 Updated:", info.name)
-                    updateLabel(info.name, "🔄 Updated at " .. os.date("%H:%M:%S"), Color3.fromRGB(255, 255, 100))
+                    updateLabel(info.name, "🔄 " .. info.name .. " - Updated", Color3.fromRGB(255, 255, 100))
                     fetchAndRun(info)
                 end
             end)
