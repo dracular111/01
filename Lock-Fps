@@ -64,6 +64,6 @@ getgenv().fps_thread = task.spawn(function()
         if setfpscap then
             pcall(setfpscap, TARGET_FPS)
         end
-        task.wait(10)
+        task.wait(5)
     end
 end)
