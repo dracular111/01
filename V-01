@@ -7,19 +7,26 @@ local sources = {
 
 local http = game:GetService("HttpService")
 
+-- 🧹 Xóa UI cũ nếu có
+local oldGui = CoreGui:FindFirstChild("AutoUpdaterUI")
+if oldGui then
+    oldGui:Destroy()
+end
+
+-- 🪄 UI gọn, trong suốt, không trùng
 local ScreenGui = Instance.new("ScreenGui")
 ScreenGui.Name = "AutoUpdaterUI"
 ScreenGui.ResetOnSpawn = false
-ScreenGui.Parent = game:GetService("CoreGui")
+ScreenGui.Parent = CoreGui
 
 local Frame = Instance.new("Frame")
 Frame.Size = UDim2.new(0, 180, 0, (#sources * 20) + 35)
 Frame.Position = UDim2.new(1, -190, 1, -Frame.Size.Y.Offset - 6)
-Frame.BackgroundTransparency = 1 -- 🧼 Không nền (trong suốt)
+Frame.BackgroundTransparency = 1
 Frame.BorderSizePixel = 0
 Frame.Parent = ScreenGui
 
--- 📐 Căn layout
+-- 📐 Layout
 local UIListLayout = Instance.new("UIListLayout")
 UIListLayout.Padding = UDim.new(0, 3)
 UIListLayout.FillDirection = Enum.FillDirection.Vertical
@@ -27,23 +34,11 @@ UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Left
 UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Top
 UIListLayout.Parent = Frame
 
--- 🏷 Tiêu đề căn trái, in đậm sáng hơn
+-- 🏷 Tiêu đề (chỉ còn 1 dòng)
 local Title = Instance.new("TextLabel")
 Title.Text = "🔁 Auto Script Updater"
 Title.Font = Enum.Font.SourceSansBold
 Title.TextSize = 16
-Title.TextColor3 = Color3.fromRGB(255, 255, 255) -- trắng sáng hơn
-Title.BackgroundTransparency = 1
-Title.Size = UDim2.new(1, -8, 0, 20)
-Title.TextXAlignment = Enum.TextXAlignment.Left
-Title.Position = UDim2.new(0, 4, 0, 0)
-Title.Parent = Frame
-
--- 🏷 Tiêu đề căn trái
-local Title = Instance.new("TextLabel")
-Title.Text = "🔁 Auto Script Updater"
-Title.Font = Enum.Font.SourceSansBold
-Title.TextSize = 15
 Title.TextColor3 = Color3.fromRGB(255, 255, 255)
 Title.BackgroundTransparency = 1
 Title.Size = UDim2.new(1, -8, 0, 20)
