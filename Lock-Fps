@@ -17,7 +17,7 @@ pcall(function()
 end)
 
 -- ⚙️ Cấu hình
-local TARGET_FPS = 5 -- chỉnh ở đây
+local TARGET_FPS = 3 -- chỉnh ở đây
 local CoreGui = game:GetService("CoreGui")
 local RunService = game:GetService("RunService")
 
