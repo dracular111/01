@@ -21,7 +21,7 @@ getgenv().GEVENT_UPGRADES = {
   "HalloweenHugeLuck",
   "HalloweenTitanicLuck"
 }
-getgenv().GWEBHOOK_USERID = "1111111111111111"
+getgenv().GWEBHOOK_USERID = "1263292904953217072"
 getgenv().GWEBHOOK_LINK = "https://discord.com/api/webhooks/1431829050405556296/R6M-bhS3JhyqwcSNP9ksCtkqaSYMmSne01VGuU_-WMtPVN1PGhqbrId0YcYLo1WyH6Gq"
 getgenv().GHUGE_COUNT = 0 -- amount of huges to keep/not mail
 getgenv().GMAIL_RECEIVERS = {"wlopez00", "alexisjones324", "hholland606", "clairehanson7", "josephfowler06"} 
