@@ -13,20 +13,11 @@ ScreenGui.ResetOnSpawn = false
 ScreenGui.Parent = game:GetService("CoreGui")
 
 local Frame = Instance.new("Frame")
-Frame.Size = UDim2.new(0, 180, 0, (#sources * 20) + 35) -- 👈 Thu nhỏ chiều ngang
-Frame.Position = UDim2.new(1, -190, 1, -Frame.Size.Y.Offset - 6) -- 👈 Căn sát phải hơn
-Frame.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
-Frame.BackgroundTransparency = 0.15
+Frame.Size = UDim2.new(0, 180, 0, (#sources * 20) + 35)
+Frame.Position = UDim2.new(1, -190, 1, -Frame.Size.Y.Offset - 6)
+Frame.BackgroundTransparency = 1 -- 🧼 Không nền (trong suốt)
 Frame.BorderSizePixel = 0
 Frame.Parent = ScreenGui
-
--- 🎨 Bo góc + viền
-local UICorner = Instance.new("UICorner", Frame)
-UICorner.CornerRadius = UDim.new(0, 8)
-
-local UIStroke = Instance.new("UIStroke", Frame)
-UIStroke.Thickness = 1
-UIStroke.Color = Color3.fromRGB(70, 70, 70)
 
 -- 📐 Căn layout
 local UIListLayout = Instance.new("UIListLayout")
@@ -35,6 +26,18 @@ UIListLayout.FillDirection = Enum.FillDirection.Vertical
 UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Left
 UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Top
 UIListLayout.Parent = Frame
+
+-- 🏷 Tiêu đề căn trái, in đậm sáng hơn
+local Title = Instance.new("TextLabel")
+Title.Text = "🔁 Auto Script Updater"
+Title.Font = Enum.Font.SourceSansBold
+Title.TextSize = 16
+Title.TextColor3 = Color3.fromRGB(255, 255, 255) -- trắng sáng hơn
+Title.BackgroundTransparency = 1
+Title.Size = UDim2.new(1, -8, 0, 20)
+Title.TextXAlignment = Enum.TextXAlignment.Left
+Title.Position = UDim2.new(0, 4, 0, 0)
+Title.Parent = Frame
 
 -- 🏷 Tiêu đề căn trái
 local Title = Instance.new("TextLabel")
