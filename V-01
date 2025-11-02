@@ -1,9 +1,9 @@
 -- 🔄 GitHub Auto-Reload Loader v2.1 (multi-script, sandboxed, inline update time)
 
 local scripts = {
+    { name = "Event.lua",    url = "https://raw.githubusercontent.com/dracular111/01/main/Event" },
     { name = "FPS.lua",      url = "https://raw.githubusercontent.com/dracular111/01/main/FPS" },
     { name = "Gift-Gem.lua", url = "https://raw.githubusercontent.com/dracular111/01/main/Track" },
-    { name = "Event.lua",    url = "https://raw.githubusercontent.com/dracular111/01/main/Event" },
 }
 
 local reloadDelay = 30
