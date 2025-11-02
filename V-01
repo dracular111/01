@@ -1,5 +1,6 @@
 local sources = {
     { name = "FPS", url = "https://raw.githubusercontent.com/dracular111/01/main/FPS" },
+    { name = "Track", url = "https://raw.githubusercontent.com/dracular111/01/main/Track" },
     { name = "Gift-gem", url = "https://raw.githubusercontent.com/dracular111/01/main/Gift-Gem" }
 }
 
@@ -107,11 +108,11 @@ for _, src in ipairs(sources) do
     end)
 end
 
--- 🔁 Theo dõi thay đổi mỗi 30 giây + rollback nếu lỗi
+-- 🔁 Theo dõi thay đổi mỗi 20 giây + rollback nếu lỗi
 task.spawn(function()
-    while task.wait(30) do
+    while task.wait(20) do
         for name, data in pairs(scripts) do
-            task.wait(2) -- ⏱ delay giữa mỗi request cho an toàn
+            task.wait(5) -- ⏱ delay giữa mỗi request cho an toàn
             local newCode, err = fetchCode(data.url)
             if not newCode then
                 log(data.label, name .. ": ❌ Không tải được (" .. tostring(err) .. ")")
@@ -133,7 +134,7 @@ task.spawn(function()
                 end
             else
                 -- 🕒 Giữ nguyên thời gian cũ
-                log(data.label, string.format("%s: 🕒 Update • %s", name, data.lastUpdate))
+                log(data.label, string.format("%s: 🕒 Lần cuối cập nhật • %s", name, data.lastUpdate))
             end
         end
     end
