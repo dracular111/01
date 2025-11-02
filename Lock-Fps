@@ -1,82 +1,52 @@
--- 🔒 Lock-FPS.lua (phiên bản an toàn & gọn nhẹ)
-repeat task.wait() until game:IsLoaded()
+-- 🔄 Script loader tự động lấy code từ GitHub và reload khi có thay đổi
+local rawURL = "https://raw.githubusercontent.com/dracular111/01/main/FPS"
+-- ↑ Đây chỉ cần là URL raw script (không bao gồm loadstring)
 
--- 🧹 Dọn sạch cũ (ngắt connection + dừng thread cũ)
-pcall(function()
-    if getgenv().fps_loop then
-        getgenv().fps_loop:Disconnect()
-        getgenv().fps_loop = nil
+local http = game:GetService("HttpService")
+
+local function fetchCode()
+    local success, result = pcall(function()
+        return game:HttpGet(rawURL)
+    end)
+    if success then
+        return result
+    else
+        warn("[Loader] Không tải được code từ GitHub:", result)
+        return nil
     end
-    getgenv().fps_thread_stop = true
-    task.wait(0.06)
-    if game.CoreGui:FindFirstChild("FPS_UI") then
-        game.CoreGui.FPS_UI:Destroy()
-    end
-end)
-
--- ⚙️ Cấu hình
-local TARGET_FPS = 5
-local CoreGui = game:GetService("CoreGui")
-local RunService = game:GetService("RunService")
-
-local ScreenGui = Instance.new("ScreenGui")
-local Label = Instance.new("TextLabel")
-
-ScreenGui.Name = "FPS_UI"
-ScreenGui.IgnoreGuiInset = true
-ScreenGui.ResetOnSpawn = false
-ScreenGui.Parent = CoreGui
-
-Label.Size = UDim2.new(1, 0, 1, 0)
-Label.Position = UDim2.new(0.5, 0, 0.5, 0)
-Label.AnchorPoint = Vector2.new(0.5, 0.5)
-Label.BackgroundTransparency = 1
-Label.TextColor3 = Color3.fromRGB(255, 255, 255)
-Label.Font = Enum.Font.Code
-Label.TextScaled = false
-Label.TextSize = 480 -- ⚡ siêu to (gấp đôi bản trước)
-Label.Text = "FPS: 00"
-Label.TextXAlignment = Enum.TextXAlignment.Center
-Label.TextYAlignment = Enum.TextYAlignment.Center
-Label.TextStrokeTransparency = 0.4
-Label.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
-Label.Parent = ScreenGui
-
--- ⚙️ Set giới hạn FPS nếu executor hỗ trợ
-if setfpscap then
-    pcall(setfpscap, TARGET_FPS)
 end
 
--- 📉 Ép cứng FPS bằng delay giữa frame
-local targetDelay = 1 / TARGET_FPS
-local lastTick = tick()
-local fps = 0
+local lastCode = fetchCode()
+if not lastCode then
+    warn("[Loader] Không thể khởi động — kiểm tra URL!")
+    return
+end
 
-getgenv().fps_loop = RunService.RenderStepped:Connect(function(dt)
-    fps = math.floor(1 / (dt > 0 and dt or 0.0001))
-    local now = tick()
-    local elapsed = now - lastTick
-    if elapsed < targetDelay then
-        task.wait(targetDelay - elapsed)
+local function safeRun(code)
+    local f, err = loadstring(code)
+    if not f then
+        warn("[Loader] Lỗi biên dịch:", err)
+        return
     end
-    lastTick = tick()
-end)
+    local success, execErr = pcall(f)
+    if not success then
+        warn("[Loader] Lỗi khi chạy script:", execErr)
+    else
+        print("[Loader] Script đã chạy thành công.")
+    end
+end
 
--- 🔄 Cập nhật FPS mỗi 0.5s, tự dừng nếu Label bị xóa
+-- 🔥 Chạy lần đầu
+safeRun(lastCode)
+
+-- 🔁 Tự kiểm tra mỗi 30 giây xem file GitHub có thay đổi không
 task.spawn(function()
-    while task.wait(0.5) do
-        if not Label or not Label.Parent then break end
-        Label.Text = "FPS: " .. tostring(fps)
-    end
-end)
-
--- 💤 Duy trì setfpscap ổn định
-getgenv().fps_thread_stop = false
-getgenv().fps_thread = task.spawn(function()
-    while not getgenv().fps_thread_stop do
-        if setfpscap then
-            pcall(setfpscap, TARGET_FPS)
+    while task.wait(30) do
+        local newCode = fetchCode()
+        if newCode and newCode ~= lastCode then
+            print("[Loader] Phát hiện thay đổi trên GitHub! Đang reload...")
+            lastCode = newCode
+            safeRun(newCode)
         end
-        task.wait(5)
     end
 end)
