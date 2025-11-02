@@ -1,48 +1,3 @@
--- 🎃 Event.lua - Hot Reload Safe Version
-repeat task.wait() until game:IsLoaded()
-
-print("[Event.lua] 🔁 Initializing or reloading...")
-
--- 🧹 Step 1: Cleanup mọi thứ cũ
-pcall(function()
-    -- Dừng script cũ đang chạy
-    if getgenv()._EVENT_RUNNING then
-        print("[Event.lua] ⏹ Stopping old loop...")
-        getgenv()._EVENT_RUNNING = false
-        task.wait(1)
-    end
-
-    -- Xóa UI cũ
-    for _, v in pairs(game:GetService("CoreGui"):GetChildren()) do
-        if v.Name == "Event_UI" then
-            v:Destroy()
-        end
-    end
-
-    -- Ngắt connection cũ
-    if getgenv().event_connections then
-        for _, conn in pairs(getgenv().event_connections) do
-            if typeof(conn) == "RBXScriptConnection" then
-                conn:Disconnect()
-            end
-        end
-    end
-    getgenv().event_connections = {}
-
-    -- Dừng thread cũ
-    if getgenv().event_thread then
-        getgenv().event_thread_stop = true
-        getgenv().event_thread = nil
-    end
-end)
-
--- ⏳ Chờ Roblox ổn định
-task.wait(5)
-
-print("[Event.lua] 🧹 Old threads, connections, and UI cleaned.")
-
-
--- 🌙 Step 2: Apply CONFIG MỚI
 getgenv().GGFX_MODE = 1
 getgenv().GZONE_TO = 1
 getgenv().GHALLOWEEN_JOIN_LOCAL = true
@@ -85,20 +40,3 @@ getgenv().GMAIL_ITEMS = {
     ["Secret pet3"] = {Class = "Pet", Id = "Coin", MinAmount = 1, AllVariants = true},
     ["Secret pet4"] = {Class = "Pet", Id = "Yellow Lucky Block", MinAmount = 1, AllVariants = true},
 }
-
-print("[Event.lua] ✅ New config loaded successfully.")
-
-
--- 🌀 Step 3: Đánh dấu trạng thái script đang chạy
-getgenv()._EVENT_RUNNING = true
-
-
--- 🔁 Step 4: Ví dụ vòng lặp chính (có thể thay bằng logic thực tế của bạn)
-task.spawn(function()
-    print("[Event.lua] 🎃 Main event loop started.")
-    while getgenv()._EVENT_RUNNING do
-        task.wait(5)
-        print("[Event.lua] 👻 Running event tick @ " .. os.date("%H:%M:%S"))
-    end
-    print("[Event.lua] ⏹ Event loop stopped (reloaded or cleanup).")
-end)
