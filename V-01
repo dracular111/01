@@ -3,7 +3,7 @@
 
 local CoreGui = game:GetService("CoreGui")
 local Player = game.Players.LocalPlayer
-local reloadDelay = 30
+local reloadDelay = 20
 local minHopDelay, maxHopDelay = 5, 10 -- 1–10 phút random delay
 
 local scripts = {
