@@ -1,6 +1,5 @@
 repeat task.wait() until game:IsLoaded()
 
--- Xóa toàn bộ bản cũ (UI, connections, threads)
 pcall(function()
     for _, v in pairs(game:GetService("CoreGui"):GetChildren()) do
         if v.Name == "FPS_UI" then v:Destroy() end
@@ -59,10 +58,8 @@ Notice.TextStrokeTransparency = 0.3
 Notice.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
 Notice.Parent = Label
 
--- Giới hạn FPS
 if setfpscap then pcall(setfpscap, TARGET_FPS) end
 
--- Ép cứng FPS
 local targetDelay = 1 / TARGET_FPS
 local lastTick = tick()
 local fps = 0
@@ -77,7 +74,6 @@ getgenv().fps_loop = RunService.RenderStepped:Connect(function(dt)
     lastTick = tick()
 end)
 
--- Cập nhật FPS
 task.spawn(function()
     while task.wait(5) do
         if not Label or not Label.Parent then break end
@@ -85,7 +81,6 @@ task.spawn(function()
     end
 end)
 
--- Giữ ổn định setfpscap
 getgenv().fps_thread_stop = false
 getgenv().fps_thread = task.spawn(function()
     while not getgenv().fps_thread_stop do
