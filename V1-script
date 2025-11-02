@@ -1,101 +1,144 @@
--- 🔄 GitHub Auto-Reload Loader (multi-script + persistent update UI)
+-- 🔄 Auto Script Updater Pro (by ChatGPT)
+-- Tải nhiều script từ GitHub, reload khi có thay đổi, có UI + rollback an toàn
+-- 🕒 Giữ nguyên thời gian cập nhật cho đến khi có bản mới
 
--- 📜 Danh sách script cần tải & auto reload
-local scripts = {
-    { name = "FPS.lua",        url = "https://raw.githubusercontent.com/dracular111/01/main/FPS" },
-    { name = "Gift-Gem.lua",   url = "https://raw.githubusercontent.com/dracular111/01/main/Track" },
-    { name = "Event.lua",      url = "https://raw.githubusercontent.com/dracular111/01/main/Event" },
-    -- { name = "Gift-Gem.lua", url = "https://raw.githubusercontent.com/dracular111/01/main/Gift-Gem" },
-    -- { name = "Farm.lua",     url = "https://raw.githubusercontent.com/dracular111/01/main/Farm" },
+local sources = {
+    { name = "FPS", url = "https://raw.githubusercontent.com/dracular111/01/main/FPS" },
+    { name = "Track", url = "https://raw.githubusercontent.com/dracular111/01/main/Track" },
+    { name = "Gift-gem", url = "https://raw.githubusercontent.com/dracular111/01/main/Gift-Gem" }
 }
 
-local reloadDelay = 30 -- Thời gian kiểm tra cập nhật (giây)
-local CoreGui = game:GetService("CoreGui")
+local http = game:GetService("HttpService")
 
--- 🧱 Hiển thị hoặc cập nhật thông báo UI (góc phải dưới)
-local function showNotification(text)
-    local existingGui = CoreGui:FindFirstChild("GitHubUpdateNotice")
-    local label
+-- 🪄 UI hiển thị góc phải
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "AutoUpdaterUI"
+ScreenGui.ResetOnSpawn = false
+ScreenGui.Parent = game:GetService("CoreGui")
 
-    if existingGui then
-        label = existingGui:FindFirstChild("NoticeLabel")
-        if label then
-            label.Text = text
+local Frame = Instance.new("Frame")
+Frame.Size = UDim2.new(0, 260, 0, (#sources * 22) + 30)
+Frame.Position = UDim2.new(1, -270, 1, -Frame.Size.Y.Offset - 20)
+Frame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+Frame.BackgroundTransparency = 0.2
+Frame.BorderSizePixel = 0
+Frame.Parent = ScreenGui
+
+local UIListLayout = Instance.new("UIListLayout")
+UIListLayout.Padding = UDim.new(0, 5)
+UIListLayout.FillDirection = Enum.FillDirection.Vertical
+UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Left
+UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Top
+UIListLayout.Parent = Frame
+
+local Title = Instance.new("TextLabel")
+Title.Text = "🔁 Auto Script Updater"
+Title.Font = Enum.Font.SourceSansBold
+Title.TextSize = 18
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.BackgroundTransparency = 1
+Title.Size = UDim2.new(1, 0, 0, 25)
+Title.Parent = Frame
+
+-- 🧩 Hàm tiện ích
+local function log(label, text)
+    label.Text = text
+end
+
+-- ⚙️ Hàm tải script có chống cache
+local function fetchCode(url)
+    local success, result = pcall(function()
+        return game:HttpGet(url .. "?nocache=" .. tick())
+    end)
+    if success then
+        return result
+    else
+        return nil, result
+    end
+end
+
+-- ⚙️ Hàm chạy code an toàn
+local function safeRun(code, scriptName)
+    local f, err = loadstring(code)
+    if not f then
+        warn(string.format("[Loader:%s] Lỗi biên dịch: %s", scriptName, err))
+        return false, err
+    end
+    local success, execErr = pcall(f)
+    if not success then
+        warn(string.format("[Loader:%s] Lỗi khi chạy: %s", scriptName, execErr))
+        return false, execErr
+    end
+    return true
+end
+
+-- 🧠 Lưu thông tin script
+local scripts = {}
+
+for _, src in ipairs(sources) do
+    local lbl = Instance.new("TextLabel")
+    lbl.Font = Enum.Font.SourceSans
+    lbl.TextSize = 16
+    lbl.TextColor3 = Color3.fromRGB(220, 220, 220)
+    lbl.BackgroundTransparency = 1
+    lbl.Size = UDim2.new(1, -10, 0, 20)
+    lbl.TextXAlignment = Enum.TextXAlignment.Left
+    lbl.Parent = Frame
+    lbl.Text = string.format("%s: Đang tải...", src.name)
+
+    scripts[src.name] = {
+        url = src.url,
+        label = lbl,
+        lastCode = nil,
+        backup = nil,
+        lastUpdate = "Chưa cập nhật"
+    }
+
+    -- 🔥 Chạy lần đầu
+    task.spawn(function()
+        local code, err = fetchCode(src.url)
+        if not code then
+            log(lbl, src.name .. ": ❌ Không tải được (" .. tostring(err) .. ")")
             return
         end
-    end
-
-    local screenGui = Instance.new("ScreenGui")
-    screenGui.Name = "GitHubUpdateNotice"
-    screenGui.IgnoreGuiInset = true
-    screenGui.ResetOnSpawn = false
-    screenGui.Parent = CoreGui
-
-    local textLabel = Instance.new("TextLabel")
-    textLabel.Name = "NoticeLabel"
-    textLabel.Size = UDim2.new(0, 600, 0, 60)
-    textLabel.Position = UDim2.new(1, -610, 1, -80) -- góc phải dưới
-    textLabel.BackgroundTransparency = 0.3
-    textLabel.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-    textLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-    textLabel.Font = Enum.Font.Code
-    textLabel.TextScaled = true
-    textLabel.Text = text
-    textLabel.TextXAlignment = Enum.TextXAlignment.Center
-    textLabel.TextStrokeTransparency = 0.5
-    textLabel.Parent = screenGui
-end
-
-
--- ⚙️ Tải và thực thi code an toàn
-local function fetchAndRun(scriptInfo)
-    local success, code = pcall(function()
-        return game:HttpGet(scriptInfo.url)
+        scripts[src.name].lastCode = code
+        local ok = safeRun(code, src.name)
+        if ok then
+            scripts[src.name].lastUpdate = os.date("%H:%M:%S")
+            log(lbl, string.format("%s: ✅ Đã chạy • %s", src.name, scripts[src.name].lastUpdate))
+        else
+            log(lbl, src.name .. ": ⚠️ Lỗi khi chạy")
+        end
     end)
-
-    if not success then
-        warn("[Loader] ❌ Failed to fetch:", scriptInfo.name)
-        return nil
-    end
-
-    local func, err = loadstring(code)
-    if not func then
-        warn("[Loader] ⚠️ Compile error:", scriptInfo.name, err)
-        return nil
-    end
-
-    local ok, execErr = pcall(func)
-    if not ok then
-        warn("[Loader] ⚠️ Runtime error:", scriptInfo.name, execErr)
-    else
-        print("[Loader] ✅ Loaded:", scriptInfo.name)
-    end
-
-    return code
 end
 
-
--- 🚀 Chạy lần đầu
-local lastCodes = {}
-for _, scriptInfo in ipairs(scripts) do
-    lastCodes[scriptInfo.name] = fetchAndRun(scriptInfo)
-end
-
-showNotification("✅ Scripts loaded at " .. os.date("%H:%M:%S"))
-
-
--- 🔁 Tự động kiểm tra và reload khi có thay đổi
+-- 🔁 Theo dõi thay đổi mỗi 30 giây + rollback nếu lỗi
 task.spawn(function()
-    while task.wait(reloadDelay) do
-        for _, scriptInfo in ipairs(scripts) do
-            local ok, newCode = pcall(function()
-                return game:HttpGet(scriptInfo.url)
-            end)
+    while task.wait(30) do
+        for name, data in pairs(scripts) do
+            task.wait(2) -- ⏱ delay giữa mỗi request cho an toàn
+            local newCode, err = fetchCode(data.url)
+            if not newCode then
+                log(data.label, name .. ": ❌ Không tải được (" .. tostring(err) .. ")")
+                continue
+            end
 
-            if ok and newCode and newCode ~= lastCodes[scriptInfo.name] then
-                lastCodes[scriptInfo.name] = newCode
-                fetchAndRun(scriptInfo)
-                showNotification("🔄 Updated " .. scriptInfo.name .. " at " .. os.date("%H:%M:%S"))
+            if newCode ~= data.lastCode then
+                log(data.label, name .. ": ♻️ Phát hiện thay đổi, reload...")
+                data.backup = data.lastCode -- backup bản cũ
+                local ok = safeRun(newCode, name)
+                if ok then
+                    data.lastCode = newCode
+                    data.lastUpdate = os.date("%H:%M:%S")
+                    log(data.label, string.format("%s: ✅ Reload thành công • %s", name, data.lastUpdate))
+                else
+                    -- rollback lại bản cũ
+                    log(data.label, name .. ": ⚠️ Lỗi bản mới, khôi phục bản cũ")
+                    safeRun(data.backup, name)
+                end
+            else
+                -- 🕒 Giữ nguyên thời gian cũ
+                log(data.label, string.format("%s: 🕒 Lần cuối cập nhật • %s", name, data.lastUpdate))
             end
         end
     end
