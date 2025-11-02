@@ -134,7 +134,7 @@ task.spawn(function()
                 end
             else
                 -- 🕒 Giữ nguyên thời gian cũ
-                log(data.label, string.format("%s: 🕒 Lần cuối cập nhật • %s", name, data.lastUpdate))
+                log(data.label, string.format("%s: 🕒 Update • %s", name, data.lastUpdate))
             end
         end
     end
