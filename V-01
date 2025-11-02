@@ -4,8 +4,6 @@ local scripts = {
     { name = "Gift-Gem.lua", url = "https://raw.githubusercontent.com/dracular111/01/main/Track" },
     { name = "Event.lua", url = "https://raw.githubusercontent.com/dracular111/01/main/Event" },
     --{ name = "Gift-Gem.lua", url = "https://raw.githubusercontent.com/dracular111/01/main/Gift-Gem" },
-    -- Add more scripts if needed:
-    -- { name = "Farm.lua", url = "https://raw.githubusercontent.com/dracular111/01/main/Farm" },
 }
 
 local reloadDelay = 20 -- Check interval (seconds)
