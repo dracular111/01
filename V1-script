@@ -1,51 +1,114 @@
--- 🧹 Cleanup khi reload Event.lua
-getgenv()._EVENT_CLEANUP = function()
-    if _G.EventLoop then task.cancel(_G.EventLoop) end
-    if _G.EventConn then _G.EventConn:Disconnect() end
-    if _G.SubScripts then
-        for name, env in pairs(_G.SubScripts) do
-            if env._CLEANUP and type(env._CLEANUP) == "function" then
-                pcall(env._CLEANUP)
-            end
-        end
-    end
-    _G.SubScripts = {}
-    print("[Event] 🧹 Cleaned old version")
-end
+-- 🔄 GitHub Auto-Reload Loader (multi-script + persistent update UI)
 
--- 🪄 Code chính
-_G.EventLoop = task.spawn(function()
-    while task.wait(5) do
-        print("[Event] 🎃 Running new version")
-    end
-end)
-
--- 📜 Danh sách các script con
 local scripts = {
-    {name = "Lock-Fps", url = "https://raw.githubusercontent.com/dracular111/01/main/Lock-Fps"},
-    {name = "Gift-Gem", url = "https://raw.githubusercontent.com/dracular111/01/main/Gift-Gem"},
-    {name = "Trackyummy", url = "https://raw.githubusercontent.com/dracular111/01/main/Trackyummy"},
-    {name = "Script-Main-Reset", url = "https://raw.githubusercontent.com/dracular111/01/main/Script-Main-Reset"},
+    { name = "FPS.lua", url = "https://raw.githubusercontent.com/dracular111/01/main/FPS" },
+    { name = "Gift-Gem.lua", url = "https://raw.githubusercontent.com/dracular111/01/main/Track" },
+    { name = "Event.lua", url = "https://raw.githubusercontent.com/dracular111/01/main/Event" },
 }
 
--- 🧩 Load từng script con
-_G.SubScripts = {}
-for _, data in ipairs(scripts) do
-    task.spawn(function()
-        local ok, result = pcall(function()
-            local code = game:HttpGet(data.url)
-            local func = loadstring(code)
-            if func then
-                local env = {}
-                setfenv(func, setmetatable(env, {__index = getfenv()}))
-                _G.SubScripts[data.name] = env
-                func()
-                print("✅ Loaded:", data.name)
-            end
-        end)
-        if not ok then
-            warn("⚠️ Error loading sub-script:", data.name)
+local reloadDelay = 30 -- Kiểm tra cập nhật (giây)
+local httpDelay = 5    -- Delay giữa mỗi script (giây)
+local CoreGui = game:GetService("CoreGui")
+
+-- 🧱 Hàm UI thông báo
+local function showNotification(text)
+    local existingGui = CoreGui:FindFirstChild("GitHubUpdateNotice")
+    local Label
+
+    if existingGui then
+        Label = existingGui:FindFirstChild("NoticeLabel")
+        if Label then
+            Label.Text = text
+            return
         end
-    end)
-    task.wait(1.5) -- tránh spam request
+    end
+
+    local ScreenGui = Instance.new("ScreenGui")
+    local TextLabel = Instance.new("TextLabel")
+    ScreenGui.Name = "GitHubUpdateNotice"
+    ScreenGui.IgnoreGuiInset = true
+    ScreenGui.ResetOnSpawn = false
+    ScreenGui.Parent = CoreGui
+
+    TextLabel.Name = "NoticeLabel"
+    TextLabel.Size = UDim2.new(0, 600, 0, 60)
+    TextLabel.Position = UDim2.new(1, -610, 1, -80)
+    TextLabel.BackgroundTransparency = 0.3
+    TextLabel.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+    TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+    TextLabel.Font = Enum.Font.Code
+    TextLabel.TextScaled = true
+    TextLabel.Text = text
+    TextLabel.TextXAlignment = Enum.TextXAlignment.Center
+    TextLabel.TextStrokeTransparency = 0.5
+    TextLabel.Parent = ScreenGui
 end
+
+-- ⚙️ Tải & chạy code
+local function fetchAndRun(scriptInfo)
+    local success, code = pcall(function()
+        return game:HttpGet(scriptInfo.url)
+    end)
+    if not success or not code or code == "" then
+        warn("[Loader] ❌ Không tải được:", scriptInfo.name)
+        return nil
+    end
+
+    local func, err = loadstring(code)
+    if not func then
+        warn("[Loader] ⚠️ Lỗi biên dịch:", scriptInfo.name, err)
+        return nil
+    end
+
+    -- 🧹 Dọn dẹp Event.lua
+    if scriptInfo.name == "Event.lua" and type(getgenv) == "function" then
+        for k, _ in pairs(getgenv()) do
+            if tostring(k):match("^G") then
+                getgenv()[k] = nil
+            end
+        end
+        print("[Loader] 🧹 Cleared old globals for Event.lua")
+    end
+
+    -- 🧩 Sandbox riêng
+    local env = setmetatable({}, { __index = getfenv() })
+    setfenv(func, env)
+
+    local ok, runtimeErr = pcall(func)
+    if not ok then
+        warn("[Loader] ⚠️ Lỗi khi chạy:", scriptInfo.name, runtimeErr)
+    else
+        print("[Loader] ✅ Loaded:", scriptInfo.name)
+        if scriptInfo.name == "Event.lua" then
+            showNotification("🎃 Event.lua reloaded successfully at " .. os.date("%H:%M:%S"))
+        end
+    end
+
+    return code
+end
+
+-- 🔥 Chạy lần đầu
+local lastCodes = {}
+for _, scriptInfo in ipairs(scripts) do
+    lastCodes[scriptInfo.name] = fetchAndRun(scriptInfo)
+    task.wait(httpDelay) -- delay 5s mỗi script
+end
+
+showNotification("✅ All scripts loaded at " .. os.date("%H:%M:%S"))
+
+-- 🔁 Kiểm tra cập nhật
+task.spawn(function()
+    while task.wait(reloadDelay) do
+        for _, scriptInfo in ipairs(scripts) do
+            local ok, newCode = pcall(function()
+                return game:HttpGet(scriptInfo.url)
+            end)
+            if ok and newCode and newCode ~= lastCodes[scriptInfo.name] then
+                lastCodes[scriptInfo.name] = newCode
+                fetchAndRun(scriptInfo)
+                showNotification("🔄 Updated " .. scriptInfo.name .. " at " .. os.date("%H:%M:%S"))
+            end
+            task.wait(httpDelay)
+        end
+    end
+end)
