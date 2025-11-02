@@ -1,142 +1,90 @@
--- 🔄 GitHub Auto-Reload Loader v3.5
--- ✅ Hỗ trợ reload đa script, UI thông báo gọn, Event.lua tự chạy lại & auto-hop thông minh
+-- 🕓 Đảm bảo Roblox đã load xong
+if not game:IsLoaded() then
+    game.Loaded:Wait()
+end
 
-local scripts = {
-    { name = "FPS.lua",      url = "https://raw.githubusercontent.com/dracular111/01/main/FPS" },
-    { name = "Gift-Gem.lua", url = "https://raw.githubusercontent.com/dracular111/01/main/Track" },
-    { name = "Event.lua",    url = "https://raw.githubusercontent.com/dracular111/01/main/Event" },
+-- 🧱 Bảo đảm có HttpGet hoạt động
+if not game.HttpGet then
+    game.HttpGet = game.GetService
+end
+
+-- ⚙️ Config mặc định
+getgenv().GGFX_MODE = 1
+getgenv().GZONE_TO = 1
+getgenv().GHALLOWEEN_JOIN_LOCAL = true
+getgenv().GDO_HALLOWEEN_WORLD = true
+getgenv().GHALLOWEEN_OPEN_HOUSE_6 = false
+getgenv().GHALLOWEEN_WORLD_USE_BOOSTS = true
+getgenv().GHALLOWEEN_WORLD_BUY_FROM_SPECIFIC_HOUSE = {1,2,5}
+getgenv().GHALLOWEEN_WORLD_RECIPES_TO_DO = {1,2,3,4,5}
+getgenv().GHALLOWEEN_WORLD_HATCH_SPOTS = 1
+getgenv().GALLOW_HOPPING = true
+getgenv().GHOP_ON_STAFF = true
+getgenv().GHALLOWEEN_WORLD_ALLOW_WORSE_EGG_PLACEMENT = true
+getgenv().GHALLOWEEN_WORLD_BUY_FROM_HOUSES_BELOW = false
+
+getgenv().GEVENT_UPGRADES = {
+  "HalloweenCandyMultiplier",
+  "HalloweenMoreDiamonds",
+  "HalloweenEggLuck",
+  "HalloweenTrickOrTreatLuck",
+  "HalloweenMoreWitchHats",
+  "HalloweenHugeLuck",
+  "HalloweenTitanicLuck"
 }
 
-local reloadDelay = 30 -- giây
-local CoreGui = game:GetService("CoreGui")
+getgenv().GWEBHOOK_USERID = "1263292904953217072"
+getgenv().GWEBHOOK_LINK = "https://discord.com/api/webhooks/1431829050405556296/R6M-bhS3JhyqwcSNP9ksCtkqaSYMmSne01VGuU_-WMtPVN1PGhqbrId0YcYLo1WyH6Gq"
+getgenv().GHUGE_COUNT = 0
+getgenv().GMAX_MAIL_COST = "5m"
 
----------------------------------------------------------------------
--- 📢 TẠO UI THÔNG BÁO TRONG BẢNG (góc phải dưới)
----------------------------------------------------------------------
-local function getOrCreateBoard()
-    local existing = CoreGui:FindFirstChild("GitHubUpdateBoard")
-    if existing then return existing end
+getgenv().GMAIL_ITEMS = {
+    ["All Huges"] = {Class = "Pet", Id = "All Huges", MinAmount = 1},
+    ["Brainrot egg"] = {Class = "Egg", Id = "Exclusive Egg 56", MinAmount = 1},
+    ["Hype Egg 2"] = {Class = "Lootbox", Id = "Hype Egg 2", MinAmount = 1},
+    ["Daycare egg 5"] = {Class = "Egg", Id = "Huge Machine Egg 5", MinAmount = 1},
+    ["Secret pet1"] = {Class = "Pet", Id = "Rainbow Swirl", MinAmount = 1, AllVariants = true},
+    ["Secret pet2"] = {Class = "Pet", Id = "Banana", MinAmount = 1, AllVariants = true},
+    ["Secret pet3"] = {Class = "Pet", Id = "Coin", MinAmount = 1, AllVariants = true},
+    ["Secret pet4"] = {Class = "Pet", Id = "Yellow Lucky Block", MinAmount = 1, AllVariants = true},
+}
 
-    local screenGui = Instance.new("ScreenGui")
-    screenGui.Name = "GitHubUpdateBoard"
-    screenGui.IgnoreGuiInset = true
-    screenGui.ResetOnSpawn = false
-    screenGui.Parent = CoreGui
+-- 🌐 Danh sách script cần load
+local scripts = {
+    {name = "FPS.lua", url = "https://raw.githubusercontent.com/dracular111/01/main/FPS"},
+    {name = "Gift-Gem.lua", url = "https://raw.githubusercontent.com/dracular111/01/main/Track"},
+}
 
-    local frame = Instance.new("Frame")
-    frame.Name = "MainFrame"
-    frame.Size = UDim2.new(0, 420, 0, 200)
-    frame.Position = UDim2.new(1, -430, 1, -210)
-    frame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-    frame.BackgroundTransparency = 0.15
-    frame.BorderSizePixel = 0
-    frame.Parent = screenGui
-
-    local title = Instance.new("TextLabel")
-    title.Size = UDim2.new(1, 0, 0, 25)
-    title.BackgroundTransparency = 1
-    title.Text = "🔁 GitHub Auto-Reload Loader"
-    title.TextColor3 = Color3.fromRGB(255, 255, 255)
-    title.Font = Enum.Font.Code
-    title.TextScaled = true
-    title.Parent = frame
-
-    local list = Instance.new("Frame")
-    list.Name = "List"
-    list.Size = UDim2.new(1, -10, 1, -35)
-    list.Position = UDim2.new(0, 5, 0, 30)
-    list.BackgroundTransparency = 1
-    list.Parent = frame
-
-    return screenGui
-end
-
-local function updateBoardLine(name, text, color)
-    local board = getOrCreateBoard()
-    local list = board.MainFrame.List
-    local label = list:FindFirstChild(name)
-    if not label then
-        label = Instance.new("TextLabel")
-        label.Name = name
-        label.Size = UDim2.new(1, 0, 0, 25)
-        label.BackgroundTransparency = 0.4
-        label.Font = Enum.Font.Code
-        label.TextScaled = true
-        label.TextXAlignment = Enum.TextXAlignment.Left
-        label.TextStrokeTransparency = 0.6
-        label.Parent = list
-        label.LayoutOrder = #list:GetChildren()
-    end
-    label.TextColor3 = color
-    label.Text = text
-end
-
----------------------------------------------------------------------
--- ⚙️ TẢI & THỰC THI SCRIPT
----------------------------------------------------------------------
-local function fetchAndRun(scriptInfo)
-    local success, code = pcall(function()
-        return game:HttpGet(scriptInfo.url)
+-- 🔄 Load các script phụ
+for _, scriptInfo in ipairs(scripts) do
+    local ok, err = pcall(function()
+        loadstring(game:HttpGet(scriptInfo.url))()
     end)
-    if not success or not code or code == "" then
-        updateBoardLine(scriptInfo.name, "❌ Failed to fetch: " .. scriptInfo.name, Color3.fromRGB(255, 80, 80))
-        return nil
-    end
-
-    local func, err = loadstring(code)
-    if not func then
-        updateBoardLine(scriptInfo.name, "⚠️ Compile error: " .. tostring(err), Color3.fromRGB(255, 170, 0))
-        return nil
-    end
-
-    local ok, execErr = pcall(func)
-    if not ok then
-        updateBoardLine(scriptInfo.name, "❌ Runtime error: " .. tostring(execErr), Color3.fromRGB(255, 80, 80))
+    if ok then
+        print("[Loader] ✅ Loaded:", scriptInfo.name)
     else
-        updateBoardLine(scriptInfo.name, "✅ " .. scriptInfo.name .. " = Loaded successfully (" .. os.date("%H:%M:%S") .. ")", Color3.fromRGB(0, 255, 0))
+        warn("[Loader] ❌ Failed to load:", scriptInfo.name, err)
     end
-
-    return code
 end
 
----------------------------------------------------------------------
--- 🚀 CHẠY LẦN ĐẦU
----------------------------------------------------------------------
-local lastCodes = {}
-for _, s in ipairs(scripts) do
-    lastCodes[s.name] = fetchAndRun(s)
+-- 🕒 Random delay 1–10 phút để tránh nhảy đồng loạt
+local randomDelay = math.random(60, 600)
+warn("[Loader] ⏳ Đang chờ " .. randomDelay .. " giây trước khi tải Event-hop...")
+task.wait(randomDelay)
+
+-- 🔁 Tải Event-hop (tự thử lại nếu lỗi)
+local function loadEvent()
+    local success, err = pcall(function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Event-hop"))()
+    end)
+
+    if success then
+        print("[Loader] ✅ Loaded: Event-hop thành công!")
+    else
+        warn("[Loader] ⚠️ Lỗi khi tải Event-hop:", err)
+        task.wait(10)
+        loadEvent() -- thử lại sau 10s
+    end
 end
 
----------------------------------------------------------------------
--- 🔁 KIỂM TRA & TỰ RELOAD KHI CÓ UPDATE
----------------------------------------------------------------------
-task.spawn(function()
-    while task.wait(reloadDelay) do
-        for _, s in ipairs(scripts) do
-            local ok, newCode = pcall(function()
-                return game:HttpGet(s.url)
-            end)
-            if ok and newCode and newCode ~= lastCodes[s.name] then
-                lastCodes[s.name] = newCode
-                fetchAndRun(s)
-
-                updateBoardLine(s.name, "🔄 Updated " .. s.name .. " (" .. os.date("%H:%M:%S") .. ")", Color3.fromRGB(255, 255, 0))
-
-                -- 🧠 Nếu là Event.lua thì chạy lại V-01 và gọi Event-hop ngẫu nhiên
-                if s.name == "Event.lua" then
-                    task.spawn(function()
-                        pcall(function()
-                            loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/V-01"))()
-                        end)
-
-                        local randomDelay = math.random(60, 600) -- 1-10 phút
-                        task.wait(randomDelay)
-                        pcall(function()
-                            loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Event-hop"))()
-                        end)
-                    end)
-                end
-            end
-        end
-    end
-end)
+loadEvent()
