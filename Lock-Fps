@@ -46,4 +46,49 @@ Label.Parent = Frame
 Notice.Size = UDim2.new(1, 0, 0.35, 0)
 Notice.Position = UDim2.new(0, 0, 0.65, 0)
 Notice.BackgroundTransparency = 1
-Notice.TextC
+Notice.TextColor3 = Color3.fromRGB(255, 255, 0)
+Notice.Font = Enum.Font.Code
+Notice.TextScaled = true
+Notice.TextWrapped = true
+Notice.Text = "Đang tải từ GitHub..."
+Notice.Parent = Frame
+
+-- 🔄 Cập nhật nhãn khi reload script
+task.spawn(function()
+    Notice.Text = "Cập nhật script mới nhất ✅"
+    task.wait(3)
+    Notice.Text = "Giới hạn FPS: " .. TARGET_FPS
+end)
+
+-- ⚙️ Giới hạn FPS (nếu executor hỗ trợ)
+if setfpscap then pcall(setfpscap, TARGET_FPS) end
+
+-- 📉 Cách ép cứng FPS (RenderStepped delay)
+local targetDelay = 1 / TARGET_FPS
+local lastTick = tick()
+local fps = 0
+
+getgenv().fps_loop = RunService.RenderStepped:Connect(function(dt)
+    fps = math.floor(1 / dt)
+    local now = tick()
+    local elapsed = now - lastTick
+    if elapsed < targetDelay then
+        task.wait(targetDelay - elapsed)
+    end
+    lastTick = tick()
+end)
+
+-- 🧮 Cập nhật hiển thị FPS mỗi 0.5s
+task.spawn(function()
+    while task.wait(0.5) do
+        Label.Text = "FPS: " .. tostring(fps)
+    end
+end)
+
+-- 💤 Giữ setfpscap luôn ổn định
+getgenv().fps_thread = task.spawn(function()
+    while true do
+        if setfpscap then pcall(setfpscap, TARGET_FPS) end
+        task.wait(5)
+    end
+end)
