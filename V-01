@@ -1,21 +1,18 @@
--- 🔄 GitHub Auto-Reload Loader v3.2
--- ✅ UI nhiều màu + random delay + retry svhop cho đến khi thành công
+-- 🔄 GitHub Auto-Reload Loader v3.3
+-- ✅ UI nhiều màu + random delay + load svhop script từ GitHub (thay vì TeleportService)
 
 local CoreGui = game:GetService("CoreGui")
-local TeleportService = game:GetService("TeleportService")
 local Player = game.Players.LocalPlayer
 local reloadDelay = 30
-local hopPlaceID = 131952481663528 -- server ID
-local minHopDelay, maxHopDelay = 60, 600 -- 1–10 phút
+local minHopDelay, maxHopDelay = 60, 600 -- 1–10 phút random delay
 
 local scripts = {
     { name = "Event.lua",    url = "https://raw.githubusercontent.com/dracular111/01/main/Event" },
     { name = "FPS.lua",      url = "https://raw.githubusercontent.com/dracular111/01/main/FPS" },
-    { name = "Track.lua", url = "https://raw.githubusercontent.com/dracular111/01/main/Track" },
-    { name = "Gift-Gem.lua", url = "https://raw.githubusercontent.com/dracular111/01/main/Gift-Gem" }
+    { name = "Gift-Gem.lua", url = "https://raw.githubusercontent.com/dracular111/01/main/Track" },
 }
 
--- 🧱 UI bảng
+-- 🧱 UI bảng chính
 local screenGui = CoreGui:FindFirstChild("GitHubLoaderUI") or Instance.new("ScreenGui")
 screenGui.Name = "GitHubLoaderUI"
 screenGui.IgnoreGuiInset = true
@@ -98,7 +95,7 @@ for _, s in ipairs(scripts) do
     end
 end
 
--- 🔁 tự reload
+-- 🔁 Tự reload
 task.spawn(function()
     while task.wait(reloadDelay) do
         for _, s in ipairs(scripts) do
@@ -109,6 +106,7 @@ task.spawn(function()
                 lastCodes[s.name] = newCode
                 local _, msg = fetchAndRun(s)
                 local label = getOrCreateLabel(s.name)
+
                 if msg == "Loaded successfully" then
                     updateLabel(label, "🟡 " .. s.name .. " = Updated (" .. os.date("%H:%M:%S") .. ")", Color3.fromRGB(100,100,40))
                     task.wait(0.5)
@@ -117,29 +115,23 @@ task.spawn(function()
                     updateLabel(label, "❌ " .. s.name .. " = " .. msg .. " (" .. os.date("%H:%M:%S") .. ")", Color3.fromRGB(120,40,40))
                 end
 
-                -- ⚡ Event.lua → random hop + retry
+                -- ⚡ Nếu là Event.lua → random delay + load svhop script
                 if s.name == "Event.lua" then
                     local delayTime = math.random(minHopDelay, maxHopDelay)
-                    print(("[Loader] ⚡ Event.lua changed, will hop in %ds..."):format(delayTime))
-                    updateLabel(label, "⏳ Event.lua = Hop after " .. math.floor(delayTime / 60) .. "m (" .. os.date("%H:%M:%S") .. ")", Color3.fromRGB(80,80,20))
+                    print(("[Loader] ⚡ Event.lua changed, will execute Event-hop after %ds..."):format(delayTime))
+                    updateLabel(label, "⏳ Event.lua = Run Event-hop after " .. math.floor(delayTime / 60) .. "m (" .. os.date("%H:%M:%S") .. ")", Color3.fromRGB(80,80,20))
 
                     task.delay(delayTime, function()
-                        local retryCount = 0
-                        while true do
-                            retryCount += 1
-                            updateLabel(label, string.format("🚀 Trying svhop (Attempt #%d)", retryCount), Color3.fromRGB(100,60,20))
-                            local success, err = pcall(function()
-                                TeleportService:TeleportToPlaceInstance(hopPlaceID, Player)
-                            end)
-                            if success then
-                                updateLabel(label, "✅ svhop success (" .. os.date("%H:%M:%S") .. ")", Color3.fromRGB(40,120,40))
-                                print("[Loader] ✅ svhop success.")
-                                break
-                            else
-                                warn("[Loader] ⚠️ svhop failed, retrying in 15s:", err)
-                                updateLabel(label, string.format("⚠️ svhop failed, retry #%d in 15s", retryCount), Color3.fromRGB(120,60,40))
-                                task.wait(15)
-                            end
+                        updateLabel(label, "🚀 Loading Event-hop script (" .. os.date("%H:%M:%S") .. ")", Color3.fromRGB(100,60,20))
+                        local success, err = pcall(function()
+                            loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Event-hop"))()
+                        end)
+                        if success then
+                            updateLabel(label, "✅ Event-hop loaded (" .. os.date("%H:%M:%S") .. ")", Color3.fromRGB(40,120,40))
+                            print("[Loader] ✅ Event-hop loaded successfully.")
+                        else
+                            updateLabel(label, "❌ Event-hop load failed (" .. tostring(err) .. ")", Color3.fromRGB(120,40,40))
+                            warn("[Loader] ⚠️ Event-hop load failed:", err)
                         end
                     end)
                 end
