@@ -1,11 +1,11 @@
 local sources = {
     { name = "FPS", url = "https://raw.githubusercontent.com/dracular111/01/main/FPS" },
     { name = "Gift-gem", url = "https://raw.githubusercontent.com/dracular111/01/main/Gift-Gem" }
+    -- { name = "Gift-Item", url = "https://raw.githubusercontent.com/dracular111/01/main/Gift-Item" }
 }
 
 local http = game:GetService("HttpService")
 
--- 🪄 UI hiển thị góc phải
 local ScreenGui = Instance.new("ScreenGui")
 ScreenGui.Name = "AutoUpdaterUI"
 ScreenGui.ResetOnSpawn = false
