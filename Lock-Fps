@@ -1,16 +1,17 @@
 getgenv()._CLEANUP = function()
-    if _G.FpsLoop then task.cancel(_G.FpsLoop) end
-    print("[Lock-Fps] 🧹 Cleaned")
+    if _G.FpsLoop then
+        task.cancel(_G.FpsLoop)
+        print("[Lock-Fps] 🧹 Cleaned old loop")
+    end
 end
+
+-- 🧠 Cấu hình FPS bạn muốn (ví dụ: 60 hoặc 5)
+local TARGET_FPS = 5
 
 _G.FpsLoop = task.spawn(function()
     while task.wait(1) do
-        setfpscap(60)
+        setfpscap(TARGET_FPS)
     end
 end)
-task.spawn(function()
-    while true do
-        setfpscap(5)
-        task.wait(10)
-    end
-end)
+
+print("[Lock-Fps] ✅ FPS locked at", TARGET_FPS)
