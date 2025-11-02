@@ -30,7 +30,7 @@ task.wait(5)
 print("[Event.lua] 🧹 Old UI & threads cleaned, applying new config...")
 
 -- 🌙 CONFIG MỚI
-getgenv().GGFX_MODE = 1
+getgenv().GGFX_MODE = 3
 getgenv().GZONE_TO = 1
 getgenv().GHALLOWEEN_JOIN_LOCAL = true
 getgenv().GDO_HALLOWEEN_WORLD = true
