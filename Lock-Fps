@@ -1,75 +1,79 @@
+-- Lock-Fps.lua (phiên bản đã sửa lỗi cú pháp và an toàn khi reload)
 repeat task.wait() until game:IsLoaded()
 
--- 🧹 Xóa mọi thứ cũ trước
-if getgenv().fps_loop then getgenv().fps_loop:Disconnect() end
-if getgenv().fps_thread then task.cancel(getgenv().fps_thread) end
-if game.CoreGui:FindFirstChild("FPS_UI") then
-    game.CoreGui.FPS_UI:Destroy()
-end
+-- 🧹 Dọn sạch cũ (ngắt connection, báo thread dừng)
+pcall(function()
+    if getgenv().fps_loop then
+        getgenv().fps_loop:Disconnect()
+        getgenv().fps_loop = nil
+    end
+    -- đặt cờ để thread cũ dừng
+    getgenv().fps_thread_stop = true
+    -- đợi 0.05s để thread cũ thoát vòng lặp
+    task.wait(0.06)
+    if game.CoreGui:FindFirstChild("FPS_UI") then
+        game.CoreGui.FPS_UI:Destroy()
+    end
+end)
 
 -- ⚙️ Cấu hình
-local TARGET_FPS = 20 -- ⚠️ chỉnh ở đây
+local TARGET_FPS = 5 -- chỉnh ở đây
 local CoreGui = game:GetService("CoreGui")
 local RunService = game:GetService("RunService")
 
--- 🖥️ UI
+-- 🖥 UI (tối giản, chỉ hiển thị FPS siêu to giữa màn hình)
 local ScreenGui = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
 local Label = Instance.new("TextLabel")
-local Notice = Instance.new("TextLabel")
 
 ScreenGui.Name = "FPS_UI"
 ScreenGui.IgnoreGuiInset = true
 ScreenGui.ResetOnSpawn = false
 ScreenGui.Parent = CoreGui
 
-Frame.Size = UDim2.new(0, 200, 0, 90)
-Frame.Position = UDim2.new(1, -220, 0, 50)
-Frame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-Frame.BackgroundTransparency = 0.3
-Frame.Parent = ScreenGui
+-- 🖥 UI (chỉ hiển thị chữ FPS siêu to, không nền)
+local ScreenGui = Instance.new("ScreenGui")
+local Label = Instance.new("TextLabel")
 
--- 📊 Nhãn FPS chính (to gấp 3 lần và trắng)
-Label.Size = UDim2.new(1, 0, 0.65, 0)
-Label.Position = UDim2.new(0, 0, 0, 0)
-Label.BackgroundTransparency = 1
-Label.TextColor3 = Color3.fromRGB(255, 255, 255) -- ⚪ Màu trắng
+ScreenGui.Name = "FPS_UI"
+ScreenGui.IgnoreGuiInset = true
+ScreenGui.ResetOnSpawn = false
+ScreenGui.Parent = CoreGui
+
+-- ⚡ Chữ FPS siêu to, giữa màn hình
+Label.Size = UDim2.new(0, 1000, 0, 400)
+Label.Position = UDim2.new(0.5, -500, 0.5, -200)
+Label.BackgroundTransparency = 1 -- trong suốt hoàn toàn
+Label.TextColor3 = Color3.fromRGB(255, 255, 255)
 Label.Font = Enum.Font.Code
-Label.TextScaled = true
-Label.TextWrapped = true
-Label.Text = "FPS: ..."
-Label.TextStrokeTransparency = 0.6 -- viền mờ giúp dễ đọc hơn
-Label.TextSize = 72 -- 💥 cỡ chữ to gấp 3 lần mặc định
-Label.Parent = Frame
+Label.TextScaled = false
+Label.TextSize = 480
+Label.Text = "FPS: 00"
+Label.TextXAlignment = Enum.TextXAlignment.Center
+Label.TextYAlignment = Enum.TextYAlignment.Center
+Label.TextStrokeTransparency = 0.3
+Label.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
+Label.Parent = ScreenGui
 
--- 🔔 Dòng thông báo bên dưới
-Notice.Size = UDim2.new(1, 0, 0.35, 0)
-Notice.Position = UDim2.new(0, 0, 0.65, 0)
-Notice.BackgroundTransparency = 1
-Notice.TextColor3 = Color3.fromRGB(255, 255, 0)
-Notice.Font = Enum.Font.Code
-Notice.TextScaled = true
-Notice.TextWrapped = true
-Notice.Text = "Đang tải từ GitHub..."
-Notice.Parent = Frame
-
--- 🔄 Cập nhật nhãn khi reload script
+-- Hiển thị tạm
 task.spawn(function()
     Notice.Text = "Cập nhật script mới nhất ✅"
-    task.wait(3)
-    Notice.Text = "Giới hạn FPS: " .. TARGET_FPS
+    task.wait(2)
 end)
 
--- ⚙️ Giới hạn FPS (nếu executor hỗ trợ)
-if setfpscap then pcall(setfpscap, TARGET_FPS) end
+-- ⚙️ Thử setfpscap nếu executor hỗ trợ
+if setfpscap then
+    pcall(setfpscap, TARGET_FPS)
+end
 
--- 📉 Cách ép cứng FPS (RenderStepped delay)
+-- 📉 Ép cứng FPS bằng delay giữa frame
 local targetDelay = 1 / TARGET_FPS
 local lastTick = tick()
 local fps = 0
 
+-- Connect RenderStepped (lưu connection để có thể Disconnect khi reload)
 getgenv().fps_loop = RunService.RenderStepped:Connect(function(dt)
-    fps = math.floor(1 / dt)
+    fps = math.floor(1 / (dt > 0 and dt or 0.0001))
     local now = tick()
     local elapsed = now - lastTick
     if elapsed < targetDelay then
@@ -78,17 +82,20 @@ getgenv().fps_loop = RunService.RenderStepped:Connect(function(dt)
     lastTick = tick()
 end)
 
--- 🧮 Cập nhật hiển thị FPS mỗi 0.5s
+-- Cập nhật text mỗi 0.5s
 task.spawn(function()
     while task.wait(0.5) do
         Label.Text = "FPS: " .. tostring(fps)
     end
 end)
 
--- 💤 Giữ setfpscap luôn ổn định
+-- 💤 Thread giữ setfpscap ổn định, có thể dừng bằng cờ
+getgenv().fps_thread_stop = false
 getgenv().fps_thread = task.spawn(function()
-    while true do
-        if setfpscap then pcall(setfpscap, TARGET_FPS) end
+    while not getgenv().fps_thread_stop do
+        if setfpscap then
+            pcall(setfpscap, TARGET_FPS)
+        end
         task.wait(5)
     end
 end)
