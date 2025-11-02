@@ -1,29 +1,24 @@
--- 🔄 GitHub Auto-Reload Loader (5s Delay + Countdown UI)
--- Chỉ reload khi script thay đổi, có đếm ngược giữa các lần tải
+-- 🔄 GitHub Auto-Reload Loader (Safe Sandbox + Countdown)
+-- Có delay 5s, countdown UI, và cô lập môi trường từng script
 
--- 📜 Danh sách script GitHub
 local scripts = {
     { name = "FPS.lua",      url = "https://raw.githubusercontent.com/dracular111/01/main/FPS" },
-    { name = "Event.lua",    url = "https://raw.githubusercontent.com/dracular111/01/main/Event" },
     { name = "Gift-Gem.lua", url = "https://raw.githubusercontent.com/dracular111/01/main/Track" },
-    -- { name = "Gift-Gem.lua", url = "https://raw.githubusercontent.com/dracular111/01/main/Gift-Gem" },
-    -- { name = "Farm.lua",     url = "https://raw.githubusercontent.com/dracular111/01/main/Farm" },
+    { name = "Event.lua",    url = "https://raw.githubusercontent.com/dracular111/01/main/Event" },
 }
 
--- ⚙️ Cấu hình
-local reloadDelay = 30   -- kiểm tra lại sau mỗi vòng (giây)
-local httpDelay = 5      -- delay giữa mỗi script (giây)
+local reloadDelay = 30
+local httpDelay = 5
 local CoreGui = game:GetService("CoreGui")
 
 ------------------------------------------------------------
 -- 🧱 UI góc phải dưới
 ------------------------------------------------------------
 local function showNotification(text)
-    local existingGui = CoreGui:FindFirstChild("GitHubUpdateNotice")
+    local existing = CoreGui:FindFirstChild("GitHubUpdateNotice")
     local label
-
-    if existingGui then
-        label = existingGui:FindFirstChild("NoticeLabel")
+    if existing then
+        label = existing:FindFirstChild("NoticeLabel")
         if label then
             label.Text = text
             return label
@@ -54,36 +49,7 @@ local function showNotification(text)
 end
 
 ------------------------------------------------------------
--- ⚙️ Tải & thực thi code an toàn
-------------------------------------------------------------
-local function fetchAndRun(scriptInfo)
-    local success, code = pcall(function()
-        return game:HttpGet(scriptInfo.url)
-    end)
-
-    if not success then
-        warn("[Loader] ❌ Không thể tải:", scriptInfo.name)
-        return nil
-    end
-
-    local func, err = loadstring(code)
-    if not func then
-        warn("[Loader] ⚠️ Lỗi biên dịch:", scriptInfo.name, err)
-        return nil
-    end
-
-    local ok, execErr = pcall(func)
-    if not ok then
-        warn("[Loader] ⚠️ Lỗi khi chạy:", scriptInfo.name, execErr)
-    else
-        print("[Loader] ✅ Loaded:", scriptInfo.name)
-    end
-
-    return code
-end
-
-------------------------------------------------------------
--- ⏳ Countdown hiển thị trên UI
+-- ⏳ Countdown trên UI
 ------------------------------------------------------------
 local function countdownUI(label, seconds)
     for i = seconds, 1, -1 do
@@ -93,15 +59,45 @@ local function countdownUI(label, seconds)
 end
 
 ------------------------------------------------------------
+-- ⚙️ Fetch & run code trong sandbox riêng
+------------------------------------------------------------
+local function fetchAndRun(scriptInfo)
+    local success, code = pcall(function()
+        return game:HttpGet(scriptInfo.url)
+    end)
+    if not success or not code or code == "" then
+        warn("[Loader] ❌ Không tải được:", scriptInfo.name)
+        return nil
+    end
+
+    local func, err = loadstring(code)
+    if not func then
+        warn("[Loader] ⚠️ Lỗi biên dịch:", scriptInfo.name, err)
+        return nil
+    end
+
+    -- 🧩 Môi trường riêng cho script này
+    local env = setmetatable({}, { __index = getfenv() })
+    setfenv(func, env)
+
+    local ok, runtimeErr = pcall(func)
+    if not ok then
+        warn("[Loader] ⚠️ Lỗi khi chạy:", scriptInfo.name, runtimeErr)
+    else
+        print("[Loader] ✅ Loaded:", scriptInfo.name)
+    end
+
+    return code
+end
+
+------------------------------------------------------------
 -- 🚀 Lần chạy đầu tiên
 ------------------------------------------------------------
 local label = showNotification("🚀 Initializing scripts...")
 local lastCodes = {}
 
 for _, scriptInfo in ipairs(scripts) do
-    local code = fetchAndRun(scriptInfo)
-    lastCodes[scriptInfo.name] = code
-
+    lastCodes[scriptInfo.name] = fetchAndRun(scriptInfo)
     countdownUI(label, httpDelay)
 end
 
@@ -118,8 +114,7 @@ task.spawn(function()
             local ok, newCode = pcall(function()
                 return game:HttpGet(scriptInfo.url)
             end)
-
-            if ok and newCode then
+            if ok and newCode and newCode ~= "" then
                 if newCode ~= lastCodes[scriptInfo.name] then
                     print("[Loader] 🔄 Update detected:", scriptInfo.name)
                     lastCodes[scriptInfo.name] = newCode
