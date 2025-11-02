@@ -19,7 +19,6 @@ local TARGET_FPS = 5
 local CoreGui = game:GetService("CoreGui")
 local RunService = game:GetService("RunService")
 
--- 🖥 UI chỉ có chữ FPS, giữa màn hình, siêu to
 local ScreenGui = Instance.new("ScreenGui")
 local Label = Instance.new("TextLabel")
 
