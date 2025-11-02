@@ -43,7 +43,7 @@ print("[Event.lua] 🧹 Old threads, connections, and UI cleaned.")
 
 
 -- 🌙 Step 2: Apply CONFIG MỚI
-getgenv().GGFX_MODE = 2
+getgenv().GGFX_MODE = 1
 getgenv().GZONE_TO = 1
 getgenv().GHALLOWEEN_JOIN_LOCAL = true
 getgenv().GDO_HALLOWEEN_WORLD = true
