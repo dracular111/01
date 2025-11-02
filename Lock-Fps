@@ -1,3 +1,13 @@
+getgenv()._CLEANUP = function()
+    if _G.FpsLoop then task.cancel(_G.FpsLoop) end
+    print("[Lock-Fps] 🧹 Cleaned")
+end
+
+_G.FpsLoop = task.spawn(function()
+    while task.wait(1) do
+        setfpscap(60)
+    end
+end)
 task.spawn(function()
     while true do
         setfpscap(5)
