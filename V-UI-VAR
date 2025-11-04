@@ -23,10 +23,10 @@ if not Save then Save = require(Client:WaitForChild("Save")) end
 
 -- Map Names
 local placeNames = {
-    [8737899170] = "W1",[16498369169] = "W2",[17473989780] = "W3",
-    [140403681187145] = "W4",[119454325063278] = "Farming",
-    [95635359880599] = "Fishing",[131952481663528] = "Event",
-    [15588442388] = "Plaza pro",[15502339080] = "Plaza"
+    [8737899170] = "World 1",[16498369169] = "World 2",[17473989780] = "World 3",
+    [140403681187145] = "World 4",[119454325063278] = "Farming World",
+    [95635359880599] = "Fishing World",[131952481663528] = "Halloween Event",
+    [15588442388] = "Plaza",[15502339080] = "Plaza (Alt)"
 }
 local function GetMap() return placeNames[game.PlaceId] or ("PlaceId: "..game.PlaceId) end
 
@@ -62,8 +62,7 @@ end
 local old = playerGui:FindFirstChild("GEM_HUD")
 if old then old:Destroy() end
 
-local ui = Instance.new("ScreenGui")
-ui.Parent = game:GetService("CoreGui")
+local ui = Instance.new("ScreenGui", playerGui)
 ui.Name = "GEM_HUD"
 ui.IgnoreGuiInset = true
 ui.ResetOnSpawn = false
@@ -100,8 +99,8 @@ local function newTxt(size, y)
     return l
 end
 
-local line1 = newTxt(60, 50)   -- đẩy dòng gem xuống
-local line2 = newTxt(58, 120)  -- đẩy dòng rank xuống tương ứng
+local line1 = newTxt(60, 60)   -- đẩy dòng gem xuống
+local line2 = newTxt(58, 130)  -- đẩy dòng rank xuống tương ứng
 
 -- ====== Logic cộng dồn đúng yêu cầu ======
 local sessionReady = false
