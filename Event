@@ -1,6 +1,6 @@
 getgenv().GGFX_MODE = 3
 getgenv().GRANK_FIRST = true --if you use this you have to specify values for GREBIRTH_TO and GRANK_TO
-getgenv().GZONE_TO = 240 -- to enter event from W1 put 1, from W2 put 100, from W3 200, from W4 240
+getgenv().GZONE_TO = 101 -- to enter event from W1 put 1, from W2 put 100, from W3 200, from W4 240
 getgenv().GHALLOWEEN_JOIN_LOCAL = true
 getgenv().GDO_HALLOWEEN_WORLD = true
 getgenv().GHALLOWEEN_OPEN_HOUSE_6 = false
