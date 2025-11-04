@@ -23,10 +23,10 @@ if not Save then Save = require(Client:WaitForChild("Save")) end
 
 -- Map Names
 local placeNames = {
-    [8737899170] = "World 1",[16498369169] = "World 2",[17473989780] = "World 3",
-    [140403681187145] = "World 4",[119454325063278] = "Farming World",
-    [95635359880599] = "Fishing World",[131952481663528] = "Halloween Event",
-    [15588442388] = "Plaza",[15502339080] = "Plaza (Alt)"
+    [8737899170] = "W1",[16498369169] = "W2",[17473989780] = "W3",
+    [140403681187145] = "W4",[119454325063278] = "Farming",
+    [95635359880599] = "Fishing",[131952481663528] = "Event",
+    [15588442388] = "Plaza VIP",[15502339080] = "Plaza Nor"
 }
 local function GetMap() return placeNames[game.PlaceId] or ("PlaceId: "..game.PlaceId) end
 
