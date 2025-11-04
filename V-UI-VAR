@@ -10,8 +10,8 @@ local player = Players.LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
 
 -- === LOAD SAVE SAFE ===
-local Library = ReplicatedStorage:WaitForChild("Library", 99999)
-local Client = Library:WaitForChild("Client", 99999)
+local Library = ReplicatedStorage:WaitForChild("Library", 99999999)
+local Client = Library:WaitForChild("Client", 999999999)
 local Save
 for _, m in pairs(getloadedmodules()) do
     if m.Name == "Save" then
@@ -62,14 +62,16 @@ end
 local old = playerGui:FindFirstChild("GEM_HUD")
 if old then old:Destroy() end
 
-local ui = Instance.new("ScreenGui", playerGui)
+local ui = Instance.new("ScreenGui")
+local safeParent = (gethui and gethui()) or (gethiddenui and gethiddenui()) or game:GetService("CoreGui")
+ui.Parent = safeParent
 ui.Name = "GEM_HUD"
 ui.IgnoreGuiInset = true
 ui.ResetOnSpawn = false
 
 -- ✅ UI luôn nằm trên cùng
 ui.ZIndexBehavior = Enum.ZIndexBehavior.Global
-ui.DisplayOrder = 999999
+ui.DisplayOrder = 99999999
 
 local frame = Instance.new("Frame", ui)
 frame.Size = UDim2.new(0, 900, 0, 200)
@@ -84,13 +86,13 @@ local function newTxt(size, y)
     l.Position = UDim2.new(0,0,0,y)
     l.BackgroundTransparency = 1
     l.Font = Enum.Font.GothamBold
-    l.TextColor3 = Color3.fromRGB(255,225,0)
+    l.TextColor3 = Color3.fromRGB(255,255,90)
     l.TextSize = size
     l.TextXAlignment = Enum.TextXAlignment.Center
     l.Text = ""
 
     -- ✅ luôn trên hết mọi UI
-    l.ZIndex = 999999
+    l.ZIndex = 999999999
 
     local st = Instance.new("UIStroke", l)
     st.Thickness = 3.5
@@ -99,8 +101,8 @@ local function newTxt(size, y)
     return l
 end
 
-local line1 = newTxt(60, 60)   -- đẩy dòng gem xuống
-local line2 = newTxt(58, 130)  -- đẩy dòng rank xuống tương ứng
+local line1 = newTxt(50, 60)   -- đẩy dòng gem xuống
+local line2 = newTxt(60, 130)  -- đẩy dòng rank xuống tương ứng
 
 -- ====== Logic cộng dồn đúng yêu cầu ======
 local sessionReady = false
@@ -152,7 +154,7 @@ task.spawn(function()
         local gainText      = Format(roundHundreds(totalGain))
         local perMinText    = Format(roundHundreds(perMin))
 
-        line1.Text = string.format("💎 %s | + %s | %s/M", gemsText, gainText, perMinText)
-        line2.Text = string.format("%s | R: %s | RB: %s", GetMap(), rank, rb)
+        line1.Text = string.format("💎%s|+%s|%s/M", gemsText, gainText, perMinText)
+        line2.Text = string.format("%s | R: %s| RB: %s", GetMap(), rank, rb)
     end
 end)
