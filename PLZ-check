@@ -1,7 +1,3 @@
--- == CHỐNG TRÙNG SCRIPT ==
-if _G.VARGEMS then return end
-_G.VARGEMS = true
-
 -- == CHO PHÉP CHẠY Ở 2 MAP ==
 local VALID_PLACES = {
     [15588442388] = true,
