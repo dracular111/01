@@ -67,9 +67,13 @@ ui.Name = "GEM_HUD"
 ui.IgnoreGuiInset = true
 ui.ResetOnSpawn = false
 
+-- ✅ UI luôn nằm trên cùng
+ui.ZIndexBehavior = Enum.ZIndexBehavior.Global
+ui.DisplayOrder = 999999
+
 local frame = Instance.new("Frame", ui)
 frame.Size = UDim2.new(0, 900, 0, 200)
-frame.Position = UDim2.new(0.5, -450, 1, -300) -- ⬇️ dưới như cũ, nhích lên ~2 dòng
+frame.Position = UDim2.new(0.5, -450, 1, -300)
 frame.BackgroundTransparency = 1
 
 -- Text vàng + viền đen đậm
@@ -83,6 +87,10 @@ local function newTxt(size, y)
     l.TextSize = size
     l.TextXAlignment = Enum.TextXAlignment.Center
     l.Text = ""
+
+    -- ✅ luôn trên hết mọi UI
+    l.ZIndex = 999999
+
     local st = Instance.new("UIStroke", l)
     st.Thickness = 3.5
     st.Color = Color3.new(0,0,0)
@@ -90,19 +98,18 @@ local function newTxt(size, y)
     return l
 end
 
-local line1 = newTxt(60, 0)    -- 💎 ... | + ... | .../M
-local line2 = newTxt(58, 90)   -- 🌍 ... | RANK ... | RB ...
+local line1 = newTxt(60, 0)
+local line2 = newTxt(58, 90)
 
 -- ====== Logic cộng dồn đúng yêu cầu ======
 local sessionReady = false
-local baseGems = 0          -- mốc đầu phiên
-local lastGems = 0          -- để bắt delta dương
-local totalGain = 0         -- +Gems (chỉ cộng khi tăng)
-local windowGain = 0        -- cộng dồn tăng trong cửa sổ 60s
+local baseGems = 0
+local lastGems = 0
+local totalGain = 0
+local windowGain = 0
 local windowStart = os.clock()
-local perMin = 0            -- kết quả mỗi 60s
+local perMin = 0
 
--- làm tròn tới hàng trăm trước khi Format
 local function roundHundreds(n)
     return math.floor((n + 50) / 100) * 100
 end
@@ -112,7 +119,6 @@ task.spawn(function()
         local data = TryGetSave()
         local gems = GetGems()
 
-        -- đợi tới khi đọc được gems hợp lệ mới khởi động phiên
         if not sessionReady then
             if type(gems) == "number" then
                 baseGems = gems
@@ -124,7 +130,6 @@ task.spawn(function()
                 sessionReady = true
             end
         else
-            -- chỉ cộng khi tăng; giảm (gửi thư/chi tiêu) thì bỏ qua
             if gems and gems > lastGems then
                 local inc = gems - lastGems
                 totalGain += inc
@@ -132,7 +137,6 @@ task.spawn(function()
             end
             lastGems = gems or lastGems
 
-            -- mỗi 60s chốt kết quả /M rồi reset cửa sổ
             if os.clock() - windowStart >= 60 then
                 perMin = windowGain
                 windowGain = 0
@@ -143,7 +147,6 @@ task.spawn(function()
         local rank = data and (data.Rank or data.RankLevel) or 0
         local rb   = data and (data.Rebirth or data.Rebirths or data.TileRebirth or 0) or 0
 
-        -- hiển thị
         local gemsText      = Format(gems or 0)
         local gainText      = Format(roundHundreds(totalGain))
         local perMinText    = Format(roundHundreds(perMin))
