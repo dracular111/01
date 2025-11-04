@@ -1,4 +1,5 @@
 getgenv().GGFX_MODE = 1
+getgenv().GZONE_TO = 1 -- to enter event from W1 put 1, from W2 put 100, from W3 200, from W4 240
 getgenv().GHALLOWEEN_JOIN_LOCAL = true
 getgenv().GDO_HALLOWEEN_WORLD = true
 getgenv().GHALLOWEEN_OPEN_HOUSE_6 = false
@@ -12,7 +13,6 @@ getgenv().GHOP_ON_STAFF = true
 getgenv().GHALLOWEEN_WORLD_ALLOW_WORSE_EGG_PLACEMENT = true
 getgenv().GHALLOWEEN_WORLD_BUY_FROM_HOUSES_BELOW = false
 getgenv().GRANK_FIRST = false
-getgenv().GZONE_TO = 1 -- to enter event from W1 put 1, from W2 put 100, from W3 200, from W4 240
 getgenv().GEVENT_UPGRADES = {
   "HalloweenCandyMultiplier",
   "HalloweenMoreDiamonds",
