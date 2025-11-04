@@ -5,12 +5,12 @@ _G.VAR_SIMPLE_HUD = true
 repeat task.wait() until game:IsLoaded()
 
 local Players = game:GetService("Players")
-local RunService = game:GetService("RunService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local RunService = game:GetService("RunService")
 local player = Players.LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
 
--- === LOAD SAVE CHO FILE EXEC / WAVE / DELTA ===
+-- === LOAD SAVE SAFELY ===
 local Library = ReplicatedStorage:WaitForChild("Library", 99999)
 local Client = Library:WaitForChild("Client", 99999)
 local Save
@@ -18,141 +18,105 @@ local Save
 for _, m in pairs(getloadedmodules()) do
     if m.Name == "Save" then
         local ok, result = pcall(require, m)
-        if ok and type(result) == "table" then
-            Save = result
-            break
-        end
+        if ok and type(result) == "table" then Save = result break end
     end
 end
-
-if not Save then
-    Save = require(Client:WaitForChild("Save"))
-end
--- ===============================================
+if not Save then Save = require(Client:WaitForChild("Save")) end
 
 -- Map Name Table
 local placeNames = {
-    [8737899170] = "🌍 World 1",
-    [16498369169] = "🌍 World 2",
-    [17473989780] = "🌍 World 3",
-    [140403681187145] = "🌍 World 4",
-
-    [119454325063278] = "🌾 Farming World",
-    [95635359880599] = "🎣 Fishing World",
-    [131952481663528] = "🎃 Halloween Event",
-
-    [15588442388] = "🏛 Plaza",
-    [15502339080] = "🏛 Plaza (Alt)"
+    [8737899170] = "World 1",
+    [16498369169] = "World 2",
+    [17473989780] = "World 3",
+    [140403681187145] = "World 4",
+    [119454325063278] = "Farming World",
+    [95635359880599] = "Fishing World",
+    [131952481663528] = "Halloween Event",
+    [15588442388] = "Plaza",
+    [15502339080] = "Plaza (Alt)"
 }
 
-local currentMap = placeNames[game.PlaceId] or ("PlaceId: " .. game.PlaceId)
+local function GetMap()
+    return placeNames[game.PlaceId] or ("PlaceId: " .. game.PlaceId)
+end
 
 local function Format(n)
-    if type(n) ~= "number" then return "0" end
-    local suffix = {"","K","M","B","T","Qd","Qn","Sx","Sp","Oc"}
-    local i = 1
-    while n >= 1000 and i < #suffix do
-        n = n / 1000
-        i += 1
-    end
-    return string.format("%.2f%s", n, suffix[i])
+    if type(n)~="number" then return "0" end
+    local s={"","K","M","B","T","Qd","Qn","Sx","Sp","Oc"}
+    local i=1
+    while n>=1000 and i<#s do n/=1000 i+=1 end
+    return string.format("%.2f%s",n,s[i])
 end
 
 local function TryGetSave()
-    local ok, data = pcall(Save.Get)
-    if ok and type(data) == "table" then
-        return data
-    end
-    return nil
+    local ok,data=pcall(Save.Get)
+    return (ok and type(data)=="table") and data or nil
 end
 
 local function GetGems()
-    local data = TryGetSave()
-    if not data or not data.Inventory then return nil end
-    local cur = data.Inventory.Currency
-    if not cur then return nil end
-
-    for _, v in pairs(cur) do
-        if type(v) == "table" and (v.id == "Diamonds" or v.id == "Gems") then
-            return tonumber(v._am) or 0
-        end
+    local d=TryGetSave()
+    if not d or not d.Inventory or not d.Inventory.Currency then return 0 end
+    for _,v in pairs(d.Inventory.Currency) do
+        if v.id=="Diamonds" or v.id=="Gems" then return tonumber(v._am) or 0 end
     end
-
-    local node = cur.Diamonds or cur.Gems
-    if type(node) == "table" then
-        return tonumber(node._am) or tonumber(node.amount) or 0
-    end
-
     return 0
 end
 
 local old = playerGui:FindFirstChild("GEM_HUD")
 if old then old:Destroy() end
 
-local ui = Instance.new("ScreenGui")
-ui.Name = "GEM_HUD"
-ui.Parent = playerGui
-ui.ResetOnSpawn = false
-ui.IgnoreGuiInset = true
-ui.ZIndexBehavior = Enum.ZIndexBehavior.Global
+local ui = Instance.new("ScreenGui", playerGui)
+ui.Name="GEM_HUD"
+ui.IgnoreGuiInset=true
 
-local frame = Instance.new("Frame")
-frame.Size = UDim2.new(0, 900, 0, 260)
-frame.Position = UDim2.new(0.5, -450, 1, -340)
+local frame = Instance.new("Frame", ui)
+frame.Size = UDim2.new(0, 900, 0, 180)
+frame.Position = UDim2.new(0.5, -450, 1, -260)
 frame.BackgroundTransparency = 1
-frame.ZIndex = 9999
-frame.Parent = ui
 
-local function newText(size, y)
-    local t = Instance.new("TextLabel")
-    t.Size = UDim2.new(1,0,0,size+10)
-    t.Position = UDim2.new(0,0,0,y)
-    t.BackgroundTransparency = 1
-    t.TextColor3 = Color3.new(1,1,1)
-    t.Font = Enum.Font.GothamBold
-    t.TextSize = size
-    t.TextXAlignment = Enum.TextXAlignment.Center
-    t.ZIndex = 9999
-    t.Parent = frame
-    return t
+local function newTxt(size, y)
+    local l = Instance.new("TextLabel", frame)
+    l.Size = UDim2.new(1,0,0,size+12)
+    l.Position = UDim2.new(0,0,0,y)
+    l.BackgroundTransparency = 1
+    l.Font = Enum.Font.GothamBold
+    l.TextColor3 = Color3.new(1,1,1)
+    l.TextXAlignment = Enum.TextXAlignment.Center
+    l.TextSize = size
+    return l
 end
 
-local gemLine  = newText(80, 0)
-local infoLine = newText(55, 120)
-local mapLine  = newText(48, 190)
+local line1 = newTxt(65, 0)   -- 💎 line
+local line2 = newTxt(55, 90)  -- World + Rank + RB
 
-local baseGems, gainedGems = nil, 0
-
--- FPS
-local fps = 0
-task.spawn(function()
-    while task.wait(1) do
-        fps = math.floor(1 / RunService.RenderStepped:Wait())
-    end
-end)
+local baseGems, gained = nil, 0
+local startGems = nil
+local startTick = os.clock()
+local gemsPerMin = 0
 
 task.spawn(function()
     while task.wait(0.25) do
         local data = TryGetSave()
         local gems = GetGems()
 
-        -- Gems
-        if type(gems) == "number" then
-            if not baseGems then baseGems = gems end
-            if gems > baseGems then gainedGems = gems - baseGems end
-            gemLine.Text = "💎 "..Format(gems).."    💎+"..Format(gainedGems)
-        else
-            gemLine.Text = "💎 --    💎+--"
+        -- Base + Gain
+        if not baseGems then baseGems = gems end
+        if gems > baseGems then gained = gems - baseGems end
+
+        -- 60s stable gem/min
+        local elapsed = os.clock() - startTick
+        if not startGems then startGems = gems end
+        if elapsed >= 60 then
+            gemsPerMin = gems - startGems
+            startGems = gems
+            startTick = os.clock()
         end
 
-        -- Rank & RB only (Zone removed)
-        local rank = (data and (data.Rank or data.RankLevel)) or 0
-        local rb = 0
-        if data then
-            rb = data.Rebirth or (data.Stats and data.Stats.Rebirth) or data.Rebirths or data.TileRebirth or 0
-        end
+        local rank = data and (data.Rank or data.RankLevel) or 0
+        local rb   = data and (data.Rebirth or data.Rebirths or data.TileRebirth or 0) or 0
 
-        infoLine.Text = string.format("RANK: %s   |   RB: %s   |   FPS: %s", rank, rb, fps)
-        mapLine.Text = "📍 " .. currentMap
+        -- ✅ Apply your new format
+        line1.Text = string.format("💎 %s  |  +%s  |  %s/M", Format(gems), Format(gained), Format(gemsPerMin))
+        line2.Text = string.format("🌍 %s  |  RANK: %s  |  RB: %s", GetMap(), rank, rb)
     end
 end)
