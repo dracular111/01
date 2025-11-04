@@ -13,7 +13,6 @@ local playerGui = player:WaitForChild("PlayerGui")
 local Library = ReplicatedStorage:WaitForChild("Library", 99999)
 local Client = Library:WaitForChild("Client", 99999)
 local Save
-
 for _, m in pairs(getloadedmodules()) do
     if m.Name == "Save" then
         local ok, result = pcall(require, m)
@@ -38,25 +37,14 @@ local function GetMap()
     return placeNames[game.PlaceId] or ("PlaceId: " .. game.PlaceId)
 end
 
--- ✅ Format số theo đúng rule bạn xác nhận
+-- Format số theo rule: <100k = số thường; 100k..999k = K không thập phân; >=1M = 1 chữ thập phân
 local function Format(n)
     if type(n) ~= "number" then return "0" end
-
-    if n < 100000 then
-        return tostring(math.floor(n))
-    end
-
+    if n < 100000 then return tostring(math.floor(n)) end
     local s = {"","K","M","B","T","Qd","Qn","Sx","Sp","Oc"}
     local i = 1
-    while n >= 1000 and i < #s do
-        n = n / 1000
-        i += 1
-    end
-
-    if i == 2 then
-        return string.format("%d%s", math.floor(n), s[i])
-    end
-
+    while n >= 1000 and i < #s do n = n / 1000 i += 1 end
+    if i == 2 then return string.format("%d%s", math.floor(n), s[i]) end
     local out = string.format("%.1f%s", n, s[i])
     return out:gsub("%.0", "")
 end
@@ -91,28 +79,31 @@ frame.Size = UDim2.new(0, 900, 0, 180)
 frame.Position = UDim2.new(0.5, -450, 1, -260)
 frame.BackgroundTransparency = 1
 
--- ✅ Text vàng + viền đen đậm + outline
+-- === Text vàng + viền đen đậm (Contextual) + không còn chữ "Nhãn" mặc định
 local function newTxt(size, y)
     local l = Instance.new("TextLabel", frame)
     l.Size = UDim2.new(1,0,0,size+12)
     l.Position = UDim2.new(0,0,0,y)
     l.BackgroundTransparency = 1
     l.Font = Enum.Font.GothamBold
+    l.Text = ""  -- tránh hiện "Label"/"Nhãn"
     l.TextColor3 = Color3.fromRGB(255, 225, 0) -- vàng neon
     l.TextXAlignment = Enum.TextXAlignment.Center
     l.TextSize = size
 
-    local stroke = Instance.new("UIStroke", l)
+    local stroke = Instance.new("UIStroke")
     stroke.Thickness = 3.5
     stroke.Color = Color3.new(0,0,0)
-    stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Outline -- ⭐ quan trọng nhất
+    stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Contextual -- ✔ đúng cho TextLabel
+    stroke.Parent = l
 
     return l
 end
 
-local line1 = newTxt(66, 0)
-local line2 = newTxt(66, 88)
+local line1 = newTxt(66, 0)   -- "💎 ... | + ... | .../M"
+local line2 = newTxt(66, 88)  -- "🌍 ... | RANK: ... | RB: ..."
 
+-- State
 local baseGems, gained = nil, 0
 local startGems, startTick = nil, os.clock()
 local gemsPerMin = 0
