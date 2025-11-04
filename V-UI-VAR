@@ -23,30 +23,25 @@ if not Save then Save = require(Client:WaitForChild("Save")) end
 
 -- Map Names
 local placeNames = {
-    [8737899170] = "World 1",
-    [16498369169] = "World 2",
-    [17473989780] = "World 3",
-    [140403681187145] = "World 4",
-    [119454325063278] = "Farming World",
-    [95635359880599] = "Fishing World",
-    [131952481663528] = "Halloween Event",
-    [15588442388] = "Plaza",
-    [15502339080] = "Plaza (Alt)"
+    [8737899170] = "World 1",[16498369169] = "World 2",[17473989780] = "World 3",
+    [140403681187145] = "World 4",[119454325063278] = "Farming World",
+    [95635359880599] = "Fishing World",[131952481663528] = "Halloween Event",
+    [15588442388] = "Plaza",[15502339080] = "Plaza (Alt)"
 }
-local function GetMap()
-    return placeNames[game.PlaceId] or ("PlaceId: " .. game.PlaceId)
-end
+local function GetMap() return placeNames[game.PlaceId] or ("PlaceId: "..game.PlaceId) end
 
--- Format số theo rule: <100k = số thường; 100k..999k = K không thập phân; >=1M = 1 chữ thập phân
+-- Format: <100k có dấu phẩy; 100k..999k -> K không thập phân; >=1M -> 1 chữ thập phân
 local function Format(n)
-    if type(n) ~= "number" then return "0" end
-    if n < 100000 then return tostring(math.floor(n)) end
-    local s = {"","K","M","B","T","Qd","Qn","Sx","Sp","Oc"}
-    local i = 1
-    while n >= 1000 and i < #s do n = n / 1000 i += 1 end
-    if i == 2 then return string.format("%d%s", math.floor(n), s[i]) end
-    local out = string.format("%.1f%s", n, s[i])
-    return out:gsub("%.0", "")
+    n = tonumber(n) or 0
+    if n < 100000 then
+        return tostring(math.floor(n)):reverse():gsub("(%d%d%d)","%1,"):reverse():gsub("^,","")
+    end
+    local suf={"","K","M","B","T","Qd","Qn","Sx","Sp","Oc"}
+    local i=1
+    while n>=1000 and i<#suf do n/=1000 i+=1 end
+    if i==2 then return string.format("%d%s", math.floor(n), suf[i]) end
+    local out = string.format("%.1f%s", n, suf[i])
+    return out:gsub("%.0","")
 end
 
 local function TryGetSave()
@@ -55,12 +50,10 @@ local function TryGetSave()
 end
 
 local function GetGems()
-    local d = TryGetSave()
-    if not d or not d.Inventory or not d.Inventory.Currency then return 0 end
+    local d=TryGetSave()
+    if not d or not d.Inventory or not d.Inventory.Currency then return nil end
     for _,v in pairs(d.Inventory.Currency) do
-        if v.id=="Diamonds" or v.id=="Gems" then
-            return tonumber(v._am) or 0
-        end
+        if v.id=="Diamonds" or v.id=="Gems" then return tonumber(v._am) or 0 end
     end
     return 0
 end
@@ -75,59 +68,87 @@ ui.IgnoreGuiInset = true
 ui.ResetOnSpawn = false
 
 local frame = Instance.new("Frame", ui)
-frame.Size = UDim2.new(0, 900, 0, 180)
-frame.Position = UDim2.new(0.5, -450, 1, -260)
+frame.Size = UDim2.new(0, 900, 0, 200)
+frame.Position = UDim2.new(0.5, -450, 1, -300) -- ⬇️ dưới như cũ, nhích lên ~2 dòng
 frame.BackgroundTransparency = 1
 
--- === Text vàng + viền đen đậm (Contextual) + không còn chữ "Nhãn" mặc định
+-- Text vàng + viền đen đậm
 local function newTxt(size, y)
     local l = Instance.new("TextLabel", frame)
-    l.Size = UDim2.new(1,0,0,size+12)
+    l.Size = UDim2.new(1,0,0,size+10)
     l.Position = UDim2.new(0,0,0,y)
     l.BackgroundTransparency = 1
     l.Font = Enum.Font.GothamBold
-    l.Text = ""  -- tránh hiện "Label"/"Nhãn"
-    l.TextColor3 = Color3.fromRGB(255, 225, 0) -- vàng neon
-    l.TextXAlignment = Enum.TextXAlignment.Center
+    l.TextColor3 = Color3.fromRGB(255,225,0)
     l.TextSize = size
-
-    local stroke = Instance.new("UIStroke")
-    stroke.Thickness = 3.5
-    stroke.Color = Color3.new(0,0,0)
-    stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Contextual -- ✔ đúng cho TextLabel
-    stroke.Parent = l
-
+    l.TextXAlignment = Enum.TextXAlignment.Center
+    l.Text = ""
+    local st = Instance.new("UIStroke", l)
+    st.Thickness = 3.5
+    st.Color = Color3.new(0,0,0)
+    st.ApplyStrokeMode = Enum.ApplyStrokeMode.Contextual
     return l
 end
 
-local line1 = newTxt(66, 0)   -- "💎 ... | + ... | .../M"
-local line2 = newTxt(66, 88)  -- "🌍 ... | RANK: ... | RB: ..."
+local line1 = newTxt(60, 0)    -- 💎 ... | + ... | .../M
+local line2 = newTxt(58, 90)   -- 🌍 ... | RANK ... | RB ...
 
--- State
-local baseGems, gained = nil, 0
-local startGems, startTick = nil, os.clock()
-local gemsPerMin = 0
+-- ====== Logic cộng dồn đúng yêu cầu ======
+local sessionReady = false
+local baseGems = 0          -- mốc đầu phiên
+local lastGems = 0          -- để bắt delta dương
+local totalGain = 0         -- +Gems (chỉ cộng khi tăng)
+local windowGain = 0        -- cộng dồn tăng trong cửa sổ 60s
+local windowStart = os.clock()
+local perMin = 0            -- kết quả mỗi 60s
+
+-- làm tròn tới hàng trăm trước khi Format
+local function roundHundreds(n)
+    return math.floor((n + 50) / 100) * 100
+end
 
 task.spawn(function()
     while task.wait(0.25) do
         local data = TryGetSave()
         local gems = GetGems()
 
-        if not baseGems then baseGems = gems end
-        if gems >= baseGems then gained = gems - baseGems end
+        -- đợi tới khi đọc được gems hợp lệ mới khởi động phiên
+        if not sessionReady then
+            if type(gems) == "number" then
+                baseGems = gems
+                lastGems = gems
+                totalGain = 0
+                windowGain = 0
+                perMin = 0
+                windowStart = os.clock()
+                sessionReady = true
+            end
+        else
+            -- chỉ cộng khi tăng; giảm (gửi thư/chi tiêu) thì bỏ qua
+            if gems and gems > lastGems then
+                local inc = gems - lastGems
+                totalGain += inc
+                windowGain += inc
+            end
+            lastGems = gems or lastGems
 
-        if not startGems then startGems = gems end
-        local elapsed = os.clock() - startTick
-        if elapsed >= 60 then
-            gemsPerMin = gems - startGems
-            startGems = gems
-            startTick = os.clock()
+            -- mỗi 60s chốt kết quả /M rồi reset cửa sổ
+            if os.clock() - windowStart >= 60 then
+                perMin = windowGain
+                windowGain = 0
+                windowStart = os.clock()
+            end
         end
 
         local rank = data and (data.Rank or data.RankLevel) or 0
         local rb   = data and (data.Rebirth or data.Rebirths or data.TileRebirth or 0) or 0
 
-        line1.Text = string.format("💎 %s | + %s | %s/M", Format(gems), Format(gained), Format(gemsPerMin))
+        -- hiển thị
+        local gemsText      = Format(gems or 0)
+        local gainText      = Format(roundHundreds(totalGain))
+        local perMinText    = Format(roundHundreds(perMin))
+
+        line1.Text = string.format("💎 %s | + %s | %s/M", gemsText, gainText, perMinText)
         line2.Text = string.format("🌍 %s | RANK: %s | RB: %s", GetMap(), rank, rb)
     end
 end)
