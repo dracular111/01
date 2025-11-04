@@ -1,15 +1,52 @@
 -- reset guard nếu cần chạy lại
-_G.VAR_SIMPLE_HUD = nil
 if _G.VAR_SIMPLE_HUD then return end
 _G.VAR_SIMPLE_HUD = true
 
+repeat task.wait() until game:IsLoaded()
+
 local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local player = Players.LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
-local Save = require(ReplicatedStorage.Library.Client.Save)
 
--- ===== Utilities =====
+-- === LOAD SAVE CHO FILE EXEC / WAVE / DELTA ===
+local Library = ReplicatedStorage:WaitForChild("Library", 99999)
+local Client = Library:WaitForChild("Client", 99999)
+local Save
+
+for _, m in pairs(getloadedmodules()) do
+    if m.Name == "Save" then
+        local ok, result = pcall(require, m)
+        if ok and type(result) == "table" then
+            Save = result
+            break
+        end
+    end
+end
+
+if not Save then
+    Save = require(Client:WaitForChild("Save"))
+end
+-- ===============================================
+
+-- Map Name Table
+local placeNames = {
+    [8737899170] = "🌍 World 1",
+    [16498369169] = "🌍 World 2",
+    [17473989780] = "🌍 World 3",
+    [140403681187145] = "🌍 World 4",
+
+    [119454325063278] = "🌾 Farming World",
+    [95635359880599] = "🎣 Fishing World",
+    [131952481663528] = "🎃 Halloween Event",
+
+    [15588442388] = "🏛 Plaza",
+    [15502339080] = "🏛 Plaza (Alt)"
+}
+
+local currentMap = placeNames[game.PlaceId] or ("PlaceId: " .. game.PlaceId)
+
 local function Format(n)
     if type(n) ~= "number" then return "0" end
     local suffix = {"","K","M","B","T","Qd","Qn","Sx","Sp","Oc"}
@@ -29,32 +66,26 @@ local function TryGetSave()
     return nil
 end
 
--- Lấy Diamonds an toàn (trả về số hoặc nil nếu chưa sẵn sàng)
 local function GetGems()
     local data = TryGetSave()
     if not data or not data.Inventory then return nil end
     local cur = data.Inventory.Currency
     if not cur then return nil end
 
-    -- hỗ trợ cả mảng và dictionary
-    if typeof(cur) == "table" then
-        -- dạng mảng
-        for _, v in pairs(cur) do
-            if type(v) == "table" and (v.id == "Diamonds" or v.id == "Gems") then
-                return tonumber(v._am) or 0
-            end
-        end
-        -- dạng dictionary
-        local node = cur.Diamonds or cur["Diamonds"] or cur.Gems or cur["Gems"]
-        if type(node) == "table" then
-            return tonumber(node._am) or tonumber(node.amount) or 0
+    for _, v in pairs(cur) do
+        if type(v) == "table" and (v.id == "Diamonds" or v.id == "Gems") then
+            return tonumber(v._am) or 0
         end
     end
+
+    local node = cur.Diamonds or cur.Gems
+    if type(node) == "table" then
+        return tonumber(node._am) or tonumber(node.amount) or 0
+    end
+
     return 0
 end
 
--- ===== GUI =====
--- cleanup cũ nếu có
 local old = playerGui:FindFirstChild("GEM_HUD")
 if old then old:Destroy() end
 
@@ -66,16 +97,16 @@ ui.IgnoreGuiInset = true
 ui.ZIndexBehavior = Enum.ZIndexBehavior.Global
 
 local frame = Instance.new("Frame")
-frame.Size = UDim2.new(0, 900, 0, 200)
-frame.Position = UDim2.new(0.5, -450, 1, -300) -- giữa, nâng lên ~6 dòng
+frame.Size = UDim2.new(0, 900, 0, 260)
+frame.Position = UDim2.new(0.5, -450, 1, -340)
 frame.BackgroundTransparency = 1
 frame.ZIndex = 9999
 frame.Parent = ui
 
 local function newText(size, y)
     local t = Instance.new("TextLabel")
-    t.Size = UDim2.new(1, 0, 0, size + 10)
-    t.Position = UDim2.new(0, 0, 0, y)
+    t.Size = UDim2.new(1,0,0,size+10)
+    t.Position = UDim2.new(0,0,0,y)
     t.BackgroundTransparency = 1
     t.TextColor3 = Color3.new(1,1,1)
     t.Font = Enum.Font.GothamBold
@@ -86,38 +117,42 @@ local function newText(size, y)
     return t
 end
 
-local gemLine  = newText(80, 0)     -- 💎 current + 💎+gain (cùng dòng)
-local infoLine = newText(60, 120)   -- RANK | RB | ZONE
+local gemLine  = newText(80, 0)
+local infoLine = newText(55, 120)
+local mapLine  = newText(48, 190)
 
--- baseGems chỉ gán khi đọc được gems lần đầu
-local baseGems = nil
-local gainedGems = 0
+local baseGems, gainedGems = nil, 0
 
--- chờ nhẹ cho tới khi có dữ liệu (không lỗi nếu chậm)
+-- FPS
+local fps = 0
+task.spawn(function()
+    while task.wait(1) do
+        fps = math.floor(1 / RunService.RenderStepped:Wait())
+    end
+end)
+
 task.spawn(function()
     while task.wait(0.25) do
         local data = TryGetSave()
-        local gems = GetGems() -- có thể nil lần đầu -> xử lý bên dưới
+        local gems = GetGems()
 
+        -- Gems
         if type(gems) == "number" then
-            if not baseGems then
-                baseGems = gems
-            end
-            if baseGems and gems > baseGems then
-                gainedGems = gems - baseGems
-            end
-            gemLine.Text = "💎 " .. Format(gems) .. "    💎+" .. Format(gainedGems)
+            if not baseGems then baseGems = gems end
+            if gems > baseGems then gainedGems = gems - baseGems end
+            gemLine.Text = "💎 "..Format(gems).."    💎+"..Format(gainedGems)
         else
-            -- chưa sẵn sàng: hiển thị chờ
             gemLine.Text = "💎 --    💎+--"
         end
 
-        local rank = 0; local rb = 0; local zone = 0
+        -- Rank & RB only (Zone removed)
+        local rank = (data and (data.Rank or data.RankLevel)) or 0
+        local rb = 0
         if data then
-            rank = data.Rank or data.RankLevel or 0
-            rb   = data.TileRebirth or data.Rebirths or 0
-            zone = data.Zone or 0
+            rb = data.Rebirth or (data.Stats and data.Stats.Rebirth) or data.Rebirths or data.TileRebirth or 0
         end
-        infoLine.Text = string.format("RANK: %s   |   RB: %s   |   ZONE: %s", rank, rb, zone)
+
+        infoLine.Text = string.format("RANK: %s   |   RB: %s   |   FPS: %s", rank, rb, fps)
+        mapLine.Text = "📍 " .. currentMap
     end
 end)
