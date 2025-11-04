@@ -1,0 +1,154 @@
+-- == CHỐNG TRÙNG SCRIPT ==
+if _G.VARGEMS then return end
+_G.VARGEMS = true
+
+-- == CHO PHÉP CHẠY Ở 2 MAP ==
+local VALID_PLACES = {
+    [15588442388] = true,
+    [15502339080] = true,
+}
+if not VALID_PLACES[game.PlaceId] then return end
+
+task.wait(10) -- đợi script khác load
+
+local Players = game:GetService("Players")
+local LP = Players.LocalPlayer
+local leaderstats = LP:WaitForChild("leaderstats")
+local diamondStat = leaderstats:WaitForChild("💎 Diamonds")
+
+-- == CẤU HÌNH ==
+local MIN_GAIN = 100000000
+local MAIL_GROUP_WINDOW = 2
+
+-- == GIÁ TRỊ PHIÊN ==
+local start = diamondStat.Value
+local high = start
+local earned = 0
+
+local mailCount = 0
+local mailTotal = 0
+local pending = 0
+local lastMail = 0
+
+_G.HOP_COUNT = _G.HOP_COUNT or 0
+local hopCount = _G.HOP_COUNT
+
+-- == UI ==
+local function formatNum(n)
+    local s = {"","k","m","b","t","q"}
+    local i = 1
+    local v = math.abs(n)
+    while v >= 1000 and i < #s do v=v/1000 i+=1 end
+    local out = string.format("%.2f%s", v, s[i])
+    return (n<0 and "-" or "")..out
+end
+
+local gui = Instance.new("ScreenGui", LP.PlayerGui)
+gui.Name="GemMonitorUI"; gui.ResetOnSpawn=false
+
+local frame = Instance.new("Frame", gui)
+frame.Size = UDim2.new(0,260,0,80)
+frame.Position = UDim2.new(1,-270,1,-110) -- GỐC PHẢI DƯỚI
+frame.BackgroundColor3 = Color3.fromRGB(25,25,25)
+frame.BackgroundTransparency = 0.25
+frame.BorderSizePixel=0
+
+Instance.new("UICorner",frame)
+local list=Instance.new("UIListLayout",frame)
+list.Padding=UDim.new(0,2)
+
+local function mkLabel()
+    local l=Instance.new("TextLabel",frame)
+    l.Size=UDim2.new(1,-10,0,20)
+    l.BackgroundTransparency=1
+    l.Font=Enum.Font.GothamSemibold
+    l.TextSize=14
+    l.TextXAlignment=Enum.TextXAlignment.Left
+    l.TextColor3=Color3.new(1,1,1)
+    return l
+end
+
+local l1=mkLabel()
+local l2=mkLabel()
+local l3=mkLabel()
+local l4=mkLabel()
+
+local function updateUI(msg)
+    if diamondStat.Value > high then high = diamondStat.Value end
+    l1.Text = "🔄 Hop: ".. hopCount
+    l2.Text = "💎 Lúc vào: "..formatNum(start).." | Cao nhất: "..formatNum(high)
+    l3.Text = "📈 Hiệu suất: +"..formatNum(earned)
+    l4.Text = "📮 Gửi: "..mailCount.." lần | Tổng: "..formatNum(mailTotal)..(msg and (" | "..msg) or "")
+end
+
+updateUI()
+
+-- == THEO DÕI GEM ==
+local last = diamondStat.Value
+diamondStat:GetPropertyChangedSignal("Value"):Connect(function()
+    local cur = diamondStat.Value
+    local diff = cur - last
+    last = cur
+
+    if diff > 0 then
+        earned += diff
+        updateUI()
+    elseif diff < 0 then
+        pending += -diff
+        lastMail = os.clock()
+    end
+end)
+
+-- Gom lần gửi
+task.spawn(function()
+    while task.wait(0.2) do
+        if pending > 0 and os.clock() - lastMail >= MAIL_GROUP_WINDOW then
+            mailCount += 1
+            mailTotal += pending
+            pending = 0
+            updateUI()
+        end
+    end
+end)
+
+-- == HOP AN TOÀN ==
+local function safeHop()
+    for i=1,5 do
+        local ok,err = pcall(function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Sv-hop"))()
+        end)
+        if ok then return end
+        warn("⚠️ Hop fail, retry in 5s:",err)
+        updateUI("Sever full → chờ 5s hop lại")
+        task.wait(5)
+    end
+    safeHop()
+end
+
+-- == KIỂM TRA 10 PHÚT ==
+task.spawn(function()
+    while true do
+        local b = diamondStat.Value
+        task.wait(60)
+        local now = diamondStat.Value
+        if now - b < MIN_GAIN then
+            if pending > 0 then
+                mailCount += 1
+                mailTotal += pending
+                pending = 0
+            end
+
+            hopCount += 1
+            _G.HOP_COUNT = hopCount
+
+            updateUI("Đang hop...")
+            safeHop()
+
+            task.wait(5)
+            _G.VARGEMS = false
+            return
+        else
+            updateUI("OK")
+        end
+    end
+end)
