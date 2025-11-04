@@ -17,7 +17,7 @@ local leaderstats = LP:WaitForChild("leaderstats")
 local diamondStat = leaderstats:WaitForChild("💎 Diamonds")
 
 -- == CẤU HÌNH ==
-local MIN_GAIN = 100000000
+local MIN_GAIN = 10000000
 local MAIL_GROUP_WINDOW = 2
 
 -- == GIÁ TRỊ PHIÊN ==
@@ -129,7 +129,7 @@ end
 task.spawn(function()
     while true do
         local b = diamondStat.Value
-        task.wait(60)
+        task.wait(120)
         local now = diamondStat.Value
         if now - b < MIN_GAIN then
             if pending > 0 then
