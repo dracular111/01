@@ -38,30 +38,27 @@ local function GetMap()
     return placeNames[game.PlaceId] or ("PlaceId: " .. game.PlaceId)
 end
 
--- ✅ FORMAT CHUẨN THEO YÊU CẦU
+-- ✅ Format số theo đúng rule bạn xác nhận
 local function Format(n)
     if type(n) ~= "number" then return "0" end
 
-    -- Dưới 100k → không rút gọn
     if n < 100000 then
         return tostring(math.floor(n))
     end
 
-    local suffix = {"","K","M","B","T","Qd","Qn","Sx","Sp","Oc"}
+    local s = {"","K","M","B","T","Qd","Qn","Sx","Sp","Oc"}
     local i = 1
-    while n >= 1000 and i < #suffix do
+    while n >= 1000 and i < #s do
         n = n / 1000
         i += 1
     end
 
-    -- K → không thập phân
     if i == 2 then
-        return string.format("%d%s", math.floor(n), suffix[i])
+        return string.format("%d%s", math.floor(n), s[i])
     end
 
-    -- M trở lên → 1 số thập phân
-    local s = string.format("%.1f%s", n, suffix[i])
-    return s:gsub("%.0", "") -- xoá .0 nếu tròn
+    local out = string.format("%.1f%s", n, s[i])
+    return out:gsub("%.0", "")
 end
 
 local function TryGetSave()
@@ -94,15 +91,22 @@ frame.Size = UDim2.new(0, 900, 0, 180)
 frame.Position = UDim2.new(0.5, -450, 1, -260)
 frame.BackgroundTransparency = 1
 
+-- ✅ Text vàng + viền đen đậm + outline
 local function newTxt(size, y)
     local l = Instance.new("TextLabel", frame)
     l.Size = UDim2.new(1,0,0,size+12)
     l.Position = UDim2.new(0,0,0,y)
     l.BackgroundTransparency = 1
     l.Font = Enum.Font.GothamBold
-    l.TextColor3 = Color3.new(1,1,1)
+    l.TextColor3 = Color3.fromRGB(255, 225, 0) -- vàng neon
     l.TextXAlignment = Enum.TextXAlignment.Center
     l.TextSize = size
+
+    local stroke = Instance.new("UIStroke", l)
+    stroke.Thickness = 3.5
+    stroke.Color = Color3.new(0,0,0)
+    stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Outline -- ⭐ quan trọng nhất
+
     return l
 end
 
@@ -121,7 +125,6 @@ task.spawn(function()
         if not baseGems then baseGems = gems end
         if gems >= baseGems then gained = gems - baseGems end
 
-        -- 60s TB
         if not startGems then startGems = gems end
         local elapsed = os.clock() - startTick
         if elapsed >= 60 then
