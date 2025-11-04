@@ -154,6 +154,6 @@ task.spawn(function()
         local perMinText    = Format(roundHundreds(perMin))
 
         line1.Text = string.format("💎 %s | + %s | %s/M", gemsText, gainText, perMinText)
-        line2.Text = string.format("🌍 %s | RANK: %s | RB: %s", GetMap(), rank, rb)
+        line2.Text = string.format("%s | R: %s | RB: %s", GetMap(), rank, rb)
     end
 end)
