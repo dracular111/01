@@ -1,8 +1,8 @@
 local sources = {
+    { name = "V-UI-VAR", url = "https://raw.githubusercontent.com/dracular111/01/main/V-UI-VAR" },
     { name = "FPS", url = "https://raw.githubusercontent.com/dracular111/01/main/FPS" },
     { name = "Gift-gem", url = "https://raw.githubusercontent.com/dracular111/01/main/Gift-Gem" },
     { name = "V-Reset", url = "https://raw.githubusercontent.com/dracular111/01/main/V-Reset" },
-    { name = "V-UI-VAR", url = "https://raw.githubusercontent.com/dracular111/01/main/V-UI-VAR" },
     --{ name = "Gift-Item", url = "https://raw.githubusercontent.com/dracular111/01/main/Gift-Item" },
 }
 
