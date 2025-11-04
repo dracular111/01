@@ -23,10 +23,10 @@ if not Save then Save = require(Client:WaitForChild("Save")) end
 
 -- Map Names
 local placeNames = {
-    [8737899170] = "World 1",[16498369169] = "World 2",[17473989780] = "World 3",
-    [140403681187145] = "World 4",[119454325063278] = "Farming World",
-    [95635359880599] = "Fishing World",[131952481663528] = "Halloween Event",
-    [15588442388] = "Plaza",[15502339080] = "Plaza (Alt)"
+    [8737899170] = "W1",[16498369169] = "W2",[17473989780] = "W3",
+    [140403681187145] = "W4",[119454325063278] = "Farming",
+    [95635359880599] = "Fishing",[131952481663528] = "Event",
+    [15588442388] = "Plaza pro",[15502339080] = "Plaza"
 }
 local function GetMap() return placeNames[game.PlaceId] or ("PlaceId: "..game.PlaceId) end
 
@@ -62,7 +62,8 @@ end
 local old = playerGui:FindFirstChild("GEM_HUD")
 if old then old:Destroy() end
 
-local ui = Instance.new("ScreenGui", playerGui)
+local ui = Instance.new("ScreenGui")
+ui.Parent = game:GetService("CoreGui")
 ui.Name = "GEM_HUD"
 ui.IgnoreGuiInset = true
 ui.ResetOnSpawn = false
@@ -73,7 +74,8 @@ ui.DisplayOrder = 999999
 
 local frame = Instance.new("Frame", ui)
 frame.Size = UDim2.new(0, 900, 0, 200)
-frame.Position = UDim2.new(0.5, -450, 1, -300)
+frame.AnchorPoint = Vector2.new(0.5, 1)  -- neo vào chính giữa đáy màn hình
+frame.Position = UDim2.new(0.5, 0, 1, -0.5) -- luôn nằm sát đáy, offset = -80
 frame.BackgroundTransparency = 1
 
 -- Text vàng + viền đen đậm
@@ -98,8 +100,8 @@ local function newTxt(size, y)
     return l
 end
 
-local line1 = newTxt(60, 0)
-local line2 = newTxt(58, 90)
+local line1 = newTxt(60, 50)   -- đẩy dòng gem xuống
+local line2 = newTxt(58, 120)  -- đẩy dòng rank xuống tương ứng
 
 -- ====== Logic cộng dồn đúng yêu cầu ======
 local sessionReady = false
