@@ -21,40 +21,76 @@ local CoreGui = game:GetService("CoreGui")
 local RunService = game:GetService("RunService")
 
 local ScreenGui = Instance.new("ScreenGui")
-local Label = Instance.new("TextLabel")
-local Notice = Instance.new("TextLabel")
-
 ScreenGui.Name = "FPS_UI"
 ScreenGui.IgnoreGuiInset = true
 ScreenGui.ResetOnSpawn = false
 ScreenGui.Parent = CoreGui
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Global -- ✅ UI luôn nằm trên cùng
+
+-- ✅ Auto Scale theo độ phân giải (đã tăng độ lớn UI)
+local UIScale = Instance.new("UIScale", ScreenGui)
+local function updateScale()
+    local cam = workspace.CurrentCamera
+    if cam then
+        UIScale.Scale = (cam.ViewportSize.Y / 1080) * 1.6
+    end
+end
+updateScale()
+workspace.CurrentCamera:GetPropertyChangedSignal("ViewportSize"):Connect(updateScale)
+
+local Label = Instance.new("TextLabel")
+local Notice = Instance.new("TextLabel")
 
 Label.Size = UDim2.new(0, 1200, 0, 400)
-Label.Position = UDim2.new(0.5, -600, 0, -160)
+Label.Position = UDim2.new(0.5, -600, 0, -140) -- ✅ Dịch UI lên cao thêm
 Label.BackgroundTransparency = 1
-Label.TextColor3 = Color3.fromRGB(255, 255, 255)
+Label.TextColor3 = Color3.fromRGB(255, 255, 0)
 Label.Font = Enum.Font.Code
-Label.TextScaled = false
-Label.TextSize = 300
+Label.TextSize = 80
 Label.Text = "FPS:00"
 Label.TextXAlignment = Enum.TextXAlignment.Center
 Label.TextStrokeTransparency = 0.4
 Label.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
 Label.Parent = ScreenGui
 
-Notice.Size = UDim2.new(1, 0, 0, 100)
+Notice.Size = UDim2.new(1, 0, 0, 120)
 Notice.Position = UDim2.new(0, 0, 0.55, 0)
 Notice.BackgroundTransparency = 1
 Notice.TextColor3 = Color3.fromRGB(255, 255, 0)
 Notice.Font = Enum.Font.Code
-Notice.TextScaled = false
 Notice.TextSize = 80
-Notice.Text = "LOCK FPS:" .. TARGET_FPS
+Notice.Text = "LOCK FPS: " .. TARGET_FPS
 Notice.TextXAlignment = Enum.TextXAlignment.Center
 Notice.TextStrokeTransparency = 0.3
 Notice.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
 Notice.Parent = Label
 
+-- ✅ Online time
+local Online = Instance.new("TextLabel")
+Online.Size = UDim2.new(1, 0, 0, 120)
+Online.Position = UDim2.new(0, 0, 0.80, 0)
+Online.BackgroundTransparency = 1
+Online.TextColor3 = Color3.fromRGB(255, 255, 0)
+Online.Font = Enum.Font.Code
+Online.TextSize = 120
+Online.Text = "Online: 00:00:00"
+Online.TextXAlignment = Enum.TextXAlignment.Center
+Online.TextStrokeTransparency = 0.3
+Online.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
+Online.Parent = Label
+
+local startTime = os.time()
+task.spawn(function()
+    while task.wait(1) do
+        local elapsed = os.time() - startTime
+        local h = math.floor(elapsed / 3600)
+        local m = math.floor((elapsed % 3600) / 60)
+        local s = elapsed % 60
+        Online.Text = string.format("%02d:%02d:%02d", h, m, s)
+    end
+end)
+
+-- ✅ GIỮ NGUYÊN MỌI THỨ BÊN DƯỚI
 if setfpscap then pcall(setfpscap, TARGET_FPS) end
 
 local targetDelay = 1 / TARGET_FPS
