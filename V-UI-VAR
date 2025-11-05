@@ -28,34 +28,8 @@ local placeNames = {
     [95635359880599] = "Fishing",[131952481663528] = "Event",
     [15588442388] = "Plaza VIP",[15502339080] = "Plaza Nor"
 }
-local function GetMap() return placeNames[game.PlaceId] or ("PlaceId: "..game.PlaceId) end
-
--- Format: <100k có dấu phẩy; 100k..999k -> K không thập phân; >=1M -> 1 chữ thập phân
-local function Format(n)
-    n = tonumber(n) or 0
-    if n < 100000 then
-        return tostring(math.floor(n)):reverse():gsub("(%d%d%d)","%1,"):reverse():gsub("^,","")
-    end
-    local suf={"","K","M","B","T","Qd","Qn","Sx","Sp","Oc"}
-    local i=1
-    while n>=1000 and i<#suf do n/=1000 i+=1 end
-    if i==2 then return string.format("%d%s", math.floor(n), suf[i]) end
-    local out = string.format("%.1f%s", n, suf[i])
-    return out:gsub("%.0","")
-end
-
-local function TryGetSave()
-    local ok,data = pcall(Save.Get)
-    return (ok and type(data)=="table") and data or nil
-end
-
-local function GetGems()
-    local d=TryGetSave()
-    if not d or not d.Inventory or not d.Inventory.Currency then return nil end
-    for _,v in pairs(d.Inventory.Currency) do
-        if v.id=="Diamonds" or v.id=="Gems" then return tonumber(v._am) or 0 end
-    end
-    return 0
+local function GetMap()
+    return placeNames[game.PlaceId] or ("PlaceId: "..game.PlaceId)
 end
 
 -- GUI
@@ -69,20 +43,18 @@ ui.Name = "GEM_HUD"
 ui.IgnoreGuiInset = true
 ui.ResetOnSpawn = false
 
--- ✅ UI luôn nằm trên cùng
 ui.ZIndexBehavior = Enum.ZIndexBehavior.Global
 ui.DisplayOrder = 99999999
 
 local frame = Instance.new("Frame", ui)
 frame.Size = UDim2.new(0, 900, 0, 200)
-frame.AnchorPoint = Vector2.new(0.5, 1)  -- neo vào chính giữa đáy màn hình
-frame.Position = UDim2.new(0.5, 0, 1, -0.5) -- luôn nằm sát đáy, offset = -80
+frame.AnchorPoint = Vector2.new(0.5, 1)
+frame.Position = UDim2.new(0.5, 0, 1, -0.5)
 frame.BackgroundTransparency = 1
 
--- Text vàng + viền đen đậm
 local function newTxt(size, y)
     local l = Instance.new("TextLabel", frame)
-    l.Size = UDim2.new(1,0,0,size+10)
+    l.Size = UDim2.new(1,0,0,size+12)
     l.Position = UDim2.new(0,0,0,y)
     l.BackgroundTransparency = 1
     l.Font = Enum.Font.GothamBold
@@ -90,71 +62,39 @@ local function newTxt(size, y)
     l.TextSize = size
     l.TextXAlignment = Enum.TextXAlignment.Center
     l.Text = ""
-
-    -- ✅ luôn trên hết mọi UI
     l.ZIndex = 999999999
 
     local st = Instance.new("UIStroke", l)
-    st.Thickness = 3.5
+    st.Thickness = 4
     st.Color = Color3.new(0,0,0)
-    st.ApplyStrokeMode = Enum.ApplyStrokeMode.Contextual
     return l
 end
 
-local line1 = newTxt(50, 60)   -- đẩy dòng gem xuống
-local line2 = newTxt(60, 130)  -- đẩy dòng rank xuống tương ứng
+-- ✅ Dòng Time Online (to, giữa)
+local lineTime = newTxt(70, 70)
 
--- ====== Logic cộng dồn đúng yêu cầu ======
-local sessionReady = false
-local baseGems = 0
-local lastGems = 0
-local totalGain = 0
-local windowGain = 0
-local windowStart = os.clock()
-local perMin = 0
+-- ✅ Dòng Map | Rank | RB
+local lineInfo = newTxt(55, 140)
 
-local function roundHundreds(n)
-    return math.floor((n + 50) / 100) * 100
+-- Time Online
+local startTime = os.clock()
+local function FormatTime(sec)
+    local h = math.floor(sec/3600)
+    local m = math.floor((sec%3600)/60)
+    local s = math.floor(sec%60)
+    return string.format("%02d:%02d:%02d", h, m, s)
 end
 
 task.spawn(function()
-    while task.wait(0.25) do
-        local data = TryGetSave()
-        local gems = GetGems()
-
-        if not sessionReady then
-            if type(gems) == "number" then
-                baseGems = gems
-                lastGems = gems
-                totalGain = 0
-                windowGain = 0
-                perMin = 0
-                windowStart = os.clock()
-                sessionReady = true
-            end
-        else
-            if gems and gems > lastGems then
-                local inc = gems - lastGems
-                totalGain += inc
-                windowGain += inc
-            end
-            lastGems = gems or lastGems
-
-            if os.clock() - windowStart >= 60 then
-                perMin = windowGain
-                windowGain = 0
-                windowStart = os.clock()
-            end
-        end
+    while task.wait(1) do
+        local data = nil
+        pcall(function() data = Save.Get() end)
 
         local rank = data and (data.Rank or data.RankLevel) or 0
         local rb   = data and (data.Rebirth or data.Rebirths or data.TileRebirth or 0) or 0
+        local online = FormatTime(os.clock() - startTime)
 
-        local gemsText      = Format(gems or 0)
-        local gainText      = Format(roundHundreds(totalGain))
-        local perMinText    = Format(roundHundreds(perMin))
-
-        line1.Text = string.format("💎%s|+%s|%s/M", gemsText, gainText, perMinText)
-        line2.Text = string.format("%s | R: %s| RB: %s", GetMap(), rank, rb)
+        lineTime.Text = "" .. online
+        lineInfo.Text = string.format("%s | R: %s | RB: %s", GetMap(), rank, rb)
     end
 end)
