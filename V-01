@@ -1,5 +1,5 @@
 local sources = {
-    { name = "V-Hop-time-connect", url = "https://raw.githubusercontent.com/dracular111/01/main/V-Hop-time-connect" },
+    { name = "V-Hop", url = "https://raw.githubusercontent.com/dracular111/01/main/V-Hop-time-connect" },
     { name = "FPS", url = "https://raw.githubusercontent.com/dracular111/01/main/FPS" },
     { name = "Gift-gem", url = "https://raw.githubusercontent.com/dracular111/01/main/Gift-Gem" },
     { name = "V-Reset", url = "https://raw.githubusercontent.com/dracular111/01/main/V-Reset" },
