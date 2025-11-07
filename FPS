@@ -26,6 +26,7 @@ ScreenGui.IgnoreGuiInset = true
 ScreenGui.ResetOnSpawn = false
 ScreenGui.Parent = CoreGui
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Global -- ✅ UI luôn nằm trên cùng
+ScreenGui.DisplayOrder = 999999999 -- ✅ GIỮ UI LUÔN TRÊN MỌI UI KHÁC
 
 -- ✅ Auto Scale theo độ phân giải (đã tăng độ lớn UI)
 local UIScale = Instance.new("UIScale", ScreenGui)
