@@ -20,7 +20,7 @@ local ScreenGui = Instance.new("ScreenGui")
 ScreenGui.Name = "AutoUpdaterUI"
 ScreenGui.ResetOnSpawn = false
 ScreenGui.Parent = CoreGui
-ScreenGui.DisplayOrder = 999999999 -- ✅ UI luôn nổi trên mọi UI khác
+--ScreenGui.DisplayOrder = 999999999 -- ✅ UI luôn nổi trên mọi UI khác
 
 local Frame = Instance.new("Frame")
 Frame.Size = UDim2.new(0, 180, 0, (#sources * 20) + 35)
