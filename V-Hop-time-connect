@@ -52,7 +52,7 @@ task.spawn(function()
         timeOnline += 1
         
         -- nếu online quá 3 tiếng (180 phút)
-        if timeOnline >= 180 and not _G.HOP_WAIT then
+        if timeOnline >= 9999999 and not _G.HOP_WAIT then
             local randomWait = math.random(1, 30) -- phút
             _G.HOP_WAIT = randomWait * 60 -- đổi sang giây
             
