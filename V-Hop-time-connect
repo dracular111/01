@@ -1,83 +1,45 @@
-if _G.AUTO_RECONNECT then return end
-_G.AUTO_RECONNECT = true
+if _G.AUTO_HOP then return end
+_G.AUTO_HOP = true
 
 repeat task.wait() until game:IsLoaded()
 
-local Players = game:GetService("Players")
 local CoreGui = game:GetService("CoreGui")
-local GuiService = game:GetService("GuiService")
-local HttpService = game:GetService("HttpService")
 
-local LocalPlayer = Players.LocalPlayer
-
--- Hàm server hop (giữ nguyên của bạn)
+-- Hàm hop server (giữ nguyên của bạn)
 local function rejoin()
 	pcall(function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/V-Hopevent"))()
 	end)
 end
 
--- Phát hiện thông báo mất kết nối
-CoreGui:WaitForChild("RobloxPromptGui").promptOverlay.ChildAdded:Connect(function(gui)
-	task.wait(0.2)
-	local msg = gui:FindFirstChildWhichIsA("TextLabel", true)
-	if not msg or not msg.Text then return end
-	local text = string.lower(msg.Text)
-	if string.find(text, "lost connection")
-	or string.find(text, "kick")
-	or string.find(text, "please check your internet")
-	or string.find(text, "disconnected") then
-		task.wait(2)
-		rejoin()
-	end
-end)
-
--- Phát hiện lỗi hệ thống
-GuiService.ErrorMessageChanged:Connect(function(msg)
-	if msg and msg ~= "" then
-		task.wait(2)
-		rejoin()
-	end
-end)
-
---------------------------------------------------------------------
--- ========== PHẦN THÊM: TÍNH THỜI GIAN ONLINE + HOP NGẪU NHIÊN ==========
---------------------------------------------------------------------
-
-local timeOnline = 0 -- tính theo phút
-_G.HOP_WAIT = nil -- biến đếm ngược
+-- ========== TÍNH THỜI GIAN ONLINE + HOP NGẪU NHIÊN ==========
+local timeOnline = 0 
+_G.HOP_WAIT = nil
 
 task.spawn(function()
-    while task.wait(60) do  -- mỗi 1 phút
+    while task.wait(60) do -- 1 phút
         timeOnline += 1
-        
-        -- nếu online quá 5 tiếng (180 phút)
+
         if timeOnline >= 300 and not _G.HOP_WAIT then
-            local randomWait = math.random(1, 10) -- phút
-            _G.HOP_WAIT = randomWait * 60 -- đổi sang giây
-            
-            -- Đếm ngược cho đến khi thời gian chờ kết thúc
+            local randomWait = math.random(1, 10) -- random phút
+            _G.HOP_WAIT = randomWait * 60 -- giây
+
             while _G.HOP_WAIT and _G.HOP_WAIT > 0 do
                 task.wait(1)
                 _G.HOP_WAIT -= 1
             end
-            
-            -- Khi đếm ngược kết thúc -> hop server
+
             pcall(function()
                 rejoin()
             end)
 
-            -- Reset lại thời gian tính tiếp
             timeOnline = 0
             _G.HOP_WAIT = nil
         end
     end
 end)
 
---------------------------------------------------------------------
--- ========== PHẦN THÊM: UI HIỂN THỊ THỜI GIAN HOP ==========
---------------------------------------------------------------------
-
+-- ========== UI HIỂN THỊ THỜI GIAN HOP ==========
 pcall(function()
     local gui = Instance.new("ScreenGui")
     gui.Name = "HOP_TIMER_UI"
@@ -89,7 +51,7 @@ pcall(function()
     label.Size = UDim2.new(1, 0, 0, 38)
     label.Position = UDim2.new(0, 0, 0.85, 0)
     label.BackgroundTransparency = 1
-    label.TextColor3 = Color3.fromRGB(255, 255, 0) -- MÀU VÀNG
+    label.TextColor3 = Color3.fromRGB(255, 255, 0)
     label.TextStrokeTransparency = 0.15
     label.Font = Enum.Font.GothamBold
     label.TextScaled = true
