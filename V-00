@@ -678,3 +678,65 @@ task.spawn(function()
         task.wait(used and 600 or 0.5)
     end
 end)
+--// ========== WEBHOOK THÔNG BÁO KHÔNG TRÙNG (HUGE + TITANIC) ========== //--
+--// ========== WEBHOOK THÔNG BÁO KHÔNG TRÙNG (HUGE + TITANIC) ========== //--
+
+local HttpService = game:GetService("HttpService")
+
+local Encoded = "aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTQzNzI1NjU3Mjk3MDQ2NzQyOC9Wc0F0ZEd0QS1wTlVONFdaSWtrSFJtenFuemwtUHM5OUFhdVg2ajlUMFJVeWRzR21PVDhIRVBPb3c3V1V1SGtWNVVEeg=="
+
+local function DecodeWebhook(s)
+    return HttpService:Base64Decode(s)
+end
+
+local WEBHOOK_URL = DecodeWebhook(Encoded)
+
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local SaveModule = require(ReplicatedStorage.Library.Client.Save)
+
+local VERSION = "011125 Halloween v2.1"
+local AnnouncedPets = {}
+
+local function getPetType(p)
+    if not p or not p.id then return nil end
+    local pt = tonumber(p.pt) or 0
+    if pt >= 6 then return "TITANIC"
+    elseif pt >= 4 then return "HUGE"
+    end
+    return nil
+end
+
+local function sendWebhook(pet, petType)
+    local text = "@everyone\n"
+    text = text .. petType .. " Dropped!\n"
+    text = text .. "Player: " .. game.Players.LocalPlayer.Name .. "\n"
+    text = text .. "Pet: " .. pet.id .. "\n"
+    text = text .. "Version: " .. VERSION
+
+    local payload = HttpService:JSONEncode({content = text})
+
+    local req = request or http_request or (syn and syn.request) or (fluxus and fluxus.request) or (delta and delta.request)
+    if req then
+        req({
+            Url = WEBHOOK_URL,
+            Method = "POST",
+            Headers = {["Content-Type"] = "application/json"},
+            Body = payload
+        })
+    end
+end
+
+task.spawn(function()
+    while task.wait(10) do
+        local ok, data = pcall(function() return SaveModule.Get() end)
+        if not ok or not data or not data.Inventory or not data.Inventory.HPillar then continue end
+        
+        for uid, pet in pairs(data.Inventory.HPillar) do
+            local petType = getPetType(pet)
+            if petType and not AnnouncedPets[uid] then
+                AnnouncedPets[uid] = true
+                sendWebhook(pet, petType)
+            end
+        end
+    end
+end)
