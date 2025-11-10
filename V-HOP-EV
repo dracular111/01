@@ -1,138 +1,53 @@
-repeat task.wait() until game:IsLoaded()
+-- Kiểm tra biến toàn cục để xác định script đã chạy hay chưa
+if _G.VARGEMS then
+    warn("Script đã được chạy trước đó!")
+    return -- Dừng script nếu đã chạy
+end
 
-local placeId = 131952481663528
-local HttpService = game:GetService("HttpService")
-local TeleportService = game:GetService("TeleportService")
+-- Đánh dấu script đã được chạy
+_G.VARGEMS = true
+
+-- Lấy dịch vụ Players
 local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
-
--------------------------------------------------------
--- 🧮 Hàm đếm số người chơi hiện tại
--------------------------------------------------------
-local function getPlayerCount()
-	local count
-	local ok, result = pcall(function()
-		return #Players:GetPlayers()
-	end)
-
-	if ok and result then
-		count = result
-	else
-		local tempCount = 0
-		for _, player in ipairs(Players:GetChildren()) do
-			if player:IsA("Player") then
-				tempCount += 1
-			end
-		end
-		count = tempCount
-		warn("⚠️ Fallback GetPlayers(): số lượng đếm được:", count)
-	end
-
-	print("👥 Số người trong server hiện tại:", count)
-	return count
+local leaderstats = LocalPlayer:WaitForChild("leaderstats")
+local diamondStat = leaderstats:WaitForChild("💎 Diamonds")
+local function inHalloweenWorld()
+	local c = workspace:FindFirstChild("__THINGS") and workspace.__THINGS:FindFirstChild("__INSTANCE_CONTAINER")
+	return c and c:FindFirstChild("Active") and c.Active:FindFirstChild("HalloweenWorld")
 end
--------------------------------------------------------
--- ⚡ Teleport sang server ít người
--------------------------------------------------------
-local function teleportToLeastPopulatedServer(placeId, runScriptOnJoin, retryLimit)
-	retryLimit = retryLimit or 3
-	local attempts = 0
-	local cursor = nil
 
-	while attempts < retryLimit do
-		attempts += 1
-		local validServers = {}
-		local pagesChecked = 0
+repeat task.wait(1) until inHalloweenWorld()
 
-		repeat
-			pagesChecked += 1
-			local url = ('https://games.roblox.com/v1/games/%d/servers/Public?sortOrder=Asc&limit=100'):format(placeId)
-			if cursor then url = url .. '&cursor=' .. cursor end
+-- Ngưỡng tăng kim cương tối thiểu để không ServerHop
+local MIN_GAIN = 1680000
 
-			local ok, result = pcall(function()
-				return HttpService:JSONDecode(game:HttpGet(url))
-			end)
+-- Hàm kiểm tra kim cương định kỳ
+local function monitorDiamonds()
+    while true do
+        -- Lấy giá trị ban đầu
+        local initialDiamonds = diamondStat.Value
+        print("💠 Số kim cương ban đầu: " .. initialDiamonds)
 
-			if ok and result and result.data then
-				for _, server in ipairs(result.data) do
-					if server.playing and server.maxPlayers and server.playing > 0 and server.playing < server.maxPlayers then
-						table.insert(validServers, server)
-					end
-				end
-				cursor = result.nextPageCursor
-			else
-				warn(("❌ Không thể lấy server page (lần %d), cursor: %s"):format(attempts, tostring(cursor)))
-				cursor = nil
-				break
-			end
+        -- Chờ 10 phút (600 giây)
+        task.wait(600)
 
-			task.wait(0.5)
-		until #validServers >= 3 or not cursor or pagesChecked >= 9
+        -- Lấy giá trị hiện tại
+        local currentDiamonds = diamondStat.Value
+        local diff = currentDiamonds - initialDiamonds
 
-		if #validServers > 0 then
-			table.sort(validServers, function(a, b)
-				return a.playing < b.playing
-			end)
+        print(string.format("📊 Sau 10 phút: hiện có %d (tăng %d)", currentDiamonds, diff))
 
-			local topCount = math.min(30, #validServers)
-			local selectedServer = validServers[math.random(1, topCount)]
-			if not selectedServer or not selectedServer.id then
-				warn("⚠️ Server chọn không hợp lệ, thử lại...")
-			else
-				local teleportData = runScriptOnJoin and "RUNSCRIPT" or "NOSCRIPT"
-				local ok, err = pcall(function()
-					TeleportService:TeleportToPlaceInstance(placeId, selectedServer.id, LocalPlayer, { customData = teleportData })
-				end)
-
-				if ok then
-					print(("✅ Teleport thành công (ID: %s, %d/%d players)"):format(selectedServer.id, selectedServer.playing, selectedServer.maxPlayers))
-					return true
-				else
-					warn(("⚠️ Teleport thất bại (Lần %d): %s"):format(attempts, tostring(err)))
-				end
-			end
-		else
-			warn(("🔁 Không tìm được server hợp lệ (lần %d). Thử lại..."):format(attempts))
-		end
-
-		task.wait(5)
-	end
-	-------------------------------------------------------
-	-- ⛔ Teleport thất bại sau nhiều lần -> về place gốc
-	-------------------------------------------------------
-	warn("⛔ Teleport thất bại sau " .. retryLimit .. " lần thử!")
-
-	if game.PlaceId ~= placeId then
-		warn("🔁 Đang không ở đúng Place ID, teleport về gốc...")
-		local ok, err = pcall(function()
-			TeleportService:Teleport(placeId, LocalPlayer)
-		end)
-		if not ok then
-			warn("❌ Teleport về gốc thất bại:", tostring(err))
-		else
-			print("✅ Đã gửi yêu cầu teleport về Place ID gốc:", placeId)
-		end
-	end
-
-	return false
+        -- Kiểm tra chênh lệch
+        if diff < MIN_GAIN then
+            print("⚠️ Kim cương tăng dưới " .. MIN_GAIN .. " → Thực hiện ServerHop.")
+            game.Players.LocalPlayer:Kick("Heo VAR")
+            return -- Dừng vòng hiện tại, script JoinLow sẽ tự chạy lại
+        else
+            print("✅ Kim cương tăng đủ (" .. diff .. "), không ServerHop. Tiếp tục theo dõi...")
+        end
+    end
 end
--------------------------------------------------------
--- 🕒 Theo dõi 3 tiếng một lần
--------------------------------------------------------
-local function monitorPlayerCount()
-	while true do
-		local count = getPlayerCount()
-		if count <= 3 then
-			print("🧘 Server yên tĩnh (" .. count .. " người). Kiểm tra lại sau 6 tiếng.")
-		else
-			warn("🚨 Server đông (" .. count .. " người)! Nhảy sang server mới...")
-			task.wait(3)
-			teleportToLeastPopulatedServer(placeId, false, 5)
-			break
-		end
-		task.wait(21600) -- 6 tiếng = 21600 giây
-	end
-end
--------------------------------------------------------
-print("🔁 Bắt đầu theo dõi server Place ID:", placeId)
-monitorPlayerCount()
+
+-- Chạy kiểm tra
+monitorDiamonds()
