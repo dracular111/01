@@ -1,7 +1,7 @@
 getgenv().Settings = {
 ["Items"] = {
 		{Name = "Exclusive Egg 56", Data = {Price = "85m"}},
-        {Name = "Huge Skeleton Snake", Data = {Price = "12m"}},
+        {Name = "Huge Skeleton Snake", Data = {Price = "10m"}},
         {Name = "Huge Evil Raven", Data = {Price = "8m"}},
         {Name = "Huge Frankenpup Dog", Data = {Price = "15m"}},
 
@@ -71,7 +71,7 @@ getgenv().Settings = {
         {Name = "Golden Huge Telescope Owl", Data = {Price = "25.5m"}},
         {Name = "Golden Huge Chill Parrot", Data = {Price = "29.5m"}},
 
-        {Name = "All Huges", Data = {Price = "1%", Min_sell = "15m", Max_sell = "30m", sold_by_convention = true}},
+        {Name = "All Huges", Data = {Price = "1%", Min_sell = "10m", Max_sell = "30m", sold_by_convention = true}},
         {Name = "Shiny Rainbow All Huges", Data = {Price = "5%", Min_sell = "1.5b", Max_sell = "5b"}},
 		{Name = "Shiny Golden All Huges", Data = {Price = "5%", Min_sell = "1b", Max_sell = "5b"}},
         {Name = "Shiny All Huges", Data = {Price = "2%", Min_sell = "60m", Max_sell = "300m"}},
