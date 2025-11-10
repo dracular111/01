@@ -2,6 +2,7 @@ getgenv().Settings = {
 ["Items"] = {
 		{Name = "Exclusive Egg 56", Data = {Price = "95m"}},
         {Name = "Huge Evil Raven", Data = {Price = "10m"}},
+        {Name = "Huge Skeleton Snake", Data = {Price = "10m"}},
         {Name = "Huge Frankenpup Dog", Data = {Price = "15m"}},
 
         {Name = "MVP Key", Data = {Price = "3.8m"}},
@@ -76,7 +77,6 @@ getgenv().Settings = {
         {Name = "Shiny All Huges", Data = {Price = "2%", Min_sell = "60m", Max_sell = "300m"}},
         {Name = "Rainbow All Huges", Data = {Price = "2%", Min_sell = "50m", Max_sell = "300m", sold_by_convention = true}},
         {Name = "Golden All Huges", Data = {Price = "1%", Min_sell = "12m", Max_sell = "30m", sold_by_convention = true}},
-        {Name = "Huge Skeleton Snake", Data = {Price = "10m"}},
     },
 ["xoa_Map"] = true,
 
