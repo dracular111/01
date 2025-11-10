@@ -41,7 +41,7 @@ local function monitorDiamonds()
         -- Kiểm tra chênh lệch
         if diff < MIN_GAIN then
             print("⚠️ Kim cương tăng dưới " .. MIN_GAIN .. " → Thực hiện ServerHop.")
-            game.Players.LocalPlayer:Kick("Heo VAR")
+            game.Players.LocalPlayer:Kick("")
             return -- Dừng vòng hiện tại, script JoinLow sẽ tự chạy lại
         else
             print("✅ Kim cương tăng đủ (" .. diff .. "), không ServerHop. Tiếp tục theo dõi...")
