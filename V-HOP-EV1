@@ -1,0 +1,138 @@
+repeat task.wait() until game:IsLoaded()
+
+local placeId = 131952481663528
+local HttpService = game:GetService("HttpService")
+local TeleportService = game:GetService("TeleportService")
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+
+-------------------------------------------------------
+-- 🧮 Hàm đếm số người chơi hiện tại
+-------------------------------------------------------
+local function getPlayerCount()
+	local count
+	local ok, result = pcall(function()
+		return #Players:GetPlayers()
+	end)
+
+	if ok and result then
+		count = result
+	else
+		local tempCount = 0
+		for _, player in ipairs(Players:GetChildren()) do
+			if player:IsA("Player") then
+				tempCount += 1
+			end
+		end
+		count = tempCount
+		warn("⚠️ Fallback GetPlayers(): số lượng đếm được:", count)
+	end
+
+	print("👥 Số người trong server hiện tại:", count)
+	return count
+end
+-------------------------------------------------------
+-- ⚡ Teleport sang server ít người
+-------------------------------------------------------
+local function teleportToLeastPopulatedServer(placeId, runScriptOnJoin, retryLimit)
+	retryLimit = retryLimit or 3
+	local attempts = 0
+	local cursor = nil
+
+	while attempts < retryLimit do
+		attempts += 1
+		local validServers = {}
+		local pagesChecked = 0
+
+		repeat
+			pagesChecked += 1
+			local url = ('https://games.roblox.com/v1/games/%d/servers/Public?sortOrder=Asc&limit=100'):format(placeId)
+			if cursor then url = url .. '&cursor=' .. cursor end
+
+			local ok, result = pcall(function()
+				return HttpService:JSONDecode(game:HttpGet(url))
+			end)
+
+			if ok and result and result.data then
+				for _, server in ipairs(result.data) do
+					if server.playing and server.maxPlayers and server.playing > 0 and server.playing < server.maxPlayers then
+						table.insert(validServers, server)
+					end
+				end
+				cursor = result.nextPageCursor
+			else
+				warn(("❌ Không thể lấy server page (lần %d), cursor: %s"):format(attempts, tostring(cursor)))
+				cursor = nil
+				break
+			end
+
+			task.wait(0.5)
+		until #validServers >= 3 or not cursor or pagesChecked >= 9
+
+		if #validServers > 0 then
+			table.sort(validServers, function(a, b)
+				return a.playing < b.playing
+			end)
+
+			local topCount = math.min(30, #validServers)
+			local selectedServer = validServers[math.random(1, topCount)]
+			if not selectedServer or not selectedServer.id then
+				warn("⚠️ Server chọn không hợp lệ, thử lại...")
+			else
+				local teleportData = runScriptOnJoin and "RUNSCRIPT" or "NOSCRIPT"
+				local ok, err = pcall(function()
+					TeleportService:TeleportToPlaceInstance(placeId, selectedServer.id, LocalPlayer, { customData = teleportData })
+				end)
+
+				if ok then
+					print(("✅ Teleport thành công (ID: %s, %d/%d players)"):format(selectedServer.id, selectedServer.playing, selectedServer.maxPlayers))
+					return true
+				else
+					warn(("⚠️ Teleport thất bại (Lần %d): %s"):format(attempts, tostring(err)))
+				end
+			end
+		else
+			warn(("🔁 Không tìm được server hợp lệ (lần %d). Thử lại..."):format(attempts))
+		end
+
+		task.wait(5)
+	end
+	-------------------------------------------------------
+	-- ⛔ Teleport thất bại sau nhiều lần -> về place gốc
+	-------------------------------------------------------
+	warn("⛔ Teleport thất bại sau " .. retryLimit .. " lần thử!")
+
+	if game.PlaceId ~= placeId then
+		warn("🔁 Đang không ở đúng Place ID, teleport về gốc...")
+		local ok, err = pcall(function()
+			TeleportService:Teleport(placeId, LocalPlayer)
+		end)
+		if not ok then
+			warn("❌ Teleport về gốc thất bại:", tostring(err))
+		else
+			print("✅ Đã gửi yêu cầu teleport về Place ID gốc:", placeId)
+		end
+	end
+
+	return false
+end
+-------------------------------------------------------
+-- 🕒 Theo dõi 3 tiếng một lần
+-------------------------------------------------------
+local function monitorPlayerCount()
+	while true do
+		local count = getPlayerCount()
+		if count <= 3 then
+			print("🧘 Server yên tĩnh (" .. count .. " người). Kiểm tra lại sau 6 tiếng.")
+		else
+			warn("🚨 Server đông (" .. count .. " người)! Nhảy sang server mới...")
+			task.wait(3)
+			teleportToLeastPopulatedServer(placeId, false, 5)
+			break
+		end
+		task.wait(21600) -- 6 tiếng = 21600 giây
+	end
+end
+-------------------------------------------------------
+print("🔁 Bắt đầu theo dõi server Place ID:", placeId)
+monitorPlayerCount()
