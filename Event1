@@ -1,8 +1,8 @@
 getgenv().GGFX_MODE = 1
 getgenv().GZONE_TO = 240 -- to enter event from W1 put 1, from W2 put 100, from W3 200, from W4 240
-getgenv().GRANK_FIRST = true
-getgenv().GREBIRTH_TO = 1
-getgenv().GRANK_TO = 1
+getgenv().GRANK_FIRST = false
+--getgenv().GREBIRTH_TO = 1
+--getgenv().GRANK_TO = 1
 getgenv().GHALLOWEEN_JOIN_LOCAL = true
 --getgenv().GHALLOWEEN_JOIN_LOCAL = false
 getgenv().GDO_HALLOWEEN_WORLD = true
