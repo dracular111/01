@@ -36,12 +36,12 @@ task.spawn(function()
     end)
 end)
 
-task.spawn(function()
-    wait(9)
-    pcall(function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/V-LowCPU"))()
-    end)
-end)
+--task.spawn(function()
+    --wait(9)
+    --pcall(function()
+        --loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/V-LowCPU"))()
+    --end)
+--end)
 
 _G.PillarPets = _G.PillarPets or {}
 _G.PillarScanDone = _G.PillarScanDone or false
