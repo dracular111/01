@@ -3,7 +3,7 @@ local sources = {
     { name = "FPS", url = "https://raw.githubusercontent.com/dracular111/01/main/FPS" },
     { name = "GIFT", url = "https://raw.githubusercontent.com/dracular111/01/main/Gift-Gem" },
     { name = "RESET", url = "https://raw.githubusercontent.com/dracular111/01/main/V-Reset" },
-    --{ name = "Gift-Item", url = "https://raw.githubusercontent.com/dracular111/01/main/Gift-Item" },
+    { name = "Daycare", url = "https://raw.githubusercontent.com/dracular111/01/main/Daycare" },
 }
 
 local http = game:GetService("HttpService")
