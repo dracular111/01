@@ -1,6 +1,6 @@
 getgenv().GGFX_MODE = 1
-getgenv().GZONE_TO = 1
-getgenv().GRANK_FIRST = false
+getgenv().GZONE_TO = 21
+getgenv().GRANK_FIRST = true
 --getgenv().GREBIRTH_TO = 1
 --getgenv().GRANK_TO = 1
 --getgenv().GHALLOWEEN_JOIN_LOCAL = true
