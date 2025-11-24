@@ -1,95 +1,107 @@
-getgenv().maxslot = 30
-getgenv().time = 60 -- minutes
-repeat wait() until game:IsLoaded()
+if _G.DAYGIFTFREES then return end
+_G.DAYGIFTFREES = true
 
-local VirtualUser = game:service 'VirtualUser'
-game:service('Players').LocalPlayer.Idled:connect(function()
-    VirtualUser:CaptureController()
-    VirtualUser:ClickButton2(Vector2.new())
-end)
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local daycareCmds = require(ReplicatedStorage.Library.Client.DaycareCmds)
+local saveModule = require(ReplicatedStorage.Library.Client.Save)
 
-repeat
-    wait()
-until game:IsLoaded() and
-    game:GetService("Players").LocalPlayer:FindFirstChild("PlayerGui") and
-    game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("MainLeft") and
-    game:GetService("Players").LocalPlayer.PlayerGui.MainLeft.Left.Currency.Diamonds.Diamonds.Visible == true and
-    not game:GetService("Players").LocalPlayer:FindFirstChild("GUIFX Holder")
-repeat wait() until game.Workspace.DistributedGameTime >= 35
-local v_u_23 = require(game.ReplicatedStorage.Library.Client.Network)
+local enrollRemote = ReplicatedStorage.Network:FindFirstChild("Daycare: Enroll")
+local claimRemote = ReplicatedStorage.Network:FindFirstChild("Daycare: Claim")
+local redeemEvent = ReplicatedStorage.Network:FindFirstChild("Redeem Free Gift")
 
-local v2 = require(game.ReplicatedStorage.Library.Client.DaycareCmds)
-
-repeat
-    wait()
-    if v2.GetMaxSlots() < getgenv().maxslot then
-        v_u_23.Invoke("DaycareSlotVoucher_Consume")
-    end
-    task.wait(1)
-until v2.GetMaxSlots() >= getgenv().maxslot
-
-local rs = game:GetService("ReplicatedStorage")
-local save = require(rs.Library.Client.Save)
-local max_value = -math.huge
-local max_index = nil
-local amount = nil
-local name = nil
-function writefileyummy()
-    writefile(game.Players.LocalPlayer.Name .. ".txt", "Completed-SetDayCare")
+local function petInDaycare()
+    local active = daycareCmds.GetActive()
+    return type(active) == "table" and next(active) ~= nil
 end
 
-local savepet = {}
-for i, v in v2.GetActive() do
-    if v2.ComputeRemainingTime(i) <= 0 then
-        v2.Claim(i)
+local function getRemainingTime()
+    local remainingTime = 0
+    for petId, _ in pairs(daycareCmds.GetActive() or {}) do
+        local success, petRemaining = pcall(function() return daycareCmds.ComputeRemainingTime(petId) end)
+        if success and type(petRemaining) == "number" and petRemaining > remainingTime then
+            remainingTime = petRemaining
+        end
+    end
+    return remainingTime
+end
+
+local function getActiveCount()
+    local active = daycareCmds.GetActive()
+    local count = 0
+    if type(active) == "table" then
+        for _ in pairs(active) do count += 1 end
+    end
+    return count
+end
+
+local function getRainbowBloomingUIDs(maxCount)
+    maxCount = maxCount or 30
+    local result = {}
+    local save = saveModule.Get()
+    local inventory = save and save.Inventory and save.Inventory.Pet
+    if not inventory then return result end
+    for uid, petData in pairs(inventory) do
+        if #result >= maxCount then break end
+        if petData.id and tostring(petData.id):lower():find("blooming axolotl") and petData.pt == 2 then
+            local amount = tonumber(petData._am) or 1
+            local take = math.min(amount, maxCount - #result)
+            for i = 1, take do
+                table.insert(result, uid)
+                if #result >= maxCount then break end
+            end
+        end
+    end
+    return result
+end
+
+local function enrollPets(countNeeded)
+    if not enrollRemote then return end
+    local toSend = getRainbowBloomingUIDs(countNeeded)
+    if not toSend or #toSend == 0 then return end
+    for _, uid in ipairs(toSend) do
+        local args = {
+            [1] = {
+                [uid] = 1
+            }
+        }
+        pcall(function() enrollRemote:InvokeServer(unpack(args)) end)
+        wait(0.2)
     end
 end
-spawn(function()
-    while wait() do
-        for i, v in v2.GetActive() do
-            if v2.ComputeRemainingTime(i) <= 0 then
-                v2.Claim(i)
-            end
-        end
-        for i, v in pairs(save.Get().Inventory.Pet) do
-            if not string.find(v.id, "Huge") and not table.find(savepet, v.id) then
-                local save = require(game:GetService("ReplicatedStorage").Library.Items.Types).Types.Pet.Directory
-                    [v.id].cachedPower
-                for index, value in pairs(save) do
-                    if value > max_value then
-                        name = v.id
-                        amount = v._am or 1
-                        max_value = value
-                        max_index = i
-                    end
-                end
 
-                -- print(v.id, "Giá trị lớn nhất:", max_value, "ở vị trí:", max_index)
+local function checkDaycareAndReEnroll()
+    if petInDaycare() then
+        local remainingTime = getRemainingTime()
+        local count = getActiveCount()
+        if remainingTime <= 0 then
+            if claimRemote then
+                pcall(function() claimRemote:InvokeServer() end)
             end
-        end
-        print(name, max_value, max_index, amount)
-        local availableSlots = v2.GetMaxSlots() - v2.GetUsedSlots()
-        if availableSlots > 0 then
-            if availableSlots <= amount then
-                local args = {
-                    [1] = {
-                        [max_index] = availableSlots
-                    }
-                }
-                v_u_23.Invoke("Daycare: Enroll", unpack(args))
-            else
-                local args = {
-                    [1] = {
-                        [max_index] = amount
-                    }
-                }
-                v_u_23.Invoke("Daycare: Enroll", unpack(args))
-            end
-            table.insert(savepet, name)
         else
-            print("Used All Slot Can't Set Pet")
-            savepet = {}
+            if count < 30 then
+                enrollPets(30 - count)
+            end
+            return
         end
-        task.wait(getgenv().time * 60)
     end
-end)
+    enrollPets(30)
+end
+
+local function redeemGifts()
+    if redeemEvent then
+        for i = 1, 12 do
+            pcall(function() redeemEvent:InvokeServer(i) end)
+            wait(1)
+        end
+    end
+end
+
+checkDaycareAndReEnroll()
+wait(5)
+redeemGifts()
+
+while true do
+    wait(68)
+    checkDaycareAndReEnroll()
+    redeemGifts()
+end
