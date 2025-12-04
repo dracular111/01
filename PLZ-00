@@ -10,6 +10,7 @@ getgenv().Settings = {
 
         {Name = "Gargantuan Super Cat", Data = {Price = "50.86b"}},
         {Name = "Titanic Vampire Agony", Data = {Price = "25b"}},
+        {Name = "Titanic Pink Lucky Block", Data = {Price = "5.3b"}},
         {Name = "Titanic Noob", Data = {Price = "4b"}},
         {Name = "Halloween Lucky Block Gift", Data = {Price = "38m"}},
 
@@ -20,14 +21,14 @@ getgenv().Settings = {
         {Name = "Shiny Titanic Starlight Pony", Data = {Price = "69b"}},
         {Name = "Rainbow Titanic Starlight Pony", Data = {Price = "30b"}},
         {Name = "Golden Titanic Starlight Pony", Data = {Price = "6.5b"}},
-        {Name = "Titanic Starlight Pony", Data = {Price = "6.5b"}},
+        {Name = " Starlight Pony", Data = {Price = "6.5b"}},
 
-        {Name = "Rainbow Titanic Pineapple Dog", Data = {Price = "1%"}},
-        {Name = "Golden Titanic Pineapple Dog", Data = {Price = "5.3b"}},
-        {Name = "Titanic Pineapple Dog", Data = {Price = "1%"}},
+        {Name = "Rainbow  Pineapple Dog", Data = {Price = "1%"}},
+        {Name = "Golden  Pineapple Dog", Data = {Price = "5.3b"}},
+        {Name = " Pineapple Dog", Data = {Price = "1%"}},
 
-        {Name = "Titanic Narwhal", Data = {Price = "1%"}},
-        {Name = "Titanic Pixel Dominus Astra", Data = {Price = "1%"}},
+        {Name = " Narwhal", Data = {Price = "1%"}},
+        {Name = " Pixel Dominus Astra", Data = {Price = "1%"}},
 
         {Name = "Time Trial Gift", Data = {Price = "199k"}},
         {Name = "Tropical Gift", Data = {Price = "50k"}},
