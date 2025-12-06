@@ -1,5 +1,10 @@
 getgenv().Settings = {
 ["Items"] = {
+		{Name = "Gargantuan Black Balloon Cat", Data = {Price = "85b"}},
+        {Name = "Gargantuan Super Cat", Data = {Price = "80.86b"}},
+        {Name = "Titanic Vampire Agony", Data = {Price = "16b"}},
+        {Name = "Titanic Pink Lucky Block", Data = {Price = "5.2b"}},
+        {Name = "Titanic Noob", Data = {Price = "5b"}},
 		{Name = "Exclusive Egg 56", Data = {Price = "95m"}},
 		{Name = "Exclusive Egg 57", Data = {Price = "110m"}},
         {Name = "Huge Evil Raven", Data = {Price = "11m"}},
@@ -8,10 +13,6 @@ getgenv().Settings = {
 
         {Name = "MVP Key", Data = {Price = "3.8m"}},
 
-        {Name = "Gargantuan Super Cat", Data = {Price = "50.86b"}},
-        {Name = "Titanic Vampire Agony", Data = {Price = "16b"}},
-        {Name = "Titanic Pink Lucky Block", Data = {Price = "5.2b"}},
-        {Name = "Titanic Noob", Data = {Price = "4b"}},
         {Name = "Halloween Lucky Block Gift", Data = {Price = "38m"}},
 
         {Name = "Huge Splash Angelus", Data = {Price = "8.6b"}},
@@ -86,7 +87,7 @@ getgenv().Settings = {
         Play_mail = true,
         User_name_mail = "congahpz005",
         gem_mail = "5b",
-	time_swap_plaza = 20,
+	time_swap_plaza = 120,
 		
 }
 
