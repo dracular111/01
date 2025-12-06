@@ -86,7 +86,7 @@ getgenv().Settings = {
         Play_mail = true,
         User_name_mail = "congahpz005",
         gem_mail = "5b",
-	time_swap_plaza = 5,
+	time_swap_plaza = 20,
 		
 }
 
