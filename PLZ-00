@@ -2,8 +2,8 @@ getgenv().Settings = {
 ["Items"] = {
 		{Name = "Exclusive Egg 56", Data = {Price = "95m"}},
 		{Name = "Exclusive Egg 57", Data = {Price = "110m"}},
-        {Name = "Huge Evil Raven", Data = {Price = "20m"}},
-        {Name = "Huge Skeleton Snake", Data = {Price = "9.5m"}},
+        {Name = "Huge Evil Raven", Data = {Price = "11m"}},
+        {Name = "Huge Skeleton Snake", Data = {Price = "11m"}},
         {Name = "Huge Frankenpup Dog", Data = {Price = "15m"}},
 
         {Name = "MVP Key", Data = {Price = "3.8m"}},
