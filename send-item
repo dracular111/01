@@ -1,25 +1,18 @@
 getgenv().data = {
-    ["Account Send Mail"] = { "congahpz001" },
+    ["Account Send Mail"] = { "gills6ii", "boudo_4uz", "boekh6uo", "BenderMichael2", "wlopez00", "alexisjones324", "hholland606", "clairehanson7", "josephfowler06", "mcane9gb", "barus1ik", "manix6hi", "careygeorge2" },
     ["Item"] = {
-        ["Sapphire Gem"] = 99000,
-        ["Ruby Gem"] = 55000,
-        ["Emerald Gem"] = 90000,
-        ["Amethyst Gem"] = 1000,
-        ["Rainbow Gem"] = 200,
-        ["Mining Coins Booster"] = 90000,
-        ["Mining Damage Booster"] = 90000,
-        ["Mining Speed Booster"] = 90000,
         ["Hype Egg 2"] = 1,
         ["Daycare egg 5"] = 1,
-        ["Daycare egg 4"] = 1,
-        ["Crystal Key"] = 50,
-        ["Secret Key"] = 50,
+        ["Brainrot egg"] = 1,
+        ["Harvest egg"] = 1,
+        ["Exclusive Egg 56"] = 1,
+        ["Exclusive Egg 57"] = 1,
     },
-    ["Gem"] = "101m",
-    ["Gem Hold"] = "500k",
-    ["Minutes"] = 540,
+    ["Gem"] = "",
+    ["Gem Hold"] = "",
+    ["Minutes"] = 5,
     ["Url Webhook"] =
-    "https://discord.com/api/webhooks/1347239535918059540/tz_dR2f8ITBSUSQt58NV3EVGAf7naceycDUuEoLVsSlQiWG6aP90MOQ4caYnCcynO5__"
+    "https://discord.com/api/webhooks/1446869603996405880/J6yaz0kG_hqsoyOCaG3MaGp2qfiaxn7H3QNng8CrCqgOf_bo_Ox_XkQVflfFURpOYpQb"
 }
 repeat wait() until game:IsLoaded()
 local VirtualUser = game:service 'VirtualUser'
