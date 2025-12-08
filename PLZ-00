@@ -75,12 +75,12 @@ getgenv().Settings = {
         {Name = "Golden Huge Telescope Owl", Data = {Price = "25.5m"}},
         {Name = "Golden Huge Chill Parrot", Data = {Price = "29.5m"}},
 
-        {Name = "All Huges", Data = {Price = "1%", Min_sell = "10m", Max_sell = "30m", sold_by_convention = true}},
-        {Name = "Shiny Rainbow All Huges", Data = {Price = "5%", Min_sell = "1.5b", Max_sell = "5b"}},
-		{Name = "Shiny Golden All Huges", Data = {Price = "5%", Min_sell = "1b", Max_sell = "5b"}},
-        {Name = "Shiny All Huges", Data = {Price = "2%", Min_sell = "60m", Max_sell = "300m"}},
-        {Name = "Rainbow All Huges", Data = {Price = "2%", Min_sell = "50m", Max_sell = "300m", sold_by_convention = true}},
-        {Name = "Golden All Huges", Data = {Price = "1%", Min_sell = "12m", Max_sell = "30m", sold_by_convention = true}},
+        --{Name = "All Huges", Data = {Price = "1%", Min_sell = "10m", Max_sell = "30m", sold_by_convention = true}},
+        --{Name = "Shiny Rainbow All Huges", Data = {Price = "5%", Min_sell = "1.5b", Max_sell = "5b"}},
+		--{Name = "Shiny Golden All Huges", Data = {Price = "5%", Min_sell = "1b", Max_sell = "5b"}},
+        --{Name = "Shiny All Huges", Data = {Price = "2%", Min_sell = "600m", Max_sell = "3000m"}},
+        --{Name = "Rainbow All Huges", Data = {Price = "2%", Min_sell = "500m", Max_sell = "3000m", sold_by_convention = true}},
+        --{Name = "Golden All Huges", Data = {Price = "1%", Min_sell = "150m", Max_sell = "300m", sold_by_convention = true}},
     },
 ["xoa_Map"] = true,
 
