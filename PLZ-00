@@ -11,10 +11,13 @@ getgenv().Settings = {
         {Name = "Huge Blue Lucky Block", Data = {Price = "15m"}},
         {Name = "Huge Skeleton Snake", Data = {Price = "15m"}},
         {Name = "Huge Frankenpup Dog", Data = {Price = "15m"}},
-        {Name = "Huge Hacked Reaper", Data = {Price = "150m"}},
+        {Name = "Huge Hacked Reaper", Data = {Price = "180m"}},
         {Name = "Golden Huge Hacked Reaper", Data = {Price = "450m"}},
         {Name = "Rainbow Huge Hacked Reaper", Data = {Price = "900m"}},
-
+        {Name = "Huge Vampire Agony", Data = {Price = "350m"}},
+        {Name = "Huge Beans Balloon Cat", Data = {Price = "150m"}},
+        {Name = "Huge Spectral Deer", Data = {Price = "150m"}},
+        {Name = "Golden Huge Spectral Deer", Data = {Price = "450m"}},
         {Name = "MVP Key", Data = {Price = "3.8m"}},
 
         {Name = "Halloween Lucky Block Gift", Data = {Price = "38m"}},
