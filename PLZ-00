@@ -13,8 +13,8 @@ getgenv().Settings = {
         {Name = "Huge Frankenpup Dog", Data = {Price = "15m"}},
 
         {Name = "Huge Hacked Reaper", Data = {Price = "180m"}},
-        {Name = "Golden Huge Hacked Reaper", Data = {Price = "400m"}},
-        {Name = "Rainbow Huge Hacked Reaper", Data = {Price = "800m"}},
+        {Name = "Golden Huge Hacked Reaper", Data = {Price = "350m"}},
+        {Name = "Rainbow Huge Hacked Reaper", Data = {Price = "700m"}},
         {Name = "Shiny Huge Hacked Reaper", Data = {Price = "1.5b"}},
         {Name = "Shiny Golden Huge Hacked Reaper", Data = {Price = "4b"}},
 
@@ -23,13 +23,13 @@ getgenv().Settings = {
         {Name = "Rainbow Huge Vampire Agony", Data = {Price = "1.5b"}},
         {Name = "Shiny Huge Vampire Agony", Data = {Price = "5b"}},
 
-        {Name = "Huge Beans Balloon Cat", Data = {Price = "120m"}},
-        {Name = "Golden Huge Beans Balloon Cat", Data = {Price = "300m"}},
+        {Name = "Huge Beans Balloon Cat", Data = {Price = "100m"}},
+        {Name = "Golden Huge Beans Balloon Cat", Data = {Price = "250m"}},
 
-        {Name = "Huge Spectral Deer", Data = {Price = "150m"}},
-        {Name = "Golden Huge Spectral Deer", Data = {Price = "450m"}},
-        {Name = "Raibow Huge Spectral Deer", Data = {Price = "900m"}},
-        {Name = "Shiny Huge Spectral Deer", Data = {Price = "3.8b"}},
+        {Name = "Huge Spectral Deer", Data = {Price = "100m"}},
+        {Name = "Golden Huge Spectral Deer", Data = {Price = "300m"}},
+        {Name = "Raibow Huge Spectral Deer", Data = {Price = "700m"}},
+        {Name = "Shiny Huge Spectral Deer", Data = {Price = "3.5b"}},
 
         {Name = "Huge Kawaii Tiger", Data = {Price = "100m"}},
         {Name = "Golden Huge Kawaii Tiger", Data = {Price = "300m"}},
