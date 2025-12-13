@@ -12,9 +12,9 @@ getgenv().Settings = {
         {Name = "Huge Skeleton Snake", Data = {Price = "15m"}},
         {Name = "Huge Frankenpup Dog", Data = {Price = "15m"}},
 
-        {Name = "Huge Hacked Reaper", Data = {Price = "180m"}},
+        {Name = "Huge Hacked Reaper", Data = {Price = "150m"}},
         {Name = "Golden Huge Hacked Reaper", Data = {Price = "350m"}},
-        {Name = "Rainbow Huge Hacked Reaper", Data = {Price = "600m"}},
+        {Name = "Rainbow Huge Hacked Reaper", Data = {Price = "500m"}},
         {Name = "Shiny Huge Hacked Reaper", Data = {Price = "1.5b"}},
         {Name = "Shiny Golden Huge Hacked Reaper", Data = {Price = "4b"}},
 
