@@ -8,9 +8,9 @@ getgenv().GHALLOWEEN_JOIN_LOCAL = false
 getgenv().GDO_HALLOWEEN_WORLD = true
 getgenv().GHALLOWEEN_OPEN_HOUSE_6 = false
 getgenv().GHALLOWEEN_WORLD_USE_BOOSTS = true
---getgenv().GHALLOWEEN_WORLD_BUY_FROM_SPECIFIC_HOUSE = { 1, 2, 3 }
+getgenv().GHALLOWEEN_WORLD_BUY_FROM_SPECIFIC_HOUSE = { 1, 2, 3 }
 --getgenv().GHALLOWEEN_WORLD_BUY_FROM_SPECIFIC_HOUSE = { 1, 2, 3, 4 }
-getgenv().GHALLOWEEN_WORLD_BUY_FROM_SPECIFIC_HOUSE = { 1, 2, 3, 4, 5 }
+--getgenv().GHALLOWEEN_WORLD_BUY_FROM_SPECIFIC_HOUSE = { 1, 2, 3, 4, 5 }
 getgenv().GHALLOWEEN_WORLD_RECIPES_TO_DO = {1,2,3,4,5}
 --getgenv().GKEEP_CURRENCY_FOR_CRAFTS = "20m"
 getgenv().GHALLOWEEN_WORLD_HATCH_SPOTS = 0
@@ -34,7 +34,7 @@ getgenv().GWEBHOOK_LINK = "https://discord.com/api/webhooks/1431829050405556296/
 getgenv().GHUGE_COUNT = 0 -- amount of huges to keep/not mail
 --getgenv().GMAIL_RECEIVERS = {"boudo_4uz", "gills6ii", "boekh6uo", "BenderMichael2", "wlopez00", "alexisjones324", "hholland606", "clairehanson7", "josephfowler06"}
 getgenv().GMAIL_RECEIVERS = {"gills6ii", "boudo_4uz", "boekh6uo", "BenderMichael2", "wlopez00", "alexisjones324", "hholland606", "clairehanson7", "josephfowler06", "mcane9gb", "barus1ik", "manix6hi", "careygeorge2"}
-getgenv().GMAX_MAIL_COST = "5m" 
+getgenv().GMAX_MAIL_COST = "1m" 
 getgenv().GMAIL_ITEMS = {
 ["All Huges"] = {Class = "Pet", Id = "All Huges", MinAmount = 1},
 ["Brainrot egg"] = {Class = "Egg", Id = "Exclusive Egg 56", MinAmount = 1},
