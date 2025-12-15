@@ -1,0 +1,149 @@
+local sources = {
+    { name = "HOP", url = "https://raw.githubusercontent.com/dracular111/01/main/V-Hop-time-connect-02" },
+    { name = "FPS", url = "https://raw.githubusercontent.com/dracular111/01/main/FPS-02" },
+    { name = "RESET", url = "https://raw.githubusercontent.com/dracular111/01/main/V-Reset" },
+}
+
+local http = game:GetService("HttpService")
+local CoreGui = game:GetService("CoreGui")
+
+-- 🧹 Xóa UI cũ nếu có
+local oldGui = CoreGui:FindFirstChild("AutoUpdaterUI")
+if oldGui then
+    oldGui:Destroy()
+end
+
+-- 🪄 UI gọn, trong suốt, không trùng
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "AutoUpdaterUI"
+ScreenGui.ResetOnSpawn = false
+ScreenGui.Parent = CoreGui
+--ScreenGui.DisplayOrder = 999999999 -- ✅ UI luôn nổi trên mọi UI khác
+
+local Frame = Instance.new("Frame")
+Frame.Size = UDim2.new(0, 180, 0, (#sources * 20) + 35)
+Frame.Position = UDim2.new(1, -190, 1, -Frame.Size.Y.Offset - 6)
+Frame.BackgroundTransparency = 1
+Frame.BorderSizePixel = 0
+Frame.Parent = ScreenGui
+
+-- 📐 Layout
+local UIListLayout = Instance.new("UIListLayout")
+UIListLayout.Padding = UDim.new(0, 3)
+UIListLayout.FillDirection = Enum.FillDirection.Vertical
+UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Left
+UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Top
+UIListLayout.Parent = Frame
+
+-- 🏷 Tiêu đề (chỉ còn 1 dòng)
+local Title = Instance.new("TextLabel")
+Title.Text = "🔁 Auto Script Updater"
+Title.Font = Enum.Font.SourceSansBold
+Title.TextSize = 16
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.BackgroundTransparency = 1
+Title.Size = UDim2.new(1, -8, 0, 20)
+Title.TextXAlignment = Enum.TextXAlignment.Left
+Title.Position = UDim2.new(0, 4, 0, 0)
+Title.Parent = Frame
+
+-- 🧩 Log helper
+local function log(label, text)
+    label.Text = text
+end
+
+-- ⚙️ Fetch script (chống cache)
+local function fetchCode(url)
+    local success, result = pcall(function()
+        return game:HttpGet(url .. "?nocache=" .. tick())
+    end)
+    if success then
+        return result
+    else
+        return nil, result
+    end
+end
+
+-- ⚙️ Safe run
+local function safeRun(code, scriptName)
+    local f, err = loadstring(code)
+    if not f then
+        warn(string.format("[Loader:%s] Lỗi biên dịch: %s", scriptName, err))
+        return false, err
+    end
+    local success, execErr = pcall(f)
+    if not success then
+        warn(string.format("[Loader:%s] Lỗi khi chạy: %s", scriptName, execErr))
+        return false, execErr
+    end
+    return true
+end
+
+-- 🧠 Script data
+local scripts = {}
+
+for _, src in ipairs(sources) do
+    local lbl = Instance.new("TextLabel")
+    lbl.Font = Enum.Font.SourceSansBold
+    lbl.TextSize = 16
+    lbl.TextColor3 = Color3.fromRGB(255, 255, 255)
+    lbl.BackgroundTransparency = 1
+    lbl.Size = UDim2.new(1, -10, 0, 20)
+    lbl.TextXAlignment = Enum.TextXAlignment.Left
+    lbl.Parent = Frame
+    lbl.Text = string.format("%s: Đang tải...", src.name)
+
+    scripts[src.name] = {
+        url = src.url,
+        label = lbl,
+        lastCode = nil,
+        backup = nil,
+        lastUpdate = "Chưa cập nhật"
+    }
+
+    task.spawn(function()
+        local code, err = fetchCode(src.url)
+        if not code then
+            log(lbl, src.name .. ": ❌ Không tải được (" .. tostring(err) .. ")")
+            return
+        end
+        scripts[src.name].lastCode = code
+        local ok = safeRun(code, src.name)
+        if ok then
+            scripts[src.name].lastUpdate = os.date("%H:%M:%S")
+            log(lbl, string.format("%s: ✅ Đã chạy • %s", src.name, scripts[src.name].lastUpdate))
+        else
+            log(lbl, src.name .. ": ⚠️ Lỗi khi chạy")
+        end
+    end)
+end
+
+-- 🔁 Theo dõi thay đổi
+task.spawn(function()
+    while task.wait(20) do
+        for name, data in pairs(scripts) do
+            task.wait(5)
+            local newCode, err = fetchCode(data.url)
+            if not newCode then
+                log(data.label, name .. ": ❌ Không tải được (" .. tostring(err) .. ")")
+                continue
+            end
+
+            if newCode ~= data.lastCode then
+                log(data.label, name .. ": ♻️ Phát hiện thay đổi, reload...")
+                data.backup = data.lastCode
+                local ok = safeRun(newCode, name)
+                if ok then
+                    data.lastCode = newCode
+                    data.lastUpdate = os.date("%H:%M:%S")
+                    log(data.label, string.format("%s: ✅ Reload thành công • %s", name, data.lastUpdate))
+                else
+                    log(data.label, name .. ": ⚠️ Lỗi bản mới, khôi phục bản cũ")
+                    safeRun(data.backup, name)
+                end
+            else
+                log(data.label, string.format("%s: 🕒 • %s", name, data.lastUpdate))
+            end
+        end
+    end
+end)
