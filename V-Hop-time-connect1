@@ -1,0 +1,72 @@
+if _G.AUTO_HOP then return end
+_G.AUTO_HOP = true
+
+repeat task.wait() until game:IsLoaded()
+
+local CoreGui = game:GetService("CoreGui")
+
+-- Hàm hop server (giữ nguyên của bạn)
+local function rejoin()
+	pcall(function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/V-HopeMM2"))()
+	end)
+end
+
+-- ========== TÍNH THỜI GIAN ONLINE + HOP NGẪU NHIÊN ==========
+local timeOnline = 0 
+_G.HOP_WAIT = nil
+
+task.spawn(function()
+    while task.wait(60) do -- 1 phút
+        timeOnline += 1
+
+        if timeOnline >= 300 and not _G.HOP_WAIT then
+            local randomWait = math.random(1, 30) -- random phút
+            _G.HOP_WAIT = randomWait * 60 -- giây
+
+            while _G.HOP_WAIT and _G.HOP_WAIT > 0 do
+                task.wait(1)
+                _G.HOP_WAIT -= 1
+            end
+
+            pcall(function()
+                rejoin()
+            end)
+
+            timeOnline = 0
+            _G.HOP_WAIT = nil
+        end
+    end
+end)
+
+-- ========== UI HIỂN THỊ THỜI GIAN HOP ==========
+pcall(function()
+    local gui = Instance.new("ScreenGui")
+    gui.Name = "HOP_TIMER_UI"
+    gui.ResetOnSpawn = false
+    gui.IgnoreGuiInset = true
+    gui.Parent = CoreGui
+
+    local label = Instance.new("TextLabel")
+    label.Size = UDim2.new(1, 0, 0, 38)
+    label.Position = UDim2.new(0, 0, 0.85, 0)
+    label.BackgroundTransparency = 1
+    label.TextColor3 = Color3.fromRGB(255, 255, 0)
+    label.TextStrokeTransparency = 0.15
+    label.Font = Enum.Font.GothamBold
+    label.TextScaled = true
+    label.ZIndex = 999999999
+    label.Parent = gui
+
+    task.spawn(function()
+        while task.wait(1) do
+            if _G.HOP_WAIT and _G.HOP_WAIT > 0 then
+                local m = math.floor(_G.HOP_WAIT / 60)
+                local s = _G.HOP_WAIT % 60
+                label.Text = ("Hopsever: %02d:%02d"):format(m, s)
+            else
+                label.Text = ""
+            end
+        end
+    end)
+end)
