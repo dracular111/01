@@ -1,0 +1,97 @@
+repeat task.wait() until game:IsLoaded()
+
+local placeId = 142823291
+local HttpService = game:GetService("HttpService")
+local TeleportService = game:GetService("TeleportService")
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+
+local function teleportToLeastPopulatedServer(placeId, runScriptOnJoin, retryLimit)
+	retryLimit = retryLimit or 3
+	local attempts = 0
+	local lastJobId = game.JobId
+
+	while attempts < retryLimit do
+		attempts += 1
+		local validServers = {}
+		local cursor = nil
+		local pagesChecked = 0
+
+		repeat
+			pagesChecked += 1
+			local url = ('https://games.roblox.com/v1/games/%d/servers/Public?sortOrder=Asc&limit=100'):format(placeId)
+			if cursor then url = url .. '&cursor=' .. cursor end
+
+			local ok, result = pcall(function()
+				return HttpService:JSONDecode(game:HttpGet(url))
+			end)
+
+			if ok and result and result.data then
+				for _, server in ipairs(result.data) do
+					if server.id ~= game.JobId and server.playing < server.maxPlayers then
+						table.insert(validServers, server)
+					end
+				end
+				cursor = result.nextPageCursor
+			else
+				cursor = nil
+				break
+			end
+
+			task.wait(0.2)
+		until #validServers >= 3 or not cursor or pagesChecked >= 9
+
+		if #validServers > 0 then
+			table.sort(validServers, function(a, b)
+				return a.playing < b.playing
+			end)
+
+			-- thử tối đa 5 lần khác nhau nếu teleport không đổi server
+			local tryCount = 0
+			local tried = {}
+
+			while tryCount < 5 do
+				tryCount += 1
+				local selected = nil
+
+				for _, s in ipairs(validServers) do
+					if not tried[s.id] then
+						selected = s
+						tried[s.id] = true
+						break
+					end
+				end
+
+				if not selected then break end
+
+				local teleportData = runScriptOnJoin and "RUNSCRIPT" or "NOSCRIPT"
+				pcall(function()
+					TeleportService:TeleportToPlaceInstance(placeId, selected.id, LocalPlayer, { customData = teleportData })
+				end)
+
+				local oldJob = game.JobId
+				local timeWaited = 0
+
+				while timeWaited < 30 do
+					task.wait(1)
+					timeWaited += 1
+					if game.JobId ~= oldJob then
+						return true
+					end
+				end
+			end
+		end
+
+		task.wait(5)
+	end
+
+	-- Nếu vẫn không rời được server gốc sau các lần thử -> kick
+	if game.JobId == lastJobId then
+		pcall(function()
+			LocalPlayer:Kick("Teleport failed multiple times.")
+		end)
+	end
+
+	return false
+end
+teleportToLeastPopulatedServer(placeId, false, 5)
