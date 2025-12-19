@@ -16,12 +16,12 @@ getgenv().Settings = {
         {Name = "Golden Huge Hacked Reaper", Data = {Price = "350m"}},
         {Name = "Rainbow Huge Hacked Reaper", Data = {Price = "500m"}},
         {Name = "Shiny Huge Hacked Reaper", Data = {Price = "1.5b"}},
-        {Name = "Shiny Golden Huge Hacked Reaper", Data = {Price = "3.5b"}},
+        {Name = "Shiny Golden Huge Hacked Reaper", Data = {Price = "3b"}},
 
         {Name = "Huge Vampire Agony", Data = {Price = "350m"}},
         {Name = "Golden Huge Vampire Agony", Data = {Price = "750m"}},
         {Name = "Rainbow Huge Vampire Agony", Data = {Price = "1.5b"}},
-        {Name = "Shiny Huge Vampire Agony", Data = {Price = "5b"}},
+        {Name = "Shiny Huge Vampire Agony", Data = {Price = "4b"}},
 
         {Name = "Huge Beans Balloon Cat", Data = {Price = "100m"}},
         {Name = "Golden Huge Beans Balloon Cat", Data = {Price = "250m"}},
