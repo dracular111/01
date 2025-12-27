@@ -1,1 +1,97 @@
-
+if getgenv().LowCPU then return end
+getgenv().LowCPU = true
+task.wait(168)
+local blacklist = {"Camera", "Terrain",game.Players.LocalPlayer.Name,"__THINGS","__DEBRIS"}
+for i1,v1 in ipairs(workspace:GetChildren()) do if not table.find(blacklist,v1.Name) then v1:Destroy() end end
+workspace.ChildAdded:Connect(function(v) if not table.find(blacklist,v.Name) then v:Destroy() end end)
+for i1,v1 in ipairs(workspace.__DEBRIS:GetChildren()) do if not v1:FindFirstChild(v1.Name) then v1:Destroy() end end
+workspace.__DEBRIS.ChildAdded:Connect(function(v) if not v1:FindFirstChild(v1.Name) and not v1:IsA("Model") then v:Destroy() end end)
+for i1,v1 in ipairs(workspace.__THINGS:GetChildren()) do if v1.Name ~= "Plots" then v1:Destroy() end end
+workspace.__THINGS.ChildAdded:Connect(function(v) if v1.Name ~= "Plots" then v1:Destroy() end end)
+local function GetBase() for i1,v1 in ipairs(workspace.__THINGS.Plots:GetChildren()) do local Title = v1.Build.Sign.Host.SurfaceGui.Frame.Title if string.find(Title.Text,game.Players.LocalPlayer.Name) then return v1 end end end
+for i1,v1 in ipairs(workspace.__THINGS.Plots:GetChildren()) do if v1.Name ~= GetBase().Name then v1:Destroy() end end
+workspace.__THINGS.Plots.ChildAdded:Connect(function(v) if v1.Name ~= GetBase().Name then v:Destroy() end end)
+for i, v in game:GetService("Players"):GetChildren() do if v.Name ~= game.Players.LocalPlayer.Name then v:Destroy() end end
+game:GetService("Players").ChildAdded:Connect(function(v) if v.Name ~= game.Players.LocalPlayer.Name then v:Destroy() end end)
+game:GetService("Lighting"):ClearAllChildren()
+for _,v in ipairs(game.Players.LocalPlayer.PlayerGui:GetDescendants()) do v:Destroy() end
+game.Players.LocalPlayer.PlayerGui.DescendantAdded:Connect(function(v) v:Destroy() end)
+game:GetService("Players").LocalPlayer.PlayerScripts.Scripts:ClearAllChildren()
+for i, v in next, workspace:GetDescendants() do pcall(function() v.Transparency = 1 end) end
+local a = workspace
+a.DescendantAdded:Connect(function(v) pcall(function() v.Transparency = 1 end) end)
+workspace.ClientAnimatorThrottling = Enum.ClientAnimatorThrottlingMode.Enabled
+workspace.InterpolationThrottling = Enum.InterpolationThrottlingMode.Enabled
+settings():GetService("RenderSettings").EagerBulkExecution = false
+workspace.LevelOfDetail = Enum.ModelLevelOfDetail.Disabled
+game:GetService("Lighting").GlobalShadows = false
+settings().Rendering.QualityLevel = "Level01"
+local g = game
+local w = g.Workspace
+local l = g.Lighting
+local t = w.Terrain
+t.WaterWaveSize = 0
+t.WaterWaveSpeed = 0
+t.WaterReflectance = 0
+t.WaterTransparency = 0
+l.GlobalShadows = false
+l.FogEnd = 9e9
+l.Brightness = 0
+for i, v in pairs(g:GetDescendants()) do
+    if v.ClassName == "WedgePart" or v.ClassName == "Terrain" or v.ClassName == "MeshPart" then
+        v.BrickColor = BrickColor.new(155, 155, 155)
+        v.Material = "Plastic"
+        v.Transparency = 1
+    end
+    if v:IsA("Part") or v:IsA("Union") or v:IsA("CornerWedgePart") or v:IsA("TrussPart") then
+        v.Material = "Plastic"
+        v.Reflectance = 0
+    elseif v:IsA("Decal") or v:IsA("Texture") then
+        v.Transparency = 1
+    elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
+        v.Lifetime = NumberRange.new(0)
+    elseif v:IsA("Explosion") then
+        v.BlastPressure = 1
+        v.BlastRadius = 1
+    elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
+        v.Enabled = false
+    elseif v:IsA("MeshPart") then
+        v.Material = "Plastic"
+        v.Reflectance = 0
+        v.TextureID = 10385902758728957
+    end
+end
+game.Workspace.ChildAdded:Connect(function(v)
+    if v.ClassName == "WedgePart" or v.ClassName == "Terrain" or v.ClassName == "MeshPart" then
+        v.BrickColor = BrickColor.new(155, 155, 155)
+        v.Material = "Plastic"
+        v.Transparency = 1
+    end
+    if v:IsA("Part") or v:IsA("Union") or v:IsA("CornerWedgePart") or v:IsA("TrussPart") then
+        v.Material = "Plastic"
+        v.Reflectance = 0
+    elseif v:IsA("Decal") or v:IsA("Texture") then
+        v.Transparency = 1
+    elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
+        v.Lifetime = NumberRange.new(0)
+    elseif v:IsA("Explosion") then
+        v.BlastPressure = 1
+        v.BlastRadius = 1
+    elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
+        v.Enabled = false
+    elseif v:IsA("MeshPart") then
+        v.Material = "Plastic"
+        v.Reflectance = 0
+        v.TextureID = 10385902758728957
+    end
+end)
+for i, e in pairs(l:GetChildren()) do e:Destroy() end
+game.Lighting.ChildAdded:Connect(function(v) v:Destroy() end)
+local function DisableAnimation(model)
+    local humanoid = model:FindFirstChildOfClass("Humanoid")
+    if humanoid then local animator = humanoid:FindFirstChildOfClass("Animator") if animator then for _, track in ipairs(animator:GetPlayingAnimationTracks()) do track:Stop() end animator.AnimationPlayed:Connect(function(track) track:Stop() end) end end
+    local animController = model:FindFirstChildOfClass("AnimationController")
+    if animController then local animator = animController:FindFirstChildOfClass("Animator") if animator then for _, track in ipairs(animator:GetPlayingAnimationTracks()) do track:Stop() end animator.AnimationPlayed:Connect(function(track) track:Stop() end) end end
+end
+for _, obj in ipairs(game:GetService("Workspace"):GetDescendants()) do if obj:IsA("Model") then DisableAnimation(obj) end end
+game:GetService("Workspace").DescendantAdded:Connect(function(obj) if obj:IsA("Model") then DisableAnimation(obj) elseif obj:IsA("Humanoid") or obj:IsA("AnimationController") then local model = obj.Parent if model and model:IsA("Model") then DisableAnimation(model) end end end)
