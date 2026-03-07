@@ -1,4 +1,7 @@
+spawn(function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/A-TrackMM2"))()
+end)
+
 task.spawn(function()
     while true do
         setfpscap(3)
