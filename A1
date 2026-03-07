@@ -12,7 +12,7 @@ getgenv().YuukiHub = {
     ["Change Acc Custom"] = true, -- Auto Change Account After Do Daily Quest
     ["Change Mode"] = "Decode", -- Yummy | Decode
     ["Original ID"] = "c4da7591466559a12e970c783ad618264e95bf9a515d59d22efcf66f5987ee6d", -- Support Decode
-    ["Completed ID"] = "85875e5b3531f5469b00ab4f45c629520a715a19d448ad8057bf7fccc575b200", -- Support Decode
+    ["Completed ID"] = "f68ec50d269dd7d319873ffd3fba3c8b19af4f0bdc2f29ea29c6197de92a8548", -- Support Decode
     ["Webhook URL"] = "https://discord.com/api/webhooks/1472203336664092847/OiJ2e8T0olcwfDjv8d-gEOJJ6CSdzeoeTULW7izfgQBOjZ2GCyIo8us6aQclPhXRnpbJ",
     ["Discord Id"] = "1092353095171833906",
     ["Performance"] = {["FPS Lock"] = 3,["Low CPU"] = true}
