@@ -16,7 +16,8 @@ getgenv().YuukiHub = {
     ["Original ID"] = "c4da7591466559a12e970c783ad618264e95bf9a515d59d22efcf66f5987ee6d", -- Support Decode
     ["Completed ID"] = "f68ec50d269dd7d319873ffd3fba3c8b19af4f0bdc2f29ea29c6197de92a8548", -- Support Decode
     ["Webhook URL"] = "https://discord.com/api/webhooks/1472203336664092847/OiJ2e8T0olcwfDjv8d-gEOJJ6CSdzeoeTULW7izfgQBOjZ2GCyIo8us6aQclPhXRnpbJ",
-    ["Discord Id"] = "1092353095171833906",
+    ["Discord Id"] = "",
+    --["Discord Id"] = "1092353095171833906",
     ["Performance"] = {["FPS Lock"] = 3,["Low CPU"] = true}
 }
 loadstring(game:HttpGet('https://yuukihubz.net/scripts/94f86c5f71845e76baff4b7b1e971f20'))()
