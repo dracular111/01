@@ -17,6 +17,6 @@ script_key = "TMyyZEgNwjkccnzsemTmemUTkJUeAyZf";
 getgenv().GGFX_MODE = 1
 getgenv().GENTER_PLAZA = true
 getgenv().GPROGRESS_MODE = "Castle"
-loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/ba2dcad2127dcfc04301dfe52ce6c61c.lua"))()
+--loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/ba2dcad2127dcfc04301dfe52ce6c61c.lua"))()
 --loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Event"))()
---loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/6e75890d2e36b4613270666c4f5ccab3.lua"))()
+loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/6e75890d2e36b4613270666c4f5ccab3.lua"))()
