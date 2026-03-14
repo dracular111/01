@@ -2,6 +2,13 @@
 --loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/V-01"))()
 --end)
 
+task.spawn(function()
+    while true do
+        setfpscap(3)
+        task.wait(1)
+    end
+end)
+
 spawn(function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Track"))()
 end)
