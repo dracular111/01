@@ -1,7 +1,6 @@
 getgenv().GGFX_MODE = 1 -- or 2 to if you want to see what happens
 getgenv().GWEBHOOK_USERID = "1263292904953217072"
 getgenv().GWEBHOOK_LINK = "https://discord.com/api/webhooks/1482399713084051578/cGltujhm_LDE932xcPWCf0L8O2l11n_mnk72mXA_YYAswaqqaPHdGmkNzY-d_bAgfZAe"
-getgenv().GHUGE_COUNT = 15 -- amount of huges to keep/not mail
 --getgenv().GMAIL_RECEIVERS = {"boudo_4uz", "gills6ii", "boekh6uo", "BenderMichael2", "wlopez00", "alexisjones324", "hholland606", "clairehanson7", "josephfowler06"}
 getgenv().GMAIL_RECEIVERS = {"congahpz001", "congahpz002", "congahpz003", "congahpz004", "congahpz005", "congahpz006", "congahpz007", "congahpz008"}
 getgenv().GMAX_MAIL_COST = "1m" 
