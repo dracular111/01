@@ -1,14 +1,4 @@
 getgenv().GGFX_MODE = 1 -- or 2 to if you want to see what happens
-getgenv().GDO_XMAS_WORLD = true
-getgenv().GHOP_ON_STAFF = true
-getgenv().GEVENT_UPGRADES = {
-"MegaPresentGrowFaster",
-"MegaPresentMoreLoot",
-"MegaPresentEggLuckBoost",
-"MegaPresentHigherHugeChance",
-"MegaPresentHigherTitanicChance",
-"MegaPresentHigherGargantuanChance"
-}
 getgenv().GRANK_FIRST = false --if you use this you have to define GREBIRTH_TO and GRANK_TO
 getgenv().GZONE_TO = 1 -- to enter event from W1 put 1, from W2 put 100, from W3 200, from W4 240
 getgenv().GUSE_ULTIMATES = {"Tornado","Hidden Treasure","Pet Surge","Tsunami","Black Hole","UFO","Nightmare","Lightning Storm","TNT Shower","Chest Spell","Ground Pound"}
@@ -16,13 +6,13 @@ getgenv().GPOTIONS = {"Coins","Lucky","Treasure Hunter","Walkspeed","Diamonds","
 getgenv().GENCHANTS = {"Tap Power", "Coins", "Treasure Hunter", "Strong Pets", "Criticals", "Diamonds"}
 getgenv().GPOTIONS_MAX_TIER = 99
 getgenv().GWEBHOOK_USERID = "1263292904953217072"
-getgenv().GWEBHOOK_LINK = "https://discord.com/api/webhooks/1431829050405556296/R6M-bhS3JhyqwcSNP9ksCtkqaSYMmSne01VGuU_-WMtPVN1PGhqbrId0YcYLo1WyH6Gq"
+getgenv().GWEBHOOK_LINK = "https://discord.com/api/webhooks/1482399713084051578/cGltujhm_LDE932xcPWCf0L8O2l11n_mnk72mXA_YYAswaqqaPHdGmkNzY-d_bAgfZAe"
 getgenv().GHUGE_COUNT = 15 -- amount of huges to keep/not mail
 --getgenv().GMAIL_RECEIVERS = {"boudo_4uz", "gills6ii", "boekh6uo", "BenderMichael2", "wlopez00", "alexisjones324", "hholland606", "clairehanson7", "josephfowler06"}
-getgenv().GMAIL_RECEIVERS = {"gills6ii", "boudo_4uz", "boekh6uo", "BenderMichael2", "wlopez00", "alexisjones324", "hholland606", "clairehanson7", "josephfowler06", "mcane9gb", "barus1ik", "manix6hi", "careygeorge2"}
+getgenv().GMAIL_RECEIVERS = {"congahpz001", "congahpz002", "congahpz003", "congahpz004", "congahpz005", "congahpz006", "congahpz007", "congahpz008"}
 getgenv().GMAX_MAIL_COST = "1m" 
 getgenv().GMAIL_ITEMS = {
-["All Huges"] = {Class = "Pet", Id = "All Huges", MinAmount = 1},
+["All Huges"] = {Class = "Pet", Id = "All Huges", MinAmount = 10},
 ["Brainrot egg"] = {Class = "Egg", Id = "Exclusive Egg 56", MinAmount = 1},
 ["Harvest egg"] = {Class = "Egg", Id = "Exclusive Egg 57", MinAmount = 1},
 --["Send Diamonds"] = {Class = "Currency", Id = "Diamonds", KeepAmount = "5m", MinAmount = "1b"}, -- mail diamonds, to enable lower MinAmount..
