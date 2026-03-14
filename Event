@@ -1,5 +1,4 @@
 getgenv().GGFX_MODE = 1 -- or 2 to if you want to see what happens
-getgenv().GZONE_TO = 1 -- to enter event from W1 put 1, from W2 put 100, from W3 200, from W4 240
 getgenv().GUSE_ULTIMATES = {"Tornado","Hidden Treasure","Pet Surge","Tsunami","Black Hole","UFO","Nightmare","Lightning Storm","TNT Shower","Chest Spell","Ground Pound"}
 getgenv().GPOTIONS = {"Coins","Lucky","Treasure Hunter","Walkspeed","Diamonds","Damage"}
 getgenv().GENCHANTS = {"Tap Power", "Coins", "Treasure Hunter", "Strong Pets", "Criticals", "Diamonds"}
