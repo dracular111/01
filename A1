@@ -13,8 +13,8 @@ spawn(function()
 _G.Config={UserID="cf2b68ab-24d5-453a-9204-2d6cd6a8d72e",discord_id="1092353095171833906",Note="Pc"}local s;for i=1,5 do s=pcall(function()loadstring(game:HttpGet("https://cdn.yummydata.click/scripts/pet99"))()end)if s then break end wait(5)end
 end)
 
-script_key = "TMyyZEgNwjkccnzsemTmemUTkJUeAyZf";
-getgenv().GGFX_MODE = 1
+--script_key = "TMyyZEgNwjkccnzsemTmemUTkJUeAyZf";
+--getgenv().GGFX_MODE = 1
 --loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/ba2dcad2127dcfc04301dfe52ce6c61c.lua"))()
 --loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Event"))()
-loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/6e75890d2e36b4613270666c4f5ccab3.lua"))()
+--loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/6e75890d2e36b4613270666c4f5ccab3.lua"))()
