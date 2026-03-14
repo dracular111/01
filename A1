@@ -1,15 +1,23 @@
+spawn(function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/A-TrackMM2"))()
+end)
+
 task.spawn(function()
     while true do
-        setfpscap(2)
+        setfpscap(3)
         task.wait(1)
     end
 end)
 
-spawn(function()
-_G.Config={UserID="cf2b68ab-24d5-453a-9204-2d6cd6a8d72e",discord_id="1092353095171833906",Note="Pc"}local s;for i=1,5 do s=pcall(function()loadstring(game:HttpGet("https://cdn.yummydata.click/scripts/pet99"))()end)if s then break end wait(5)end
-end)
-
-setfpscap(2)
-script_key = "TMyyZEgNwjkccnzsemTmemUTkJUeAyZf";
-loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Event"))()
-loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/6e75890d2e36b4613270666c4f5ccab3.lua"))()
+script_key="88f8e70880be63e5b5334c11199b3932"
+getgenv().YuukiHub = {
+    ["Change Acc Custom"] = true, -- Auto Change Account After Do Daily Quest
+    ["Change Mode"] = "Decode", -- Yummy | Decode
+    ["Original ID"] = "c4da7591466559a12e970c783ad618264e95bf9a515d59d22efcf66f5987ee6d", -- Support Decode
+    ["Completed ID"] = "f68ec50d269dd7d319873ffd3fba3c8b19af4f0bdc2f29ea29c6197de92a8548", -- Support Decode
+    ["Webhook URL"] = "https://discord.com/api/webhooks/1472203336664092847/OiJ2e8T0olcwfDjv8d-gEOJJ6CSdzeoeTULW7izfgQBOjZ2GCyIo8us6aQclPhXRnpbJ",
+    ["Discord Id"] = "",
+    --["Discord Id"] = "1092353095171833906",
+    ["Performance"] = {["FPS Lock"] = 3,["Low CPU"] = true}
+}
+loadstring(game:HttpGet('https://yuukihubz.net/scripts/94f86c5f71845e76baff4b7b1e971f20'))()
