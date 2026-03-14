@@ -6,6 +6,6 @@ spawn(function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Track"))()
 end)
 
-script_key = "CqTMyyZEgNwjkccnzsemTmemUTkJUeAyZf";
+script_key = "TMyyZEgNwjkccnzsemTmemUTkJUeAyZf";
 loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Event"))()
 loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/6e75890d2e36b4613270666c4f5ccab3.lua"))()
