@@ -12,7 +12,7 @@ getgenv().GHUGE_COUNT = 15 -- amount of huges to keep/not mail
 getgenv().GMAIL_RECEIVERS = {"congahpz001", "congahpz002", "congahpz003", "congahpz004", "congahpz005", "congahpz006", "congahpz007", "congahpz008"}
 getgenv().GMAX_MAIL_COST = "1m" 
 getgenv().GMAIL_ITEMS = {
-["All Huges"] = {Class = "Pet", Id = "All Huges", MinAmount = 10},
+["All Huges"] = {Class = "Pet", Id = "All Huges", MinAmount = 1},
 ["Brainrot egg"] = {Class = "Egg", Id = "Exclusive Egg 56", MinAmount = 1},
 ["Harvest egg"] = {Class = "Egg", Id = "Exclusive Egg 57", MinAmount = 1},
 --["Send Diamonds"] = {Class = "Currency", Id = "Diamonds", KeepAmount = "5m", MinAmount = "1b"}, -- mail diamonds, to enable lower MinAmount..
