@@ -9,6 +9,7 @@ task.spawn(function()
     end
 end)
 
+task.wait(5)
 script_key="88f8e70880be63e5b5334c11199b3932"
 getgenv().YuukiHub = {
     ["Change Acc Custom"] = true, -- Auto Change Account After Do Daily Quest
