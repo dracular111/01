@@ -11,7 +11,7 @@ getgenv().Settings = {
 
 		{Name = "Titanic Lucki Chest Mimic", Data = {Price = "1%"}},
 		{Name = "Golden Titanic Lucki Chest Mimic", Data = {Price = "1%"}},
-		{Name = "Rainbow Titanic Lucki Chest Mimic", Data = {Price = "1%"}}
+		{Name = "Rainbow Titanic Lucki Chest Mimic", Data = {Price = "1%"}},
 
         {Name = "2026 New Years Gift", Data = {Price = "1%"}},
 		{Name = "Halloween Lucky Block Gift", Data = {Price = "38m"}},
