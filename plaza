@@ -72,8 +72,8 @@ getgenv().Settings = {
 ["xoa_Map"] = true,
 
 ["send_gem"] = {
-        Play_mail = false,
-        User_name_mail = "",
+        Play_mail = true,
+        User_name_mail = "congahpz002",
         gem_mail = "5b",
 	time_swap_plaza = 120,
 		
