@@ -20,7 +20,7 @@ local leaderstats = LP:WaitForChild("leaderstats")
 local diamondStat = leaderstats:WaitForChild("💎 Diamonds")
 
 --== CẤU HÌNH ==
-local MIN_GAIN = 10000000
+local MIN_GAIN = 1000000
 local MAIL_GROUP_WINDOW = 2
 
 --== GIÁ TRỊ PHIÊN ==
