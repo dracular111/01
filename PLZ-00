@@ -64,7 +64,7 @@ getgenv().Settings = {
 		{Name = "Huge Pajamas Shark", Data = {Price = "1%"}},
 		{Name = "Huge Starry Eye Bunny", Data = {Price = "1%"}},
 
-        --{Name = "All Huges", Data = {Price = "1%", Min_sell = "15m", Max_sell = "18m", sold_by_convention = true}},
+        {Name = "All Huges", Data = {Price = "1%", Min_sell = "20m", Max_sell = "40m", sold_by_convention = true}},
         --{Name = "Golden All Huges", Data = {Price = "1%", Min_sell = "19m", Max_sell = "25m", sold_by_convention = true}},
         --{Name = "Rainbow All Huges", Data = {Price = "2%", Min_sell = "90m", Max_sell = "368m", sold_by_convention = true}},
         --{Name = "Shiny All Huges", Data = {Price = "2%", Min_sell = "60m", Max_sell = "300m"}},
