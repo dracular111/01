@@ -140,3 +140,22 @@ getgenv().fps_thread = task.spawn(function()
         task.wait(5)
     end
 end)
+-- ✅ Auto kick / hop nếu treo quá lâu
+task.spawn(function()
+    local LOADING_TIMEOUT = 180 -- số giây cho phép load
+    local loadingTime = 0
+
+    while task.wait(1) do
+        if loadingTime >= LOADING_TIMEOUT then
+            warn("Bị treo quá lâu -> Rejoin")
+
+            -- Cách 1: Kick để tự reconnect
+            game.Players.LocalPlayer:Kick("Rejoining...")
+
+            -- hoặc dùng cách 2 (nếu có script auto rejoin)
+            -- game:GetService("TeleportService"):Teleport(game.PlaceId, game.Players.LocalPlayer)
+
+            break
+        end
+    end
+end)
