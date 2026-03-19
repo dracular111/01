@@ -80,6 +80,22 @@ Online.TextStrokeTransparency = 0.3
 Online.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
 Online.Parent = Label
 
+-- ✅ Username (thêm mới, không ảnh hưởng code cũ)
+local Player = game:GetService("Players").LocalPlayer
+
+local Username = Instance.new("TextLabel")
+Username.Size = UDim2.new(1, 0, 0, 120)
+Username.Position = UDim2.new(0, 0, 1.05, 0) -- nằm dưới dòng Online
+Username.BackgroundTransparency = 1
+Username.TextColor3 = Color3.fromRGB(255, 255, 0)
+Username.Font = Enum.Font.Code
+Username.TextSize = 100
+Username.Text = "" .. Player.DisplayName
+Username.TextXAlignment = Enum.TextXAlignment.Center
+Username.TextStrokeTransparency = 0.3
+Username.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
+Username.Parent = Label
+
 local startTime = os.time()
 task.spawn(function()
     while task.wait(1) do
