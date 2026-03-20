@@ -46,7 +46,7 @@ getgenv().Settings = {
         {Name = "Void Key", Data = {Price = "5%"}},
         {Name = "Fantasy Key", Data = {Price = "5%"}},
         {Name = "Fantasy Spinny Wheel Ticket", Data = {Price = "5%"}},
-        {Name = "Lucky Raid Boss Key Lower Half V2", Data = {Price = "30k"}},
+        {Name = "Lucky Raid Boss Key Lower Half V2", Data = {Price = "10k"}},
         {Name = "Lucky Raid Boss Key Upper Half V2", Data = {Price = "5%"}},
 
         {Name = "Huge Bluebird", Data = {Price = "20m"}},
