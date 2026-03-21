@@ -38,9 +38,9 @@ getgenv().Settings = {
         {Name = "Exclusive Egg 58", Data = {Price = "3%"}},
         {Name = "Exclusive Egg 59", Data = {Price = "3%"}},
 
-        {Name = "Mega Loot Chest", Data = {Price = "5%"}},
-        {Name = "Mega Potion Chest", Data = {Price = "5%"}},
-        {Name = "Mega Ultimate Chest", Data = {Price = "5%"}},
+        {Name = "Mega Loot Chest", Data = {Price = "2%"}},
+        {Name = "Mega Potion Chest", Data = {Price = "2%"}},
+        {Name = "Mega Ultimate Chest", Data = {Price = "2%"}},
         {Name = "Mega Enchant Chest", Data = {Price = "1%"}},
         {Name = "Huge Sea Dragon Card", Data = {Price = "5%"}},
 
