@@ -20,7 +20,8 @@ getgenv().Settings = {
         {Name = "Basketball Gift", Data = {Price = "1%"}},
         {Name = "Spider Gift", Data = {Price = "1%"}},
         {Name = "Lucky Gift", Data = {Price = "800k"}},
-        {Name = "Slime Gift", Data = {Price = "800k"}},
+        {Name = "Slime Gift", Data = {Price = "200k"}},
+        {Name = "Jolly Gift", Data = {Price = "500k"}},
 
         {Name = "Huge Machine Egg 5", Data = {Price = "1%"}},
         {Name = "Hype Egg", Data = {Price = "8.5m"}},
@@ -39,6 +40,7 @@ getgenv().Settings = {
 
         {Name = "Mega Loot Chest", Data = {Price = "5%"}},
         {Name = "Mega Potion Chest", Data = {Price = "5%"}},
+        {Name = "Mega Ultimate Chest", Data = {Price = "5%"}},
         {Name = "Mega Enchant Chest", Data = {Price = "1%"}},
         {Name = "Huge Sea Dragon Card", Data = {Price = "5%"}},
 
