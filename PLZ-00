@@ -20,6 +20,7 @@ getgenv().Settings = {
         {Name = "Basketball Gift", Data = {Price = "1%"}},
         {Name = "Spider Gift", Data = {Price = "1%"}},
         {Name = "Lucky Gift", Data = {Price = "800k"}},
+        {Name = "Slime Gift", Data = {Price = "800k"}},
 
         {Name = "Huge Machine Egg 5", Data = {Price = "1%"}},
         {Name = "Hype Egg", Data = {Price = "8.5m"}},
