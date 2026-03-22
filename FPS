@@ -165,4 +165,66 @@ task.spawn(function()
         end
     end
 end)
--- ✅ Kick nếu kẹt ở Fantasy quá lâu (đáng lẽ phải sang LuckyEvent)
+-- ✅ Kick nếu kẹt leo rank ở Fantasy quá lâu (phải sang LuckyEvent)
+task.spawn(function()
+    local TARGET_PLACE = 140403681187145
+    local LIMIT_TIME = 20
+
+    local enterTime = nil
+
+    -- LOAD DATA
+    local Client = game:GetService("ReplicatedStorage"):WaitForChild("Library"):WaitForChild("Client")
+    local Save = require(Client.Save)
+    local InstancingCmds = require(Client.InstancingCmds)
+
+    local function GetData()
+        return Save.Get()
+    end
+
+    while task.wait(1) do
+
+        local inInstance = false
+        pcall(function()
+            inInstance = InstancingCmds.IsInInstance()
+        end)
+
+        -- 🎉 ĐANG EVENT → KHÔNG KICK
+        if inInstance then
+            enterTime = nil
+            continue
+        end
+
+        -- 🌍 KHÔNG ĐÚNG MAP
+        if game.PlaceId ~= TARGET_PLACE then
+            enterTime = nil
+            continue
+        end
+
+        -- ⏳ BẮT ĐẦU ĐẾM
+        if not enterTime then
+            enterTime = tick()
+        end
+
+        local t = tick() - enterTime
+
+        -- DATA
+        local rebirth = 0
+        local rank = 0
+
+        pcall(function()
+            local data = GetData()
+            rebirth = data.Rebirths or 0
+            rank = data.Rank or 0
+        end)
+
+        -- ✅ ĐỦ ĐIỀU KIỆN → KICK LUÔN
+        if t >= LIMIT_TIME and rebirth >= 9 and rank >= 8 then
+            warn("🚨 KICK | Rebirth:", rebirth, "| Rank:", rank)
+
+            task.wait(1)
+            game.Players.LocalPlayer:Kick("Không vào event")
+            break
+        end
+
+    end
+end)
