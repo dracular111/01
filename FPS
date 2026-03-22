@@ -165,7 +165,36 @@ task.spawn(function()
         end
     end
 end)
--- ✅ Auto kick khi đủ rank mà không tele
-spawn(function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/CheckRankMap4"))()
+-- ✅ Kick nếu kẹt ở Fantasy quá lâu (đáng lẽ phải sang LuckyEvent)
+task.spawn(function()
+    local TARGET_PLACE = 140403681187145 -- Fantasy
+    local LIMIT_TIME = 180 -- 3 phút
+
+    local enterTime = nil
+
+    local Client = game:GetService("ReplicatedStorage"):WaitForChild("Library"):WaitForChild("Client")
+    local Save = require(Client.Save)
+
+    local function IsReady()
+        local data = Save.Get()
+        if not data then return false end
+        return (data.Rebirth or 0) >= 9 and (data.Rank or 0) >= 8
+    end
+
+    while task.wait(5) do
+        if game.PlaceId == TARGET_PLACE and IsReady() then
+            if not enterTime then
+                enterTime = tick()
+                warn("Đã đủ điều kiện nhưng vẫn ở Fantasy -> bắt đầu đếm")
+            end
+
+            if tick() - enterTime >= LIMIT_TIME then
+                warn("Kẹt Fantasy > 3 phút -> Kick")
+                game.Players.LocalPlayer:Kick("Kẹt Fantasy không sang LuckyEvent")
+                break
+            end
+        else
+            enterTime = nil
+        end
+    end
 end)
