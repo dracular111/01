@@ -44,8 +44,8 @@ spawn(function()
 
             -- nếu ở quá lâu
             if tick() - enterTime >= STAY_TIME then
-                warn("Ở LuckyEvent quá 180 phút -> Kick")
-                player:Kick("Treo quá lâu ở LuckyEvent")
+                warn("Ở FANTASY quá 2 phút -> Kick")
+                player:Kick("Treo quá lâu ở FANTASY")
             end
         else
             -- reset nếu rời map hoặc chưa đủ điều kiện
