@@ -167,5 +167,5 @@ task.spawn(function()
 end)
 
 spawn(function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Check Rank Map 4"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/CheckRankMap4"))()
 end)
