@@ -165,7 +165,7 @@ task.spawn(function()
         end
     end
 end)
-
+-- ✅ Auto kick khi đủ rank mà không tele
 spawn(function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/CheckRankMap4"))()
 end)
