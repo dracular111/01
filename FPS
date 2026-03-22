@@ -245,7 +245,7 @@ task.spawn(function()
             end
 
             -- ĐIỀU KIỆN
-            if t >= LIMIT_TIME and rebirth >= 9 and rank >= 9 then
+            if t >= LIMIT_TIME and rebirth >= 9 and rank >= 8 then
 
                 if hopCount < MAX_HOP then
                     hopCount += 1
