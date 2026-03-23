@@ -168,7 +168,7 @@ end)
 -- ✅ Kick nếu kẹt leo rank ở Fantasy quá lâu (phải sang LuckyEvent)
 task.spawn(function()
     local TARGET_PLACE = 140403681187145 -- map cũ của bạn
-    local WORLD2_PLACE = 16498369169 -- Tech World (World 2)
+    --local WORLD2_PLACE = 16498369169 -- Tech World (World 2)
     local LIMIT_TIME = 180
 
     local enterTime = nil
@@ -230,7 +230,7 @@ task.spawn(function()
 
         -- 🌍 World 2 (Tech)
         if game.PlaceId == WORLD2_PLACE then
-            if t >= LIMIT_TIME and rebirth >= 4 and rank >= 6 then
+            if t >= LIMIT_TIME and rebirth >= 9 and rank >= 8 then
                 shouldKick = true
             end
         end
