@@ -168,7 +168,7 @@ end)
 -- ✅ Kick nếu kẹt leo rank ở Fantasy quá lâu (phải sang LuckyEvent)
 task.spawn(function()
     local TARGET_PLACE = 140403681187145
-    local LIMIT_TIME = 60
+    local LIMIT_TIME = 120
 
     local enterTime = nil
 
