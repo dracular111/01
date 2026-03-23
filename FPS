@@ -169,7 +169,7 @@ end)
 task.spawn(function()
     local TARGET_PLACE = 140403681187145 -- map cũ của bạn
     local WORLD2_PLACE = 16498369169 -- Tech World (World 2)
-    local LIMIT_TIME = 120
+    local LIMIT_TIME = 180
 
     local enterTime = nil
 
