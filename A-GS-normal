@@ -30,13 +30,13 @@ getgenv().GEVENT_UPGRADES = {
     { Id = "LuckyRaidEggCost", MaxTier = 0 },
     { Id = "LuckyRaidMoreCurrency", MaxTier = 0 },
     { Id = "LuckyRaidBetterLoot", MaxTier = 70 },
-    { Id = "LuckyRaidHugeChest", MaxTier = 50 },
+    { Id = "LuckyRaidHugeChest", MaxTier = 100 },
     { Id = "LuckyRaidTitanicChest", MaxTier = 100 },
     { Id = "LuckyRaidXP", MaxTier = 0 },
-    { Id = "LuckyRaidPetSpeed", MaxTier = 20 },
+    { Id = "LuckyRaidPetSpeed", MaxTier = 10 },
     { Id = "LuckyRaidKeyDrops", MaxTier = 0 },
-    { Id = "LuckyRaidBossHugeChances", MaxTier = 0 },
-    { Id = "LuckyRaidBossTitanicChances", MaxTier = 70 },
+    { Id = "LuckyRaidBossHugeChances", MaxTier = 20 },
+    { Id = "LuckyRaidBossTitanicChances", MaxTier = 20 },
 }
 getgenv().GLOOTBOXES = {"Locked Hype Egg","Horseshoe Gift"}
 getgenv().GKICK_ON_STAFF = true
