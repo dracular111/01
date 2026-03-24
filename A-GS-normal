@@ -9,35 +9,35 @@ getgenv().GMAKE_HORSESHOE_GIFTS = true
 getgenv().GLIMIT_HORSESHOE_GIFTS = 99999 -- choose yourself, don't set it lower than your MinAmount in your Horseshoe Gift mailrule!
 getgenv().GDO_BOSSES = {1,2,3}
 getgenv().GHEROIC_BOSSES  = {1,2,3}
-getgenv().GMYTHIC_BOSSES  = {1,2}
+getgenv().GMYTHIC_BOSSES  = {1}
 getgenv().GUSE_BOOSTS = true
-getgenv().GSKIP_RAID_EGG = true
+getgenv().GSKIP_RAID_EGG = false
 getgenv().GMINUTE_HATCH_RAID_EGG = true
-getgenv().GMIN_MULTIPLIER = 200 -- min required multiplier of raid egg to hatch
+getgenv().GMIN_MULTIPLIER = 250 -- min required multiplier of raid egg to hatch
 getgenv().GRAID_MAX_HATCH_MINUTES = 5 -- abort hatching after 5 min
 getgenv().GDISABLE_MINUTE_HATCH = false
 getgenv().GRAID_TIMEOUT_MINUTES = 60
-getgenv().GRAID_MAX_BREAKABLE_HEALTH = "30qt"
+getgenv().GRAID_MAX_BREAKABLE_HEALTH = "999qt"
 getgenv().GAUTO_RAID = true
 getgenv().GHATCH_LOBBY = true
 getgenv().GUSE_LEPRECHAUN_KEYS = false
 getgenv().GMAX_RAID_LEVEL = 50000
 getgenv().GRESET_UPGRADES = true -- only do true when you actually need a reset
 getgenv().GEVENT_UPGRADES = {
-   "LuckyRaidDamage",
-   "LuckyRaidAttackSpeed",
-   "LuckyRaidPets",
-   --"LuckyRaidEggCost",
-   --"LuckyRaidMoreCurrency",
-   "LuckyRaidBetterLoot",
-	--"LuckyRaidTitanicChest",
-   "LuckyRaidHugeChest",
-	--"LuckyRaidXP",
-	"LuckyRaidPetSpeed",
-   --"LuckyRaidKeyDrops",
-   "LuckyRaidBossHugeChances",
-	--"LuckyRaidBossTitanicChances",
-}  -- can remove/comment the ones you don't want to upgrade
+    { Id = "LuckyRaidPets", MaxTier = 100 },
+    { Id = "LuckyRaidDamage", MaxTier = 100 },
+    { Id = "LuckyRaidAttackSpeed", MaxTier = 100 },
+    { Id = "LuckyRaidEggCost", MaxTier = 0 },
+    { Id = "LuckyRaidMoreCurrency", MaxTier = 0 },
+    { Id = "LuckyRaidBetterLoot", MaxTier = 70 },
+    { Id = "LuckyRaidHugeChest", MaxTier = 50 },
+    { Id = "LuckyRaidTitanicChest", MaxTier = 100 },
+    { Id = "LuckyRaidXP", MaxTier = 0 },
+    { Id = "LuckyRaidPetSpeed", MaxTier = 20 },
+    { Id = "LuckyRaidKeyDrops", MaxTier = 0 },
+    { Id = "LuckyRaidBossHugeChances", MaxTier = 0 },
+    { Id = "LuckyRaidBossTitanicChances", MaxTier = 70 },
+}
 getgenv().GLOOTBOXES = {"Locked Hype Egg","Horseshoe Gift"}
 getgenv().GKICK_ON_STAFF = true
 getgenv().GAUTO_UPGRADE_PETS = true
