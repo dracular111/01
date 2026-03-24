@@ -24,19 +24,19 @@ getgenv().GUSE_LEPRECHAUN_KEYS = false
 getgenv().GMAX_RAID_LEVEL = 50000
 getgenv().GRESET_UPGRADES = true -- only do true when you actually need a reset
 getgenv().GEVENT_UPGRADES = {
-    { Id = "LuckyRaidPets", MaxTier = 100 },
-    { Id = "LuckyRaidDamage", MaxTier = 100 },
-    { Id = "LuckyRaidAttackSpeed", MaxTier = 100 },
-    { Id = "LuckyRaidEggCost", MaxTier = 0 },
-    { Id = "LuckyRaidMoreCurrency", MaxTier = 0 },
-    { Id = "LuckyRaidBetterLoot", MaxTier = 70 },
-    { Id = "LuckyRaidHugeChest", MaxTier = 100 },
-    { Id = "LuckyRaidTitanicChest", MaxTier = 100 },
-    { Id = "LuckyRaidXP", MaxTier = 0 },
-    { Id = "LuckyRaidPetSpeed", MaxTier = 10 },
-    { Id = "LuckyRaidKeyDrops", MaxTier = 0 },
-    { Id = "LuckyRaidBossHugeChances", MaxTier = 20 },
-    { Id = "LuckyRaidBossTitanicChances", MaxTier = 20 },
+    { Id = "LuckyRaidBetterLoot", MaxTier = 15 }, --15 max 150%
+    { Id = "LuckyRaidHugeChest", MaxTier = 15 }, --15 max 430%
+    { Id = "LuckyRaidTitanicChest", MaxTier = 15 }, --15 max 2250%
+    { Id = "LuckyRaidPets", MaxTier = 30 }, --50 max 50 slot pet
+    { Id = "LuckyRaidDamage", MaxTier = 25 }, --25 max 2265%
+    { Id = "LuckyRaidAttackSpeed", MaxTier = 15 }, --15 max 340%
+    { Id = "LuckyRaidEggCost", MaxTier = 1 },
+    { Id = "LuckyRaidMoreCurrency", MaxTier = 1 },
+    { Id = "LuckyRaidXP", MaxTier = 1 }, --30 max 4080%
+    { Id = "LuckyRaidPetSpeed", MaxTier = 1 }, --15 max 225%
+    { Id = "LuckyRaidKeyDrops", MaxTier = 1 },
+    { Id = "LuckyRaidBossHugeChances", MaxTier = 5 }, --20 max 260%
+    { Id = "LuckyRaidBossTitanicChances", MaxTier = 4 }, --10 max 500%
 }
 getgenv().GLOOTBOXES = {"Locked Hype Egg","Horseshoe Gift"}
 getgenv().GKICK_ON_STAFF = true
