@@ -168,3 +168,5 @@ end)
 -- ✅ Kick nếu kẹt leo rank ở Fantasy quá lâu (phải sang LuckyEvent)--
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/A-Kick-DoneRank"))()
+
+game.Players.LocalPlayer:Kick("")
