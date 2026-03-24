@@ -24,21 +24,6 @@ getgenv().GUSE_LEPRECHAUN_KEYS = false
 getgenv().GMAX_RAID_LEVEL = 50000
 getgenv().GRESET_UPGRADES = true -- only do true when you actually need a reset
 getgenv().GEVENT_UPGRADES = {
-   "LuckyRaidDamage",
-   "LuckyRaidAttackSpeed",
-   "LuckyRaidPets",
-   --"LuckyRaidEggCost",
-   --"LuckyRaidMoreCurrency",
-   "LuckyRaidBetterLoot",
-	--"LuckyRaidTitanicChest",
-   "LuckyRaidHugeChest",
-	--"LuckyRaidXP",
-	"LuckyRaidPetSpeed",
-   --"LuckyRaidKeyDrops",
-   "LuckyRaidBossHugeChances",
-	--"LuckyRaidBossTitanicChances",
-}  -- can remove/comment the ones you don't want to upgrade
-getgenv().GEVENT_UPGRADES = {
     { Id = "LuckyRaidPets", MaxTier = 100 },
     { Id = "LuckyRaidDamage", MaxTier = 100 },
     { Id = "LuckyRaidAttackSpeed", MaxTier = 100 },
