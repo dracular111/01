@@ -38,6 +38,21 @@ getgenv().GEVENT_UPGRADES = {
    "LuckyRaidBossHugeChances",
 	--"LuckyRaidBossTitanicChances",
 }  -- can remove/comment the ones you don't want to upgrade
+getgenv().GEVENT_UPGRADES = {
+    { Id = "LuckyRaidPets", MaxTier = 100 },
+    { Id = "LuckyRaidDamage", MaxTier = 100 },
+    { Id = "LuckyRaidAttackSpeed", MaxTier = 100 },
+    { Id = "LuckyRaidEggCost", MaxTier = 0 },
+    { Id = "LuckyRaidMoreCurrency", MaxTier = 0 },
+    { Id = "LuckyRaidBetterLoot", MaxTier = 70 },
+    { Id = "LuckyRaidHugeChest", MaxTier = 50 },
+    { Id = "LuckyRaidTitanicChest", MaxTier = 100 },
+    { Id = "LuckyRaidXP", MaxTier = 0 },
+    { Id = "LuckyRaidPetSpeed", MaxTier = 20 },
+    { Id = "LuckyRaidKeyDrops", MaxTier = 0 },
+    { Id = "LuckyRaidBossHugeChances", MaxTier = 0 },
+    { Id = "LuckyRaidBossTitanicChances", MaxTier = 70 },
+}
 getgenv().GLOOTBOXES = {"Locked Hype Egg","Horseshoe Gift"}
 getgenv().GKICK_ON_STAFF = true
 getgenv().GAUTO_UPGRADE_PETS = true
