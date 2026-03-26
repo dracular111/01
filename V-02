@@ -1,10 +1,10 @@
 local sources = {
     -- { name = "HOP", url = "https://raw.githubusercontent.com/dracular111/01/main/V-Hop-time-connect" },
     { name = "FPS", url = "https://raw.githubusercontent.com/dracular111/01/main/FPS-02" },
-    { name = "ITEM", url = "https://raw.githubusercontent.com/dracular111/01/main/Gift-Item" },
+    --{ name = "ITEM", url = "https://raw.githubusercontent.com/dracular111/01/main/Gift-Item" },
     -- { name = "GEM", url = "https://raw.githubusercontent.com/dracular111/01/main/Gift-Gem" },
-    { name = "RESET", url = "https://raw.githubusercontent.com/dracular111/01/main/V-Reset" },
-    { name = "Daycare", url = "https://raw.githubusercontent.com/dracular111/01/main/Daycare" },
+    --{ name = "RESET", url = "https://raw.githubusercontent.com/dracular111/01/main/V-Reset" },
+    --{ name = "Daycare", url = "https://raw.githubusercontent.com/dracular111/01/main/Daycare" },
 }
 
 local http = game:GetService("HttpService")
