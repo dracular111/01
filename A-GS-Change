@@ -71,7 +71,7 @@ local function countKitsuneRainbow()
         local pt = pet.pt or 0
         local sh = pet.sh == true
 
-        if id == "Leprechaun Kitsune" then
+        if string.find(id, "Leprechaun") and string.find(id, "Kitsune") then
             -- ✅ chỉ Rainbow thường
             if pt == 2 and not sh then
                 total += am
