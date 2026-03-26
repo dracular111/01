@@ -38,7 +38,6 @@ local function getSaveSafe(timeout)
     while tick() - start < (timeout or 30) do
         local ok, sd = pcall(PlayerSave.Get)
         if ok and sd then
-            -- check sâu hơn tránh save rỗng
             if sd.Inventory or sd.Pets then
                 return sd
             end
@@ -58,8 +57,8 @@ local function getPetTable(sd)
     return sd.Pets
 end
 
--- ===== COUNT =====
-local function countKitsuneSR()
+-- ===== COUNT (RAINBOW ONLY - KHÔNG SHINY) =====
+local function countKitsuneRainbow()
     local sd = getSaveSafe(30)
     local pets = getPetTable(sd)
     if not pets then return 0 end
@@ -73,7 +72,8 @@ local function countKitsuneSR()
         local sh = pet.sh == true
 
         if id == "Leprechaun Kitsune" then
-            if pt == 2 and sh then
+            -- ✅ chỉ Rainbow thường
+            if pt == 2 and not sh then
                 total += am
             end
         end
@@ -90,28 +90,28 @@ local function loadConfig(url)
     loadstring(game:HttpGet(url))()
 end
 
--- ===== WAIT GAME READY (DEEP) =====
+-- ===== WAIT GAME READY =====
 repeat task.wait() until game:IsLoaded()
 repeat task.wait() until player and player:FindFirstChild("PlayerGui")
 
 task.wait(2)
 
 -- ===== CHECK BAN ĐẦU =====
-local kitsune = countKitsuneSR()
-print("Kitsune SR:", kitsune)
+local kitsune = countKitsuneRainbow()
+print("Kitsune Rainbow:", kitsune)
 
 -- ===== LOGIC =====
 if kitsune >= 36 then
     print("✅ CONFIG 1")
 
-    sendWebhook("🟢 "..USERNAME.." → chạy CONFIG 1 (Kitsune: "..kitsune..")")
+    sendWebhook("🟢 "..USERNAME.." → chạy CONFIG 1 (Rainbow: "..kitsune..")")
 
     loadConfig(CONFIG_1)
 
 else
     print("🟡 CONFIG 2")
 
-    sendWebhook("🟡 "..USERNAME.." → chạy CONFIG 2 (Kitsune: "..kitsune..")")
+    sendWebhook("🟡 "..USERNAME.." → chạy CONFIG 2 (Rainbow: "..kitsune..")")
 
     loadConfig(CONFIG_2)
 
@@ -120,14 +120,14 @@ else
         while true do
             task.wait(10)
 
-            local current = countKitsuneSR()
+            local current = countKitsuneRainbow()
             print("Recheck:", current)
 
-            if current >= 36 then
-                sendWebhook("🔁 "..USERNAME.." → ĐỦ 36 → đổi CONFIG (Kick)")
+            if current >= 50 then
+                sendWebhook("🔁 "..USERNAME.." → ĐỦ 36 Rainbow → đổi CONFIG (Kick)")
 
                 task.wait(1)
-                player:Kick("Đã đạt yêu cầu ")
+                player:Kick("Đã đủ 36 Kitsune Rainbow")
                 break
             end
         end
