@@ -59,7 +59,7 @@ end
 
 -- ===== COUNT (RAINBOW ONLY - KHÔNG SHINY) =====
 local function countKitsuneRainbow()
-    local sd = getSaveSafe(30)
+    local sd = getSaveSafe(60)
     local pets = getPetTable(sd)
     if not pets then return 0 end
 
@@ -94,7 +94,7 @@ end
 repeat task.wait() until game:IsLoaded()
 repeat task.wait() until player and player:FindFirstChild("PlayerGui")
 
-task.wait(2)
+task.wait(5)
 
 -- ===== CHECK BAN ĐẦU =====
 local kitsune = countKitsuneRainbow()
@@ -124,7 +124,7 @@ else
             print("Recheck:", current)
 
             if current >= 50 then
-                sendWebhook("🔁 "..USERNAME.." → ĐỦ 36 Rainbow → đổi CONFIG (Kick)")
+                sendWebhook("🔁 "..USERNAME.." → ĐỦ 50 Rainbow → đổi CONFIG (Kick)")
 
                 task.wait(1)
                 player:Kick("Đã đủ 50 Kitsune Rainbow")
