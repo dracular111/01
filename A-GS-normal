@@ -29,7 +29,7 @@ getgenv().GEVENT_UPGRADES = {
     --{ Id = "LuckyRaidPets", MaxTier = 50 }, --50 max 50 slot pet
     --{ Id = "LuckyRaidDamage", MaxTier = 25 }, --25 max 2265%
     --{ Id = "LuckyRaidAttackSpeed", MaxTier = 15 }, --15 max 340%
-    --{ Id = "LuckyRaidBetterLoot", MaxTier = 15 }, --15 max 150%
+    { Id = "LuckyRaidBetterLoot", MaxTier = 15 }, --15 max 150%
     { Id = "LuckyRaidHugeChest", MaxTier = 15 }, --15 max 430%
     { Id = "LuckyRaidTitanicChest", MaxTier = 15 }, --15 max 2250%
     --{ Id = "LuckyRaidBossHugeChances", MaxTier = 5 }, --20 max 260%
