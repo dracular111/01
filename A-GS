@@ -12,8 +12,8 @@ getgenv().GHEROIC_BOSSES  = {1,2}
 --getgenv().GHEROIC_BOSSES  = {1}
 getgenv().GUSE_BOOSTS = true
 getgenv().GSKIP_RAID_EGG = true
-getgenv().GMINUTE_HATCH_RAID_EGG = true
-getgenv().GMIN_MULTIPLIER = 250 -- min required multiplier of raid egg to hatch
+--getgenv().GMINUTE_HATCH_RAID_EGG = true
+getgenv().GMIN_MULTIPLIER = 300 -- min required multiplier of raid egg to hatch
 getgenv().GRAID_MAX_HATCH_MINUTES = 5 -- abort hatching after 5 min
 getgenv().GDISABLE_MINUTE_HATCH = false
 getgenv().GRAID_TIMEOUT_MINUTES = 60
@@ -21,26 +21,24 @@ getgenv().GRAID_MAX_BREAKABLE_HEALTH = "150qt"
 getgenv().GAUTO_RAID = true
 getgenv().GHATCH_LOBBY = true
 getgenv().GUSE_LEPRECHAUN_KEYS = false
---getgenv().GMAX_RAID_LEVEL = 20000
---getgenv().GMAX_RAID_LEVEL = 25000
 getgenv().GMAX_RAID_LEVEL = 30000
 getgenv().GRESET_UPGRADES = false -- only do true when you actually need a reset
 getgenv().GEVENT_UPGRADES = {
     --{ Id = "LuckyRaidPets", MaxTier = 26 }, --50 max 50 slot pet
     { Id = "LuckyRaidPets", MaxTier = 36 }, --50 max 50 slot pet
     --{ Id = "LuckyRaidPets", MaxTier = 50 }, --50 max 50 slot pet
-    { Id = "LuckyRaidDamage", MaxTier = 25 }, --25 max 2265%
-    { Id = "LuckyRaidAttackSpeed", MaxTier = 15 }, --15 max 340%
-    { Id = "LuckyRaidBetterLoot", MaxTier = 15 }, --15 max 150%
+    --{ Id = "LuckyRaidDamage", MaxTier = 25 }, --25 max 2265%
+    --{ Id = "LuckyRaidAttackSpeed", MaxTier = 15 }, --15 max 340%
+    --{ Id = "LuckyRaidBetterLoot", MaxTier = 15 }, --15 max 150%
     { Id = "LuckyRaidHugeChest", MaxTier = 15 }, --15 max 430%
     { Id = "LuckyRaidTitanicChest", MaxTier = 15 }, --15 max 2250%
-    { Id = "LuckyRaidBossHugeChances", MaxTier = 5 }, --20 max 260%
-    { Id = "LuckyRaidBossTitanicChances", MaxTier = 4 }, --10 max 500%
-    { Id = "LuckyRaidPetSpeed", MaxTier = 1 }, --15 max 225%
-    { Id = "LuckyRaidXP", MaxTier = 1 }, --30 max 4080%
-    { Id = "LuckyRaidEggCost", MaxTier = 1 },
-    { Id = "LuckyRaidMoreCurrency", MaxTier = 1 },
-    { Id = "LuckyRaidKeyDrops", MaxTier = 0 },
+    --{ Id = "LuckyRaidBossHugeChances", MaxTier = 5 }, --20 max 260%
+    --{ Id = "LuckyRaidBossTitanicChances", MaxTier = 4 }, --10 max 500%
+    --{ Id = "LuckyRaidPetSpeed", MaxTier = 1 }, --15 max 225%
+    --{ Id = "LuckyRaidXP", MaxTier = 1 }, --30 max 4080%
+    --{ Id = "LuckyRaidEggCost", MaxTier = 1 },
+    --{ Id = "LuckyRaidMoreCurrency", MaxTier = 1 },
+    --{ Id = "LuckyRaidKeyDrops", MaxTier = 0 },
 }
 getgenv().GLOOTBOXES = {"Locked Hype Egg","Horseshoe Gift"}
 getgenv().GKICK_ON_STAFF = true
