@@ -101,7 +101,7 @@ local kitsune = countKitsuneRainbow()
 print("Kitsune Rainbow:", kitsune)
 
 -- ===== LOGIC =====
-if kitsune >= 36 then
+if kitsune >= 50 then
     print("✅ CONFIG 1")
 
     sendWebhook("🟢 "..USERNAME.." → chạy CONFIG 1 (Rainbow: "..kitsune..")")
@@ -127,7 +127,7 @@ else
                 sendWebhook("🔁 "..USERNAME.." → ĐỦ 36 Rainbow → đổi CONFIG (Kick)")
 
                 task.wait(1)
-                player:Kick("Đã đủ 36 Kitsune Rainbow")
+                player:Kick("Đã đủ 50 Kitsune Rainbow")
                 break
             end
         end
