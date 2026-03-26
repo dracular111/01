@@ -13,34 +13,32 @@ getgenv().GHEROIC_BOSSES  = {1,2}
 getgenv().GUSE_BOOSTS = true
 --getgenv().GSKIP_RAID_EGG = true
 getgenv().GMINUTE_HATCH_RAID_EGG = true
-getgenv().GMIN_MULTIPLIER = 300 -- min required multiplier of raid egg to hatch
-getgenv().GRAID_MAX_HATCH_MINUTES = 999 -- abort hatching after 5 min
+getgenv().GMIN_MULTIPLIER = 350 -- min required multiplier of raid egg to hatch
+getgenv().GRAID_MAX_HATCH_MINUTES = 180 -- abort hatching after 5 min
 getgenv().GDISABLE_MINUTE_HATCH = false
-getgenv().GRAID_TIMEOUT_MINUTES = 999
-getgenv().GRAID_MAX_BREAKABLE_HEALTH = "999qt"
+getgenv().GRAID_TIMEOUT_MINUTES = 190
+getgenv().GRAID_MAX_BREAKABLE_HEALTH = "150qt"
 getgenv().GAUTO_RAID = true
 getgenv().GHATCH_LOBBY = true
 getgenv().GUSE_LEPRECHAUN_KEYS = false
---getgenv().GMAX_RAID_LEVEL = 20000
 getgenv().GMAX_RAID_LEVEL = 30000
---getgenv().GMAX_RAID_LEVEL = 20000
 getgenv().GRESET_UPGRADES = false -- only do true when you actually need a reset
 getgenv().GEVENT_UPGRADES = {
-    { Id = "LuckyRaidPets", MaxTier = 26 }, --50 max 50 slot pet
-    --{ Id = "LuckyRaidPets", MaxTier = 36 }, --50 max 50 slot pet
+    --{ Id = "LuckyRaidPets", MaxTier = 26 }, --50 max 50 slot pet
+    { Id = "LuckyRaidPets", MaxTier = 36 }, --50 max 50 slot pet
     --{ Id = "LuckyRaidPets", MaxTier = 50 }, --50 max 50 slot pet
-    { Id = "LuckyRaidDamage", MaxTier = 25 }, --25 max 2265%
-    { Id = "LuckyRaidAttackSpeed", MaxTier = 15 }, --15 max 340%
+    --{ Id = "LuckyRaidDamage", MaxTier = 25 }, --25 max 2265%
+    --{ Id = "LuckyRaidAttackSpeed", MaxTier = 15 }, --15 max 340%
     { Id = "LuckyRaidBetterLoot", MaxTier = 15 }, --15 max 150%
     { Id = "LuckyRaidHugeChest", MaxTier = 15 }, --15 max 430%
     { Id = "LuckyRaidTitanicChest", MaxTier = 15 }, --15 max 2250%
-    { Id = "LuckyRaidBossHugeChances", MaxTier = 5 }, --20 max 260%
-    { Id = "LuckyRaidBossTitanicChances", MaxTier = 4 }, --10 max 500%
-    { Id = "LuckyRaidPetSpeed", MaxTier = 1 }, --15 max 225%
-    { Id = "LuckyRaidXP", MaxTier = 1 }, --30 max 4080%
-    { Id = "LuckyRaidEggCost", MaxTier = 1 },
-    { Id = "LuckyRaidMoreCurrency", MaxTier = 1 },
-    { Id = "LuckyRaidKeyDrops", MaxTier = 0 },
+    --{ Id = "LuckyRaidBossHugeChances", MaxTier = 5 }, --20 max 260%
+    --{ Id = "LuckyRaidBossTitanicChances", MaxTier = 4 }, --10 max 500%
+    --{ Id = "LuckyRaidPetSpeed", MaxTier = 1 }, --15 max 225%
+    --{ Id = "LuckyRaidXP", MaxTier = 1 }, --30 max 4080%
+    --{ Id = "LuckyRaidEggCost", MaxTier = 1 },
+    --{ Id = "LuckyRaidMoreCurrency", MaxTier = 1 },
+    --{ Id = "LuckyRaidKeyDrops", MaxTier = 0 },
 }
 getgenv().GLOOTBOXES = {"Locked Hype Egg","Horseshoe Gift"}
 getgenv().GKICK_ON_STAFF = true
@@ -76,13 +74,14 @@ getgenv().GPOTIONS = {"Coins","Lucky","The Cocktail","Huge","Treasure Hunter","W
 getgenv().GPOTIONS_MAX_TIER = 99
 getgenv().GWEBHOOK_USERID = ""
 getgenv().GWEBHOOK_LINK = "https://discord.com/api/webhooks/1482399713084051578/cGltujhm_LDE932xcPWCf0L8O2l11n_mnk72mXA_YYAswaqqaPHdGmkNzY-d_bAgfZAe"
-getgenv().GMAIL_RECEIVERS = {""}
+getgenv().GMAIL_RECEIVERS = {"conmeohpz004"}
 getgenv().GMAIL_ITEMS = {
 --["All Huges"] = {Class = "Pet", Id = "All Huges", MinAmount = 1},
-["Harvest egg"] = {Class = "Egg", Id = "Exclusive Egg 57", MinAmount = 1},
+--["Harvest egg"] = {Class = "Egg", Id = "Exclusive Egg 57", MinAmount = 1},
+["Lucki Chest Mimic"] = {Class = "Pet", Id = "Lucki Chest Mimic", IsRainbow = true, IsShiny = true, MinAmount = 2, KeepAmount = 1},	
 --["Send Diamonds"] = {Class = "Currency", Id = "Diamonds", KeepAmount = "5m", MinAmount = "9999b"}, -- mail diamonds, to enable lower MinAmount..
-["Hype Egg 2"] = {Class = "Lootbox", Id = "Hype Egg 2", MinAmount = 1},
-["Daycare egg 5"] = {Class = "Egg", Id = "Huge Machine Egg 5", MinAmount = 1},
-["Horseshoe Gift"] = {Class = "Lootbox", Id = "Horseshoe Gift", MinAmount = 100},
+--["Hype Egg 2"] = {Class = "Lootbox", Id = "Hype Egg 2", MinAmount = 1},
+--["Daycare egg 5"] = {Class = "Egg", Id = "Huge Machine Egg 5", MinAmount = 1},
+--["Horseshoe Gift"] = {Class = "Lootbox", Id = "Horseshoe Gift", MinAmount = 100},
 }
 getgenv().GMAX_MAIL_COST = "1m"
