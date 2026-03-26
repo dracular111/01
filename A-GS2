@@ -1,4 +1,4 @@
-getgenv().GGFX_MODE = 1 --1 = REMOVE_TEXTURES : more stable! but no visuals, 2: see some stuff, 3: see all
+getgenv().GGFX_MODE = 3 --1 = REMOVE_TEXTURES : more stable! but no visuals, 2: see some stuff, 3: see all
 getgenv().GRANK_FIRST = true --if you use this you have to define GREBIRTH_TO and GRANK_TO
 getgenv().GZONE_TO = 999 -- to enter event from W1 put 1, from W2 put 100, from W3 200, from W4 240
 getgenv().GREBIRTH_TO = 9
@@ -13,7 +13,7 @@ getgenv().GHEROIC_BOSSES  = {1,2}
 getgenv().GUSE_BOOSTS = true
 --getgenv().GSKIP_RAID_EGG = true
 getgenv().GMINUTE_HATCH_RAID_EGG = true
-getgenv().GMIN_MULTIPLIER = 200 -- min required multiplier of raid egg to hatch
+getgenv().GMIN_MULTIPLIER = 50 -- min required multiplier of raid egg to hatch
 getgenv().GRAID_MAX_HATCH_MINUTES = 999 -- abort hatching after 5 min
 getgenv().GDISABLE_MINUTE_HATCH = false
 getgenv().GRAID_TIMEOUT_MINUTES = 999
