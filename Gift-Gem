@@ -1,84 +1,46 @@
 repeat task.wait() until game:IsLoaded()
-
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local player = Players.LocalPlayer
 
-if _G.DIAMOND_SENDER_RAN then
-	warn("⛔ Script đã được chạy trước đó!")
-	return
-end
-_G.DIAMOND_SENDER_RAN = true
-
-----------------------------------------------------------
--- 💎 AUTO DIAMOND SENDER (Chicken)
-----------------------------------------------------------
-
--- Lấy dữ liệu kim cương
 local diamondsStat = player:WaitForChild("leaderstats"):FindFirstChild("💎 Diamonds")
 if not diamondsStat then
-	warn("❌ Không tìm thấy chỉ số Diamonds.")
+	warn("Không tìm thấy chỉ số Diamonds.")
 	return
 end
 
--- Danh sách người nhận
-local receivers = { "congahpz002", "congahpz003", "congahpz004", "congahpz005", "congahpz006", "congahpz007", "congahpz008", "congahpz009", "congahpz010", "conmeohpz004"}
+local currentValue = diamondsStat.Value
+if currentValue <= 50000000 then
+	warn("⚠️ Không đủ kim cương để gửi (cần > 50.000.000).")
+	return
+end
 
--- Module gốc
+local receivers = { "congahpz002", "congahpz003", "congahpz004", "congahpz005", "congahpz006", "congahpz007", "congahpz008", "congahpz009", "congahpz010", "conmeohpz004" }
+local receiver = receivers[math.random(1, #receivers)]
+
+local amountToSend = currentValue - 5000000
+
 local Client = ReplicatedStorage:WaitForChild("Library"):WaitForChild("Client")
 local Network = require(Client.Network)
-local SaveModule = require(Client.Save)
+local Save = require(Client.Save).Get()
 
--- Hàm tìm UID kim cương
-local function getDiamondsUID()
-	local save = SaveModule.Get()
-	local inv = save and save.Inventory and save.Inventory.Currency
-	if not inv then return nil end
-	for uid, v in pairs(inv) do
-		if v.id == "Diamonds" then
-			return uid
-		end
+local diamondsUID
+for uid, v in pairs(Save.Inventory["Currency"]) do
+	if v.id == "Diamonds" then
+		diamondsUID = uid
+		break
 	end
-	return nil
 end
-
-local diamondsUID = getDiamondsUID()
 if not diamondsUID then
-	warn("❌ Không tìm thấy Diamonds UID.")
+	warn("❌ Không tìm thấy Diamonds UID")
 	return
 end
 
--- Hàm gửi kim cương
-local function sendDiamonds(amount, receiver)
-	local success = false
-	for i = 1, 3 do -- thử tối đa 3 lần để tránh lỗi mạng
-		local ok, res = pcall(function()
-			return Network.Invoke("Mailbox: Send", receiver, "Bless", "Currency", diamondsUID, amount)
-		end)
-		if ok and res then
-			success = true
-			break
-		end
-		task.wait(0.3)
+while true do
+	local success = Network.Invoke("Mailbox: Send", receiver, "Bless", "Currency", diamondsUID, amountToSend)
+	if success then
+		print("📤 Đã gửi " .. amountToSend .. " 💎 cho người dùng: " .. receiver)
+		break
 	end
-	return success
+	task.wait(0.1)
 end
-
--- Vòng lặp chính
-task.spawn(function()
-	while task.wait(5) do
-		local diamonds = diamondsStat.Value
-		if diamonds > 102000000 then -- 100M + buffer 5000k
-			local receiver = receivers[math.random(1, #receivers)]
-			local amountToSend = diamonds - 2000000 -- giữ lại 5000k làm dự trữ
-
-			local success = sendDiamonds(amountToSend, receiver)
-			if success then
-				print(("📤 Đã gửi %s 💎 cho người dùng: %s"):format(amountToSend, receiver))
-			else
-				warn("⚠️ Gửi thất bại, sẽ thử lại sau.")
-			end
-			task.wait(10)
-		end
-	end
-end)
