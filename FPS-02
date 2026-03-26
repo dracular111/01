@@ -140,3 +140,37 @@ getgenv().fps_thread = task.spawn(function()
         task.wait(5)
     end
 end)
+-- ✅ Auto kick nếu map đứng thật sự (không activity)
+task.spawn(function()
+    local LOADING_TIMEOUT = 300 -- giây
+    local lastActivity = tick()
+
+    -- detect activity map
+    workspace.DescendantAdded:Connect(function()
+        lastActivity = tick()
+    end)
+
+    workspace.DescendantRemoving:Connect(function()
+        lastActivity = tick()
+    end)
+
+    while task.wait(1) do
+        local idle = tick() - lastActivity
+
+        if idle >= LOADING_TIMEOUT then
+            warn("Map đứng quá lâu -> Rejoin")
+
+            game.Players.LocalPlayer:Kick("Rejoining...")
+            break
+        end
+    end
+end)
+-- ✅ Kick nếu kẹt leo rank ở Fantasy quá lâu (phải sang LuckyEvent)--
+
+spawn(function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/A-Kick-DoneRank"))()
+end)
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/000"))()
+
+--game.Players.LocalPlayer:Kick("")
