@@ -1,4 +1,5 @@
 local sources = {
+    { name = "Config", url = "https://raw.githubusercontent.com/dracular111/01/main/000" },
     -- { name = "HOP", url = "https://raw.githubusercontent.com/dracular111/01/main/V-Hop-time-connect" },
     { name = "FPS", url = "https://raw.githubusercontent.com/dracular111/01/main/FPS-02" },
     --{ name = "ITEM", url = "https://raw.githubusercontent.com/dracular111/01/main/Gift-Item" },
