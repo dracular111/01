@@ -160,7 +160,7 @@ task.spawn(function()
         if idle >= LOADING_TIMEOUT then
             warn("Map đứng quá lâu -> Rejoin")
 
-            game.Players.LocalPlayer:Kick("Rejoining...")
+            game.Players.LocalPlayer:Kick("KillMap")
             break
         end
     end
