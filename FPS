@@ -175,4 +175,4 @@ spawn(function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/A-Kick"))()
 end)
 
---game.Players.LocalPlayer:Kick("")
+game.Players.LocalPlayer:Kick("")
