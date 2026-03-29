@@ -10,7 +10,7 @@ if not diamondsStat then
 end
 
 local currentValue = diamondsStat.Value
-if currentValue <= 50000000 then
+if currentValue <= 100000000 then
 	warn("⚠️ Không đủ kim cương để gửi (cần > 50.000.000).")
 	return
 end
