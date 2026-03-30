@@ -16,12 +16,12 @@ getgenv().GMINUTE_HATCH_RAID_EGG = true
 getgenv().GMIN_MULTIPLIER = 300 -- min required multiplier of raid egg to hatch
 getgenv().GRAID_MAX_HATCH_MINUTES = 1 -- abort hatching after 5 min
 getgenv().GDISABLE_MINUTE_HATCH = false
-getgenv().GRAID_TIMEOUT_MINUTES = 30
+getgenv().GRAID_TIMEOUT_MINUTES = 40
 getgenv().GRAID_MAX_BREAKABLE_HEALTH = "150qt"
 getgenv().GAUTO_RAID = true
 getgenv().GHATCH_LOBBY = true
 getgenv().GUSE_LEPRECHAUN_KEYS = false
-getgenv().GMAX_RAID_LEVEL = 25000
+getgenv().GMAX_RAID_LEVEL = 30000
 getgenv().GRESET_UPGRADES = false -- only do true when you actually need a reset
 getgenv().GEVENT_UPGRADES = {
     { Id = "LuckyRaidPets", MaxTier = 26 }, --50 max 50 slot pet
