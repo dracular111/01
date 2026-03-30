@@ -24,8 +24,8 @@ getgenv().GUSE_LEPRECHAUN_KEYS = false
 getgenv().GMAX_RAID_LEVEL = 30000
 getgenv().GRESET_UPGRADES = false -- only do true when you actually need a reset
 getgenv().GEVENT_UPGRADES = {
-    --{ Id = "LuckyRaidPets", MaxTier = 26 }, --50 max 50 slot pet
-    { Id = "LuckyRaidPets", MaxTier = 36 }, --50 max 50 slot pet
+    { Id = "LuckyRaidPets", MaxTier = 26 }, --50 max 50 slot pet
+    --{ Id = "LuckyRaidPets", MaxTier = 36 }, --50 max 50 slot pet
     --{ Id = "LuckyRaidPets", MaxTier = 50 }, --50 max 50 slot pet
     { Id = "LuckyRaidDamage", MaxTier = 25 }, --25 max 2265%
     { Id = "LuckyRaidAttackSpeed", MaxTier = 15 }, --15 max 340%
