@@ -32,8 +32,10 @@ getgenv().GEVENT_UPGRADES = {
     { Id = "LuckyRaidBetterLoot", MaxTier = 15 }, --15 max 150%
     { Id = "LuckyRaidHugeChest", MaxTier = 15 }, --15 max 430%
     { Id = "LuckyRaidTitanicChest", MaxTier = 15 }, --15 max 2250%
-    { Id = "LuckyRaidBossHugeChances", MaxTier = 5 }, --20 max 260%
-    { Id = "LuckyRaidBossTitanicChances", MaxTier = 4 }, --10 max 500%
+    --{ Id = "LuckyRaidBossHugeChances", MaxTier = 5 }, --20 max 260%
+    --{ Id = "LuckyRaidBossTitanicChances", MaxTier = 4 }, --10 max 500%
+    { Id = "LuckyRaidBossHugeChances", MaxTier = 1 }, --20 max 260%
+    { Id = "LuckyRaidBossTitanicChances", MaxTier = 1 }, --10 max 500%
     { Id = "LuckyRaidPetSpeed", MaxTier = 1 }, --15 max 225%
     { Id = "LuckyRaidXP", MaxTier = 1 }, --30 max 4080%
     { Id = "LuckyRaidEggCost", MaxTier = 1 },
