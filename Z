@@ -1,55 +1,73 @@
-getgenv().gagConfig = {
-    -- Event:
-    CRAFT_EVENT = { "Anti Bee Egg" },
-    BUY_TRAVELING_MERCHANT = { "Bee Egg", "Loquat", "Feijoa", "Pitcher Plant" },
-    FORCE_COOK_MUTATION_ONLY  = false,
-    PLACE_COSMETIC = { "Cooking Cauldron" },
-    CLAIM_FOOD_CONNOISSEUR_REWARD = { "Culinarian Chest", "Gourmet Egg", "Sunny-Side Chicken", "Gorilla Chef", "Pet Shard Aromatic", "Cooking Cauldron", "Gourmet Seed Pack", "Bitter Melon Seed", "Pricklefruit Seed", "Butternut Squash Seed", "Spring Onion Seed", "Kitchen Crate", "Kitchen Flooring", "Kitchen Cart", "Smoothie Fountain" },
-    BUY_EVENT_SHOP = { "Zen Egg" },
-    MAX_EVENT_RESTOCK_SHECKLES = 1000000000,
+-- CONFIG
+getgenv().Config = {
+    ["Change Mode"] = {
+        ["Change After Done Quest"] = true,
 
-    -- General:
-    AUTO_UPDATE_RESTART = true,
-    REDEEM_CODES = {},
-    EXTRA_PET_SLOTS = 5,
-    EXTRA_EGG_SLOTS = 5,
-    ADD_FRIEND = true,
-    OPEN_ALL_SEED_PACK = true,
+        ["Target"] = {
+            ["Rebirth"] = 9,
+            ["Rank"] = 20
+        },
 
-    MAX_PLANTS = 250,
-    DESTROY_UNTIL_MIN_PLANTS = 220,
-    DELETE_PLANTS_AFTER_MAX = { "Carrot", "Strawberry", "Blueberry", "Rose", "Orange Tulip", "Dezen", "Artichoke", "Onion", "Tomato", "Daffodil", "Cauliflower", "Raspberry", "Foxglove", "Corn", "Horsetail", "Twisted Tangle", "Jalapeno", "Watermelon", "Pumpkin", "Avocado", "Green Apple", "Apple", "Banana", "Lilac", "Taro Flower", "Bamboo", "Rafflesia", "Lingonberry", "Lucky Bamboo", "Veinpetal", "Crown Melon", "Peach", "Pineapple", "Amber Spine", "Coconut", "Cactus", "Dragon Fruit", "Mango", "Kiwi", "Bell Pepper", "Prickly Pear", "Pink Lily", "Purple Dahlia", "Tall Asparagus", "Sugarglaze", "Grape", "Loquat", "Mushroom", "Pepper", "Cacao", "Feijoa", "Pitcher Plant", "Grand Volcania", "Sunflower", "Grand Tomato", "Taco Fern", "Beanstalk", "Ember Lily", "Sugar Apple", "Burning Bud", "Giant Pinecone", "Elder Strawberry", "Chocolate Carrot", "Red Lollipop", "Nightshade", "Crocus", "Lavender", "Manuka Flower", "Wild Carrot", "Stonebite", "Candy Sunflower", "Peace Lily", "Mint", "Blue Lollipop", "Glowshroom", "Dandelion", "Nectarshade", "Succulent", "Bee Balm", "Pear", "Delphinium", "Liberty Lily", "Paradise Petal", "Cranberry", "Durian", "Papaya", "Moonflower", "Starfruit", "Lumira", "Violet Corn", "Nectar Thorn", "Cantaloupe", "Aloe Vera", "Firework Flower", "White Mulberry", "Dragon Sapling", "Horned Dinoshroom", "Boneboo", "Fruitball", "Enkaku", "Sakura Bush", "Easter Egg", "Eggplant", "Passionfruit", "Lemon", "Moonglow", "Moon Melon", "Blood Banana", "Celestiberry", "Guanabana", "Nectarine", "Honeysuckle", "Suncoil", "Bendboo", "Cocovine", "Parasol Flower", "Lily Of The Valley", "Firefly Fern", "Moon Mango", "Candy Blossom", "Cherry Blossom", "Lotus", "Venus Fly Trap", "Rosy Delight", "Traveler's Fruit", "Fossilight", "Tranquil Bloom", "Elephant Ears", "Bone Blossom", "Pink Tulip", "Noble Flower", "Purple Cabbage", "Sinisterdrip", "Mega Mushroom", "Ice Cream Bean", "Lime", "Crimson Vine" },
-    LIMIT_PLANT_SEED = { ["Loquat"] = 30, ["Feijoa"] = 30, ["Pitcher Plant"] = 25, ["Bitter Melon"] = 25, ["Butternut Squash"] = 20, ["Spring Onion"] = 15, ["Corn"] = 15, ["Tomato"] = 15, ["Pepper"] = 15, ["Pumpkin"] = 15, ["Apple"] = 5, ["Strawberry"] = 5, ["Blueberry"] = 5, ["Watermelon"] = 5, ["Coconut"] = 5, ["Bamboo"] = 5 },
-    BUY_EGGS = { "Bug Egg", "Bee Egg", "Paradise Egg", "Mythical Egg", "Rare Summer Egg", "Common Summer Egg", "Rare Egg", "Uncommon Egg" },
-    PLANT_EGGS = { "Gourmet Egg", "Zen Egg", "Corrupted Zen Egg", "Anti Bee Egg", "Night Egg", "Primal Egg", "Paradise Egg", "Oasis Egg", "Bug Egg", "Rare Egg", "Common Summer Egg" },
-    
-    -- BUY_SEED_SHOP Priority (Left -> Right)
-    BUY_SEED_SHOP = { "Elder Strawberry", "Giant Pinecone", "Burning Bud", "Sugar Apple", "Ember Lily", "Beanstalk", "Cacao", "Grape", "Mango", "Dragon Fruit", "Cactus", ["Coconut"] = 50, ["Bamboo"] = 50, ["Apple"] = 50, ["Pumpkin"] = 50, ["Watermelon"] = 50, ["Daffodil"] = 50, ["Tomato"] = 50, ["Orange Tulip"] = 50, ["Blueberry"] = 50, ["Strawberry"] = 50, ["Carrot"] = 10, ["Loquat"] = 30, ["Feijoa"] = 30, ["Pitcher Plant"] = 50, ["Bitter Melon"] = 50, ["Butternut Squash"] = 50, ["Spring Onion"] = 50, ["Corn"] = 50, ["Pepper"] = 50 },
-    KEEP_SEEDS = { "Bone Blossom", "Carrot", "Orange Tulip" },
-    KEEP_SEEDS_AFTER_MAX_PLANTS = { "Carrot" },
-    
-    FAVOURITE_FRUIT_MUTATIONS = {},  -- Stop Autosell
-    SKIP_HARVEST_MUTATIONS = {},  -- Stop Harvest
-
-    KEEP_PETS = { "Raiju", ["Gorilla Chef"] = 8, "Lobster Thermidor", "Sunny-Side Chicken", ["Hotdog Daschund"] = 8, ["Bacon Pig"] = 2, ["Giant Ant"] = 8, "French Fry Ferret", ["Mochi Mouse"] = 2, ["Sushi Bear"] =8, ["Spaghetti Sloth"] = 8, "Corrupted Kitsune", "Kitsune", "Kodama", "Corrupted Kodama", "Rooster", "Blood Kiwi", ["Tanchozuru"] = 8, "Koi", "Seal", "Dilophosaurus", "Ankylosaurus", "Spinosaurus", "Bald Eagle", "Brontosaurus", "T-Rex", "Fennec Fox", "Disco Bee", "Raccoon", "Queen Bee", "Dragonfly", "Butterfly", "Mimic Octopus", "Red Fox", "Hyacinth Macaw", "Scarlet Macaw", "Blood Owl", "Chicken Zombie", "Chicken", ["Capybara"] = 1, ["Starfish"] = 5 },
-    KEEP_PETS_WEIGHT = { ["Capybara"] = 5, ["Mochi Mouse"] = 5, ["Gorilla Chef"] = 5 },
-    KEEP_PETS_AGE = { ["Starfish"] = 50, ["Capybara"] = 50 },
-
-    -- EQUIP_PETS Priority (Left -> Right)
-    -- EQUIP_PETS = { ["Starfish"] = 5, "Sunny-Side Chicken", "Rooster", "Blood Kiwi", "Bald Eagle", ["Corrupted Kodama"] = 1, ["Tanchozuru"] = 1, ["Spaghetti Sloth"] = 2, ["Hotdog Daschund"] = 2, "Gorilla Chef" },
-    EQUIP_PETS = { ["Corrupted Kodama"] = 1, ["Tanchozuru"] = 1, ["Spaghetti Sloth"] = 2, ["Hotdog Daschund"] = 2, "Gorilla Chef", ["Starfish"] = 5, "Sunny-Side Chicken", "Rooster", "Blood Kiwi", "Bald Eagle" },
-    USE_PETS_FOR_UPGRADE_SLOT = { "Starfish", "Koi", "Red Fox", "Pachycephalosaurus" },
-    REMOVE_PET_MAX_UPGRADE = { "Starfish", "Capybara" },
-
-    BUY_GEAR_SHOP = { "Grandmaster Sprinkler", "Master Sprinkler", "Godly Sprinkler", "Advanced Sprinkler", "Basic Sprinkler", "Trading Ticket" },
-    USE_SPRINKLER = { "Basic Sprinkler", "Master Sprinkler", "Godly Sprinkler", "Advanced Sprinkler", "Grandmaster Sprinkler" },
-
-    PET_WEBHOOK_URL = "https://discord.com/api/webhooks/1388710819084243045/o0HmOjqsTPM2D-2lsEuXxElYEtEbpXtLQhbG6E1T47WIqDEcSI8lWJ8S8yJuF_G5FkZi",
-    NOTIFY_PETS = { "Lobster Thermidor", "French Fry Ferret", "Kitsune" },
-    NOTIFY_PETS_WEIGHT = 5,
+        ["Decode"] = {
+            ["Enable"] = true,
+            ["folder_from"] = "6d9f86b755d57e79ff59b4d754f90b4f292e718c5365ca251bb3200b52f1a65e",
+            ["folder_to"]   = "ec340b235731a2991b3e7da13c29b0811982b6aa199f532702f12683e7e46340"
+        }
+    }
 }
 
-repeat
-    local success, err = pcall(function() loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/c916e5b90dc37c71ecf1ec00dfce3d5d.lua"))() end)
-    task.wait(20)
-until success
+-- LOAD DATA PS99
+local Client = game:GetService("ReplicatedStorage"):WaitForChild("Library"):WaitForChild("Client")
+local Save = require(Client.Save)
+
+local function GetData()
+    return Save.Get()
+end
+
+-- CHECK ĐIỀU KIỆN (thay cho canchange cũ)
+function canchange()
+    local data = GetData()
+
+    local rank = data.Rank or 0
+    local rebirth = data.Rebirths or 0
+
+    local targetRank = getgenv().Config["Change Mode"]["Target"]["Rank"]
+    local targetRebirth = getgenv().Config["Change Mode"]["Target"]["Rebirth"]
+
+    if rebirth >= targetRebirth and rank >= targetRank then
+        return true
+    end
+
+    return false
+end
+
+-- LOOP CHÍNH (giữ logic form bạn)
+task.spawn(function()
+    while task.wait(2) do
+
+        if getgenv().Config["Change Mode"]["Change After Done Quest"] then
+
+            local dudieukien = canchange()
+
+            if dudieukien then
+                print("Change Mode")
+
+                if getgenv().Config["Change Mode"]["Decode"]["Enable"] then
+                    print("Change Mode Decode")
+
+                    if getgenv().client and getgenv().client.ChangeToFolder then
+                        getgenv().client:ChangeToFolder(
+                            getgenv().Config["Change Mode"]["Decode"]["folder_from"],
+                            getgenv().Config["Change Mode"]["Decode"]["folder_to"],
+                            false, nil
+                        )
+                    end
+                end
+
+                break
+            end
+
+        end
+
+    end
+end)
