@@ -35,7 +35,7 @@ spawn(function()
 			_G.Time_Trial_Var = true
 			getgenv().GENCHANTS = {"Criticals","Tap Power","Lucky Eggs","Huge Hunter","Treasure Hunter","Diamonds"}
 			spawn(function()
-			loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/03/main/Event-TimeTrial-3"))()
+			--loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/03/main/Event-TimeTrial-3"))()
 			end)
             print("✅ Config: Halloween set (Time_Trial_End)")
         else
@@ -43,7 +43,7 @@ spawn(function()
 			getgenv().GENCHANTS = {"Criticals","Criticals","Tap Power","Tap Power","Strong Pets","Super Lightning"}
 			spawn(function()
 			wait(68)
-        	loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/03/main/Event-TimeTrial-3"))()
+        	--loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/03/main/Event-TimeTrial-3"))()
 			end)
         end
     else
