@@ -58,7 +58,7 @@ getgenv().GZONE_TO = 299
 getgenv().GREBIRTH_TO = 99
 getgenv().GMASTERY_TO_MAX = "Enchants"
 
-getgenv().GLOOTBOXES = {"Locked Hype Egg","Horseshoe Gift"}
+getgenv().GLOOTBOXES = {"Locked Hype Egg"}
 getgenv().GKICK_ON_STAFF = true
 getgenv().GAUTO_UPGRADE_PETS = true
 getgenv().GHATCH_CHARGED_EGGS = false
