@@ -1,47 +1,77 @@
+_G.script2Done = true
+_G.Event = true
+
+spawn(function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/03/main/Del-TopBarApp"))()
+end)
+
+spawn(function()
+wait(68)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/03/main/Noti-Default"))()
+end)
+
+spawn(function()
+wait(68)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/03/main/Noti-Updater2"))()
+end)
+
+spawn(function()
+wait(168)
+--loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/03/main/Tele-Map-274"))()
+end)
+
+spawn(function()
+    local eventId = game.PlaceId
+    if eventId == 119454325063278 then
+        -- Farming world event
+        getgenv().GDO_FARMING_WORLD = true
+        getgenv().GEVENT_UPGRADES = {
+            "FarmingHugeChance",
+            "FarmingTitanicChance",
+            "FarmingPixelRainbowLuck",
+            "FarmingGoldHatchChance",
+            "FarmingRainbowHatchChance",
+            "FarmingShinyHatchChance"
+        }
+		getgenv().GENCHANTS = {"Lucky Eggs","Lucky Eggs","Lucky Eggs","Huge Hunter","Treasure Hunter","Diamonds"}
+        print("✅ Config: Farming world set")
+
+    elseif eventId == 95635359880599 then
+        -- Fishing event
+        getgenv().GDO_FISHING_EVENT = true
+        getgenv().GUSE_BOOSTS = true
+		getgenv().GENCHANTS = {"Lucky Eggs","Lucky Eggs","Lucky Eggs","Huge Hunter","Treasure Hunter","Diamonds"}
+        print("✅ Config: Fishing event set")
+
+    elseif eventId == 140403681187145 then
+        -- World 4: check _G.Time_Trial_End một lần
+        if _G.Time_Trial_End == true then
+			_G.Time_Trial_Var = true
+			getgenv().GENCHANTS = {"Criticals","Tap Power","Lucky Eggs","Huge Hunter","Treasure Hunter","Diamonds"}
+			spawn(function()
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/03/main/Event-TimeTrial-3"))()
+			end)
+            print("✅ Config: Halloween set (Time_Trial_End)")
+        else
+            warn("⛔ _G.Time_Trial_End chưa true — set Block Party.")
+			getgenv().GENCHANTS = {"Criticals","Criticals","Tap Power","Tap Power","Strong Pets","Super Lightning"}
+			spawn(function()
+			wait(68)
+        	loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/03/main/Event-TimeTrial-3"))()
+			end)
+        end
+    else
+        warn("⛔ Không phải event được hỗ trợ — không set gì.")
+    end
+end)
+
 getgenv().GGFX_MODE = 1 --1 = REMOVE_TEXTURES : more stable! but no visuals, 2: see some stuff, 3: see all
 getgenv().GRANK_FIRST = true --if you use this you have to define GREBIRTH_TO and GRANK_TO
 getgenv().GZONE_TO = 999 -- to enter event from W1 put 1, from W2 put 100, from W3 200, from W4 240
 getgenv().GREBIRTH_TO = 9
-getgenv().GRANK_TO = 99
+getgenv().GRANK_TO = 299
 getgenv().GMASTERY_TO_MAX = "Enchants"
-getgenv().GDO_LUCKY_WORLD_EVENT = true
-getgenv().GMAKE_HORSESHOE_GIFTS = true
-getgenv().GLIMIT_HORSESHOE_GIFTS = 99999999 -- choose yourself, don't set it lower than your MinAmount in your Horseshoe Gift mailrule!
---getgenv().GDO_BOSSES = {1,2,3}
---getgenv().GHEROIC_BOSSES  = {1,2}
---getgenv().GHEROIC_BOSSES  = {1}
-getgenv().GUSE_BOOSTS = true
-getgenv().GSKIP_RAID_EGG = true
-getgenv().GMINUTE_HATCH_RAID_EGG = true
-getgenv().GMIN_MULTIPLIER = 350 -- min required multiplier of raid egg to hatch
-getgenv().GRAID_MAX_HATCH_MINUTES = 1 -- abort hatching after 5 min
-getgenv().GDISABLE_MINUTE_HATCH = false
-getgenv().GRAID_TIMEOUT_MINUTES = 10
-getgenv().GRAID_MAX_BREAKABLE_HEALTH = "150qt"
-getgenv().GAUTO_RAID = true
-getgenv().GHATCH_LOBBY = true
-getgenv().GUSE_LEPRECHAUN_KEYS = false
-getgenv().GMAX_RAID_LEVEL = 50000
-getgenv().GRESET_UPGRADES = true -- only do true when you actually need a reset
-getgenv().GEVENT_UPGRADES = {
-    --{ Id = "LuckyRaidPets", MaxTier = 26 }, --50 max 50 slot pet
-    { Id = "LuckyRaidPets", MaxTier = 36 }, --50 max 50 slot pet
-    --{ Id = "LuckyRaidPets", MaxTier = 50 }, --50 max 50 slot pet
-    { Id = "LuckyRaidDamage", MaxTier = 25 }, --25 max 2265%
-    { Id = "LuckyRaidAttackSpeed", MaxTier = 15 }, --15 max 340%
-    { Id = "LuckyRaidBetterLoot", MaxTier = 15 }, --15 max 150%
-    { Id = "LuckyRaidHugeChest", MaxTier = 15 }, --15 max 430%
-    { Id = "LuckyRaidTitanicChest", MaxTier = 15 }, --15 max 2250%
-    --{ Id = "LuckyRaidBossHugeChances", MaxTier = 5 }, --20 max 260%
-    --{ Id = "LuckyRaidBossTitanicChances", MaxTier = 4 }, --10 max 500%
-    { Id = "LuckyRaidBossHugeChances", MaxTier = 1 }, --20 max 260%
-    { Id = "LuckyRaidBossTitanicChances", MaxTier = 1 }, --10 max 500%
-    { Id = "LuckyRaidPetSpeed", MaxTier = 1 }, --15 max 225%
-    { Id = "LuckyRaidXP", MaxTier = 1 }, --30 max 4080%
-    { Id = "LuckyRaidEggCost", MaxTier = 1 },
-    { Id = "LuckyRaidMoreCurrency", MaxTier = 1 },
-    { Id = "LuckyRaidKeyDrops", MaxTier = 0 },
-}
+
 getgenv().GLOOTBOXES = {"Locked Hype Egg","Horseshoe Gift"}
 getgenv().GKICK_ON_STAFF = true
 getgenv().GAUTO_UPGRADE_PETS = true
@@ -50,9 +80,11 @@ getgenv().GHATCH_GOLDEN_EGGS = false
 getgenv().GCLEAR_FAVORITE_PETS = true
 getgenv().GHATCH_SPEED_MS = 0
 getgenv().GMAX_HATCH = 99
-getgenv().GHUGE_COUNT = 99 -- amount of huges to keep/not mail
+getgenv().GHUGE_COUNT = 999 -- amount of huges to keep/not mail
 getgenv().GDAYCARE = true
 getgenv().GDAYCARE_NAME_PARTS_TO_EXCLUDE = {"Palace Pooka", "Lucki Golem", "Lucki Chest Mimic", "Leprechaun Kitsune"}
+
+getgenv().GWAIT_AT_GATES_TILL_RANK = 5
 getgenv().GMAX_EGG_SLOTS = 99
 getgenv().GMAX_EQUIP_SLOTS = 99
 getgenv().GCOMBINE_KEYS = true -- ghep keys
@@ -60,15 +92,15 @@ getgenv().GHOLD_GIFTS = false
 getgenv().GHOLD_BUNDLES = false
 getgenv().GCONSUME_SEED_BAGS = true
 getgenv().GOPEN_ITEMS_IN_BULK = true
-getgenv().GMAX_ZONE_UPGRADE_COST = 20000000
+getgenv().GMAX_ZONE_UPGRADE_COST = 300000
 getgenv().GCOLLECT_FREE_ITEMS = true
---getgenv().GIGNORE_ALL_INSTANCES = true
+getgenv().GIGNORE_ALL_INSTANCES = true
 getgenv().GIGNORE_ALL_INSTANCES = false
 getgenv().GIGNORE_SLEDRACE = false
 getgenv().GDO_DOODLE_BATTLE = false
 getgenv().GUSE_SPRINKLERS = true
 --getgenv().GENCHANTS = {"Lucky Eggs","Lucky Eggs","Lucky Eggs","Lucky Eggs","Lucky Eggs","Lucky Eggs","Lucky Eggs","Lucky Eggs","Lucky Eggs"}
-getgenv().GENCHANTS = {"Criticals","Tap Power","Strong Pets","Tap Power","Chest Breaker","Tap Power","Tap Power","Happy Pets","Criticals","Diamonds","Walkspeed"}
+--getgenv().GENCHANTS = {"Criticals","Tap Power","Strong Pets","Tap Power","Chest Breaker","Tap Power","Tap Power","Happy Pets","Criticals","Diamonds","Walkspeed"}
 --getgenv().GENCHANTS = {"Strong Pets", "Criticals", "Explosive", "Explosive", "Breakable Mayhem", "Breakable Mayhem", "Tap Power", "Lucky Eggs", "Criticals", "Strong Pets", "Treasure Hunter", "Diamonds", "Lucky Eggs", "Huge Hunter", "Fortune"} --leo rank
 getgenv().GUSE_ULTIMATES = {"UFO", "Tsunami", "Tornado", "Pet Surge", "Chest Spell","Ground Pound"}
 getgenv().GUSE_FLAGS = {"Fortune Flag","Diamonds Flag","Coins Flag"}
@@ -77,7 +109,7 @@ getgenv().GPOTIONS = {"Coins","Lucky","The Cocktail","Huge","Treasure Hunter","W
 getgenv().GPOTIONS_MAX_TIER = 99
 getgenv().GWEBHOOK_USERID = ""
 getgenv().GWEBHOOK_LINK = "https://discord.com/api/webhooks/1482399713084051578/cGltujhm_LDE932xcPWCf0L8O2l11n_mnk72mXA_YYAswaqqaPHdGmkNzY-d_bAgfZAe"
-getgenv().GMAIL_RECEIVERS = {"conmeohpz004"}
+getgenv().GMAIL_RECEIVERS = {""}
 getgenv().GMAIL_ITEMS = {
 --["All Huges"] = {Class = "Pet", Id = "All Huges", MinAmount = 1},
 --["Harvest egg"] = {Class = "Egg", Id = "Exclusive Egg 57", MinAmount = 1},
