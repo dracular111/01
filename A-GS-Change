@@ -2,20 +2,6 @@ _G.script2Done = true
 _G.Event = true
 
 spawn(function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/03/main/Del-TopBarApp"))()
-end)
-
-spawn(function()
-wait(68)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/03/main/Noti-Default"))()
-end)
-
-spawn(function()
-wait(68)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/03/main/Noti-Updater2"))()
-end)
-
-spawn(function()
 wait(168)
 --loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/03/main/Tele-Map-274"))()
 end)
