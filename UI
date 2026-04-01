@@ -19,7 +19,6 @@ local function getSave()
     if ok then return sd end
 end
 
--- Gems
 local function getDiamonds()
     local stats = player:FindFirstChild("leaderstats")
     if stats then
@@ -29,7 +28,6 @@ local function getDiamonds()
     return 0
 end
 
--- Time Trial
 local function getTimeTrialStats()
     local sd = getSave()
     return sd and sd.TimeTrialStats or { DailyRuns = 0, Points = 0 }
@@ -57,11 +55,6 @@ local function Formatint(int)
     return string.format("%.2f%s", int, Suffix[Index])
 end
 
--- Resize
-local function updateLabelSize(label)
-    label.Size = UDim2.new(0, label.TextBounds.X + 20, 0, 38)
-end
-
 -- ================== GUI ==================
 
 local function startGUI()
@@ -75,73 +68,91 @@ local function startGUI()
     gui.DisplayOrder = 999999
     gui.Parent = playerGui
 
-    -- LEFT (GEMS)
-    local left = Instance.new("Frame")
-    left.BackgroundTransparency = 1
-    left.Size = UDim2.new(0, 250, 0, 50)
-    left.Position = UDim2.new(0, 10, 0, -50)
-    left.Parent = gui
+    -- MAIN BAR
+    local bar = Instance.new("Frame")
+    bar.AnchorPoint = Vector2.new(0.5, 0)
+    bar.Position = UDim2.new(0.5, 0, 0, -60)
+    bar.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+    bar.BorderSizePixel = 0
+    bar.AutomaticSize = Enum.AutomaticSize.X
+    bar.Size = UDim2.new(0, 0, 0, 42)
+    bar.Parent = gui
 
-    -- CENTER (POINTS)
-    local center = Instance.new("Frame")
-    center.BackgroundTransparency = 1
-    center.Size = UDim2.new(0, 250, 0, 50)
-    center.Position = UDim2.new(0.5, 0, 0, -50)
-    center.AnchorPoint = Vector2.new(0.5, 0)
-    center.Parent = gui
+    -- bo góc
+    local corner = Instance.new("UICorner")
+    corner.CornerRadius = UDim.new(0, 8)
+    corner.Parent = bar
 
-    -- RIGHT (TIME TRIAL)
-    local right = Instance.new("Frame")
-    right.BackgroundTransparency = 1
-    right.Size = UDim2.new(0, 250, 0, 50)
-    right.Position = UDim2.new(1, -10, 0, -50)
-    right.AnchorPoint = Vector2.new(1, 0)
-    right.Parent = gui
+    -- layout ngang
+    local layout = Instance.new("UIListLayout")
+    layout.FillDirection = Enum.FillDirection.Horizontal
+    layout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+    layout.VerticalAlignment = Enum.VerticalAlignment.Center
+    layout.Padding = UDim.new(0, 6)
+    layout.Parent = bar
 
-    local function createLabel(parent)
+    -- padding trong
+    local padding = Instance.new("UIPadding")
+    padding.PaddingLeft = UDim.new(0, 10)
+    padding.PaddingRight = UDim.new(0, 10)
+    padding.Parent = bar
+
+    -- tạo block
+    local function createBlock(color)
+        local f = Instance.new("Frame")
+        f.BackgroundColor3 = color
+        f.AutomaticSize = Enum.AutomaticSize.X
+        f.Size = UDim2.new(0, 0, 1, 0)
+        f.BorderSizePixel = 0
+
+        local c = Instance.new("UICorner")
+        c.CornerRadius = UDim.new(0, 6)
+        c.Parent = f
+
         local t = Instance.new("TextLabel")
-        t.Size = UDim2.new(1, 0, 0, 38)
-        t.BackgroundColor3 = Color3.fromRGB(0, 102, 204)
-        t.TextColor3 = Color3.new(1,1,1)
+        t.BackgroundTransparency = 1
+        t.AutomaticSize = Enum.AutomaticSize.X
+        t.Size = UDim2.new(0, 0, 1, 0)
         t.Font = Enum.Font.GothamBold
-        t.TextSize = 32
-        t.BorderSizePixel = 0
+        t.TextSize = 24
+        t.TextColor3 = Color3.new(1,1,1)
         t.TextXAlignment = Enum.TextXAlignment.Center
-        t.Parent = parent
-        return t
+        t.Parent = f
+
+        f.Parent = bar
+
+        return f, t
     end
 
-    local gemsLabel   = createLabel(left)
-    local pointsLabel = createLabel(center)
-    local trialLabel  = createLabel(right)
+    local gemsFrame, gemsLabel     = createBlock(Color3.fromRGB(0,102,204))
+    local pointsFrame, pointsLabel = createBlock(Color3.fromRGB(255,200,0))
+    local trialFrame, trialLabel   = createBlock(Color3.fromRGB(255,200,0))
 
     -- ================== LOOP ==================
 
     while true do
         pcall(function()
 
-            -- GEMS (giữ nguyên)
-            gemsLabel.Text = "GEMS | " .. Formatint(getDiamonds())
-            updateLabelSize(gemsLabel)
+            -- GEMS
+            gemsLabel.Text = "💎 " .. Formatint(getDiamonds())
 
-            -- POINTS (giữa)
-            pointsLabel.Text = "POINTS | " .. Formatint(getPoints())
+            -- POINTS
+            pointsLabel.Text = "POINTS " .. Formatint(getPoints())
             if _G.Time_Trial_Var then
-                pointsLabel.BackgroundColor3 = Color3.fromRGB(0,170,0)
+                pointsFrame.BackgroundColor3 = Color3.fromRGB(0,170,0)
             else
-                pointsLabel.BackgroundColor3 = Color3.fromRGB(255,200,0)
+                pointsFrame.BackgroundColor3 = Color3.fromRGB(255,200,0)
             end
-            updateLabelSize(pointsLabel)
 
-            -- TIME TRIAL (phải)
+            -- TRIAL
             local runs = getRunsLeft()
-            trialLabel.Text = "TRIAL | " .. runs .. "/10"
+            trialLabel.Text = "TRIAL " .. runs .. "/10"
+
             if runs == 0 then
-                trialLabel.BackgroundColor3 = Color3.fromRGB(0,170,0)
+                trialFrame.BackgroundColor3 = Color3.fromRGB(0,170,0)
             else
-                trialLabel.BackgroundColor3 = Color3.fromRGB(255,200,0)
+                trialFrame.BackgroundColor3 = Color3.fromRGB(255,200,0)
             end
-            updateLabelSize(trialLabel)
 
         end)
 
