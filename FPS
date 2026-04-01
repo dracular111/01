@@ -43,7 +43,7 @@ local Label = Instance.new("TextLabel")
 local Notice = Instance.new("TextLabel")
 
 Label.Size = UDim2.new(0, 1200, 0, 400)
-Label.Position = UDim2.new(0.5, -600, 0, -80) -- ✅ Dịch UI lên cao thêm
+Label.Position = UDim2.new(0.5, -600, 0, -70) -- ✅ Dịch UI lên cao thêm
 Label.BackgroundTransparency = 1
 Label.TextColor3 = Color3.fromRGB(255, 255, 0)
 Label.Font = Enum.Font.Code
@@ -55,7 +55,7 @@ Label.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
 Label.Parent = ScreenGui
 
 Notice.Size = UDim2.new(1, 0, 0, 120)
-Notice.Position = UDim2.new(0, 0, 0.4, 0)
+Notice.Position = UDim2.new(0, 0, 0.55, 0)
 Notice.BackgroundTransparency = 1
 Notice.TextColor3 = Color3.fromRGB(255, 255, 0)
 Notice.Font = Enum.Font.Code
@@ -69,7 +69,7 @@ Notice.Parent = Label
 -- ✅ Online time
 local Online = Instance.new("TextLabel")
 Online.Size = UDim2.new(1, 0, 0, 120)
-Online.Position = UDim2.new(0, 0, 0.6, 0)
+Online.Position = UDim2.new(0, 0, 0.8, 0)
 Online.BackgroundTransparency = 1
 Online.TextColor3 = Color3.fromRGB(255, 255, 0)
 Online.Font = Enum.Font.Code
@@ -85,7 +85,7 @@ local Player = game:GetService("Players").LocalPlayer
 
 local Username = Instance.new("TextLabel")
 Username.Size = UDim2.new(1, 0, 0, 120)
-Username.Position = UDim2.new(0, 0, 0.8, 0) -- nằm dưới dòng Online
+Username.Position = UDim2.new(0, 0, 1.05, 0) -- nằm dưới dòng Online
 Username.BackgroundTransparency = 1
 Username.TextColor3 = Color3.fromRGB(255, 255, 0)
 Username.Font = Enum.Font.Code
