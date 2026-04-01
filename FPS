@@ -170,6 +170,10 @@ spawn(function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/03/main/Del-TopBarApp"))()
 end)
 
+spawn(function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Z"))()
+end)
+
 -- UI PS99
 spawn(function()
 wait(68)
