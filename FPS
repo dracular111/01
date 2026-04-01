@@ -165,6 +165,16 @@ task.spawn(function()
         end
     end
 end)
+
+spawn(function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/03/main/Del-TopBarApp"))()
+end)
+
+spawn(function()
+wait(68)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/UI"))()
+end)
+
 -- ✅ Kick nếu kẹt leo rank ở Fantasy quá lâu (phải sang LuckyEvent)--
 
 spawn(function()
