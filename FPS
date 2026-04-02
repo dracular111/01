@@ -171,6 +171,10 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/03/main/D
 end)
 
 spawn(function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Check_Time_Trial"))()
+end)
+
+spawn(function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Z"))()
 end)
 
