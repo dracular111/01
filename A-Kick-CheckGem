@@ -1,6 +1,6 @@
 -- CONFIG
 local CHECK_INTERVAL = 5
-local IDLE_TIME_LIMIT = 600 -- 5 phút
+local IDLE_TIME_LIMIT = 300 -- 5 phút
 
 -- WORLD CHECK
 local TARGET_PLACE = 140403681187145 -- World 4
@@ -18,9 +18,17 @@ local InstancingCmds = require(Client.InstancingCmds)
 local lastGems = 0
 local lastChangeTime = tick()
 
+-- ================= TIME TRIAL CHECK =================
+local function isInTimeTrial()
+    local active = workspace:FindFirstChild("__THINGS")
+        and workspace.__THINGS:FindFirstChild("__INSTANCE_CONTAINER")
+        and workspace.__THINGS.__INSTANCE_CONTAINER:FindFirstChild("Active")
+
+    return active and active:FindFirstChild("TimeTrial") ~= nil
+end
+
 -- ================= GET GEMS =================
 local function getGems()
-    -- leaderstats
     local stats = player:FindFirstChild("leaderstats")
     if stats then
         local diamonds = stats:FindFirstChild("💎 Diamonds") or stats:FindFirstChild("Diamonds")
@@ -29,7 +37,6 @@ local function getGems()
         end
     end
 
-    -- SaveData
     local success, result = pcall(function()
         return Save.Get().Diamonds
     end)
@@ -57,6 +64,12 @@ task.spawn(function()
 
         -- 🎉 ĐANG EVENT → KHÔNG CHECK
         if inInstance then
+            lastChangeTime = tick()
+            continue
+        end
+
+        -- 🟢 ĐANG TIME TRIAL → KHÔNG CHECK
+        if isInTimeTrial() then
             lastChangeTime = tick()
             continue
         end
