@@ -1,10 +1,18 @@
 -- CONFIG
 local CHECK_INTERVAL = 5
-local IDLE_TIME_LIMIT = 300 --
+local IDLE_TIME_LIMIT = 300 -- 5 phút
+
+-- WORLD CHECK
+local TARGET_PLACE = 140403681187145 -- World 4
 
 -- SERVICES
 local Players = game:GetService("Players")
 local player = Players.LocalPlayer
+
+-- LOAD DATA
+local Client = game:GetService("ReplicatedStorage"):WaitForChild("Library"):WaitForChild("Client")
+local Save = require(Client.Save)
+local InstancingCmds = require(Client.InstancingCmds)
 
 -- STATE
 local lastGems = 0
@@ -12,7 +20,7 @@ local lastChangeTime = tick()
 
 -- ================= GET GEMS =================
 local function getGems()
-    -- Cách 1: leaderstats
+    -- leaderstats
     local stats = player:FindFirstChild("leaderstats")
     if stats then
         local diamonds = stats:FindFirstChild("💎 Diamonds") or stats:FindFirstChild("Diamonds")
@@ -21,9 +29,9 @@ local function getGems()
         end
     end
 
-    -- Cách 2: PS99 SaveData
+    -- SaveData
     local success, result = pcall(function()
-        return require(game:GetService("ReplicatedStorage").Library.Client.Save).Get().Diamonds
+        return Save.Get().Diamonds
     end)
 
     if success and result then
@@ -41,6 +49,24 @@ task.spawn(function()
     while true do
         task.wait(CHECK_INTERVAL)
 
+        -- 🔍 CHECK INSTANCE (EVENT)
+        local inInstance = false
+        pcall(function()
+            inInstance = InstancingCmds.IsInInstance()
+        end)
+
+        -- 🎉 ĐANG EVENT → KHÔNG CHECK
+        if inInstance then
+            lastChangeTime = tick()
+            continue
+        end
+
+        -- 🌍 KHÔNG PHẢI WORLD 4 → BỎ QUA
+        if game.PlaceId ~= TARGET_PLACE then
+            lastChangeTime = tick()
+            continue
+        end
+
         local currentGems = getGems()
 
         -- nếu gem thay đổi → reset timer
@@ -50,9 +76,9 @@ task.spawn(function()
 
         local idleTime = tick() - lastChangeTime
 
-        -- kick nếu idle quá lâu
+        -- 🔥 KICK nếu idle quá lâu (chỉ khi ở World 4)
         if idleTime >= IDLE_TIME_LIMIT then
-            player:Kick("Not Gem")
+            player:Kick("No gem in World 4")
         end
 
         lastGems = currentGems
