@@ -178,7 +178,7 @@ end)
 
 -- ✅ Check ENCHANTS Change
 spawn(function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/03/main/Check_Time_Trial"))()
+--loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/03/main/Check_Time_Trial"))()
 end)
 
 -- ✅ Check Gem W4
