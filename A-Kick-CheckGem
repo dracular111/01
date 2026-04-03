@@ -1,0 +1,60 @@
+-- CONFIG
+local CHECK_INTERVAL = 5
+local IDLE_TIME_LIMIT = 300 --
+
+-- SERVICES
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+
+-- STATE
+local lastGems = 0
+local lastChangeTime = tick()
+
+-- ================= GET GEMS =================
+local function getGems()
+    -- Cách 1: leaderstats
+    local stats = player:FindFirstChild("leaderstats")
+    if stats then
+        local diamonds = stats:FindFirstChild("💎 Diamonds") or stats:FindFirstChild("Diamonds")
+        if diamonds then
+            return diamonds.Value
+        end
+    end
+
+    -- Cách 2: PS99 SaveData
+    local success, result = pcall(function()
+        return require(game:GetService("ReplicatedStorage").Library.Client.Save).Get().Diamonds
+    end)
+
+    if success and result then
+        return result
+    end
+
+    return 0
+end
+
+-- ================= LOOP =================
+task.spawn(function()
+    lastGems = getGems()
+    lastChangeTime = tick()
+
+    while true do
+        task.wait(CHECK_INTERVAL)
+
+        local currentGems = getGems()
+
+        -- nếu gem thay đổi → reset timer
+        if currentGems ~= lastGems then
+            lastChangeTime = tick()
+        end
+
+        local idleTime = tick() - lastChangeTime
+
+        -- kick nếu idle quá lâu
+        if idleTime >= IDLE_TIME_LIMIT then
+            player:Kick("Not Gem")
+        end
+
+        lastGems = currentGems
+    end
+end)
