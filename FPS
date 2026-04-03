@@ -181,7 +181,7 @@ spawn(function()
 --loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/03/main/Check_Time_Trial"))()
 end)
 
--- ✅ Check Gem W4
+-- ✅ Check Gem W4 - tránh event + time trial
 spawn(function()
 wait(10)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/A-Kick-CheckGem"))()
