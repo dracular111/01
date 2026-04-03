@@ -86,6 +86,7 @@ getgenv().GIGNORE_ALL_INSTANCES = false
 getgenv().GIGNORE_SLEDRACE = false
 getgenv().GDO_DOODLE_BATTLE = false
 getgenv().GUSE_SPRINKLERS = true
+getgenv().GENCHANTS = {"Criticals","Tap Power","Lucky Eggs","Huge Hunter","Treasure Hunter","Diamonds"}
 --getgenv().GENCHANTS = {"Criticals","Criticals","Tap Power","Tap Power","Strong Pets","Super Lightning"}
 --getgenv().GENCHANTS = {"Lucky Eggs","Lucky Eggs","Lucky Eggs","Lucky Eggs","Lucky Eggs","Lucky Eggs","Lucky Eggs","Lucky Eggs","Lucky Eggs"}
 --getgenv().GENCHANTS = {"Criticals","Tap Power","Strong Pets","Tap Power","Chest Breaker","Tap Power","Tap Power","Happy Pets","Criticals","Diamonds","Walkspeed"}
