@@ -40,7 +40,7 @@ spawn(function()
             print("✅ Config: Halloween set (Time_Trial_End)")
         else
             warn("⛔ _G.Time_Trial_End chưa true — set Block Party.")
-			getgenv().GENCHANTS = {"Criticals","Criticals","Tap Power","Tap Power","Strong Pets","Super Lightning"}
+			getgenv().GENCHANTS = {"Criticals","Tap Power","Tap Power","Strong Pets","Walkspeed","Chest Breaker","Criticals"}
 			spawn(function()
 			wait(68)
         	loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/03/main/Event-TimeTrial-3"))()
@@ -86,7 +86,7 @@ getgenv().GIGNORE_ALL_INSTANCES = false
 getgenv().GIGNORE_SLEDRACE = false
 getgenv().GDO_DOODLE_BATTLE = false
 getgenv().GUSE_SPRINKLERS = true
-getgenv().GENCHANTS = {"Criticals","Tap Power","Lucky Eggs","Huge Hunter","Treasure Hunter","Diamonds"}
+--getgenv().GENCHANTS = {"Criticals","Tap Power","Lucky Eggs","Huge Hunter","Treasure Hunter","Diamonds"}
 --getgenv().GENCHANTS = {"Criticals","Criticals","Tap Power","Tap Power","Strong Pets","Super Lightning"}
 --getgenv().GENCHANTS = {"Lucky Eggs","Lucky Eggs","Lucky Eggs","Lucky Eggs","Lucky Eggs","Lucky Eggs","Lucky Eggs","Lucky Eggs","Lucky Eggs"}
 --getgenv().GENCHANTS = {"Criticals","Tap Power","Strong Pets","Tap Power","Chest Breaker","Tap Power","Tap Power","Happy Pets","Criticals","Diamonds","Walkspeed"}
