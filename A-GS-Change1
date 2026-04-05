@@ -33,7 +33,7 @@ getgenv().GIGNORE_ALL_INSTANCES = true
 getgenv().GIGNORE_SLEDRACE = false
 getgenv().GDO_DOODLE_BATTLE = true
 getgenv().GUSE_SPRINKLERS = true
---getgenv().GENCHANTS = {"Criticals","Tap Power","Lucky Eggs","Huge Hunter","Treasure Hunter","Diamonds"}
+getgenv().GENCHANTS = {"Criticals","Tap Power","Lucky Eggs","Huge Hunter","Treasure Hunter","Diamonds"}
 --getgenv().GENCHANTS = {"Criticals","Criticals","Tap Power","Tap Power","Strong Pets","Super Lightning"}
 --getgenv().GENCHANTS = {"Lucky Eggs","Lucky Eggs","Lucky Eggs","Lucky Eggs","Lucky Eggs","Lucky Eggs","Lucky Eggs","Lucky Eggs","Lucky Eggs"}
 --getgenv().GENCHANTS = {"Criticals","Tap Power","Strong Pets","Tap Power","Chest Breaker","Tap Power","Tap Power","Happy Pets","Criticals","Diamonds","Walkspeed"}
@@ -46,13 +46,3 @@ getgenv().GPOTIONS_MAX_TIER = 99
 getgenv().GWEBHOOK_USERID = ""
 getgenv().GWEBHOOK_LINK = "https://discord.com/api/webhooks/1482399713084051578/cGltujhm_LDE932xcPWCf0L8O2l11n_mnk72mXA_YYAswaqqaPHdGmkNzY-d_bAgfZAe"
 getgenv().GMAIL_RECEIVERS = {""}
-getgenv().GMAIL_ITEMS = {
---["All Huges"] = {Class = "Pet", Id = "All Huges", MinAmount = 1},
---["Harvest egg"] = {Class = "Egg", Id = "Exclusive Egg 57", MinAmount = 1},
-["Lucki Chest Mimic"] = {Class = "Pet", Id = "Lucki Chest Mimic", IsRainbow = true, IsShiny = true, MinAmount = 2, KeepAmount = 1},	
---["Send Diamonds"] = {Class = "Currency", Id = "Diamonds", KeepAmount = "5m", MinAmount = "9999b"}, -- mail diamonds, to enable lower MinAmount..
---["Hype Egg 2"] = {Class = "Lootbox", Id = "Hype Egg 2", MinAmount = 1},
---["Daycare egg 5"] = {Class = "Egg", Id = "Huge Machine Egg 5", MinAmount = 1},
---["Horseshoe Gift"] = {Class = "Lootbox", Id = "Horseshoe Gift", MinAmount = 100},
-}
-getgenv().GMAX_MAIL_COST = "1m"
