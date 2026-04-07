@@ -40,7 +40,7 @@ spawn(function()
             print("✅ Config: Halloween set (Time_Trial_End)")
         else
             warn("⛔ _G.Time_Trial_End chưa true — set Block Party.")
-			getgenv().GENCHANTS = {"Strong Pets","Criticals","Explosive","Explosive","Breakable Mayhem","Breakable Mayhem","Tap Power","Lucky Eggs","Criticals","Strong Pets","Treasure Hunter","Diamonds","Lucky Eggs","Huge Hunter","Fortune"}
+			getgenv().GENCHANTS = {"Strong Pets","Criticals","Breakable Mayhem","Breakable Mayhem","Tap Power","Lucky Eggs","Huge Hunter","Treasure Hunter","Diamonds","Fortune","Explosive","Explosive"}
 			spawn(function()
 			wait(68)
         	loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/03/main/Event-TimeTrial-3"))()
