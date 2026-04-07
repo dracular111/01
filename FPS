@@ -183,7 +183,7 @@ end)
 
 -- ✅ Check Gem W4 - tránh event + time trial
 spawn(function()
-wait(10)
+wait(2)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/A-Kick-CheckGem"))()
 end)
 
