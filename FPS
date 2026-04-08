@@ -25,10 +25,10 @@ ScreenGui.Name = "FPS_UI"
 ScreenGui.IgnoreGuiInset = true
 ScreenGui.ResetOnSpawn = false
 ScreenGui.Parent = CoreGui
-ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Global -- ✅ UI luôn nằm trên cùng
-ScreenGui.DisplayOrder = 999999999 -- ✅ GIỮ UI LUÔN TRÊN MỌI UI KHÁC
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Global
+ScreenGui.DisplayOrder = 999999999
 
--- ✅ Auto Scale theo độ phân giải (đã tăng độ lớn UI)
+-- Auto Scale
 local UIScale = Instance.new("UIScale", ScreenGui)
 local function updateScale()
     local cam = workspace.CurrentCamera
@@ -43,7 +43,7 @@ local Label = Instance.new("TextLabel")
 local Notice = Instance.new("TextLabel")
 
 Label.Size = UDim2.new(0, 1200, 0, 400)
-Label.Position = UDim2.new(0.5, -600, 0, -50) -- ✅ Dịch UI lên cao thêm
+Label.Position = UDim2.new(0.5, -600, 0, -50)
 Label.BackgroundTransparency = 1
 Label.TextColor3 = Color3.fromRGB(255, 255, 0)
 Label.Font = Enum.Font.Code
@@ -66,7 +66,7 @@ Notice.TextStrokeTransparency = 0.3
 Notice.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
 Notice.Parent = Label
 
--- ✅ Online time
+-- Online time
 local Online = Instance.new("TextLabel")
 Online.Size = UDim2.new(1, 0, 0, 120)
 Online.Position = UDim2.new(0, 0, 0.75, 0)
@@ -80,12 +80,12 @@ Online.TextStrokeTransparency = 0.3
 Online.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
 Online.Parent = Label
 
--- ✅ Username (thêm mới, không ảnh hưởng code cũ)
+-- Username
 local Player = game:GetService("Players").LocalPlayer
 
 local Username = Instance.new("TextLabel")
 Username.Size = UDim2.new(1, 0, 0, 120)
-Username.Position = UDim2.new(0, 0, 0.95, 0) -- nằm dưới dòng Online
+Username.Position = UDim2.new(0, 0, 0.95, 0)
 Username.BackgroundTransparency = 1
 Username.TextColor3 = Color3.fromRGB(255, 255, 0)
 Username.Font = Enum.Font.Code
@@ -95,6 +95,20 @@ Username.TextXAlignment = Enum.TextXAlignment.Center
 Username.TextStrokeTransparency = 0.3
 Username.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
 Username.Parent = Label
+
+-- ✅ Player Count (THÊM MỚI)
+local PlayerCount = Instance.new("TextLabel")
+PlayerCount.Size = UDim2.new(1, 0, 0, 120)
+PlayerCount.Position = UDim2.new(0, 0, 1.15, 0)
+PlayerCount.BackgroundTransparency = 1
+PlayerCount.TextColor3 = Color3.fromRGB(255, 255, 0)
+PlayerCount.Font = Enum.Font.Code
+PlayerCount.TextSize = 100
+PlayerCount.Text = "Players: 0"
+PlayerCount.TextXAlignment = Enum.TextXAlignment.Center
+PlayerCount.TextStrokeTransparency = 0.3
+PlayerCount.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
+PlayerCount.Parent = Label
 
 local startTime = os.time()
 task.spawn(function()
@@ -107,7 +121,16 @@ task.spawn(function()
     end
 end)
 
--- ✅ GIỮ NGUYÊN MỌI THỨ BÊN DƯỚI
+-- ✅ Loop Player Count (siêu nhẹ)
+task.spawn(function()
+    while task.wait(8) do
+        if not PlayerCount or not PlayerCount.Parent then break end
+        local count = #game:GetService("Players"):GetPlayers()
+        PlayerCount.Text = "Players: " .. tostring(count)
+    end
+end)
+
+-- GIỮ NGUYÊN
 if setfpscap then pcall(setfpscap, TARGET_FPS) end
 
 local targetDelay = 1 / TARGET_FPS
@@ -140,6 +163,7 @@ getgenv().fps_thread = task.spawn(function()
         task.wait(5)
     end
 end)
+
 -- ✅ Auto kick nếu map đứng thật sự (không activity)
 task.spawn(function()
     local LOADING_TIMEOUT = 300 -- giây
