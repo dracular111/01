@@ -123,7 +123,7 @@ end)
 
 -- ✅ Loop Player Count (siêu nhẹ)
 task.spawn(function()
-    while task.wait(8) do
+    while task.wait(15) do
         if not PlayerCount or not PlayerCount.Parent then break end
         local count = #game:GetService("Players"):GetPlayers()
         PlayerCount.Text = "Players: " .. tostring(count)
