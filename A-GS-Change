@@ -97,7 +97,6 @@ getgenv().GFRUITS = {"Watermelon","Candycane","Apple","Rainbow","Pineapple","Ora
 getgenv().GPOTIONS = {"Coins","Lucky","The Cocktail","Huge","Treasure Hunter","Walkspeed","Diamonds","Damage"}
 getgenv().GPOTIONS_MAX_TIER = 99
 getgenv().GWEBHOOK_USERID = ""
-getgenv().GWEBHOOK_LINK = "https://discord.com/api/webhooks/1482399713084051578/cGltujhm_LDE932xcPWCf0L8O2l11n_mnk72mXA_YYAswaqqaPHdGmkNzY-d_bAgfZAe"
 getgenv().GMAIL_RECEIVERS = {""}
 getgenv().GMAIL_ITEMS = {
 --["All Huges"] = {Class = "Pet", Id = "All Huges", MinAmount = 1},
