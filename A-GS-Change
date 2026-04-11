@@ -48,6 +48,7 @@ end)
 getgenv().GGFX_MODE = 1
 getgenv().GPROGRESS_MODE = "Hybrid" -- Hatch
 getgenv().GRANK_TO = 99
+getgenv().GREBIRTH_TO = 9
 getgenv().GFOCUS_RANK_TO = 8
 getgenv().GZONE_TO = 274
 getgenv().GMASTERY_TO_MAX = "Enchants"
