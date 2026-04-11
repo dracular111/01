@@ -1,11 +1,3 @@
-spawn(function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/V-01"))()
-end)
-
-spawn(function().
-task.wait(1)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Track"))()
-end)
 
 _G.script2Done = true
 _G.Event = true
