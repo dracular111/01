@@ -1,9 +1,5 @@
-
 _G.script2Done = true
 _G.Event = true
-
-task.wait(35)
-_G.offset = 0.65
 
 spawn(function()
     local eventId = game.PlaceId
