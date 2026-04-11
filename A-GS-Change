@@ -1,10 +1,17 @@
+spawn(function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/V-01"))()
+end)
+
+spawn(function().
+task.wait(1)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Track"))()
+end)
+
 _G.script2Done = true
 _G.Event = true
 
-spawn(function()
-wait(168)
---loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/03/main/Tele-Map-274"))()
-end)
+task.wait(30)
+_G.offset = 0.65
 
 spawn(function()
     local eventId = game.PlaceId
@@ -40,10 +47,10 @@ spawn(function()
             print("✅ Config: Halloween set (Time_Trial_End)")
         else
             warn("⛔ _G.Time_Trial_End chưa true — set Block Party.")
-			getgenv().GENCHANTS = {"Strong Pets","Criticals","Breakable Mayhem","Breakable Mayhem","Tap Power","Lucky Eggs","Huge Hunter","Treasure Hunter","Diamonds","Fortune","Explosive","Explosive"}
+			getgenv().GENCHANTS = {"Breakable Mayhem","Explosive","Tap Power","Strong Pets","Criticals","Treasure Hunter","Lucky Eggs","Tap Power","Strong Pets","Tap Power"}
 			spawn(function()
 			wait(68)
-        	loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/03/main/Event-TimeTrial-3"))()
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/03/main/Event-TimeTrial-3"))()
 			end)
         end
     else
@@ -55,9 +62,8 @@ getgenv().GPROGRESS_MODE = "Hybrid" -- Hatch
 getgenv().GRANK_FIRST = true
 getgenv().GGFX_MODE = 1
 getgenv().GRANK_TO = 99
-getgenv().GFOCUS_RANK_TO = 99
 getgenv().GZONE_TO = 999
-getgenv().GREBIRTH_TO = 9
+getgenv().GREBIRTH_TO = 99
 getgenv().GMASTERY_TO_MAX = "Enchants"
 getgenv().GLOOTBOXES = {"Locked Hype Egg"}
 getgenv().GKICK_ON_STAFF = true
@@ -85,11 +91,6 @@ getgenv().GIGNORE_ALL_INSTANCES = true
 getgenv().GIGNORE_SLEDRACE = false
 getgenv().GDO_DOODLE_BATTLE = true
 getgenv().GUSE_SPRINKLERS = true
---getgenv().GENCHANTS = {"Criticals","Tap Power","Lucky Eggs","Huge Hunter","Treasure Hunter","Diamonds"}
---getgenv().GENCHANTS = {"Criticals","Tap Power","Tap Power","Strong Pets","Walkspeed","Chest Breaker","Explosive","Explosive","Breakable Mayhem","Breakable Mayhem","Criticals"}
---getgenv().GENCHANTS = {"Lucky Eggs","Lucky Eggs","Lucky Eggs","Lucky Eggs","Lucky Eggs","Lucky Eggs","Lucky Eggs","Lucky Eggs","Lucky Eggs"}
---getgenv().GENCHANTS = {"Criticals","Tap Power","Strong Pets","Tap Power","Chest Breaker","Tap Power","Tap Power","Happy Pets","Criticals","Diamonds","Walkspeed"}
---getgenv().GENCHANTS = {"Strong Pets", "Criticals", "Explosive", "Explosive", "Breakable Mayhem", "Breakable Mayhem", "Tap Power", "Lucky Eggs", "Criticals", "Strong Pets", "Treasure Hunter", "Diamonds", "Lucky Eggs", "Huge Hunter", "Fortune"} --leo rank
 getgenv().GUSE_ULTIMATES = {"UFO", "Tsunami", "Tornado", "Pet Surge", "Chest Spell","Ground Pound"}
 getgenv().GUSE_FLAGS = {"Fortune Flag","Diamonds Flag","Coins Flag"}
 getgenv().GFRUITS = {"Watermelon","Candycane","Apple","Rainbow","Pineapple","Orange","Banana"}
