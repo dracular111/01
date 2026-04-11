@@ -167,7 +167,7 @@ task.spawn(function()
 end)
 
 spawn(function()
---loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/03/main/CPU-LOW1"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/03/main/CPU-LOW1"))()
 end)
 
 spawn(function()
