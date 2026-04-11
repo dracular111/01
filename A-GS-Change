@@ -1,6 +1,8 @@
 _G.script2Done = true
 _G.Event = true
 
+getgenv().DISABLE_OVERLAY = true
+
 spawn(function()
     local eventId = game.PlaceId
     if eventId == 119454325063278 then
@@ -85,5 +87,4 @@ getgenv().GFRUITS = {"Watermelon","Candycane","Apple","Rainbow","Pineapple","Ora
 getgenv().GPOTIONS = {"Coins","Lucky","The Cocktail","Huge","Treasure Hunter","Walkspeed","Diamonds","Damage"}
 getgenv().GPOTIONS_MAX_TIER = 99
 }
-getgenv().DISABLE_OVERLAY = true
 getgenv().GMAX_MAIL_COST = "1m"
