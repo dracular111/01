@@ -10,7 +10,7 @@ end)
 _G.script2Done = true
 _G.Event = true
 
-task.wait(30)
+task.wait(35)
 _G.offset = 0.65
 
 spawn(function()
