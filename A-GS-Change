@@ -45,8 +45,9 @@ spawn(function()
         warn("⛔ Không phải event được hỗ trợ — không set gì.")
     end
 end)
-getgenv().GGFX_MODE = 1
+
 getgenv().GPROGRESS_MODE = "Hybrid" -- Hatch
+getgenv().GGFX_MODE = 1
 getgenv().GRANK_TO = 99
 getgenv().GREBIRTH_TO = 9
 getgenv().GFOCUS_RANK_TO = 8
