@@ -1,32 +1,28 @@
 repeat task.wait() until game:IsLoaded()
 
--- CLEAN
 pcall(function()
     for _, v in pairs(game:GetService("CoreGui"):GetChildren()) do
         if v.Name == "FPS_UI" then v:Destroy() end
     end
+    if getgenv().fps_loop then
+        pcall(function() getgenv().fps_loop:Disconnect() end)
+        getgenv().fps_loop = nil
+    end
+    if getgenv().fps_thread then
+        getgenv().fps_thread_stop = true
+        getgenv().fps_thread = nil
+    end
 end)
-
 task.wait(5)
 
 -- CONFIG
 local TARGET_FPS = 7
+local MAIN_COLOR = Color3.fromRGB(255,215,0)
 
--- SERVICES
 local CoreGui = game:GetService("CoreGui")
 local RunService = game:GetService("RunService")
-local Players = game:GetService("Players")
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
-local Player = Players.LocalPlayer
-
--- LOAD DATA
-local Client = ReplicatedStorage:WaitForChild("Library"):WaitForChild("Client")
-local Save = require(Client.Save)
-local InstancingCmds = require(Client.InstancingCmds)
-
--- ================= GUI =================
-
+-- GUI
 local ScreenGui = Instance.new("ScreenGui")
 ScreenGui.Name = "FPS_UI"
 ScreenGui.IgnoreGuiInset = true
@@ -35,99 +31,119 @@ ScreenGui.Parent = CoreGui
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Global
 ScreenGui.DisplayOrder = 999999999
 
+-- SCALE
+local UIScale = Instance.new("UIScale", ScreenGui)
+local function updateScale()
+    local cam = workspace.CurrentCamera
+    if cam then
+        UIScale.Scale = (cam.ViewportSize.Y / 1080) * 1.6
+    end
+end
+updateScale()
+workspace.CurrentCamera:GetPropertyChangedSignal("ViewportSize"):Connect(updateScale)
+
+-- MAIN LABEL
 local Label = Instance.new("TextLabel")
 Label.Size = UDim2.new(0, 1200, 0, 400)
 Label.Position = UDim2.new(0.5, -600, 0, -50)
 Label.BackgroundTransparency = 1
-Label.TextColor3 = Color3.fromRGB(255,255,0)
+Label.TextColor3 = MAIN_COLOR
 Label.Font = Enum.Font.Code
 Label.TextSize = 80
 Label.Text = "FPS:00"
 Label.TextXAlignment = Enum.TextXAlignment.Center
+Label.TextStrokeTransparency = 0.4
+Label.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
 Label.Parent = ScreenGui
 
+-- LOCK FPS
 local Notice = Instance.new("TextLabel")
 Notice.Size = UDim2.new(1, 0, 0, 120)
 Notice.Position = UDim2.new(0, 0, 0.55, 0)
 Notice.BackgroundTransparency = 1
-Notice.TextColor3 = Color3.fromRGB(255,255,0)
+Notice.TextColor3 = MAIN_COLOR
 Notice.Font = Enum.Font.Code
 Notice.TextSize = 80
-Notice.Text = "LOCK FPS: "..TARGET_FPS
+Notice.Text = "LOCK FPS: " .. TARGET_FPS
+Notice.TextXAlignment = Enum.TextXAlignment.Center
+Notice.TextStrokeTransparency = 0.3
+Notice.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
 Notice.Parent = Label
 
+-- ONLINE TIME
 local Online = Instance.new("TextLabel")
 Online.Size = UDim2.new(1, 0, 0, 120)
 Online.Position = UDim2.new(0, 0, 0.75, 0)
 Online.BackgroundTransparency = 1
-Online.TextColor3 = Color3.fromRGB(255,255,0)
+Online.TextColor3 = MAIN_COLOR
 Online.Font = Enum.Font.Code
 Online.TextSize = 120
+Online.TextXAlignment = Enum.TextXAlignment.Center
+Online.TextStrokeTransparency = 0.3
+Online.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
 Online.Parent = Label
+
+-- USERNAME
+local Player = game:GetService("Players").LocalPlayer
 
 local Username = Instance.new("TextLabel")
 Username.Size = UDim2.new(1, 0, 0, 120)
 Username.Position = UDim2.new(0, 0, 0.95, 0)
 Username.BackgroundTransparency = 1
-Username.TextColor3 = Color3.fromRGB(255,255,0)
+Username.TextColor3 = MAIN_COLOR
 Username.Font = Enum.Font.Code
 Username.TextSize = 100
 Username.Text = Player.DisplayName
+Username.TextXAlignment = Enum.TextXAlignment.Center
+Username.TextStrokeTransparency = 0.3
+Username.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
 Username.Parent = Label
 
--- ================= GEM LOGIC (CHUẨN CỦA BẠN) =================
+-- DATA
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local PlayerSave = require(ReplicatedStorage.Library.Client.Save)
 
-local function getGems()
+local function getSave()
+    local ok, sd = pcall(PlayerSave.Get)
+    if ok then return sd end
+end
+
+local function getDiamonds()
     local stats = Player:FindFirstChild("leaderstats")
     if stats then
-        local diamonds = stats:FindFirstChild("💎 Diamonds") or stats:FindFirstChild("Diamonds")
-        if diamonds then
-            return diamonds.Value
-        end
+        local d = stats:FindFirstChild("💎 Diamonds")
+        if d then return d.Value end
     end
-
-    if GetItem then
-        return GetItem("Currency", "Diamonds")
-    end
-
-    local success, result = pcall(function()
-        return Save.Get().Diamonds
-    end)
-
-    if success and result then
-        return result
-    end
-
     return 0
 end
 
--- ================= OTHER DATA =================
-
 local function getTimeTrialStats()
-    local ok, sd = pcall(Save.Get)
-    return ok and sd.TimeTrialStats or {DailyRuns = 0, Points = 0}
+    local sd = getSave()
+    return sd and sd.TimeTrialStats or { DailyRuns = 0, Points = 0 }
 end
 
 local function getRunsLeft()
-    return 10 - (getTimeTrialStats().DailyRuns or 0)
+    local s = getTimeTrialStats()
+    return 10 - (s.DailyRuns or 0)
 end
 
 local function getPoints()
-    return getTimeTrialStats().Points or 0
+    local s = getTimeTrialStats()
+    return s.Points or 0
 end
 
 local function Formatint(int)
-    local Suffix = {"","k","M","B","T"}
-    local i = 1
-    while int >= 1000 and i < #Suffix do
+    local Suffix = {"", "k", "M", "B", "T"}
+    local Index = 1
+    if int < 1000 then return tostring(int) end
+    while int >= 1000 and Index < #Suffix do
         int /= 1000
-        i += 1
+        Index += 1
     end
-    return string.format("%.2f%s", int, Suffix[i])
+    return string.format("%.2f%s", int, Suffix[Index])
 end
 
--- ================= PIXEL PERFECT STATS =================
-
+-- STATS UI
 local StatsFrame = Instance.new("Frame")
 StatsFrame.Size = UDim2.new(1, 0, 0, 120)
 StatsFrame.Position = UDim2.new(0, 0, 1.18, 0)
@@ -137,64 +153,97 @@ StatsFrame.Parent = Label
 local layout = Instance.new("UIListLayout", StatsFrame)
 layout.FillDirection = Enum.FillDirection.Horizontal
 layout.HorizontalAlignment = Enum.HorizontalAlignment.Center
-layout.Padding = UDim.new(0, 35)
+layout.Padding = UDim.new(0, 40)
 
-local function newText()
+local function createText()
     local t = Instance.new("TextLabel")
     t.BackgroundTransparency = 1
     t.AutomaticSize = Enum.AutomaticSize.X
-    t.Font = Enum.Font.Code
+    t.Size = UDim2.new(0, 0, 1, 0)
+    t.Font = Enum.Font.GothamBold
     t.TextSize = 90
-    t.TextColor3 = Color3.fromRGB(255,255,0)
+    t.TextColor3 = MAIN_COLOR
+    t.TextStrokeTransparency = 0.3
+    t.TextStrokeColor3 = Color3.fromRGB(0,0,0)
     return t
 end
 
-local Gems = newText()
-local Trial = newText()
-local Points = newText()
+local GemsText = createText()
+local TrialText = createText()
+local PointsText = createText()
 
-Gems.Parent = StatsFrame
-Trial.Parent = StatsFrame
-Points.Parent = StatsFrame
+GemsText.Parent = StatsFrame
+TrialText.Parent = StatsFrame
+PointsText.Parent = StatsFrame
 
+-- UPDATE LOOP
 task.spawn(function()
     while task.wait(0.3) do
-        local g = Formatint(getGems())
-        local p = Formatint(getPoints())
-        local r = getRunsLeft()
+        pcall(function()
+            local gems = Formatint(getDiamonds())
+            local points = Formatint(getPoints())
+            local runs = getRunsLeft()
 
-        Gems.Text = "💎 "..g
-        Trial.Text = "TRIAL "..r.."/10"
-        Points.Text = p
+            GemsText.Text = "💎 " .. gems
+            TrialText.Text = "TRIAL " .. runs .. "/10"
+            PointsText.Text = points
 
-        if r == 0 then
-            Trial.TextColor3 = Color3.fromRGB(0,255,0)
-        else
-            Trial.TextColor3 = Color3.fromRGB(255,255,0)
-        end
+            -- màu đồng bộ
+            GemsText.TextColor3 = MAIN_COLOR
+            PointsText.TextColor3 = MAIN_COLOR
+
+            if runs == 0 then
+                TrialText.TextColor3 = Color3.fromRGB(0,255,0)
+            else
+                TrialText.TextColor3 = MAIN_COLOR
+            end
+        end)
     end
 end)
 
--- ================= FPS =================
-
+-- TIME
 local startTime = os.time()
 task.spawn(function()
     while task.wait(1) do
-        local t = os.time() - startTime
-        Online.Text = string.format("%02d:%02d:%02d", t/3600%24, t/60%60, t%60)
+        local elapsed = os.time() - startTime
+        local h = math.floor(elapsed / 3600)
+        local m = math.floor((elapsed % 3600) / 60)
+        local s = elapsed % 60
+        Online.Text = string.format("%02d:%02d:%02d", h, m, s)
     end
 end)
 
+-- FPS LOCK
 if setfpscap then pcall(setfpscap, TARGET_FPS) end
 
+local targetDelay = 1 / TARGET_FPS
+local lastTick = tick()
 local fps = 0
+
 getgenv().fps_loop = RunService.RenderStepped:Connect(function(dt)
-    fps = math.floor(1/(dt>0 and dt or 0.001))
+    fps = math.floor(1 / (dt > 0 and dt or 0.0001))
+    local now = tick()
+    local elapsed = now - lastTick
+    if elapsed < targetDelay then
+        task.wait(targetDelay - elapsed)
+    end
+    lastTick = tick()
 end)
 
 task.spawn(function()
     while task.wait(5) do
-        Label.Text = "FPS: "..fps
+        if not Label or not Label.Parent then break end
+        Label.Text = "FPS: " .. tostring(fps)
+    end
+end)
+
+getgenv().fps_thread_stop = false
+getgenv().fps_thread = task.spawn(function()
+    while not getgenv().fps_thread_stop do
+        if setfpscap then
+            pcall(setfpscap, TARGET_FPS)
+        end
+        task.wait(5)
     end
 end)
 
