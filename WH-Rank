@@ -1,4 +1,3 @@
---// CONFIG
 getgenv().Webhook = {
     Url = "https://discord.com/api/webhooks/1492941401585881359/WqnefS6ok3KH1z3dI-LsufUZey4Vp4Eli3Oy2Ej0jHpKjZwJ1q9-mUBIVbXk0rk1lS50",
     Ping = ""
@@ -18,25 +17,41 @@ local function GetData()
     return Save.Get()
 end
 
---// WAIT DATA LOAD (ANTI BUG)
-repeat task.wait() 
+--// ANTI MULTI RUN
+if _G.RANK_TRACKER_RUNNING then
+    warn("Already running!")
+    return
+end
+_G.RANK_TRACKER_RUNNING = true
+
+--// WAIT DATA LOAD
+repeat task.wait()
     local data = GetData()
 until data and data.Rank and data.Rebirths
 
---// INIT DATA
+--// INIT
 local data = GetData()
 local lastRank = data.Rank or 0
 local lastRebirth = data.Rebirths or 0
+
+--// CACHE chống gửi trùng
+local lastSent = ""
+local lastSendTime = 0
 
 --// REQUEST
 local requestFunc = (syn and syn.request) or (http and http.request) or request
 
 --// WEBHOOK
 local function sendWebhook(message)
-    if not requestFunc then
-        warn("No request function!")
+    if not requestFunc then return end
+
+    -- ❗ chống spam trùng nội dung
+    if message == lastSent and tick() - lastSendTime < 5 then
         return
     end
+
+    lastSent = message
+    lastSendTime = tick()
 
     local body = {
         ["content"] = getgenv().Webhook.Ping,
@@ -57,7 +72,7 @@ local function sendWebhook(message)
     })
 end
 
---// LOOP CHECK
+--// LOOP
 task.spawn(function()
     while task.wait(3) do
         local data = GetData()
@@ -68,25 +83,20 @@ task.spawn(function()
 
         local msg = ""
 
-        -- ✅ chỉ khi TĂNG
+        -- chỉ khi tăng
         if rank > lastRank then
             msg = player.Name .. " Rank up to: " .. rank
+            lastRank = rank -- update NGAY để tránh loop
         end
 
         if rebirth > lastRebirth then
-            if msg ~= "" then
-                msg = msg .. "\n"
-            end
+            if msg ~= "" then msg = msg .. "\n" end
             msg = msg .. player.Name .. " Rebirth " .. rebirth .. " done"
+            lastRebirth = rebirth
         end
 
-        -- gửi nếu có thay đổi
         if msg ~= "" then
-            print("Webhook sent:\n" .. msg)
             sendWebhook(msg)
-
-            lastRank = rank
-            lastRebirth = rebirth
         end
     end
 end)
