@@ -1,4 +1,4 @@
-task.wait(25)
+task.wait(30)
 repeat task.wait() until game:IsLoaded()
 
 pcall(function()
