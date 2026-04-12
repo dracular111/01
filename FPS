@@ -168,7 +168,7 @@ end)
 
 -- ✅ hiển thị UI
 spawn(function()
-wait(68)
+wait(168)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/UI"))()
 end)
 
