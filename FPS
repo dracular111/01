@@ -246,12 +246,6 @@ task.spawn(function()
     end
 end)
 
--- ✅ hiển thị UI
-spawn(function()
-wait(168)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/UI1"))()
-end)
-
 spawn(function()
 wait(168)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Daycare"))()
@@ -272,10 +266,6 @@ end)
 -- ✅ Kick nếu kẹt leo rank ở Fantasy quá lâu ( Không sang LuckyEvent)--
 spawn(function()
 --loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/A-Kick-NotEvent"))() 
-end)
-
-spawn(function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/WH-Rank"))() 
 end)
 
 -- ✅ Check kick 23h Reset
