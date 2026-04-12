@@ -99,22 +99,26 @@ Username.TextStrokeTransparency = 0.3
 Username.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
 Username.Parent = Label
 
--- DATA
+-- ================= DATA (FIX GEM) =================
+
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local PlayerSave = require(ReplicatedStorage.Library.Client.Save)
+local Client = ReplicatedStorage:WaitForChild("Library"):WaitForChild("Client")
+
+local Save = require(Client.Save)
 
 local function getSave()
-    local ok, sd = pcall(PlayerSave.Get)
-    if ok then return sd end
+    local ok, data = pcall(Save.Get)
+    if ok then return data end
 end
 
 local function getDiamonds()
-    local stats = Player:FindFirstChild("leaderstats")
-    if stats then
-        local d = stats:FindFirstChild("💎 Diamonds")
-        if d then return d.Value end
-    end
-    return 0
+    local save = getSave()
+    if not save then return 0 end
+
+    return save.Diamonds 
+        or save.Currency 
+        or (save.Currencies and save.Currencies.Diamonds)
+        or 0
 end
 
 local function getTimeTrialStats()
@@ -143,7 +147,8 @@ local function Formatint(int)
     return string.format("%.2f%s", int, Suffix[Index])
 end
 
--- STATS UI
+-- ================= UI =================
+
 local StatsFrame = Instance.new("Frame")
 StatsFrame.Size = UDim2.new(1, 0, 0, 120)
 StatsFrame.Position = UDim2.new(0, 0, 1.18, 0)
@@ -176,7 +181,8 @@ GemsText.Parent = StatsFrame
 TrialText.Parent = StatsFrame
 PointsText.Parent = StatsFrame
 
--- UPDATE LOOP
+-- ================= LOOP =================
+
 task.spawn(function()
     while task.wait(0.3) do
         pcall(function()
@@ -201,7 +207,8 @@ task.spawn(function()
     end
 end)
 
--- TIME
+-- ================= TIME =================
+
 local startTime = os.time()
 task.spawn(function()
     while task.wait(1) do
@@ -213,7 +220,8 @@ task.spawn(function()
     end
 end)
 
--- FPS LOCK
+-- ================= FPS =================
+
 if setfpscap then pcall(setfpscap, TARGET_FPS) end
 
 local targetDelay = 1 / TARGET_FPS
