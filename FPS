@@ -109,55 +109,6 @@ local function getSave()
     if ok then return sd end
 end
 
-local function getDiamonds()
-    local sd = getSave()
-    if not sd then return 0 end
-
-    -- ✅ cách đúng game của bạn (ưu tiên)
-    local success, result = pcall(function()
-        return PlayerSave.Get().Diamonds
-    end)
-
-    if success and typeof(result) == "number" then
-        return result
-    end
-
-    -- fallback leaderstats (giữ nguyên logic cũ)
-    local stats = Player:FindFirstChild("leaderstats")
-    if stats then
-        local d = stats:FindFirstChild("💎 Diamonds") or stats:FindFirstChild("Diamonds")
-        if d then return d.Value end
-    end
-
-    return 0
-end
-
-local function getTimeTrialStats()
-    local sd = getSave()
-    return sd and sd.TimeTrialStats or { DailyRuns = 0, Points = 0 }
-end
-
-local function getRunsLeft()
-    local s = getTimeTrialStats()
-    return 10 - (s.DailyRuns or 0)
-end
-
-local function getPoints()
-    local s = getTimeTrialStats()
-    return s.Points or 0
-end
-
-local function Formatint(int)
-    local Suffix = {"", "k", "M", "B", "T", "Qd", "Qn", "Sx", "Sp", "Oc", "No", "De"}
-    local Index = 1
-    if int < 1000 then return tostring(int) end
-    while int >= 1000 and Index < #Suffix do
-        int /= 1000
-        Index += 1
-    end
-    return string.format("%.2f%s", int, Suffix[Index])
-end
-
 -- ================== STATS ==================
 
 local StatsFrame = Instance.new("Frame")
@@ -200,7 +151,7 @@ task.spawn(function()
             local points = Formatint(getPoints())
             local runs = getRunsLeft()
 
-            GemsText.Text = "💎 " .. gems
+            GemsText.Text = "" .. gems
             TrialText.Text = "TRIAL " .. runs .. "/10"
             PointsText.Text = points
 
