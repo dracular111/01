@@ -1,0 +1,92 @@
+--// CONFIG
+getgenv().Webhook = {
+    Url = "https://discord.com/api/webhooks/1492941401585881359/WqnefS6ok3KH1z3dI-LsufUZey4Vp4Eli3Oy2Ej0jHpKjZwJ1q9-mUBIVbXk0rk1lS50",
+    Ping = ""
+}
+
+--// SERVICES
+local Players = game:GetService("Players")
+local HttpService = game:GetService("HttpService")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+local player = Players.LocalPlayer
+
+local Client = ReplicatedStorage:WaitForChild("Library"):WaitForChild("Client")
+local Save = require(Client.Save)
+
+local function GetData()
+    return Save.Get()
+end
+
+--// WAIT DATA LOAD (ANTI BUG)
+repeat task.wait() 
+    local data = GetData()
+until data and data.Rank and data.Rebirths
+
+--// INIT DATA
+local data = GetData()
+local lastRank = data.Rank or 0
+local lastRebirth = data.Rebirths or 0
+
+--// REQUEST
+local requestFunc = (syn and syn.request) or (http and http.request) or request
+
+--// WEBHOOK
+local function sendWebhook(message)
+    if not requestFunc then
+        warn("No request function!")
+        return
+    end
+
+    local body = {
+        ["content"] = getgenv().Webhook.Ping,
+        ["embeds"] = {{
+            ["title"] = "Rank update",
+            ["description"] = message,
+            ["color"] = 16711680
+        }}
+    }
+
+    requestFunc({
+        Url = getgenv().Webhook.Url,
+        Method = "POST",
+        Headers = {
+            ["Content-Type"] = "application/json"
+        },
+        Body = HttpService:JSONEncode(body)
+    })
+end
+
+--// LOOP CHECK
+task.spawn(function()
+    while task.wait(3) do
+        local data = GetData()
+        if not data then continue end
+
+        local rank = data.Rank or 0
+        local rebirth = data.Rebirths or 0
+
+        local msg = ""
+
+        -- ✅ chỉ khi TĂNG
+        if rank > lastRank then
+            msg = player.Name .. " Rank up to: " .. rank
+        end
+
+        if rebirth > lastRebirth then
+            if msg ~= "" then
+                msg = msg .. "\n"
+            end
+            msg = msg .. player.Name .. " Rebirth " .. rebirth .. " done"
+        end
+
+        -- gửi nếu có thay đổi
+        if msg ~= "" then
+            print("Webhook sent:\n" .. msg)
+            sendWebhook(msg)
+
+            lastRank = rank
+            lastRebirth = rebirth
+        end
+    end
+end)
