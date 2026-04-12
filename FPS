@@ -15,14 +15,14 @@ pcall(function()
 end)
 task.wait(5)
 
--- CONFIG
+-- Cấu hình
 local TARGET_FPS = 7
-local MAIN_COLOR = Color3.fromRGB(255,215,0)
-
 local CoreGui = game:GetService("CoreGui")
 local RunService = game:GetService("RunService")
 
--- GUI
+-- ✅ MÀU CHUNG
+local MAIN_COLOR = Color3.fromRGB(255,215,0)
+
 local ScreenGui = Instance.new("ScreenGui")
 ScreenGui.Name = "FPS_UI"
 ScreenGui.IgnoreGuiInset = true
@@ -31,7 +31,7 @@ ScreenGui.Parent = CoreGui
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Global
 ScreenGui.DisplayOrder = 999999999
 
--- SCALE
+-- Scale
 local UIScale = Instance.new("UIScale", ScreenGui)
 local function updateScale()
     local cam = workspace.CurrentCamera
@@ -42,8 +42,9 @@ end
 updateScale()
 workspace.CurrentCamera:GetPropertyChangedSignal("ViewportSize"):Connect(updateScale)
 
--- MAIN LABEL
 local Label = Instance.new("TextLabel")
+local Notice = Instance.new("TextLabel")
+
 Label.Size = UDim2.new(0, 1200, 0, 400)
 Label.Position = UDim2.new(0.5, -600, 0, -50)
 Label.BackgroundTransparency = 1
@@ -56,8 +57,6 @@ Label.TextStrokeTransparency = 0.4
 Label.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
 Label.Parent = ScreenGui
 
--- LOCK FPS
-local Notice = Instance.new("TextLabel")
 Notice.Size = UDim2.new(1, 0, 0, 120)
 Notice.Position = UDim2.new(0, 0, 0.55, 0)
 Notice.BackgroundTransparency = 1
@@ -70,7 +69,7 @@ Notice.TextStrokeTransparency = 0.3
 Notice.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
 Notice.Parent = Label
 
--- ONLINE TIME
+-- Online
 local Online = Instance.new("TextLabel")
 Online.Size = UDim2.new(1, 0, 0, 120)
 Online.Position = UDim2.new(0, 0, 0.75, 0)
@@ -83,7 +82,7 @@ Online.TextStrokeTransparency = 0.3
 Online.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
 Online.Parent = Label
 
--- USERNAME
+-- Username
 local Player = game:GetService("Players").LocalPlayer
 
 local Username = Instance.new("TextLabel")
@@ -99,26 +98,23 @@ Username.TextStrokeTransparency = 0.3
 Username.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
 Username.Parent = Label
 
--- ================= DATA (FIX GEM) =================
+-- ================== DATA ==================
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local Client = ReplicatedStorage:WaitForChild("Library"):WaitForChild("Client")
-
-local Save = require(Client.Save)
+local PlayerSave = require(ReplicatedStorage.Library.Client.Save)
 
 local function getSave()
-    local ok, data = pcall(Save.Get)
-    if ok then return data end
+    local ok, sd = pcall(PlayerSave.Get)
+    if ok then return sd end
 end
 
 local function getDiamonds()
-    local save = getSave()
-    if not save then return 0 end
-
-    return save.Diamonds 
-        or save.Currency 
-        or (save.Currencies and save.Currencies.Diamonds)
-        or 0
+    local stats = Player:FindFirstChild("leaderstats")
+    if stats then
+        local d = stats:FindFirstChild("💎 Diamonds")
+        if d then return d.Value end
+    end
+    return 0
 end
 
 local function getTimeTrialStats()
@@ -137,7 +133,7 @@ local function getPoints()
 end
 
 local function Formatint(int)
-    local Suffix = {"", "k", "M", "B", "T"}
+    local Suffix = {"", "k", "M", "B", "T", "Qd", "Qn", "Sx", "Sp", "Oc", "No", "De"}
     local Index = 1
     if int < 1000 then return tostring(int) end
     while int >= 1000 and Index < #Suffix do
@@ -147,7 +143,7 @@ local function Formatint(int)
     return string.format("%.2f%s", int, Suffix[Index])
 end
 
--- ================= UI =================
+-- ================== STATS ==================
 
 local StatsFrame = Instance.new("Frame")
 StatsFrame.Size = UDim2.new(1, 0, 0, 120)
@@ -158,6 +154,7 @@ StatsFrame.Parent = Label
 local layout = Instance.new("UIListLayout", StatsFrame)
 layout.FillDirection = Enum.FillDirection.Horizontal
 layout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+layout.VerticalAlignment = Enum.VerticalAlignment.Center
 layout.Padding = UDim.new(0, 40)
 
 local function createText()
@@ -181,8 +178,6 @@ GemsText.Parent = StatsFrame
 TrialText.Parent = StatsFrame
 PointsText.Parent = StatsFrame
 
--- ================= LOOP =================
-
 task.spawn(function()
     while task.wait(0.3) do
         pcall(function()
@@ -194,12 +189,12 @@ task.spawn(function()
             TrialText.Text = "TRIAL " .. runs .. "/10"
             PointsText.Text = points
 
-            -- màu đồng bộ
+            -- màu
             GemsText.TextColor3 = MAIN_COLOR
             PointsText.TextColor3 = MAIN_COLOR
 
             if runs == 0 then
-                TrialText.TextColor3 = Color3.fromRGB(0,255,0)
+                TrialText.TextColor3 = Color3.fromRGB(0,170,0)
             else
                 TrialText.TextColor3 = MAIN_COLOR
             end
@@ -207,7 +202,7 @@ task.spawn(function()
     end
 end)
 
--- ================= TIME =================
+-- ================== FPS ==================
 
 local startTime = os.time()
 task.spawn(function()
@@ -219,8 +214,6 @@ task.spawn(function()
         Online.Text = string.format("%02d:%02d:%02d", h, m, s)
     end
 end)
-
--- ================= FPS =================
 
 if setfpscap then pcall(setfpscap, TARGET_FPS) end
 
