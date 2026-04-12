@@ -172,6 +172,11 @@ wait(68)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/UI"))()
 end)
 
+spawn(function()
+wait(168)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Daycare"))()
+end)
+
 -- ✅ Check Gem W4 - tránh event + time trial
 spawn(function()
 wait(10)
