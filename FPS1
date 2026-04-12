@@ -16,7 +16,7 @@ end)
 task.wait(5)
 
 -- Cấu hình
-local TARGET_FPS = 3
+local TARGET_FPS = 7
 local CoreGui = game:GetService("CoreGui")
 local RunService = game:GetService("RunService")
 
@@ -166,25 +166,27 @@ task.spawn(function()
     end
 end)
 
-spawn(function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/03/main/Del-TopBarApp"))()
-end)
-
 -- ✅ hiển thị UI
 spawn(function()
-wait(68)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/UI"))()
+wait(168)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/UI1"))()
 end)
 
--- ✅ Check ENCHANTS Change
 spawn(function()
---loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/03/main/Check_Time_Trial"))()
+wait(168)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Daycare"))()
 end)
 
 -- ✅ Check Gem W4 - tránh event + time trial
 spawn(function()
 wait(10)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/A-Kick-CheckGem"))()
+--loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/A-Kick-CheckGem"))()
+end)
+
+-- ✅ Check Gem W4 - tránh event + time trial-Hasty
+spawn(function()
+wait(10)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/A-Kick-CheckGem1"))()
 end)
 
 -- ✅ Kick nếu kẹt leo rank ở Fantasy quá lâu ( Không sang LuckyEvent)--
@@ -192,9 +194,13 @@ spawn(function()
 --loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/A-Kick-NotEvent"))() 
 end)
 
--- ✅ Check kick 6h Reset
 spawn(function()
---loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/A-Kick-Time"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/WH-Rank"))() 
+end)
+
+-- ✅ Check kick 23h Reset
+spawn(function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/A-Kick23H"))()
 end)
 
 --game.Players.LocalPlayer:Kick("")
