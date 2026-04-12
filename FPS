@@ -109,11 +109,19 @@ local function getSave()
 end
 
 local function getDiamonds()
-    local stats = Player:FindFirstChild("leaderstats")
-    if stats then
-        local d = stats:FindFirstChild("💎 Diamonds")
-        if d then return d.Value end
+    local sd = getSave()
+    if not sd then return 0 end
+
+    -- cách chuẩn của PS99 (Inventory.Currency)
+    if sd.Inventory and sd.Inventory.Currency then
+        return sd.Inventory.Currency.Diamonds or 0
     end
+
+    -- fallback nếu game update
+    if sd.Diamonds then
+        return sd.Diamonds
+    end
+
     return 0
 end
 
