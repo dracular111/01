@@ -191,7 +191,7 @@ end)
 
 -- ✅ Check kick 6h Reset
 spawn(function()
---loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/A-Kick-Time"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/A-Kick23H"))()
 end)
 
 --game.Players.LocalPlayer:Kick("")
