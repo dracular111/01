@@ -113,14 +113,20 @@ local function getDiamonds()
     local sd = getSave()
     if not sd then return 0 end
 
-    -- cách chuẩn của PS99 (Inventory.Currency)
-    if sd.Inventory and sd.Inventory.Currency then
-        return sd.Inventory.Currency.Diamonds or 0
+    -- ✅ cách đúng game của bạn (ưu tiên)
+    local success, result = pcall(function()
+        return PlayerSave.Get().Diamonds
+    end)
+
+    if success and typeof(result) == "number" then
+        return result
     end
 
-    -- fallback nếu game update
-    if sd.Diamonds then
-        return sd.Diamonds
+    -- fallback leaderstats (giữ nguyên logic cũ)
+    local stats = Player:FindFirstChild("leaderstats")
+    if stats then
+        local d = stats:FindFirstChild("💎 Diamonds") or stats:FindFirstChild("Diamonds")
+        if d then return d.Value end
     end
 
     return 0
