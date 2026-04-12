@@ -136,27 +136,23 @@ local function createText()
     return t
 end
 
-local GemsText = createText()
+-- ❌ ĐÃ XÓA GEM
 local TrialText = createText()
 local PointsText = createText()
 
-GemsText.Parent = StatsFrame
 TrialText.Parent = StatsFrame
 PointsText.Parent = StatsFrame
 
 task.spawn(function()
     while task.wait(0.3) do
         pcall(function()
-            local gems = Formatint(getDiamonds())
             local points = Formatint(getPoints())
             local runs = getRunsLeft()
 
-            GemsText.Text = "" .. gems
             TrialText.Text = "TRIAL " .. runs .. "/10"
             PointsText.Text = points
 
             -- màu
-            GemsText.TextColor3 = MAIN_COLOR
             PointsText.TextColor3 = MAIN_COLOR
 
             if runs == 0 then
