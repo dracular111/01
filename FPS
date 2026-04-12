@@ -175,7 +175,13 @@ end)
 -- ✅ Check Gem W4 - tránh event + time trial
 spawn(function()
 wait(10)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/A-Kick-CheckGem"))()
+--loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/A-Kick-CheckGem"))()
+end)
+
+-- ✅ Check Gem W4 - tránh event + time trial-Hasty
+spawn(function()
+wait(10)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/A-Kick-CheckGem1"))()
 end)
 
 -- ✅ Kick nếu kẹt leo rank ở Fantasy quá lâu ( Không sang LuckyEvent)--
