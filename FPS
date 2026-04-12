@@ -74,7 +74,6 @@ Online.BackgroundTransparency = 1
 Online.TextColor3 = Color3.fromRGB(255, 255, 0)
 Online.Font = Enum.Font.Code
 Online.TextSize = 120
-Online.Text = "Online: 00:00:00"
 Online.TextXAlignment = Enum.TextXAlignment.Center
 Online.TextStrokeTransparency = 0.3
 Online.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
@@ -90,7 +89,7 @@ Username.BackgroundTransparency = 1
 Username.TextColor3 = Color3.fromRGB(255, 255, 0)
 Username.Font = Enum.Font.Code
 Username.TextSize = 100
-Username.Text = "" .. Player.DisplayName
+Username.Text = Player.DisplayName
 Username.TextXAlignment = Enum.TextXAlignment.Center
 Username.TextStrokeTransparency = 0.3
 Username.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
@@ -141,19 +140,40 @@ local function Formatint(int)
     return string.format("%.2f%s", int, Suffix[Index])
 end
 
--- ================== 1 DÒNG STATS ==================
+-- ================== PIXEL PERFECT STATS ==================
 
-local Stats = Instance.new("TextLabel")
-Stats.Size = UDim2.new(1, 0, 0, 120)
-Stats.Position = UDim2.new(0, 0, 1.10, 0)
-Stats.BackgroundTransparency = 1
-Stats.Font = Enum.Font.Code
-Stats.TextSize = 90
-Stats.TextXAlignment = Enum.TextXAlignment.Center
-Stats.TextStrokeTransparency = 0.3
-Stats.TextStrokeColor3 = Color3.fromRGB(0,0,0)
-Stats.RichText = true
-Stats.Parent = Label
+local StatsFrame = Instance.new("Frame")
+StatsFrame.Size = UDim2.new(1, 0, 0, 120)
+StatsFrame.Position = UDim2.new(0, 0, 1.18, 0)
+StatsFrame.BackgroundTransparency = 1
+StatsFrame.Parent = Label
+
+local layout = Instance.new("UIListLayout", StatsFrame)
+layout.FillDirection = Enum.FillDirection.Horizontal
+layout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+layout.VerticalAlignment = Enum.VerticalAlignment.Center
+layout.Padding = UDim.new(0, 40)
+
+local function createText()
+    local t = Instance.new("TextLabel")
+    t.BackgroundTransparency = 1
+    t.AutomaticSize = Enum.AutomaticSize.X
+    t.Size = UDim2.new(0, 0, 1, 0)
+    t.Font = Enum.Font.GothamBold
+    t.TextSize = 90
+    t.TextColor3 = Color3.fromRGB(255, 215, 0)
+    t.TextStrokeTransparency = 0.3
+    t.TextStrokeColor3 = Color3.fromRGB(0,0,0)
+    return t
+end
+
+local GemsText = createText()
+local TrialText = createText()
+local PointsText = createText()
+
+GemsText.Parent = StatsFrame
+TrialText.Parent = StatsFrame
+PointsText.Parent = StatsFrame
 
 task.spawn(function()
     while task.wait(0.3) do
@@ -162,20 +182,24 @@ task.spawn(function()
             local points = Formatint(getPoints())
             local runs = getRunsLeft()
 
-            local trialColor = (runs == 0) and "#00FF00" or "#FFD700"
+            GemsText.Text = "💎 " .. gems
+            TrialText.Text = "TRIAL " .. runs .. "/10"
+            PointsText.Text = points
 
-            Stats.Text = string.format(
-                '<font color="#FFD700">💎 %s|POINTS %s|</font><font color="%s">TRIAL %d/10</font>',
-                gems,
-                points,
-                trialColor,
-                runs
-            )
+            -- màu
+            GemsText.TextColor3 = Color3.fromRGB(255,215,0)
+            PointsText.TextColor3 = Color3.fromRGB(255,215,0)
+
+            if runs == 0 then
+                TrialText.TextColor3 = Color3.fromRGB(0,170,0)
+            else
+                TrialText.TextColor3 = Color3.fromRGB(255,215,0)
+            end
         end)
     end
 end)
 
--- ================== FPS (GIỮ NGUYÊN) ==================
+-- ================== FPS ==================
 
 local startTime = os.time()
 task.spawn(function()
