@@ -1,3 +1,4 @@
+task.wait(30)
 repeat task.wait() until game:IsLoaded()
 
 pcall(function()
@@ -16,19 +17,22 @@ end)
 task.wait(5)
 
 -- Cấu hình
-local TARGET_FPS = 20
+local TARGET_FPS = 5
 local CoreGui = game:GetService("CoreGui")
 local RunService = game:GetService("RunService")
+
+-- ✅ MÀU CHUNG
+local MAIN_COLOR = Color3.fromRGB(255,215,0)
 
 local ScreenGui = Instance.new("ScreenGui")
 ScreenGui.Name = "FPS_UI"
 ScreenGui.IgnoreGuiInset = true
 ScreenGui.ResetOnSpawn = false
 ScreenGui.Parent = CoreGui
-ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Global -- ✅ UI luôn nằm trên cùng
-ScreenGui.DisplayOrder = 999999999 -- ✅ GIỮ UI LUÔN TRÊN MỌI UI KHÁC
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Global
+ScreenGui.DisplayOrder = 999999999
 
--- ✅ Auto Scale theo độ phân giải (đã tăng độ lớn UI)
+-- Scale
 local UIScale = Instance.new("UIScale", ScreenGui)
 local function updateScale()
     local cam = workspace.CurrentCamera
@@ -43,9 +47,9 @@ local Label = Instance.new("TextLabel")
 local Notice = Instance.new("TextLabel")
 
 Label.Size = UDim2.new(0, 1200, 0, 400)
-Label.Position = UDim2.new(0.5, -600, 0, -140) -- ✅ Dịch UI lên cao thêm
+Label.Position = UDim2.new(0.5, -600, 0, -50)
 Label.BackgroundTransparency = 1
-Label.TextColor3 = Color3.fromRGB(255, 255, 0)
+Label.TextColor3 = MAIN_COLOR
 Label.Font = Enum.Font.Code
 Label.TextSize = 80
 Label.Text = "FPS:00"
@@ -57,7 +61,7 @@ Label.Parent = ScreenGui
 Notice.Size = UDim2.new(1, 0, 0, 120)
 Notice.Position = UDim2.new(0, 0, 0.55, 0)
 Notice.BackgroundTransparency = 1
-Notice.TextColor3 = Color3.fromRGB(255, 255, 0)
+Notice.TextColor3 = MAIN_COLOR
 Notice.Font = Enum.Font.Code
 Notice.TextSize = 80
 Notice.Text = "LOCK FPS: " .. TARGET_FPS
@@ -66,35 +70,154 @@ Notice.TextStrokeTransparency = 0.3
 Notice.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
 Notice.Parent = Label
 
--- ✅ Online time
+-- Online
 local Online = Instance.new("TextLabel")
 Online.Size = UDim2.new(1, 0, 0, 120)
-Online.Position = UDim2.new(0, 0, 0.80, 0)
+Online.Position = UDim2.new(0, 0, 0.75, 0)
 Online.BackgroundTransparency = 1
-Online.TextColor3 = Color3.fromRGB(255, 255, 0)
+Online.TextColor3 = MAIN_COLOR
 Online.Font = Enum.Font.Code
 Online.TextSize = 120
-Online.Text = "Online: 00:00:00"
 Online.TextXAlignment = Enum.TextXAlignment.Center
 Online.TextStrokeTransparency = 0.3
 Online.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
 Online.Parent = Label
 
--- ✅ Username (thêm mới, không ảnh hưởng code cũ)
+-- Username
 local Player = game:GetService("Players").LocalPlayer
 
 local Username = Instance.new("TextLabel")
 Username.Size = UDim2.new(1, 0, 0, 120)
-Username.Position = UDim2.new(0, 0, 1.05, 0) -- nằm dưới dòng Online
+Username.Position = UDim2.new(0, 0, 0.95, 0)
 Username.BackgroundTransparency = 1
-Username.TextColor3 = Color3.fromRGB(255, 255, 0)
+Username.TextColor3 = MAIN_COLOR
 Username.Font = Enum.Font.Code
 Username.TextSize = 100
-Username.Text = "" .. Player.DisplayName
+Username.Text = Player.DisplayName
 Username.TextXAlignment = Enum.TextXAlignment.Center
 Username.TextStrokeTransparency = 0.3
 Username.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
 Username.Parent = Label
+
+-- ================== DATA ==================
+
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local PlayerSave = require(ReplicatedStorage.Library.Client.Save)
+
+local function getSave()
+    local ok, sd = pcall(PlayerSave.Get)
+    if ok then return sd end
+end
+
+local function getDiamonds()
+    local sd = getSave()
+    if not sd then return 0 end
+
+    -- ✅ cách đúng game của bạn (ưu tiên)
+    local success, result = pcall(function()
+        return PlayerSave.Get().Diamonds
+    end)
+
+    if success and typeof(result) == "number" then
+        return result
+    end
+
+    -- fallback leaderstats (giữ nguyên logic cũ)
+    local stats = Player:FindFirstChild("leaderstats")
+    if stats then
+        local d = stats:FindFirstChild("💎 Diamonds") or stats:FindFirstChild("Diamonds")
+        if d then return d.Value end
+    end
+
+    return 0
+end
+
+local function getTimeTrialStats()
+    local sd = getSave()
+    return sd and sd.TimeTrialStats or { DailyRuns = 0, Points = 0 }
+end
+
+local function getRunsLeft()
+    local s = getTimeTrialStats()
+    return 10 - (s.DailyRuns or 0)
+end
+
+local function getPoints()
+    local s = getTimeTrialStats()
+    return s.Points or 0
+end
+
+local function Formatint(int)
+    local Suffix = {"", "k", "M", "B", "T", "Qd", "Qn", "Sx", "Sp", "Oc", "No", "De"}
+    local Index = 1
+    if int < 1000 then return tostring(int) end
+    while int >= 1000 and Index < #Suffix do
+        int /= 1000
+        Index += 1
+    end
+    return string.format("%.2f%s", int, Suffix[Index])
+end
+
+-- ================== STATS ==================
+
+local StatsFrame = Instance.new("Frame")
+StatsFrame.Size = UDim2.new(1, 0, 0, 120)
+StatsFrame.Position = UDim2.new(0, 0, 1.18, 0)
+StatsFrame.BackgroundTransparency = 1
+StatsFrame.Parent = Label
+
+local layout = Instance.new("UIListLayout", StatsFrame)
+layout.FillDirection = Enum.FillDirection.Horizontal
+layout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+layout.VerticalAlignment = Enum.VerticalAlignment.Center
+layout.Padding = UDim.new(0, 40)
+
+local function createText()
+    local t = Instance.new("TextLabel")
+    t.BackgroundTransparency = 1
+    t.AutomaticSize = Enum.AutomaticSize.X
+    t.Size = UDim2.new(0, 0, 1, 0)
+    t.Font = Enum.Font.GothamBold
+    t.TextSize = 90
+    t.TextColor3 = MAIN_COLOR
+    t.TextStrokeTransparency = 0.3
+    t.TextStrokeColor3 = Color3.fromRGB(0,0,0)
+    return t
+end
+
+local GemsText = createText()
+local TrialText = createText()
+local PointsText = createText()
+
+GemsText.Parent = StatsFrame
+TrialText.Parent = StatsFrame
+PointsText.Parent = StatsFrame
+
+task.spawn(function()
+    while task.wait(0.3) do
+        pcall(function()
+            local gems = Formatint(getDiamonds())
+            local points = Formatint(getPoints())
+            local runs = getRunsLeft()
+
+            GemsText.Text = "💎 " .. gems
+            TrialText.Text = "TRIAL " .. runs .. "/10"
+            PointsText.Text = points
+
+            -- màu
+            GemsText.TextColor3 = MAIN_COLOR
+            PointsText.TextColor3 = MAIN_COLOR
+
+            if runs == 0 then
+                TrialText.TextColor3 = Color3.fromRGB(0,170,0)
+            else
+                TrialText.TextColor3 = MAIN_COLOR
+            end
+        end)
+    end
+end)
+
+-- ================== FPS ==================
 
 local startTime = os.time()
 task.spawn(function()
@@ -107,7 +230,6 @@ task.spawn(function()
     end
 end)
 
--- ✅ GIỮ NGUYÊN MỌI THỨ BÊN DƯỚI
 if setfpscap then pcall(setfpscap, TARGET_FPS) end
 
 local targetDelay = 1 / TARGET_FPS
@@ -140,6 +262,7 @@ getgenv().fps_thread = task.spawn(function()
         task.wait(5)
     end
 end)
+
 -- ✅ Auto kick nếu map đứng thật sự (không activity)
 task.spawn(function()
     local LOADING_TIMEOUT = 300 -- giây
@@ -160,13 +283,37 @@ task.spawn(function()
         if idle >= LOADING_TIMEOUT then
             warn("Map đứng quá lâu -> Rejoin")
 
-            game.Players.LocalPlayer:Kick("Rejoining...")
+            game.Players.LocalPlayer:Kick("KillMap")
             break
         end
     end
 end)
--- ✅ Kick nếu kẹt leo rank ở Fantasy quá lâu (phải sang LuckyEvent)--
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/A-Kick-DoneRank"))()
+spawn(function()
+wait(168)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Daycare"))()
+end)
+
+-- ✅ Check Gem W4 - tránh event + time trial
+spawn(function()
+wait(10)
+--loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/A-Kick-CheckGem"))()
+end)
+
+-- ✅ Check Gem W4 - tránh event + time trial-Hasty
+spawn(function()
+wait(10)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/A-Kick-CheckGem1"))()
+end)
+
+-- ✅ Kick nếu kẹt leo rank ở Fantasy quá lâu ( Không sang LuckyEvent)--
+spawn(function()
+--loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/A-Kick-NotEvent"))() 
+end)
+
+-- ✅ Check kick 23h Reset
+spawn(function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/A-Kick23H"))()
+end)
 
 --game.Players.LocalPlayer:Kick("")
