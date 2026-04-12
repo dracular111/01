@@ -96,7 +96,7 @@ Username.TextStrokeTransparency = 0.3
 Username.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
 Username.Parent = Label
 
--- ================== 🔥 THÊM DATA ==================
+-- ================== DATA ==================
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local PlayerSave = require(ReplicatedStorage.Library.Client.Save)
@@ -141,34 +141,41 @@ local function Formatint(int)
     return string.format("%.2f%s", int, Suffix[Index])
 end
 
--- UI stats
+-- ================== 1 DÒNG STATS ==================
+
 local Stats = Instance.new("TextLabel")
-Stats.Size = UDim2.new(1, 0, 0, 140)
-Stats.Position = UDim2.new(0, 0, 1.15, 0)
+Stats.Size = UDim2.new(1, 0, 0, 120)
+Stats.Position = UDim2.new(0, 0, 1.10, 0)
 Stats.BackgroundTransparency = 1
-Stats.TextColor3 = Color3.fromRGB(0, 255, 150)
 Stats.Font = Enum.Font.Code
 Stats.TextSize = 90
 Stats.TextXAlignment = Enum.TextXAlignment.Center
 Stats.TextStrokeTransparency = 0.3
-Stats.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
-Stats.Text = "Loading..."
+Stats.TextStrokeColor3 = Color3.fromRGB(0,0,0)
+Stats.RichText = true
 Stats.Parent = Label
 
 task.spawn(function()
-    while task.wait(0.5) do
+    while task.wait(0.3) do
         pcall(function()
+            local gems = Formatint(getDiamonds())
+            local points = Formatint(getPoints())
+            local runs = getRunsLeft()
+
+            local trialColor = (runs == 0) and "#00FF00" or "#FFD700"
+
             Stats.Text = string.format(
-                "💎 %s | POINTS %s | TRIAL %d/10",
-                Formatint(getDiamonds()),
-                Formatint(getPoints()),
-                getRunsLeft()
+                '<font color="#FFD700">💎 %s|POINTS %s|</font><font color="%s">TRIAL %d/10</font>',
+                gems,
+                points,
+                trialColor,
+                runs
             )
         end)
     end
 end)
 
--- ================== 🔥 GIỮ NGUYÊN FPS ==================
+-- ================== FPS (GIỮ NGUYÊN) ==================
 
 local startTime = os.time()
 task.spawn(function()
