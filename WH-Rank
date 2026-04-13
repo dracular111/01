@@ -1,5 +1,6 @@
+--// CONFIG
 getgenv().Webhook = {
-    Url = "https://discord.com/api/webhooks/1492941401585881359/WqnefS6ok3KH1z3dI-LsufUZey4Vp4Eli3Oy2Ej0jHpKjZwJ1q9-mUBIVbXk0rk1lS50",
+    Url = "YOUR_WEBHOOK_URL",
     Ping = ""
 }
 
@@ -34,24 +35,12 @@ local data = GetData()
 local lastRank = data.Rank or 0
 local lastRebirth = data.Rebirths or 0
 
---// CACHE chống gửi trùng
-local lastSent = ""
-local lastSendTime = 0
-
 --// REQUEST
 local requestFunc = (syn and syn.request) or (http and http.request) or request
 
 --// WEBHOOK
 local function sendWebhook(message)
     if not requestFunc then return end
-
-    -- ❗ chống spam trùng nội dung
-    if message == lastSent and tick() - lastSendTime < 5 then
-        return
-    end
-
-    lastSent = message
-    lastSendTime = tick()
 
     local body = {
         ["content"] = getgenv().Webhook.Ping,
@@ -72,6 +61,19 @@ local function sendWebhook(message)
     })
 end
 
+--// CONFIRM FUNCTION (chống spam)
+local function confirmChange(oldRank, oldRebirth)
+    task.wait(15) -- ⏱ delay để data ổn định
+
+    local data = GetData()
+    if not data then return nil end
+
+    local newRank = data.Rank or 0
+    local newRebirth = data.Rebirths or 0
+
+    return newRank, newRebirth
+end
+
 --// LOOP
 task.spawn(function()
     while task.wait(3) do
@@ -81,22 +83,29 @@ task.spawn(function()
         local rank = data.Rank or 0
         local rebirth = data.Rebirths or 0
 
-        local msg = ""
+        -- chỉ detect khi tăng
+        if rank > lastRank or rebirth > lastRebirth then
 
-        -- chỉ khi tăng
-        if rank > lastRank then
-            msg = player.Name .. " Rank up to: " .. rank
-            lastRank = rank -- update NGAY để tránh loop
-        end
+            -- 🔥 confirm sau delay
+            local newRank, newRebirth = confirmChange(lastRank, lastRebirth)
+            if not newRank then continue end
 
-        if rebirth > lastRebirth then
-            if msg ~= "" then msg = msg .. "\n" end
-            msg = msg .. player.Name .. " Rebirth " .. rebirth .. " done"
-            lastRebirth = rebirth
-        end
+            local msg = ""
 
-        if msg ~= "" then
-            sendWebhook(msg)
+            if newRank > lastRank then
+                msg = player.Name .. " Rank up to: " .. newRank
+                lastRank = newRank
+            end
+
+            if newRebirth > lastRebirth then
+                if msg ~= "" then msg = msg .. "\n" end
+                msg = msg .. player.Name .. " Rebirth " .. newRebirth .. " done"
+                lastRebirth = newRebirth
+            end
+
+            if msg ~= "" then
+                sendWebhook(msg)
+            end
         end
     end
 end)
