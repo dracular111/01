@@ -1,6 +1,6 @@
 --// CONFIG
 getgenv().Webhook = {
-    Url = "YOUR_WEBHOOK_URL",
+    Url = "https://discord.com/api/webhooks/1492941401585881359/WqnefS6ok3KH1z3dI-LsufUZey4Vp4Eli3Oy2Ej0jHpKjZwJ1q9-mUBIVbXk0rk1lS50",
     Ping = ""
 }
 
@@ -38,9 +38,16 @@ local lastRebirth = data.Rebirths or 0
 --// REQUEST
 local requestFunc = (syn and syn.request) or (http and http.request) or request
 
+--// WEBHOOK COOLDOWN
+local lastSend = 0
+local COOLDOWN = 10
+
 --// WEBHOOK
 local function sendWebhook(message)
     if not requestFunc then return end
+    if tick() - lastSend < COOLDOWN then return end -- chống spam
+
+    lastSend = tick()
 
     local body = {
         ["content"] = getgenv().Webhook.Ping,
@@ -61,9 +68,9 @@ local function sendWebhook(message)
     })
 end
 
---// CONFIRM FUNCTION (chống spam)
+--// CONFIRM FUNCTION
 local function confirmChange(oldRank, oldRebirth)
-    task.wait(15) -- ⏱ delay để data ổn định
+    task.wait(15) -- delay để data ổn định
 
     local data = GetData()
     if not data then return nil end
@@ -74,21 +81,28 @@ local function confirmChange(oldRank, oldRebirth)
     return newRank, newRebirth
 end
 
+--// LOCK (ANTI DUPLICATE)
+local processing = false
+
 --// LOOP
 task.spawn(function()
     while task.wait(3) do
+        if processing then continue end -- đang xử lý thì bỏ qua
+
         local data = GetData()
         if not data then continue end
 
         local rank = data.Rank or 0
         local rebirth = data.Rebirths or 0
 
-        -- chỉ detect khi tăng
         if rank > lastRank or rebirth > lastRebirth then
+            processing = true -- khóa
 
-            -- 🔥 confirm sau delay
             local newRank, newRebirth = confirmChange(lastRank, lastRebirth)
-            if not newRank then continue end
+            if not newRank then 
+                processing = false
+                continue 
+            end
 
             local msg = ""
 
@@ -106,6 +120,9 @@ task.spawn(function()
             if msg ~= "" then
                 sendWebhook(msg)
             end
+
+            task.wait(2) -- giảm spam thêm
+            processing = false -- mở khóa
         end
     end
 end)
