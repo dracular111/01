@@ -1,6 +1,6 @@
 -- ================= CONFIG =================
 local CHECK_INTERVAL = 5
-local IDLE_TIME_LIMIT = 600 -- 5 phút
+local IDLE_TIME_LIMIT = 1200 -- 5 phút
 
 local TARGET_PLACE = 140403681187145 -- World 4
 
