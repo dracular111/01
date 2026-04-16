@@ -1,5 +1,9 @@
 {
-  "Users": ["conmeohpz000", "conmeohpz001", "conmeohpz002"],
+  "Users": [
+    "1234gf5",
+    "a55ca",
+    "xyz"
+  ],
   "Pet": {
     "Enabled": true,
     "PerUser": 5,
@@ -15,7 +19,7 @@
   },
   "Gem": {
     "Enabled": true,
-    "PerUser": 200000,
+    "PerUser": 20000000,
     "Delay": 2,
     "Retry": 3
   },
