@@ -1,0 +1,125 @@
+--// ===== CONFIG =====
+getgenv().AutoGem = {
+    Users = {"conmeohpz000", "conmeohpz001"},
+    PerUser = 20000000, -- 20m mỗi user
+    Delay = 1,
+    Retry = 3,
+    Webhook = "" -- dán webhook vào đây
+}
+
+--// ===== LOAD =====
+repeat task.wait() until game:IsLoaded()
+
+local Players = game:GetService("Players")
+local HttpService = game:GetService("HttpService")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local player = Players.LocalPlayer
+
+--// ===== DIAMONDS =====
+local diamondsStat = player:WaitForChild("leaderstats"):FindFirstChild("💎 Diamonds")
+if not diamondsStat then
+    warn("Không tìm thấy Diamonds.")
+    return
+end
+
+--// ===== LIB =====
+local Client = ReplicatedStorage:WaitForChild("Library"):WaitForChild("Client")
+local Network = require(Client.Network)
+local Save = require(Client.Save)
+
+--// ===== WEBHOOK =====
+local function sendWebhook(msg)
+    if AutoGem.Webhook == "" then return end
+
+    request({
+        Url = AutoGem.Webhook,
+        Method = "POST",
+        Headers = {["Content-Type"] = "application/json"},
+        Body = HttpService:JSONEncode({
+            content = msg
+        })
+    })
+end
+
+--// ===== UI =====
+local gui = Instance.new("ScreenGui", player.PlayerGui)
+local label = Instance.new("TextLabel", gui)
+
+label.Size = UDim2.new(0,260,0,50)
+label.Position = UDim2.new(0,10,0,10)
+label.Text = "Starting..."
+label.BackgroundTransparency = 0.3
+
+--// ===== GET UID =====
+local function getDiamondsUID()
+    local inv = Save.Get().Inventory
+    for uid, v in pairs(inv["Currency"]) do
+        if v.id == "Diamonds" then
+            return uid
+        end
+    end
+end
+
+local diamondsUID = getDiamondsUID()
+if not diamondsUID then
+    warn("Không tìm thấy Diamonds UID")
+    return
+end
+
+--// ===== SEND (RETRY) =====
+local function sendGem(user, amount)
+    for i = 1, AutoGem.Retry do
+        local ok = Network.Invoke(
+            "Mailbox: Send",
+            user,
+            "Auto Gem",
+            "Currency",
+            diamondsUID,
+            amount
+        )
+
+        if ok then return true end
+        task.wait(1)
+    end
+    return false
+end
+
+--// ===== MAIN =====
+local totalSent = 0
+
+for _, user in ipairs(AutoGem.Users) do
+
+    local current = diamondsStat.Value
+
+    -- hết gem → stop
+    if current < AutoGem.PerUser then
+        warn("Hết gem, dừng!")
+        label.Text = "Out of gems - STOP"
+        sendWebhook("❌ Hết gem | Total sent: "..totalSent)
+        break
+    end
+
+    print("Sending to:", user)
+    label.Text = "Sending → "..user
+
+    local success = sendGem(user, AutoGem.PerUser)
+
+    if success then
+        totalSent += AutoGem.PerUser
+
+        print("Sent", AutoGem.PerUser, "to", user)
+        label.Text = user.." ✔ "..AutoGem.PerUser
+
+        sendWebhook("💎 Sent "..AutoGem.PerUser.." → "..user)
+    else
+        warn("Fail user:", user)
+        sendWebhook("❌ Fail send → "..user)
+    end
+
+    task.wait(AutoGem.Delay)
+end
+
+-- DONE
+print("DONE ALL GEM")
+label.Text = "DONE | "..totalSent.." gems"
+sendWebhook("✅ DONE ALL | Total gems sent: "..totalSent)
