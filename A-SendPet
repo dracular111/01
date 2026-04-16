@@ -44,7 +44,7 @@ end
 getgenv().AutoMail = {
 
     ['Items'] = {
-        ['Blooming Axolotl'] = { Class = "Pet", pt = 3, Amount = 50 },
+        ['Blooming Axolotl'] = { Class = "Pet", Amount = 50 },
     },
 
     ['Users'] = loadstring(
