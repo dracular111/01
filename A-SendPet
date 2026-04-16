@@ -48,7 +48,7 @@ getgenv().AutoMail = {
     },
 
     ['Users'] = loadstring(
-        game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/list-user")
+        game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/A-List-User")
     )()
 }
 
