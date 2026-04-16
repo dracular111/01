@@ -1,19 +1,21 @@
---// ===== CONFIG =====
+--// CONFIG
 getgenv().AutoMail = {
     Users = {"conmeohpz000", "conmeohpz001"},
+
     Items = {
         ["Blooming Axolotl"] = {
             Class = "Pet",
             Amount = 10,
-            pt = 2 -- 0 = Normal | 1 = Golden | 2 = Rainbow
+            pt = 2, -- Rainbow
+            Shiny = false -- ❗ QUAN TRỌNG: không lấy shiny
         }
     },
 
-    Delay = 1.5, -- chống spam
-    Webhook = ""
+    Delay = 1.5,
+    Webhook = "https://discord.com/api/webhooks/1494174864825782302/-7pgkMJK9JqBN2oacd3O03Z4usaZM5DRykDPC29VaFVN35nE46602MQpYb_k5v-ackWa"
 }
 
---// ===== SERVICES =====
+--// SERVICES
 local Players = game:GetService("Players")
 local HttpService = game:GetService("HttpService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -21,60 +23,55 @@ local VirtualUser = game:GetService("VirtualUser")
 
 local player = Players.LocalPlayer
 
---// ===== ANTI AFK =====
+--// ANTI AFK
 player.Idled:Connect(function()
     VirtualUser:Button2Down(Vector2.new(0,0), workspace.CurrentCamera.CFrame)
     task.wait(1)
     VirtualUser:Button2Up(Vector2.new(0,0), workspace.CurrentCamera.CFrame)
 end)
 
---// ===== LOAD GAME =====
 repeat task.wait() until game:IsLoaded()
 
 local Client = ReplicatedStorage:WaitForChild("Library"):WaitForChild("Client")
 local Network = require(Client.Network)
 local Save = require(Client.Save)
 
---// ===== FILE SAVE (KHÔNG GỬI TRÙNG) =====
-local FILE_NAME = "sent_items.json"
+--// FILE SAVE
+local FILE = "sent_mail.json"
 local sent = {}
 
-if isfile(FILE_NAME) then
-    sent = HttpService:JSONDecode(readfile(FILE_NAME))
+if isfile(FILE) then
+    sent = HttpService:JSONDecode(readfile(FILE))
 end
 
-local function saveFile()
-    writefile(FILE_NAME, HttpService:JSONEncode(sent))
+local function save()
+    writefile(FILE, HttpService:JSONEncode(sent))
 end
 
---// ===== WEBHOOK =====
-local function sendWebhook(msg)
+--// WEBHOOK
+local function hook(msg)
     if AutoMail.Webhook == "" then return end
-
-    local data = {
-        ["content"] = msg
-    }
 
     request({
         Url = AutoMail.Webhook,
         Method = "POST",
         Headers = {["Content-Type"] = "application/json"},
-        Body = HttpService:JSONEncode(data)
+        Body = HttpService:JSONEncode({content = msg})
     })
 end
 
---// ===== UI =====
-local ScreenGui = Instance.new("ScreenGui", player.PlayerGui)
-local TextLabel = Instance.new("TextLabel", ScreenGui)
+--// UI
+local gui = Instance.new("ScreenGui", player.PlayerGui)
+local label = Instance.new("TextLabel", gui)
 
-TextLabel.Size = UDim2.new(0,200,0,50)
-TextLabel.Position = UDim2.new(0,10,0,10)
-TextLabel.Text = "Starting..."
-TextLabel.BackgroundTransparency = 0.3
+label.Size = UDim2.new(0,200,0,50)
+label.Position = UDim2.new(0,10,0,10)
+label.BackgroundTransparency = 0.3
+label.Text = "Starting..."
 
---// ===== MAIN =====
+--// MAIN
 local userIndex = 1
-local totalSent = 0
+local sentPerUser = 0
 
 while true do
     local inv = Save.Get().Inventory
@@ -85,60 +82,60 @@ while true do
             for name, cfg in pairs(AutoMail.Items) do
                 if v.id == name and class == cfg.Class then
 
-                    -- filter pt
-                    if cfg.pt and v.pt ~= cfg.pt then
+                    -- FILTER PT
+                    if cfg.pt and v.pt ~= cfg.pt then continue end
+
+                    -- ❗ FILTER SHINY (FIX CHÍNH)
+                    if cfg.Shiny ~= nil and v.sh ~= cfg.Shiny then
                         continue
                     end
 
-                    local key = uid
-
-                    if sent[key] then
-                        continue
-                    end
+                    if sent[uid] then continue end
 
                     local amount = tonumber(v._am) or 1
                     if amount <= 0 then continue end
 
-                    -- giới hạn số lượng
-                    if cfg.Amount and totalSent >= cfg.Amount then
-                        continue
-                    end
-
                     local target = AutoMail.Users[userIndex]
 
-                    -- unlock nếu bị lock
+                    local need = cfg.Amount - sentPerUser
+                    if need <= 0 then continue end
+
+                    local sendAmount = math.min(amount, need)
+
+                    -- unlock
                     if v._lk then
                         Network.Invoke("Locking_SetLocked", uid, false)
                     end
 
-                    -- gửi từng item (1 mail)
                     local success = Network.Invoke(
                         "Mailbox: Send",
                         target,
                         "Auto",
                         class,
                         uid,
-                        1
+                        sendAmount
                     )
 
                     if success then
-                        sent[key] = true
-                        saveFile()
+                        sent[uid] = true
+                        save()
 
-                        totalSent += 1
+                        sentPerUser += sendAmount
 
-                        -- update UI
-                        TextLabel.Text = "["..totalSent.."/"..cfg.Amount.."]"
+                        label.Text = "["..sentPerUser.."/"..cfg.Amount.."]"
 
-                        -- webhook
-                        sendWebhook("Sent "..v.id.." -> "..target)
+                        hook("Sent "..sendAmount.." "..v.id.." -> "..target)
 
-                        print("Sent:", v.id, "->", target)
+                        print("Sent:", sendAmount, v.id, "->", target)
 
-                        -- đổi user (round robin)
-                        userIndex += 1
-                        if userIndex > #AutoMail.Users then
-                            userIndex = 1
+                        -- đủ 10 → đổi user
+                        if sentPerUser >= cfg.Amount then
+                            sentPerUser = 0
+                            userIndex += 1
+
+                            if userIndex > #AutoMail.Users then
+                                userIndex = 1
+                            end
                         end
 
                         task.wait(AutoMail.Delay)
@@ -148,5 +145,5 @@ while true do
         end
     end
 
-    task.wait(5)
+    task.wait(3)
 end
