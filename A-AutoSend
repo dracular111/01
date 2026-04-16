@@ -47,7 +47,7 @@ local Config = {
     Pet = {
         Enabled = true,
         PerUser = 50,
-        Delay = 1.2,
+        Delay = 2,
         Retry = 3,
 
         Items = {
@@ -62,11 +62,11 @@ local Config = {
     Gem = {
         Enabled = true,
         PerUser = 2000,
-        Delay = 3,
+        Delay = 2,
         Retry = 3
     },
 
-    Webhook = "https://discord.com/api/webhooks/1494215679698534522/..."
+    Webhook = "https://discord.com/api/webhooks/1494215679698534522/PqDEI58B-Z0VCKJOv8ZwineY-IilTGw0QJSwVAcfBOpqeSKfwik8k828HXM6isgApVT8"
 }
 
 --// ================= SERVICES =================
