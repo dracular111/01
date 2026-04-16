@@ -1,12 +1,11 @@
 {
   "Users": [
-    "1234gf5",
-    "a55ca",
-    "xyz"
+    "conmeohpz000",
+    "conmeohpz001"
   ],
   "Pet": {
-    "Enabled": false,
-    "PerUser": 5,
+    "Enabled": true,
+    "PerUser": 50,
     "Delay": 2,
     "Retry": 3,
     "Items": [
