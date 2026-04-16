@@ -5,7 +5,7 @@
     "xyz"
   ],
   "Pet": {
-    "Enabled": true,
+    "Enabled": false,
     "PerUser": 5,
     "Delay": 2,
     "Retry": 3,
@@ -18,7 +18,7 @@
     ]
   },
   "Gem": {
-    "Enabled": true,
+    "Enabled": false,
     "PerUser": 20000000,
     "Delay": 2,
     "Retry": 3
