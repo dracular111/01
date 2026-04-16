@@ -9,45 +9,39 @@ task.wait(10)
 end)
 
 task.wait(20)
---// ================= LOAD USER =================
-local Users = loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/A-List-User"))()
-
---// ================= CONFIG =================
-getgenv().AutoSystem = {
-
-    Pet = {
-        Enabled = true,
-        Users = Users,
-        PerUser = 50,
-        Delay = 3,
-        Retry = 3,
-
-        Items = {
-            ["Blooming Axolotl"] = {
-                Class = "Pet",
-                pt = 2
-            }
-        }
-    },
-
-    Gem = {
-        Enabled = true,
-        Users = Users,
-        PerUser = 200000,
-        Delay = 3,
-        Retry = 3
-    },
-
-    Webhook = "https://discord.com/api/webhooks/1494215679698534522/PqDEI58B-Z0VCKJOv8ZwineY-IilTGw0QJSwVAcfBOpqeSKfwik8k828HXM6isgApVT8"
-}
-
---// ================= LOAD =================
-repeat task.wait() until game:IsLoaded()
-
-local Players = game:GetService("Players")
+--// ================= LOAD CONFIG =================
 local HttpService = game:GetService("HttpService")
+
+local CONFIG_URL = "https://raw.githubusercontent.com/dracular111/01/main/A-List-User.json"
+
+local Config = nil
+
+local success, response = pcall(function()
+    return game:HttpGet(CONFIG_URL)
+end)
+
+if success then
+    local ok, data = pcall(function()
+        return HttpService:JSONDecode(response)
+    end)
+
+    if ok then
+        Config = data
+    else
+        warn("JSON decode lỗi")
+        return
+    end
+else
+    warn("Không load được config")
+    return
+end
+
+--// ================= SERVICES =================
+local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local player = Players.LocalPlayer
+
+repeat task.wait() until game:IsLoaded()
 
 local Client = ReplicatedStorage:WaitForChild("Library"):WaitForChild("Client")
 local Network = require(Client.Network)
@@ -69,9 +63,10 @@ end
 
 --// ================= WEBHOOK =================
 local function sendWebhook(msg)
-    if AutoSystem.Webhook == "" then return end
+    if not Config.Webhook or Config.Webhook == "" then return end
+
     request({
-        Url = AutoSystem.Webhook,
+        Url = Config.Webhook,
         Method = "POST",
         Headers = {["Content-Type"] = "application/json"},
         Body = HttpService:JSONEncode({content = msg})
@@ -84,20 +79,27 @@ local label = Instance.new("TextLabel", gui)
 label.Size = UDim2.new(0,320,0,50)
 label.Position = UDim2.new(0,10,0,10)
 label.BackgroundTransparency = 0.3
-label.Text = "Loading..."
+label.Text = "Loaded config..."
 
---// ================= PREPARE PET =================
-local petCfg = AutoSystem.Pet
-local gemCfg = AutoSystem.Gem
+--// ================= PREPARE =================
+local Users = Config.Users or {}
+if #Users == 0 then
+    warn("User rỗng")
+    return
+end
 
-local inv = Save.Get().Inventory
+-- PET
 local pets = {}
+local petAmounts = {}
+local petIndex = 1
 
-if petCfg.Enabled then
+if Config.Pet.Enabled then
+    local inv = Save.Get().Inventory
+
     for class, items in pairs(inv) do
         for uid, v in pairs(items) do
-            for name, itemCfg in pairs(petCfg.Items) do
-                if class == itemCfg.Class and v.id == name then
+            for _, itemCfg in ipairs(Config.Pet.Items) do
+                if class == itemCfg.Class and v.id == itemCfg.id then
                     if itemCfg.pt and v.pt ~= itemCfg.pt then continue end
                     table.insert(pets, {uid = uid, data = v, class = class})
                 end
@@ -106,18 +108,18 @@ if petCfg.Enabled then
     end
 
     if #pets == 0 then
-        label.Text = "[PET] No pets - STOP"
-        sendWebhook("❌ PET STOP | No valid pets")
+        sendWebhook("❌ PET STOP | No pets")
         return
     end
 end
 
-local petAmounts = {}
-local petIndex = 1
-
---// ================= PREPARE GEM =================
+-- GEM
 local diamondUID
-if gemCfg.Enabled then
+local diamondsStat
+
+if Config.Gem.Enabled then
+    diamondsStat = player:WaitForChild("leaderstats"):FindFirstChild("💎 Diamonds")
+
     for id, v in pairs(Save.Get().Inventory["Currency"]) do
         if v.id == "Diamonds" then
             diamondUID = id
@@ -131,15 +133,13 @@ if gemCfg.Enabled then
     end
 end
 
-local diamondsStat = player:WaitForChild("leaderstats"):FindFirstChild("💎 Diamonds")
-
---// ================= MAIN (PER USER) =================
+--// ================= MAIN =================
 for _, user in ipairs(Users) do
 
     label.Text = "Processing → "..user
 
     -- ===== PET =====
-    if petCfg.Enabled then
+    if Config.Pet.Enabled then
         local sentToUser = 0
 
         for i = petIndex, #pets do
@@ -157,25 +157,15 @@ for _, user in ipairs(Users) do
                 continue
             end
 
-            if v._lk then
-                Network.Invoke("Locking_SetLocked", uid, false)
-            end
-
-            local need = petCfg.PerUser - sentToUser
+            local need = Config.Pet.PerUser - sentToUser
             local sendAmount = math.min(need, amount)
 
-            local ok = false
-            for r = 1, petCfg.Retry do
-                ok = Network.Invoke("Mailbox: Send", user, "Auto Pet", pet.class, uid, sendAmount)
-                if ok then break end
-                task.wait(1)
-            end
+            local ok = Network.Invoke("Mailbox: Send", user, "Auto Pet", pet.class, uid, sendAmount)
 
             if ok then
                 petAmounts[uid] -= sendAmount
                 sentToUser += sendAmount
 
-                label.Text = "[PET] "..user.." "..sentToUser.."/"..petCfg.PerUser
                 sendWebhook("🐾 "..sendAmount.." "..v.id.." → "..user)
 
                 if petAmounts[uid] <= 0 then
@@ -184,48 +174,37 @@ for _, user in ipairs(Users) do
                     petIndex = i
                 end
 
-                task.wait(petCfg.Delay)
+                task.wait(Config.Pet.Delay)
             end
 
-            if sentToUser >= petCfg.PerUser then break end
+            if sentToUser >= Config.Pet.PerUser then break end
         end
 
-        if sentToUser < petCfg.PerUser then
-            label.Text = "[PET] STOP"
+        if sentToUser < Config.Pet.PerUser then
             sendWebhook("❌ PET STOP | "..user)
             return
         end
     end
 
     -- ===== GEM =====
-    if gemCfg.Enabled then
-        if not diamondsStat or diamondsStat.Value < gemCfg.PerUser then
-            label.Text = "[GEM] STOP"
+    if Config.Gem.Enabled then
+        if not diamondsStat or diamondsStat.Value < Config.Gem.PerUser then
             sendWebhook("❌ GEM STOP | "..user)
             return
         end
 
-        label.Text = "[GEM] Sending → "..user
-
-        local ok = false
-        for r = 1, gemCfg.Retry do
-            ok = Network.Invoke("Mailbox: Send", user, "Auto Gem", "Currency", diamondUID, gemCfg.PerUser)
-            if ok then break end
-            task.wait(1)
-        end
+        local ok = Network.Invoke("Mailbox: Send", user, "Auto Gem", "Currency", diamondUID, Config.Gem.PerUser)
 
         if ok then
-            label.Text = "[GEM] "..user.." ✔ "..formatNumber(gemCfg.PerUser)
-            sendWebhook("💎 "..formatNumber(gemCfg.PerUser).." → "..user)
+            sendWebhook("💎 "..formatNumber(Config.Gem.PerUser).." → "..user)
         else
             sendWebhook("❌ GEM FAIL → "..user)
             return
         end
 
-        task.wait(gemCfg.Delay)
+        task.wait(Config.Gem.Delay)
     end
 end
 
---// ================= DONE =================
-label.Text = "ALL DONE"
-sendWebhook("✅ ALL DONE (PER USER)")
+sendWebhook("✅ ALL DONE (REMOTE CONFIG)")
+label.Text = "DONE"
