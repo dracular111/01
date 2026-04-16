@@ -61,7 +61,7 @@ local Config = {
 
     Gem = {
         Enabled = true,
-        PerUser = 2000,
+        PerUser = 200000,
         Delay = 2,
         Retry = 3
     },
