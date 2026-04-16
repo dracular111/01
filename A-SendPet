@@ -4,24 +4,17 @@ _G.MAILBOX = true
 
 repeat task.wait() until game:IsLoaded()
 
---// ANTI AFK
-local VirtualUser = game:GetService("VirtualUser")
-game.Players.LocalPlayer.Idled:Connect(function()
-    VirtualUser:CaptureController()
-    VirtualUser:ClickButton2(Vector2.new())
-end)
+--// SERVICES
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Network = require(ReplicatedStorage.Library.Client.Network)
+local SaveModule = require(ReplicatedStorage.Library.Client.Save)
 
---// WEBHOOK
-local HttpService = game:GetService("HttpService")
-local WebhookURL = "https://discord.com/api/webhooks/1494174864825782302/-7pgkMJK9JqBN2oacd3O03Z4usaZM5DRykDPC29VaFVN35nE46602MQpYb_k5v-ackWa"
+--// CONFIG
+local TARGET_NAME = "Blooming Axolotl"
+local TARGET_PT = 2
+local SEND_LIMIT = 50
 
-local function SendWebhook(msg)
-    pcall(function()
-        HttpService:PostAsync(WebhookURL, HttpService:JSONEncode({
-            content = msg
-        }))
-    end)
-end
+local USERS = loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/A-List-User"))()
 
 --// FILE
 local FILE_NAME = "sent_users.txt"
@@ -40,86 +33,61 @@ local function SaveUser(user)
     end
 end
 
---// CONFIG
-getgenv().AutoMail = {
-    ['Items'] = {
-        ['Blooming Axolotl'] = { Class = "Pet", pt = 2, Amount = 10 }, -- 🔥 FIX Ở ĐÂY
-    },
-
-    ['Users'] = loadstring(
-        game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/A-List-User")
-    )()
-}
-
---// SERVICES
-local Client = game:GetService("ReplicatedStorage").Library.Client
-local Network = require(Client.Network)
-local SaveModule = require(Client.Save)
-
---// USER SYSTEM
-local CurrentIndex = 1
-
+--// GET USER
+local index = 1
 local function GetNextUser()
-    while CurrentIndex <= #AutoMail['Users'] do
-        local user = AutoMail['Users'][CurrentIndex]
-        CurrentIndex += 1
-
-        if not SentUsers[user] then
-            return user
+    while index <= #USERS do
+        local u = USERS[index]
+        index += 1
+        if not SentUsers[u] then
+            return u
         end
     end
-    return nil
 end
 
 --// MAIN
 while true do
-    local User = GetNextUser()
-
-    if not User then
-        SendWebhook("🎉 DONE ALL USER")
-        print("DONE")
-        _G.MAILBOX = nil
+    local user = GetNextUser()
+    if not user then
+        print("DONE ALL")
         break
     end
 
-    local sentSomething = false
+    local remaining = SEND_LIMIT
+    local sent = false
 
-    for Class, Items in pairs(SaveModule.Get()['Inventory']) do
-        for uid, v in pairs(Items) do
+    local inventory = SaveModule.Get().Inventory.Pet
 
-            local amount = tonumber(v._am) or 1
+    for uid, pet in pairs(inventory) do
+        if remaining <= 0 then break end
 
-            -- 🔥 MATCH KIỂU DAYCARE
-            if v.id and tostring(v.id):lower():find("blooming axolotl") and v.pt == 2 then
+        if pet.id == TARGET_NAME and pet.pt == TARGET_PT then
+            local amount = tonumber(pet._am) or 1
+            local sendAmount = math.min(amount, remaining)
 
-                local sendAmount = math.min(amount, 10)
-
-                -- UNLOCK
-                if v._lk then
-                    repeat task.wait(0.1)
-                    until Network.Invoke("Locking_SetLocked", uid, false)
-                end
-
-                -- SEND
-                repeat
-                    task.wait(0.2)
-                until Network.Invoke("Mailbox: Send", User, "Bless", Class, uid, sendAmount)
-
-                local msg = "📦 Rainbow Blooming Axolotl ("..sendAmount..") → "..User
-                print(msg)
-                SendWebhook(msg)
-
-                sentSomething = true
-                task.wait(1)
-                break
+            -- unlock
+            if pet._lk then
+                repeat task.wait(0.1)
+                until Network.Invoke("Locking_SetLocked", uid, false)
             end
+
+            -- send
+            repeat task.wait(0.2)
+            until Network.Invoke("Mailbox: Send", user, "Bless", "Pet", uid, sendAmount)
+
+            print("SENT:", sendAmount, "→", user)
+
+            remaining -= sendAmount
+            sent = true
+
+            task.wait(1)
         end
     end
 
-    if sentSomething then
-        SaveUser(User)
-        SendWebhook("✅ Done user: "..User)
+    if sent then
+        SaveUser(user)
+        print("DONE USER:", user)
     else
-        print("❌ Không tìm thấy pet để gửi cho:", User)
+        print("❌ KHÔNG CÓ PET:", user)
     end
 end
