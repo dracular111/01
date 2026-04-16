@@ -1,93 +1,152 @@
---// ANTI DUP
-if _G.MAILBOX then return end
-_G.MAILBOX = true
+--// ===== CONFIG =====
+getgenv().AutoMail = {
+    Users = {"conmeohpz000", "conmeohpz001"},
+    Items = {
+        ["Blooming Axolotl"] = {
+            Class = "Pet",
+            Amount = 10,
+            pt = 2 -- 0 = Normal | 1 = Golden | 2 = Rainbow
+        }
+    },
 
+    Delay = 1.5, -- chống spam
+    Webhook = ""
+}
+
+--// ===== SERVICES =====
+local Players = game:GetService("Players")
+local HttpService = game:GetService("HttpService")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local VirtualUser = game:GetService("VirtualUser")
+
+local player = Players.LocalPlayer
+
+--// ===== ANTI AFK =====
+player.Idled:Connect(function()
+    VirtualUser:Button2Down(Vector2.new(0,0), workspace.CurrentCamera.CFrame)
+    task.wait(1)
+    VirtualUser:Button2Up(Vector2.new(0,0), workspace.CurrentCamera.CFrame)
+end)
+
+--// ===== LOAD GAME =====
 repeat task.wait() until game:IsLoaded()
 
---// SERVICES
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local Network = require(ReplicatedStorage.Library.Client.Network)
-local SaveModule = require(ReplicatedStorage.Library.Client.Save)
+local Client = ReplicatedStorage:WaitForChild("Library"):WaitForChild("Client")
+local Network = require(Client.Network)
+local Save = require(Client.Save)
 
---// CONFIG
-local TARGET_NAME = "Blooming Axolotl"
-local TARGET_PT = 2
-local SEND_LIMIT = 50
-
-local USERS = loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/A-List-User"))()
-
---// FILE
-local FILE_NAME = "sent_users.txt"
-local SentUsers = {}
+--// ===== FILE SAVE (KHÔNG GỬI TRÙNG) =====
+local FILE_NAME = "sent_items.json"
+local sent = {}
 
 if isfile(FILE_NAME) then
-    for line in string.gmatch(readfile(FILE_NAME), "[^\r\n]+") do
-        SentUsers[line] = true
-    end
+    sent = HttpService:JSONDecode(readfile(FILE_NAME))
 end
 
-local function SaveUser(user)
-    if not SentUsers[user] then
-        appendfile(FILE_NAME, user .. "\n")
-        SentUsers[user] = true
-    end
+local function saveFile()
+    writefile(FILE_NAME, HttpService:JSONEncode(sent))
 end
 
---// GET USER
-local index = 1
-local function GetNextUser()
-    while index <= #USERS do
-        local u = USERS[index]
-        index += 1
-        if not SentUsers[u] then
-            return u
-        end
-    end
+--// ===== WEBHOOK =====
+local function sendWebhook(msg)
+    if AutoMail.Webhook == "" then return end
+
+    local data = {
+        ["content"] = msg
+    }
+
+    request({
+        Url = AutoMail.Webhook,
+        Method = "POST",
+        Headers = {["Content-Type"] = "application/json"},
+        Body = HttpService:JSONEncode(data)
+    })
 end
 
---// MAIN
+--// ===== UI =====
+local ScreenGui = Instance.new("ScreenGui", player.PlayerGui)
+local TextLabel = Instance.new("TextLabel", ScreenGui)
+
+TextLabel.Size = UDim2.new(0,200,0,50)
+TextLabel.Position = UDim2.new(0,10,0,10)
+TextLabel.Text = "Starting..."
+TextLabel.BackgroundTransparency = 0.3
+
+--// ===== MAIN =====
+local userIndex = 1
+local totalSent = 0
+
 while true do
-    local user = GetNextUser()
-    if not user then
-        print("DONE ALL")
-        break
-    end
+    local inv = Save.Get().Inventory
 
-    local remaining = SEND_LIMIT
-    local sent = false
+    for class, items in pairs(inv) do
+        for uid, v in pairs(items) do
 
-    local inventory = SaveModule.Get().Inventory.Pet
+            for name, cfg in pairs(AutoMail.Items) do
+                if v.id == name and class == cfg.Class then
 
-    for uid, pet in pairs(inventory) do
-        if remaining <= 0 then break end
+                    -- filter pt
+                    if cfg.pt and v.pt ~= cfg.pt then
+                        continue
+                    end
 
-        if pet.id == TARGET_NAME and pet.pt == TARGET_PT then
-            local amount = tonumber(pet._am) or 1
-            local sendAmount = math.min(amount, remaining)
+                    local key = uid
 
-            -- unlock
-            if pet._lk then
-                repeat task.wait(0.1)
-                until Network.Invoke("Locking_SetLocked", uid, false)
+                    if sent[key] then
+                        continue
+                    end
+
+                    local amount = tonumber(v._am) or 1
+                    if amount <= 0 then continue end
+
+                    -- giới hạn số lượng
+                    if cfg.Amount and totalSent >= cfg.Amount then
+                        continue
+                    end
+
+                    local target = AutoMail.Users[userIndex]
+
+                    -- unlock nếu bị lock
+                    if v._lk then
+                        Network.Invoke("Locking_SetLocked", uid, false)
+                    end
+
+                    -- gửi từng item (1 mail)
+                    local success = Network.Invoke(
+                        "Mailbox: Send",
+                        target,
+                        "Auto",
+                        class,
+                        uid,
+                        1
+                    )
+
+                    if success then
+                        sent[key] = true
+                        saveFile()
+
+                        totalSent += 1
+
+                        -- update UI
+                        TextLabel.Text = "["..totalSent.."/"..cfg.Amount.."]"
+
+                        -- webhook
+                        sendWebhook("Sent "..v.id.." -> "..target)
+
+                        print("Sent:", v.id, "->", target)
+
+                        -- đổi user (round robin)
+                        userIndex += 1
+                        if userIndex > #AutoMail.Users then
+                            userIndex = 1
+                        end
+
+                        task.wait(AutoMail.Delay)
+                    end
+                end
             end
-
-            -- send
-            repeat task.wait(0.2)
-            until Network.Invoke("Mailbox: Send", user, "Bless", "Pet", uid, sendAmount)
-
-            print("SENT:", sendAmount, "→", user)
-
-            remaining -= sendAmount
-            sent = true
-
-            task.wait(1)
         end
     end
 
-    if sent then
-        SaveUser(user)
-        print("DONE USER:", user)
-    else
-        print("❌ KHÔNG CÓ PET:", user)
-    end
+    task.wait(5)
 end
