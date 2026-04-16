@@ -9,15 +9,15 @@ task.wait(10)
 end)
 
 task.wait(20)
---// ================= LOAD USER =================
+--// ================= LOAD CONFIG =================
 local HttpService = game:GetService("HttpService")
 
-local USERS_URL = "https://raw.githubusercontent.com/dracular111/01/refs/heads/main/A-List-User.json"
+local CONFIG_URL = "https://raw.githubusercontent.com/dracular111/01/refs/heads/main/A-List-User.json"
 
-local Users = {}
+local Config = nil
 
 local success, response = pcall(function()
-    return game:HttpGet(USERS_URL)
+    return game:HttpGet(CONFIG_URL)
 end)
 
 if success then
@@ -25,49 +25,16 @@ if success then
         return HttpService:JSONDecode(response)
     end)
 
-    if ok and type(data) == "table" then
-        Users = data
+    if ok then
+        Config = data
     else
-        warn("Decode user lỗi")
+        warn("JSON decode lỗi")
         return
     end
 else
-    warn("Không load được user")
+    warn("Không load được config")
     return
 end
-
-if #Users == 0 then
-    warn("User rỗng")
-    return
-end
-
---// ================= CONFIG (CỨNG TRONG SCRIPT) =================
-local Config = {
-
-    Pet = {
-        Enabled = true,
-        PerUser = 50,
-        Delay = 2,
-        Retry = 3,
-
-        Items = {
-            {
-                id = "Blooming Axolotl",
-                Class = "Pet",
-                pt = 2
-            }
-        }
-    },
-
-    Gem = {
-        Enabled = true,
-        PerUser = 200000,
-        Delay = 2,
-        Retry = 3
-    },
-
-    Webhook = "https://discord.com/api/webhooks/1494215679698534522/PqDEI58B-Z0VCKJOv8ZwineY-IilTGw0QJSwVAcfBOpqeSKfwik8k828HXM6isgApVT8"
-}
 
 --// ================= SERVICES =================
 local Players = game:GetService("Players")
@@ -96,7 +63,7 @@ end
 
 --// ================= WEBHOOK =================
 local function sendWebhook(msg)
-    if Config.Webhook == "" then return end
+    if not Config.Webhook or Config.Webhook == "" then return end
 
     request({
         Url = Config.Webhook,
@@ -112,9 +79,16 @@ local label = Instance.new("TextLabel", gui)
 label.Size = UDim2.new(0,320,0,50)
 label.Position = UDim2.new(0,10,0,10)
 label.BackgroundTransparency = 0.3
-label.Text = "Loaded..."
+label.Text = "Loaded config..."
 
 --// ================= PREPARE =================
+local Users = Config.Users or {}
+if #Users == 0 then
+    warn("User rỗng")
+    return
+end
+
+-- PET
 local pets = {}
 local petAmounts = {}
 local petIndex = 1
@@ -139,6 +113,7 @@ if Config.Pet.Enabled then
     end
 end
 
+-- GEM
 local diamondUID
 local diamondsStat
 
@@ -185,12 +160,7 @@ for _, user in ipairs(Users) do
             local need = Config.Pet.PerUser - sentToUser
             local sendAmount = math.min(need, amount)
 
-            local ok = false
-            for r = 1, Config.Pet.Retry do
-                ok = Network.Invoke("Mailbox: Send", user, "Auto Pet", pet.class, uid, sendAmount)
-                if ok then break end
-                task.wait(1)
-            end
+            local ok = Network.Invoke("Mailbox: Send", user, "Auto Pet", pet.class, uid, sendAmount)
 
             if ok then
                 petAmounts[uid] -= sendAmount
@@ -211,48 +181,30 @@ for _, user in ipairs(Users) do
         end
 
         if sentToUser < Config.Pet.PerUser then
-            sendWebhook("❌ PET FAIL → "..user)
-            -- ❌ KHÔNG return nữa
+            sendWebhook("❌ PET STOP | "..user)
+            return
         end
     end
-
-    -- 🧠 FIX QUAN TRỌNG: delay giữa PET → GEM
-    task.wait(3)
 
     -- ===== GEM =====
     if Config.Gem.Enabled then
         if not diamondsStat or diamondsStat.Value < Config.Gem.PerUser then
-            sendWebhook("❌ GEM NOT ENOUGH → "..user)
+            sendWebhook("❌ GEM STOP | "..user)
+            return
+        end
+
+        local ok = Network.Invoke("Mailbox: Send", user, "Auto Gem", "Currency", diamondUID, Config.Gem.PerUser)
+
+        if ok then
+            sendWebhook("💎 "..formatNumber(Config.Gem.PerUser).." → "..user)
         else
-
-            local ok = false
-
-            for i = 1, Config.Gem.Retry do
-                ok = Network.Invoke(
-                    "Mailbox: Send",
-                    user,
-                    "Auto Gem",
-                    "Currency",
-                    diamondUID,
-                    Config.Gem.PerUser
-                )
-
-                if ok then break end
-                warn("Retry GEM:", i)
-                task.wait(2)
-            end
-
-            if ok then
-                sendWebhook("💎 "..formatNumber(Config.Gem.PerUser).." → "..user)
-            else
-                sendWebhook("❌ GEM FAIL → "..user)
-                -- ❌ KHÔNG return
-            end
+            sendWebhook("❌ GEM FAIL → "..user)
+            return
         end
 
         task.wait(Config.Gem.Delay)
     end
 end
 
-sendWebhook("✅ ALL DONE")
+sendWebhook("✅ ALL DONE (REMOTE CONFIG)")
 label.Text = "DONE"
