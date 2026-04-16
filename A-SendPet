@@ -5,7 +5,7 @@ getgenv().AutoMail = {
     Items = {
         ["Blooming Axolotl"] = {
             Class = "Pet",
-            Amount = 10,
+            Amount = 50,
             pt = 2, -- Rainbow
             Shiny = false -- ❗ QUAN TRỌNG: không lấy shiny
         }
