@@ -185,7 +185,12 @@ for _, user in ipairs(Users) do
             local need = Config.Pet.PerUser - sentToUser
             local sendAmount = math.min(need, amount)
 
-            local ok = Network.Invoke("Mailbox: Send", user, "Auto Pet", pet.class, uid, sendAmount)
+            local ok = false
+            for r = 1, Config.Pet.Retry do
+                ok = Network.Invoke("Mailbox: Send", user, "Auto Pet", pet.class, uid, sendAmount)
+                if ok then break end
+                task.wait(1)
+            end
 
             if ok then
                 petAmounts[uid] -= sendAmount
@@ -206,25 +211,43 @@ for _, user in ipairs(Users) do
         end
 
         if sentToUser < Config.Pet.PerUser then
-            sendWebhook("❌ PET STOP | "..user)
-            return
+            sendWebhook("❌ PET FAIL → "..user)
+            -- ❌ KHÔNG return nữa
         end
     end
+
+    -- 🧠 FIX QUAN TRỌNG: delay giữa PET → GEM
+    task.wait(3)
 
     -- ===== GEM =====
     if Config.Gem.Enabled then
         if not diamondsStat or diamondsStat.Value < Config.Gem.PerUser then
-            sendWebhook("❌ GEM STOP | "..user)
-            return
-        end
-
-        local ok = Network.Invoke("Mailbox: Send", user, "Auto Gem", "Currency", diamondUID, Config.Gem.PerUser)
-
-        if ok then
-            sendWebhook("💎 "..formatNumber(Config.Gem.PerUser).." → "..user)
+            sendWebhook("❌ GEM NOT ENOUGH → "..user)
         else
-            sendWebhook("❌ GEM FAIL → "..user)
-            return
+
+            local ok = false
+
+            for i = 1, Config.Gem.Retry do
+                ok = Network.Invoke(
+                    "Mailbox: Send",
+                    user,
+                    "Auto Gem",
+                    "Currency",
+                    diamondUID,
+                    Config.Gem.PerUser
+                )
+
+                if ok then break end
+                warn("Retry GEM:", i)
+                task.wait(2)
+            end
+
+            if ok then
+                sendWebhook("💎 "..formatNumber(Config.Gem.PerUser).." → "..user)
+            else
+                sendWebhook("❌ GEM FAIL → "..user)
+                -- ❌ KHÔNG return
+            end
         end
 
         task.wait(Config.Gem.Delay)
