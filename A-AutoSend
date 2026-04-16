@@ -9,15 +9,15 @@ task.wait(10)
 end)
 
 task.wait(20)
---// ================= LOAD CONFIG =================
+--// ================= LOAD USER =================
 local HttpService = game:GetService("HttpService")
 
-local CONFIG_URL = "https://raw.githubusercontent.com/dracular111/01/refs/heads/main/A-List-User.json"
+local USERS_URL = "https://raw.githubusercontent.com/dracular111/01/refs/heads/main/A-List-User.json"
 
-local Config = nil
+local Users = {}
 
 local success, response = pcall(function()
-    return game:HttpGet(CONFIG_URL)
+    return game:HttpGet(USERS_URL)
 end)
 
 if success then
@@ -25,16 +25,49 @@ if success then
         return HttpService:JSONDecode(response)
     end)
 
-    if ok then
-        Config = data
+    if ok and type(data) == "table" then
+        Users = data
     else
-        warn("JSON decode lỗi")
+        warn("Decode user lỗi")
         return
     end
 else
-    warn("Không load được config")
+    warn("Không load được user")
     return
 end
+
+if #Users == 0 then
+    warn("User rỗng")
+    return
+end
+
+--// ================= CONFIG (CỨNG TRONG SCRIPT) =================
+local Config = {
+
+    Pet = {
+        Enabled = true,
+        PerUser = 50,
+        Delay = 1.2,
+        Retry = 3,
+
+        Items = {
+            {
+                id = "Blooming Axolotl",
+                Class = "Pet",
+                pt = 2
+            }
+        }
+    },
+
+    Gem = {
+        Enabled = true,
+        PerUser = 2000,
+        Delay = 3,
+        Retry = 3
+    },
+
+    Webhook = "https://discord.com/api/webhooks/1494215679698534522/..."
+}
 
 --// ================= SERVICES =================
 local Players = game:GetService("Players")
@@ -63,7 +96,7 @@ end
 
 --// ================= WEBHOOK =================
 local function sendWebhook(msg)
-    if not Config.Webhook or Config.Webhook == "" then return end
+    if Config.Webhook == "" then return end
 
     request({
         Url = Config.Webhook,
@@ -79,16 +112,9 @@ local label = Instance.new("TextLabel", gui)
 label.Size = UDim2.new(0,320,0,50)
 label.Position = UDim2.new(0,10,0,10)
 label.BackgroundTransparency = 0.3
-label.Text = "Loaded config..."
+label.Text = "Loaded..."
 
 --// ================= PREPARE =================
-local Users = Config.Users or {}
-if #Users == 0 then
-    warn("User rỗng")
-    return
-end
-
--- PET
 local pets = {}
 local petAmounts = {}
 local petIndex = 1
@@ -113,7 +139,6 @@ if Config.Pet.Enabled then
     end
 end
 
--- GEM
 local diamondUID
 local diamondsStat
 
@@ -206,5 +231,5 @@ for _, user in ipairs(Users) do
     end
 end
 
-sendWebhook("✅ ALL DONE (REMOTE CONFIG)")
+sendWebhook("✅ ALL DONE")
 label.Text = "DONE"
