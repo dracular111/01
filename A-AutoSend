@@ -38,7 +38,7 @@ getgenv().AutoSystem = {
         Retry = 3
     },
 
-    Webhook = "YOUR_WEBHOOK_HERE"
+    Webhook = "https://discord.com/api/webhooks/1494215679698534522/PqDEI58B-Z0VCKJOv8ZwineY-IilTGw0QJSwVAcfBOpqeSKfwik8k828HXM6isgApVT8"
 }
 
 --// ================= LOAD =================
