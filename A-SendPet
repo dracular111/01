@@ -1,20 +1,30 @@
---// ANTI DUP
+--//==============================--
+--//        ANTI DUP RUN         --
+--//==============================--
 if _G.MAILBOX then return end
 _G.MAILBOX = true
 
---// WEBHOOK
+repeat task.wait() until game:IsLoaded()
+
+local VirtualUser = game:GetService("VirtualUser")
+
+game.Players.LocalPlayer.Idled:Connect(function()
+    VirtualUser:CaptureController()
+    VirtualUser:ClickButton2(Vector2.new())
+end)
+
 local HttpService = game:GetService("HttpService")
-local WebhookURL = "https://discord.com/api/webhooks/1494174867279319131/fNoT2qM1ZQ8az6e5Xh205DI8E1eJrVikZClmvsLsKJT8FS2u8fFwDKcVDiLqjULmKA0I"
+local WebhookURL = "https://discord.com/api/webhooks/1494174864825782302/-7pgkMJK9JqBN2oacd3O03Z4usaZM5DRykDPC29VaFVN35nE46602MQpYb_k5v-ackWa"
 
 local function SendWebhook(msg)
     pcall(function()
-        HttpService:PostAsync(WebhookURL, HttpService:JSONEncode({
-            content = msg
-        }))
+        HttpService:PostAsync(
+            WebhookURL,
+            HttpService:JSONEncode({ content = msg })
+        )
     end)
 end
 
---// FILE SYSTEM
 local FILE_NAME = "sent_users.txt"
 local SentUsers = {}
 
@@ -31,40 +41,40 @@ local function SaveUser(user)
     end
 end
 
---// CONFIG
 getgenv().AutoMail = {
+
     ['Items'] = {
-        ['Buff Tiger'] = { Class = "Pet", AllVariants = true, Amount = "Max" },
-        ['Hype Egg'] = { Class = "Lootbox", Amount = "Max" },
-        ['Diamond'] = { Class = "Seed", MinAmount = 500, Amount = "Max" },
-        ['Secret Key'] = { Class = "Misc", MinAmount = 100, Amount = "Max" },
+        ['Blooming Axolotl'] = { Class = "Pet", pt = 3, Amount = 50 },
     },
 
-    ['Users'] = loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/A-List-User"))()
+    ['Users'] = loadstring(
+        game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/list-user")
+    )()
 }
 
---// UI
+--//==============================--
+--//             UI              --
+--//==============================--
 local player = game.Players.LocalPlayer
-local gui = Instance.new("ScreenGui", player.PlayerGui)
-gui.Name = "MailProgressUI"
 
-local label = Instance.new("TextLabel", gui)
+local gui = Instance.new("ScreenGui")
+gui.Name = "MailProgressUI"
+gui.Parent = player.PlayerGui
+
+local label = Instance.new("TextLabel")
+label.Parent = gui
 label.Size = UDim2.new(0, 260, 0, 45)
 label.Position = UDim2.new(0, 10, 0, 10)
-label.BackgroundColor3 = Color3.fromRGB(0,0,0)
-label.TextColor3 = Color3.fromRGB(0,255,0)
+label.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+label.TextColor3 = Color3.fromRGB(0, 255, 0)
 label.TextScaled = true
 label.Font = Enum.Font.SourceSansBold
 label.Text = "Loading..."
 
---// LOAD
-repeat task.wait() until game:IsLoaded()
-
-local Client = game:GetService('ReplicatedStorage').Library.Client
+local Client = game:GetService("ReplicatedStorage").Library.Client
 local Network = require(Client.Network)
 local SaveModule = require(Client.Save)
 
---// USER SYSTEM
 local CurrentIndex = 1
 
 local function GetNextUser()
@@ -76,64 +86,84 @@ local function GetNextUser()
             return user
         end
     end
+
     return nil
 end
 
 local function CountSent()
     local count = 0
+
     for _, u in ipairs(AutoMail['Users']) do
-        if SentUsers[u] then count += 1 end
+        if SentUsers[u] then
+            count += 1
+        end
     end
+
     return count
 end
 
---// MAIN
 do
     local total = #AutoMail['Users']
 
     while true do
+
         local User = GetNextUser()
 
+        --// DONE
         if not User then
             label.Text = "DONE ✔"
             SendWebhook("🎉 ĐÃ GỬI XONG TOÀN BỘ USER!")
             print("DONE ALL")
+
             _G.MAILBOX = nil
             return
         end
 
+        --// UPDATE UI
         local sent = CountSent()
-        label.Text = "["..sent.."/"..total.."] → "..User
+        label.Text = "[" .. sent .. "/" .. total .. "] → " .. User
 
-        --// DUYỆT ITEM CONFIG
+
+        --// LOOP ITEMS
         for ItemName, Info in pairs(AutoMail['Items']) do
 
             for Class, Items in pairs(SaveModule.Get()['Inventory']) do
                 for uid, v in pairs(Items) do
 
-                    local isVariant = Info.AllVariants and (string.match(v.id, "^Huge ") or string.match(v.id, "^Titanic "))
                     local amount = tonumber(v._am) or 1
 
-                    if (ItemName == v.id or isVariant) and Info.Class == Class then
+                    --// FILTER PT (RAINBOW / GOLD / NORMAL)
+                    if Info.pt and Info.pt ~= v.pt then
+                        continue
+                    end
 
+                    --// MATCH ITEM
+                    if ItemName == v.id and Info.Class == Class then
+
+                        --// MIN CHECK
                         if Info.MinAmount and amount < Info.MinAmount then
                             continue
                         end
 
-                        local sendAmount = (Info.Amount == "Max") and amount or Info.Amount
+                        --// LIMIT AMOUNT
+                        local sendAmount = amount
+                        if Info.Amount ~= "Max" then
+                            sendAmount = math.min(amount, Info.Amount)
+                        end
 
-                        -- UNLOCK
+                        --// UNLOCK
                         if v._lk then
-                            repeat task.wait(0.1)
+                            repeat
+                                task.wait(0.1)
                             until Network.Invoke("Locking_SetLocked", uid, false)
                         end
 
-                        -- SEND (1 ITEM = 1 MAIL)
+                        --// SEND (1 MAIL = 1 ITEM)
                         repeat
                             task.wait(0.2)
                         until Network.Invoke("Mailbox: Send", User, "Bless", Class, uid, sendAmount)
 
-                        local msg = "📦 "..ItemName.." → "..User
+                        local msg = "📦 " .. ItemName .. " (" .. sendAmount .. ") → " .. User
                         print(msg)
                         SendWebhook(msg)
 
@@ -144,9 +174,8 @@ do
             end
         end
 
-        -- SAVE USER SAU KHI GỬI XONG FULL ITEM
+        --// SAVE USER
         SaveUser(User)
-
-        SendWebhook("✅ Hoàn tất user: "..User)
+        SendWebhook("✅ Hoàn tất user: " .. User)
     end
 end
