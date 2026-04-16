@@ -1,6 +1,5 @@
 {
   "Users": ["conmeohpz000", "conmeohpz001", "conmeohpz002"],
-
   "Pet": {
     "Enabled": true,
     "PerUser": 5,
@@ -14,12 +13,11 @@
       }
     ]
   },
-
   "Gem": {
     "Enabled": true,
     "PerUser": 200000,
     "Delay": 2,
     "Retry": 3
   },
-
   "Webhook": "https://discord.com/api/webhooks/1494215679698534522/PqDEI58B-Z0VCKJOv8ZwineY-IilTGw0QJSwVAcfBOpqeSKfwik8k828HXM6isgApVT8"
+}
