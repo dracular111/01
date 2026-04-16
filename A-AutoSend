@@ -12,7 +12,7 @@ task.wait(20)
 --// ================= LOAD CONFIG =================
 local HttpService = game:GetService("HttpService")
 
-local CONFIG_URL = "https://raw.githubusercontent.com/dracular111/01/main/A-List-User.JSON"
+local CONFIG_URL = "https://raw.githubusercontent.com/dracular111/01/main/A-List-User.json"
 
 local Config = nil
 
