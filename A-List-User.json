@@ -1,26 +1,6 @@
-{
-  "Users": ["conmeohpz000", "conmeohpz001"],
-
-  "Pet": {
-    "Enabled": true,
-    "PerUser": 50,
-    "Delay": 1.2,
-    "Retry": 3,
-    "Items": [
-      {
-        "id": "Blooming Axolotl",
-        "Class": "Pet",
-        "pt": 2
-      }
-    ]
-  },
-
-  "Gem": {
-    "Enabled": true,
-    "PerUser": 2000000000000,
-    "Delay": 3,
-    "Retry": 3
-  },
-
-  "Webhook": "https://discord.com/api/webhooks/1494215679698534522/PqDEI58B-Z0VCKJOv8ZwineY-IilTGw0QJSwVAcfBOpqeSKfwik8k828HXM6isgApVT8"
-}
+[
+  "conmeohpz000",
+  "conmeohpz001",
+  "conmeohpz002",
+  "conmeohpz003"
+]
