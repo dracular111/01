@@ -19,7 +19,7 @@ getgenv().AutoSystem = {
         Enabled = true,
         Users = Users, -- 👈 dùng chung
         PerUser = 50,
-        Delay = 1.2,
+        Delay = 2,
         Retry = 3,
 
         Items = {
