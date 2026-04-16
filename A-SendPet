@@ -4,12 +4,12 @@ getgenv().AutoMail = {
     Items = {
         ["Blooming Axolotl"] = {
             Class = "Pet",
-            pt = 2 -- 0 = Normal | 1 = Golden | 2 = Rainbow
+            pt = 2
         }
     },
 
     PerUser = 50,
-    Delay = 1.2,
+    Delay = 2,
     Retry = 3,
     Webhook = "https://discord.com/api/webhooks/1494174864825782302/-7pgkMJK9JqBN2oacd3O03Z4usaZM5DRykDPC29VaFVN35nE46602MQpYb_k5v-ackWa"
 }
@@ -22,7 +22,7 @@ local VirtualUser = game:GetService("VirtualUser")
 
 local player = Players.LocalPlayer
 
---// ===== ANTI AFK =====
+-- anti afk
 player.Idled:Connect(function()
     VirtualUser:Button2Down(Vector2.new(0,0), workspace.CurrentCamera.CFrame)
     task.wait(1)
@@ -35,7 +35,7 @@ local Client = ReplicatedStorage:WaitForChild("Library"):WaitForChild("Client")
 local Network = require(Client.Network)
 local Save = require(Client.Save)
 
---// ===== WEBHOOK =====
+-- webhook
 local function sendWebhook(msg)
     if AutoMail.Webhook == "" then return end
     request({
@@ -46,16 +46,15 @@ local function sendWebhook(msg)
     })
 end
 
---// ===== UI =====
-local ScreenGui = Instance.new("ScreenGui", player.PlayerGui)
-local TextLabel = Instance.new("TextLabel", ScreenGui)
+-- UI
+local gui = Instance.new("ScreenGui", player.PlayerGui)
+local label = Instance.new("TextLabel", gui)
+label.Size = UDim2.new(0,260,0,50)
+label.Position = UDim2.new(0,10,0,10)
+label.Text = "Starting..."
+label.BackgroundTransparency = 0.3
 
-TextLabel.Size = UDim2.new(0,260,0,50)
-TextLabel.Position = UDim2.new(0,10,0,10)
-TextLabel.Text = "Starting..."
-TextLabel.BackgroundTransparency = 0.3
-
---// ===== GET PET LIST =====
+-- get pets
 local function getPets()
     local list = {}
     local inv = Save.Get().Inventory
@@ -82,7 +81,7 @@ local function getPets()
     return list
 end
 
---// ===== SEND (RETRY) =====
+-- send retry
 local function sendMail(user, class, uid, amount)
     for i = 1, AutoMail.Retry do
         local ok = Network.Invoke(
@@ -99,14 +98,14 @@ local function sendMail(user, class, uid, amount)
     return false
 end
 
---// ===== MAIN =====
+-- ===== MAIN =====
 local pets = getPets()
-
 if #pets == 0 then
-    TextLabel.Text = "No pets!"
+    label.Text = "No pets!"
     return
 end
 
+local petAmounts = {}
 local petIndex = 1
 local totalSent = 0
 
@@ -119,13 +118,17 @@ for _, user in ipairs(AutoMail.Users) do
         local v = pet.data
         local uid = pet.uid
 
-        local amount = tonumber(v._am) or 1
+        if not petAmounts[uid] then
+            petAmounts[uid] = tonumber(v._am) or 1
+        end
+
+        local amount = petAmounts[uid]
+
         if amount <= 0 then
             petIndex = i + 1
             continue
         end
 
-        -- unlock
         if v._lk then
             Network.Invoke("Locking_SetLocked", uid, false)
         end
@@ -136,17 +139,17 @@ for _, user in ipairs(AutoMail.Users) do
         local success = sendMail(user, pet.class, uid, sendAmount)
 
         if success then
-            v._am -= sendAmount
+            petAmounts[uid] -= sendAmount
 
             sentToUser += sendAmount
             totalSent += sendAmount
 
-            TextLabel.Text = user.." ["..sentToUser.."/"..AutoMail.PerUser.."]"
+            label.Text = user.." ["..sentToUser.."/"..AutoMail.PerUser.."]"
 
             sendWebhook("Sent "..sendAmount.." "..v.id.." -> "..user)
             print("Sent:", sendAmount, v.id, "->", user)
 
-            if v._am <= 0 then
+            if petAmounts[uid] <= 0 then
                 petIndex = i + 1
             else
                 petIndex = i
@@ -158,21 +161,18 @@ for _, user in ipairs(AutoMail.Users) do
             petIndex = i + 1
         end
 
-        -- HARD STOP (QUAN TRỌNG NHẤT)
         if sentToUser >= AutoMail.PerUser then
             break
         end
     end
 
-    -- hết pet → dừng toàn bộ
     if sentToUser < AutoMail.PerUser then
         warn("Out of pets!")
-        TextLabel.Text = "Out of pets - STOP"
+        label.Text = "Out of pets - STOP"
         return
     end
 end
 
--- DONE
 print("DONE ALL USERS")
-TextLabel.Text = "DONE"
+label.Text = "DONE"
 sendWebhook("Done | Total sent: "..totalSent)
