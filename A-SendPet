@@ -1,126 +1,186 @@
--- FIX request (tương thích mọi executor)
-local request = request or http_request or syn.request
-
--- CONFIG
+--// ===== CONFIG =====
 getgenv().AutoMail = {
     Users = {"conmeohpz000", "conmeohpz001"},
-
     Items = {
         ["Blooming Axolotl"] = {
             Class = "Pet",
-            Amount = 10,
-            pt = 2,
-            Shiny = false
+            pt = 2 -- 0 = Normal | 1 = Golden | 2 = Rainbow
         }
     },
 
-    Delay = 2 -- tăng delay tránh bị block
+    PerUser = 50,
+    Delay = 1.5,
+    Retry = 3,
+    Webhook = ""
 }
 
--- SERVICES
+--// ===== SERVICES =====
 local Players = game:GetService("Players")
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local HttpService = game:GetService("HttpService")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local VirtualUser = game:GetService("VirtualUser")
 
 local player = Players.LocalPlayer
 
+--// ===== ANTI AFK =====
+player.Idled:Connect(function()
+    VirtualUser:Button2Down(Vector2.new(0,0), workspace.CurrentCamera.CFrame)
+    task.wait(1)
+    VirtualUser:Button2Up(Vector2.new(0,0), workspace.CurrentCamera.CFrame)
+end)
+
+--// ===== LOAD GAME =====
 repeat task.wait() until game:IsLoaded()
 
 local Client = ReplicatedStorage:WaitForChild("Library"):WaitForChild("Client")
 local Network = require(Client.Network)
 local Save = require(Client.Save)
 
--- FILE SAVE
-local FILE = "sent.json"
-local sent = {}
+--// ===== WEBHOOK =====
+local function sendWebhook(msg)
+    if AutoMail.Webhook == "" then return end
 
-pcall(function()
-    if isfile(FILE) then
-        sent = HttpService:JSONDecode(readfile(FILE))
-    end
-end)
-
-local function save()
-    pcall(function()
-        writefile(FILE, HttpService:JSONEncode(sent))
-    end)
+    request({
+        Url = AutoMail.Webhook,
+        Method = "POST",
+        Headers = {["Content-Type"] = "application/json"},
+        Body = HttpService:JSONEncode({content = msg})
+    })
 end
 
--- MAIN
-local userIndex = 1
-local sentPerUser = 0
+--// ===== UI =====
+local ScreenGui = Instance.new("ScreenGui", player.PlayerGui)
+local TextLabel = Instance.new("TextLabel", ScreenGui)
 
-while true do
+TextLabel.Size = UDim2.new(0,250,0,50)
+TextLabel.Position = UDim2.new(0,10,0,10)
+TextLabel.Text = "Starting..."
+TextLabel.BackgroundTransparency = 0.3
+
+--// ===== BUILD INVENTORY LIST =====
+local function getValidPets()
+    local list = {}
     local inv = Save.Get().Inventory
 
     for class, items in pairs(inv) do
         for uid, v in pairs(items) do
-
             for name, cfg in pairs(AutoMail.Items) do
-                if v.id ~= name or class ~= cfg.Class then continue end
 
-                -- filter
-                if cfg.pt and v.pt ~= cfg.pt then continue end
-                if cfg.Shiny ~= nil and v.sh ~= cfg.Shiny then continue end
-                if sent[uid] then continue end
-
-                local amount = tonumber(v._am) or 1
-                if amount <= 0 then continue end
-
-                local need = cfg.Amount - sentPerUser
-                if need <= 0 then continue end
-
-                local sendAmount = math.min(amount, need)
-                local target = AutoMail.Users[userIndex]
-
-                -- unlock
-                if v._lk then
-                    pcall(function()
-                        Network.Invoke("Locking_SetLocked", uid, false)
-                    end)
-                end
-
-                -- retry send
-                local success = false
-                for i = 1, 5 do
-                    success = pcall(function()
-                        return Network.Invoke(
-                            "Mailbox: Send",
-                            target,
-                            "Auto",
-                            class,
-                            uid,
-                            sendAmount
-                        )
-                    end)
-
-                    if success then break end
-                    task.wait(1)
-                end
-
-                if success then
-                    sent[uid] = true
-                    save()
-
-                    sentPerUser += sendAmount
-
-                    print("Sent:", sendAmount, v.id, "->", target)
-
-                    if sentPerUser >= cfg.Amount then
-                        sentPerUser = 0
-                        userIndex += 1
-                        if userIndex > #AutoMail.Users then
-                            userIndex = 1
-                        end
+                if class == cfg.Class and v.id == name then
+                    if cfg.pt and v.pt ~= cfg.pt then
+                        continue
                     end
 
-                    task.wait(AutoMail.Delay)
-                else
-                    warn("Send failed, retry next loop...")
+                    local amount = tonumber(v._am) or 1
+                    if amount > 0 then
+                        table.insert(list, {
+                            uid = uid,
+                            data = v,
+                            class = class
+                        })
+                    end
                 end
             end
         end
     end
 
-    task.wait(5)
+    return list
 end
+
+--// ===== SEND FUNCTION (CÓ RETRY) =====
+local function sendMail(target, class, uid, amount)
+    for i = 1, AutoMail.Retry do
+        local ok = Network.Invoke(
+            "Mailbox: Send",
+            target,
+            "Auto",
+            class,
+            uid,
+            amount
+        )
+
+        if ok then
+            return true
+        end
+
+        task.wait(1)
+    end
+
+    return false
+end
+
+--// ===== MAIN =====
+local pets = getValidPets()
+
+if #pets == 0 then
+    TextLabel.Text = "No pets!"
+    return
+end
+
+local petIndex = 1
+local totalSent = 0
+
+for _, user in ipairs(AutoMail.Users) do
+    local sentToUser = 0
+
+    print("Sending to:", user)
+
+    while sentToUser < AutoMail.PerUser do
+        local pet = pets[petIndex]
+
+        -- hết pet → STOP
+        if not pet then
+            warn("Out of pets!")
+            TextLabel.Text = "Out of pets - STOP"
+            return
+        end
+
+        local v = pet.data
+        local uid = pet.uid
+
+        local amount = tonumber(v._am) or 1
+        if amount <= 0 then
+            petIndex += 1
+            continue
+        end
+
+        -- unlock
+        if v._lk then
+            Network.Invoke("Locking_SetLocked", uid, false)
+        end
+
+        local need = AutoMail.PerUser - sentToUser
+        local sendAmount = math.min(need, amount)
+
+        local success = sendMail(user, pet.class, uid, sendAmount)
+
+        if success then
+            -- trừ đúng amount (KHÔNG BUG)
+            v._am -= sendAmount
+
+            sentToUser += sendAmount
+            totalSent += sendAmount
+
+            TextLabel.Text = user.." ["..sentToUser.."/"..AutoMail.PerUser.."]"
+
+            sendWebhook("Sent "..sendAmount.." "..v.id.." -> "..user)
+
+            print("Sent:", sendAmount, v.id, "->", user)
+
+            -- nếu hết stack → sang pet tiếp
+            if v._am <= 0 then
+                petIndex += 1
+            end
+
+            task.wait(AutoMail.Delay)
+        else
+            warn("Send failed:", uid)
+            petIndex += 1
+        end
+    end
+end
+
+-- DONE
+print("ALL DONE")
+TextLabel.Text = "DONE ALL USERS"
+sendWebhook("✅ Done all users | Total sent: "..totalSent)
