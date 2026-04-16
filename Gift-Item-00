@@ -41,7 +41,7 @@ getgenv().AutoMail = {
         ['Mega Loot Chest'] = { Class = "Lootbox", MinAmount = 1, Amount = "Max" },
         ['Huge Sea Dragon Card'] = { Class = "Card", MinAmount = 1, Amount = "Max" },
         ['Insta Plant Capsule'] = { Class = "Misc", MinAmount = 100, Amount = "Max" },
-        ['Diamond'] = { Class = "Seed", MinAmount = 500, Amount = "Max" },
+        --['Diamond'] = { Class = "Seed", MinAmount = 500, Amount = "Max" },
         --['MVP Key'] = { Class = "Misc", MinAmount = 1, Amount = "Max" },
         ['MVP Key Lower Half'] = { Class = "Misc", MinAmount = 400, Amount = "Max" },
         ['MVP Key Upper Half'] = { Class = "Misc", MinAmount = 25, Amount = "Max" },
