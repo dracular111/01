@@ -17,7 +17,7 @@
 
   "Gem": {
     "Enabled": true,
-    "PerUser": 20000,
+    "PerUser": 200000,
     "Delay": 2,
     "Retry": 3
   },
