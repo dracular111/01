@@ -133,6 +133,29 @@ if Config.Gem.Enabled then
     end
 end
 
+--// ================= AUTO CLAIM MAIL =================
+task.spawn(function()
+    while true do
+        task.wait(60) -- mỗi 60s check 1 lần
+
+        local inbox = Network.Invoke("Mailbox: Get")
+
+        if inbox and inbox.Messages then
+            for _, mail in pairs(inbox.Messages) do
+                if mail.id then
+                    local ok = Network.Invoke("Mailbox: Claim", mail.id)
+
+                    if ok then
+                        sendWebhook("📥 Claimed mail")
+                    end
+
+                    task.wait(0.5)
+                end
+            end
+        end
+    end
+end)
+
 --// ================= MAIN =================
 for _, user in ipairs(Users) do
 
