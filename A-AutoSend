@@ -8,7 +8,7 @@ task.wait(10)
 --loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/A-SendGem"))()
 end)
 
-task.wait(20)
+task.wait(10)
 --// ================= LOAD CONFIG =================
 local HttpService = game:GetService("HttpService")
 
