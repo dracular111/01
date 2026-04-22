@@ -1,20 +1,40 @@
 getgenv().Settings = {
 ["Items"] = {
-        {Name = "MVP Key", Data = {Price = "3m"}},
+      	{Name = "Titanic Vampire Agony", Data = {Price = "18b"}},
 
-		{Name = "Gargantuan Krampus", Data = {Price = "95.86b"}},
-		{Name = "Golden Gargantuan Krampus", Data = {Price = "138.86b"}},
-		{Name = "Gargantuan Blurred Agony", Data = {Price = "83.86b"}},
-		{Name = "Gargantuan Black Balloon Cat", Data = {Price = "86.86b"}},
-		{Name = "Gargantuan Super Cat", Data = {Price = "50.86b"}},
-        {Name = "Titanic Vampire Agony", Data = {Price = "18b"}},
+		{Name = "Titanic Withered Agony", Data = {Price = "1%"}},
+		{Name = "Golden Titanic Withered Agony", Data = {Price = "1%"}},
+		{Name = "Rainbow Titanic Withered Agony", Data = {Price = "1%"}},
+
+        {Name = "Shiny Golden Titanic Starlight Pony", Data = {Price = "100b"}},
+        {Name = "Shiny Titanic Starlight Pony", Data = {Price = "1%"}},
+        {Name = "Rainbow Titanic Starlight Pony", Data = {Price = "18b"}},
+        {Name = "Golden Titanic Starlight Pony", Data = {Price = "6.5b"}},
+        {Name = "Titanic Starlight Pony", Data = {Price = "5.6b"}},
+
+		{Name = "Titanic Irish Wolfhound", Data = {Price = "1%"}},
+		{Name = "Golden Titanic Irish Wolfhound", Data = {Price = "1%"}},
+		{Name = "Rainbow Titanic Irish Wolfhound", Data = {Price = "1%"}},
+
+		{Name = "Titanic Horseshoe Capybara", Data = {Price = "1%"}},
+		{Name = "Golden Titanic Horseshoe Capybara", Data = {Price = "1%"}},
+		{Name = "Rainbow Titanic Horseshoe Capybara", Data = {Price = "1%"}},
+		{Name = "Shiny Titanic Horseshoe Capybara", Data = {Price = "1%"}},
+
+		{Name = "Titanic Mucki", Data = {Price = "1%"}},
+		{Name = "Golden Titanic Mucki", Data = {Price = "1%"}},
+		{Name = "Rainbow Titanic Mucki", Data = {Price = "1%"}},
 
 		{Name = "Titanic Lucki Chest Mimic", Data = {Price = "1%"}},
 		{Name = "Golden Titanic Lucki Chest Mimic", Data = {Price = "1%"}},
 		{Name = "Rainbow Titanic Lucki Chest Mimic", Data = {Price = "1%"}},
 
+		{Name = "Titanic Tiedye Corgi", Data = {Price = "5.1b"}},
+		{Name = "Rainbow Titanic Tiedye Corgi", Data = {Price = "15.68b"}},
+		{Name = "Shiny Titanic Tiedye Corgi", Data = {Price = "15.86b"}},
+
         {Name = "2026 New Years Gift", Data = {Price = "1%"}},
-		{Name = "Halloween Lucky Block Gift", Data = {Price = "38m"}},
+		{Name = "Halloween Lucky Block Gift", Data = {Price = "1%"}},
         {Name = "Time Trial Gift", Data = {Price = "199k"}},
         {Name = "Tropical Gift", Data = {Price = "50k"}},
         {Name = "Basketball Gift", Data = {Price = "1%"}},
@@ -24,8 +44,8 @@ getgenv().Settings = {
         {Name = "Jolly Gift", Data = {Price = "1%"}},
 
         {Name = "Huge Machine Egg 5", Data = {Price = "1%"}},
-        {Name = "Hype Egg", Data = {Price = "8.5m"}},
-        {Name = "Hype Egg 2", Data = {Price = "8.5m"}},
+        {Name = "Hype Egg", Data = {Price = "12m"}},
+        {Name = "Hype Egg 2", Data = {Price = "12m"}},
         --{Name = "Mini Pinata", Data = {Price = "45k"}},
         --{Name = "Charm Stone", Data = {Price = "1%"}},
         --{Name = "Royalty TN1", Data = {Price = "1%"}},
@@ -38,9 +58,8 @@ getgenv().Settings = {
         {Name = "Exclusive Egg 58", Data = {Price = "3%"}},
         {Name = "Exclusive Egg 59", Data = {Price = "3%"}},
 
-        {Name = "Mega Loot Chest", Data = {Price = "2%"}},
-        {Name = "Mega Potion Chest", Data = {Price = "2%"}},
-        {Name = "Mega Ultimate Chest", Data = {Price = "2%"}},
+        {Name = "Mega Loot Chest", Data = {Price = "5%"}},
+        {Name = "Mega Potion Chest", Data = {Price = "5%"}},
         {Name = "Mega Enchant Chest", Data = {Price = "1%"}},
         {Name = "Huge Sea Dragon Card", Data = {Price = "5%"}},
 
@@ -52,35 +71,13 @@ getgenv().Settings = {
         {Name = "Fantasy Spinny Wheel Ticket", Data = {Price = "5%"}},
         {Name = "Lucky Raid Boss Key Lower Half V2", Data = {Price = "8k"}},
         {Name = "Lucky Raid Boss Key Upper Half V2", Data = {Price = "5%"}},
-
-        {Name = "Huge Bluebird", Data = {Price = "20m"}},
-        {Name = "Golden Huge Bluebird", Data = {Price = "28m"}},
-        {Name = "Rainbow Huge Bluebird", Data = {Price = "68m"}},
-        {Name = "Shiny Huge Bluebird", Data = {Price = "68m"}},
-        {Name = "Shiny Golden Huge Bluebird", Data = {Price = "199m"}},
-        {Name = "Shiny Rainbow Huge Bluebird", Data = {Price = "368m"}},
-
-        {Name = "Huge Festive Seal", Data = {Price = "1%"}},
-		{Name = "Huge Holiday Owl", Data = {Price = "1%"}},
-		{Name = "Huge Gingerbread Lion", Data = {Price = "1%"}},
-		{Name = "Huge Candycane Kitsune", Data = {Price = "1%"}},
-		{Name = "Huge Fiddlefern Cat", Data = {Price = "1%"}},
-		{Name = "Huge Pajamas Shark", Data = {Price = "1%"}},
-		{Name = "Huge Starry Eye Bunny", Data = {Price = "1%"}},
-
-        --{Name = "All Huges", Data = {Price = "1%", Min_sell = "20m", Max_sell = "40m", sold_by_convention = true}},
-        --{Name = "Golden All Huges", Data = {Price = "1%", Min_sell = "19m", Max_sell = "25m", sold_by_convention = true}},
-        --{Name = "Rainbow All Huges", Data = {Price = "2%", Min_sell = "90m", Max_sell = "368m", sold_by_convention = true}},
-        --{Name = "Shiny All Huges", Data = {Price = "2%", Min_sell = "60m", Max_sell = "300m"}},
-        --{Name = "Shiny Rainbow All Huges", Data = {Price = "5%", Min_sell = "1.5b", Max_sell = "5b"}},
-		--{Name = "Shiny Golden All Huges", Data = {Price = "5%", Min_sell = "1b", Max_sell = "5b"}},
     },
 ["xoa_Map"] = true,
 
 ["send_gem"] = {
         Play_mail = true,
-        User_name_mail = "congahpz003",
-        gem_mail = "5b",
+        User_name_mail = "congahpz003", "congahpz004", "congahpz005", "congahpz006", "congahpz007", "congahpz007", "congahpz008",
+        gem_mail = "7b",
 	time_swap_plaza = 120,
 		
 }
