@@ -118,7 +118,7 @@ end
 
 --== LOOP 10 PHÚT ==--
 task.spawn(function()
-    while task.wait(60) do
+    while task.wait(120) do
         local before = start
         local now = diamondStat.Value
         if now - before < MIN_GAIN then
