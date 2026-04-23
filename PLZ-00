@@ -3,31 +3,31 @@ getgenv().Settings = {
       	{Name = "Titanic Vampire Agony", Data = {Price = "18b"}},
 
 		{Name = "Titanic Withered Agony", Data = {Price = "5%"}},
-		{Name = "Golden Titanic Withered Agony", Data = {Price = "1%"}},
+		{Name = "Golden Titanic Withered Agony", Data = {Price = "2%"}},
 		{Name = "Rainbow Titanic Withered Agony", Data = {Price = "2%"}},
 
         {Name = "Shiny Golden Titanic Starlight Pony", Data = {Price = "100b"}},
         {Name = "Shiny Titanic Starlight Pony", Data = {Price = "1%"}},
         {Name = "Rainbow Titanic Starlight Pony", Data = {Price = "18b"}},
         {Name = "Golden Titanic Starlight Pony", Data = {Price = "6.5b"}},
-        {Name = "Titanic Starlight Pony", Data = {Price = "5.45b"}},
+        {Name = "Titanic Starlight Pony", Data = {Price = "5.4b"}},
 
 		{Name = "Titanic Irish Wolfhound", Data = {Price = "4%"}},
 		{Name = "Golden Titanic Irish Wolfhound", Data = {Price = "1%"}},
 		{Name = "Rainbow Titanic Irish Wolfhound", Data = {Price = "1%"}},
 
-		{Name = "Titanic Horseshoe Capybara", Data = {Price = "3%"}},
-		{Name = "Golden Titanic Horseshoe Capybara", Data = {Price = "1%"}},
-		{Name = "Rainbow Titanic Horseshoe Capybara", Data = {Price = "1%"}},
-		{Name = "Shiny Titanic Horseshoe Capybara", Data = {Price = "1%"}},
+		{Name = "Titanic Horseshoe Capybara", Data = {Price = "4%"}},
+		{Name = "Golden Titanic Horseshoe Capybara", Data = {Price = "2%"}},
+		{Name = "Rainbow Titanic Horseshoe Capybara", Data = {Price = "2%"}},
+		{Name = "Shiny Titanic Horseshoe Capybara", Data = {Price = "2%"}},
 
 		{Name = "Titanic Mucki", Data = {Price = "5%"}},
 		{Name = "Golden Titanic Mucki", Data = {Price = "1%"}},
 		{Name = "Rainbow Titanic Mucki", Data = {Price = "1%"}},
 
 		{Name = "Titanic Lucki Chest Mimic", Data = {Price = "5%"}},
-		{Name = "Golden Titanic Lucki Chest Mimic", Data = {Price = "1%"}},
-		{Name = "Rainbow Titanic Lucki Chest Mimic", Data = {Price = "1%"}},
+		{Name = "Golden Titanic Lucki Chest Mimic", Data = {Price = "2%"}},
+		{Name = "Rainbow Titanic Lucki Chest Mimic", Data = {Price = "2%"}},
 
 		{Name = "Titanic Tiedye Corgi", Data = {Price = "5.1b"}},
 		{Name = "Rainbow Titanic Tiedye Corgi", Data = {Price = "15.68b"}},
@@ -69,8 +69,8 @@ getgenv().Settings = {
         {Name = "Void Key", Data = {Price = "5%"}},
         {Name = "Fantasy Key", Data = {Price = "5%"}},
         {Name = "Fantasy Spinny Wheel Ticket", Data = {Price = "5%"}},
-        {Name = "Lucky Raid Boss Key Lower Half V2", Data = {Price = "8k"}},
-        {Name = "Lucky Raid Boss Key Upper Half V2", Data = {Price = "5%"}},
+        --{Name = "Lucky Raid Boss Key Lower Half V2", Data = {Price = "8k"}},
+        --{Name = "Lucky Raid Boss Key Upper Half V2", Data = {Price = "5%"}},
     },
 ["xoa_Map"] = true,
 
