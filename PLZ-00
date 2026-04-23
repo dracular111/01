@@ -76,8 +76,8 @@ getgenv().Settings = {
 
 ["send_gem"] = {
         Play_mail = true,
-        User_name_mail = "congahpz003", "congahpz004", "congahpz005", "congahpz006", "congahpz007", "congahpz007", "congahpz008",
-        gem_mail = "7b",
+        User_name_mail = "congahpz003",
+        gem_mail = "1b",
 	time_swap_plaza = 120,
 		
 }
