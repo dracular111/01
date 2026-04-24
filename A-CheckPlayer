@@ -6,28 +6,39 @@ screenGui.Parent = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGu
 
 -- ✅ Player Count (giữa trên)
 local PlayerCount = Instance.new("TextLabel")
-PlayerCount.Size = UDim2.new(1, 0, 0, 60)
-PlayerCount.Position = UDim2.new(0.5, 0, 0, 0) -- trên cùng
-PlayerCount.AnchorPoint = Vector2.new(0.5, 0) -- căn giữa
+PlayerCount.Size = UDim2.new(1, 0, 0, 150) -- 🔥 chỉnh độ to ở đây
+PlayerCount.Position = UDim2.new(0.5, 0, 0, 0)
+PlayerCount.AnchorPoint = Vector2.new(0.5, 0)
 
 PlayerCount.BackgroundTransparency = 1
 
--- 🔥 CHỮ VÀNG ĐẬM TO
-PlayerCount.TextColor3 = Color3.fromRGB(255, 215, 0) -- vàng đậm
-PlayerCount.TextStrokeTransparency = 0 -- viền rõ
+-- 🔥 style chữ
+PlayerCount.TextColor3 = Color3.fromRGB(255, 215, 0)
+PlayerCount.TextStrokeTransparency = 0
 PlayerCount.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
 
 PlayerCount.Font = Enum.Font.GothamBlack
-PlayerCount.TextScaled = true -- tự scale cho to đẹp
+PlayerCount.TextScaled = true -- 🔥 auto scale (quan trọng)
 
 PlayerCount.Text = "0"
 PlayerCount.Parent = screenGui
 
--- ✅ Update số player
+-- ✅ đếm player (trừ bản thân)
+local Players = game:GetService("Players")
+local localPlayer = Players.LocalPlayer
+
 task.spawn(function()
-    while task.wait(3) do
+    while task.wait(5) do
         if not PlayerCount then break end
-        local count = #game:GetService("Players"):GetPlayers()
+
+        local count = #Players:GetPlayers()
+
+        if localPlayer then
+            count = count - 1
+        end
+
+        if count < 0 then count = 0 end
+
         PlayerCount.Text = tostring(count)
     end
 end)
