@@ -12,18 +12,18 @@ getgenv().Settings = {
         {Name = "Golden Titanic Starlight Pony", Data = {Price = "6b"}},
         {Name = "Titanic Starlight Pony", Data = {Price = "5.35b"}},
 
-		{Name = "Titanic Irish Wolfhound", Data = {Price = "2%"}},
-		{Name = "Golden Titanic Irish Wolfhound", Data = {Price = "1%"}},
-		{Name = "Rainbow Titanic Irish Wolfhound", Data = {Price = "1%"}},
+		{Name = "Titanic Irish Wolfhound", Data = {Price = "4.6b"}},
+		{Name = "Golden Titanic Irish Wolfhound", Data = {Price = "4.68b"}},
+		{Name = "Rainbow Titanic Irish Wolfhound", Data = {Price = "15.68b"}},
+
+		{Name = "Titanic Mucki", Data = {Price = "4.6b"}},
+		{Name = "Golden Titanic Mucki", Data = {Price = "5.15b"}},
+		{Name = "Rainbow Titanic Mucki", Data = {Price = "15.68b"}},
 
 		{Name = "Titanic Horseshoe Capybara", Data = {Price = "3%"}},
 		{Name = "Golden Titanic Horseshoe Capybara", Data = {Price = "2%"}},
 		{Name = "Rainbow Titanic Horseshoe Capybara", Data = {Price = "2%"}},
 		{Name = "Shiny Titanic Horseshoe Capybara", Data = {Price = "2%"}},
-
-		{Name = "Titanic Mucki", Data = {Price = "2%"}},
-		{Name = "Golden Titanic Mucki", Data = {Price = "1%"}},
-		{Name = "Rainbow Titanic Mucki", Data = {Price = "1%"}},
 
 		{Name = "Titanic Lucki Chest Mimic", Data = {Price = "3%"}},
 		{Name = "Golden Titanic Lucki Chest Mimic", Data = {Price = "2%"}},
