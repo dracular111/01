@@ -1,33 +1,27 @@
--- ✅ Player Count (THÊM MỚI)
+-- ✅ Player Count (góc phải trên cùng)
 local PlayerCount = Instance.new("TextLabel")
-PlayerCount.Size = UDim2.new(1, 0, 0, 120)
-PlayerCount.Position = UDim2.new(0, 0, 1.15, 0)
+PlayerCount.Size = UDim2.new(0, 120, 0, 40) -- nhỏ gọn lại
+PlayerCount.Position = UDim2.new(1, -130, 0, 10) -- góc phải trên
+PlayerCount.AnchorPoint = Vector2.new(0, 0)
 PlayerCount.BackgroundTransparency = 1
+
 PlayerCount.TextColor3 = Color3.fromRGB(255, 255, 0)
 PlayerCount.Font = Enum.Font.Code
-PlayerCount.TextSize = 100
-PlayerCount.Text = "Players: 0"
-PlayerCount.TextXAlignment = Enum.TextXAlignment.Center
+PlayerCount.TextSize = 28
+
+PlayerCount.Text = "0" -- chỉ hiển thị số
+PlayerCount.TextXAlignment = Enum.TextXAlignment.Right
+
 PlayerCount.TextStrokeTransparency = 0.3
 PlayerCount.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
-PlayerCount.Parent = Label
 
-local startTime = os.time()
-task.spawn(function()
-    while task.wait(1) do
-        local elapsed = os.time() - startTime
-        local h = math.floor(elapsed / 3600)
-        local m = math.floor((elapsed % 3600) / 60)
-        local s = elapsed % 60
-        Online.Text = string.format("%02d:%02d:%02d", h, m, s)
-    end
-end)
+PlayerCount.Parent = Label -- hoặc ScreenGui nếu cần
 
--- ✅ Loop Player Count (siêu nhẹ)
+-- ✅ Loop cập nhật số player (nhẹ)
 task.spawn(function()
-    while task.wait(15) do
+    while task.wait(5) do -- giảm xuống 5s cho realtime hơn
         if not PlayerCount or not PlayerCount.Parent then break end
         local count = #game:GetService("Players"):GetPlayers()
-        PlayerCount.Text = "Players: " .. tostring(count)
+        PlayerCount.Text = tostring(count) -- chỉ số
     end
 end)
