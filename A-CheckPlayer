@@ -1,27 +1,33 @@
--- ✅ Player Count (góc phải trên cùng)
+-- 🔥 đảm bảo có ScreenGui
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "PlayerUI"
+screenGui.ResetOnSpawn = false
+screenGui.Parent = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
+
+-- ✅ Player Count (giữa trên)
 local PlayerCount = Instance.new("TextLabel")
-PlayerCount.Size = UDim2.new(0, 120, 0, 40) -- nhỏ gọn lại
-PlayerCount.Position = UDim2.new(1, -130, 0, 10) -- góc phải trên
-PlayerCount.AnchorPoint = Vector2.new(0, 0)
+PlayerCount.Size = UDim2.new(1, 0, 0, 60)
+PlayerCount.Position = UDim2.new(0.5, 0, 0, 0) -- trên cùng
+PlayerCount.AnchorPoint = Vector2.new(0.5, 0) -- căn giữa
+
 PlayerCount.BackgroundTransparency = 1
 
-PlayerCount.TextColor3 = Color3.fromRGB(255, 255, 0)
-PlayerCount.Font = Enum.Font.Code
-PlayerCount.TextSize = 28
-
-PlayerCount.Text = "0" -- chỉ hiển thị số
-PlayerCount.TextXAlignment = Enum.TextXAlignment.Right
-
-PlayerCount.TextStrokeTransparency = 0.3
+-- 🔥 CHỮ VÀNG ĐẬM TO
+PlayerCount.TextColor3 = Color3.fromRGB(255, 215, 0) -- vàng đậm
+PlayerCount.TextStrokeTransparency = 0 -- viền rõ
 PlayerCount.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
 
-PlayerCount.Parent = Label -- hoặc ScreenGui nếu cần
+PlayerCount.Font = Enum.Font.GothamBlack
+PlayerCount.TextScaled = true -- tự scale cho to đẹp
 
--- ✅ Loop cập nhật số player (nhẹ)
+PlayerCount.Text = "0"
+PlayerCount.Parent = screenGui
+
+-- ✅ Update số player
 task.spawn(function()
-    while task.wait(5) do -- giảm xuống 5s cho realtime hơn
-        if not PlayerCount or not PlayerCount.Parent then break end
+    while task.wait(3) do
+        if not PlayerCount then break end
         local count = #game:GetService("Players"):GetPlayers()
-        PlayerCount.Text = tostring(count) -- chỉ số
+        PlayerCount.Text = tostring(count)
     end
 end)
