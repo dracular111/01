@@ -1,3 +1,4 @@
+task.wait(20)
 -- ===== CONFIG =====
 local PRIORITIZE_EXCLUDE = true        -- true = hop ngay khi thấy excluded (bất kể số người) [chỉ kiểm tra 1 lần lúc start]
 local CASE_INSENSITIVE = false         -- true nếu muốn so sánh không phân biệt hoa/thường
