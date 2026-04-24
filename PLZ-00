@@ -4,7 +4,7 @@ getgenv().Settings = {
 
 		{Name = "Titanic Withered Agony", Data = {Price = "6%"}},
 		{Name = "Golden Titanic Withered Agony", Data = {Price = "2%"}},
-		{Name = "Rainbow Titanic Withered Agony", Data = {Price = "2%"}},
+		{Name = "Rainbow Titanic Withered Agony", Data = {Price = "25b"}},
 
         {Name = "Shiny Golden Titanic Starlight Pony", Data = {Price = "100b"}},
         {Name = "Shiny Titanic Starlight Pony", Data = {Price = "1%"}},
