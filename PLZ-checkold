@@ -1,0 +1,131 @@
+--== QUEUE (TỰ CHẠY LẠI SAU HOP) ==
+local Queue = (syn and syn.queue_on_teleport) or queue_on_teleport
+if Queue then
+    Queue(game:HttpGet("https://pastefy.app/raw/GemsSessionAutoReload"))
+end
+
+--== CHỐNG TRÙNG SCRIPT ==
+if _G.VARGEMS then return end
+_G.VARGEMS = true
+
+--== CHO PHÉP CHẠY Ở 2 MAP ==
+local VALID_PLACES = { [15588442388] = true, [15502339080] = true }
+if not VALID_PLACES[game.PlaceId] then return end
+
+task.wait(10)
+
+local Players = game:GetService("Players")
+local LP = Players.LocalPlayer
+local leaderstats = LP:WaitForChild("leaderstats")
+local diamondStat = leaderstats:WaitForChild("💎 Diamonds")
+
+--== CẤU HÌNH ==
+local MIN_GAIN = 1000000
+local MAIL_GROUP_WINDOW = 2
+
+--== GIÁ TRỊ PHIÊN ==
+local start = diamondStat.Value
+local high = start
+local earned = 0
+local mailCount = 0
+local mailTotal = 0
+local pending = 0
+local lastMail = 0
+
+_G.HOP_COUNT = (_G.HOP_COUNT or 0) + 1
+local hopCount = _G.HOP_COUNT
+
+--== UI ==
+local function formatNum(n)
+    local s={"","k","m","b","t","q"}
+    local i=1 local v=math.abs(n)
+    while v>=1000 and i<#s do v/=1000 i+=1 end
+    return string.format("%.2f%s", (n<0 and -v or v), s[i])
+end
+
+local gui = Instance.new("ScreenGui", LP.PlayerGui)
+gui.Name="GemMonitorUI"; gui.ResetOnSpawn=false
+
+local frame = Instance.new("Frame", gui)
+frame.Size = UDim2.new(0,260,0,80)
+frame.Position = UDim2.new(1,-270,1,-110)
+frame.BackgroundColor3 = Color3.fromRGB(25,25,25)
+frame.BackgroundTransparency = .25
+frame.BorderSizePixel=0
+Instance.new("UICorner",frame)
+Instance.new("UIListLayout",frame).Padding=UDim.new(0,2)
+
+local function mk()
+    local l=Instance.new("TextLabel",frame)
+    l.Size=UDim2.new(1,-10,0,20)
+    l.Font=Enum.Font.GothamSemibold
+    l.TextSize=14
+    l.BackgroundTransparency=1
+    l.TextXAlignment=Enum.TextXAlignment.Left
+    l.TextColor3=Color3.new(1,1,1)
+    return l
+end
+
+local l1,l2,l3,l4=mk(),mk(),mk(),mk()
+
+local function update(msg)
+    if diamondStat.Value > high then high = diamondStat.Value end
+    l1.Text="🔄 Hop: "..hopCount
+    l2.Text="💎 Lúc vào: "..formatNum(start).." | Cao nhất: "..formatNum(high)
+    l3.Text="📈 Hiệu suất: +"..formatNum(earned)
+    l4.Text="📮 Gửi: "..mailCount.." | Tổng: "..formatNum(mailTotal)..(msg and (" | "..msg) or "")
+end
+update()
+
+--== TRACK GEM ==
+local last = diamondStat.Value
+diamondStat:GetPropertyChangedSignal("Value"):Connect(function()
+    local cur=diamondStat.Value
+    local diff=cur-last
+    last=cur
+    if diff>0 then earned+=diff update()
+    elseif diff<0 then pending+=-diff lastMail=os.clock() end
+end)
+
+task.spawn(function()
+    while task.wait(.2) do
+        if pending>0 and os.clock()-lastMail>=MAIL_GROUP_WINDOW then
+            mailCount+=1
+            mailTotal+=pending
+            pending=0
+            update()
+        end
+    end
+end)
+
+--== SERVER HOP TỰ GOM & RETRY ==--
+local TeleportService = game:GetService("TeleportService")
+local HttpService = game:GetService("HttpService")
+
+local function Hop()
+    local cursor=""
+    while task.wait() do
+        local raw=game:HttpGet("https://games.roblox.com/v1/games/"..game.PlaceId.."/servers/Public?sortOrder=Asc&limit=100"..(cursor~="" and "&cursor="..cursor or ""))
+        local data=HttpService:JSONDecode(raw)
+        for _,s in ipairs(data.data) do
+            if s.playing < s.maxPlayers and s.id ~= game.JobId then
+                return TeleportService:TeleportToPlaceInstance(game.PlaceId, s.id, LP)
+            end
+        end
+        cursor = data.nextPageCursor or ""
+    end
+end
+
+--== LOOP 10 PHÚT ==--
+task.spawn(function()
+    while task.wait(1800) do
+        local before = start
+        local now = diamondStat.Value
+        if now - before < MIN_GAIN then
+            if pending>0 then mailCount+=1 mailTotal+=pending pending=0 end
+            update("Hop...")
+            Hop()
+            return
+        else update("OK") end
+    end
+end)
