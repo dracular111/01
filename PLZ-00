@@ -13,11 +13,11 @@ getgenv().Settings = {
         {Name = "Titanic Starlight Pony", Data = {Price = "5.35b"}},
 
 		{Name = "Titanic Irish Wolfhound", Data = {Price = "4.6b"}},
-		{Name = "Golden Titanic Irish Wolfhound", Data = {Price = "4.68b"}},
+		{Name = "Golden Titanic Irish Wolfhound", Data = {Price = "1%"}},
 		{Name = "Rainbow Titanic Irish Wolfhound", Data = {Price = "15.68b"}},
 
 		{Name = "Titanic Mucki", Data = {Price = "4.6b"}},
-		{Name = "Golden Titanic Mucki", Data = {Price = "5.15b"}},
+		{Name = "Golden Titanic Mucki", Data = {Price = "1%"}},
 		{Name = "Rainbow Titanic Mucki", Data = {Price = "15.68b"}},
 
 		{Name = "Titanic Horseshoe Capybara", Data = {Price = "3%"}},
