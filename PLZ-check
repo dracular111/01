@@ -28,6 +28,11 @@ local usernamesToExclude = {
     ["conmeohpz003"] = true,
     ["katte1xm"] = true,
     ["kotou7ua"] = true,
+    ["fiano7in"] = true,
+    ["micha1hn"] = true,
+    ["katte1xm"] = true,
+    ["kotou7ua"] = true,
+    ["samer8ie"] = true,
 }
 -- ====================
 repeat task.wait() until game:IsLoaded()
