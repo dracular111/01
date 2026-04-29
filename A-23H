@@ -1,0 +1,17 @@
+-- 🕒 Kick từ 22:57 với delay random 0–120s
+while true do
+    local now = os.date("!*t", os.time(os.date("!*t")) + 7 * 3600)
+
+    if now.hour == 22 and now.min >= 55 then
+        local delay = math.random(0, 120) -- 0–2 phút
+        warn("⏳ Đã 22:57+ → sẽ kick sau " .. delay .. " giây")
+
+        task.wait(delay)
+
+        warn("🚪 Kick reset (random 2 phút)")
+        game.Players.LocalPlayer:Kick("Reset 22:57 (Random ≤2p)")
+        break
+    end
+
+    task.wait(5)
+end
