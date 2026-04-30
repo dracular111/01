@@ -1,6 +1,15 @@
 getgenv().Settings = {
 ["Items"] = {
-      	{Name = "Titanic Vampire Agony", Data = {Price = "18b"}},
+
+		{Name = "Titanic Butterfly Pony", Data = {Price = "4.6B"}},
+		{Name = "Golden Titanic Butterfly Pony", Data = {Price = "5.5b"}},
+		{Name = "Rainbow Titanic Butterfly Pony", Data = {Price = "18b"}},
+        {Name = "Shiny Titanic Butterfly Pony", Data = {Price = "45b"}},
+
+		{Name = "Titanic Garden Goblin", Data = {Price = "4.4B"}},
+		{Name = "Golden Titanic Garden Goblin", Data = {Price = "5.2b"}},
+		{Name = "Rainbow Titanic Garden Goblin", Data = {Price = "18b"}},
+        {Name = "Shiny Titanic Garden Goblin", Data = {Price = "15b"}},
 
 		{Name = "Titanic Withered Agony", Data = {Price = "2%"}},
 		{Name = "Golden Titanic Withered Agony", Data = {Price = "2%"}},
