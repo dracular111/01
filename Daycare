@@ -1,3 +1,7 @@
+spawn(function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/A-Use-Voucher"))()
+end)
+
 if _G.DAYGIFTFREES then return end
 _G.DAYGIFTFREES = true
 
