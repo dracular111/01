@@ -30,7 +30,7 @@ getgenv().Settings = {
 
         {Name = "Titanic Mucki", Data = {Price = "1%"}},
         {Name = "Golden Titanic Mucki", Data = {Price = "1%"}},
-        {Name = "Rainbow Titanic Mucki", Data = {Price = "17b"}},
+        {Name = "Rainbow Titanic Mucki", Data = {Price = "16.9b"}},
         {Name = "Shiny Titanic Mucki", Data = {Price = "1%"}},
         {Name = "Shiny Golden Titanic Mucki", Data = {Price = "70b"}},
 
