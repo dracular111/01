@@ -3,15 +3,18 @@ getgenv().Settings = {
         {Name = "Gargantuan Dawn Phoenix", Data = {Price = "170b"}},
         {Name = "Golden Gargantuan Dawn Phoenix", Data = {Price = "318b"}},
 
-        {Name = "Titanic Butterfly Pony", Data = {Price = "4.8b"}},
-        {Name = "Golden Titanic Butterfly Pony", Data = {Price = "5.4b"}},
-        {Name = "Rainbow Titanic Butterfly Pony", Data = {Price = "20b"}},
+        {Name = "Titanic Ruinous Angelus", Data = {Price = "1%"}},
+        {Name = "Titanic Werewolf", Data = {Price = "1%"}},
+
+        {Name = "Titanic Butterfly Pony", Data = {Price = "4.75b"}},
+        {Name = "Golden Titanic Butterfly Pony", Data = {Price = "5.3b"}},
+        {Name = "Rainbow Titanic Butterfly Pony", Data = {Price = "19b"}},
         {Name = "Shiny Titanic Butterfly Pony", Data = {Price = "30b"}},
 
         {Name = "Titanic Garden Goblin", Data = {Price = "4.7b"}},
-        {Name = "Golden Titanic Garden Goblin", Data = {Price = "5.3b"}},
-        {Name = "Rainbow Titanic Garden Goblin", Data = {Price = "17b"}},
-        {Name = "Shiny Titanic Garden Goblin", Data = {Price = "22b"}},
+        {Name = "Golden Titanic Garden Goblin", Data = {Price = "5.2b"}},
+        {Name = "Rainbow Titanic Garden Goblin", Data = {Price = "16.5b"}},
+        {Name = "Shiny Titanic Garden Goblin", Data = {Price = "21b"}},
 
         {Name = "Titanic Withered Agony", Data = {Price = "1%"}},
         {Name = "Golden Titanic Withered Agony", Data = {Price = "1%"}},
