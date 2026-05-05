@@ -3,13 +3,13 @@ getgenv().Settings = {
         {Name = "Gargantuan Dawn Phoenix", Data = {Price = "170b"}},
         {Name = "Golden Gargantuan Dawn Phoenix", Data = {Price = "320b"}},
 
-        {Name = "Titanic Butterfly Pony", Data = {Price = "5b"}},
-        {Name = "Golden Titanic Butterfly Pony", Data = {Price = "5.5b"}},
+        {Name = "Titanic Butterfly Pony", Data = {Price = "4.9b"}},
+        {Name = "Golden Titanic Butterfly Pony", Data = {Price = "5.4b"}},
         {Name = "Rainbow Titanic Butterfly Pony", Data = {Price = "20b"}},
         {Name = "Shiny Titanic Butterfly Pony", Data = {Price = "30b"}},
 
-        {Name = "Titanic Garden Goblin", Data = {Price = "4.9b"}},
-        {Name = "Golden Titanic Garden Goblin", Data = {Price = "5.4b"}},
+        {Name = "Titanic Garden Goblin", Data = {Price = "4.8b"}},
+        {Name = "Golden Titanic Garden Goblin", Data = {Price = "5.3b"}},
         {Name = "Rainbow Titanic Garden Goblin", Data = {Price = "17b"}},
         {Name = "Shiny Titanic Garden Goblin", Data = {Price = "22b"}},
 
