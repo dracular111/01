@@ -14,7 +14,7 @@ getgenv().Settings = {
         {Name = "Titanic Garden Goblin", Data = {Price = "4.72b"}},
         {Name = "Golden Titanic Garden Goblin", Data = {Price = "5.3b"}},
         {Name = "Rainbow Titanic Garden Goblin", Data = {Price = "16.5b"}},
-        {Name = "Shiny Titanic Garden Goblin", Data = {Price = "20b"}},
+        {Name = "Shiny Titanic Garden Goblin", Data = {Price = "19b"}},
 
         {Name = "Titanic Withered Agony", Data = {Price = "1%"}},
         {Name = "Golden Titanic Withered Agony", Data = {Price = "1%"}},
