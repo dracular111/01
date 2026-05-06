@@ -1,20 +1,20 @@
 getgenv().Settings = {
     ["Items"] = {
         {Name = "Gargantuan Dawn Phoenix", Data = {Price = "170b"}},
-        {Name = "Golden Gargantuan Dawn Phoenix", Data = {Price = "300b"}},
+        {Name = "Golden Gargantuan Dawn Phoenix", Data = {Price = "298b"}},
 
         {Name = "Titanic Ruinous Angelus", Data = {Price = "5.5b"}},
-        {Name = "Titanic Werewolf", Data = {Price = "6.8b"}},
+        {Name = "Titanic Werewolf", Data = {Price = "6.7b"}},
 
         {Name = "Titanic Butterfly Pony", Data = {Price = "4.85b"}},
         {Name = "Golden Titanic Butterfly Pony", Data = {Price = "5.4b"}},
         {Name = "Rainbow Titanic Butterfly Pony", Data = {Price = "19b"}},
-        {Name = "Shiny Titanic Butterfly Pony", Data = {Price = "30b"}},
+        {Name = "Shiny Titanic Butterfly Pony", Data = {Price = "29b"}},
 
         {Name = "Titanic Garden Goblin", Data = {Price = "4.72b"}},
         {Name = "Golden Titanic Garden Goblin", Data = {Price = "5.3b"}},
         {Name = "Rainbow Titanic Garden Goblin", Data = {Price = "16.5b"}},
-        {Name = "Shiny Titanic Garden Goblin", Data = {Price = "21b"}},
+        {Name = "Shiny Titanic Garden Goblin", Data = {Price = "20b"}},
 
         {Name = "Titanic Withered Agony", Data = {Price = "1%"}},
         {Name = "Golden Titanic Withered Agony", Data = {Price = "1%"}},
@@ -25,7 +25,7 @@ getgenv().Settings = {
         {Name = "Shiny Titanic Starlight Pony", Data = {Price = "4%"}},
         {Name = "Titanic Starlight Pony", Data = {Price = "1%"}},
         {Name = "Golden Titanic Starlight Pony", Data = {Price = "1%"}},
-        {Name = "Rainbow Titanic Starlight Pony", Data = {Price = "19b"}},
+        {Name = "Rainbow Titanic Starlight Pony", Data = {Price = "18.6b"}},
 
         {Name = "Titanic Irish Wolfhound", Data = {Price = "1%"}},
         {Name = "Golden Titanic Irish Wolfhound", Data = {Price = "1%"}},
@@ -33,7 +33,7 @@ getgenv().Settings = {
 
         {Name = "Titanic Mucki", Data = {Price = "1%"}},
         {Name = "Golden Titanic Mucki", Data = {Price = "1%"}},
-        {Name = "Rainbow Titanic Mucki", Data = {Price = "16.9b"}},
+        {Name = "Rainbow Titanic Mucki", Data = {Price = "16.5b"}},
         {Name = "Shiny Titanic Mucki", Data = {Price = "3%"}},
         {Name = "Shiny Golden Titanic Mucki", Data = {Price = "60b"}},
 
