@@ -89,6 +89,14 @@ getgenv().Settings = {
         --{Name = "Void Key", Data = {Price = "5%"}},
         {Name = "Fantasy Key", Data = {Price = "100k"}},
         --{Name = "Fantasy Spinny Wheel Ticket", Data = {Price = "5%"}},
+
+		{Name = "Huge Sacred Deer", Data = {Price = "24m"}},
+		{Name = "Huge Holly Capybara", Data = {Price = "28m"}},
+		{Name = "Golden Huge Holly Capybara", Data = {Price = "30m"}},
+		{Name = "Rainbow Huge Holly Capybara", Data = {Price = "133m"}},
+		{Name = "Huge Beans Balloon Cat", Data = {Price = "61m"}},
+		{Name = "Huge Spectral Deer", Data = {Price = "108m"}},
+		{Name = "Huge Specter Owl", Data = {Price = "670m"}},
     },
 ["xoa_Map"] = true,
 
