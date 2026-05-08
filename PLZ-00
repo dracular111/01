@@ -1,5 +1,5 @@
 getgenv().Settings = {
-    ["Items"] = {
+["Items"] = {
         {Name = "Gargantuan Dawn Phoenix", Data = {Price = "170b"}},
         {Name = "Golden Gargantuan Dawn Phoenix", Data = {Price = "270b"}},
 
@@ -95,7 +95,7 @@ getgenv().Settings = {
 		{Name = "Golden Huge Holly Capybara", Data = {Price = "30m"}},
 		{Name = "Rainbow Huge Holly Capybara", Data = {Price = "133m"}},
 		{Name = "Huge Beans Balloon Cat", Data = {Price = "61m"}},
-		{Name = "Huge Spectral Deer", Data = {Price = "108m"}},
+        {Name = "Huge Spectral Deer", Data = {Price = "108m"}},
 		{Name = "Huge Specter Owl", Data = {Price = "670m"}},
     },
 ["xoa_Map"] = true,
