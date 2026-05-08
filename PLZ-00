@@ -83,7 +83,7 @@ getgenv().Settings = {
 
         {Name = "MVP Key Lower Half", Data = {Price = "10k"}},
         {Name = "MVP Key Upper Half", Data = {Price = "2m"}},
-        {Name = "Crystal Key", Data = {Price = "15k"}},
+        {Name = "Crystal Key", Data = {Price = "25k"}},
         {Name = "Tech Key", Data = {Price = "42k"}},
         {Name = "Secret Key", Data = {Price = "40k"}},
         --{Name = "Void Key", Data = {Price = "5%"}},
