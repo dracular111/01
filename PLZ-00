@@ -81,7 +81,7 @@ getgenv().Settings = {
         {Name = "Mega Enchant Chest", Data = {Price = "4m"}},
         --{Name = "Huge Sea Dragon Card", Data = {Price = "1%"}},
 
-        {Name = "MVP Key Lower Half", Data = {Price = "10k"}},
+        {Name = "MVP Key Lower Half", Data = {Price = "50k"}},
         {Name = "MVP Key Upper Half", Data = {Price = "2m"}},
         {Name = "Crystal Key", Data = {Price = "25k"}},
         {Name = "Tech Key", Data = {Price = "42k"}},
