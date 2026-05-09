@@ -6,12 +6,12 @@ getgenv().Settings = {
         {Name = "Titanic Ruinous Angelus", Data = {Price = "5b"}},
         {Name = "Titanic Werewolf", Data = {Price = "6.5b"}},
 
-        {Name = "Titanic Butterfly Pony", Data = {Price = "4.7b"}},
+        {Name = "Titanic Butterfly Pony", Data = {Price = "4.65b"}},
         {Name = "Golden Titanic Butterfly Pony", Data = {Price = "5.3b"}},
         {Name = "Rainbow Titanic Butterfly Pony", Data = {Price = "18b"}},
         {Name = "Shiny Titanic Butterfly Pony", Data = {Price = "26b"}},
 
-        {Name = "Titanic Garden Goblin", Data = {Price = "4.6b"}},
+        {Name = "Titanic Garden Goblin", Data = {Price = "4.55b"}},
         {Name = "Golden Titanic Garden Goblin", Data = {Price = "5.2b"}},
         {Name = "Rainbow Titanic Garden Goblin", Data = {Price = "15.5b"}},
         {Name = "Shiny Titanic Garden Goblin", Data = {Price = "15.5b"}},
@@ -23,9 +23,9 @@ getgenv().Settings = {
 
         {Name = "Shiny Golden Titanic Starlight Pony", Data = {Price = "80b"}},
         {Name = "Shiny Titanic Starlight Pony", Data = {Price = "25b"}},
-        {Name = "Titanic Starlight Pony", Data = {Price = "3%"}},
+        {Name = "Titanic Starlight Pony", Data = {Price = "4%"}},
         {Name = "Golden Titanic Starlight Pony", Data = {Price = "1%"}},
-        {Name = "Rainbow Titanic Starlight Pony", Data = {Price = "17b"}},
+        {Name = "Rainbow Titanic Starlight Pony", Data = {Price = "16.5b"}},
 
         {Name = "Titanic Irish Wolfhound", Data = {Price = "1%"}},
         {Name = "Golden Titanic Irish Wolfhound", Data = {Price = "1%"}},
