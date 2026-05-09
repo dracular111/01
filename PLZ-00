@@ -22,7 +22,7 @@ getgenv().Settings = {
         {Name = "Shiny Titanic Withered Agony", Data = {Price = "1%"}},
 
         {Name = "Shiny Golden Titanic Starlight Pony", Data = {Price = "80b"}},
-        {Name = "Shiny Titanic Starlight Pony", Data = {Price = "25b"}},
+        {Name = "Shiny Titanic Starlight Pony", Data = {Price = "24b"}},
         {Name = "Titanic Starlight Pony", Data = {Price = "4%"}},
         {Name = "Golden Titanic Starlight Pony", Data = {Price = "1%"}},
         {Name = "Rainbow Titanic Starlight Pony", Data = {Price = "16.5b"}},
