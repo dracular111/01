@@ -29,6 +29,7 @@ getgenv().AutoMail = {
         ['Exclusive Egg 58'] = { Class = "Egg", Amount = 1 },
         ['Exclusive Egg 59'] = { Class = "Egg", Amount = 1 },
         ['Exclusive Egg 60'] = { Class = "Egg", Amount = 1 },
+        ['Exclusive Egg 61'] = { Class = "Egg", Amount = 1 },
         --['Santa Gift'] = { Class = "Lootbox", MinAmount = 300, Amount = "Max" },
         --['Candycane Gift'] = { Class = "Lootbox", MinAmount = 500, Amount = "Max" },
         ['Blossom Gift'] = { Class = "Lootbox", MinAmount = 1, Amount = "Max" },
