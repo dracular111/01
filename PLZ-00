@@ -94,7 +94,7 @@ getgenv().Settings = {
 		{Name = "Huge Holly Capybara", Data = {Price = "28m"}},
 		{Name = "Golden Huge Holly Capybara", Data = {Price = "30m"}},
 		{Name = "Rainbow Huge Holly Capybara", Data = {Price = "133m"}},
-		{Name = "Huge Beans Balloon Cat", Data = {Price = "61m"}},
+		{Name = "Huge Beans Balloon Cat", Data = {Price = "60m"}},
         {Name = "Huge Spectral Deer", Data = {Price = "108m"}},
 		{Name = "Huge Specter Owl", Data = {Price = "670m"}},
     },
