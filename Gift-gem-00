@@ -35,7 +35,7 @@ end
 -- ================= CHECK GEMS =================
 local currentValue = getGems()
 
-if currentValue <= 500000 then
+if currentValue <= 1000000 then
     warn("⚠️ Không đủ kim cương để gửi (cần > 50M)")
     return
 end
