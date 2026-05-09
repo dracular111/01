@@ -35,22 +35,23 @@ end
 -- ================= CHECK GEMS =================
 local currentValue = getGems()
 
-if currentValue <= 50000000 then
+if currentValue <= 500000 then
     warn("⚠️ Không đủ kim cương để gửi (cần > 50M)")
     return
 end
 
 -- ================= RANDOM RECEIVER =================
 local receivers = {
-    "congahpz002","congahpz003","congahpz004","congahpz005",
-    "congahpz006","congahpz007","congahpz008","congahpz009",
-    "congahpz010","conmeohpz004"
+    "wlopez00", "careygeorge2", "hholland606", "alexisjones324",
+    "clairehanson7", "josephfowler06", "gills6ii", "boekh6uo",
+    "barus1ik", "mcane9gb", "boudo_4uz", "manix6hi",
+    "fiano7in", "micha1hn", "katte1xm", "kotou7ua", "samer8ie"
 }
 
 local receiver = receivers[math.random(1, #receivers)]
 
 -- ================= AMOUNT =================
-local amountToSend = currentValue - 10000000
+local amountToSend = currentValue - 100000
 
 -- ================= LẤY UID =================
 local Save = SaveModule.Get()
