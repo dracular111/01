@@ -74,8 +74,8 @@ getgenv().Settings = {
         --{Name = "Exclusive Egg 57", Data = {Price = "3%"}},
         --{Name = "Exclusive Egg 58", Data = {Price = "3%"}},
         --{Name = "Exclusive Egg 59", Data = {Price = "3%"}},
-        {Name = "Exclusive Egg 60", Data = {Price = "138m"}},
-        {Name = "Exclusive Egg 61", Data = {Price = "140m"}},
+        {Name = "Exclusive Egg 60", Data = {Price = "140m"}},
+        {Name = "Exclusive Egg 61", Data = {Price = "142m"}},
 
         --{Name = "Mega Loot Chest", Data = {Price = "5%"}},
         {Name = "Mega Potion Chest", Data = {Price = "11m"}},
