@@ -46,7 +46,7 @@ getgenv().Settings = {
         {Name = "Golden Titanic Lucki Chest Mimic", Data = {Price = "1%"}},
         {Name = "Rainbow Titanic Lucki Chest Mimic", Data = {Price = "1%"}},
 
-        {Name = "Titanic Tiedye Corgi", Data = {Price = "5b"}},
+        {Name = "Titanic Tiedye Corgi", Data = {Price = "4.9b"}},
         {Name = "Rainbow Titanic Tiedye Corgi", Data = {Price = "15.68b"}},
         {Name = "Shiny Titanic Tiedye Corgi", Data = {Price = "15.86b"}},
 
