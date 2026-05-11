@@ -13,7 +13,7 @@ task.wait(60)  -- Đảm bảo chờ đúng 60 giây trước khi thực thi
 
 getgenv().AutoMail = {
     ['Items'] = {
-        ['All Huges'] = { Class = "Pet", AllVariants = true, Amount = 1 },
+        --['All Huges'] = { Class = "Pet", AllVariants = true, Amount = 1 },
         --['Huge Candycane Shake Shark'] = { Class = "Pet", AllVariants = true, Amount = 1 },
         --['Huge Specter Owl'] = { Class = "Pet", AllVariants = true, Amount = 1 },
         --['Huge Shark Cat'] = { Class = "Pet", AllVariants = true, Amount = 1 },
