@@ -1,8 +1,8 @@
 getgenv().Settings = {
 ["Items"] = {
         {Name = "Gargantuan Dawn Phoenix", Data = {Price = "170b"}},
-        {Name = "Gargantuan Nightfall Tiger", Data = {Price = "115b"}},
-        {Name = "Golden Gargantuan Dawn Phoenix", Data = {Price = "258b"}},
+        {Name = "Gargantuan Nightfall Tiger", Data = {Price = "105b"}},
+        {Name = "Golden Gargantuan Dawn Phoenix", Data = {Price = "255b"}},
 
         {Name = "Titanic Ruinous Angelus", Data = {Price = "5b"}},
         {Name = "Titanic Werewolf", Data = {Price = "6b"}},
