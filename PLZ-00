@@ -55,7 +55,7 @@ getgenv().Settings = {
         --{Name = "2026 New Years Gift", Data = {Price = "1%"}},
         --{Name = "Halloween Lucky Block Gift", Data = {Price = "1%"}},
         {Name = "Blossom Gift", Data = {Price = "3.5m"}},
-        {Name = "Time Trial Gift", Data = {Price = "300k"}},
+        {Name = "Time Trial Gift", Data = {Price = "310k"}},
         {Name = "Candycane Gift", Data = {Price = "200k"}},
         {Name = "Santa Gift", Data = {Price = "350k"}},
         {Name = "Slime Gift", Data = {Price = "150k"}},
