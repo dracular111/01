@@ -1,7 +1,7 @@
 getgenv().Settings = {
 ["Items"] = {
         {Name = "Gargantuan Dawn Phoenix", Data = {Price = "170b"}},
-        {Name = "Golden Gargantuan Dawn Phoenix", Data = {Price = "260b"}},
+        {Name = "Golden Gargantuan Dawn Phoenix", Data = {Price = "258b"}},
 
         {Name = "Titanic Ruinous Angelus", Data = {Price = "5b"}},
         {Name = "Titanic Werewolf", Data = {Price = "6.5b"}},
@@ -74,7 +74,7 @@ getgenv().Settings = {
         --{Name = "Exclusive Egg 57", Data = {Price = "3%"}},
         --{Name = "Exclusive Egg 58", Data = {Price = "3%"}},
         --{Name = "Exclusive Egg 59", Data = {Price = "3%"}},
-        {Name = "Exclusive Egg 60", Data = {Price = "140m"}},
+        {Name = "Exclusive Egg 60", Data = {Price = "138m"}},
         {Name = "Exclusive Egg 61", Data = {Price = "142m"}},
 
         --{Name = "Mega Loot Chest", Data = {Price = "5%"}},
