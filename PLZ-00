@@ -95,7 +95,8 @@ getgenv().Settings = {
         --{Name = "Fantasy Spinny Wheel Ticket", Data = {Price = "5%"}},
 
 		{Name = "Huge Sacred Deer", Data = {Price = "24m"}},
-		{Name = "Huge Alienus Kitsune ", Data = {Price = "55m"}},
+		{Name = "Huge Alienus Kitsune", Data = {Price = "52m"}},
+		{Name = "Golden Huge Alienus Kitsune", Data = {Price = "70m"}},
 		{Name = "Huge Holly Capybara", Data = {Price = "28m"}},
 		{Name = "Golden Huge Holly Capybara", Data = {Price = "30m"}},
 		{Name = "Rainbow Huge Holly Capybara", Data = {Price = "133m"}},
