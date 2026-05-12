@@ -5,7 +5,7 @@ getgenv().Settings = {
         {Name = "Golden Gargantuan Dawn Phoenix", Data = {Price = "250b"}},
 
         {Name = "Titanic Ruinous Angelus", Data = {Price = "5b"}},
-        {Name = "Titanic Werewolf", Data = {Price = "6b"}},
+        {Name = "Titanic Werewolf", Data = {Price = "5.5b"}},
         {Name = "Rainbow Titanic Werewolf", Data = {Price = "30b"}},
 
         {Name = "Titanic Butterfly Pony", Data = {Price = "4.65b"}},
