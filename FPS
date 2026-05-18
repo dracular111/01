@@ -13,7 +13,7 @@ pcall(function()
         getgenv().fps_thread = nil
     end
 end)
-task.wait(5)
+task.wait(205)
 
 -- Cấu hình
 local TARGET_FPS = 3
