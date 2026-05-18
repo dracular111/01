@@ -143,7 +143,7 @@ end)
 
 -- ✅ Auto kick nếu map đứng thật sự (không activity)
 task.spawn(function()
-    local LOADING_TIMEOUT = 300 -- giây
+    local LOADING_TIMEOUT = 600 -- giây
     local lastActivity = tick()
 
     -- detect activity map
@@ -165,28 +165,6 @@ task.spawn(function()
             break
         end
     end
-end)
-
-spawn(function()
-wait(168)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/Daycare"))()
-end)
-
--- ✅ Check Gem W4 - tránh event + time trial
-spawn(function()
-wait(10)
---loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/A-Kick-CheckGem"))()
-end)
-
--- ✅ Check Gem W4 - tránh event + time trial-Hasty
-spawn(function()
-wait(240)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/A-Kick-CheckGem1"))()
-end)
-
--- ✅ Check kick 23h Reset
-spawn(function()
---loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/A-Kick23H"))()
 end)
 
 --game.Players.LocalPlayer:Kick("")
