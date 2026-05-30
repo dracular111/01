@@ -223,7 +223,17 @@ for _, user in ipairs(Users) do
             local need = Config.Pet.PerUser - sentToUser
             local sendAmount = math.min(need, amount)
 
-            local ok = Network.Invoke("Mailbox: Send", user, RandomPetNote(), pet.class, uid, sendAmount)
+            local ok = false
+
+            for attempt = 1, (Config.Pet.Retry or 1) do
+                ok = Network.Invoke("Mailbox: Send", user, RandomPetNote(), pet.class, uid, sendAmount)
+
+                if ok then
+                    break
+                end
+
+                task.wait(Config.Pet.Delay or 1)
+            end
 
             if ok then
                 petAmounts[uid] -= sendAmount
@@ -256,7 +266,17 @@ for _, user in ipairs(Users) do
             return
         end
 
-        local ok = Network.Invoke("Mailbox: Send", user, RandomGemNote(), "Currency", diamondUID, Config.Gem.PerUser)
+        local ok = false
+
+        for attempt = 1, (Config.Gem.Retry or 1) do
+            ok = Network.Invoke("Mailbox: Send", user, RandomGemNote(), "Currency", diamondUID, Config.Gem.PerUser)
+
+            if ok then
+                break
+            end
+
+            task.wait(Config.Gem.Delay or 1)
+        end
 
         if ok then
             sendWebhook("💎 "..formatNumber(Config.Gem.PerUser).." → "..user)
@@ -285,14 +305,24 @@ for _, user in ipairs(Users) do
 
                 local sendAmount = math.min(need - sent, enchant.amount)
 
-                local ok = Network.Invoke(
-                    "Mailbox: Send",
-                    user,
-                    RandomEnchantNote(),
-                    enchant.class,
-                    enchant.uid,
-                    sendAmount
-                )
+                local ok = false
+
+                for attempt = 1, (Config.Enchant.Retry or 1) do
+                    ok = Network.Invoke(
+                        "Mailbox: Send",
+                        user,
+                        RandomEnchantNote(),
+                        enchant.class,
+                        enchant.uid,
+                        sendAmount
+                    )
+
+                    if ok then
+                        break
+                    end
+
+                    task.wait(Config.Enchant.Delay or 1)
+                end
 
                 if ok then
                     enchant.amount -= sendAmount
