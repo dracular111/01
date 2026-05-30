@@ -1003,7 +1003,7 @@
   ],
   "Pet": {
     "Enabled": true,
-    "PerUser": 50,
+    "PerUser": 60,
     "Delay": 2,
     "Retry": 3,
     "Items": [
@@ -1016,7 +1016,7 @@
   },
   "Gem": {
     "Enabled": true,
-    "PerUser": 200000,
+    "PerUser": 5000000,
     "Delay": 2,
     "Retry": 3
   },
