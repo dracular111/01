@@ -1,16 +1,44 @@
-local Save = require(game.ReplicatedStorage.Library.Client.Save)
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+local Client = ReplicatedStorage.Library.Client
+local Network = require(Client.Network)
+local Save = require(Client.Save)
+
+local USER = "conmeohpz005"
+
+print("=== ENCHANT TEST START ===")
 
 for class, items in pairs(Save.Get().Inventory) do
-    for uid, v in pairs(items) do
+for uid, v in pairs(items) do
 
-        if v.id then
-            print(
-                "CLASS =", class,
-                "ID =", v.id,
-                "TN =", v.tn,
-                "AM =", v._am
-            )
-        end
+```
+    if class == "Enchant"
+    and v.id == "Treasure Hunter"
+    and v.tn == 7 then
 
+        print("FOUND!")
+        print("CLASS =", class)
+        print("UID =", uid)
+        print("ID =", v.id)
+        print("TN =", v.tn)
+        print("AM =", v._am)
+
+        local ok = Network.Invoke(
+            "Mailbox: Send",
+            USER,
+            "Test",
+            class,
+            uid,
+            1
+        )
+
+        print("SEND RESULT =", ok)
+
+        return
     end
 end
+```
+
+end
+
+warn("TREASURE HUNTER VII NOT FOUND")
