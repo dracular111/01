@@ -1003,8 +1003,8 @@
   "Pet": {
     "Enabled": true,
     "PerUser": 60,
-    "Delay": 2,
-    "Retry": 3,
+    "Delay": 3,
+    "Retry": 10,
     "Items": [
       {
         "id": "Ruinous Angelus",
@@ -1016,13 +1016,13 @@
   "Gem": {
     "Enabled": true,
     "PerUser": 5000000,
-    "Delay": 2,
-    "Retry": 3
+    "Delay": 3,
+    "Retry": 10
   },
   "Enchant": {
     "Enabled": true,
-    "Delay": 2,
-    "Retry": 3,
+    "Delay": 3,
+    "Retry": 10,
     "Items": [
       {
         "id": "Coins",
