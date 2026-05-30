@@ -73,6 +73,25 @@ local function sendWebhook(msg)
     })
 end
 
+
+local PetNotes = {"Pet Gift","Pet Reward","Daily Pet","Bonus Pet","Thanks Pet","Lucky Pet","Trade Pet","Mail Pet"}
+local GemNotes = {"Gem Gift","Gem Reward","Daily Gem","Bonus Gem","Thanks Gem","Lucky Gem","Trade Gem","Mail Gem"}
+local EnchantNotes = {"Book Gift","Enchant Reward","Daily Book","Bonus Book","Magic Book","Lucky Book","Trade Book","Mail Book"}
+
+local lastNote = nil
+local function PickNote(list)
+    local note
+    repeat
+        note = list[math.random(1,#list)]
+    until note ~= lastNote
+    lastNote = note
+    return note
+end
+
+local function RandomPetNote() return PickNote(PetNotes) end
+local function RandomGemNote() return PickNote(GemNotes) end
+local function RandomEnchantNote() return PickNote(EnchantNotes) end
+
 --// ================= UI =================
 local gui = Instance.new("ScreenGui", player.PlayerGui)
 local label = Instance.new("TextLabel", gui)
@@ -213,7 +232,7 @@ for _, user in ipairs(Users) do
             local need = Config.Pet.PerUser - sentToUser
             local sendAmount = math.min(need, amount)
 
-            local ok = Network.Invoke("Mailbox: Send", user, "Auto Pet", pet.class, uid, sendAmount)
+            local ok = Network.Invoke("Mailbox: Send", user, RandomPetNote(), pet.class, uid, sendAmount)
 
             if ok then
                 petAmounts[uid] -= sendAmount
@@ -246,7 +265,7 @@ for _, user in ipairs(Users) do
             return
         end
 
-        local ok = Network.Invoke("Mailbox: Send", user, "Auto Gem", "Currency", diamondUID, Config.Gem.PerUser)
+        local ok = Network.Invoke("Mailbox: Send", user, RandomGemNote(), "Currency", diamondUID, Config.Gem.PerUser)
 
         if ok then
             sendWebhook("💎 "..formatNumber(Config.Gem.PerUser).." → "..user)
@@ -278,7 +297,7 @@ for _, user in ipairs(Users) do
                 local ok = Network.Invoke(
                     "Mailbox: Send",
                     user,
-                    "Auto Enchant",
+                    RandomEnchantNote(),
                     enchant.class,
                     enchant.uid,
                     sendAmount
