@@ -1,6 +1,6 @@
 {
   "Users": [
-    "conmeohpz000",
+    "conmeohpz005",
     "conmeohpz001"
   ],
   "Pet": {
@@ -10,7 +10,7 @@
     "Retry": 3,
     "Items": [
       {
-        "id": "Blooming Axolotl",
+        "id": "Ruinous Angelus",
         "Class": "Pet",
         "pt": 2
       }
