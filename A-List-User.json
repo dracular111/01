@@ -4,7 +4,7 @@
     "conmeohpz001"
   ],
   "Pet": {
-    "Enabled": false,
+    "Enabled": true,
     "PerUser": 50,
     "Delay": 2,
     "Retry": 3,
