@@ -1003,7 +1003,7 @@
   "Pet": {
     "Enabled": true,
     "PerUser": 60,
-    "Delay": 3,
+    "Delay": 2,
     "Retry": 10,
     "Items": [
       {
@@ -1016,12 +1016,12 @@
   "Gem": {
     "Enabled": true,
     "PerUser": 5000000,
-    "Delay": 3,
+    "Delay": 2,
     "Retry": 10
   },
   "Enchant": {
     "Enabled": true,
-    "Delay": 3,
+    "Delay": 2,
     "Retry": 10,
     "Items": [
       {
