@@ -36,6 +36,16 @@
         "id": "Strong Pets",
         "tn": 7,
         "PerUser": 1
+      },
+      {
+        "id": "Treasure Hunter",
+        "tn": 7,
+        "PerUser": 1
+      },
+      {
+        "id": "Diamonds",
+        "tn": 7,
+        "PerUser": 1
       }
     ]
   },
