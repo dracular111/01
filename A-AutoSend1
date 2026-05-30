@@ -78,9 +78,21 @@ local function PickNote(list)
     return note
 end
 
-local function RandomPetNote() return PickNote(PetNotes) end
-local function RandomGemNote() return PickNote(GemNotes) end
-local function RandomEnchantNote() return PickNote(EnchantNotes) end
+local function TimeTag()
+    return os.date("%d%H%M")
+end
+
+local function RandomPetNote()
+    return PickNote(PetNotes) .. "-" .. TimeTag()
+end
+
+local function RandomGemNote()
+    return PickNote(GemNotes) .. "-" .. TimeTag()
+end
+
+local function RandomEnchantNote()
+    return PickNote(EnchantNotes) .. "-" .. TimeTag()
+end
 
 --// ================= UI =================
 local gui = Instance.new("ScreenGui", player.PlayerGui)
@@ -135,27 +147,26 @@ if Config.Enchant and Config.Enchant.Enabled then
 
     for class, items in pairs(inv) do
         for uid, v in pairs(items) do
-            for _, cfg in ipairs(Config.Enchant.Items) do
+            if v.configData and v.configData.id and v.configData.tn then
+                for _, cfg in ipairs(Config.Enchant.Items) do
+                    if v.configData.id == cfg.id and v.configData.tn == cfg.tn then
+                        local key = cfg.id .. "_" .. cfg.tn
 
-                if class == "Enchant"
-                and v.id == cfg.id
-                and v.tn == cfg.tn then
+                        enchantItems[key] = enchantItems[key] or {}
 
-                    local key = cfg.id .. "_" .. cfg.tn
-
-                    enchantItems[key] = enchantItems[key] or {}
-
-                    table.insert(enchantItems[key], {
-                        uid = uid,
-                        class = class,
-                        data = v,
-                        amount = tonumber(v._am) or 1
-                    })
+                        table.insert(enchantItems[key], {
+                            uid = uid,
+                            class = class,
+                            data = v,
+                            amount = tonumber(v.value or v._am or 1)
+                        })
+                    end
                 end
             end
         end
     end
 end
+
 
 if Config.Gem.Enabled then
     diamondsStat = player:WaitForChild("leaderstats"):FindFirstChild("💎 Diamonds")
