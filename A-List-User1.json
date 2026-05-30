@@ -28,11 +28,13 @@
     "Retry": 3,
     "Items": [
       {
-        "id": "Coins VII",
+        "id": "Coins",
+        "tn": 7,
         "PerUser": 1
       },
       {
-        "id": "Strong Pets VII",
+        "id": "Strong Pets",
+        "tn": 7,
         "PerUser": 1
       }
     ]
