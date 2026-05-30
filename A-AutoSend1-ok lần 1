@@ -1,13 +1,3 @@
-spawn(function()
-task.wait(10)
---loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/A-SendPet"))()
-end)
-
-spawn(function()
-task.wait(10)
---loadstring(game:HttpGet("https://raw.githubusercontent.com/dracular111/01/main/A-SendGem"))()
-end)
-
 task.wait(10)
 --// ================= LOAD CONFIG =================
 local HttpService = game:GetService("HttpService")
@@ -145,26 +135,27 @@ if Config.Enchant and Config.Enchant.Enabled then
 
     for class, items in pairs(inv) do
         for uid, v in pairs(items) do
-            if v.configData and v.configData.id and v.configData.tn then
-                for _, cfg in ipairs(Config.Enchant.Items) do
-                    if v.configData.id == cfg.id and v.configData.tn == cfg.tn then
-                        local key = cfg.id .. "_" .. cfg.tn
+            for _, cfg in ipairs(Config.Enchant.Items) do
 
-                        enchantItems[key] = enchantItems[key] or {}
+                if class == "Enchant"
+                and v.id == cfg.id
+                and v.tn == cfg.tn then
 
-                        table.insert(enchantItems[key], {
-                            uid = uid,
-                            class = class,
-                            data = v,
-                            amount = tonumber(v.value or v._am or 1)
-                        })
-                    end
+                    local key = cfg.id .. "_" .. cfg.tn
+
+                    enchantItems[key] = enchantItems[key] or {}
+
+                    table.insert(enchantItems[key], {
+                        uid = uid,
+                        class = class,
+                        data = v,
+                        amount = tonumber(v._am) or 1
+                    })
                 end
             end
         end
     end
 end
-
 
 if Config.Gem.Enabled then
     diamondsStat = player:WaitForChild("leaderstats"):FindFirstChild("💎 Diamonds")
