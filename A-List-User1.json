@@ -28,18 +28,11 @@
     "Retry": 3,
     "Items": [
       {
-        "id": "Treasure Hunter",
-        "tn": 7,
+        "id": "Coins",
         "PerUser": 1
       },
       {
-        "id": "Diamonds",
-        "tn": 7,
-        "PerUser": 1
-      },
-      {
-        "id": "Criticals",
-        "tn": 7,
+        "id": "Strong Pets",
         "PerUser": 1
       }
     ]
