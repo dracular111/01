@@ -1,0 +1,48 @@
+{
+  "Users": [
+    "conmeohpz005",
+    "conmeohpz001"
+  ],
+  "Pet": {
+    "Enabled": true,
+    "PerUser": 50,
+    "Delay": 2,
+    "Retry": 3,
+    "Items": [
+      {
+        "id": "Ruinous Angelus",
+        "Class": "Pet",
+        "pt": 2
+      }
+    ]
+  },
+  "Gem": {
+    "Enabled": true,
+    "PerUser": 200000,
+    "Delay": 2,
+    "Retry": 3
+  },
+  "Enchant": {
+    "Enabled": true,
+    "Delay": 2,
+    "Retry": 3,
+    "Items": [
+      {
+        "id": "Treasure Hunter",
+        "tn": 7,
+        "PerUser": 1
+      },
+      {
+        "id": "Diamonds",
+        "tn": 7,
+        "PerUser": 1
+      },
+      {
+        "id": "Criticals",
+        "tn": 7,
+        "PerUser": 1
+      }
+    ]
+  },
+  "Webhook": "https://discord.com/api/webhooks/1494215679698534522/PqDEI58B-Z0VCKJOv8ZwineY-IilTGw0QJSwVAcfBOpqeSKfwik8k828HXM6isgApVT8"
+}
