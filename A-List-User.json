@@ -4,7 +4,7 @@
     "conmeohpz001"
   ],
   "Pet": {
-    "Enabled": true,
+    "Enabled": false,
     "PerUser": 50,
     "Delay": 2,
     "Retry": 3,
@@ -17,8 +17,8 @@
     ]
   },
   "Gem": {
-    "Enabled": false,
-    "PerUser": 20000000,
+    "Enabled": true,
+    "PerUser": 200000,
     "Delay": 2,
     "Retry": 3
   },
