@@ -1,0 +1,53 @@
+{
+  "Users": [
+    "a1111",
+    "annn"
+  ],
+  "Pet": {
+    "Enabled": true,
+    "PerUser": 60,
+    "Delay": 2,
+    "Retry": 10,
+    "Items": [
+      {
+        "id": "Ruinous Angelus",
+        "Class": "Pet",
+        "pt": 2
+      }
+    ]
+  },
+  "Gem": {
+    "Enabled": true,
+    "PerUser": 5000000,
+    "Delay": 2,
+    "Retry": 10
+  },
+  "Enchant": {
+    "Enabled": true,
+    "Delay": 2,
+    "Retry": 10,
+    "Items": [
+      {
+        "id": "Coins",
+        "tn": 7,
+        "PerUser": 1
+      },
+      {
+        "id": "Strong Pets",
+        "tn": 7,
+        "PerUser": 1
+      },
+      {
+        "id": "Treasure Hunter",
+        "tn": 7,
+        "PerUser": 1
+      },
+      {
+        "id": "Diamonds",
+        "tn": 7,
+        "PerUser": 1
+      }
+    ]
+  },
+  "Webhook": "https://discord.com/api/webhooks/1510251928532287639/gmwx7MCTZqAGcvFv8Gk8EYPn7SI8ramxKiPvsQPenx9voDUUBxHGohpRymG8NaPVSCuf"
+}
