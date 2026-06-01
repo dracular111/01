@@ -5,7 +5,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 -- CONFIG
 local TARGET_SLOT = 30        -- muốn mở tới bao nhiêu slot
 local MAX_USE = 30           -- tối đa dùng bao nhiêu vé (tránh dùng hết sạch)
-local DELAY = 2              -- delay giữa mỗi lần dùng vé
+local DELAY = 60             -- delay giữa mỗi lần dùng vé
 
 local daycareCmds = require(ReplicatedStorage.Library.Client.DaycareCmds)
 local useVoucher = ReplicatedStorage:WaitForChild("Network"):WaitForChild("DaycareSlotVoucher_Consume")
