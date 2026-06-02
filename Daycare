@@ -7,7 +7,7 @@ end)
 -- PET PRIORITY
 -- FLEXIBLE SKIP SYSTEM
 -- =====================================
-task.wait(30)
+task.wait(2)
 if _G.DAYGIFTFREES then
     return
 end
