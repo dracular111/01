@@ -3907,19 +3907,9 @@
     "Retry": 10,
     "Items": [
       {
-        "id": "Tap Power",
-        "tn": 7,
+        "id": "Diamonds",
+        "tn": 10,
         "PerUser": 1
-      },
-      {
-        "id": "Criticals",
-        "tn": 7,
-        "PerUser": 1
-      },
-      {
-        "id": "Lucky Eggs",
-        "tn": 7,
-        "PerUser": 2
       }
     ]
   },
