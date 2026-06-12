@@ -353,7 +353,7 @@
   },
   "Enchant": {
     "Enabled": true,
-    "Delay": 2,
+    "Delay": 3,
     "Retry": 10,
     "Items": [
       {
