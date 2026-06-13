@@ -1,25 +1,5 @@
 {
   "Users": [
-    "BlizzardZZLioniZRogu",
-    "Byte0fChaos5",
-    "XzPow3rMyAquaTzX1436",
-    "PrismaNOblivionpNDar",
-    "StarQBPh03nixy35",
-    "Xz_MechavVPlayzFVPow",
-    "XzNovaegThornAzX1886",
-    "Lava0bStarrylbZap",
-    "SurgeurViperxrRaven1",
-    "FrostbitepfRidery106",
-    "Bl0ckvdCha0sB179931",
-    "Xz_Frostbite5pStormJ",
-    "Xz_PixelatedvQArrow5",
-    "ChaosSnSkat3rE160615",
-    "XzPhoenix3IGlide9zX1",
-    "Xz_NightfallvRUltrad",
-    "BanedTAce3TSparkly18",
-    "N3bulaCEAquahEThund3",
-    "Zap4qSniperd189149",
-    "SlimelxMagicq",
     "FrostP4VantaK",
     "Surge1XTechnoc113866",
     "StreamGxCryptD1749",
@@ -123,7 +103,7 @@
   },
   "Enchant": {
     "Enabled": true,
-    "Delay": 5,
+    "Delay": 2,
     "Retry": 10,
     "Items": [
       {
